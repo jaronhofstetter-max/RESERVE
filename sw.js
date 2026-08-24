@@ -1,4 +1,4 @@
-const CACHE='tenderhawk-v114-pwa-1';
+const CACHE='tenderhawk-v115-pwa-1';
 const APP_SHELL=['/RESERVE/','/RESERVE/index.html','/RESERVE/ranking-v06.js','/RESERVE/dashboard-v08.js','/RESERVE/dashboard-v08.css','/RESERVE/smart-matching-v11.js','/RESERVE/brand-header-v112.js','/RESERVE/manifest.webmanifest','/RESERVE/icon.svg'];
 
 self.addEventListener('install',event=>{
