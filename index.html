@@ -17,6 +17,12 @@ table{width:100%;border-collapse:collapse}th,td{text-align:left;vertical-align:t
 .livebadge{display:inline-block;background:#e7f6ee;color:#11643d;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:800}.warnbadge{display:inline-block;background:#fff4e5;color:#8a4b00;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:800}
 @media(max-width:850px){.grid2,.grid3{grid-template-columns:1fr}}@media print{header,.noprint{display:none!important}main{padding:0}.card{box-shadow:none;border:0}.panel{display:none!important}#report.panel{display:block!important}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+window.TENDERHAWK_SUPABASE_URL='https://sqiuuoewznmlazamkvua.supabase.co';
+window.TENDERHAWK_SUPABASE_PUBLISHABLE_KEY='sb_publishable_WgDw2GFlTPGJSnvdXg2grw_I-T_hHzS';
+window.tenderhawkSupabase=window.supabase.createClient(window.TENDERHAWK_SUPABASE_URL,window.TENDERHAWK_SUPABASE_PUBLISHABLE_KEY);
+</script>
 </head>
 <body>
 <header><div class="wrap"><div class="brandrow"><div class="brandmark"><img src="icon.svg?v=115" alt="TenderHawk TH"></div><div><div class="brandtitle">TenderHawk</div><div class="byline">BY HOFILIGHT</div><div class="tagline">Weniger suchen. Mehr gewinnen. · Schweizer Ausschreibungsintelligenz</div></div></div><nav class="noprint"><button class="tab active" onclick="show('radar',this)">1 Radar</button><button class="tab" onclick="show('profile',this)">2 Firmenprofil</button><button class="tab" onclick="show('analysis',this)">3 Analyse</button><button class="tab" onclick="show('report',this)">4 Report</button></nav></div></header>
