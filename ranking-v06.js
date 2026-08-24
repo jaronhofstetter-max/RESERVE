@@ -27,8 +27,8 @@
     .actions{display:flex;gap:8px;flex-wrap:wrap}.actions button,.actions .linkbtn{margin:0;min-height:42px;display:inline-flex;align-items:center;justify-content:center}
     .hotBadge{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:4px 8px;background:#e7f6ee;color:#11643d;margin-left:5px}
     @media(max-width:600px){
-      header{padding:20px 14px}header h1{font-size:26px}header .wrap>div:nth-child(2){font-size:12px;opacity:.86}
-      nav{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.tab{padding:9px 5px;font-size:12px;white-space:nowrap}
+      header{padding:20px 14px}.tagline{font-size:11px}.brandtitle{font-size:26px}
+      nav{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.tab{padding:9px 5px;font-size:11px;white-space:nowrap}
       main{padding:10px}.card{padding:14px;border-radius:12px}.card h2{font-size:22px;margin-top:3px}
       .grid2,.grid3{gap:8px}input,textarea,select{font-size:16px}
       #radar>.card:first-child button{width:100%;margin:6px 0 0}
@@ -113,4 +113,10 @@
   const apple=document.createElement('meta'); apple.name='apple-mobile-web-app-capable'; apple.content='yes'; document.head.appendChild(apple);
   const appleStatus=document.createElement('meta'); appleStatus.name='apple-mobile-web-app-status-bar-style'; appleStatus.content='default'; document.head.appendChild(appleStatus);
   if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
+})();
+
+// TenderHawk 0.8 dashboard loader.
+(function(){
+  if(!document.querySelector('link[href="dashboard-v08.css"]')){const l=document.createElement('link');l.rel='stylesheet';l.href='dashboard-v08.css';document.head.appendChild(l)}
+  if(!document.querySelector('script[src="dashboard-v08.js"]')){const s=document.createElement('script');s.src='dashboard-v08.js';document.body.appendChild(s)}
 })();
