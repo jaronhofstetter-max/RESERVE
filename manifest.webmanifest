@@ -1,8 +1,8 @@
 {
   "id": "/RESERVE/",
-  "name": "TenderHawk CH",
-  "short_name": "TenderHawk",
-  "description": "Firmenbezogener SIMAP Opportunity-Radar für Schweizer Ausschreibungen",
+  "name": "HOFILIGHT ONE",
+  "short_name": "HOFILIGHT ONE",
+  "description": "AI Tender Intelligence für Schweizer Ausschreibungen",
   "start_url": "/RESERVE/",
   "scope": "/RESERVE/",
   "display": "standalone",
@@ -11,7 +11,7 @@
   "lang": "de-CH",
   "icons": [
     {
-      "src": "file_0000000013b481f497e7cdb7337b891a.png?v=118",
+      "src": "file_0000000013b481f497e7cdb7337b891a.png?v=119",
       "sizes": "1536x1536",
       "type": "image/png",
       "purpose": "any"
