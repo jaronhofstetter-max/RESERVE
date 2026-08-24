@@ -1,4 +1,4 @@
-// TenderHawk 1.1 semantic matching layer. Deterministic, explainable and based only on the current company profile + SIMAP snapshot.
+// TenderHawk 1.2 semantic matching layer. Deterministic, explainable and based only on the current company profile + active SIMAP snapshot.
 (function(){
   const norm=s=>N(s||'');
   const words=s=>norm(s).split(/[^a-z0-9]+/i).filter(w=>w.length>2);
@@ -41,6 +41,7 @@
 
   function tenderText(x){return norm([x.title,x.buyer,x.location,x.type,x.text].join(' '));}
   function titleText(x){return norm(x.title||'');}
+  function isActive(x){return x.status!=='expired' && deadlineDays(x)>0;}
 
   function regionMatch(p,x){
     const loc=norm((x.location||'')+' '+(x.buyer||''));
@@ -51,46 +52,31 @@
   }
 
   window.opportunityScore=function(x){
+    if(!isActive(x)) return {score:0,reasons:[],risks:['Ausschreibung abgelaufen'],criteria:[],tradeHits:[],decision:'ABGELAUFEN'};
     const p=profile(), text=tenderText(x), title=titleText(x), d=deadlineDays(x), reasons=[], risks=[], criteria=[];
     let score=20;
 
     const matchedTrades=p.activeTrades.filter(c=>containsAny(text,c.terms));
     const titleTrades=p.activeTrades.filter(c=>containsAny(title,c.terms));
-    if(matchedTrades.length){
-      score+=Math.min(34,18+(matchedTrades.length-1)*8);
-      reasons.push('Gewerke: '+matchedTrades.slice(0,3).map(c=>c.label).join(', '));
-    }
+    if(matchedTrades.length){score+=Math.min(34,18+(matchedTrades.length-1)*8);reasons.push('Gewerke: '+matchedTrades.slice(0,3).map(c=>c.label).join(', '));}
     if(titleTrades.length){score+=8;reasons.push('Kernthema im Titel');}
     if(p.activeTrades.length && !matchedTrades.length){score-=12;risks.push('Kein klarer Gewerke-Match');}
 
     let capCount=0;
-    CAP_CLUSTERS.forEach(c=>{
-      if(containsAny(text,c.terms) && containsAny(p.capabilityText,c.terms)){
-        capCount++; criteria.push(c.label);
-      }
-    });
+    CAP_CLUSTERS.forEach(c=>{if(containsAny(text,c.terms)&&containsAny(p.capabilityText,c.terms)){capCount++;criteria.push(c.label);}});
     if(capCount){score+=Math.min(18,capCount*5);reasons.push('Nachweise/Erfahrung: '+criteria.slice(0,3).join(', '));}
 
     const queryTerms=uniq(words(q.value));
     const queryHits=queryTerms.filter(k=>text.includes(k));
     score+=Math.min(8,queryHits.length*2);
-
     if(regionMatch(p,x)){score+=8;reasons.push('Region passt');}
+    if(d>=21){score+=7;reasons.push('gute Vorlaufzeit');} else if(d>=14){score+=3;} else if(d<7){score-=15;risks.push('sehr kurze Frist');} else {score-=7;risks.push('kurze Frist');}
 
-    if(d>=21){score+=7;reasons.push('gute Vorlaufzeit');}
-    else if(d>=14){score+=3;}
-    else if(d<7){score-=15;risks.push('sehr kurze Frist');}
-    else {score-=7;risks.push('kurze Frist');}
+    if(x.isNew){score+=3;reasons.push('neu entdeckt');}
 
     const value=+x.value||0;
-    if(value&&p.maxValue){
-      if(value<=p.maxValue){score+=5;reasons.push('Volumen im Firmenlimit');}
-      else {score-=16;risks.push('Volumen über Firmenlimit');}
-    }
-    if(value){
-      const capLimit=p.capacity==='klein'?750000:p.capacity==='gross'?5000000:2000000;
-      if(value>capLimit){score-=7;risks.push('Kapazität prüfen');}
-    }
+    if(value&&p.maxValue){if(value<=p.maxValue){score+=5;reasons.push('Volumen im Firmenlimit');}else{score-=16;risks.push('Volumen über Firmenlimit');}}
+    if(value){const capLimit=p.capacity==='klein'?750000:p.capacity==='gross'?5000000:2000000;if(value>capLimit){score-=7;risks.push('Kapazität prüfen');}}
 
     MUST_SIGNALS.forEach(([term,label])=>{if(text.includes(norm(term))&&!risks.includes(label))risks.push(label)});
     if(risks.includes('Pönale')) score-=3;
@@ -109,15 +95,16 @@
       const why=o.reasons.slice(0,3).map(r=>`<span class="pill">✓ ${esc(r)}</span>`).join('');
       const risk=o.risks.slice(0,2).map(r=>`<span class="pill">⚠ ${esc(r)}</span>`).join('');
       const hot=s>=75?'<span class="hotBadge">GO-KANDIDAT</span>':s>=55?'<span class="hotBadge" style="background:#fff4e5;color:#8a4b00">PRÜFEN</span>':'';
+      const fresh=x.isNew?'<span class="hotBadge" style="background:#eaf1ff;color:#1d4ed8">NEU</span>':'';
       const summary=(x.text||'').replace(/\s+/g,' ').trim();
-      return `<article class="lead"><div class="oppHead"><div class="scoreBox"><span class="score ${c}">${s}/100</span><span class="scoreLabel">Match</span></div><div><div class="oppTitle">${esc(x.title)} ${hot}</div><div class="oppMeta">${esc(x.buyer)} · ${esc(x.location||'Schweiz')}</div></div></div><div class="pillrow"><span class="pill">${esc(x.type||'Publikation')}</span><span class="pill">${d} Tage</span>${why}${risk}</div><p class="leadSummary">${esc(summary)}</p><div class="actions"><button onclick="choose(${i})">Bid/No-Bid prüfen</button>${x.url?`<a class="linkbtn" href="${esc(x.url)}" target="_blank" rel="noopener">SIMAP öffnen</a>`:''}</div></article>`;
-    }).join(''):'<div class="muted">Keine passenden Chancen im aktuellen Snapshot. Suchbegriffe oder Region erweitern.</div>';
+      return `<article class="lead"><div class="oppHead"><div class="scoreBox"><span class="score ${c}">${s}/100</span><span class="scoreLabel">Match</span></div><div><div class="oppTitle">${esc(x.title)} ${fresh} ${hot}</div><div class="oppMeta">${esc(x.buyer)} · ${esc(x.location||'Schweiz')}</div></div></div><div class="pillrow"><span class="pill">${esc(x.type||'Publikation')}</span><span class="pill">${d} Tage</span>${why}${risk}</div><p class="leadSummary">${esc(summary)}</p><div class="actions"><button onclick="choose(${i})">Bid/No-Bid prüfen</button>${x.url?`<a class="linkbtn" href="${esc(x.url)}" target="_blank" rel="noopener">SIMAP öffnen</a>`:''}</div></article>`;
+    }).join(''):'<div class="muted">Keine passenden aktiven Chancen im aktuellen Snapshot.</div>';
   };
 
   window.live=function(){
     if(!cache.length){status.textContent='Noch kein Live-Snapshot verfügbar.';return;}
     const keys=words(q.value), area=norm(kanton.value).trim();
-    let pool=cache.filter(x=>{
+    let pool=cache.filter(isActive).filter(x=>{
       const t=tenderText(x);
       const termMatch=!keys.length||keys.some(k=>t.includes(k));
       const areaMatch=!area||t.includes(area)||opportunityScore(x).reasons.includes('Region passt');
@@ -127,10 +114,10 @@
     render(pool);
     const hot=pool.filter(x=>opportunityScore(x).score>=75).length;
     const check=pool.filter(x=>{const s=opportunityScore(x).score;return s>=55&&s<75}).length;
-    status.textContent=`${pool.length} passende Chancen aus ${cache.length} SIMAP-Projekten · ${hot} GO-Kandidaten · ${check} prüfen.`;
+    const fresh=pool.filter(x=>x.isNew).length;
+    status.textContent=`${pool.length} aktive Chancen · ${fresh} neu · ${hot} GO-Kandidaten · ${check} prüfen.`;
   };
 
-  // Enrich the detailed Bid/No-Bid panel with explainable signals.
   const oldChoose=window.choose;
   window.choose=function(i){
     if(typeof oldChoose==='function') oldChoose(i);
