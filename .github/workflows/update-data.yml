@@ -33,12 +33,16 @@ jobs:
         run: python scripts/fetch_simap.py
       - name: Commit changed snapshot
         run: |
-          if git diff --quiet -- data/projects.json; then
+          if [ ! -f data/projects.json ]; then
+            echo "Snapshot was not created"
+            exit 1
+          fi
+          git add data/projects.json
+          if git diff --cached --quiet; then
             echo "No data changes"
             exit 0
           fi
           git config user.name "tenderhawk-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/projects.json
           git commit -m "Refresh SIMAP snapshot"
           git push
