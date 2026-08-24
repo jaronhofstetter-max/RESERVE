@@ -11,9 +11,9 @@
   "lang": "de-CH",
   "icons": [
     {
-      "src": "file_0000000013b481f497e7cdb7337b891a.png?v=119",
-      "sizes": "1536x1536",
-      "type": "image/png",
+      "src": "icon.svg?v=120",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any"
     }
   ]
