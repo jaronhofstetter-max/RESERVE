@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import json
-import os
 import ssl
 import time
 import urllib.parse
@@ -15,6 +14,26 @@ SEEDS = [
     "Elektro", "Bau", "Reinigung", "Lieferung"
 ]
 OUT = Path("data/projects.json")
+
+
+def localized(value, default=""):
+    """Return a readable string from SIMAP multilingual values."""
+    if value in (None, ""):
+        return default
+    if isinstance(value, str):
+        return value.strip() or default
+    if isinstance(value, dict):
+        for lang in ("de", "fr", "it", "en"):
+            text = value.get(lang)
+            if isinstance(text, str) and text.strip():
+                return text.strip()
+        for text in value.values():
+            if isinstance(text, str) and text.strip():
+                return text.strip()
+        return default
+    if isinstance(value, (int, float)):
+        return str(value)
+    return default
 
 
 def first(obj, *keys, default=""):
@@ -35,38 +54,55 @@ def nested(obj, *path, default=""):
 
 
 def normalize(x):
-    title = first(x, "projectTitle", "title", "name", default="SIMAP Projekt")
-    buyer = first(x, "procOfficeName", "buyerName", "issuedByOrganizationName", default="Öffentlicher Auftraggeber")
-    location = nested(x, "orderAddress", "city") or nested(x, "orderAddress", "cantonId") or first(x, "orderAddressDescription", default="Schweiz")
-    ptype = first(x, "projectSubType", "newestPubType", "publicationType", default="Publikation")
-    project_id = first(x, "projectId", "id", default="")
-    publication_id = first(x, "currentPublicationId", "publicationId", "newestPublicationId", default="")
+    title = localized(first(x, "projectTitle", "title", "name"), "SIMAP Projekt")
+    buyer = localized(first(x, "procOfficeName", "buyerName", "issuedByOrganizationName"), "Öffentlicher Auftraggeber")
+
+    city = localized(nested(x, "orderAddress", "city"))
+    canton = localized(nested(x, "orderAddress", "cantonId"))
+    location = city or canton or localized(first(x, "orderAddressDescription"), "Schweiz")
+
+    ptype = localized(first(x, "projectSubType", "newestPubType", "publicationType"), "Publikation")
+    project_id = localized(first(x, "projectId", "id"))
+    publication_id = localized(first(x, "currentPublicationId", "publicationId", "newestPublicationId"))
 
     text_parts = []
-    for key in ("projectDescription", "description", "objectDescription", "procurementDescription", "shortDescription"):
+    for key in (
+        "projectDescription", "description", "objectDescription",
+        "procurementDescription", "shortDescription", "subject"
+    ):
         v = x.get(key) if isinstance(x, dict) else None
-        if isinstance(v, str) and v.strip():
-            text_parts.append(v.strip())
-    if not text_parts:
-        text_parts.append(json.dumps(x, ensure_ascii=False)[:1600])
+        text = localized(v)
+        if text and text not in text_parts:
+            text_parts.append(text)
 
-    deadline = first(x, "offerDeadline", "deadline", default="")
-    details_url = ""
-    if project_id:
-        details_url = f"https://www.simap.ch/de/project-detail/{project_id}"
+    # Search results often contain no full description. Use compact, useful
+    # metadata instead of dumping the complete raw JSON into the UI.
+    if not text_parts:
+        text_parts = [title]
+        if buyer and buyer != "Öffentlicher Auftraggeber":
+            text_parts.append(f"Auftraggeber: {buyer}")
+        process_type = localized(first(x, "processType"))
+        project_number = localized(first(x, "projectNumber", "publicationNumber"))
+        if process_type:
+            text_parts.append(f"Verfahren: {process_type}")
+        if project_number:
+            text_parts.append(f"Projekt-Nr.: {project_number}")
+
+    deadline = localized(first(x, "offerDeadline", "deadline"))
+    details_url = f"https://www.simap.ch/de/project-detail/{project_id}" if project_id else ""
 
     return {
-        "id": str(project_id or publication_id or title),
+        "id": project_id or publication_id or title,
         "projectId": project_id,
         "publicationId": publication_id,
-        "title": str(title),
-        "buyer": str(buyer),
-        "location": str(location),
-        "type": str(ptype),
-        "deadline": str(deadline),
+        "title": title,
+        "buyer": buyer,
+        "location": location,
+        "type": ptype,
+        "deadline": deadline,
         "deadlineDays": 30,
         "value": 0,
-        "text": " ".join(text_parts),
+        "text": " · ".join(text_parts),
         "url": details_url,
         "raw": x,
     }
@@ -76,7 +112,7 @@ def fetch_seed(opener, seed):
     params = urllib.parse.urlencode({"lang": "de", "search": seed})
     req = urllib.request.Request(
         f"{BASE}?{params}",
-        headers={"Accept": "application/json", "User-Agent": "TenderHawk/0.5 (+GitHub Pages pilot)"},
+        headers={"Accept": "application/json", "User-Agent": "TenderHawk/0.6 (+GitHub Pages pilot)"},
     )
     with opener.open(req, timeout=30) as r:
         payload = json.load(r)
