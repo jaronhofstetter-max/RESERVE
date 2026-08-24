@@ -1,0 +1,71 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TenderHawk CH 0.4</title><style>
+:root{--nav:#0d2c44;--blue:#15577d;--bg:#f4f7f9;--card:#fff;--line:#dbe3e8;--ink:#162633;--muted:#667085;--g:#147a4b;--w:#a96400;--r:#b42318}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(120deg,#0b263b,#15577d);color:#fff;padding:28px 18px}.wrap{max-width:1200px;margin:auto}h1{margin:0 0 6px}.muted{color:var(--muted)}.small{font-size:12px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.tab{background:#ffffff18;border:1px solid #ffffff38;color:white;padding:9px 12px;border-radius:9px;cursor:pointer}.tab.active{background:white;color:#12354e}
+main{padding:18px}.panel{display:none}.panel.active{display:block}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 2px 9px #00000008}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}label{display:block;font-weight:750;margin:9px 0 5px}input,textarea,select{width:100%;padding:10px;border:1px solid #ccd6dd;border-radius:8px;font:inherit}textarea{min-height:110px}
+button{background:var(--blue);color:white;border:0;border-radius:8px;padding:10px 13px;font-weight:800;cursor:pointer;margin:6px 5px 0 0}.ghost{background:#eaf0f4;color:#17364b}
+.lead{border-top:1px solid var(--line);padding:14px 0}.lead:first-child{border-top:0}.score{font-size:26px;font-weight:900}.g{color:var(--g)}.w{color:var(--w)}.r{color:var(--r)}.pill{display:inline-block;background:#eef3f6;border-radius:999px;padding:4px 8px;margin:2px;font-size:12px}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;vertical-align:top;padding:9px;border-bottom:1px solid var(--line)}th{font-size:12px;color:var(--muted)}
+.notice{padding:10px;border-radius:9px;background:#fff7df;border:1px solid #e9d181}.report{max-width:850px;margin:auto}.report h2{color:#123d5c}.heroScore{font-size:40px;font-weight:900}
+@media(max-width:850px){.grid2,.grid3{grid-template-columns:1fr}}@media print{header,.noprint{display:none!important}main{padding:0}.card{box-shadow:none;border:0}.panel{display:none!important}#report.panel{display:block!important}}
+</style></head><body>
+<header><div class="wrap"><h1>TenderHawk CH 0.4</h1><div>Radar → Firmenmatch → Kriterienprüfung → Bid/No-Bid → Kundenreport</div>
+<nav class="noprint"><button class="tab active" onclick="show('radar',this)">1 Radar</button><button class="tab" onclick="show('profile',this)">2 Firmenprofil</button><button class="tab" onclick="show('analysis',this)">3 Analyse</button><button class="tab" onclick="show('report',this)">4 Report</button></nav></div></header>
+<main class="wrap">
+<section id="radar" class="panel active"><div class="card"><h2>SIMAP Radar</h2><div class="grid2"><div><label>Suchbegriffe</label><input id="q" value="Sanitär Heizung Lüftung Gebäudeautomation"></div><div><label>Kanton</label><input id="kanton" value="BE"></div></div>
+<button onclick="live()">Live-Suche versuchen</button><button class="ghost" onclick="demo()">Demo-Pipeline laden</button><div id="status" class="small muted">Bereit.</div></div><div class="card"><h2>Gefundene Chancen</h2><div id="leads"></div></div></section>
+
+<section id="profile" class="panel"><div class="card"><h2>Kunden-/Firmenprofil</h2><div class="grid2"><div><label>Firma</label><input id="company" value="Muster Gebäudetechnik AG"></div><div><label>Region</label><input id="region" value="Bern, Mittelland"></div></div>
+<label>Gewerke</label><input id="trades" value="Sanitär Heizung Lüftung Gebäudeautomation">
+<label>Fähigkeiten / Nachweise</label><textarea id="caps">öffentliche Bauten, Sanierung, Revisionsunterlagen, BIM, CAD/DWG, PDF/A, KBOB, Minergie-ECO, Inbetriebsetzung, Funktionsnachweis</textarea>
+<label>Referenzen</label><textarea id="refs">Sanierung Verwaltungsgebäude; öffentliche Auftraggeber; Gebäudetechnik im laufenden Betrieb</textarea>
+<div class="grid2"><div><label>Max. Auftragssumme CHF</label><input id="maxv" type="number" value="2000000"></div><div><label>Kapazität</label><select id="capacity"><option>klein</option><option selected>mittel</option><option>gross</option></select></div></div>
+<button onclick="show('radar',document.querySelectorAll('.tab')[0])">Zurück zum Radar</button></div></section>
+
+<section id="analysis" class="panel"><div class="card"><h2>Ausgewählte Ausschreibung</h2><div class="grid2"><div><label>Titel</label><input id="title"></div><div><label>Auftraggeber</label><input id="buyer"></div></div>
+<div class="grid3"><div><label>Ort</label><input id="loc"></div><div><label>Frist in Tagen</label><input id="days" type="number"></div><div><label>Volumen CHF</label><input id="val" type="number"></div></div>
+<label>Publikations-/Ausschreibungstext</label><textarea id="tender"></textarea><button onclick="analyze()">Bid/No-Bid berechnen</button></div>
+<div id="analysisResult" class="card"><div class="muted">Noch keine Analyse.</div></div></section>
+
+<section id="report" class="panel"><div class="card report"><div class="small muted">TENDERHAWK CH · PILOT REPORT</div><h2 id="rt">Noch kein Report</h2><div id="rs" class="heroScore">–</div><div id="rd"></div><hr><h2>Management Summary</h2><div id="rsummary"></div><h2>Kriterien & Risiken</h2><div id="rtable"></div><h2>Empfohlene Schritte</h2><div id="ractions"></div>
+<div class="notice small">Dies ist keine amtliche Veröffentlichung. Massgebend sind die auf der Plattform www.simap.ch veröffentlichten Daten. TenderHawk-Kommentare und Scores sind eigene Analysen und keine Rechtsberatung oder Zuschlagsgarantie.</div>
+<button class="noprint" onclick="window.print()">Report als PDF drucken</button></div></section>
+</main>
+<script>
+const N=s=>(s||"").toString().toLowerCase().replaceAll("ä","ae").replaceAll("ö","oe").replaceAll("ü","ue");
+const H=(s,a)=>a.some(x=>N(s).includes(N(x)));
+let selected=null,last=null;
+function show(id,btn){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');if(btn){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active')}}
+function scoreLead(x){let text=N(JSON.stringify(x)),keys=N(q.value).split(/\s+/).filter(Boolean),s=15+keys.filter(k=>text.includes(k)).length*11;if(text.includes("bern")||text.includes(N(kanton.value)))s+=8;return Math.min(100,s)}
+function render(arr){leads.innerHTML=arr.map((x,i)=>{let s=scoreLead(x),c=s>=70?"g":s>=50?"w":"r";return `<div class="lead"><span class="score ${c}">${s}/100</span> <b>${x.title}</b><br><span class="small muted">${x.buyer} · ${x.location}</span><div><span class="pill">${x.type}</span><span class="pill">${x.deadlineDays} Tage</span></div><p>${x.text}</p><button onclick="choose(${i})">Analysieren</button></div>`}).join("");window._arr=arr}
+function demo(){let a=[
+{title:"Sanierung Gebäudetechnik Schulhaus Bern",buyer:"Öffentlicher Auftraggeber",location:"Bern",type:"Bau",deadlineDays:23,value:850000,text:"Sanitär, Heizung und Lüftung. Vergleichbare Referenzen, Revisionsunterlagen, Inbetriebsetzung, Funktionsnachweis und KBOB-Anforderungen. Ausführung teilweise im laufenden Betrieb."},
+{title:"Gebäudeautomation Verwaltungsbau",buyer:"Kantonale Stelle",location:"Bern",type:"Bau/Technik",deadlineDays:31,value:620000,text:"Gebäudeautomation, BACnet, BIM-Koordination, CAD/DWG, PDF/A, integrierte Tests, Revisionsunterlagen und Schlüsselpersonen mit Referenzen."},
+{title:"Lieferung Büromobiliar",buyer:"Gemeinde",location:"Bern",type:"Lieferung",deadlineDays:20,value:300000,text:"Lieferung von Tischen, Stühlen und Schränken."}];render(a);status.textContent="Demo-Pipeline geladen."}
+async function live(){status.textContent="Öffentliche SIMAP-Projektsuche wird abgefragt …";let url=`https://www.simap.ch/api/publications/v2/project/project-search?search=${encodeURIComponent(q.value)}&orderAddressCantons=${encodeURIComponent(kanton.value)}`;try{let r=await fetch(url,{headers:{Accept:"application/json"}});if(!r.ok)throw Error("HTTP "+r.status);let d=await r.json();status.textContent="Live-Verbindung hergestellt. Für das robuste Produktions-Mapping wird der Connector serverseitig normalisiert.";let raw=Array.isArray(d)?d:(d.items||d.content||d.results||[]);let a=raw.slice(0,20).map((x,i)=>({title:x.projectTitle||x.title||x.name||"SIMAP Projekt",buyer:x.procOfficeName||x.buyerName||"",location:(x.orderAddress&&x.orderAddress.city)||kanton.value,type:x.projectSubType||"Publikation",deadlineDays:30,value:0,text:JSON.stringify(x).slice(0,900)}));render(a)}catch(e){status.textContent="Browser-Connector blockiert/abweichend ("+e.message+"). Produktionsversion nutzt serverseitigen Connector. Demo bleibt voll testbar."}}
+function choose(i){selected=window._arr[i];title.value=selected.title;buyer.value=selected.buyer;loc.value=selected.location;days.value=selected.deadlineDays;val.value=selected.value;tender.value=selected.text;show('analysis',document.querySelectorAll('.tab')[2]);analyze()}
+function row(k,t,s,h){let c=s==="PASS"?"g":s==="PRÜFEN"?"w":"r";return {k,t,s,h,c}}
+function analyze(){let p=[trades.value,caps.value,refs.value,region.value].join(" "),t=tender.value,rows=[],hard=[],warn=[];
+let domains=[["Sanitär",["sanitär","sanitaer"]],["Heizung",["heizung"]],["Lüftung",["lüftung","lueftung"]],["Gebäudeautomation",["gebäudeautomation","gebaeudeautomation","bacnet"]]];let seen=0,hit=0;domains.forEach(d=>{if(H(t,d[1])){seen++;if(H(p,d[1]))hit++}});let m1=seen?Math.round(25*(.35+.65*hit/seen)):15;
+let rules=[
+["Vergleichbare Referenzen","Eignung",["referenz"],["referenz","öffentliche","oeffentliche"],true,"Vergleichbarkeit, Zeitraum und geforderte Rolle im Originaldossier prüfen."],
+["Schlüsselpersonen","Eignung",["schlüsselperson","schluesselperson"],["öffentliche","oeffentliche","koordination"],false,"CV, Rolle und Projekterfahrung verifizieren."],
+["Revisionsunterlagen","Dokumentation",["revision"],["revision"],false,"Struktur und Formate als eigenen Aufwand kalkulieren."],
+["BIM","Daten",["bim"],["bim"],false,"BIM-/Informationslieferungen und Rollen prüfen."],
+["CAD/DWG/PDF-A","Format",["dwg","pdf/a","pdf-a"],["dwg","pdf/a","pdf-a"],true,"Geforderte Lieferformate müssen sicher beherrscht werden."],
+["Inbetriebsetzung","Prüfung",["inbetriebsetz"],["inbetriebsetz"],false,"Prüf- und Inbetriebsetzungsaufwand einpreisen."],
+["Funktions-/Integrale Tests","Prüfung",["funktionsnachweis","integrale test","integrierte test"],["funktionsnachweis","inbetriebsetz"],false,"Testplan, Protokolle und Nachweise einplanen."],
+["KBOB/Nachhaltigkeit","Nachhaltigkeit",["kbob","minergie","ecobkp","eco-bkp"],["kbob","minergie","ecobkp"],false,"Material-/Label-/Standardnachweise verifizieren."],
+["Laufender Betrieb","Ausführung",["laufendem betrieb","laufender betrieb"],["laufenden betrieb","laufendem betrieb"],false,"Etappierung und Provisorien erhöhen Aufwand/Risiko."]
+];let rel=0,ok=0;rules.forEach(r=>{if(H(t,r[2])){rel++;let yes=H(p,r[3]);if(yes){ok++;rows.push(row(r[0],r[1],"PASS",r[5]))}else if(r[4]){hard.push(r[0]);rows.push(row(r[0],r[1],"HARD GATE",r[5]))}else{warn.push(r[0]);rows.push(row(r[0],r[1],"PRÜFEN",r[5]))}}});let m2=rel?Math.round(25*ok/rel):17;if(hard.length)m2=Math.min(m2,8);
+let v=+val.value||0,max=+maxv.value||0,ratio=v&&max?v/max:.65,m3=v?(ratio<=1?Math.round(20*(.72+.28*(1-ratio))):Math.max(3,Math.round(20-(ratio-1)*20))):13;
+let m4=Math.min(15,8+(H(refs.value,["öffentlich","oeffentlich"])?3:0)+(H(p,["sanierung","bim","inbetrieb"])?2:0));
+let d=+days.value||0,risk=warn.length+(d<14?5:d<28?2:0)+(H(t,["laufendem betrieb"])?2:0),m5=Math.max(2,15-Math.min(13,risk));
+let score=Math.round(m1+m2+m3+m4+m5),dec,cl;if(hard.length||score<55){dec="NO-GO / zuerst klären";cl="r"}else if(score<75||warn.length>=3){dec="CONDITIONAL GO";cl="w"}else{dec="GO";cl="g"}
+last={score,dec,cl,rows,m:[m1,m2,m3,m4,m5],hard,warn};analysisResult.innerHTML=`<div class="score ${cl}">${score}/100 · ${dec}</div><p><b>Teil-Scores:</b> Match ${m1}/25 · Eignung ${m2}/25 · Wirtschaft ${m3}/20 · Wettbewerb ${m4}/15 · Aufwand/Risiko ${m5}/15</p>${hard.length?`<div class="notice"><b>Hard Gates:</b> ${hard.join(", ")}</div>`:""}<table><tr><th>Kriterium</th><th>Typ</th><th>Status</th><th>Hinweis</th></tr>${rows.map(x=>`<tr><td>${x.k}</td><td>${x.t}</td><td class="${x.c}"><b>${x.s}</b></td><td>${x.h}</td></tr>`).join("")}</table><button onclick="makeReport()">Kundenreport erzeugen</button>`}
+function makeReport(){if(!last)analyze();rt.textContent=title.value;rs.textContent=`${last.score}/100 · ${last.dec}`;rs.className="heroScore "+last.cl;rd.innerHTML=`<b>${buyer.value}</b> · ${loc.value} · ${days.value} Tage bis Frist`;rsummary.innerHTML=`<p>TenderHawk bewertet die Ausschreibung für <b>${company.value}</b>. ${last.hard.length?"Vor einem Angebot müssen potenziell zwingende Lücken geklärt werden.":"Es wurden keine harten Lücken aus dem eingegebenen Profil erkannt."} Der Score trennt die technische Passung von Eignung, Wirtschaftlichkeit, Wettbewerbsposition und Angebotsrisiko.</p>`;rtable.innerHTML=`<table><tr><th>Kriterium</th><th>Status</th><th>Hinweis</th></tr>${last.rows.map(x=>`<tr><td>${x.k}</td><td class="${x.c}"><b>${x.s}</b></td><td>${x.h}</td></tr>`).join("")}</table>`;ractions.innerHTML="<p>1. Original-SIMAP-Dossier und allfällige Lose vollständig prüfen.<br>2. Eignungs-/Ausschlusskriterien gegen Nachweise verifizieren.<br>3. Zusatzaufwand aus Dokumentation, Tests, BIM, Nachhaltigkeit und Betrieb kalkulieren.<br>4. Erst danach finale Bid/No-Bid-Freigabe.</p>";show('report',document.querySelectorAll('.tab')[3])}
+demo();
+</script></body></html>
