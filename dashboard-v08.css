@@ -4,3 +4,27 @@ body{background:linear-gradient(180deg,#eef1f1 0,#f7f5ef 42%,#f5f3ed 100%)}
 header{position:sticky;top:0;z-index:20;box-shadow:0 8px 30px #00101822}.brandtitle{font-size:34px}.brandmark{border-radius:50%;background:linear-gradient(145deg,#0a2434,#06131d);box-shadow:inset 0 0 0 1px #ffffff0d,0 8px 24px #0007}.tagline{text-transform:none;letter-spacing:.2px}.th-dashboard{max-width:1180px;margin:auto}.th-hero{background:linear-gradient(115deg,#fff 0,#fbfaf6 72%,#efe7d2);color:#14232e;border:1px solid #d9d2c1;box-shadow:0 12px 35px #07182612}.th-hero h2{color:#0b2333;font-family:Georgia,'Times New Roman',serif;font-size:28px}.th-hero p{color:#5d6870}.th-kpi,.th-panel{background:#fff;color:#1a2b36;border-color:#d9dee1;box-shadow:0 9px 28px #0718260c}.th-panel h3,.th-match-title,.th-mini b{color:#102633}.th-kpi-label,.th-match-meta{color:#6e7980}.th-kpi-value{color:#0b2333}.th-kpi-note{color:#98762d}.th-match{border-top-color:#e2e7e9}.th-score{background:#f6f4ed;border-color:#ded5bf}.th-score.go{color:#147a4b}.th-score.check{color:#a56a00}.th-score.stop{color:#b42318}.th-insightbox{background:linear-gradient(145deg,#0a2638,#0c344a);color:#eaf1f4;border-color:#23485e}.th-insightbox b{color:#f1d184}.th-chip{background:#edf2f4;border-color:#d7e0e4;color:#425865}.th-bars .row{color:#52616a}.th-bar{background:#e6ecef}.th-btn.secondary{background:#0b2b3f;color:#fff}.th-match-actions a{background:#edf2f4;color:#17364b}.th-panel{position:relative;overflow:hidden}.th-panel:before{content:'';position:absolute;left:0;top:0;width:3px;height:42px;background:var(--gold)}
 @media(min-width:900px){main.wrap{max-width:1220px}.th-hero{padding:24px}.th-matches{grid-column:span 7}.th-insight{grid-column:span 5}}
 @media(max-width:600px){header{position:relative}.brandtitle{font-size:28px}.brandmark{width:48px;height:48px}.tagline{font-size:11px}.th-hero h2{font-size:23px}.th-kpis{grid-template-columns:1fr 1fr}.th-kpi{min-height:90px}.th-match-actions{padding-left:0}}
+
+/* TenderHawk 1.0 app shell */
+@media(min-width:900px){
+ body{padding-left:220px}
+ header{position:fixed;left:0;top:0;bottom:0;width:220px;height:100vh;padding:28px 18px;background:linear-gradient(180deg,#071d2b,#0a3045);border-right:1px solid #d8b65c;box-shadow:8px 0 30px #00101822}
+ header .headinner{height:100%;display:flex;flex-direction:column;align-items:stretch}
+ .brand{align-items:center;margin-bottom:28px}.brandtitle{font-size:25px}.brandmeta{text-align:center}
+ nav{display:flex!important;flex-direction:column;gap:8px;margin:0}
+ nav button{width:100%;text-align:left;padding:13px 14px;border-radius:8px;border:1px solid #ffffff12}
+ nav button.active{background:linear-gradient(90deg,#d4ad4f,#f0d582);color:#0a2130;border-color:#e5c66f}
+ main.wrap{max-width:1280px;padding:28px 30px 60px}
+ .th-dashboard{max-width:none}
+ .th-hero{min-height:104px;display:flex;flex-direction:column;justify-content:center}
+ .th-kpis{grid-template-columns:repeat(4,1fr);gap:14px}
+ .th-kpi{padding:20px;min-height:116px}
+ .th-kpi-value{font-size:34px}
+ .th-grid{gap:16px}
+ .th-panel{border-radius:12px}
+}
+@media(min-width:1200px){
+ body{padding-left:250px} header{width:250px}
+ main.wrap{padding:34px 40px 70px}
+ .th-matches{grid-column:span 8}.th-insight{grid-column:span 4}
+}
