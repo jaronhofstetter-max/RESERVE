@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-24T20:58:37.200037+00:00",
+  "generatedAt": "2026-08-24T22:01:41.413886+00:00",
   "source": "simap.ch public API",
-  "count": 132,
-  "activeCount": 132,
+  "count": 141,
+  "activeCount": 141,
   "expiredCount": 0,
-  "newCount": 0,
+  "newCount": 27,
   "seeds": [
     "Sanitär",
     "Heizung",
@@ -65,7 +65,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -116,7 +116,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -172,8 +172,232 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "296c9108-4132-4e44-a648-5494a478eee4",
+      "projectId": "296c9108-4132-4e44-a648-5494a478eee4",
+      "publicationId": "21737ca1-45ed-4f8b-bb14-6a1c5ba84223",
+      "title": "2040 Neubau Schulanlage Birchlen, Dübendorf - 272 Schlosserarbeiten",
+      "buyer": "Primarschule Dübendorf",
+      "location": "Dübendorf",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "2040 Neubau Schulanlage Birchlen, Dübendorf - 272 Schlosserarbeiten · Auftraggeber: Primarschule Dübendorf · Verfahren: open · Projekt-Nr.: 30454",
+      "url": "https://www.simap.ch/de/project-detail/296c9108-4132-4e44-a648-5494a478eee4",
+      "raw": {
+        "id": "296c9108-4132-4e44-a648-5494a478eee4",
+        "title": {
+          "de": "2040 Neubau Schulanlage Birchlen, Dübendorf - 272 Schlosserarbeiten",
+          "en": "2040 New Construction School Complex Birchlen, Dübendorf – 272 Metalwork",
+          "fr": null,
+          "it": null
+        },
+        "projectNumber": "30454",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "21737ca1-45ed-4f8b-bb14-6a1c5ba84223",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "30454-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Primarschule Dübendorf",
+          "en": "Primarschule Dübendorf",
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "ZH",
+          "postalCode": "8600",
+          "city": {
+            "de": "Dübendorf",
+            "en": "Dübendorf",
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
+    },
+    {
+      "id": "58dd0f5c-53fb-410f-b51b-162c667e90b8",
+      "projectId": "58dd0f5c-53fb-410f-b51b-162c667e90b8",
+      "publicationId": "24d151cc-43b0-4f58-ab97-19333e74b5cc",
+      "title": "2040 Neubau Schulanlage Birchlen, Dübendorf - 281.1 Fugenlose Bodenbeläge",
+      "buyer": "Primarschule Dübendorf",
+      "location": "Dübendorf",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "2040 Neubau Schulanlage Birchlen, Dübendorf - 281.1 Fugenlose Bodenbeläge · Auftraggeber: Primarschule Dübendorf · Verfahren: invitation · Projekt-Nr.: 33523",
+      "url": "https://www.simap.ch/de/project-detail/58dd0f5c-53fb-410f-b51b-162c667e90b8",
+      "raw": {
+        "id": "58dd0f5c-53fb-410f-b51b-162c667e90b8",
+        "title": {
+          "de": "2040 Neubau Schulanlage Birchlen, Dübendorf - 281.1 Fugenlose Bodenbeläge",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "projectNumber": "33523",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "invitation",
+        "lotsType": "without",
+        "publicationId": "24d151cc-43b0-4f58-ab97-19333e74b5cc",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "33523-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Primarschule Dübendorf",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "ZH",
+          "postalCode": "8600",
+          "city": {
+            "de": "Dübendorf",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
+    },
+    {
+      "id": "8db474e5-f439-471a-b462-3d68933cb2a4",
+      "projectId": "8db474e5-f439-471a-b462-3d68933cb2a4",
+      "publicationId": "4064bd8a-8b3f-485c-b1f3-0ebe4fa53333",
+      "title": "2040 Neubau Schulanlage Birchlen, Dübendorf - 281.9 Sportböden",
+      "buyer": "Primarschule Dübendorf",
+      "location": "Dübendorf",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "2040 Neubau Schulanlage Birchlen, Dübendorf - 281.9 Sportböden · Auftraggeber: Primarschule Dübendorf · Verfahren: invitation · Projekt-Nr.: 33408",
+      "url": "https://www.simap.ch/de/project-detail/8db474e5-f439-471a-b462-3d68933cb2a4",
+      "raw": {
+        "id": "8db474e5-f439-471a-b462-3d68933cb2a4",
+        "title": {
+          "de": "2040 Neubau Schulanlage Birchlen, Dübendorf - 281.9 Sportböden",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "projectNumber": "33408",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "invitation",
+        "lotsType": "without",
+        "publicationId": "4064bd8a-8b3f-485c-b1f3-0ebe4fa53333",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "33408-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Primarschule Dübendorf",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "ZH",
+          "postalCode": "8600",
+          "city": {
+            "de": "Dübendorf",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
+    },
+    {
+      "id": "80e84c3c-165a-4d3f-b817-ebe16368ad64",
+      "projectId": "80e84c3c-165a-4d3f-b817-ebe16368ad64",
+      "publicationId": "ccf73f80-3dbf-4447-98ce-74f735e60d15",
+      "title": "2040 Neubau Schulanlage Birchlen, Dübendorf - 282.4 Wandbeläge aus Platten",
+      "buyer": "Primarschule Dübendorf",
+      "location": "Dübendorf",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "2040 Neubau Schulanlage Birchlen, Dübendorf - 282.4 Wandbeläge aus Platten · Auftraggeber: Primarschule Dübendorf · Verfahren: invitation · Projekt-Nr.: 33594",
+      "url": "https://www.simap.ch/de/project-detail/80e84c3c-165a-4d3f-b817-ebe16368ad64",
+      "raw": {
+        "id": "80e84c3c-165a-4d3f-b817-ebe16368ad64",
+        "title": {
+          "de": "2040 Neubau Schulanlage Birchlen, Dübendorf - 282.4 Wandbeläge aus Platten",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "projectNumber": "33594",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "invitation",
+        "lotsType": "without",
+        "publicationId": "ccf73f80-3dbf-4447-98ce-74f735e60d15",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "33594-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Primarschule Dübendorf",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "ZH",
+          "postalCode": "8600",
+          "city": {
+            "de": "Dübendorf",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "665bd559-964d-4a1e-b349-e60e5a7bfbb0",
@@ -228,7 +452,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -284,7 +508,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -335,7 +559,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -386,8 +610,64 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "dc4a8d2a-61e8-4c1c-b6be-bf163a4820d6",
+      "projectId": "dc4a8d2a-61e8-4c1c-b6be-bf163a4820d6",
+      "publicationId": "bdf73f06-68cb-4f2d-9f8b-ce50dc649454",
+      "title": "60 MVAr regelbare Blindleistungskompensationsdrosseln, inkl. Optionen",
+      "buyer": "Elektrizitätswerk der Stadt Zürich (ewz)",
+      "location": "Zürich",
+      "type": "supply",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "60 MVAr regelbare Blindleistungskompensationsdrosseln, inkl. Optionen · Auftraggeber: Elektrizitätswerk der Stadt Zürich (ewz) · Verfahren: open · Projekt-Nr.: 31994",
+      "url": "https://www.simap.ch/de/project-detail/dc4a8d2a-61e8-4c1c-b6be-bf163a4820d6",
+      "raw": {
+        "id": "dc4a8d2a-61e8-4c1c-b6be-bf163a4820d6",
+        "title": {
+          "de": "60 MVAr regelbare Blindleistungskompensationsdrosseln, inkl. Optionen",
+          "en": null,
+          "fr": "60 MVAr regelbare Blindleistungskompensationsdrosseln, options comprises",
+          "it": null
+        },
+        "projectNumber": "31994",
+        "projectType": "tender",
+        "projectSubType": "supply",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "bdf73f06-68cb-4f2d-9f8b-ce50dc649454",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "31994-03",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Elektrizitätswerk der Stadt Zürich (ewz)",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "ZH",
+          "postalCode": "8050",
+          "city": {
+            "de": "Zürich",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "e9f3a5c8-574d-45a4-a9f3-2fa365c464c6",
@@ -442,7 +722,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -498,7 +778,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -554,7 +834,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -605,63 +885,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "7eb1044b-c574-426d-a657-c72cdc6b8bf1",
-      "projectId": "7eb1044b-c574-426d-a657-c72cdc6b8bf1",
-      "publicationId": "f11909d9-0635-451d-86ec-1a74be42af37",
-      "title": "ARA Zimmerberg, Schlammentwässerung",
-      "buyer": "Zweckverband ARA Zimmerberg",
-      "location": "Thalwil",
-      "type": "supply",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "ARA Zimmerberg, Schlammentwässerung · Auftraggeber: Zweckverband ARA Zimmerberg · Verfahren: open · Projekt-Nr.: 34974",
-      "url": "https://www.simap.ch/de/project-detail/7eb1044b-c574-426d-a657-c72cdc6b8bf1",
-      "raw": {
-        "id": "7eb1044b-c574-426d-a657-c72cdc6b8bf1",
-        "title": {
-          "de": "ARA Zimmerberg, Schlammentwässerung",
-          "en": null,
-          "fr": "STEP de Zimmerberg, Déshydratation des boues",
-          "it": null
-        },
-        "projectNumber": "34974",
-        "projectType": "tender",
-        "projectSubType": "supply",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "f11909d9-0635-451d-86ec-1a74be42af37",
-        "publicationDate": "2026-08-21",
-        "publicationNumber": "34974-02",
-        "pubType": "award",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Zweckverband ARA Zimmerberg",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "ZH",
-          "postalCode": "8800",
-          "city": {
-            "de": "Thalwil",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -712,8 +936,64 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "1c581866-53f2-448e-b6f6-a922023255e7",
+      "projectId": "1c581866-53f2-448e-b6f6-a922023255e7",
+      "publicationId": "a147385d-5894-4bc5-a55a-3fb23eda4a68",
+      "title": "Aarau, Telli Hallenbad, Sanierung Flachdach; BKP 224 Bedachungsarbeiten",
+      "buyer": "Immobilien Aargau",
+      "location": "Aarau",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Aarau, Telli Hallenbad, Sanierung Flachdach; BKP 224 Bedachungsarbeiten · Auftraggeber: Immobilien Aargau · Verfahren: open · Projekt-Nr.: 35295",
+      "url": "https://www.simap.ch/de/project-detail/1c581866-53f2-448e-b6f6-a922023255e7",
+      "raw": {
+        "id": "1c581866-53f2-448e-b6f6-a922023255e7",
+        "title": {
+          "de": "Aarau, Telli Hallenbad, Sanierung Flachdach; BKP 224 Bedachungsarbeiten",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "projectNumber": "35295",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "a147385d-5894-4bc5-a55a-3fb23eda4a68",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "35295-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Immobilien Aargau",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "AG",
+          "postalCode": "5004",
+          "city": {
+            "de": "Aarau",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "c6eb1c3d-d8ec-4634-8fce-a4a79fd28077",
@@ -763,7 +1043,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -814,7 +1094,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -870,7 +1150,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -926,7 +1206,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -982,7 +1262,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -1038,7 +1318,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -1094,119 +1374,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "cbb1df2b-0029-4144-99a1-a4c3e63fe290",
-      "projectId": "cbb1df2b-0029-4144-99a1-a4c3e63fe290",
-      "publicationId": "9b97dd2c-6612-412a-a7a7-2fb52706a19a",
-      "title": "Ausbau Lötschberg-Basistunnel - VL14 Vorbereitung IP Mitholz",
-      "buyer": "BLS AG - Finance & SCM - Strategische Beschaffung",
-      "location": "Kandergrund, Siedlung Blausee-Mitholz",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Ausbau Lötschberg-Basistunnel - VL14 Vorbereitung IP Mitholz · Auftraggeber: BLS AG - Finance & SCM - Strategische Beschaffung · Verfahren: open · Projekt-Nr.: 41901",
-      "url": "https://www.simap.ch/de/project-detail/cbb1df2b-0029-4144-99a1-a4c3e63fe290",
-      "raw": {
-        "id": "cbb1df2b-0029-4144-99a1-a4c3e63fe290",
-        "title": {
-          "de": "Ausbau Lötschberg-Basistunnel - VL14 Vorbereitung IP Mitholz",
-          "en": null,
-          "fr": "Ausbau Lötschberg-Basistunnel - VL14 Vorbereitung IP Mitholz",
-          "it": null
-        },
-        "projectNumber": "41901",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "9b97dd2c-6612-412a-a7a7-2fb52706a19a",
-        "publicationDate": "2026-08-24",
-        "publicationNumber": "41901-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "BLS AG - Finance & SCM - Strategische Beschaffung",
-          "en": null,
-          "fr": "BLS AG - Finance & SCM - Strategische Beschaffung",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "BE",
-          "postalCode": "3717",
-          "city": {
-            "de": "Kandergrund, Siedlung Blausee-Mitholz",
-            "en": null,
-            "fr": "Kandergrund, Siedlung Blausee-Mitholz",
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "378a51fc-7561-4052-bcab-7e05d77051ff",
-      "projectId": "378a51fc-7561-4052-bcab-7e05d77051ff",
-      "publicationId": "d7e9a3f9-c7a0-4a75-9803-6a56c7df87c3",
-      "title": "Ausbildungszentrum Riedikon, Neubau Logistik- und Verwaltungszentrum",
-      "buyer": "Stadt Uster, Baumanagement",
-      "location": "Uster",
-      "type": "service",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Ausbildungszentrum Riedikon, Neubau Logistik- und Verwaltungszentrum · Auftraggeber: Stadt Uster, Baumanagement · Verfahren: selective · Projekt-Nr.: 42755",
-      "url": "https://www.simap.ch/de/project-detail/378a51fc-7561-4052-bcab-7e05d77051ff",
-      "raw": {
-        "id": "378a51fc-7561-4052-bcab-7e05d77051ff",
-        "title": {
-          "de": "Ausbildungszentrum Riedikon, Neubau Logistik- und Verwaltungszentrum",
-          "en": "Riedikon Training Center, New Logistics and Administration Building",
-          "fr": null,
-          "it": null
-        },
-        "projectNumber": "42755",
-        "projectType": "tender",
-        "projectSubType": "service",
-        "processType": "selective",
-        "lotsType": "without",
-        "publicationId": "d7e9a3f9-c7a0-4a75-9803-6a56c7df87c3",
-        "publicationDate": "2026-08-24",
-        "publicationNumber": "42755-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Stadt Uster, Baumanagement",
-          "en": "Stadt Uster, Baumanagement",
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "ZH",
-          "postalCode": "8610",
-          "city": {
-            "de": "Uster",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -1262,7 +1430,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -1313,7 +1481,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -1364,7 +1532,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -1415,7 +1583,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -1466,7 +1634,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -1517,7 +1685,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -1568,7 +1736,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -1619,8 +1787,121 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "032ae2be-2bdf-4bd1-86f3-131f6724c73f",
+      "projectId": "032ae2be-2bdf-4bd1-86f3-131f6724c73f",
+      "publicationId": "97ad1ed9-40cd-45fa-a619-b57d958b1891",
+      "title": "BKP 23 Elektroinstallationen, KITS- Ersatzbeschaffung der IT-Infrastruktur in  Schulanlagen",
+      "buyer": "HBD - Immobilien Stadt Zürich (IMMO)",
+      "location": "Schweiz",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "BKP 23 Elektroinstallationen, KITS- Ersatzbeschaffung der IT-Infrastruktur in  Schulanlagen · Auftraggeber: HBD - Immobilien Stadt Zürich (IMMO) · Verfahren: open · Projekt-Nr.: 21135",
+      "url": "https://www.simap.ch/de/project-detail/032ae2be-2bdf-4bd1-86f3-131f6724c73f",
+      "raw": {
+        "id": "032ae2be-2bdf-4bd1-86f3-131f6724c73f",
+        "title": {
+          "de": "BKP 23 Elektroinstallationen, KITS- Ersatzbeschaffung der IT-Infrastruktur in  Schulanlagen",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "projectNumber": "21135",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "open",
+        "lotsType": "with",
+        "publicationId": "97ad1ed9-40cd-45fa-a619-b57d958b1891",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "21135-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "HBD - Immobilien Stadt Zürich (IMMO)",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [
+          {
+            "publicationId": "97ad1ed9-40cd-45fa-a619-b57d958b1891",
+            "publicationDate": "2026-08-25",
+            "publicationNumber": "21135-02",
+            "pubType": "award",
+            "corrected": false,
+            "lotId": "f8c5f797-aa9b-4a5a-9836-dd8fcbc336be",
+            "lotNumber": 1,
+            "lotTitle": {
+              "de": "BKP 230  KITS-Ersatzbeschaffung der  IT-Infrastruktur  ",
+              "en": null,
+              "fr": null,
+              "it": null
+            },
+            "orderAddressOnlyDescription": "yes",
+            "orderAddress": {
+              "countryId": "CH",
+              "cantonId": null,
+              "postalCode": null,
+              "city": null
+            }
+          },
+          {
+            "publicationId": "e129c890-804f-42b0-84d3-9853cd37d80b",
+            "publicationDate": "2026-08-25",
+            "publicationNumber": "21135-03",
+            "pubType": "award",
+            "corrected": false,
+            "lotId": "003b1938-b7dd-4083-9847-c34bbe750be4",
+            "lotNumber": 2,
+            "lotTitle": {
+              "de": "BKP 230  KITS-Ersatzbeschaffung der  IT-Infrastruktur  ",
+              "en": null,
+              "fr": null,
+              "it": null
+            },
+            "orderAddressOnlyDescription": "yes",
+            "orderAddress": {
+              "countryId": "CH",
+              "cantonId": null,
+              "postalCode": null,
+              "city": null
+            }
+          },
+          {
+            "publicationId": "3ab561da-c1c6-4576-beeb-cb66a89088bb",
+            "publicationDate": "2026-08-25",
+            "publicationNumber": "21135-04",
+            "pubType": "award",
+            "corrected": false,
+            "lotId": "3d2e8d92-4a44-4ae5-875a-58060238b1a7",
+            "lotNumber": 3,
+            "lotTitle": {
+              "de": "BKP 230  KITS-Ersatzbeschaffung der  IT-Infrastruktur  ",
+              "en": null,
+              "fr": null,
+              "it": null
+            },
+            "orderAddressOnlyDescription": "yes",
+            "orderAddress": {
+              "countryId": "CH",
+              "cantonId": null,
+              "postalCode": null,
+              "city": null
+            }
+          }
+        ],
+        "orderAddressOnlyDescription": null,
+        "orderAddress": null
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "b2940032-8ce9-4124-b973-f39314dd6691",
@@ -1675,63 +1956,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "b47bc44f-a115-4702-90b7-e8d5b60fffe5",
-      "projectId": "b47bc44f-a115-4702-90b7-e8d5b60fffe5",
-      "publicationId": "837ad3e6-d5c8-449c-8c92-abc42a8c04e7",
-      "title": "BKP 233 Lieferung Leuchten und Lampen",
-      "buyer": "Stiftung Rosenpark Gersau (Jung Meyerhans AG)",
-      "location": "Gersau",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "BKP 233 Lieferung Leuchten und Lampen · Auftraggeber: Stiftung Rosenpark Gersau (Jung Meyerhans AG) · Verfahren: open · Projekt-Nr.: 42746",
-      "url": "https://www.simap.ch/de/project-detail/b47bc44f-a115-4702-90b7-e8d5b60fffe5",
-      "raw": {
-        "id": "b47bc44f-a115-4702-90b7-e8d5b60fffe5",
-        "title": {
-          "de": "BKP 233 Lieferung Leuchten und Lampen",
-          "en": null,
-          "fr": "CFC 233 Fourniture de luminaires et de lampes",
-          "it": null
-        },
-        "projectNumber": "42746",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "837ad3e6-d5c8-449c-8c92-abc42a8c04e7",
-        "publicationDate": "2026-08-21",
-        "publicationNumber": "42746-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Stiftung Rosenpark Gersau (Jung Meyerhans AG)",
-          "en": null,
-          "fr": "Stiftung Rosenpark Gersau (Jung Meyerhans AG)",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "SZ",
-          "postalCode": "6442",
-          "city": {
-            "de": "Gersau",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -1787,7 +2012,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -1843,7 +2068,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -1899,63 +2124,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "c00be1c8-00a5-4a13-ab27-feca70a46fb7",
-      "projectId": "c00be1c8-00a5-4a13-ab27-feca70a46fb7",
-      "publicationId": "d044ab45-7a1b-4e3a-b6ec-408e3b67da5e",
-      "title": "Bau Nr. 14056 - Lärmsanierung wesentliche Änderung Stampfenbachstrasse BKP 221.2 Kunststoff Fenster",
-      "buyer": "Tiefbauamt, Fachstelle Schallschutzfenster",
-      "location": "Zürich",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Bau Nr. 14056 - Lärmsanierung wesentliche Änderung Stampfenbachstrasse BKP 221.2 Kunststoff Fenster · Auftraggeber: Tiefbauamt, Fachstelle Schallschutzfenster · Verfahren: open · Projekt-Nr.: 42730",
-      "url": "https://www.simap.ch/de/project-detail/c00be1c8-00a5-4a13-ab27-feca70a46fb7",
-      "raw": {
-        "id": "c00be1c8-00a5-4a13-ab27-feca70a46fb7",
-        "title": {
-          "de": "Bau Nr. 14056 - Lärmsanierung wesentliche Änderung Stampfenbachstrasse BKP 221.2 Kunststoff Fenster",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "projectNumber": "42730",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "d044ab45-7a1b-4e3a-b6ec-408e3b67da5e",
-        "publicationDate": "2026-08-24",
-        "publicationNumber": "42730-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Tiefbauamt, Fachstelle Schallschutzfenster",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "ZH",
-          "postalCode": "8006",
-          "city": {
-            "de": "Zürich",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -2011,7 +2180,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -2112,7 +2281,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -2168,8 +2337,59 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "afdd4a46-75b9-43ed-aeb9-3c62254b34c5",
+      "projectId": "afdd4a46-75b9-43ed-aeb9-3c62254b34c5",
+      "publicationId": "1d2cd12e-cfa2-4714-a339-009a07f99401",
+      "title": "Beschaffung Schienenfahrzeuge für Fahrleitungsbau (Hyperion)",
+      "buyer": "I-ESP-FFM-FPJ",
+      "location": "Schweiz",
+      "type": "supply",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Beschaffung Schienenfahrzeuge für Fahrleitungsbau (Hyperion) · Auftraggeber: I-ESP-FFM-FPJ · Verfahren: open · Projekt-Nr.: 29109",
+      "url": "https://www.simap.ch/de/project-detail/afdd4a46-75b9-43ed-aeb9-3c62254b34c5",
+      "raw": {
+        "id": "afdd4a46-75b9-43ed-aeb9-3c62254b34c5",
+        "title": {
+          "de": "Beschaffung Schienenfahrzeuge für Fahrleitungsbau (Hyperion)",
+          "en": null,
+          "fr": "Acquisition de véhicules ferroviaires pour la construction de lignes de contact (Hyperion)",
+          "it": null
+        },
+        "projectNumber": "29109",
+        "projectType": "tender",
+        "projectSubType": "supply",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "1d2cd12e-cfa2-4714-a339-009a07f99401",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "29109-05",
+        "pubType": "abandonment",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "I-ESP-FFM-FPJ ",
+          "en": null,
+          "fr": "SBB CFF FFS Infra-Niederspannungsverbraucher",
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "yes",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": null,
+          "postalCode": null,
+          "city": null
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "c551d109-685c-4009-9277-c7271cf98d79",
@@ -2219,8 +2439,59 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "74cd039f-8f19-4d5d-8cc7-21965b506670",
+      "projectId": "74cd039f-8f19-4d5d-8cc7-21965b506670",
+      "publicationId": "935baf46-0a1d-41f0-975d-ae1c7f58ac71",
+      "title": "Bäckerei-Produkte",
+      "buyer": "Kantonspolizei Zürich",
+      "location": "Schweiz",
+      "type": "supply",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Bäckerei-Produkte · Auftraggeber: Kantonspolizei Zürich · Verfahren: open · Projekt-Nr.: 42895",
+      "url": "https://www.simap.ch/de/project-detail/74cd039f-8f19-4d5d-8cc7-21965b506670",
+      "raw": {
+        "id": "74cd039f-8f19-4d5d-8cc7-21965b506670",
+        "title": {
+          "de": "Bäckerei-Produkte",
+          "en": "Bakery-Products",
+          "fr": null,
+          "it": null
+        },
+        "projectNumber": "42895",
+        "projectType": "tender",
+        "projectSubType": "supply",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "935baf46-0a1d-41f0-975d-ae1c7f58ac71",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "42895-01",
+        "pubType": "tender",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Kantonspolizei Zürich",
+          "en": "Police Cantonal Zürich",
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "yes",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": null,
+          "postalCode": null,
+          "city": null
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "6796deb9-3956-4046-93cb-3a3951df0287",
@@ -2275,7 +2546,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -2331,8 +2602,64 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "00e20752-49e3-462b-bdbf-9f7610377a24",
+      "projectId": "00e20752-49e3-462b-bdbf-9f7610377a24",
+      "publicationId": "61fe65f3-cc11-462c-9f0b-be9b336ec0f5",
+      "title": "EBP-671 Ersatz Endüberhitzer 3 für HHKW",
+      "buyer": "Energie Wasser Bern",
+      "location": "Bern",
+      "type": "supply",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "EBP-671 Ersatz Endüberhitzer 3 für HHKW · Auftraggeber: Energie Wasser Bern · Verfahren: open · Projekt-Nr.: 41726",
+      "url": "https://www.simap.ch/de/project-detail/00e20752-49e3-462b-bdbf-9f7610377a24",
+      "raw": {
+        "id": "00e20752-49e3-462b-bdbf-9f7610377a24",
+        "title": {
+          "de": "EBP-671 Ersatz Endüberhitzer 3 für HHKW ",
+          "en": null,
+          "fr": "Remplacement du surchauffeur final n° 3 de la centrale de cogénération au bois",
+          "it": null
+        },
+        "projectNumber": "41726",
+        "projectType": "tender",
+        "projectSubType": "supply",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "61fe65f3-cc11-462c-9f0b-be9b336ec0f5",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "41726-02",
+        "pubType": "tender",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Energie Wasser Bern",
+          "en": null,
+          "fr": "Energie Wasser Bern",
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "BE",
+          "postalCode": "3008",
+          "city": {
+            "de": "Bern",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "0c33576b-a035-45e7-9ad8-12cca29113ee",
@@ -2382,8 +2709,64 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "384de7e5-6f82-4548-9cf1-1c0ca63c765a",
+      "projectId": "384de7e5-6f82-4548-9cf1-1c0ca63c765a",
+      "publicationId": "518f8558-a512-4095-8dcd-7188d7b4e032",
+      "title": "Ein hochauflösendes Cs-korrigiertes Rastertransmissionselektronenmikroskop (STEM)",
+      "buyer": "EPFL-Scientific Equipment",
+      "location": "Lausanne",
+      "type": "supply",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Ein hochauflösendes Cs-korrigiertes Rastertransmissionselektronenmikroskop (STEM) · Auftraggeber: EPFL-Scientific Equipment · Verfahren: open · Projekt-Nr.: 32223",
+      "url": "https://www.simap.ch/de/project-detail/384de7e5-6f82-4548-9cf1-1c0ca63c765a",
+      "raw": {
+        "id": "384de7e5-6f82-4548-9cf1-1c0ca63c765a",
+        "title": {
+          "de": "Ein hochauflösendes Cs-korrigiertes Rastertransmissionselektronenmikroskop (STEM) ",
+          "en": null,
+          "fr": "Un microscope électronique à transmission à balayage (STEM) à haute résolution équipé d’un correcteur Cs",
+          "it": null
+        },
+        "projectNumber": "32223",
+        "projectType": "tender",
+        "projectSubType": "supply",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "518f8558-a512-4095-8dcd-7188d7b4e032",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "32223-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "EPFL-Scientific Equipment",
+          "en": null,
+          "fr": "EPFL-Scientific Equipment",
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "VD",
+          "postalCode": "1015",
+          "city": {
+            "de": "Lausanne",
+            "en": null,
+            "fr": "Lausanne",
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "fe3b7cbe-9724-4324-97d0-2b08dc52d2c7",
@@ -2438,7 +2821,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -2494,7 +2877,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -2550,7 +2933,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -2606,7 +2989,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -2657,7 +3040,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -2713,7 +3096,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -2769,7 +3152,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -2825,8 +3208,64 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "f5088b21-4c8c-439b-8bbb-44fc064f2ecf",
+      "projectId": "f5088b21-4c8c-439b-8bbb-44fc064f2ecf",
+      "publicationId": "7e78c25b-09d6-40a1-8850-1c1f7c846178",
+      "title": "Erweiterung stationäre Behandlungsplätze, Rheinau",
+      "buyer": "Psychiatrische Universitätsklinik Zürich",
+      "location": "Rheinau",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Erweiterung stationäre Behandlungsplätze, Rheinau · Auftraggeber: Psychiatrische Universitätsklinik Zürich · Verfahren: open · Projekt-Nr.: 34634",
+      "url": "https://www.simap.ch/de/project-detail/f5088b21-4c8c-439b-8bbb-44fc064f2ecf",
+      "raw": {
+        "id": "f5088b21-4c8c-439b-8bbb-44fc064f2ecf",
+        "title": {
+          "de": "Erweiterung stationäre Behandlungsplätze, Rheinau",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "projectNumber": "34634",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "7e78c25b-09d6-40a1-8850-1c1f7c846178",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "34634-03",
+        "pubType": "abandonment",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Psychiatrische Universitätsklinik Zürich ",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "ZH",
+          "postalCode": "8462",
+          "city": {
+            "de": "Rheinau",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "6b059701-527e-4480-82e4-2bf8d28b0b68",
@@ -2876,8 +3315,64 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "5c78a166-aee9-44be-974d-0ac13ad5cb96",
+      "projectId": "5c78a166-aee9-44be-974d-0ac13ad5cb96",
+      "publicationId": "609e910a-b40c-4b5b-b00f-fdd152045545",
+      "title": "Fachhochschulzentrum Graubünden (FHZGR), Chur / BKP 277.1 Schiebe- und Faltwände",
+      "buyer": "Hochbauamt Graubünden",
+      "location": "Chur",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Fachhochschulzentrum Graubünden (FHZGR), Chur / BKP 277.1 Schiebe- und Faltwände · Auftraggeber: Hochbauamt Graubünden · Verfahren: open · Projekt-Nr.: 34685",
+      "url": "https://www.simap.ch/de/project-detail/5c78a166-aee9-44be-974d-0ac13ad5cb96",
+      "raw": {
+        "id": "5c78a166-aee9-44be-974d-0ac13ad5cb96",
+        "title": {
+          "de": "Fachhochschulzentrum Graubünden (FHZGR), Chur / BKP 277.1 Schiebe- und Faltwände",
+          "en": null,
+          "fr": "Fachhochschulzentrum Graubünden (FHZGR), Chur / BKP 277.1 Cloisons coulissantes et pliantes",
+          "it": null
+        },
+        "projectNumber": "34685",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "609e910a-b40c-4b5b-b00f-fdd152045545",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "34685-03",
+        "pubType": "revocation",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Hochbauamt Graubünden",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "GR",
+          "postalCode": "7000",
+          "city": {
+            "de": "Chur",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "d4e4ec4c-9a29-4205-93d9-fb7d41ceb588",
@@ -2932,8 +3427,120 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "5bc3e690-027e-46a7-a02e-f232a0af757d",
+      "projectId": "5bc3e690-027e-46a7-a02e-f232a0af757d",
+      "publicationId": "1687f7ed-0ba4-4e45-b0fb-c3639a74c7aa",
+      "title": "Gipserarbeiten und Trockenbau",
+      "buyer": "Stiftung Alterswohnungen der Stadt Zürich - SAW (Fokus Baumanagement)",
+      "location": "Zürich",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Gipserarbeiten und Trockenbau · Auftraggeber: Stiftung Alterswohnungen der Stadt Zürich - SAW (Fokus Baumanagement) · Verfahren: open · Projekt-Nr.: 34988",
+      "url": "https://www.simap.ch/de/project-detail/5bc3e690-027e-46a7-a02e-f232a0af757d",
+      "raw": {
+        "id": "5bc3e690-027e-46a7-a02e-f232a0af757d",
+        "title": {
+          "de": "Gipserarbeiten und Trockenbau",
+          "en": null,
+          "fr": "Platrerie",
+          "it": null
+        },
+        "projectNumber": "34988",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "1687f7ed-0ba4-4e45-b0fb-c3639a74c7aa",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "34988-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Stiftung Alterswohnungen der Stadt Zürich - SAW (Fokus Baumanagement)",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "ZH",
+          "postalCode": "8047",
+          "city": {
+            "de": "Zürich",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
+    },
+    {
+      "id": "7c70a721-fd73-4731-8d18-1b7fe261c3a4",
+      "projectId": "7c70a721-fd73-4731-8d18-1b7fe261c3a4",
+      "publicationId": "d71c72f7-0da3-4807-8f54-3a0adb3883d0",
+      "title": "H8 / Dritte Altmatt Nord bis Biberbrugg / Baulos Nord / Baumeisterarbeiten",
+      "buyer": "Tiefbauamt Kanton Schwyz",
+      "location": "Bennau",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "H8 / Dritte Altmatt Nord bis Biberbrugg / Baulos Nord / Baumeisterarbeiten · Auftraggeber: Tiefbauamt Kanton Schwyz · Verfahren: open · Projekt-Nr.: 35118",
+      "url": "https://www.simap.ch/de/project-detail/7c70a721-fd73-4731-8d18-1b7fe261c3a4",
+      "raw": {
+        "id": "7c70a721-fd73-4731-8d18-1b7fe261c3a4",
+        "title": {
+          "de": "H8 / Dritte Altmatt Nord bis Biberbrugg / Baulos Nord / Baumeisterarbeiten",
+          "en": null,
+          "fr": " H8 / Troisième Altmatt Nord vers Biberbrugg / Terrain de construction Nord / Travaux de construction",
+          "it": null
+        },
+        "projectNumber": "35118",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "d71c72f7-0da3-4807-8f54-3a0adb3883d0",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "35118-02",
+        "pubType": "tender",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Tiefbauamt Kanton Schwyz",
+          "en": null,
+          "fr": "Le canton de Schwyz, représenté par le département des constructions du canton de Schwyz",
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "SZ",
+          "postalCode": "8836",
+          "city": {
+            "de": "Bennau",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "e70b91a0-e4a1-424d-addd-e3fc75d65d91",
@@ -2988,7 +3595,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3044,7 +3651,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3100,58 +3707,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "b423b069-acbf-4801-8fcf-b37c6bf55b96",
-      "projectId": "b423b069-acbf-4801-8fcf-b37c6bf55b96",
-      "publicationId": "0358d7bd-9ad4-469e-9cb9-c6529b15daa7",
-      "title": "Handelssystem für Strom",
-      "buyer": "Schweizerische Bundesbahnen SBB, Informatik Einkauf",
-      "location": "Schweiz",
-      "type": "service",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Handelssystem für Strom · Auftraggeber: Schweizerische Bundesbahnen SBB, Informatik Einkauf · Verfahren: selective · Projekt-Nr.: 40133",
-      "url": "https://www.simap.ch/de/project-detail/b423b069-acbf-4801-8fcf-b37c6bf55b96",
-      "raw": {
-        "id": "b423b069-acbf-4801-8fcf-b37c6bf55b96",
-        "title": {
-          "de": "Handelssystem für Strom",
-          "en": null,
-          "fr": "Système de négoce d’électricité",
-          "it": null
-        },
-        "projectNumber": "40133",
-        "projectType": "tender",
-        "projectSubType": "service",
-        "processType": "selective",
-        "lotsType": "without",
-        "publicationId": "0358d7bd-9ad4-469e-9cb9-c6529b15daa7",
-        "publicationDate": "2026-08-21",
-        "publicationNumber": "40133-02",
-        "pubType": "participant_selection",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Schweizerische Bundesbahnen SBB, Informatik Einkauf",
-          "en": null,
-          "fr": "Schweizerische Bundesbahnen SBB, Informatik Einkauf",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "yes",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": null,
-          "postalCode": null,
-          "city": null
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3207,7 +3763,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3263,7 +3819,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3314,7 +3870,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3370,7 +3926,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3426,7 +3982,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3477,7 +4033,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3533,7 +4089,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3589,7 +4145,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3645,7 +4201,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3701,7 +4257,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3880,7 +4436,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3936,7 +4492,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -3992,7 +4548,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -4048,7 +4604,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -4104,58 +4660,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "8928c1fa-f5d4-4035-9785-f56fe7979e10",
-      "projectId": "8928c1fa-f5d4-4035-9785-f56fe7979e10",
-      "publicationId": "9ab5243e-82d5-466a-9744-e8c47d36e478",
-      "title": "Lieferung Geräteträger mit Anbaugeräten für den Bezirk Nord 3 von Grün Stadt Zürich",
-      "buyer": "TED - Grün Stadt Zürich (GSZ)",
-      "location": "Schweiz",
-      "type": "supply",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Lieferung Geräteträger mit Anbaugeräten für den Bezirk Nord 3 von Grün Stadt Zürich · Auftraggeber: TED - Grün Stadt Zürich (GSZ) · Verfahren: open · Projekt-Nr.: 42887",
-      "url": "https://www.simap.ch/de/project-detail/8928c1fa-f5d4-4035-9785-f56fe7979e10",
-      "raw": {
-        "id": "8928c1fa-f5d4-4035-9785-f56fe7979e10",
-        "title": {
-          "de": "Lieferung Geräteträger mit Anbaugeräten für den Bezirk Nord 3 von Grün Stadt Zürich",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "projectNumber": "42887",
-        "projectType": "tender",
-        "projectSubType": "supply",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "9ab5243e-82d5-466a-9744-e8c47d36e478",
-        "publicationDate": "2026-08-22",
-        "publicationNumber": "42887-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "TED - Grün Stadt Zürich (GSZ)",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "yes",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": null,
-          "postalCode": null,
-          "city": null
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -4211,45 +4716,45 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
-      "id": "c901fe30-2497-42ff-a4b0-65791ccb8a74",
-      "projectId": "c901fe30-2497-42ff-a4b0-65791ccb8a74",
-      "publicationId": "271bd014-e98b-4491-a8b8-c22763af6251",
-      "title": "MP-090229 N04/06 SH Süd – Herblingen Sicherheitsstollen Tunnel Fäsenstaub Beweissicherung",
-      "buyer": "Bundesamt für Strassen ASTRA - Filiale Winterthur",
+      "id": "1762c7f5-cf5c-4958-9008-bb5fff178e27",
+      "projectId": "1762c7f5-cf5c-4958-9008-bb5fff178e27",
+      "publicationId": "2c4826d3-8cfa-4049-8f1f-dc4403a29c16",
+      "title": "MP-120093, N2 Tunnel Belchen Zweite Instandsetzung (BZI) / Los 102 Bau Röhre BAS",
+      "buyer": "Bundesamt für Strassen ASTRA -Abteilung Strasseninfrastruktur-Ost - F3",
       "location": "Schweiz",
-      "type": "service",
+      "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
       "status": "active",
       "value": 0,
-      "text": "MP-090229 N04/06 SH Süd – Herblingen Sicherheitsstollen Tunnel Fäsenstaub Beweissicherung · Auftraggeber: Bundesamt für Strassen ASTRA - Filiale Winterthur · Verfahren: open · Projekt-Nr.: 34866",
-      "url": "https://www.simap.ch/de/project-detail/c901fe30-2497-42ff-a4b0-65791ccb8a74",
+      "text": "MP-120093, N2 Tunnel Belchen Zweite Instandsetzung (BZI) / Los 102 Bau Röhre BAS · Auftraggeber: Bundesamt für Strassen ASTRA -Abteilung Strasseninfrastruktur-Ost - F3 · Verfahren: open · Projekt-Nr.: 17173",
+      "url": "https://www.simap.ch/de/project-detail/1762c7f5-cf5c-4958-9008-bb5fff178e27",
       "raw": {
-        "id": "c901fe30-2497-42ff-a4b0-65791ccb8a74",
+        "id": "1762c7f5-cf5c-4958-9008-bb5fff178e27",
         "title": {
-          "de": "MP-090229 N04/06 SH Süd – Herblingen Sicherheitsstollen Tunnel Fäsenstaub Beweissicherung",
+          "de": "MP-120093, N2 Tunnel Belchen Zweite Instandsetzung (BZI) / Los 102 Bau Röhre BAS",
           "en": null,
-          "fr": "PM-090229 N04/06 SH Sud – Herblingen, galerie de sécurité tunnel du Fäsenstaub Constatation des preuves",
+          "fr": "MP-120093, N2 2e réfection du tunnel du Belchen (BZI) / Lot 102 construction du tube BAS",
           "it": null
         },
-        "projectNumber": "34866",
+        "projectNumber": "17173",
         "projectType": "tender",
-        "projectSubType": "service",
+        "projectSubType": "construction",
         "processType": "open",
         "lotsType": "without",
-        "publicationId": "271bd014-e98b-4491-a8b8-c22763af6251",
-        "publicationDate": "2026-08-24",
-        "publicationNumber": "34866-03",
-        "pubType": "award",
+        "publicationId": "2c4826d3-8cfa-4049-8f1f-dc4403a29c16",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "17173-01",
+        "pubType": "tender",
         "corrected": false,
         "procOfficeName": {
-          "de": "Bundesamt für Strassen ASTRA - Filiale Winterthur",
+          "de": "Bundesamt für Strassen ASTRA -Abteilung Strasseninfrastruktur-Ost - F3",
           "en": null,
-          "fr": "Office fédéral des routes OFROU, Division Infrastructure routière, Filiale de Winterthour",
+          "fr": "Eidgenössisches Departement für Umwelt, Verkehr, Energie und Kommunikation - Bundesamt für Strassen ASTRA -Abteilung Strasseninfrastruktur-Ost - F3",
           "it": null
         },
         "lots": [],
@@ -4261,9 +4766,9 @@
           "city": null
         }
       },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "978d514d-bbc7-4bab-a5ee-3e38f0fd2363",
@@ -4313,7 +4818,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -4364,7 +4869,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -4415,58 +4920,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "17a974ab-2d8c-42bb-a7c1-3dddcfa90a8f",
-      "projectId": "17a974ab-2d8c-42bb-a7c1-3dddcfa90a8f",
-      "publicationId": "c349e179-4395-46fd-a0b8-712997afb2cc",
-      "title": "MP-210027 N13 GHGW Rothenbrunnen – Landquart, Projektverfasser und Bauleiter BSA",
-      "buyer": "Ufficio federale delle strade USTRA, divisione infrastruttura stradale Est",
-      "location": "Schweiz",
-      "type": "service",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "MP-210027 N13 GHGW Rothenbrunnen – Landquart, Projektverfasser und Bauleiter BSA · Auftraggeber: Ufficio federale delle strade USTRA, divisione infrastruttura stradale Est · Verfahren: open · Projekt-Nr.: 42534",
-      "url": "https://www.simap.ch/de/project-detail/17a974ab-2d8c-42bb-a7c1-3dddcfa90a8f",
-      "raw": {
-        "id": "17a974ab-2d8c-42bb-a7c1-3dddcfa90a8f",
-        "title": {
-          "de": "MP-210027 N13 GHGW Rothenbrunnen – Landquart, Projektverfasser und Bauleiter BSA",
-          "en": null,
-          "fr": "MP-210027 N13 GHGW Rothenbrunnen – Landquart, auteur du projet et directeur des travaux EES",
-          "it": null
-        },
-        "projectNumber": "42534",
-        "projectType": "tender",
-        "projectSubType": "service",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "c349e179-4395-46fd-a0b8-712997afb2cc",
-        "publicationDate": "2026-08-24",
-        "publicationNumber": "42534-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Ufficio federale delle strade USTRA, divisione infrastruttura stradale Est",
-          "en": null,
-          "fr": "Ufficio federale delle strade USTRA, divisione infrastruttura stradale Est",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "yes",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": null,
-          "postalCode": null,
-          "city": null
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -4517,7 +4971,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -4568,127 +5022,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "3f83929d-1b16-48ae-8014-7acc292e3b01",
-      "projectId": "3f83929d-1b16-48ae-8014-7acc292e3b01",
-      "publicationId": "83266f45-9e11-406b-a02a-8d0d39671459",
-      "title": "MP-260007 F4 BHS BehiG (Los 1 und 2)",
-      "buyer": "Bundesamt für Strassen ASTRA - Filiale Winterthur",
-      "location": "Schweiz",
-      "type": "service",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "MP-260007 F4 BHS BehiG (Los 1 und 2) · Auftraggeber: Bundesamt für Strassen ASTRA - Filiale Winterthur · Verfahren: open · Projekt-Nr.: 37249",
-      "url": "https://www.simap.ch/de/project-detail/3f83929d-1b16-48ae-8014-7acc292e3b01",
-      "raw": {
-        "id": "3f83929d-1b16-48ae-8014-7acc292e3b01",
-        "title": {
-          "de": "MP-260007 F4 BHS BehiG (Los 1 und 2)",
-          "en": null,
-          "fr": "MP-260007 F4 Arrêts de bus LHand (lots 1 et 2)",
-          "it": null
-        },
-        "projectNumber": "37249",
-        "projectType": "tender",
-        "projectSubType": "service",
-        "processType": "open",
-        "lotsType": "with",
-        "publicationId": "83266f45-9e11-406b-a02a-8d0d39671459",
-        "publicationDate": "2026-08-24",
-        "publicationNumber": "37249-02",
-        "pubType": "award",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Bundesamt für Strassen ASTRA - Filiale Winterthur",
-          "en": null,
-          "fr": "Office fédéral des routes OFROU, Division Infrastructure routière, Filiale de Winterthour",
-          "it": null
-        },
-        "lots": [
-          {
-            "publicationId": "83266f45-9e11-406b-a02a-8d0d39671459",
-            "publicationDate": "2026-08-24",
-            "publicationNumber": "37249-02",
-            "pubType": "award",
-            "corrected": false,
-            "lotId": "591806de-072c-41ec-8570-4198c1c01c98",
-            "lotNumber": 1,
-            "lotTitle": {
-              "de": "Los 1 + Los 2",
-              "en": null,
-              "fr": "Lot 1 + Lot 2",
-              "it": null
-            },
-            "orderAddressOnlyDescription": "yes",
-            "orderAddress": {
-              "countryId": "CH",
-              "cantonId": null,
-              "postalCode": null,
-              "city": null
-            }
-          }
-        ],
-        "orderAddressOnlyDescription": null,
-        "orderAddress": null
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "6b55571e-9860-406e-9957-532c6fa3752a",
-      "projectId": "6b55571e-9860-406e-9957-532c6fa3752a",
-      "publicationId": "5647eb88-b40d-495d-9a66-2b9d5cc142f7",
-      "title": "MehrSpur Zürich – Winterthur, Verwertungsstellen mit Bahnanschluss, Projektteil 246",
-      "buyer": "SBB CFF FFS Einkauf Bauprojekte Region Ost",
-      "location": "Schweiz",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "MehrSpur Zürich – Winterthur, Verwertungsstellen mit Bahnanschluss, Projektteil 246 · Auftraggeber: SBB CFF FFS Einkauf Bauprojekte Region Ost · Verfahren: open · Projekt-Nr.: 13996",
-      "url": "https://www.simap.ch/de/project-detail/6b55571e-9860-406e-9957-532c6fa3752a",
-      "raw": {
-        "id": "6b55571e-9860-406e-9957-532c6fa3752a",
-        "title": {
-          "de": "MehrSpur Zürich – Winterthur, Verwertungsstellen mit Bahnanschluss, Projektteil 246",
-          "en": null,
-          "fr": "MehrSpur Zürich – Winterthur (VoiePlus Zurich - Winterthur), Sites de valorisation avec  Raccordement ferroviaire, partie de projet 246",
-          "it": null
-        },
-        "projectNumber": "13996",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "5647eb88-b40d-495d-9a66-2b9d5cc142f7",
-        "publicationDate": "2026-08-24",
-        "publicationNumber": "13996-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "SBB CFF FFS Einkauf Bauprojekte Region Ost",
-          "en": null,
-          "fr": "SBB CFF FFS Einkauf Bauprojekte Region Ost",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "yes",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": null,
-          "postalCode": null,
-          "city": null
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -4744,7 +5078,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -4800,7 +5134,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -4851,8 +5185,59 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "2ec9a86a-8be4-4df5-b17f-4bf3e0c30780",
+      "projectId": "2ec9a86a-8be4-4df5-b17f-4bf3e0c30780",
+      "publicationId": "51cd7829-0822-4912-b1ec-73b2340c27cb",
+      "title": "N01.12 MP-080159 - Upn.Bernex-Ferney - Entretien lourd des canalisations (ID 11297)",
+      "buyer": "Office fédéral des routes OFROU, Division Infrastructure routière Ouest, filiale Estavayer-le-Lac",
+      "location": "Schweiz",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "N01.12 MP-080159 - Upn.Bernex-Ferney - Entretien lourd des canalisations (ID 11297) · Auftraggeber: Office fédéral des routes OFROU, Division Infrastructure routière Ouest, filiale Estavayer-le-Lac · Verfahren: open · Projekt-Nr.: 32594",
+      "url": "https://www.simap.ch/de/project-detail/2ec9a86a-8be4-4df5-b17f-4bf3e0c30780",
+      "raw": {
+        "id": "2ec9a86a-8be4-4df5-b17f-4bf3e0c30780",
+        "title": {
+          "de": "N01.12 MP-080159 - Upn.Bernex-Ferney - Entretien lourd des canalisations (ID 11297)",
+          "en": null,
+          "fr": "N01.12 MP-080159 - Upn.Bernex-Ferney - Entretien lourd des canalisations (ID 11297)",
+          "it": null
+        },
+        "projectNumber": "32594",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "51cd7829-0822-4912-b1ec-73b2340c27cb",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "32594-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Office fédéral des routes OFROU, Division Infrastructure routière Ouest, filiale Estavayer-le-Lac",
+          "en": null,
+          "fr": "Office fédéral des routes OFROU, Division Infrastructure routière Ouest, filiale Estavayer-le-Lac",
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "yes",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": null,
+          "postalCode": null,
+          "city": null
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "42504e1c-d147-452c-aa1b-1cce23b9cb6f",
@@ -4902,7 +5287,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -4953,7 +5338,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -5004,7 +5389,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -5055,8 +5440,64 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "a4425237-8397-4269-a26e-112d2a7313ff",
+      "projectId": "a4425237-8397-4269-a26e-112d2a7313ff",
+      "publicationId": "b57d3276-13f5-4589-942f-389c6250551a",
+      "title": "Neubau Busspur Frutigenstrasse, Fernwärme- und Werkleitungen Mönchplatz",
+      "buyer": "Tiefbauamt Stadt Thun",
+      "location": "Thun",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Neubau Busspur Frutigenstrasse, Fernwärme- und Werkleitungen Mönchplatz · Auftraggeber: Tiefbauamt Stadt Thun · Verfahren: open · Projekt-Nr.: 35421",
+      "url": "https://www.simap.ch/de/project-detail/a4425237-8397-4269-a26e-112d2a7313ff",
+      "raw": {
+        "id": "a4425237-8397-4269-a26e-112d2a7313ff",
+        "title": {
+          "de": "Neubau Busspur Frutigenstrasse, Fernwärme- und Werkleitungen Mönchplatz",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "projectNumber": "35421",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "b57d3276-13f5-4589-942f-389c6250551a",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "35421-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Tiefbauamt Stadt Thun",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "BE",
+          "postalCode": "3600",
+          "city": {
+            "de": "Thun",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "dcb5eda7-fd7a-43bc-b7f2-5557d7bfff6d",
@@ -5111,7 +5552,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -5167,7 +5608,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -5223,7 +5664,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -5279,8 +5720,233 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "6d7c9ea3-f8eb-4914-b63d-8366a892e16d",
+      "projectId": "6d7c9ea3-f8eb-4914-b63d-8366a892e16d",
+      "publicationId": "c9a388e7-6b10-419b-b0d7-222bf9300672",
+      "title": "Personalverleih Elektroinstallateure",
+      "buyer": "BLS AG - Finance & SCM - Strategische Beschaffung",
+      "location": "Schweiz",
+      "type": "service",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Personalverleih Elektroinstallateure · Auftraggeber: BLS AG - Finance & SCM - Strategische Beschaffung · Verfahren: open · Projekt-Nr.: 36227",
+      "url": "https://www.simap.ch/de/project-detail/6d7c9ea3-f8eb-4914-b63d-8366a892e16d",
+      "raw": {
+        "id": "6d7c9ea3-f8eb-4914-b63d-8366a892e16d",
+        "title": {
+          "de": "Personalverleih Elektroinstallateure",
+          "en": null,
+          "fr": "Location de personnel : électriciens",
+          "it": null
+        },
+        "projectNumber": "36227",
+        "projectType": "tender",
+        "projectSubType": "service",
+        "processType": "open",
+        "lotsType": "with",
+        "publicationId": "c9a388e7-6b10-419b-b0d7-222bf9300672",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "36227-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "BLS AG - Finance & SCM - Strategische Beschaffung",
+          "en": null,
+          "fr": "BLS AG - Finance & SCM - Strategische Beschaffung",
+          "it": null
+        },
+        "lots": [
+          {
+            "publicationId": "c9a388e7-6b10-419b-b0d7-222bf9300672",
+            "publicationDate": "2026-08-25",
+            "publicationNumber": "36227-02",
+            "pubType": "award",
+            "corrected": false,
+            "lotId": "324a4808-4240-418a-a448-5bcc186d8743",
+            "lotNumber": 1,
+            "lotTitle": {
+              "de": "1.1 Langzeitverleih und 1.2, Kurzzeitverleih für Region Emmental",
+              "en": null,
+              "fr": "1.1 Prêts à long terme et 1.2 Prêts à court terme pour la région de l'Emmental",
+              "it": null
+            },
+            "orderAddressOnlyDescription": "yes",
+            "orderAddress": {
+              "countryId": "CH",
+              "cantonId": null,
+              "postalCode": null,
+              "city": null
+            }
+          },
+          {
+            "publicationId": "88e55d65-75c7-4de2-af8a-1f7e02859ad4",
+            "publicationDate": "2026-08-25",
+            "publicationNumber": "36227-03",
+            "pubType": "award",
+            "corrected": false,
+            "lotId": "9152e624-f172-4173-b4e6-1ce630b8e051",
+            "lotNumber": 2,
+            "lotTitle": {
+              "de": "2.1 Langzeitverleih und 2.2, Kurzzeitverleih für Region Mittelland",
+              "en": null,
+              "fr": "2.1 Prêts à long terme et 2.2 Prêts à court terme pour la région du Mittelland",
+              "it": null
+            },
+            "orderAddressOnlyDescription": "yes",
+            "orderAddress": {
+              "countryId": "CH",
+              "cantonId": null,
+              "postalCode": null,
+              "city": null
+            }
+          },
+          {
+            "publicationId": "114834b3-3fc6-40ae-bb67-09317c40bcd1",
+            "publicationDate": "2026-08-25",
+            "publicationNumber": "36227-04",
+            "pubType": "award",
+            "corrected": false,
+            "lotId": "f1b87752-ff61-426a-b6b9-00fa5818bedc",
+            "lotNumber": 3,
+            "lotTitle": {
+              "de": "Los 3.1, Langzeitverleih und 3.2, Kurzzeitverleih für Region Oberland",
+              "en": null,
+              "fr": "Lot 3.1, location longue durée, et 3.2, location courte durée pour la région de l'Oberland",
+              "it": null
+            },
+            "orderAddressOnlyDescription": "yes",
+            "orderAddress": {
+              "countryId": "CH",
+              "cantonId": null,
+              "postalCode": null,
+              "city": null
+            }
+          }
+        ],
+        "orderAddressOnlyDescription": null,
+        "orderAddress": null
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
+    },
+    {
+      "id": "6ea96dbf-651d-4d56-ac42-dc93fb99c23d",
+      "projectId": "6ea96dbf-651d-4d56-ac42-dc93fb99c23d",
+      "publicationId": "967c4294-846e-46cd-829a-bdaec84df22a",
+      "title": "Pferdeklinik, Stabilisierende Massnahmen / BKP 281-02 Bodenbeläge Kunststoff",
+      "buyer": "Kanton Zürich Hochbauaumt, Baubereich D",
+      "location": "Zürich",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Pferdeklinik, Stabilisierende Massnahmen / BKP 281-02 Bodenbeläge Kunststoff · Auftraggeber: Kanton Zürich Hochbauaumt, Baubereich D · Verfahren: open · Projekt-Nr.: 35789",
+      "url": "https://www.simap.ch/de/project-detail/6ea96dbf-651d-4d56-ac42-dc93fb99c23d",
+      "raw": {
+        "id": "6ea96dbf-651d-4d56-ac42-dc93fb99c23d",
+        "title": {
+          "de": "Pferdeklinik, Stabilisierende Massnahmen / BKP 281-02 Bodenbeläge Kunststoff",
+          "en": null,
+          "fr": "Clinique équine, Mesures de stabilisation / BKP 281-02 Revêtements de sol en plastique",
+          "it": null
+        },
+        "projectNumber": "35789",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "967c4294-846e-46cd-829a-bdaec84df22a",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "35789-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Kanton Zürich Hochbauaumt, Baubereich D",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "ZH",
+          "postalCode": "8057",
+          "city": {
+            "de": "Zürich",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
+    },
+    {
+      "id": "658f1bfb-b4ed-47aa-9001-6cabcdc0755a",
+      "projectId": "658f1bfb-b4ed-47aa-9001-6cabcdc0755a",
+      "publicationId": "d05c1c9d-e3ad-48ac-b36c-db814d5951e1",
+      "title": "Pferdeklinik, Stabilisierende Massnahmen / BKP 281-03 Bodenbeläge PU",
+      "buyer": "Kanton Zürich Hochbauaumt, Baubereich D",
+      "location": "Zürich",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Pferdeklinik, Stabilisierende Massnahmen / BKP 281-03 Bodenbeläge PU · Auftraggeber: Kanton Zürich Hochbauaumt, Baubereich D · Verfahren: open · Projekt-Nr.: 35803",
+      "url": "https://www.simap.ch/de/project-detail/658f1bfb-b4ed-47aa-9001-6cabcdc0755a",
+      "raw": {
+        "id": "658f1bfb-b4ed-47aa-9001-6cabcdc0755a",
+        "title": {
+          "de": "Pferdeklinik, Stabilisierende Massnahmen / BKP 281-03 Bodenbeläge PU",
+          "en": null,
+          "fr": "Clinique équine, Mesures de stabilisation / Revêtements de sol en polyuréthane BKP 281-03",
+          "it": null
+        },
+        "projectNumber": "35803",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "d05c1c9d-e3ad-48ac-b36c-db814d5951e1",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "35803-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Kanton Zürich Hochbauaumt, Baubereich D",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "ZH",
+          "postalCode": "8057",
+          "city": {
+            "de": "Zürich",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "daf745e2-0f26-4fea-8031-a4dfc96d209b",
@@ -5330,7 +5996,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -5431,7 +6097,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -5487,7 +6153,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -5543,58 +6209,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "1024cdf6-45e9-42b0-b40f-f37b2de476b2",
-      "projectId": "1024cdf6-45e9-42b0-b40f-f37b2de476b2",
-      "publicationId": "0933ebdf-17b4-4c18-8bc3-50b2711885d8",
-      "title": "Reinigung Kanalisation 2027 bis 2030",
-      "buyer": "Gemeinde Weiningen",
-      "location": "Schweiz",
-      "type": "service",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Reinigung Kanalisation 2027 bis 2030 · Auftraggeber: Gemeinde Weiningen · Verfahren: open · Projekt-Nr.: 42114",
-      "url": "https://www.simap.ch/de/project-detail/1024cdf6-45e9-42b0-b40f-f37b2de476b2",
-      "raw": {
-        "id": "1024cdf6-45e9-42b0-b40f-f37b2de476b2",
-        "title": {
-          "de": "Reinigung Kanalisation 2027 bis 2030",
-          "en": null,
-          "fr": "Nettoyage du réseau d'assainissement de 2027 à 2030",
-          "it": null
-        },
-        "projectNumber": "42114",
-        "projectType": "tender",
-        "projectSubType": "service",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "0933ebdf-17b4-4c18-8bc3-50b2711885d8",
-        "publicationDate": "2026-08-12",
-        "publicationNumber": "42114-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Gemeinde Weiningen",
-          "en": null,
-          "fr": "Commune de Weiningen",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "yes",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": null,
-          "postalCode": null,
-          "city": null
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -5645,7 +6260,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -5696,7 +6311,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -5752,7 +6367,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -5808,7 +6423,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -5864,63 +6479,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "08ff882f-7800-4f8c-b3d5-87d0f2e55d8d",
-      "projectId": "08ff882f-7800-4f8c-b3d5-87d0f2e55d8d",
-      "publicationId": "4268079e-d88c-4e56-a505-ff70da1010f6",
-      "title": "SIE 2026 - Praderalpweg",
-      "buyer": "Amt für Wald und Naturgefahren",
-      "location": "Chur",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "SIE 2026 - Praderalpweg · Auftraggeber: Amt für Wald und Naturgefahren · Verfahren: open · Projekt-Nr.: 37495",
-      "url": "https://www.simap.ch/de/project-detail/08ff882f-7800-4f8c-b3d5-87d0f2e55d8d",
-      "raw": {
-        "id": "08ff882f-7800-4f8c-b3d5-87d0f2e55d8d",
-        "title": {
-          "de": "SIE 2026 - Praderalpweg",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "projectNumber": "37495",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "4268079e-d88c-4e56-a505-ff70da1010f6",
-        "publicationDate": "2026-08-24",
-        "publicationNumber": "37495-02",
-        "pubType": "award",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Amt für Wald und Naturgefahren",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "GR",
-          "postalCode": "7000",
-          "city": {
-            "de": "Chur",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -5976,7 +6535,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -6027,63 +6586,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "3d865bc6-9c23-49b5-a9ff-207087e71c4e",
-      "projectId": "3d865bc6-9c23-49b5-a9ff-207087e71c4e",
-      "publicationId": "144c24a3-1594-46bd-8048-49c30bac8e66",
-      "title": "Sanierung Giessereistrasse, Strassenbau und Kanalisation",
-      "buyer": "Stadt Wetzikon, Abteilung Tiefbau",
-      "location": "Wetzikon",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Sanierung Giessereistrasse, Strassenbau und Kanalisation · Auftraggeber: Stadt Wetzikon, Abteilung Tiefbau · Verfahren: open · Projekt-Nr.: 39611",
-      "url": "https://www.simap.ch/de/project-detail/3d865bc6-9c23-49b5-a9ff-207087e71c4e",
-      "raw": {
-        "id": "3d865bc6-9c23-49b5-a9ff-207087e71c4e",
-        "title": {
-          "de": "Sanierung Giessereistrasse, Strassenbau und Kanalisation",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "projectNumber": "39611",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "144c24a3-1594-46bd-8048-49c30bac8e66",
-        "publicationDate": "2026-08-24",
-        "publicationNumber": "39611-03",
-        "pubType": "award",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Stadt Wetzikon, Abteilung Tiefbau",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "ZH",
-          "postalCode": "8620",
-          "city": {
-            "de": "Wetzikon",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -6139,7 +6642,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -6195,7 +6698,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -6251,7 +6754,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -6302,7 +6805,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -6353,43 +6856,43 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
-      "id": "1cdf736d-f766-4854-8575-d555d79115a3",
-      "projectId": "1cdf736d-f766-4854-8575-d555d79115a3",
-      "publicationId": "cfaf705b-5a23-448b-b153-cb08a46dcd44",
-      "title": "Seewasserwerk Riet II, Los 2: Hochbau (Baumeister)",
-      "buyer": "RWSG Regionale Wasserversorgung St. Gallen AG",
-      "location": "Goldach",
+      "id": "da1d26ef-daaf-4b0a-9b0e-669dc3222145",
+      "projectId": "da1d26ef-daaf-4b0a-9b0e-669dc3222145",
+      "publicationId": "e17cd729-a536-4ded-9909-8cc5920993ec",
+      "title": "Schule Moosmatt Luzern, Gesamtsanierung und Erweiterung, BKP 211 Baumeisterarbeiten mit Abbrüchen Bestandesbau Haus A",
+      "buyer": "Stadt Luzern, Immobilien",
+      "location": "Luzern",
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
       "status": "active",
       "value": 0,
-      "text": "Seewasserwerk Riet II, Los 2: Hochbau (Baumeister) · Auftraggeber: RWSG Regionale Wasserversorgung St. Gallen AG · Verfahren: open · Projekt-Nr.: 36559",
-      "url": "https://www.simap.ch/de/project-detail/1cdf736d-f766-4854-8575-d555d79115a3",
+      "text": "Schule Moosmatt Luzern, Gesamtsanierung und Erweiterung, BKP 211 Baumeisterarbeiten mit Abbrüchen Bestandesbau Haus A · Auftraggeber: Stadt Luzern, Immobilien · Verfahren: open · Projekt-Nr.: 34318",
+      "url": "https://www.simap.ch/de/project-detail/da1d26ef-daaf-4b0a-9b0e-669dc3222145",
       "raw": {
-        "id": "1cdf736d-f766-4854-8575-d555d79115a3",
+        "id": "da1d26ef-daaf-4b0a-9b0e-669dc3222145",
         "title": {
-          "de": "Seewasserwerk Riet II, Los 2: Hochbau (Baumeister)",
+          "de": "Schule Moosmatt Luzern, Gesamtsanierung und Erweiterung, BKP 211 Baumeisterarbeiten mit Abbrüchen Bestandesbau Haus A",
           "en": null,
-          "fr": "Station de traitement d'eau de Riet II, lot 2: Bâtiment",
+          "fr": "École Moosmatt Lucerne – Rénovation complète et extension, CFC 211 Travaux de maçonnerie avec démolition du bâtiment existant A",
           "it": null
         },
-        "projectNumber": "36559",
+        "projectNumber": "34318",
         "projectType": "tender",
         "projectSubType": "construction",
         "processType": "open",
         "lotsType": "without",
-        "publicationId": "cfaf705b-5a23-448b-b153-cb08a46dcd44",
-        "publicationDate": "2026-08-24",
-        "publicationNumber": "36559-02",
+        "publicationId": "e17cd729-a536-4ded-9909-8cc5920993ec",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "34318-02",
         "pubType": "award",
         "corrected": false,
         "procOfficeName": {
-          "de": "RWSG Regionale Wasserversorgung St. Gallen AG",
+          "de": "Stadt Luzern, Immobilien",
           "en": null,
           "fr": null,
           "it": null
@@ -6398,19 +6901,75 @@
         "orderAddressOnlyDescription": "no",
         "orderAddress": {
           "countryId": "CH",
-          "cantonId": "SG",
-          "postalCode": "9403",
+          "cantonId": "LU",
+          "postalCode": "6000",
           "city": {
-            "de": "Goldach",
+            "de": "Luzern",
             "en": null,
             "fr": null,
             "it": null
           }
         }
       },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
+    },
+    {
+      "id": "454acc3a-7027-4642-850c-cbc37ee760a9",
+      "projectId": "454acc3a-7027-4642-850c-cbc37ee760a9",
+      "publicationId": "516c7834-fb58-4ca3-9f42-afc107ff3bbb",
+      "title": "Sicherungselement für die öffentliche Beleuchtung 2027, Optionen bis 2031",
+      "buyer": "Elektrizitätswerk der Stadt Zürich (ewz)",
+      "location": "Zürich",
+      "type": "supply",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Sicherungselement für die öffentliche Beleuchtung 2027, Optionen bis 2031 · Auftraggeber: Elektrizitätswerk der Stadt Zürich (ewz) · Verfahren: open · Projekt-Nr.: 33773",
+      "url": "https://www.simap.ch/de/project-detail/454acc3a-7027-4642-850c-cbc37ee760a9",
+      "raw": {
+        "id": "454acc3a-7027-4642-850c-cbc37ee760a9",
+        "title": {
+          "de": "Sicherungselement für die öffentliche Beleuchtung 2027, Optionen bis 2031",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "projectNumber": "33773",
+        "projectType": "tender",
+        "projectSubType": "supply",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "516c7834-fb58-4ca3-9f42-afc107ff3bbb",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "33773-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Elektrizitätswerk der Stadt Zürich (ewz)",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "ZH",
+          "postalCode": "8050",
+          "city": {
+            "de": "Zürich",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "6365324e-2614-471d-86f8-6ff9c52c64ab",
@@ -6460,8 +7019,248 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
+    },
+    {
+      "id": "1712f754-acbf-4408-9ece-6fcbb66154ab",
+      "projectId": "1712f754-acbf-4408-9ece-6fcbb66154ab",
+      "publicationId": "15bdb99f-1645-4154-a0f3-5fcc3338e86f",
+      "title": "Sportanlage Grünfeld; Neubau Kunstrasenfeld 4",
+      "buyer": "Stadt Rapperswil-Jona; Bau, Liegenschaften",
+      "location": "Rapperswil-Jona",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Sportanlage Grünfeld; Neubau Kunstrasenfeld 4 · Auftraggeber: Stadt Rapperswil-Jona; Bau, Liegenschaften · Verfahren: open · Projekt-Nr.: 15669",
+      "url": "https://www.simap.ch/de/project-detail/1712f754-acbf-4408-9ece-6fcbb66154ab",
+      "raw": {
+        "id": "1712f754-acbf-4408-9ece-6fcbb66154ab",
+        "title": {
+          "de": "Sportanlage Grünfeld; Neubau Kunstrasenfeld 4",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "projectNumber": "15669",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "15bdb99f-1645-4154-a0f3-5fcc3338e86f",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "15669-02",
+        "pubType": "abandonment",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Stadt Rapperswil-Jona; Bau, Liegenschaften",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "SG",
+          "postalCode": "8645",
+          "city": {
+            "de": "Rapperswil-Jona",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
+    },
+    {
+      "id": "303283a3-2b9b-4fc5-a9da-5d277cde6367",
+      "projectId": "303283a3-2b9b-4fc5-a9da-5d277cde6367",
+      "publicationId": "9ddbf53d-7b76-4cd7-9301-bfe4fe9c3bf3",
+      "title": "Sportanlage Grünfeld; Neubau Kunstrasenfeld 4",
+      "buyer": "David Efrem",
+      "location": "Rapperswil-Jona",
+      "type": "construction",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Sportanlage Grünfeld; Neubau Kunstrasenfeld 4 · Auftraggeber: David Efrem · Verfahren: open · Projekt-Nr.: 16367",
+      "url": "https://www.simap.ch/de/project-detail/303283a3-2b9b-4fc5-a9da-5d277cde6367",
+      "raw": {
+        "id": "303283a3-2b9b-4fc5-a9da-5d277cde6367",
+        "title": {
+          "de": "Sportanlage Grünfeld; Neubau Kunstrasenfeld 4",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "projectNumber": "16367",
+        "projectType": "tender",
+        "projectSubType": "construction",
+        "processType": "open",
+        "lotsType": "without",
+        "publicationId": "9ddbf53d-7b76-4cd7-9301-bfe4fe9c3bf3",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "16367-02",
+        "pubType": "abandonment",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "David Efrem",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [],
+        "orderAddressOnlyDescription": "no",
+        "orderAddress": {
+          "countryId": "CH",
+          "cantonId": "SG",
+          "postalCode": "8645",
+          "city": {
+            "de": "Rapperswil-Jona",
+            "en": null,
+            "fr": null,
+            "it": null
+          }
+        }
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
+    },
+    {
+      "id": "b24a256b-5e1e-47c6-b8b1-6f01bf866369",
+      "projectId": "b24a256b-5e1e-47c6-b8b1-6f01bf866369",
+      "publicationId": "d3cea96f-2260-45c1-b6d5-70b22dbea044",
+      "title": "Submission für Sammlung und Transport und zum Teil Verwertung von Bioabfällen, Papier/Karton und Glas und Alu/Weissblech",
+      "buyer": "Gemeinde Binningen",
+      "location": "Schweiz",
+      "type": "service",
+      "deadline": "",
+      "deadlineDays": 30,
+      "status": "active",
+      "value": 0,
+      "text": "Submission für Sammlung und Transport und zum Teil Verwertung von Bioabfällen, Papier/Karton und Glas und Alu/Weissblech · Auftraggeber: Gemeinde Binningen · Verfahren: open · Projekt-Nr.: 35215",
+      "url": "https://www.simap.ch/de/project-detail/b24a256b-5e1e-47c6-b8b1-6f01bf866369",
+      "raw": {
+        "id": "b24a256b-5e1e-47c6-b8b1-6f01bf866369",
+        "title": {
+          "de": "Submission für Sammlung und Transport und zum Teil Verwertung von Bioabfällen, Papier/Karton und Glas und Alu/Weissblech",
+          "en": null,
+          "fr": "Marché de prestation de services dans la commune de Binningen: Collecte et transport des déchets verts; collecte et transport de papier et carton (collectés ensemble), collecte, transport et récyclage de verre (brise glace) et d'aluminium & fer-blanc",
+          "it": null
+        },
+        "projectNumber": "35215",
+        "projectType": "tender",
+        "projectSubType": "service",
+        "processType": "open",
+        "lotsType": "with",
+        "publicationId": "d3cea96f-2260-45c1-b6d5-70b22dbea044",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "35215-02",
+        "pubType": "award",
+        "corrected": false,
+        "procOfficeName": {
+          "de": "Gemeinde Binningen",
+          "en": null,
+          "fr": null,
+          "it": null
+        },
+        "lots": [
+          {
+            "publicationId": "d3cea96f-2260-45c1-b6d5-70b22dbea044",
+            "publicationDate": "2026-08-25",
+            "publicationNumber": "35215-02",
+            "pubType": "award",
+            "corrected": false,
+            "lotId": "d4891a5b-7548-437c-91f2-c3a5ad8a5661",
+            "lotNumber": 1,
+            "lotTitle": {
+              "de": "Teilleistung 1: Sammlung und Transport von Bioabfällen (Garten-, Küchen- und Speiseabfällen)",
+              "en": null,
+              "fr": null,
+              "it": null
+            },
+            "orderAddressOnlyDescription": "no",
+            "orderAddress": {
+              "countryId": "CH",
+              "cantonId": "BL",
+              "postalCode": "4102",
+              "city": {
+                "de": "Binningen",
+                "en": null,
+                "fr": null,
+                "it": null
+              }
+            }
+          },
+          {
+            "publicationId": "733fb0ca-702e-4ff3-8f9b-a0c550727ccb",
+            "publicationDate": "2026-08-25",
+            "publicationNumber": "35215-03",
+            "pubType": "award",
+            "corrected": false,
+            "lotId": "c837beea-c709-41e6-a38a-0038a5fb082c",
+            "lotNumber": 2,
+            "lotTitle": {
+              "de": "Sammlung und Transport von Papier und Karton (gemeinsam abgeführt)",
+              "en": null,
+              "fr": null,
+              "it": null
+            },
+            "orderAddressOnlyDescription": "no",
+            "orderAddress": {
+              "countryId": "CH",
+              "cantonId": "BL",
+              "postalCode": "4102",
+              "city": {
+                "de": "Binningen",
+                "en": null,
+                "fr": null,
+                "it": null
+              }
+            }
+          },
+          {
+            "publicationId": "36624536-d933-4a2e-a365-425927b8ce87",
+            "publicationDate": "2026-08-25",
+            "publicationNumber": "35215-04",
+            "pubType": "award",
+            "corrected": false,
+            "lotId": "4002def4-221d-4bdd-9cd2-0796bc63f51d",
+            "lotNumber": 3,
+            "lotTitle": {
+              "de": "Sammlung, Transport und Verwertung von Glas und Alu/Weissblech",
+              "en": null,
+              "fr": null,
+              "it": null
+            },
+            "orderAddressOnlyDescription": "no",
+            "orderAddress": {
+              "countryId": "CH",
+              "cantonId": "BL",
+              "postalCode": "4102",
+              "city": {
+                "de": "Binningen",
+                "en": null,
+                "fr": null,
+                "it": null
+              }
+            }
+          }
+        ],
+        "orderAddressOnlyDescription": null,
+        "orderAddress": null
+      },
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "edebce7c-7a97-4dfe-8c3c-e12f806c59ea",
@@ -6511,7 +7310,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -6567,7 +7366,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -6623,7 +7422,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -6679,7 +7478,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -6735,63 +7534,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "316e0465-46b4-4ac2-92d5-27b3de881977",
-      "projectId": "316e0465-46b4-4ac2-92d5-27b3de881977",
-      "publicationId": "ec6bee59-8bd3-459b-9b24-eb67375da183",
-      "title": "Unterhalts- und Austrittsreinigung Pflegezentrum Sonnenberg",
-      "buyer": "Pflegezentrum Sonnenberg (Cleangreen Consulting GmbH)",
-      "location": "Affoltern am Albis",
-      "type": "service",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Unterhalts- und Austrittsreinigung Pflegezentrum Sonnenberg · Auftraggeber: Pflegezentrum Sonnenberg (Cleangreen Consulting GmbH) · Verfahren: open · Projekt-Nr.: 41857",
-      "url": "https://www.simap.ch/de/project-detail/316e0465-46b4-4ac2-92d5-27b3de881977",
-      "raw": {
-        "id": "316e0465-46b4-4ac2-92d5-27b3de881977",
-        "title": {
-          "de": "Unterhalts- und Austrittsreinigung Pflegezentrum Sonnenberg",
-          "en": null,
-          "fr": "Entretien et nettoyage de sortie – Centre de soins Sonnenberg",
-          "it": null
-        },
-        "projectNumber": "41857",
-        "projectType": "tender",
-        "projectSubType": "service",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "ec6bee59-8bd3-459b-9b24-eb67375da183",
-        "publicationDate": "2026-08-14",
-        "publicationNumber": "41857-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Pflegezentrum Sonnenberg (Cleangreen Consulting GmbH)",
-          "en": null,
-          "fr": "Pflegezentrum Sonnenberg (Cleangreen Consulting GmbH)",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "ZH",
-          "postalCode": "8910",
-          "city": {
-            "de": "Affoltern am Albis",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -6847,114 +7590,58 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
-      "id": "2049a840-ac75-4450-a75f-36731c2aabc5",
-      "projectId": "2049a840-ac75-4450-a75f-36731c2aabc5",
-      "publicationId": "d27398fb-a4d3-4798-852d-c4eda0f7a08a",
-      "title": "WV Schweizersbild, Rohrleitungsbau Fernwärme Schweizersbildstrasse Etappe 1",
-      "buyer": "Schaffhausen - SH POWER",
-      "location": "Schaffhausen",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "WV Schweizersbild, Rohrleitungsbau Fernwärme Schweizersbildstrasse Etappe 1 · Auftraggeber: Schaffhausen - SH POWER · Verfahren: open · Projekt-Nr.: 39778",
-      "url": "https://www.simap.ch/de/project-detail/2049a840-ac75-4450-a75f-36731c2aabc5",
-      "raw": {
-        "id": "2049a840-ac75-4450-a75f-36731c2aabc5",
-        "title": {
-          "de": "WV Schweizersbild, Rohrleitungsbau Fernwärme Schweizersbildstrasse Etappe 1",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "projectNumber": "39778",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "d27398fb-a4d3-4798-852d-c4eda0f7a08a",
-        "publicationDate": "2026-08-14",
-        "publicationNumber": "39778-02",
-        "pubType": "award",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Schaffhausen - SH POWER",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "SH",
-          "postalCode": "8200",
-          "city": {
-            "de": "Schaffhausen",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
-    },
-    {
-      "id": "ef6c5438-d797-4ea1-9298-543a0048fb31",
-      "projectId": "ef6c5438-d797-4ea1-9298-543a0048fb31",
-      "publicationId": "b22fe614-c8e0-4af5-9dc0-258b3dafb07b",
-      "title": "Werkzeug und Elektromaterial",
-      "buyer": "Kantonsspital Winterthur - Supply Chain Management",
+      "id": "46388afd-b131-45e5-a50e-b0798100c293",
+      "projectId": "46388afd-b131-45e5-a50e-b0798100c293",
+      "publicationId": "c7e2a88b-9ae8-4c5a-ab31-9f3007a01609",
+      "title": "Wartung an Lüftungs- und Klimaanlagen im Labor Spiez",
+      "buyer": "armasuisse Ressourcen und Support CC WTO",
       "location": "Schweiz",
-      "type": "supply",
+      "type": "service",
       "deadline": "",
       "deadlineDays": 30,
       "status": "active",
       "value": 0,
-      "text": "Werkzeug und Elektromaterial · Auftraggeber: Kantonsspital Winterthur - Supply Chain Management · Verfahren: open · Projekt-Nr.: 39341",
-      "url": "https://www.simap.ch/de/project-detail/ef6c5438-d797-4ea1-9298-543a0048fb31",
+      "text": "Wartung an Lüftungs- und Klimaanlagen im Labor Spiez · Auftraggeber: armasuisse Ressourcen und Support CC WTO · Verfahren: open · Projekt-Nr.: 35445",
+      "url": "https://www.simap.ch/de/project-detail/46388afd-b131-45e5-a50e-b0798100c293",
       "raw": {
-        "id": "ef6c5438-d797-4ea1-9298-543a0048fb31",
+        "id": "46388afd-b131-45e5-a50e-b0798100c293",
         "title": {
-          "de": "Werkzeug und Elektromaterial",
-          "en": "Tools and electrical material",
-          "fr": null,
+          "de": "Wartung an Lüftungs- und Klimaanlagen im Labor Spiez",
+          "en": null,
+          "fr": "Entretien des systèmes de ventilation et de climatisation au laboratoire de Spiez",
           "it": null
         },
-        "projectNumber": "39341",
+        "projectNumber": "35445",
         "projectType": "tender",
-        "projectSubType": "supply",
+        "projectSubType": "service",
         "processType": "open",
         "lotsType": "with",
-        "publicationId": "b22fe614-c8e0-4af5-9dc0-258b3dafb07b",
-        "publicationDate": "2026-08-19",
-        "publicationNumber": "39341-02",
+        "publicationId": "c7e2a88b-9ae8-4c5a-ab31-9f3007a01609",
+        "publicationDate": "2026-08-25",
+        "publicationNumber": "35445-02",
         "pubType": "award",
         "corrected": false,
         "procOfficeName": {
-          "de": "Kantonsspital Winterthur - Supply Chain Management",
+          "de": "armasuisse Ressourcen und Support CC WTO",
           "en": null,
           "fr": null,
           "it": null
         },
         "lots": [
           {
-            "publicationId": "b22fe614-c8e0-4af5-9dc0-258b3dafb07b",
-            "publicationDate": "2026-08-19",
-            "publicationNumber": "39341-02",
+            "publicationId": "c7e2a88b-9ae8-4c5a-ab31-9f3007a01609",
+            "publicationDate": "2026-08-25",
+            "publicationNumber": "35445-02",
             "pubType": "award",
             "corrected": false,
-            "lotId": "125eba0e-a34f-4405-ab8b-75b932b4eca8",
+            "lotId": "3a344e75-975b-4be7-8112-50908d8ab08b",
             "lotNumber": 1,
             "lotTitle": {
-              "de": "Werkzeuge",
+              "de": "Wartungs- und Instandhaltungsarbeiten der Lüftungsanlage im ABC Zentrum Spiez",
               "en": null,
               "fr": null,
               "it": null
@@ -6962,10 +7649,10 @@
             "orderAddressOnlyDescription": "no",
             "orderAddress": {
               "countryId": "CH",
-              "cantonId": "ZH",
-              "postalCode": "8401",
+              "cantonId": "BE",
+              "postalCode": "3700",
               "city": {
-                "de": "Winterthur",
+                "de": "Spiez",
                 "en": null,
                 "fr": null,
                 "it": null
@@ -6973,15 +7660,15 @@
             }
           },
           {
-            "publicationId": "b9ae5d82-3ac2-4a79-959f-6351763f7204",
-            "publicationDate": "2026-08-19",
-            "publicationNumber": "39341-03",
+            "publicationId": "0cdf99ab-007a-4375-bd87-b480cf245d17",
+            "publicationDate": "2026-08-25",
+            "publicationNumber": "35445-03",
             "pubType": "award",
             "corrected": false,
-            "lotId": "2057eec4-e915-4530-88f6-f7e3083ec55c",
+            "lotId": "fc36a278-2b67-4063-a24c-7e032dba7336",
             "lotNumber": 2,
             "lotTitle": {
-              "de": "Elektromaterial",
+              "de": "Wartungs- und Instandhaltungsarbeiten der Tiefkühl-, Kälte- und Klimaanlagen / Steckfertige Kühlschränke und Flockeneismaschinen im ABC Zentrum Spiez",
               "en": null,
               "fr": null,
               "it": null
@@ -6989,10 +7676,10 @@
             "orderAddressOnlyDescription": "no",
             "orderAddress": {
               "countryId": "CH",
-              "cantonId": "ZH",
-              "postalCode": "8401",
+              "cantonId": "BE",
+              "postalCode": "3700",
               "city": {
-                "de": "Winterthur",
+                "de": "Spiez",
                 "en": null,
                 "fr": null,
                 "it": null
@@ -7003,9 +7690,9 @@
         "orderAddressOnlyDescription": null,
         "orderAddress": null
       },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
-      "isNew": false
+      "firstSeen": "2026-08-24T22:01:41.413886+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
+      "isNew": true
     },
     {
       "id": "433a7b82-af91-482b-b5ce-096b0da8bfd6",
@@ -7060,7 +7747,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -7116,7 +7803,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -7172,7 +7859,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -7228,7 +7915,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -7284,7 +7971,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -7340,7 +8027,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -7396,7 +8083,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     },
     {
@@ -7447,7 +8134,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-24T20:58:37.200037+00:00",
+      "lastSeen": "2026-08-24T22:01:41.413886+00:00",
       "isNew": false
     }
   ]
