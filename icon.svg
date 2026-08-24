@@ -1,14 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="TenderHawk TH Fleur-de-lis">
-<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07182d"/><stop offset=".55" stop-color="#102b4d"/><stop offset="1" stop-color="#061528"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff0a0"/><stop offset=".28" stop-color="#f2c75c"/><stop offset=".62" stop-color="#bd7b18"/><stop offset=".82" stop-color="#f4ce65"/><stop offset="1" stop-color="#9a6010"/></linearGradient><filter id="s"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-opacity=".45"/></filter></defs>
-<rect x="8" y="8" width="496" height="496" rx="96" fill="url(#bg)"/>
-<rect x="31" y="31" width="450" height="450" rx="77" fill="none" stroke="url(#g)" stroke-width="5"/>
-<g fill="none" stroke="url(#g)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" filter="url(#s)">
-<path d="M256 74c-35 48-49 85-45 124 3 31 18 57 45 83 27-26 42-52 45-83 4-39-10-76-45-124Z"/>
-<path d="M226 230c-27-55-91-65-122-23-29 40 0 87 53 82-28-16-34-42-18-61 19-22 50-14 70 14l17 24"/>
-<path d="M286 230c27-55 91-65 122-23 29 40 0 87-53 82 28-16 34-42 18-61-19-22-50-14-70 14l-17 24"/>
-<path d="M224 282c-25 12-34 39-20 58 15 21 42 17 56-5-3 27 2 48 16 67 14-19 19-40 16-67 14 22 41 26 56 5 14-19 5-46-20-58"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="HOFILIGHT ONE H">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#061523"/><stop offset=".55" stop-color="#0b2942"/><stop offset="1" stop-color="#04111d"/></linearGradient>
+  <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#d9edff"/><stop offset=".43" stop-color="#1d8fff"/><stop offset="1" stop-color="#0068d8"/></linearGradient>
+  <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1594ff"/><stop offset="1" stop-color="#0062cb"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect x="10" y="10" width="492" height="492" rx="104" fill="url(#bg)"/>
+<rect x="29" y="29" width="454" height="454" rx="86" fill="none" stroke="url(#edge)" stroke-width="8"/>
+<g filter="url(#glow)">
+  <path d="M150 142h74l-34 86h102l34-86h74l-91 228h-74l35-88H168l-35 88H59l91-228Z" fill="url(#blue)"/>
+  <path d="M188 228h104l-18 54H168l20-54Z" fill="#eaf6ff" opacity=".95"/>
 </g>
-<rect x="197" y="266" width="118" height="27" rx="14" fill="#0a213b" stroke="url(#g)" stroke-width="5"/>
-<path d="M132 423h66M314 423h66" stroke="url(#g)" stroke-width="3"/>
-<text x="256" y="445" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="64" font-weight="500" letter-spacing="7" fill="url(#g)" filter="url(#s)">TH</text>
+<path d="M92 404c48-38 87-56 117-56 25 0 44 10 63 30 18-15 37-23 57-23 28 0 59 16 92 49-54-13-105-18-153-16-55 2-114 7-176 16Z" fill="#9fd2ff" opacity=".28"/>
 </svg>
