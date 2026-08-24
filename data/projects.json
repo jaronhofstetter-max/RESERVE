@@ -1,7 +1,10 @@
 {
-  "generatedAt": "2026-08-24T14:28:00.123784+00:00",
+  "generatedAt": "2026-08-24T16:14:49.040565+00:00",
   "source": "simap.ch public API",
   "count": 132,
+  "activeCount": 132,
+  "expiredCount": 0,
+  "newCount": 0,
   "seeds": [
     "Sanitär",
     "Heizung",
@@ -24,6 +27,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "(b26000-8) Bern, Fe15a, Unterhalt / BKP 148.7, 287 · Auftraggeber: Bundesamt für Bauten und Logistik BBL · Verfahren: open · Projekt-Nr.: 42237",
       "url": "https://www.simap.ch/de/project-detail/ce64fa63-6001-457c-8c50-42ac9f02e5c6",
@@ -59,7 +63,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "67e82760-d490-45fc-98fd-b261beb4d46f",
@@ -71,6 +78,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "(b26042-3) Posieux, AGROSCOPE, AD, Sanierung des Forschungs- und Verwaltungsgebäudes / BKP 251-256, 259 · Auftraggeber: Bundesamt für Bauten und Logistik BBL · Verfahren: open · Projekt-Nr.: 41871",
       "url": "https://www.simap.ch/de/project-detail/67e82760-d490-45fc-98fd-b261beb4d46f",
@@ -106,7 +114,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "6e4055c5-2298-4dc4-a2f8-f49c28eb88a2",
@@ -118,6 +129,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "00476 Gebäude RAI, Ausschreibung BKP293 - Elektroingenieur · Auftraggeber: Universität Zürich, Direktion Immobilien und Betrieb · Verfahren: open · Projekt-Nr.: 42664",
       "url": "https://www.simap.ch/de/project-detail/6e4055c5-2298-4dc4-a2f8-f49c28eb88a2",
@@ -158,7 +170,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "665bd559-964d-4a1e-b349-e60e5a7bfbb0",
@@ -170,6 +185,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "231.01 Notstromgeneratoren RIGG 1. UG und 2. UG Süd IS Haustechnik · Auftraggeber: Insel Gruppe AG · Verfahren: open · Projekt-Nr.: 42775",
       "url": "https://www.simap.ch/de/project-detail/665bd559-964d-4a1e-b349-e60e5a7bfbb0",
@@ -210,7 +226,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "c2c642e9-fdae-48c7-b5c4-1fb64a157eec",
@@ -222,6 +241,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "250 Sanitäranlagen - Neubau Primarschule mit Turnhalle Erlenstrasse, Oberglatt · Auftraggeber: Gemeinde Oberglatt (Anderegg Partner AG) · Verfahren: open · Projekt-Nr.: 39698",
       "url": "https://www.simap.ch/de/project-detail/c2c642e9-fdae-48c7-b5c4-1fb64a157eec",
@@ -262,7 +282,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "74672801-26e4-4361-bf32-78569a1e294d",
@@ -274,6 +297,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "45789.10 / 237 Gebäudeautomation, Staatsarchiv, Gesamtinstandsetzung Gebäudetechnik, Winterthurerstrasse 170, 8057 Zürich · Auftraggeber: Hochbauamt Baubereich A · Verfahren: open · Projekt-Nr.: 38115",
       "url": "https://www.simap.ch/de/project-detail/74672801-26e4-4361-bf32-78569a1e294d",
@@ -309,7 +333,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "4e179c5d-eb4d-4cae-bfbc-b83ab3afab1a",
@@ -321,6 +348,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "45789.10 / 250 Sanitär, Staatsarchiv, Gesamtinstandsetzung Gebäudetechnik, Winterthurerstrasse 170, 8057 Zürich · Auftraggeber: Hochbauamt Baubereich A · Verfahren: invitation · Projekt-Nr.: 38918",
       "url": "https://www.simap.ch/de/project-detail/4e179c5d-eb4d-4cae-bfbc-b83ab3afab1a",
@@ -356,7 +384,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "e9f3a5c8-574d-45a4-a9f3-2fa365c464c6",
@@ -368,6 +399,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "ARA Jungholz - NS-Verteilungen · Auftraggeber: Stadt Uster, ARA Jungholz (IBG Engineering AG) · Verfahren: open · Projekt-Nr.: 34999",
       "url": "https://www.simap.ch/de/project-detail/e9f3a5c8-574d-45a4-a9f3-2fa365c464c6",
@@ -408,7 +440,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "12c88b97-5dff-4a47-8468-77fcc2a4e1b4",
@@ -420,6 +455,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "ARA Jungholz - Schaltgerätekombination · Auftraggeber: Stadt Uster, ARA Jungholz (IBG Engineering AG) · Verfahren: open · Projekt-Nr.: 35003",
       "url": "https://www.simap.ch/de/project-detail/12c88b97-5dff-4a47-8468-77fcc2a4e1b4",
@@ -460,7 +496,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "11de9ed5-747d-4afd-bbb8-e12756568718",
@@ -472,6 +511,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "ARA Thurau: Grundwasserabdichtungen / Weisse Wanne · Auftraggeber: Abwasserverband Thurau · Verfahren: open · Projekt-Nr.: 42796",
       "url": "https://www.simap.ch/de/project-detail/11de9ed5-747d-4afd-bbb8-e12756568718",
@@ -512,7 +552,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "2f2c40ad-5c50-4cd8-93b4-d4f6c074dc5d",
@@ -524,6 +567,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "ARA Uster - V-220 - Automation · Auftraggeber: Stadt Uster, ARA Jungholz (IBG Engineering AG) · Verfahren: direct · Projekt-Nr.: 42752",
       "url": "https://www.simap.ch/de/project-detail/2f2c40ad-5c50-4cd8-93b4-d4f6c074dc5d",
@@ -559,7 +603,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "7eb1044b-c574-426d-a657-c72cdc6b8bf1",
@@ -571,6 +618,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "ARA Zimmerberg, Schlammentwässerung · Auftraggeber: Zweckverband ARA Zimmerberg · Verfahren: open · Projekt-Nr.: 34974",
       "url": "https://www.simap.ch/de/project-detail/7eb1044b-c574-426d-a657-c72cdc6b8bf1",
@@ -611,7 +659,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "91888210-7f90-4bb8-bbfa-ab6de4ccab27",
@@ -623,6 +674,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "AS2035; Doppelspurausbau und ZFZ, Dübendorf-Uster-Aathal · Auftraggeber: Schweizerische Bundesbahnen SBB, Infrastruktur – Einkauf, Supply Chain und Produktion, Einkauf Bau, Region Ostprojekte · Verfahren: open · Projekt-Nr.: 30229",
       "url": "https://www.simap.ch/de/project-detail/91888210-7f90-4bb8-bbfa-ab6de4ccab27",
@@ -658,7 +710,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "c6eb1c3d-d8ec-4634-8fce-a4a79fd28077",
@@ -670,6 +725,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Abschluss Energieliefervertrag zur Wärmeversorgung Witellikerstrasse 22, Zürich · Auftraggeber: Baudirektion Kanton Zürich - Immobilienamt · Verfahren: direct · Projekt-Nr.: 42339",
       "url": "https://www.simap.ch/de/project-detail/c6eb1c3d-d8ec-4634-8fce-a4a79fd28077",
@@ -705,7 +761,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "bea116fb-033f-40a4-a10d-b81330fa04f5",
@@ -717,6 +776,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Allschwil – SEK I, Ersatzneubau / Heizungs- und Kälteverteilung · Auftraggeber: Zentrale Beschaffungsstelle Kanton Basel-Landschaft · Verfahren: open · Projekt-Nr.: 29317",
       "url": "https://www.simap.ch/de/project-detail/bea116fb-033f-40a4-a10d-b81330fa04f5",
@@ -752,7 +812,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "b0ac3638-7379-448a-9208-cca933d83eee",
@@ -764,6 +827,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Ausbau ARA Bachwis: Ausrüstung Biologie · Auftraggeber: Zweckverband Kläranlage VSFM (Hunziker Betatech AG) · Verfahren: open · Projekt-Nr.: 34935",
       "url": "https://www.simap.ch/de/project-detail/b0ac3638-7379-448a-9208-cca933d83eee",
@@ -804,7 +868,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "30e7b22f-39fc-46e3-a837-735f1ffb6f78",
@@ -816,6 +883,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Ausbau ARA Bachwis: Ausrüstung GAK-Filtration · Auftraggeber: Zweckverband Kläranlage VSFM (Hunziker Betatech AG) · Verfahren: open · Projekt-Nr.: 34723",
       "url": "https://www.simap.ch/de/project-detail/30e7b22f-39fc-46e3-a837-735f1ffb6f78",
@@ -856,7 +924,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "cc126dac-7c46-4ad1-9793-d68bc44f77cf",
@@ -868,6 +939,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Ausbau ARA Bachwis: Baugrube und Baumeister · Auftraggeber: Zweckverband Kläranlage VSFM (Hunziker Betatech AG) · Verfahren: open · Projekt-Nr.: 36787",
       "url": "https://www.simap.ch/de/project-detail/cc126dac-7c46-4ad1-9793-d68bc44f77cf",
@@ -908,7 +980,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "2f4c885d-d4d0-4d4c-9259-f0b053bc78b3",
@@ -920,6 +995,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Ausbau ARA Bachwis: Sanitärarbeiten · Auftraggeber: Zweckverband Kläranlage VSFM (Hunziker Betatech AG) · Verfahren: open · Projekt-Nr.: 37034",
       "url": "https://www.simap.ch/de/project-detail/2f4c885d-d4d0-4d4c-9259-f0b053bc78b3",
@@ -960,7 +1036,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "6f0c2be2-aeb3-4871-931a-759ee33ba503",
@@ -972,6 +1051,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Ausbau ARA Bachwis: Schützen · Auftraggeber: Zweckverband Kläranlage VSFM (Hunziker Betatech AG) · Verfahren: open · Projekt-Nr.: 36783",
       "url": "https://www.simap.ch/de/project-detail/6f0c2be2-aeb3-4871-931a-759ee33ba503",
@@ -1012,7 +1092,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "cbb1df2b-0029-4144-99a1-a4c3e63fe290",
@@ -1024,6 +1107,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Ausbau Lötschberg-Basistunnel - VL14 Vorbereitung IP Mitholz · Auftraggeber: BLS AG - Finance & SCM - Strategische Beschaffung · Verfahren: open · Projekt-Nr.: 41901",
       "url": "https://www.simap.ch/de/project-detail/cbb1df2b-0029-4144-99a1-a4c3e63fe290",
@@ -1064,7 +1148,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "378a51fc-7561-4052-bcab-7e05d77051ff",
@@ -1076,6 +1163,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Ausbildungszentrum Riedikon, Neubau Logistik- und Verwaltungszentrum · Auftraggeber: Stadt Uster, Baumanagement · Verfahren: selective · Projekt-Nr.: 42755",
       "url": "https://www.simap.ch/de/project-detail/378a51fc-7561-4052-bcab-7e05d77051ff",
@@ -1116,7 +1204,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "38d454d0-e3c8-4fac-9d73-df909e870dd6",
@@ -1128,6 +1219,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Ausschreibung Planerleistungen Sanitärplaner · Auftraggeber: Wohn- und Pflegezentrum Berghof · Verfahren: open · Projekt-Nr.: 42587",
       "url": "https://www.simap.ch/de/project-detail/38d454d0-e3c8-4fac-9d73-df909e870dd6",
@@ -1168,7 +1260,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "5ea3ba6b-fd96-4480-a528-332d71c5df66",
@@ -1180,6 +1275,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Ausschreibung der Technischen Leitung sowie der Planungs- und Ingenieurarbeiten der Landumlegung N1/Gäu · Auftraggeber: Flurgenossenschaft Landumlegung N1/Gäu, vertreten durch den Präsidenten · Verfahren: open · Projekt-Nr.: 14899",
       "url": "https://www.simap.ch/de/project-detail/5ea3ba6b-fd96-4480-a528-332d71c5df66",
@@ -1215,7 +1311,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "0374a802-5ad2-4eb8-9814-3e6baecc729f",
@@ -1227,6 +1326,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "BAFU – 467.523.12 - Durchsetzung ISPM 15 Standard (2027 – 2034) · Auftraggeber: Bundesamt für Umwelt BAFU · Verfahren: open · Projekt-Nr.: 41265",
       "url": "https://www.simap.ch/de/project-detail/0374a802-5ad2-4eb8-9814-3e6baecc729f",
@@ -1262,7 +1362,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "7bb02cbd-0caa-43e1-a56c-31686b8bdc33",
@@ -1274,6 +1377,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "BAV 22478 Wohnsiedlung Luchswiese (unter Vorbehalt der Kreditgenehmigung) - BKP 251 Allgemeine Sanitärapparate · Auftraggeber: HBD - Amt für Hochbauten (AHB) · Verfahren: open · Projekt-Nr.: 26242",
       "url": "https://www.simap.ch/de/project-detail/7bb02cbd-0caa-43e1-a56c-31686b8bdc33",
@@ -1309,7 +1413,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "29d8814d-5878-47c4-be73-79858a23f0f2",
@@ -1321,6 +1428,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "BAV 27664 Restaurant Muggenbühl, Gesamtinstandsetzung, Generalplanungsleistungen (unter Vorbehalt der Kreditgenehmigung) · Auftraggeber: HBD - Amt für Hochbauten (AHB) · Verfahren: selective · Projekt-Nr.: 28537",
       "url": "https://www.simap.ch/de/project-detail/29d8814d-5878-47c4-be73-79858a23f0f2",
@@ -1356,7 +1464,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "9ecb1c89-ecab-41dd-8a71-a1b04f56f406",
@@ -1368,6 +1479,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "BAV 59016 Recyclingzentrum Juch-Areal, Neubau Juch-Areal - BKP 250 Sanitäranlagen gesamt · Auftraggeber: HBD - Amt für Hochbauten (AHB) · Verfahren: open · Projekt-Nr.: 35358",
       "url": "https://www.simap.ch/de/project-detail/9ecb1c89-ecab-41dd-8a71-a1b04f56f406",
@@ -1403,7 +1515,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "2c5d62ca-1196-4f30-a605-77e301109a3a",
@@ -1415,6 +1530,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "BAV 81009 SA Utogrund, Ersatzneubau - BKP 230 Elektroanlagen · Auftraggeber: HBD - Amt für Hochbauten (AHB) · Verfahren: open · Projekt-Nr.: 39371",
       "url": "https://www.simap.ch/de/project-detail/2c5d62ca-1196-4f30-a605-77e301109a3a",
@@ -1450,7 +1566,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "0fd0dbaa-a315-4424-8a9d-e861b101202e",
@@ -1462,6 +1581,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "BAV 81009 SA Utogrund, Ersatzneubau - BKP 242 Heizungsanlagen · Auftraggeber: HBD - Amt für Hochbauten (AHB) · Verfahren: open · Projekt-Nr.: 39376",
       "url": "https://www.simap.ch/de/project-detail/0fd0dbaa-a315-4424-8a9d-e861b101202e",
@@ -1497,7 +1617,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "b2940032-8ce9-4124-b973-f39314dd6691",
@@ -1509,6 +1632,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "BKP 23, Elektroanlagen · Auftraggeber: Solothurner Spitäler AG - Immobilienmanagement · Verfahren: open · Projekt-Nr.: 40308",
       "url": "https://www.simap.ch/de/project-detail/b2940032-8ce9-4124-b973-f39314dd6691",
@@ -1549,7 +1673,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "b47bc44f-a115-4702-90b7-e8d5b60fffe5",
@@ -1561,6 +1688,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "BKP 233 Lieferung Leuchten und Lampen · Auftraggeber: Stiftung Rosenpark Gersau (Jung Meyerhans AG) · Verfahren: open · Projekt-Nr.: 42746",
       "url": "https://www.simap.ch/de/project-detail/b47bc44f-a115-4702-90b7-e8d5b60fffe5",
@@ -1601,7 +1729,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "591508d1-ab55-481c-a950-b6bdbff97ed6",
@@ -1613,6 +1744,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "BKP 237 Gebäudeautomation - Neubau Hallenbad Oberdorf · Auftraggeber: Stadt Dübendorf - Stabstelle Stadtplanung · Verfahren: open · Projekt-Nr.: 29495",
       "url": "https://www.simap.ch/de/project-detail/591508d1-ab55-481c-a950-b6bdbff97ed6",
@@ -1653,7 +1785,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "c5aa5393-25d8-4634-b6c5-49673adcdda4",
@@ -1665,6 +1800,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "BKP 242 Heizung · Auftraggeber: Stadt Wädenswil, Immobilien, Projekt Neubau Gartenhäuser GB, Büelenstrasse 5+7 · Verfahren: open · Projekt-Nr.: 29021",
       "url": "https://www.simap.ch/de/project-detail/c5aa5393-25d8-4634-b6c5-49673adcdda4",
@@ -1705,7 +1841,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "ac8840b7-b9b8-4a26-9e45-d1c012435991",
@@ -1717,6 +1856,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "BKP 250 Sanitäranlagen · Auftraggeber: Stadt Wädenswil, Immobilien, Projekt Neubau Gartenhäuser GB, Büelenstrasse 5+7 · Verfahren: open · Projekt-Nr.: 29023",
       "url": "https://www.simap.ch/de/project-detail/ac8840b7-b9b8-4a26-9e45-d1c012435991",
@@ -1757,7 +1897,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "c00be1c8-00a5-4a13-ab27-feca70a46fb7",
@@ -1769,6 +1912,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Bau Nr. 14056 - Lärmsanierung wesentliche Änderung Stampfenbachstrasse BKP 221.2 Kunststoff Fenster · Auftraggeber: Tiefbauamt, Fachstelle Schallschutzfenster · Verfahren: open · Projekt-Nr.: 42730",
       "url": "https://www.simap.ch/de/project-detail/c00be1c8-00a5-4a13-ab27-feca70a46fb7",
@@ -1809,7 +1953,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "4428d8a4-39ce-45b6-96c1-9527f43225bc",
@@ -1821,6 +1968,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Baumeisterarbeiten · Auftraggeber: Gemeindeverwaltung Horw · Verfahren: open · Projekt-Nr.: 42449",
       "url": "https://www.simap.ch/de/project-detail/4428d8a4-39ce-45b6-96c1-9527f43225bc",
@@ -1861,7 +2009,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "5b7cdabd-b7c9-480d-b240-673d58398260",
@@ -1873,6 +2024,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Bereinigung Schemata und Stammdatenaufbau für ein KKS-Verwaltungssystem · Auftraggeber: DIB - Elektrizitätswerk der Stadt Zürich (ewz) · Verfahren: open · Projekt-Nr.: 42736",
       "url": "https://www.simap.ch/de/project-detail/5b7cdabd-b7c9-480d-b240-673d58398260",
@@ -1958,7 +2110,10 @@
         ],
         "orderAddressOnlyDescription": null,
         "orderAddress": null
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "83670de3-4a1a-4c53-9115-d04cf3eef19f",
@@ -1970,6 +2125,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Beschaffung Ersatz Lüfterwagen Simplontunnel · Auftraggeber: Infrastruktur Flottenprojekte (I-ESP-FFM-FPJ) · Verfahren: open · Projekt-Nr.: 42865",
       "url": "https://www.simap.ch/de/project-detail/83670de3-4a1a-4c53-9115-d04cf3eef19f",
@@ -2010,7 +2166,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "c551d109-685c-4009-9277-c7271cf98d79",
@@ -2022,6 +2181,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Beschaffung von Reinigungs- und Betriebsunterhaltmaterial · Auftraggeber: Immobilienamt · Verfahren: open · Projekt-Nr.: 40771",
       "url": "https://www.simap.ch/de/project-detail/c551d109-685c-4009-9277-c7271cf98d79",
@@ -2057,7 +2217,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "6796deb9-3956-4046-93cb-3a3951df0287",
@@ -2069,6 +2232,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Dreispitz TBA Werkhof Neubauten, BKP 244 Lüftungsinstallationen · Auftraggeber: Bau- und Verkehrsdepartement des Kantons Basel-Stadt, Kantonale Fachstelle für öffentliche Beschaffungen (KFöB) · Verfahren: open · Projekt-Nr.: 30972",
       "url": "https://www.simap.ch/de/project-detail/6796deb9-3956-4046-93cb-3a3951df0287",
@@ -2109,7 +2273,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "7dcfb47f-8104-4587-8389-af7e7cc66708",
@@ -2121,6 +2288,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Dreispitz TBA Werkhof Neubauten, BKP 250 Sanitärinstallationen · Auftraggeber: Bau- und Verkehrsdepartement des Kantons Basel-Stadt, Kantonale Fachstelle für öffentliche Beschaffungen (KFöB) · Verfahren: open · Projekt-Nr.: 30971",
       "url": "https://www.simap.ch/de/project-detail/7dcfb47f-8104-4587-8389-af7e7cc66708",
@@ -2161,7 +2329,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "0c33576b-a035-45e7-9ad8-12cca29113ee",
@@ -2173,6 +2344,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "ETH Zürich, CAB/CNB Ersatz Gebäudeautomation, BKP 243/244, Wärmeverteilung/Lüftungsanlagen · Auftraggeber: ETH Zürich - Real Estate Management · Verfahren: open · Projekt-Nr.: 38588",
       "url": "https://www.simap.ch/de/project-detail/0c33576b-a035-45e7-9ad8-12cca29113ee",
@@ -2208,7 +2380,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "fe3b7cbe-9724-4324-97d0-2b08dc52d2c7",
@@ -2220,6 +2395,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Elektroinstallationen · Auftraggeber: Gemeindeverwaltung Horw · Verfahren: open · Projekt-Nr.: 42450",
       "url": "https://www.simap.ch/de/project-detail/fe3b7cbe-9724-4324-97d0-2b08dc52d2c7",
@@ -2260,7 +2436,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "3237d2aa-2f4b-43c8-8f1c-8f218c6158bb",
@@ -2272,6 +2451,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Energiezentrale Burgdorf West - BKP 337 Gebäudeautomation · Auftraggeber: Localnet AG · Verfahren: open · Projekt-Nr.: 40606",
       "url": "https://www.simap.ch/de/project-detail/3237d2aa-2f4b-43c8-8f1c-8f218c6158bb",
@@ -2312,7 +2492,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "d6f36f99-2cea-4b2f-8fa1-9b464ece9886",
@@ -2324,6 +2507,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Entwicklung Schulareal Ennetbürgen - Honorarausschreibung Fachplanung BKP 293 Elektroplanung, Gebäudeautomation, Beleuchtungsplanung, Türfachplanung · Auftraggeber: Politische Gemeinde Ennetbürgen · Verfahren: open · Projekt-Nr.: 41853",
       "url": "https://www.simap.ch/de/project-detail/d6f36f99-2cea-4b2f-8fa1-9b464ece9886",
@@ -2364,7 +2548,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "70645235-e068-4bf5-b3c1-e618fa905f4e",
@@ -2376,6 +2563,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Entwicklung Schulareal Ennetbürgen - Honorarausschreibung Fachplanung BKP 294/295 HLKK-, Sanitär-Planung · Auftraggeber: Politische Gemeinde Ennetbürgen · Verfahren: open · Projekt-Nr.: 41856",
       "url": "https://www.simap.ch/de/project-detail/70645235-e068-4bf5-b3c1-e618fa905f4e",
@@ -2416,7 +2604,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "0f28c040-887e-417e-9125-776004edc96c",
@@ -2428,6 +2619,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Erneuerung der Weichenheizungen auf dem Streckennetz · Auftraggeber: Sihltal Zürich Uetliberg Bahn SZU AG · Verfahren: open · Projekt-Nr.: 32495",
       "url": "https://www.simap.ch/de/project-detail/0f28c040-887e-417e-9125-776004edc96c",
@@ -2463,7 +2655,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "fecacc22-c03d-4d58-bfc4-ac7681a3acaf",
@@ -2475,6 +2670,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Erweiterung Hebelschule, BKP 250.0 Sanitäranlagen · Auftraggeber: Einwohnergemeinde Riehen · Verfahren: open · Projekt-Nr.: 41798",
       "url": "https://www.simap.ch/de/project-detail/fecacc22-c03d-4d58-bfc4-ac7681a3acaf",
@@ -2515,7 +2711,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "1b495ad0-7990-4497-84de-c0c34029088a",
@@ -2527,6 +2726,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Erweiterung des Musée gruérien und der Bibliothek von Bulle / CFC 271 – 281 – 283 – 285  Trockenbau- und Malerarbeiten · Auftraggeber: Consortium Sergison Bates architekten / Jaccaud + Associés · Verfahren: open · Projekt-Nr.: 34537",
       "url": "https://www.simap.ch/de/project-detail/1b495ad0-7990-4497-84de-c0c34029088a",
@@ -2567,7 +2767,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "6b53a47f-1441-4c43-a4fa-e2292c54356e",
@@ -2579,6 +2782,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Erweiterung des Musée gruérien und der Bibliothek von Bulle / CFC 272-273-281-283 Umfassende Tischlerarbeiten · Auftraggeber: Consortium Sergison Bates architekten / Jaccaud + Associés · Verfahren: open · Projekt-Nr.: 37764",
       "url": "https://www.simap.ch/de/project-detail/6b53a47f-1441-4c43-a4fa-e2292c54356e",
@@ -2619,7 +2823,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "6b059701-527e-4480-82e4-2bf8d28b0b68",
@@ -2631,6 +2838,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Erweiterung und Sanierung Betriebsgebäude IBB Energie AG · Auftraggeber: IBB Energie AG · Verfahren: direct · Projekt-Nr.: 39993",
       "url": "https://www.simap.ch/de/project-detail/6b059701-527e-4480-82e4-2bf8d28b0b68",
@@ -2666,7 +2874,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "d4e4ec4c-9a29-4205-93d9-fb7d41ceb588",
@@ -2678,6 +2889,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Flughafen Zürich AG_Erw. Bus Station_BKP 213 Montage in Stahlbau · Auftraggeber: Flughafen Zürich AG · Verfahren: open · Projekt-Nr.: 42645",
       "url": "https://www.simap.ch/de/project-detail/d4e4ec4c-9a29-4205-93d9-fb7d41ceb588",
@@ -2718,7 +2930,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "e70b91a0-e4a1-424d-addd-e3fc75d65d91",
@@ -2730,6 +2945,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "HB3060.0451 Kühlung Schulzimmer Lüssiweg 24 Teil 2, Zug · Auftraggeber: Hochbauamt Kanton Zug · Verfahren: open · Projekt-Nr.: 34780",
       "url": "https://www.simap.ch/de/project-detail/e70b91a0-e4a1-424d-addd-e3fc75d65d91",
@@ -2770,7 +2986,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "4510be07-1de0-4c3d-940d-c1417fa4c7be",
@@ -2782,6 +3001,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "HLK Installationen (Ausführung Ersatz der Heizungs-, Lüftungs- und Kälteanlagen im Unterwerk Sihlfeld) · Auftraggeber: DIB - Elektrizitätswerk der Stadt Zürich (ewz) · Verfahren: open · Projekt-Nr.: 42260",
       "url": "https://www.simap.ch/de/project-detail/4510be07-1de0-4c3d-940d-c1417fa4c7be",
@@ -2822,7 +3042,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "d762b884-27b6-43fb-ac84-d841d315a0c5",
@@ -2834,6 +3057,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "HLKSE/MSRL Planungsleistungen und Gesamtleitung · Auftraggeber: DIB - Elektrizitätswerk der Stadt Zürich (ewz) · Verfahren: invitation · Projekt-Nr.: 35304",
       "url": "https://www.simap.ch/de/project-detail/d762b884-27b6-43fb-ac84-d841d315a0c5",
@@ -2874,7 +3098,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "b423b069-acbf-4801-8fcf-b37c6bf55b96",
@@ -2886,6 +3113,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Handelssystem für Strom · Auftraggeber: Schweizerische Bundesbahnen SBB, Informatik Einkauf · Verfahren: selective · Projekt-Nr.: 40133",
       "url": "https://www.simap.ch/de/project-detail/b423b069-acbf-4801-8fcf-b37c6bf55b96",
@@ -2921,7 +3149,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "53193974-4392-4a4d-ad8d-5ed4afb1366b",
@@ -2933,6 +3164,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Heizungsersatz Giuvaulta, Rothenbrunnen · Auftraggeber: Giuvaulta, Zentrum für Sonderpädagogik · Verfahren: open · Projekt-Nr.: 39666",
       "url": "https://www.simap.ch/de/project-detail/53193974-4392-4a4d-ad8d-5ed4afb1366b",
@@ -2973,7 +3205,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "97543b68-3bc4-4fa2-9eb1-5d715dd67510",
@@ -2985,6 +3220,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Heizungsersatz, WS Grüt, 8047 Zürich · Auftraggeber: Liegenschaften Stadt Zürich (LSZ) · Verfahren: open · Projekt-Nr.: 41993",
       "url": "https://www.simap.ch/de/project-detail/97543b68-3bc4-4fa2-9eb1-5d715dd67510",
@@ -3025,7 +3261,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "b7fa6e5b-3c78-4b31-a3b7-6e56cc813d45",
@@ -3037,6 +3276,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "INO MGA; Ersatz ZUKO · Auftraggeber: Insel Gruppe AG - Direktion Immobilien und Betrieb · Verfahren: direct · Projekt-Nr.: 42672",
       "url": "https://www.simap.ch/de/project-detail/b7fa6e5b-3c78-4b31-a3b7-6e56cc813d45",
@@ -3072,7 +3312,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "458acb72-7a17-4369-aaaf-76399d89a48d",
@@ -3084,6 +3327,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Industriezentrum Klybeck (IZT) Umnutzungsmassnahmen Elektroanlagen und Leuchten · Auftraggeber: Basler Verkehrs-Betriebe (BVB) · Verfahren: open · Projekt-Nr.: 37940",
       "url": "https://www.simap.ch/de/project-detail/458acb72-7a17-4369-aaaf-76399d89a48d",
@@ -3124,7 +3368,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "9be0d71c-5f60-4457-a6c9-5ad39cc6e63d",
@@ -3136,6 +3383,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Industriezentrum Klybeck (IZT) Umnutzungsmassnahmen Heizungs- und Lüftungsanlage · Auftraggeber: Basler Verkehrs-Betriebe (BVB) · Verfahren: open · Projekt-Nr.: 36451",
       "url": "https://www.simap.ch/de/project-detail/9be0d71c-5f60-4457-a6c9-5ad39cc6e63d",
@@ -3176,7 +3424,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "8480e3a8-1eb0-4a26-8d2c-1aeec4e0f90e",
@@ -3188,6 +3439,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "JJH MGA; Ersatz ZUKO · Auftraggeber: Insel Gruppe AG - Direktion Immobilien und Betrieb · Verfahren: direct · Projekt-Nr.: 42799",
       "url": "https://www.simap.ch/de/project-detail/8480e3a8-1eb0-4a26-8d2c-1aeec4e0f90e",
@@ -3223,7 +3475,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "bc20064c-34b2-4b81-9c3c-fbaf137118de",
@@ -3235,6 +3490,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "JVA PÖW l 45987 l Erneuerung Wasserleitungen l BKP 250-01 Sanitäranlagen · Auftraggeber: Hochbauamt, Baubereich B · Verfahren: open · Projekt-Nr.: 33997",
       "url": "https://www.simap.ch/de/project-detail/bc20064c-34b2-4b81-9c3c-fbaf137118de",
@@ -3275,7 +3531,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "4fa4cf1a-45a7-46cc-81d0-28271d12df63",
@@ -3287,6 +3546,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "KEZO Los VA 02b Strassenbau und Werkleitungen · Auftraggeber: Zweckverband Kehrichtverwertung Zürcher Oberland (EXA Baumanagement AG) · Verfahren: open · Projekt-Nr.: 42741",
       "url": "https://www.simap.ch/de/project-detail/4fa4cf1a-45a7-46cc-81d0-28271d12df63",
@@ -3327,7 +3587,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "76c122a5-37ed-4c3f-ae1d-b3f2f8c2fd21",
@@ -3339,6 +3602,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "KWD WF OMA Restwassersanierung - Monitoring Phase 1 · Auftraggeber: Kraftwerke Engelbergeraa AG · Verfahren: invitation · Projekt-Nr.: 37434",
       "url": "https://www.simap.ch/de/project-detail/76c122a5-37ed-4c3f-ae1d-b3f2f8c2fd21",
@@ -3379,7 +3643,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "8c51d7fc-f946-4319-b310-8f68da5e9390",
@@ -3391,6 +3658,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Kaserne Oberer Rossstall / Reithalle, BKP 271 Gipserarbeiten · Auftraggeber: Bau- und Verkehrsdepartement des Kantons Basel-Stadt, Kantonale Fachstelle für öffentliche Beschaffungen (KFöB) · Verfahren: open · Projekt-Nr.: 36385",
       "url": "https://www.simap.ch/de/project-detail/8c51d7fc-f946-4319-b310-8f68da5e9390",
@@ -3431,7 +3699,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "6a198198-1bfd-45bd-b8c0-c111b00c30f0",
@@ -3443,6 +3714,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Koordinator und Konzeptplaner im Bereich Mess-, Steuerungs-, Regel- und Leittechnik MSRL / Gebäudeautomation GA · Auftraggeber: Bundesamt für Rüstung armasuisse · Verfahren: open · Projekt-Nr.: 37862",
       "url": "https://www.simap.ch/de/project-detail/6a198198-1bfd-45bd-b8c0-c111b00c30f0",
@@ -3606,7 +3878,10 @@
         ],
         "orderAddressOnlyDescription": null,
         "orderAddress": null
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "c32581cd-148f-4025-8880-a022e47c573b",
@@ -3618,6 +3893,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Kultur- und Begegnungszentrum Uster im Zeughaus, BKP 230 «Elektroinstallationen» · Auftraggeber: Stadt Uster, GF Liegenschaften · Verfahren: open · Projekt-Nr.: 34051",
       "url": "https://www.simap.ch/de/project-detail/c32581cd-148f-4025-8880-a022e47c573b",
@@ -3658,7 +3934,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "0f73506c-ab49-4ef7-ae93-83730d3843c2",
@@ -3670,6 +3949,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Kultur- und Begegnungszentrum Uster im Zeughaus, BKP 237 «Gebäudeautomation» · Auftraggeber: Stadt Uster, GF Liegenschaften · Verfahren: open · Projekt-Nr.: 31977",
       "url": "https://www.simap.ch/de/project-detail/0f73506c-ab49-4ef7-ae93-83730d3843c2",
@@ -3710,7 +3990,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "8f835b4d-c585-48f8-b44e-6e25a785f2be",
@@ -3722,6 +4005,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Leistungsofferte Strassenverkehrsamt Winterthur, Massnahmen Betriebserhalt · Auftraggeber: Hochbauamt, Baubereich A · Verfahren: selective · Projekt-Nr.: 31677",
       "url": "https://www.simap.ch/de/project-detail/8f835b4d-c585-48f8-b44e-6e25a785f2be",
@@ -3762,7 +4046,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "c9834c56-75c7-4295-a27a-43b879c25e07",
@@ -3774,6 +4061,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Leistungsofferte Strassenverkehrsamt Zürich, Massnahmen Betriebserhalt · Auftraggeber: Hochbauamt, Baubereich A · Verfahren: selective · Projekt-Nr.: 31666",
       "url": "https://www.simap.ch/de/project-detail/c9834c56-75c7-4295-a27a-43b879c25e07",
@@ -3814,7 +4102,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "8928c1fa-f5d4-4035-9785-f56fe7979e10",
@@ -3826,6 +4117,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Lieferung Geräteträger mit Anbaugeräten für den Bezirk Nord 3 von Grün Stadt Zürich · Auftraggeber: TED - Grün Stadt Zürich (GSZ) · Verfahren: open · Projekt-Nr.: 42887",
       "url": "https://www.simap.ch/de/project-detail/8928c1fa-f5d4-4035-9785-f56fe7979e10",
@@ -3861,7 +4153,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "53536fa0-3aad-4071-a0a0-b2a307532053",
@@ -3873,6 +4168,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Lüftung · Auftraggeber: Gemeindeverwaltung Horw · Verfahren: open · Projekt-Nr.: 42453",
       "url": "https://www.simap.ch/de/project-detail/53536fa0-3aad-4071-a0a0-b2a307532053",
@@ -3913,7 +4209,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "c901fe30-2497-42ff-a4b0-65791ccb8a74",
@@ -3925,6 +4224,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "MP-090229 N04/06 SH Süd – Herblingen Sicherheitsstollen Tunnel Fäsenstaub Beweissicherung · Auftraggeber: Bundesamt für Strassen ASTRA - Filiale Winterthur · Verfahren: open · Projekt-Nr.: 34866",
       "url": "https://www.simap.ch/de/project-detail/c901fe30-2497-42ff-a4b0-65791ccb8a74",
@@ -3960,7 +4260,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "978d514d-bbc7-4bab-a5ee-3e38f0fd2363",
@@ -3972,6 +4275,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "MP-150016, N02, EP Arsenal - Hergiswil, inkl. Ergänzung Süd, Los  ARHE BSA-1.02 Zentrale Einrichtung Divers · Auftraggeber: Bundesamt für Strassen ASTRA -Abteilung Strasseninfrastruktur-Ost - F3 Zofingen · Verfahren: open · Projekt-Nr.: 35471",
       "url": "https://www.simap.ch/de/project-detail/978d514d-bbc7-4bab-a5ee-3e38f0fd2363",
@@ -4007,7 +4311,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "a2620ef4-0fae-4d22-86d5-90076b3da4f8",
@@ -4019,6 +4326,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "MP-150016, N02, EP Arsenal - Hergiswil, inkl. Ergänzung Süd, Los ARHE BSA-3.01 Anlagensteuerung Lüftung · Auftraggeber: Bundesamt für Strassen ASTRA -Abteilung Strasseninfrastruktur-Ost - F3 Zofingen · Verfahren: open · Projekt-Nr.: 35527",
       "url": "https://www.simap.ch/de/project-detail/a2620ef4-0fae-4d22-86d5-90076b3da4f8",
@@ -4054,7 +4362,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "57b3ea8a-9435-4929-86a0-9b263d7716b9",
@@ -4066,6 +4377,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "MP-150016, N02, EP Arsenal - Hergiswil, inkl. Ergänzung Süd, Los ARHE BSA-3.02 Strahlventilatoren · Auftraggeber: Bundesamt für Strassen ASTRA -Abteilung Strasseninfrastruktur-Ost - F3 Zofingen · Verfahren: open · Projekt-Nr.: 35539",
       "url": "https://www.simap.ch/de/project-detail/57b3ea8a-9435-4929-86a0-9b263d7716b9",
@@ -4101,7 +4413,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "17a974ab-2d8c-42bb-a7c1-3dddcfa90a8f",
@@ -4113,6 +4428,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "MP-210027 N13 GHGW Rothenbrunnen – Landquart, Projektverfasser und Bauleiter BSA · Auftraggeber: Ufficio federale delle strade USTRA, divisione infrastruttura stradale Est · Verfahren: open · Projekt-Nr.: 42534",
       "url": "https://www.simap.ch/de/project-detail/17a974ab-2d8c-42bb-a7c1-3dddcfa90a8f",
@@ -4148,7 +4464,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "81827b5b-abf7-45de-a3fc-e40656d052c5",
@@ -4160,6 +4479,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "MP-220041, N15-08/10 Instandsetzung BSA, Los 15 – Strahlventilatoren + Fluchtweglüftung · Auftraggeber: Bundesamt für Strassen ASTRA - Filiale Winterthur · Verfahren: open · Projekt-Nr.: 35683",
       "url": "https://www.simap.ch/de/project-detail/81827b5b-abf7-45de-a3fc-e40656d052c5",
@@ -4195,7 +4515,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "9636fdf4-1c23-4552-8927-b611e7fd8b40",
@@ -4207,6 +4530,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "MP-220041, N15-08/10 Instandsetzung BSA, Los 18 - Signalisation · Auftraggeber: Bundesamt für Strassen ASTRA - Filiale Winterthur · Verfahren: open · Projekt-Nr.: 35746",
       "url": "https://www.simap.ch/de/project-detail/9636fdf4-1c23-4552-8927-b611e7fd8b40",
@@ -4242,7 +4566,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "3f83929d-1b16-48ae-8014-7acc292e3b01",
@@ -4254,6 +4581,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "MP-260007 F4 BHS BehiG (Los 1 und 2) · Auftraggeber: Bundesamt für Strassen ASTRA - Filiale Winterthur · Verfahren: open · Projekt-Nr.: 37249",
       "url": "https://www.simap.ch/de/project-detail/3f83929d-1b16-48ae-8014-7acc292e3b01",
@@ -4307,7 +4635,10 @@
         ],
         "orderAddressOnlyDescription": null,
         "orderAddress": null
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "6b55571e-9860-406e-9957-532c6fa3752a",
@@ -4319,6 +4650,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "MehrSpur Zürich – Winterthur, Verwertungsstellen mit Bahnanschluss, Projektteil 246 · Auftraggeber: SBB CFF FFS Einkauf Bauprojekte Region Ost · Verfahren: open · Projekt-Nr.: 13996",
       "url": "https://www.simap.ch/de/project-detail/6b55571e-9860-406e-9957-532c6fa3752a",
@@ -4354,7 +4686,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "5409f10c-04b1-4174-a5e7-53aac0310e01",
@@ -4366,6 +4701,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Mieterausbau Kantonales Labor und Pharmazeutisches Kontrolllabor · Auftraggeber: Amt für Grundstücke und Gebäude des Kantons Bern (AGG) · Verfahren: open · Projekt-Nr.: 36945",
       "url": "https://www.simap.ch/de/project-detail/5409f10c-04b1-4174-a5e7-53aac0310e01",
@@ -4406,7 +4742,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "e5f7892b-6675-417d-ad83-be3563c786d1",
@@ -4418,6 +4757,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Mieterausbau Kantonales Labor und Pharmazeutisches Kontrolllabor · Auftraggeber: Amt für Grundstücke und Gebäude des Kantons Bern (AGG) · Verfahren: open · Projekt-Nr.: 36944",
       "url": "https://www.simap.ch/de/project-detail/e5f7892b-6675-417d-ad83-be3563c786d1",
@@ -4458,7 +4798,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "727e6c9f-98ed-453e-a2fe-fbeee4369cb5",
@@ -4470,6 +4813,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Multiplexing System (Erweiterung) · Auftraggeber: Universität Zürich Assetmanagement · Verfahren: direct · Projekt-Nr.: 42880",
       "url": "https://www.simap.ch/de/project-detail/727e6c9f-98ed-453e-a2fe-fbeee4369cb5",
@@ -4505,7 +4849,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "42504e1c-d147-452c-aa1b-1cce23b9cb6f",
@@ -4517,6 +4864,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "N02, Secondo tubo San Gottardo  (2TG Röhre Nord und Galleria di Airolo) und N2 Risanamento primo tubo San Gottardo (1TG Röhre Süd) Los 0005 - Sicherheit BSA · Auftraggeber: Bundesamt für Strassen ASTRA -Abteilung Strasseninfrastruktur-Ost - F3 Zofingen · Verfahren: open · Projekt-Nr.: 42234",
       "url": "https://www.simap.ch/de/project-detail/42504e1c-d147-452c-aa1b-1cce23b9cb6f",
@@ -4552,7 +4900,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "81f572f0-8d43-49ef-a40f-b403e6da016e",
@@ -4564,6 +4915,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "NKM 5.1 – Los «All-inclusive», Fahrbahnerneuerungen 2029-2033, Rahmenvertrag GU, Schweiz · Auftraggeber: Schweizerische Bundesbahnen SBB, Infrastruktur - Einkauf, Supply Chain und Produktion, Einkauf Bau Standort Bern · Verfahren: open · Projekt-Nr.: 42564",
       "url": "https://www.simap.ch/de/project-detail/81f572f0-8d43-49ef-a40f-b403e6da016e",
@@ -4599,7 +4951,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "9230de33-f459-479e-913d-96913f54cc21",
@@ -4611,6 +4966,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "NKM 5.2 – Los «Schotterersatz/UBS», Fahrbahnerneuerungen 2029-2033, Rahmenvertrag GU, Schweiz · Auftraggeber: Schweizerische Bundesbahnen SBB, Infrastruktur - Einkauf, Supply Chain und Produktion, Einkauf Bau Standort Bern · Verfahren: open · Projekt-Nr.: 42565",
       "url": "https://www.simap.ch/de/project-detail/9230de33-f459-479e-913d-96913f54cc21",
@@ -4646,7 +5002,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "8821f187-eefb-440a-a6a5-89d8ba3d1bf8",
@@ -4658,6 +5017,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "NKM 5.3 – Los «Schotterreinigung», Fahrbahnerneuerungen 2029-2033, Rahmenvertrag GU, Schweiz · Auftraggeber: Schweizerische Bundesbahnen SBB, Infrastruktur - Einkauf, Supply Chain und Produktion, Einkauf Bau Standort Bern · Verfahren: open · Projekt-Nr.: 42566",
       "url": "https://www.simap.ch/de/project-detail/8821f187-eefb-440a-a6a5-89d8ba3d1bf8",
@@ -4693,7 +5053,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "dcb5eda7-fd7a-43bc-b7f2-5557d7bfff6d",
@@ -4705,6 +5068,7 @@
       "type": "project_study",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Neubau Feuerwehr / Werkdienst Oberdorf, Vitznau · Auftraggeber: Gemeinde Vitznau (Studio OfM) · Verfahren: selective · Projekt-Nr.: 20068",
       "url": "https://www.simap.ch/de/project-detail/dcb5eda7-fd7a-43bc-b7f2-5557d7bfff6d",
@@ -4745,7 +5109,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "7e81cb70-6f19-4c23-88bf-af1d01f0aeed",
@@ -4757,6 +5124,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Neubau Gemeindehaus Münsingen - BKP 240 Heizungs-und Kälteanlagen · Auftraggeber: Gemeinde Münsingen, Abteilung Bau · Verfahren: open · Projekt-Nr.: 30060",
       "url": "https://www.simap.ch/de/project-detail/7e81cb70-6f19-4c23-88bf-af1d01f0aeed",
@@ -4797,7 +5165,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "d172fa06-7790-45cd-95b7-df5a36f28ace",
@@ -4809,6 +5180,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Oberdorf, Weissensteinstrasse, Geisshubelweg bis Weissensteinstrasse 56, Umgestaltung und Sanierung Ortsdurchfahrt, Ersatz Eindolung / Teiloffenlegung Wildbach · Auftraggeber: Bau- und Justizdepartement des Kantons Solothurn · Verfahren: open · Projekt-Nr.: 42786",
       "url": "https://www.simap.ch/de/project-detail/d172fa06-7790-45cd-95b7-df5a36f28ace",
@@ -4849,7 +5221,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "1080b7a8-9c78-4755-90e4-cf14a58c6f47",
@@ -4861,6 +5236,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "PHZH Halbinsel Au, Gesamtinstandsetzung Kutscherhaus, BKP 232-01 Elektroinstallationen + PVA · Auftraggeber: Hochbauamt Kanton Zürich, Baubereich C · Verfahren: open · Projekt-Nr.: 39354",
       "url": "https://www.simap.ch/de/project-detail/1080b7a8-9c78-4755-90e4-cf14a58c6f47",
@@ -4901,7 +5277,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "daf745e2-0f26-4fea-8031-a4dfc96d209b",
@@ -4913,6 +5292,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Planerische Begleitung der Ertüchtigung des Busdepots Grüningen für E-Busse · Auftraggeber: Verkehrsbetriebe Zürichsee und Oberland AG (VZO) · Verfahren: direct · Projekt-Nr.: 40840",
       "url": "https://www.simap.ch/de/project-detail/daf745e2-0f26-4fea-8031-a4dfc96d209b",
@@ -4948,7 +5328,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "cbc0a165-0e78-48e2-ae76-fbd2bda2ed04",
@@ -4960,6 +5343,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Pumpspeicherwerk Grimsel 4, Los Panzerung Triebwasserweg und Los UW-Schützen · Auftraggeber: Kraftwerke Oberhasli AG · Verfahren: open · Projekt-Nr.: 42817",
       "url": "https://www.simap.ch/de/project-detail/cbc0a165-0e78-48e2-ae76-fbd2bda2ed04",
@@ -5045,7 +5429,10 @@
         ],
         "orderAddressOnlyDescription": null,
         "orderAddress": null
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "8b166d95-fb90-431c-aaf4-62642c28772d",
@@ -5057,6 +5444,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Q26.0017 HKB Bern – BKP 246 Kälteanlagen · Auftraggeber: Amt für Grundstücke und Gebäude des Kantons Bern (AGG) · Verfahren: open · Projekt-Nr.: 37769",
       "url": "https://www.simap.ch/de/project-detail/8b166d95-fb90-431c-aaf4-62642c28772d",
@@ -5097,7 +5485,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "c8079514-46b2-4348-9556-3a81a9623cfa",
@@ -5109,6 +5500,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "RG-Wärmerückgewinnung KVA Turgi, Bestandsanlage · Auftraggeber: KVA Turgi Energie AG (I.C.E. AG) · Verfahren: open · Projekt-Nr.: 42808",
       "url": "https://www.simap.ch/de/project-detail/c8079514-46b2-4348-9556-3a81a9623cfa",
@@ -5149,7 +5541,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "1024cdf6-45e9-42b0-b40f-f37b2de476b2",
@@ -5161,6 +5556,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Reinigung Kanalisation 2027 bis 2030 · Auftraggeber: Gemeinde Weiningen · Verfahren: open · Projekt-Nr.: 42114",
       "url": "https://www.simap.ch/de/project-detail/1024cdf6-45e9-42b0-b40f-f37b2de476b2",
@@ -5196,7 +5592,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "6c23081d-d54d-451b-8b01-b7fb19ee98cd",
@@ -5208,6 +5607,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Reinigung WC-Anlagen auf Rastplätzen GE VII Los I · Auftraggeber: Tiefbauamt, Abt. Gebietseinheit VII · Verfahren: open · Projekt-Nr.: 36832",
       "url": "https://www.simap.ch/de/project-detail/6c23081d-d54d-451b-8b01-b7fb19ee98cd",
@@ -5243,7 +5643,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "e825ec53-8220-4f58-a0bc-f68eba702830",
@@ -5255,6 +5658,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Reinigung WC-Anlagen auf Rastplätzen GE VII Los II · Auftraggeber: Tiefbauamt, Abt. Gebietseinheit VII · Verfahren: open · Projekt-Nr.: 36833",
       "url": "https://www.simap.ch/de/project-detail/e825ec53-8220-4f58-a0bc-f68eba702830",
@@ -5290,7 +5694,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "5b7d0241-f05a-462a-8284-47fdd5a992d0",
@@ -5302,6 +5709,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "SGS Erweiterung Schulanlage Gutenbrunnen Schübelbach · Auftraggeber: Gemeinde Schübelbach, Abteilung Liegenschaften · Verfahren: open · Projekt-Nr.: 42676",
       "url": "https://www.simap.ch/de/project-detail/5b7d0241-f05a-462a-8284-47fdd5a992d0",
@@ -5342,7 +5750,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "0f4c3e7a-89da-4b92-a6d2-e294e5e4ebc1",
@@ -5354,6 +5765,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "SGS Erweiterung Schulanlage Gutenbrunnen Schübelbach · Auftraggeber: Gemeinde Schübelbach, Abteilung Liegenschaften · Verfahren: open · Projekt-Nr.: 42684",
       "url": "https://www.simap.ch/de/project-detail/0f4c3e7a-89da-4b92-a6d2-e294e5e4ebc1",
@@ -5394,7 +5806,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "55c7a78a-9ea1-4c39-ac01-e20c21ed0c78",
@@ -5406,6 +5821,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "SGS Erweiterung Schulanlage Gutenbrunnen Schübelbach · Auftraggeber: Siehe Grobterminprogramm Bauleitung · Verfahren: open · Projekt-Nr.: 42687",
       "url": "https://www.simap.ch/de/project-detail/55c7a78a-9ea1-4c39-ac01-e20c21ed0c78",
@@ -5446,7 +5862,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "08ff882f-7800-4f8c-b3d5-87d0f2e55d8d",
@@ -5458,6 +5877,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "SIE 2026 - Praderalpweg · Auftraggeber: Amt für Wald und Naturgefahren · Verfahren: open · Projekt-Nr.: 37495",
       "url": "https://www.simap.ch/de/project-detail/08ff882f-7800-4f8c-b3d5-87d0f2e55d8d",
@@ -5498,7 +5918,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "52577cab-e296-4297-89ac-64c0a19b61d0",
@@ -5510,6 +5933,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "SalinaFutura Generalplaner Bau · Auftraggeber: Schweizer Salinen AG · Verfahren: open · Projekt-Nr.: 42175",
       "url": "https://www.simap.ch/de/project-detail/52577cab-e296-4297-89ac-64c0a19b61d0",
@@ -5550,7 +5974,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "bb51a911-628f-40e6-8619-5caf14f91a66",
@@ -5562,6 +5989,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Sanierung Fischgängigkeit Wasserfassung Pradella (GR, Scuol) · Auftraggeber: Engadiner Kraftwerke AG · Verfahren: open · Projekt-Nr.: 36782",
       "url": "https://www.simap.ch/de/project-detail/bb51a911-628f-40e6-8619-5caf14f91a66",
@@ -5597,7 +6025,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "3d865bc6-9c23-49b5-a9ff-207087e71c4e",
@@ -5609,6 +6040,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Sanierung Giessereistrasse, Strassenbau und Kanalisation · Auftraggeber: Stadt Wetzikon, Abteilung Tiefbau · Verfahren: open · Projekt-Nr.: 39611",
       "url": "https://www.simap.ch/de/project-detail/3d865bc6-9c23-49b5-a9ff-207087e71c4e",
@@ -5649,7 +6081,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "cd093d4e-d1da-4eeb-b41b-5a87f57b8b3a",
@@ -5661,6 +6096,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Sanierung Stadttheater Olten - Selektives Planerwahlverfahren für Generalplanerteams · Auftraggeber: Stadt Olten · Verfahren: selective · Projekt-Nr.: 39413",
       "url": "https://www.simap.ch/de/project-detail/cd093d4e-d1da-4eeb-b41b-5a87f57b8b3a",
@@ -5701,7 +6137,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "f7c6274c-d1fd-47fc-9fb2-09e6128b4bdf",
@@ -5713,6 +6152,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Sanitär · Auftraggeber: Gemeindeverwaltung Horw · Verfahren: open · Projekt-Nr.: 42454",
       "url": "https://www.simap.ch/de/project-detail/f7c6274c-d1fd-47fc-9fb2-09e6128b4bdf",
@@ -5753,7 +6193,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "a29461ff-ad50-4649-bf98-3cd0597ca369",
@@ -5765,6 +6208,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Schliessanlage Alterszentrum Frohmatt · Auftraggeber: Alterszentrum Frohmatt AG · Verfahren: open · Projekt-Nr.: 36818",
       "url": "https://www.simap.ch/de/project-detail/a29461ff-ad50-4649-bf98-3cd0597ca369",
@@ -5805,7 +6249,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "21bd8a23-b6a8-40b2-afba-f3544676ca20",
@@ -5817,6 +6264,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Schulanlagen, Umrüstung Beleuchtung auf LED (SUBaL), BKP230 Elektroinstallation · Auftraggeber: Stadt Aarau · Verfahren: open · Projekt-Nr.: 32980",
       "url": "https://www.simap.ch/de/project-detail/21bd8a23-b6a8-40b2-afba-f3544676ca20",
@@ -5852,7 +6300,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "36ee8fee-2a3d-4434-8dbb-e4e6001ed42d",
@@ -5864,6 +6315,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Schulanlagen, Umrüstung Beleuchtung auf LED (SUBaL), BKP233.02 Umbau denkmalgeschützte Leuchten · Auftraggeber: Stadt Aarau · Verfahren: open · Projekt-Nr.: 32988",
       "url": "https://www.simap.ch/de/project-detail/36ee8fee-2a3d-4434-8dbb-e4e6001ed42d",
@@ -5899,7 +6351,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "1cdf736d-f766-4854-8575-d555d79115a3",
@@ -5911,6 +6366,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Seewasserwerk Riet II, Los 2: Hochbau (Baumeister) · Auftraggeber: RWSG Regionale Wasserversorgung St. Gallen AG · Verfahren: open · Projekt-Nr.: 36559",
       "url": "https://www.simap.ch/de/project-detail/1cdf736d-f766-4854-8575-d555d79115a3",
@@ -5951,7 +6407,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "6365324e-2614-471d-86f8-6ff9c52c64ab",
@@ -5963,6 +6422,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Solothurn, Fernwärmeerschliessung Schützenmatt · Auftraggeber: Regio Energie Solothurn · Verfahren: open · Projekt-Nr.: 42671",
       "url": "https://www.simap.ch/de/project-detail/6365324e-2614-471d-86f8-6ff9c52c64ab",
@@ -5998,7 +6458,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "edebce7c-7a97-4dfe-8c3c-e12f806c59ea",
@@ -6010,6 +6473,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Tiefladeanhänger 33t 4-achs NG · Auftraggeber: armasuisse Ressourcen und Support CC WTO · Verfahren: open · Projekt-Nr.: 35324",
       "url": "https://www.simap.ch/de/project-detail/edebce7c-7a97-4dfe-8c3c-e12f806c59ea",
@@ -6045,7 +6509,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "0e7dd242-bcb1-4631-8d60-fe58b576fac9",
@@ -6057,6 +6524,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Umbau Hallen- und Freibad Talegg 8424 Embrach / 237 · Auftraggeber: Gemeinde Embrach, Abteilung Bau (MINT Baumanagement GmbH) · Verfahren: invitation · Projekt-Nr.: 37834",
       "url": "https://www.simap.ch/de/project-detail/0e7dd242-bcb1-4631-8d60-fe58b576fac9",
@@ -6097,7 +6565,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "26fca67e-567d-4bd7-b69a-a7dd9bb37312",
@@ -6109,6 +6580,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Umbau Hallen- und Freibad Talegg 8424 Embrach / 250 · Auftraggeber: Gemeinde Embrach, Abteilung Bau (MINT Baumanagement GmbH) · Verfahren: open · Projekt-Nr.: 37906",
       "url": "https://www.simap.ch/de/project-detail/26fca67e-567d-4bd7-b69a-a7dd9bb37312",
@@ -6149,7 +6621,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "448945fd-523e-4bf7-aeb5-d97b85e6c6af",
@@ -6161,6 +6636,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Umfahrung Cham–Hünenberg (UCH) BSA Los 003 - Öffentliche Beleuchtung · Auftraggeber: Tiefbauamt des Kantons Zug · Verfahren: open · Projekt-Nr.: 41717",
       "url": "https://www.simap.ch/de/project-detail/448945fd-523e-4bf7-aeb5-d97b85e6c6af",
@@ -6201,7 +6677,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "5ba68b42-2c05-4367-bf5d-de47ced8c340",
@@ -6213,6 +6692,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Universität Luzern, Lüftungsanlagen-Retrofit inkl. Gebäudeautomation, BKP 240 Lüftungsanlagen (Modernisierung) inkl. Gebäudeautomation · Auftraggeber: Dienststelle Immobilien · Verfahren: open · Projekt-Nr.: 39703",
       "url": "https://www.simap.ch/de/project-detail/5ba68b42-2c05-4367-bf5d-de47ced8c340",
@@ -6253,7 +6733,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "316e0465-46b4-4ac2-92d5-27b3de881977",
@@ -6265,6 +6748,7 @@
       "type": "service",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Unterhalts- und Austrittsreinigung Pflegezentrum Sonnenberg · Auftraggeber: Pflegezentrum Sonnenberg (Cleangreen Consulting GmbH) · Verfahren: open · Projekt-Nr.: 41857",
       "url": "https://www.simap.ch/de/project-detail/316e0465-46b4-4ac2-92d5-27b3de881977",
@@ -6305,7 +6789,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "2062543f-e766-41b2-805e-de412ce0017b",
@@ -6317,6 +6804,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "WV Breite, Rohrleitungsbau Fernwärme, Hohlenbaumstrasse Etappe 2 · Auftraggeber: Schaffhausen - SH POWER · Verfahren: open · Projekt-Nr.: 41423",
       "url": "https://www.simap.ch/de/project-detail/2062543f-e766-41b2-805e-de412ce0017b",
@@ -6357,7 +6845,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "2049a840-ac75-4450-a75f-36731c2aabc5",
@@ -6369,6 +6860,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "WV Schweizersbild, Rohrleitungsbau Fernwärme Schweizersbildstrasse Etappe 1 · Auftraggeber: Schaffhausen - SH POWER · Verfahren: open · Projekt-Nr.: 39778",
       "url": "https://www.simap.ch/de/project-detail/2049a840-ac75-4450-a75f-36731c2aabc5",
@@ -6409,7 +6901,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "ef6c5438-d797-4ea1-9298-543a0048fb31",
@@ -6421,6 +6916,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Werkzeug und Elektromaterial · Auftraggeber: Kantonsspital Winterthur - Supply Chain Management · Verfahren: open · Projekt-Nr.: 39341",
       "url": "https://www.simap.ch/de/project-detail/ef6c5438-d797-4ea1-9298-543a0048fb31",
@@ -6506,7 +7002,10 @@
         ],
         "orderAddressOnlyDescription": null,
         "orderAddress": null
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "433a7b82-af91-482b-b5ce-096b0da8bfd6",
@@ -6518,6 +7017,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Wieshofstrasse Schlosstalstrasse bis Wishof -  Bauarbeiten, Strassenbau und Kanalneubau · Auftraggeber: Tiefbauamt Stadt Winterthur · Verfahren: open · Projekt-Nr.: 36195",
       "url": "https://www.simap.ch/de/project-detail/433a7b82-af91-482b-b5ce-096b0da8bfd6",
@@ -6558,7 +7058,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "b8b89ddf-1d69-4cb2-8871-6c9a65fe2831",
@@ -6570,6 +7073,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Wohnsiedlung Altwiesen, 8051 Zürich · Auftraggeber: Stiftung Einfach Wohnen (SEW) · Verfahren: open · Projekt-Nr.: 42872",
       "url": "https://www.simap.ch/de/project-detail/b8b89ddf-1d69-4cb2-8871-6c9a65fe2831",
@@ -6610,7 +7114,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "8d872bc6-a8d0-460b-98ef-6110c1cb999b",
@@ -6622,6 +7129,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Wohnsiedlung Heidi Abel_BKP 215.2 Fassadenbekleidung · Auftraggeber: Stiftung Alterswohnen der Stadt Zürich (SAW) (Güntensperger Baumanagement AG) · Verfahren: open · Projekt-Nr.: 37046",
       "url": "https://www.simap.ch/de/project-detail/8d872bc6-a8d0-460b-98ef-6110c1cb999b",
@@ -6662,7 +7170,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "82af5838-a1fc-4009-b6e8-5466800d41d3",
@@ -6674,6 +7185,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Wohnsiedlung Heidi Abel_BKP 230.0 Elektroanlage · Auftraggeber: Stiftung Alterswohnen der Stadt Zürich (SAW) (Güntensperger Baumanagement AG) · Verfahren: open · Projekt-Nr.: 35754",
       "url": "https://www.simap.ch/de/project-detail/82af5838-a1fc-4009-b6e8-5466800d41d3",
@@ -6714,7 +7226,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "4125216d-96a4-446e-8c19-7a0f798148d8",
@@ -6726,6 +7241,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Wärmeverteilung und Wärmeabgabesystem · Auftraggeber: Gemeindeverwaltung Horw · Verfahren: open · Projekt-Nr.: 42451",
       "url": "https://www.simap.ch/de/project-detail/4125216d-96a4-446e-8c19-7a0f798148d8",
@@ -6766,7 +7282,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "3672216f-35a5-4ca5-8a92-54ef7b47acf6",
@@ -6778,6 +7297,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Wärmezentrale WN Leukerbad - BKP 243 Wärmeübergabestationen · Auftraggeber: IMION AG · Verfahren: open · Projekt-Nr.: 42241",
       "url": "https://www.simap.ch/de/project-detail/3672216f-35a5-4ca5-8a92-54ef7b47acf6",
@@ -6818,7 +7338,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "d5bf8b5f-b0cd-4df4-aaed-3e3303ea0644",
@@ -6830,6 +7353,7 @@
       "type": "supply",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Zwei Waschmaschinen für die Wäscherei der Tierhandlungen · Auftraggeber: EPFL-Scientific Equipment · Verfahren: open · Projekt-Nr.: 32280",
       "url": "https://www.simap.ch/de/project-detail/d5bf8b5f-b0cd-4df4-aaed-3e3303ea0644",
@@ -6870,7 +7394,10 @@
             "it": null
           }
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     },
     {
       "id": "43f783cc-7013-4d0b-8584-744332bdb9b7",
@@ -6882,6 +7409,7 @@
       "type": "construction",
       "deadline": "",
       "deadlineDays": 30,
+      "status": "active",
       "value": 0,
       "text": "Zürich, CAB / CNB Ersatz Gebäudeautomation, BKP 237 Gebäudeautomation · Auftraggeber: ETH Zürich - Real Estate Management · Verfahren: invitation · Projekt-Nr.: 38532",
       "url": "https://www.simap.ch/de/project-detail/43f783cc-7013-4d0b-8584-744332bdb9b7",
@@ -6917,7 +7445,10 @@
           "postalCode": null,
           "city": null
         }
-      }
+      },
+      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
+      "lastSeen": "2026-08-24T16:14:49.040565+00:00",
+      "isNew": false
     }
   ]
 }
