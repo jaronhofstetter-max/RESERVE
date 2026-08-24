@@ -1,13 +1,13 @@
 // HOFILIGHT ONE brand + PWA icon sync
 (function(){
-  const LOGO='file_0000000013b481f497e7cdb7337b891a.png?v=119';
+  const LOGO='icon.svg?v=120';
   function ensureHeadBrand(){
     let m=document.querySelector('link[rel="manifest"]');
     if(!m){m=document.createElement('link');m.rel='manifest';document.head.appendChild(m)}
-    m.href='manifest.webmanifest?v=119';
+    m.href='manifest.webmanifest?v=120';
     let f=document.querySelector('link[rel="icon"]');
     if(!f){f=document.createElement('link');f.rel='icon';document.head.appendChild(f)}
-    f.type='image/png';f.href=LOGO;
+    f.type='image/svg+xml';f.href=LOGO;
     let a=document.querySelector('link[rel="apple-touch-icon"]');
     if(!a){a=document.createElement('link');a.rel='apple-touch-icon';document.head.appendChild(a)}
     a.href=LOGO;
@@ -21,7 +21,7 @@
     const mark=document.querySelector('.brandmark');
     if(mark){
       mark.innerHTML='<img src="'+LOGO+'" alt="HOFILIGHT ONE" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block">';
-      mark.style.padding='0';mark.style.overflow='hidden';mark.style.background='#071722';mark.style.borderColor='#d8bd7b';
+      mark.style.padding='0';mark.style.overflow='hidden';mark.style.background='#071722';mark.style.borderColor='#158cff';
       mark.style.width=window.matchMedia('(max-width:600px)').matches?'64px':'72px';
       mark.style.height=window.matchMedia('(max-width:600px)').matches?'64px':'72px';
       mark.style.borderRadius=window.matchMedia('(max-width:600px)').matches?'16px':'18px';
