@@ -1,0 +1,19 @@
+{
+  "name": "TenderHawk CH",
+  "short_name": "TenderHawk",
+  "description": "Firmenbezogener SIMAP Opportunity-Radar für Schweizer Ausschreibungen",
+  "start_url": "/RESERVE/",
+  "scope": "/RESERVE/",
+  "display": "standalone",
+  "background_color": "#f4f7f9",
+  "theme_color": "#0d2c44",
+  "lang": "de-CH",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
