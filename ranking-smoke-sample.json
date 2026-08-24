@@ -1,0 +1,1 @@
+{"purpose":"smoke-test fixture for TenderHawk 0.6 ranking","checks":["trade fit","capability fit","region","deadline","value/capacity","risk signals"]}
