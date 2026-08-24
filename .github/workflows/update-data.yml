@@ -1,0 +1,39 @@
+name: Refresh SIMAP snapshot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: simap-data-refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch current SIMAP projects
+        run: python scripts/fetch_simap.py
+      - name: Commit changed snapshot
+        run: |
+          if git diff --quiet -- data/projects.json; then
+            echo "No data changes"
+            exit 0
+          fi
+          git config user.name "tenderhawk-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/projects.json
+          git commit -m "Refresh SIMAP snapshot"
+          git push
