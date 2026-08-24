@@ -68,3 +68,37 @@
 
   if(cache.length) live();
 })();
+
+// PWA bootstrap: attach manifest/theme metadata and register the service worker.
+(function(){
+  if(!document.querySelector('link[rel="manifest"]')){
+    const manifest=document.createElement('link');
+    manifest.rel='manifest';
+    manifest.href='manifest.webmanifest';
+    document.head.appendChild(manifest);
+  }
+  if(!document.querySelector('link[rel="icon"]')){
+    const icon=document.createElement('link');
+    icon.rel='icon';
+    icon.href='icon.svg';
+    icon.type='image/svg+xml';
+    document.head.appendChild(icon);
+  }
+  if(!document.querySelector('meta[name="theme-color"]')){
+    const theme=document.createElement('meta');
+    theme.name='theme-color';
+    theme.content='#0d2c44';
+    document.head.appendChild(theme);
+  }
+  const apple=document.createElement('meta');
+  apple.name='apple-mobile-web-app-capable';
+  apple.content='yes';
+  document.head.appendChild(apple);
+  const appleStatus=document.createElement('meta');
+  appleStatus.name='apple-mobile-web-app-status-bar-style';
+  appleStatus.content='default';
+  document.head.appendChild(appleStatus);
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+  }
+})();
