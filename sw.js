@@ -1,5 +1,5 @@
-const CACHE='tenderhawk-v102-pwa-1';
-const APP_SHELL=['/RESERVE/','/RESERVE/index.html','/RESERVE/ranking-v06.js','/RESERVE/dashboard-v08.js','/RESERVE/dashboard-v08.css','/RESERVE/manifest.webmanifest','/RESERVE/icon.svg'];
+const CACHE='tenderhawk-v11-pwa-1';
+const APP_SHELL=['/RESERVE/','/RESERVE/index.html','/RESERVE/ranking-v06.js','/RESERVE/dashboard-v08.js','/RESERVE/dashboard-v08.css','/RESERVE/smart-matching-v11.js','/RESERVE/manifest.webmanifest','/RESERVE/icon.svg'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(APP_SHELL)).then(()=>self.skipWaiting()));
@@ -36,7 +36,7 @@ self.addEventListener('fetch',event=>{
     event.respondWith((async()=>{
       const res=await networkFirst(req);
       const text=await res.text();
-      const loader=`\n;(()=>{\n  if(!document.querySelector('link[href*="dashboard-v08.css?v=102"]')){document.querySelectorAll('link[href*="dashboard-v08.css"]').forEach(x=>x.remove());const l=document.createElement('link');l.rel='stylesheet';l.href='dashboard-v08.css?v=102';document.head.appendChild(l)}\n  if(!document.querySelector('script[src*="dashboard-v08.js?v=102"]')){document.querySelectorAll('script[src*="dashboard-v08.js"]').forEach(x=>x.remove());const s=document.createElement('script');s.src='dashboard-v08.js?v=102';s.defer=true;document.body.appendChild(s)}\n})();\n`;
+      const loader=`\n;(()=>{\n  document.querySelectorAll('link[href*="dashboard-v08.css"]').forEach(x=>x.remove());\n  const l=document.createElement('link');l.rel='stylesheet';l.href='dashboard-v08.css?v=11';document.head.appendChild(l);\n  document.querySelectorAll('script[src*="dashboard-v08.js"],script[src*="smart-matching-v11.js"]').forEach(x=>x.remove());\n  const d=document.createElement('script');d.src='dashboard-v08.js?v=11';d.async=false;document.body.appendChild(d);\n  const s=document.createElement('script');s.src='smart-matching-v11.js?v=11';s.async=false;s.onload=()=>{try{if(typeof live==='function'&&cache.length)live();if(typeof renderTenderDashboard==='function')renderTenderDashboard()}catch(e){}};document.body.appendChild(s);\n})();\n`;
       return new Response(text+loader,{status:res.status,statusText:res.statusText,headers:{'Content-Type':'application/javascript; charset=utf-8','Cache-Control':'no-cache, no-store, must-revalidate'}});
     })());
     return;
