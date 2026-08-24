@@ -28,3 +28,28 @@ header{position:sticky;top:0;z-index:20;box-shadow:0 8px 30px #00101822}.brandti
  main.wrap{padding:34px 40px 70px}
  .th-matches{grid-column:span 8}.th-insight{grid-column:span 4}
 }
+
+/* TenderHawk 1.0.1 mobile usability */
+@media(max-width:600px){
+ main.wrap{padding:12px 10px 48px}
+ .th-dashboard{gap:12px}
+ .th-hero{padding:16px;border-radius:12px}
+ .th-hero h2{font-size:22px;line-height:1.15}
+ .th-hero p{font-size:13px;line-height:1.4}
+ .th-kpis{grid-template-columns:1fr 1fr;gap:8px}
+ .th-kpi{padding:13px;min-height:94px;border-radius:11px}
+ .th-kpi-label{font-size:11px}.th-kpi-value{font-size:27px}.th-kpi-note{font-size:10px}
+ .th-grid{display:block}
+ .th-panel{margin-bottom:10px;padding:14px;border-radius:12px}
+ .th-panel h3{font-size:17px;margin-bottom:12px}
+ .th-match{grid-template-columns:54px 1fr;gap:9px;padding:12px 0}
+ .th-score{width:50px;height:50px;font-size:16px}
+ .th-match-title{font-size:14px;line-height:1.25}
+ .th-match-meta{font-size:10px;line-height:1.35}
+ .th-chips{gap:4px}.th-chip{font-size:9px;padding:3px 6px}
+ .th-match-actions{grid-column:2;display:flex;gap:6px;margin-top:6px}
+ .th-match-actions button,.th-match-actions a{min-height:38px;padding:9px 12px;font-size:11px;flex:1;text-align:center}
+ .th-insightbox{font-size:13px;line-height:1.5;padding:14px}
+ .th-btn{min-height:42px}
+ .th-bottom{display:block}.th-bottom>.th-panel{width:100%}
+}
