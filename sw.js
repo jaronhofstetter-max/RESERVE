@@ -1,5 +1,5 @@
-const CACHE='tenderhawk-v115-pwa-1';
-const APP_SHELL=['/RESERVE/','/RESERVE/index.html','/RESERVE/ranking-v06.js','/RESERVE/dashboard-v08.js','/RESERVE/dashboard-v08.css','/RESERVE/smart-matching-v11.js','/RESERVE/brand-header-v112.js','/RESERVE/manifest.webmanifest','/RESERVE/icon.svg'];
+const CACHE='tenderhawk-v116-pwa-1';
+const APP_SHELL=['/RESERVE/','/RESERVE/index.html','/RESERVE/ranking-v06.js','/RESERVE/dashboard-v08.js','/RESERVE/dashboard-v08.css','/RESERVE/smart-matching-v11.js','/RESERVE/brand-header-v112.js','/RESERVE/manifest.webmanifest','/RESERVE/file_0000000013b481f497e7cdb7337b891a.png'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(APP_SHELL)).then(()=>self.skipWaiting()));
@@ -36,13 +36,13 @@ self.addEventListener('fetch',event=>{
     event.respondWith((async()=>{
       const res=await networkFirst(req);
       const text=await res.text();
-      const loader=`\n;(()=>{\n  document.querySelectorAll('link[href*="dashboard-v08.css"]').forEach(x=>x.remove());\n  const l=document.createElement('link');l.rel='stylesheet';l.href='dashboard-v08.css?v=112';document.head.appendChild(l);\n  document.querySelectorAll('script[src*="dashboard-v08.js"],script[src*="smart-matching-v11.js"],script[src*="brand-header-v112.js"]').forEach(x=>x.remove());\n  const b=document.createElement('script');b.src='brand-header-v112.js?v=112';b.async=false;document.body.appendChild(b);\n  const d=document.createElement('script');d.src='dashboard-v08.js?v=112';d.async=false;document.body.appendChild(d);\n  const s=document.createElement('script');s.src='smart-matching-v11.js?v=112';s.async=false;s.onload=()=>{try{if(typeof live==='function'&&cache.length)live();if(typeof renderTenderDashboard==='function')renderTenderDashboard()}catch(e){}};document.body.appendChild(s);\n})();\n`;
+      const loader=`\n;(()=>{\n  document.querySelectorAll('link[href*="dashboard-v08.css"]').forEach(x=>x.remove());\n  const l=document.createElement('link');l.rel='stylesheet';l.href='dashboard-v08.css?v=116';document.head.appendChild(l);\n  document.querySelectorAll('script[src*="dashboard-v08.js"],script[src*="smart-matching-v11.js"],script[src*="brand-header-v112.js"]').forEach(x=>x.remove());\n  const b=document.createElement('script');b.src='brand-header-v112.js?v=116';b.async=false;document.body.appendChild(b);\n  const d=document.createElement('script');d.src='dashboard-v08.js?v=116';d.async=false;document.body.appendChild(d);\n  const s=document.createElement('script');s.src='smart-matching-v11.js?v=116';s.async=false;s.onload=()=>{try{if(typeof live==='function'&&cache.length)live();if(typeof renderTenderDashboard==='function')renderTenderDashboard()}catch(e){}};document.body.appendChild(s);\n})();\n`;
       return new Response(text+loader,{status:res.status,statusText:res.statusText,headers:{'Content-Type':'application/javascript; charset=utf-8','Cache-Control':'no-cache, no-store, must-revalidate'}});
     })());
     return;
   }
 
-  if(req.mode==='navigate' || url.pathname.endsWith('.html') || url.pathname.endsWith('.js') || url.pathname.endsWith('.css') || url.pathname.endsWith('.svg')){
+  if(req.mode==='navigate' || url.pathname.endsWith('.html') || url.pathname.endsWith('.js') || url.pathname.endsWith('.css') || url.pathname.endsWith('.svg') || url.pathname.endsWith('.png')){
     event.respondWith(networkFirst(req));
     return;
   }
