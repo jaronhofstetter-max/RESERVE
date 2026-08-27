@@ -1,5 +1,9 @@
 // HOFILIGHT ONE dashboard. Uses only existing live SIMAP snapshot and current scoring.
 (function(){
+  // Load lightweight first-party analytics after the Supabase client is ready.
+  if(!document.querySelector('script[data-th-analytics]')){
+    const a=document.createElement('script');a.src='analytics-v01.js?v=2';a.defer=true;a.dataset.thAnalytics='1';document.head.appendChild(a);
+  }
   let dashboardTop=[];
   window.openDashboardMatch=function(i){window._arr=dashboardTop;choose(i)};
   function addShell(){
