@@ -4,6 +4,10 @@
   if(!document.querySelector('script[data-th-analytics]')){
     const a=document.createElement('script');a.src='analytics-v01.js?v=2';a.defer=true;a.dataset.thAnalytics='1';document.head.appendChild(a);
   }
+  // Pilot hardening: honest demo labelling, profile onboarding and unknown-volume handling.
+  if(!document.querySelector('script[data-th-pilot]')){
+    const p=document.createElement('script');p.src='pilot-v02.js?v=1';p.defer=true;p.dataset.thPilot='1';document.head.appendChild(p);
+  }
   let dashboardTop=[];
   window.openDashboardMatch=function(i){window._arr=dashboardTop;choose(i)};
   function addShell(){
