@@ -26,6 +26,12 @@
     .leadSummary{margin:10px 0 12px;line-height:1.45;color:#344054;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
     .actions{display:flex;gap:8px;flex-wrap:wrap}.actions button,.actions .linkbtn{margin:0;min-height:42px;display:inline-flex;align-items:center;justify-content:center}
     .hotBadge{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:4px 8px;background:#e7f6ee;color:#11643d;margin-left:5px}
+    .thHero{background:linear-gradient(135deg,#071826,#123e59);color:#fff;border:1px solid #244b63;border-radius:16px;padding:22px;margin-bottom:16px;box-shadow:0 10px 30px #0718261a}
+    .thHero h1{font-family:Georgia,'Times New Roman',serif;font-size:32px;line-height:1.12;margin:0 0 10px;max-width:760px}
+    .thHero p{max-width:820px;color:#d8e2e8;line-height:1.55;margin:0 0 14px}
+    .thHeroActions{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 16px}.thHeroActions button{min-height:44px;margin:0}.thHeroActions .secondary{background:#ffffff14;color:#fff;border:1px solid #ffffff44}
+    .thProof{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.thProof div{background:#ffffff0d;border:1px solid #ffffff1f;border-radius:12px;padding:12px}.thProof b{display:block;color:#e6cd8d;margin-bottom:3px}.thProof span{font-size:12px;color:#cbd8df;line-height:1.35}
+    .thTrust{font-size:11px;color:#9fb2be;margin-top:12px}
     @media(max-width:600px){
       header{padding:20px 14px}.tagline{font-size:11px}.brandtitle{font-size:26px}
       nav{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.tab{padding:9px 5px;font-size:11px;white-space:nowrap}
@@ -36,9 +42,28 @@
       .oppTitle{font-size:16px}.lead{padding:13px;margin:10px 0}.leadSummary{-webkit-line-clamp:2;font-size:14px}
       .actions{display:grid;grid-template-columns:1fr 1fr}.actions button,.actions .linkbtn{width:100%;font-size:13px;padding:10px 8px}
       .pill{font-size:10px;padding:4px 7px}
+      .thHero{padding:18px 15px}.thHero h1{font-size:27px}.thHeroActions{display:grid;grid-template-columns:1fr}.thHeroActions button{width:100%}.thProof{grid-template-columns:1fr}
     }
   `;
   document.head.appendChild(ui);
+
+  if(!document.querySelector('meta[name="description"]')){
+    const meta=document.createElement('meta');
+    meta.name='description';
+    meta.content='TenderHawk priorisiert Schweizer öffentliche Ausschreibungen, bewertet die Passung zu Ihrem Unternehmen und unterstützt schnelle Bid/No-Bid-Entscheide.';
+    document.head.appendChild(meta);
+  }
+
+  const radar=document.getElementById('radar');
+  if(radar && !document.getElementById('thHero')){
+    const hero=document.createElement('section');
+    hero.id='thHero';
+    hero.className='thHero';
+    hero.innerHTML=`<h1>Passende öffentliche Ausschreibungen finden, bevor Ihre Konkurrenz schneller ist.</h1><p>TenderHawk durchsucht den aktuellen SIMAP-Datenbestand, priorisiert Chancen nach Ihrem Firmenprofil und macht aus langen Ausschreibungen einen schnellen, nachvollziehbaren Bid/No-Bid-Entscheid.</p><div class="thHeroActions"><button id="thStart">Jetzt Chancen prüfen</button><button id="thProfile" class="secondary">Firmenprofil einrichten</button></div><div class="thProof"><div><b>Radar statt Suche</b><span>Relevante Ausschreibungen nach Gewerk, Region und Frist priorisieren.</span></div><div><b>Match statt Bauchgefühl</b><span>Passung, Nachweise, Risiken und Zeitdruck strukturiert bewerten.</span></div><div><b>Entscheidung statt PDF-Chaos</b><span>Management-Report für den internen Bid/No-Bid-Entscheid erzeugen.</span></div></div><div class="thTrust">Schweizer Ausschreibungsintelligenz · Originalpublikationen bleiben auf SIMAP massgebend.</div>`;
+    radar.insertBefore(hero,radar.firstChild);
+    document.getElementById('thStart').addEventListener('click',()=>{const card=radar.querySelector('.card');if(card)card.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>q.focus(),350)});
+    document.getElementById('thProfile').addEventListener('click',()=>show('profile',document.querySelectorAll('.tab')[1]));
+  }
 
   window.opportunityScore=function(x){
     const p=companyProfile(), text=textOf(x), d=deadlineDays(x), reasons=[], risks=[];
