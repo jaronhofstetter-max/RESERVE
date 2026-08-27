@@ -9,7 +9,24 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 BASE = "https://www.simap.ch/api/publications/v2/project/project-search"
-SEEDS = ["Sanitär","Heizung","Lüftung","Gebäudeautomation","Elektro","Bau","Reinigung","Lieferung"]
+# Broad multilingual seed set: collect widely first, then let TenderHawk rank relevance.
+SEEDS = [
+    "Bau", "Construction", "Costruzione", "Travaux",
+    "Sanitär", "Sanitaire", "Sanitario",
+    "Heizung", "Chauffage", "Riscaldamento",
+    "Lüftung", "Ventilation", "Ventilazione",
+    "Klima", "Kälte", "Climatisation", "Climatizzazione",
+    "Gebäudeautomation", "Automation", "Automazione",
+    "Elektro", "Électricité", "Elettrico",
+    "Gebäudetechnik", "Haustechnik", "HLKS", "HLK", "HVAC",
+    "Installation", "Installationen", "Montage",
+    "Unterhalt", "Wartung", "Maintenance", "Manutenzione",
+    "Sanierung", "Renovation", "Rénovation", "Risanamento",
+    "Reinigung", "Nettoyage", "Pulizia",
+    "Lieferung", "Beschaffung", "Fourniture", "Fornitura",
+    "Planung", "Ingenieur", "Engineering", "Planification",
+    "Infrastruktur", "Infrastructure", "Infrastruttura"
+]
 OUT = Path("data/projects.json")
 
 def localized(value, default=""):
@@ -83,7 +100,7 @@ def normalize(x, now):
 
 def fetch_seed(opener,seed):
     params=urllib.parse.urlencode({"lang":"de","search":seed})
-    req=urllib.request.Request(f"{BASE}?{params}",headers={"Accept":"application/json","User-Agent":"TenderHawk/0.7 (+GitHub Pages pilot)"})
+    req=urllib.request.Request(f"{BASE}?{params}",headers={"Accept":"application/json","User-Agent":"TenderHawk/0.8 (+GitHub Pages pilot)"})
     with opener.open(req,timeout=30) as r: payload=json.load(r)
     if isinstance(payload,list): return payload
     if isinstance(payload,dict):
@@ -107,7 +124,7 @@ def main():
             for raw in fetch_seed(opener,seed):
                 item=normalize(raw,now); merged[str(item["id"])]=item
         except Exception as exc: errors.append({"seed":seed,"error":f"{type(exc).__name__}: {exc}"})
-        time.sleep(.3)
+        time.sleep(.2)
     if not merged: raise SystemExit("No projects fetched; refusing to publish an empty snapshot")
     for pid,item in merged.items():
         prev=old.get(pid,{})
