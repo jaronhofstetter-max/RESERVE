@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-30T22:20:10.475904+00:00",
+  "generatedAt": "2026-08-30T23:20:08.579052+00:00",
   "source": "simap.ch public API",
-  "count": 473,
-  "activeCount": 473,
+  "count": 456,
+  "activeCount": 456,
   "expiredCount": 0,
-  "newCount": 77,
+  "newCount": 0,
   "seeds": [
     "Bau",
     "Construction",
@@ -61,6 +61,14 @@
     "Infrastruttura"
   ],
   "errors": [
+    {
+      "seed": "Haustechnik",
+      "error": "URLError: <urlopen error [Errno 101] Network is unreachable>"
+    },
+    {
+      "seed": "HLKS",
+      "error": "URLError: <urlopen error [Errno 101] Network is unreachable>"
+    },
     {
       "seed": "HLK",
       "error": "URLError: <urlopen error [Errno 101] Network is unreachable>"
@@ -189,8 +197,8 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "5d661075-7195-4ac9-b646-930422eb38cb",
@@ -324,7 +332,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -375,7 +383,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -426,8 +434,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "a5fe300f-a7d2-4d60-8211-6a477c7a7528",
@@ -477,8 +485,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "477a8655-570d-438b-8959-21c682cd20e7",
@@ -528,7 +536,7 @@
         }
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -579,7 +587,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -630,58 +638,7 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
-    },
-    {
-      "id": "32aeee92-0ec8-4ff4-a6dd-d41acd744b3d",
-      "projectId": "32aeee92-0ec8-4ff4-a6dd-d41acd744b3d",
-      "publicationId": "f70abeb3-c7ce-4897-be1d-2fb51b09ca3a",
-      "title": "(b26010) Besuchs- und Informationszentrum des Parlaments Bundesplatz 2, Bern",
-      "buyer": "Bundesamt für Bauten und Logistik BBL",
-      "location": "Schweiz",
-      "type": "service",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "(b26010) Besuchs- und Informationszentrum des Parlaments Bundesplatz 2, Bern · Auftraggeber: Bundesamt für Bauten und Logistik BBL · Verfahren: open · Projekt-Nr.: 33007",
-      "url": "https://www.simap.ch/de/project-detail/32aeee92-0ec8-4ff4-a6dd-d41acd744b3d",
-      "raw": {
-        "id": "32aeee92-0ec8-4ff4-a6dd-d41acd744b3d",
-        "title": {
-          "de": "(b26010) Besuchs- und Informationszentrum des Parlaments Bundesplatz 2, Bern",
-          "en": null,
-          "fr": "(b26010) Centre de visites et d’information du Parlement  Bundesplatz 2, Berne",
-          "it": null
-        },
-        "projectNumber": "33007",
-        "projectType": "tender",
-        "projectSubType": "service",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "f70abeb3-c7ce-4897-be1d-2fb51b09ca3a",
-        "publicationDate": "2026-07-08",
-        "publicationNumber": "33007-02",
-        "pubType": "award",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Bundesamt für Bauten und Logistik BBL",
-          "en": null,
-          "fr": "Office fédéral des constructions et de la logistique OFCL",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "yes",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": null,
-          "postalCode": null,
-          "city": null
-        }
-      },
-      "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -732,7 +689,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -783,7 +740,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -834,7 +791,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -885,7 +842,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -1064,58 +1021,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-25T23:04:31.030984+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": false
-    },
-    {
-      "id": "3177b908-aca8-4dd7-8afa-66ee000ebdfd",
-      "projectId": "3177b908-aca8-4dd7-8afa-66ee000ebdfd",
-      "publicationId": "0f3f6208-3dc2-47cc-a80d-c1273044ce6b",
-      "title": "(b26029) Besuchs- und Informationszentrum des Parlaments Bundesplatz 2, Bern",
-      "buyer": "Bundesamt für Bauten und Logistik BBL",
-      "location": "Schweiz",
-      "type": "service",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "(b26029) Besuchs- und Informationszentrum des Parlaments Bundesplatz 2, Bern · Auftraggeber: Bundesamt für Bauten und Logistik BBL · Verfahren: open · Projekt-Nr.: 33041",
-      "url": "https://www.simap.ch/de/project-detail/3177b908-aca8-4dd7-8afa-66ee000ebdfd",
-      "raw": {
-        "id": "3177b908-aca8-4dd7-8afa-66ee000ebdfd",
-        "title": {
-          "de": "(b26029) Besuchs- und Informationszentrum des Parlaments Bundesplatz 2, Bern",
-          "en": null,
-          "fr": "(b26029) Centre de visites et d’information du Parlement, Bundesplatz 2, Berne",
-          "it": null
-        },
-        "projectNumber": "33041",
-        "projectType": "tender",
-        "projectSubType": "service",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "0f3f6208-3dc2-47cc-a80d-c1273044ce6b",
-        "publicationDate": "2026-07-08",
-        "publicationNumber": "33041-02",
-        "pubType": "award",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Bundesamt für Bauten und Logistik BBL",
-          "en": null,
-          "fr": "Office fédéral des constructions et de la logistique OFCL",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "yes",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": null,
-          "postalCode": null,
-          "city": null
-        }
-      },
-      "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -1166,8 +1072,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "491bf026-2348-4bcd-a071-3563a1c012c8",
@@ -1222,63 +1128,7 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
-    },
-    {
-      "id": "241808cd-7414-4de4-9d63-82bfee24714d",
-      "projectId": "241808cd-7414-4de4-9d63-82bfee24714d",
-      "publicationId": "d8fe0c15-f100-4972-8afe-4da4c28cbcef",
-      "title": "16.0227 BB07 Forschungszentrum Medizin Universität Bern - BKP 235.7 Schwachstromanlagen (Beschallungsanlage)",
-      "buyer": "Amt für Grundstücke und Gebäude des Kantons Bern (AGG)",
-      "location": "Bern",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "16.0227 BB07 Forschungszentrum Medizin Universität Bern - BKP 235.7 Schwachstromanlagen (Beschallungsanlage) · Auftraggeber: Amt für Grundstücke und Gebäude des Kantons Bern (AGG) · Verfahren: open · Projekt-Nr.: 42656",
-      "url": "https://www.simap.ch/de/project-detail/241808cd-7414-4de4-9d63-82bfee24714d",
-      "raw": {
-        "id": "241808cd-7414-4de4-9d63-82bfee24714d",
-        "title": {
-          "de": "16.0227 BB07 Forschungszentrum Medizin Universität Bern - BKP 235.7 Schwachstromanlagen (Beschallungsanlage) ",
-          "en": null,
-          "fr": "Périmètre d’évolution 07 Centre de recherche médicale de l’Université de Berne – CFC 235.7 appareils à courant faible (installation de sonorisation)",
-          "it": null
-        },
-        "projectNumber": "42656",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "d8fe0c15-f100-4972-8afe-4da4c28cbcef",
-        "publicationDate": "2026-08-28",
-        "publicationNumber": "42656-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Amt für Grundstücke und Gebäude des Kantons Bern (AGG)",
-          "en": null,
-          "fr": "Amt für Grundstücke und Gebäude des Kantons Bern (AGG)",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "BE",
-          "postalCode": "3008",
-          "city": {
-            "de": "Bern",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -1329,7 +1179,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -1385,7 +1235,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -1441,7 +1291,7 @@
         }
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -1497,7 +1347,7 @@
         }
       },
       "firstSeen": "2026-08-25T23:04:31.030984+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -1553,7 +1403,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -1604,7 +1454,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -1655,7 +1505,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -1711,7 +1561,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -1767,7 +1617,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -1823,58 +1673,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": false
-    },
-    {
-      "id": "04b16f85-ddeb-465b-893d-070880daddc3",
-      "projectId": "04b16f85-ddeb-465b-893d-070880daddc3",
-      "publicationId": "d092b800-5a3d-45de-9f32-73175f349790",
-      "title": "45789.10 / 230 Elektroanlagen, Staatsarchiv, Gesamtinstandsetzung Gebäudetechnik, Winterthurerstrasse 170, 8057 Zürich",
-      "buyer": "Hochbauamt Baubereich A",
-      "location": "Schweiz",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "45789.10 / 230 Elektroanlagen, Staatsarchiv, Gesamtinstandsetzung Gebäudetechnik, Winterthurerstrasse 170, 8057 Zürich · Auftraggeber: Hochbauamt Baubereich A · Verfahren: open · Projekt-Nr.: 38099",
-      "url": "https://www.simap.ch/de/project-detail/04b16f85-ddeb-465b-893d-070880daddc3",
-      "raw": {
-        "id": "04b16f85-ddeb-465b-893d-070880daddc3",
-        "title": {
-          "de": "45789.10 / 230 Elektroanlagen, Staatsarchiv, Gesamtinstandsetzung Gebäudetechnik, Winterthurerstrasse 170, 8057 Zürich",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "projectNumber": "38099",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "d092b800-5a3d-45de-9f32-73175f349790",
-        "publicationDate": "2026-07-28",
-        "publicationNumber": "38099-02",
-        "pubType": "award",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Hochbauamt Baubereich A",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "yes",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": null,
-          "postalCode": null,
-          "city": null
-        }
-      },
-      "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -1925,7 +1724,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -1976,7 +1775,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -2032,7 +1831,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -2088,7 +1887,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -2245,7 +2044,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -2301,7 +2100,7 @@
         }
       },
       "firstSeen": "2026-08-30T17:20:00.569153+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -2357,7 +2156,7 @@
         }
       },
       "firstSeen": "2026-08-30T17:20:00.569153+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -2413,8 +2212,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "2f2c40ad-5c50-4cd8-93b4-d4f6c074dc5d",
@@ -2464,7 +2263,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -2515,7 +2314,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -2566,7 +2365,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -2622,7 +2421,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -2673,7 +2472,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -2808,7 +2607,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -2864,8 +2663,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "7b3d8284-6f84-4be8-9e9f-2c6333ec44e7",
@@ -2920,7 +2719,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -2976,7 +2775,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3032,7 +2831,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3255,7 +3054,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3311,7 +3110,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3367,7 +3166,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3423,7 +3222,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3479,7 +3278,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3530,7 +3329,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3581,7 +3380,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3632,7 +3431,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3683,7 +3482,7 @@
         }
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3734,7 +3533,7 @@
         }
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3785,7 +3584,7 @@
         }
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3836,7 +3635,7 @@
         }
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3887,7 +3686,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3938,7 +3737,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -3989,7 +3788,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -4040,108 +3839,7 @@
         }
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": false
-    },
-    {
-      "id": "d3d424c5-14db-4a48-9bd8-57053005242b",
-      "projectId": "d3d424c5-14db-4a48-9bd8-57053005242b",
-      "publicationId": "30af5000-b134-462e-a401-981bb54093cd",
-      "title": "BB07 Forschungszentrum Medizin Universität Bern, BKP 232.0 Stark- und Schwachstrominstallationen",
-      "buyer": "Amt für Grundstücke und Gebäude des Kantons Bern (AGG)",
-      "location": "Schweiz",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "BB07 Forschungszentrum Medizin Universität Bern, BKP 232.0 Stark- und Schwachstrominstallationen · Auftraggeber: Amt für Grundstücke und Gebäude des Kantons Bern (AGG) · Verfahren: open · Projekt-Nr.: 32851",
-      "url": "https://www.simap.ch/de/project-detail/d3d424c5-14db-4a48-9bd8-57053005242b",
-      "raw": {
-        "id": "d3d424c5-14db-4a48-9bd8-57053005242b",
-        "title": {
-          "de": "BB07 Forschungszentrum Medizin Universität Bern, BKP 232.0 Stark- und Schwachstrominstallationen",
-          "en": null,
-          "fr": "Université de Berne, périmètre d’évolution 07, centre de recherche pour la médecine – CFC 232.0 Installations à courant fort et faible",
-          "it": null
-        },
-        "projectNumber": "32851",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "with",
-        "publicationId": "30af5000-b134-462e-a401-981bb54093cd",
-        "publicationDate": "2026-08-18",
-        "publicationNumber": "32851-02",
-        "pubType": "award",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Amt für Grundstücke und Gebäude des Kantons Bern (AGG)",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "lots": [
-          {
-            "publicationId": "30af5000-b134-462e-a401-981bb54093cd",
-            "publicationDate": "2026-08-18",
-            "publicationNumber": "32851-02",
-            "pubType": "award",
-            "corrected": false,
-            "lotId": "0785a631-9fb7-4ceb-8e32-cdfeffbcfa71",
-            "lotNumber": 1,
-            "lotTitle": {
-              "de": "Los 1 - Infrastruktur und Spezialbereiche",
-              "en": null,
-              "fr": null,
-              "it": null
-            },
-            "orderAddressOnlyDescription": "no",
-            "orderAddress": {
-              "countryId": "CH",
-              "cantonId": "BE",
-              "postalCode": "3008",
-              "city": {
-                "de": "Bern",
-                "en": null,
-                "fr": null,
-                "it": null
-              }
-            }
-          },
-          {
-            "publicationId": "8ad49a06-04af-4d3f-b7d9-9784ebd50197",
-            "publicationDate": "2026-08-18",
-            "publicationNumber": "32851-03",
-            "pubType": "award",
-            "corrected": false,
-            "lotId": "eb38e6b1-a48d-49bb-9606-15fc6159226d",
-            "lotNumber": 2,
-            "lotTitle": {
-              "de": "Los 2 - Regelgeschosse",
-              "en": null,
-              "fr": null,
-              "it": null
-            },
-            "orderAddressOnlyDescription": "no",
-            "orderAddress": {
-              "countryId": "CH",
-              "cantonId": "BE",
-              "postalCode": "3008",
-              "city": {
-                "de": "Bern",
-                "en": null,
-                "fr": null,
-                "it": null
-              }
-            }
-          }
-        ],
-        "orderAddressOnlyDescription": null,
-        "orderAddress": null
-      },
-      "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -4197,7 +3895,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -4253,8 +3951,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "9d5f4bf4-8dc4-4dbc-b5f5-fa5ac7b70868",
@@ -4309,8 +4007,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "95501e74-54e7-4b30-8fb4-874473a80227",
@@ -4365,7 +4063,7 @@
         }
       },
       "firstSeen": "2026-08-30T07:20:08.220511+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -4421,7 +4119,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -4477,7 +4175,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -4533,7 +4231,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -4589,7 +4287,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -4645,7 +4343,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -4701,7 +4399,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -4757,8 +4455,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "f242c953-0a8e-4a34-acfc-0dfa68a8dc12",
@@ -4813,7 +4511,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -4869,7 +4567,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -4920,7 +4618,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -4976,7 +4674,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -5032,8 +4730,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "7dfa4ca9-7783-4725-942b-f2ffa996ba27",
@@ -5083,7 +4781,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -5139,7 +4837,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -5195,7 +4893,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -5246,7 +4944,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -5302,7 +5000,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -5358,8 +5056,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "b35fd18a-37df-4d08-bdb0-d0b12a0a02fb",
@@ -5449,7 +5147,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -5550,7 +5248,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -5651,7 +5349,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T17:20:00.569153+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -5702,8 +5400,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "afdd4a46-75b9-43ed-aeb9-3c62254b34c5",
@@ -5753,7 +5451,7 @@
         }
       },
       "firstSeen": "2026-08-24T22:01:41.413886+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -5809,8 +5507,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "c0b33ac0-ca4f-47fb-927f-641fa08fca29",
@@ -5910,7 +5608,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -5961,7 +5659,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -6017,7 +5715,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -6068,7 +5766,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -6119,7 +5817,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -6170,7 +5868,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -6221,7 +5919,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -6295,7 +5993,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -6369,7 +6067,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -6425,7 +6123,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -6481,7 +6179,7 @@
         }
       },
       "firstSeen": "2026-08-29T07:20:09.178535+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -6537,7 +6235,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -6593,7 +6291,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -6649,7 +6347,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -6705,7 +6403,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -6761,7 +6459,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -7072,7 +6770,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -7128,7 +6826,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -7179,7 +6877,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -7235,7 +6933,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -7291,7 +6989,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -7342,7 +7040,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -7398,7 +7096,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -7454,7 +7152,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -7510,8 +7208,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "48436fb8-b157-4e28-a86a-9f68737fb98d",
@@ -7561,7 +7259,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -7617,8 +7315,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "3b09b95c-8350-42e6-b77f-3acc76a5e720",
@@ -7668,7 +7366,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -7724,7 +7422,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -7780,7 +7478,7 @@
         }
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -7962,7 +7660,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -8171,7 +7869,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -8227,7 +7925,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -8283,7 +7981,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -8384,7 +8082,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -8440,7 +8138,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -8496,7 +8194,7 @@
         }
       },
       "firstSeen": "2026-08-25T23:04:31.030984+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -8552,7 +8250,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -8608,7 +8306,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -8664,7 +8362,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -8720,7 +8418,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -8771,8 +8469,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "a62a771d-1cb7-478e-ac11-f4120122dec1",
@@ -8822,7 +8520,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -8878,7 +8576,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -8934,7 +8632,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -8990,7 +8688,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -9046,7 +8744,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -9102,8 +8800,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "754bcac9-fa3d-4c04-85ed-c49850228b29",
@@ -9158,8 +8856,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "af79ec44-5f37-4d30-aaa8-9c5f23ad81b0",
@@ -9209,7 +8907,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -9265,7 +8963,7 @@
         }
       },
       "firstSeen": "2026-08-25T23:04:31.030984+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -9321,63 +9019,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": false
-    },
-    {
-      "id": "1c05145b-52e4-4d46-b0e6-7bd00c1d12b6",
-      "projectId": "1c05145b-52e4-4d46-b0e6-7bd00c1d12b6",
-      "publicationId": "91613a3c-f930-40d8-93b7-dfecb93a1af6",
-      "title": "Erweiterung Schulraum Primarschule Niederrohrdorf Rüsler; Submission Fachplaner HLK BKP 294 SIA-Teilphasen 31-53",
-      "buyer": "Gemeinde Niederrohrdorf",
-      "location": "Niederrohrdorf",
-      "type": "service",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Erweiterung Schulraum Primarschule Niederrohrdorf Rüsler; Submission Fachplaner HLK BKP 294 SIA-Teilphasen 31-53 · Auftraggeber: Gemeinde Niederrohrdorf · Verfahren: open · Projekt-Nr.: 41803",
-      "url": "https://www.simap.ch/de/project-detail/1c05145b-52e4-4d46-b0e6-7bd00c1d12b6",
-      "raw": {
-        "id": "1c05145b-52e4-4d46-b0e6-7bd00c1d12b6",
-        "title": {
-          "de": "Erweiterung Schulraum Primarschule Niederrohrdorf Rüsler; Submission Fachplaner HLK BKP 294 SIA-Teilphasen 31-53",
-          "en": null,
-          "fr": "Extension des locaux scolaires de l'école primaire Rüsler à Niederrohrdorf Appel d'offres pour les prestations de planification spécialisées en chauffage, ventilation et froid (CVCF) (BKP 294), phases partielles SIA 31–53",
-          "it": null
-        },
-        "projectNumber": "41803",
-        "projectType": "tender",
-        "projectSubType": "service",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "91613a3c-f930-40d8-93b7-dfecb93a1af6",
-        "publicationDate": "2026-07-29",
-        "publicationNumber": "41803-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Gemeinde Niederrohrdorf",
-          "en": null,
-          "fr": "Gemeinde Niederrohrdorf",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "AG",
-          "postalCode": "5443",
-          "city": {
-            "de": "Niederrohrdorf",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -9433,7 +9075,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -9484,7 +9126,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -9540,8 +9182,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "caff082b-15d4-4c11-8aae-553444ab407b",
@@ -9596,7 +9238,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -9652,8 +9294,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "8dc0b5b9-7ba1-43a0-ae92-12ce4cfec0b5",
@@ -9703,63 +9345,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": false
-    },
-    {
-      "id": "8fb671fc-e601-4c1c-befc-deee4cea93aa",
-      "projectId": "8fb671fc-e601-4c1c-befc-deee4cea93aa",
-      "publicationId": "953d489e-ac1e-453a-a97f-f5fc876e4e5c",
-      "title": "Feuerwehr Areal Lützelhof, Teilprojekt 2.1a; Sanierung Betrieb Feuerwehr, Kornhausgasse 16/18 Basel, BKP 297 Generalplaner mit Subplanern",
-      "buyer": "Bau- und Verkehrsdepartement des Kantons Basel-Stadt, Kantonale Fachstelle für öffentliche Beschaffungen (KFöB)",
-      "location": "Basel",
-      "type": "service",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Feuerwehr Areal Lützelhof, Teilprojekt 2.1a; Sanierung Betrieb Feuerwehr, Kornhausgasse 16/18 Basel, BKP 297 Generalplaner mit Subplanern · Auftraggeber: Bau- und Verkehrsdepartement des Kantons Basel-Stadt, Kantonale Fachstelle für öffentliche Beschaffungen (KFöB) · Verfahren: open · Projekt-Nr.: 41835",
-      "url": "https://www.simap.ch/de/project-detail/8fb671fc-e601-4c1c-befc-deee4cea93aa",
-      "raw": {
-        "id": "8fb671fc-e601-4c1c-befc-deee4cea93aa",
-        "title": {
-          "de": "Feuerwehr Areal Lützelhof, Teilprojekt 2.1a; Sanierung Betrieb Feuerwehr, Kornhausgasse 16/18 Basel, BKP 297 Generalplaner mit Subplanern",
-          "en": null,
-          "fr": "Feuerwehr Areal Lützelhof, Teilprojekt 2.1a; Sanierung Betrieb Feuerwehr, Kornhausgasse 16/18 Basel, BKP 297 Generalplaner mit Subplanern",
-          "it": null
-        },
-        "projectNumber": "41835",
-        "projectType": "tender",
-        "projectSubType": "service",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "953d489e-ac1e-453a-a97f-f5fc876e4e5c",
-        "publicationDate": "2026-08-14",
-        "publicationNumber": "41835-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Bau- und Verkehrsdepartement des Kantons Basel-Stadt, Kantonale Fachstelle für öffentliche Beschaffungen (KFöB)",
-          "en": null,
-          "fr": "Bau- und Verkehrsdepartement des Kantons Basel-Stadt, Kantonale Fachstelle für öffentliche Beschaffungen (KFöB)",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "BS",
-          "postalCode": "4001",
-          "city": {
-            "de": "Basel",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -9815,7 +9401,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -9866,8 +9452,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "1f2aefb5-c79f-4884-b71f-67ce03acf283",
@@ -9922,7 +9508,7 @@
         }
       },
       "firstSeen": "2026-08-25T23:04:31.030984+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -9973,7 +9559,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10064,7 +9650,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10120,7 +9706,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10176,7 +9762,7 @@
         }
       },
       "firstSeen": "2026-08-29T22:20:00.948184+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10232,7 +9818,7 @@
         }
       },
       "firstSeen": "2026-08-29T22:20:00.948184+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10288,7 +9874,7 @@
         }
       },
       "firstSeen": "2026-08-29T22:20:00.948184+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10344,7 +9930,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10400,8 +9986,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "63065438-e069-4bf6-bc41-1d86448710f1",
@@ -10451,7 +10037,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10502,7 +10088,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10553,7 +10139,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10609,7 +10195,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10665,8 +10251,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "f0fc12c8-0698-42b4-a5fa-07cbea81f8d9",
@@ -10716,8 +10302,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "ae5f756d-5fe4-475c-b762-20c416f9c7ff",
@@ -10772,7 +10358,7 @@
         }
       },
       "firstSeen": "2026-08-30T07:20:08.220511+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10828,7 +10414,7 @@
         }
       },
       "firstSeen": "2026-08-25T23:04:31.030984+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10884,7 +10470,7 @@
         }
       },
       "firstSeen": "2026-08-25T23:04:31.030984+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10940,7 +10526,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -10996,8 +10582,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "7c70a721-fd73-4731-8d18-1b7fe261c3a4",
@@ -11052,7 +10638,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -11108,63 +10694,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": false
-    },
-    {
-      "id": "cbead333-9f57-4337-8d8f-5a8a7437047a",
-      "projectId": "cbead333-9f57-4337-8d8f-5a8a7437047a",
-      "publicationId": "9c5db11d-f3fb-4743-ad3c-a01e9d259462",
-      "title": "HLKS-Installationen WV Holzächer-Guet",
-      "buyer": "DIB - Elektrizitätswerk der Stadt Zürich (ewz)",
-      "location": "Zürich",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "HLKS-Installationen WV Holzächer-Guet · Auftraggeber: DIB - Elektrizitätswerk der Stadt Zürich (ewz) · Verfahren: invitation · Projekt-Nr.: 33987",
-      "url": "https://www.simap.ch/de/project-detail/cbead333-9f57-4337-8d8f-5a8a7437047a",
-      "raw": {
-        "id": "cbead333-9f57-4337-8d8f-5a8a7437047a",
-        "title": {
-          "de": "HLKS-Installationen WV Holzächer-Guet",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "projectNumber": "33987",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "invitation",
-        "lotsType": "without",
-        "publicationId": "9c5db11d-f3fb-4743-ad3c-a01e9d259462",
-        "publicationDate": "2026-07-01",
-        "publicationNumber": "33987-02",
-        "pubType": "award",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "DIB - Elektrizitätswerk der Stadt Zürich (ewz)",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "ZH",
-          "postalCode": "8047",
-          "city": {
-            "de": "Zürich",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -11220,7 +10750,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -11271,7 +10801,7 @@
         }
       },
       "firstSeen": "2026-08-29T22:20:00.948184+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -11327,7 +10857,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -11378,7 +10908,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -11695,7 +11225,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -11746,7 +11276,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -11901,7 +11431,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -11957,7 +11487,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -12013,7 +11543,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -12069,7 +11599,7 @@
         }
       },
       "firstSeen": "2026-08-30T07:20:08.220511+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -12125,7 +11655,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -12176,7 +11706,7 @@
         }
       },
       "firstSeen": "2026-08-30T07:20:08.220511+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -12227,7 +11757,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -12283,8 +11813,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "0aece617-c897-4c4e-8daf-3b85c2f1cc89",
@@ -12339,7 +11869,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -12395,7 +11925,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -12451,7 +11981,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -12502,8 +12032,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "99e600b3-515f-4636-baa2-b8cd6e5b8ce1",
@@ -12593,7 +12123,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -12649,7 +12179,7 @@
         }
       },
       "firstSeen": "2026-08-29T03:20:09.043829+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -12705,8 +12235,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "2fc9aa5e-aeca-4660-829c-7ad2570944b1",
@@ -12761,8 +12291,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "d4e84575-3b34-44aa-969f-f76509a5745f",
@@ -12817,8 +12347,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "2a8291b9-914f-45b5-835d-3947f96f6aa1",
@@ -12873,7 +12403,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -12929,8 +12459,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "64e9352e-ec5c-4d1f-82ee-0689f256e2f2",
@@ -12985,7 +12515,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -13164,7 +12694,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -13220,7 +12750,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -13276,63 +12806,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": false
-    },
-    {
-      "id": "0f73506c-ab49-4ef7-ae93-83730d3843c2",
-      "projectId": "0f73506c-ab49-4ef7-ae93-83730d3843c2",
-      "publicationId": "74dfdedc-0887-4a5e-a4a1-8758370a1b1e",
-      "title": "Kultur- und Begegnungszentrum Uster im Zeughaus, BKP 237 «Gebäudeautomation»",
-      "buyer": "Stadt Uster, GF Liegenschaften",
-      "location": "Uster",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Kultur- und Begegnungszentrum Uster im Zeughaus, BKP 237 «Gebäudeautomation» · Auftraggeber: Stadt Uster, GF Liegenschaften · Verfahren: open · Projekt-Nr.: 31977",
-      "url": "https://www.simap.ch/de/project-detail/0f73506c-ab49-4ef7-ae93-83730d3843c2",
-      "raw": {
-        "id": "0f73506c-ab49-4ef7-ae93-83730d3843c2",
-        "title": {
-          "de": "Kultur- und Begegnungszentrum Uster im Zeughaus, BKP 237 «Gebäudeautomation»",
-          "en": "Kultur- und Begegnungszentrum Uster im Zeughaus, BKP 237 «Gebäudeautomation»",
-          "fr": null,
-          "it": null
-        },
-        "projectNumber": "31977",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "74dfdedc-0887-4a5e-a4a1-8758370a1b1e",
-        "publicationDate": "2026-07-02",
-        "publicationNumber": "31977-02",
-        "pubType": "award",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Stadt Uster, GF Liegenschaften",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "ZH",
-          "postalCode": "8610",
-          "city": {
-            "de": "Uster",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -13467,7 +12941,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -13518,7 +12992,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -13569,7 +13043,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -13620,7 +13094,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -13671,7 +13145,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -13722,7 +13196,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -13773,7 +13247,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -13829,7 +13303,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -13880,7 +13354,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -13936,8 +13410,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "87044b94-15e0-4409-9468-4b46af34d363",
@@ -13987,7 +13461,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14043,7 +13517,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14099,8 +13573,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "0ad059c8-0648-4d52-a192-2e62b8559b48",
@@ -14150,7 +13624,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14201,7 +13675,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14257,7 +13731,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14313,7 +13787,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14369,7 +13843,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14425,7 +13899,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14481,7 +13955,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14537,7 +14011,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14588,7 +14062,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14639,7 +14113,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14690,7 +14164,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14746,7 +14220,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14797,7 +14271,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14853,7 +14327,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14909,7 +14383,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -14960,8 +14434,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "c901fe30-2497-42ff-a4b0-65791ccb8a74",
@@ -15011,8 +14485,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "eccc8b69-e377-41c5-8a3b-1c213adc741e",
@@ -15062,7 +14536,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15113,7 +14587,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15164,7 +14638,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15220,7 +14694,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15271,7 +14745,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15322,7 +14796,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15373,7 +14847,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15424,7 +14898,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15475,7 +14949,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15526,7 +15000,7 @@
         }
       },
       "firstSeen": "2026-08-30T17:20:00.569153+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15577,8 +15051,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "a2620ef4-0fae-4d22-86d5-90076b3da4f8",
@@ -15628,7 +15102,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15684,7 +15158,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15740,7 +15214,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15796,7 +15270,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15852,7 +15326,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15903,7 +15377,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -15954,7 +15428,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16005,7 +15479,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16056,7 +15530,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16107,7 +15581,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16158,7 +15632,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16209,7 +15683,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16260,7 +15734,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16311,7 +15785,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16362,7 +15836,7 @@
         }
       },
       "firstSeen": "2026-08-30T16:20:02.959764+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16418,7 +15892,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16474,7 +15948,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16575,7 +16049,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16631,8 +16105,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "e5f7892b-6675-417d-ad83-be3563c786d1",
@@ -16687,7 +16161,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16743,7 +16217,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16794,7 +16268,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16850,7 +16324,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16906,7 +16380,7 @@
         }
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -16962,7 +16436,7 @@
         }
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17018,7 +16492,7 @@
         }
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17074,7 +16548,7 @@
         }
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17165,7 +16639,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T07:20:08.220511+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17216,7 +16690,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17267,8 +16741,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "a09d3003-3b82-4193-aa89-b1fabdaa60b8",
@@ -17318,7 +16792,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17369,7 +16843,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17420,7 +16894,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17471,7 +16945,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17522,7 +16996,7 @@
         }
       },
       "firstSeen": "2026-08-29T02:20:19.772244+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17573,7 +17047,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17624,7 +17098,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17675,7 +17149,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17726,7 +17200,7 @@
         }
       },
       "firstSeen": "2026-08-28T23:20:03.401094+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17777,8 +17251,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "4b2f054e-bf18-4b30-9b97-45e105aac622",
@@ -17828,7 +17302,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17879,8 +17353,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "b42b18ed-53a8-47e9-a13c-0efbad7b21cd",
@@ -17930,7 +17404,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -17981,7 +17455,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18032,7 +17506,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18083,7 +17557,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18134,7 +17608,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18185,7 +17659,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18236,7 +17710,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18287,7 +17761,7 @@
         }
       },
       "firstSeen": "2026-08-25T23:04:31.030984+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18338,7 +17812,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18389,7 +17863,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18440,7 +17914,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18491,7 +17965,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18542,7 +18016,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18593,7 +18067,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18644,7 +18118,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18695,7 +18169,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18746,7 +18220,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18797,7 +18271,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18848,8 +18322,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "8592657c-9c5d-485b-b482-93a804b3eb28",
@@ -18899,7 +18373,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -18950,7 +18424,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19001,7 +18475,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19052,7 +18526,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19103,7 +18577,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19154,7 +18628,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19205,7 +18679,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19256,7 +18730,7 @@
         }
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19307,7 +18781,7 @@
         }
       },
       "firstSeen": "2026-08-28T01:32:15.914661+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19358,7 +18832,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19409,7 +18883,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19460,7 +18934,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19516,7 +18990,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19567,7 +19041,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19618,7 +19092,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19669,7 +19143,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19720,7 +19194,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19771,7 +19245,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19822,7 +19296,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19873,7 +19347,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -19924,7 +19398,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -20059,63 +19533,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-29T04:19:59.626070+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": false
-    },
-    {
-      "id": "dcb5eda7-fd7a-43bc-b7f2-5557d7bfff6d",
-      "projectId": "dcb5eda7-fd7a-43bc-b7f2-5557d7bfff6d",
-      "publicationId": "bf9c4eed-e9a9-4111-8b35-733c56507747",
-      "title": "Neubau Feuerwehr / Werkdienst Oberdorf, Vitznau",
-      "buyer": "Gemeinde Vitznau (Studio OfM)",
-      "location": "Vitznau",
-      "type": "project_study",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Neubau Feuerwehr / Werkdienst Oberdorf, Vitznau · Auftraggeber: Gemeinde Vitznau (Studio OfM) · Verfahren: selective · Projekt-Nr.: 20068",
-      "url": "https://www.simap.ch/de/project-detail/dcb5eda7-fd7a-43bc-b7f2-5557d7bfff6d",
-      "raw": {
-        "id": "dcb5eda7-fd7a-43bc-b7f2-5557d7bfff6d",
-        "title": {
-          "de": "Neubau Feuerwehr / Werkdienst Oberdorf, Vitznau",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "projectNumber": "20068",
-        "projectType": "study_contract",
-        "projectSubType": "project_study",
-        "processType": "selective",
-        "lotsType": "without",
-        "publicationId": "bf9c4eed-e9a9-4111-8b35-733c56507747",
-        "publicationDate": "2026-08-07",
-        "publicationNumber": "20068-03",
-        "pubType": "abandonment",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Gemeinde Vitznau (Studio OfM)",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "LU",
-          "postalCode": "6354",
-          "city": {
-            "de": "Vitznau",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -20171,7 +19589,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -20227,8 +19645,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "da2f34ea-427b-4119-9c6a-cf77557b51a5",
@@ -20283,7 +19701,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -20339,8 +19757,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "532596c5-0f43-48ad-a4c8-74e298551410",
@@ -20395,8 +19813,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "950fc4c8-670e-4d8b-acea-de35b8fac641",
@@ -20451,8 +19869,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "e5bd84d8-3c73-4f3d-8b31-ce30aaba4f8a",
@@ -20507,7 +19925,7 @@
         }
       },
       "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -20558,8 +19976,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "d7e10739-07c0-4772-9ad4-5e374bc038ce",
@@ -20737,8 +20155,8 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "c840f425-ce75-4ef5-af50-057e47acbf60",
@@ -20793,7 +20211,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -20849,7 +20267,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -20905,7 +20323,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -20961,7 +20379,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -21017,7 +20435,7 @@
         }
       },
       "firstSeen": "2026-08-30T17:20:00.569153+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -21073,7 +20491,7 @@
         }
       },
       "firstSeen": "2026-08-30T17:20:00.569153+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -21129,8 +20547,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "27b4d530-c25a-418d-8215-6eb462084c60",
@@ -21185,8 +20603,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "b1a8cb6a-bc82-4784-8512-b888574392a8",
@@ -21241,7 +20659,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -21297,7 +20715,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -21353,7 +20771,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -21409,63 +20827,7 @@
         }
       },
       "firstSeen": "2026-08-30T17:20:00.569153+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": false
-    },
-    {
-      "id": "238e2afb-1e8c-4c95-bdab-cf18c4d6bff5",
-      "projectId": "238e2afb-1e8c-4c95-bdab-cf18c4d6bff5",
-      "publicationId": "54d75a4d-e9a5-4629-80c0-b4f12d33e061",
-      "title": "PHZH Halbinsel Au, Erneuerung Energieversorgung, BKP 242-01 HLKS-Anlagen",
-      "buyer": "Hochbauamt Kanton Zürich, Baubereich C",
-      "location": "Au (ZH)",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "PHZH Halbinsel Au, Erneuerung Energieversorgung, BKP 242-01 HLKS-Anlagen · Auftraggeber: Hochbauamt Kanton Zürich, Baubereich C · Verfahren: open · Projekt-Nr.: 40915",
-      "url": "https://www.simap.ch/de/project-detail/238e2afb-1e8c-4c95-bdab-cf18c4d6bff5",
-      "raw": {
-        "id": "238e2afb-1e8c-4c95-bdab-cf18c4d6bff5",
-        "title": {
-          "de": "PHZH Halbinsel Au, Erneuerung Energieversorgung, BKP 242-01 HLKS-Anlagen",
-          "en": null,
-          "fr": "Copie Copie ZHAW WIN, Erneuerung Schliessanlagen, BKP 232-01 Elektroinstallationen Winterthur",
-          "it": null
-        },
-        "projectNumber": "40915",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "54d75a4d-e9a5-4629-80c0-b4f12d33e061",
-        "publicationDate": "2026-07-14",
-        "publicationNumber": "40915-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Hochbauamt Kanton Zürich, Baubereich C",
-          "en": null,
-          "fr": "Hochbauamt Kanton Zürich, Baubereich C",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "ZH",
-          "postalCode": "8804",
-          "city": {
-            "de": "Au (ZH)",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -21521,7 +20883,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -21577,7 +20939,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -21633,7 +20995,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -21746,58 +21108,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
-    },
-    {
-      "id": "daf745e2-0f26-4fea-8031-a4dfc96d209b",
-      "projectId": "daf745e2-0f26-4fea-8031-a4dfc96d209b",
-      "publicationId": "96fad356-fac9-4bf3-bbe6-203c316b5345",
-      "title": "Planerische Begleitung der Ertüchtigung des Busdepots Grüningen für E-Busse",
-      "buyer": "Verkehrsbetriebe Zürichsee und Oberland AG (VZO)",
-      "location": "Schweiz",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Planerische Begleitung der Ertüchtigung des Busdepots Grüningen für E-Busse · Auftraggeber: Verkehrsbetriebe Zürichsee und Oberland AG (VZO) · Verfahren: direct · Projekt-Nr.: 40840",
-      "url": "https://www.simap.ch/de/project-detail/daf745e2-0f26-4fea-8031-a4dfc96d209b",
-      "raw": {
-        "id": "daf745e2-0f26-4fea-8031-a4dfc96d209b",
-        "title": {
-          "de": "Planerische Begleitung der Ertüchtigung des Busdepots Grüningen für E-Busse",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "projectNumber": "40840",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "direct",
-        "lotsType": "without",
-        "publicationId": "96fad356-fac9-4bf3-bbe6-203c316b5345",
-        "publicationDate": "2026-08-21",
-        "publicationNumber": "40840-01",
-        "pubType": "direct_award",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Verkehrsbetriebe Zürichsee und Oberland AG (VZO)",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": null,
-        "orderAddress": {
-          "countryId": null,
-          "cantonId": null,
-          "postalCode": null,
-          "city": null
-        }
-      },
-      "firstSeen": "2026-08-29T00:20:11.457003+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -21853,7 +21164,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -21904,7 +21215,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22017,7 +21328,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22068,7 +21379,7 @@
         }
       },
       "firstSeen": "2026-08-30T07:20:08.220511+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22124,58 +21435,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": false
-    },
-    {
-      "id": "e00ad1c4-b716-4094-bb7a-2f5b4e394371",
-      "projectId": "e00ad1c4-b716-4094-bb7a-2f5b4e394371",
-      "publicationId": "8b9d2686-b26d-4746-a91f-1b15a0ba5e95",
-      "title": "Projekt Mitholz: Räumung ehemaliges Munitionsdepot, Mandat Generalplaner Zwischennutzung Anlage TP 2",
-      "buyer": "armasuisse Immobilien",
-      "location": "Schweiz",
-      "type": "service",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Projekt Mitholz: Räumung ehemaliges Munitionsdepot, Mandat Generalplaner Zwischennutzung Anlage TP 2 · Auftraggeber: armasuisse Immobilien · Verfahren: open · Projekt-Nr.: 40505",
-      "url": "https://www.simap.ch/de/project-detail/e00ad1c4-b716-4094-bb7a-2f5b4e394371",
-      "raw": {
-        "id": "e00ad1c4-b716-4094-bb7a-2f5b4e394371",
-        "title": {
-          "de": "Projekt Mitholz: Räumung ehemaliges Munitionsdepot, Mandat Generalplaner Zwischennutzung Anlage TP 2",
-          "en": null,
-          "fr": "Projet Mitholz : élimination des munitions de l' ancien dépôt de munitions, mandat de maître d'œuvre pour la réutilisation temporaire de l'installation TP 2",
-          "it": null
-        },
-        "projectNumber": "40505",
-        "projectType": "tender",
-        "projectSubType": "service",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "8b9d2686-b26d-4746-a91f-1b15a0ba5e95",
-        "publicationDate": "2026-07-15",
-        "publicationNumber": "40505-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "armasuisse Immobilien",
-          "en": null,
-          "fr": "armasuisse Immobilier",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "yes",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": null,
-          "postalCode": null,
-          "city": null
-        }
-      },
-      "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22226,7 +21486,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22282,8 +21542,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "79b8b065-5132-43b7-b791-17c3bfb88c5d",
@@ -22338,7 +21598,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22394,7 +21654,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22450,7 +21710,7 @@
         }
       },
       "firstSeen": "2026-08-30T17:20:00.569153+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22506,7 +21766,7 @@
         }
       },
       "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22557,7 +21817,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22613,7 +21873,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22664,7 +21924,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22755,7 +22015,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22811,7 +22071,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22862,7 +22122,7 @@
         }
       },
       "firstSeen": "2026-08-30T17:20:00.569153+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22913,7 +22173,7 @@
         }
       },
       "firstSeen": "2026-08-30T17:20:00.569153+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -22969,7 +22229,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -23025,8 +22285,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "46a16a25-b56f-48a6-b23c-9d0d696915fb",
@@ -23081,7 +22341,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -23137,7 +22397,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -23193,63 +22453,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": false
-    },
-    {
-      "id": "0f4c3e7a-89da-4b92-a6d2-e294e5e4ebc1",
-      "projectId": "0f4c3e7a-89da-4b92-a6d2-e294e5e4ebc1",
-      "publicationId": "018534b0-e911-4a73-943c-d7f971cefd38",
-      "title": "SGS Erweiterung Schulanlage Gutenbrunnen Schübelbach",
-      "buyer": "Gemeinde Schübelbach, Abteilung Liegenschaften",
-      "location": "Schübelbach",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "SGS Erweiterung Schulanlage Gutenbrunnen Schübelbach · Auftraggeber: Gemeinde Schübelbach, Abteilung Liegenschaften · Verfahren: open · Projekt-Nr.: 42684",
-      "url": "https://www.simap.ch/de/project-detail/0f4c3e7a-89da-4b92-a6d2-e294e5e4ebc1",
-      "raw": {
-        "id": "0f4c3e7a-89da-4b92-a6d2-e294e5e4ebc1",
-        "title": {
-          "de": "SGS Erweiterung Schulanlage Gutenbrunnen Schübelbach",
-          "en": "SGS Erweiterung Schulanlage Gutenbrunnen Schübelbach",
-          "fr": null,
-          "it": null
-        },
-        "projectNumber": "42684",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "018534b0-e911-4a73-943c-d7f971cefd38",
-        "publicationDate": "2026-08-20",
-        "publicationNumber": "42684-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Gemeinde Schübelbach, Abteilung Liegenschaften",
-          "en": "politische Gemeinde Schübelbach (BGS & Partner Architekten AG)",
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "SZ",
-          "postalCode": "8862",
-          "city": {
-            "de": "Schübelbach ",
-            "en": "Schübelbach ",
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -23305,7 +22509,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -23361,7 +22565,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -23417,7 +22621,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -23473,7 +22677,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -23529,7 +22733,7 @@
         }
       },
       "firstSeen": "2026-08-30T07:20:08.220511+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -23585,7 +22789,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -23641,8 +22845,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "fb8f268d-819b-470d-b597-d3f898a88ac5",
@@ -23697,8 +22901,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "0d6af9df-30ad-40bd-a96f-aa85ad9a7957",
@@ -23753,8 +22957,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "96a1fff3-e23a-44ef-8f68-617168eeed25",
@@ -23809,7 +23013,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -23860,7 +23064,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -23916,7 +23120,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -23972,7 +23176,7 @@
         }
       },
       "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -24028,7 +23232,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -24084,8 +23288,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "295a53fd-6ef7-41fb-a450-7bdcff046f29",
@@ -24140,7 +23344,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -24196,7 +23400,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -24252,7 +23456,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -24308,7 +23512,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -24364,7 +23568,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -24420,7 +23624,7 @@
         }
       },
       "firstSeen": "2026-08-25T23:04:31.030984+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -24471,8 +23675,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "36ee8fee-2a3d-4434-8dbb-e4e6001ed42d",
@@ -24522,8 +23726,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "81786d15-4170-42d3-8755-deecc6c99a15",
@@ -24573,8 +23777,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "67c7acab-077c-48c8-8c23-0a003fec50fa",
@@ -24624,7 +23828,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -24675,7 +23879,7 @@
         }
       },
       "firstSeen": "2026-08-30T21:20:05.448931+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -24766,8 +23970,8 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "454acc3a-7027-4642-850c-cbc37ee760a9",
@@ -24822,8 +24026,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "aa522bdd-d3de-440b-854d-7cba60bf5ff9",
@@ -24878,7 +24082,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -24934,7 +24138,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -24990,8 +24194,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "c806f9e7-f46a-4daf-8e19-d3b3b5cb8ee0",
@@ -25046,8 +24250,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "087126c5-67f0-4db5-9081-33e78ff6e26f",
@@ -25102,8 +24306,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "090d2284-4553-4172-8bc3-9101b26f61ee",
@@ -25158,8 +24362,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "ce447da5-f575-47ff-b716-fc46c8cb7275",
@@ -25209,8 +24413,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "acec2868-1331-4b6e-bcc6-4d8729c6ea03",
@@ -25310,7 +24514,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -25361,7 +24565,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -25417,7 +24621,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -25473,7 +24677,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -25529,7 +24733,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -25585,7 +24789,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -25641,7 +24845,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -25697,7 +24901,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -25753,7 +24957,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -25809,7 +25013,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -25865,7 +25069,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -25921,7 +25125,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -25977,7 +25181,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -26033,7 +25237,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -26089,8 +25293,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "8352af32-bed1-421b-8d71-abd006073aa8",
@@ -26145,8 +25349,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "1fe42d24-42d5-420b-8560-3c51e22e89ad",
@@ -26201,7 +25405,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -26252,7 +25456,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -26308,7 +25512,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -26364,7 +25568,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -26415,7 +25619,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -26471,8 +25675,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "0e7dd242-bcb1-4631-8d60-fe58b576fac9",
@@ -26527,7 +25731,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -26583,7 +25787,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -26639,7 +25843,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -26740,7 +25944,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -26868,63 +26072,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": false
-    },
-    {
-      "id": "49da897f-72c4-4c92-9998-deb0e9b33774",
-      "projectId": "49da897f-72c4-4c92-9998-deb0e9b33774",
-      "publicationId": "93eb6d96-8b78-46de-afcd-a9322d745662",
-      "title": "VSZK - Ausschreibung BKP 230 Elektroarbeiten",
-      "buyer": "Hochbauamt Kanton Schwyz",
-      "location": "Schwyz",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "VSZK - Ausschreibung BKP 230 Elektroarbeiten · Auftraggeber: Hochbauamt Kanton Schwyz · Verfahren: open · Projekt-Nr.: 41593",
-      "url": "https://www.simap.ch/de/project-detail/49da897f-72c4-4c92-9998-deb0e9b33774",
-      "raw": {
-        "id": "49da897f-72c4-4c92-9998-deb0e9b33774",
-        "title": {
-          "de": "VSZK - Ausschreibung BKP 230 Elektroarbeiten",
-          "en": null,
-          "fr": " VSZK - Appel d'offres BKP 230 Travaux électriques",
-          "it": null
-        },
-        "projectNumber": "41593",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "93eb6d96-8b78-46de-afcd-a9322d745662",
-        "publicationDate": "2026-07-24",
-        "publicationNumber": "41593-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Hochbauamt Kanton Schwyz",
-          "en": null,
-          "fr": "Hochbauamt Kanton Schwyz",
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "SZ",
-          "postalCode": "6431",
-          "city": {
-            "de": "Schwyz ",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -26980,7 +26128,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -27036,7 +26184,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -27087,7 +26235,7 @@
         }
       },
       "firstSeen": "2026-08-30T20:20:09.834756+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -27143,8 +26291,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "006a5514-a7c8-4c16-9fbc-3e86165116ca",
@@ -27199,7 +26347,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -27250,7 +26398,7 @@
         }
       },
       "firstSeen": "2026-08-28T22:20:03.693071+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -27301,7 +26449,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -27357,7 +26505,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -27458,7 +26606,7 @@
         "orderAddress": null
       },
       "firstSeen": "2026-08-24T22:01:41.413886+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -27509,8 +26657,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "e6f0c857-01b1-4951-9b78-566cd1d31742",
@@ -27560,7 +26708,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -27611,7 +26759,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -27667,8 +26815,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "82af5838-a1fc-4009-b6e8-5466800d41d3",
@@ -27723,63 +26871,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": false
-    },
-    {
-      "id": "24fa6838-82c8-4cb9-958e-e445cb3be045",
-      "projectId": "24fa6838-82c8-4cb9-958e-e445cb3be045",
-      "publicationId": "6abd1e59-d868-4c24-ab2c-936f77debfff",
-      "title": "Wärme- und Kältezentrale, EZ Publica, Glattpark - BKP 24/34 HLKS Installationen",
-      "buyer": "Energie Opfikon AG",
-      "location": "Glattbrugg",
-      "type": "construction",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Wärme- und Kältezentrale, EZ Publica, Glattpark - BKP 24/34 HLKS Installationen · Auftraggeber: Energie Opfikon AG · Verfahren: open · Projekt-Nr.: 40220",
-      "url": "https://www.simap.ch/de/project-detail/24fa6838-82c8-4cb9-958e-e445cb3be045",
-      "raw": {
-        "id": "24fa6838-82c8-4cb9-958e-e445cb3be045",
-        "title": {
-          "de": "Wärme- und Kältezentrale, EZ Publica, Glattpark - BKP 24/34 HLKS Installationen ",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "projectNumber": "40220",
-        "projectType": "tender",
-        "projectSubType": "construction",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "6abd1e59-d868-4c24-ab2c-936f77debfff",
-        "publicationDate": "2026-07-02",
-        "publicationNumber": "40220-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "Energie Opfikon AG",
-          "en": null,
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "ZH",
-          "postalCode": "8152",
-          "city": {
-            "de": "Glattbrugg",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -27835,7 +26927,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -27891,63 +26983,7 @@
         }
       },
       "firstSeen": "2026-08-25T23:04:31.030984+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": false
-    },
-    {
-      "id": "8cae7dd9-6449-49a7-b941-61fac44fc3b0",
-      "projectId": "8cae7dd9-6449-49a7-b941-61fac44fc3b0",
-      "publicationId": "d3e6ea8f-e455-472d-88f1-5827b16e22eb",
-      "title": "Zentrale Wartegg: Gesamtleitung, Koordination, Planer HLKS+E+MSRL",
-      "buyer": "ewl Rohrnetz AG",
-      "location": "Luzern",
-      "type": "service",
-      "deadline": "",
-      "deadlineDays": 30,
-      "status": "active",
-      "value": 0,
-      "text": "Zentrale Wartegg: Gesamtleitung, Koordination, Planer HLKS+E+MSRL · Auftraggeber: ewl Rohrnetz AG · Verfahren: open · Projekt-Nr.: 40216",
-      "url": "https://www.simap.ch/de/project-detail/8cae7dd9-6449-49a7-b941-61fac44fc3b0",
-      "raw": {
-        "id": "8cae7dd9-6449-49a7-b941-61fac44fc3b0",
-        "title": {
-          "de": "Zentrale Wartegg: Gesamtleitung, Koordination, Planer HLKS+E+MSRL ",
-          "en": "Control Center Wartegg:  overall planning HLKS, E, MSRL",
-          "fr": null,
-          "it": null
-        },
-        "projectNumber": "40216",
-        "projectType": "tender",
-        "projectSubType": "service",
-        "processType": "open",
-        "lotsType": "without",
-        "publicationId": "d3e6ea8f-e455-472d-88f1-5827b16e22eb",
-        "publicationDate": "2026-07-06",
-        "publicationNumber": "40216-01",
-        "pubType": "tender",
-        "corrected": false,
-        "procOfficeName": {
-          "de": "ewl Rohrnetz AG",
-          "en": "ewl Rohrnetz AG",
-          "fr": null,
-          "it": null
-        },
-        "lots": [],
-        "orderAddressOnlyDescription": "no",
-        "orderAddress": {
-          "countryId": "CH",
-          "cantonId": "LU",
-          "postalCode": "6002",
-          "city": {
-            "de": "Luzern",
-            "en": null,
-            "fr": null,
-            "it": null
-          }
-        }
-      },
-      "firstSeen": "2026-08-29T13:20:04.757660+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -27998,8 +27034,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "43f783cc-7013-4d0b-8584-744332bdb9b7",
@@ -28049,7 +27085,7 @@
         }
       },
       "firstSeen": "2026-08-24T16:14:49.040565+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -28105,8 +27141,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "4e7efffa-7edc-4286-b5cb-ea37afcad0b2",
@@ -28161,8 +27197,8 @@
         }
       },
       "firstSeen": "2026-08-30T22:20:10.475904+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
-      "isNew": true
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
+      "isNew": false
     },
     {
       "id": "97dc74d8-96fc-4329-bc72-5fdb6f3cb697",
@@ -28217,7 +27253,7 @@
         }
       },
       "firstSeen": "2026-08-30T18:20:06.975665+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -28273,7 +27309,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -28329,7 +27365,7 @@
         }
       },
       "firstSeen": "2026-08-27T11:30:47.883309+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     },
     {
@@ -28380,7 +27416,7 @@
         }
       },
       "firstSeen": "2026-08-30T19:20:03.447928+00:00",
-      "lastSeen": "2026-08-30T22:20:10.475904+00:00",
+      "lastSeen": "2026-08-30T23:20:08.579052+00:00",
       "isNew": false
     }
   ]
