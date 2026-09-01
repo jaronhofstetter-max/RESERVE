@@ -7,6 +7,7 @@ on:
       - 'data/quality-batch-*.json'
       - 'tools/validate-recipes.mjs'
       - 'tools/build-test-fleet.mjs'
+      - 'tools/merge-quality-batches.mjs'
       - '.github/workflows/recipes.yml'
   pull_request:
     paths:
@@ -14,6 +15,7 @@ on:
       - 'data/quality-batch-*.json'
       - 'tools/validate-recipes.mjs'
       - 'tools/build-test-fleet.mjs'
+      - 'tools/merge-quality-batches.mjs'
       - '.github/workflows/recipes.yml'
   workflow_dispatch:
 
@@ -32,8 +34,16 @@ jobs:
           node-version: '22'
       - name: Validate live recipe database
         run: node tools/validate-recipes.mjs data/recipes.json
-      - name: Validate production quality batch 01
-        run: node tools/validate-recipes.mjs data/quality-batch-01.json
+      - name: Validate production quality batches
+        run: |
+          for f in data/quality-batch-*.json; do
+            echo "Validating $f"
+            node tools/validate-recipes.mjs "$f"
+          done
+      - name: Validate merged production library
+        run: |
+          node tools/merge-quality-batches.mjs data/recipes.json data/quality-batch-*.json build/recipes-production.json
+          node tools/validate-recipes.mjs build/recipes-production.json
       - name: Build 100-recipe test fleet
         run: node tools/build-test-fleet.mjs
       - name: Validate 100-recipe test fleet
