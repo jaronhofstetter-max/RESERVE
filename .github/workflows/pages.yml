@@ -26,8 +26,8 @@ jobs:
       - name: Build validated live recipe library
         run: |
           node tools/validate-recipes.mjs data/recipes.json
-          node tools/validate-recipes.mjs data/quality-batch-01.json
-          node tools/merge-quality-batches.mjs
+          for f in data/quality-batch-*.json; do node tools/validate-recipes.mjs "$f"; done
+          node tools/merge-quality-batches.mjs data/recipes.json data/quality-batch-*.json build/recipes-live.json
           node tools/validate-recipes.mjs build/recipes-live.json
           cp build/recipes-live.json data/recipes.json
       - name: Enable RESERVE feature modules
