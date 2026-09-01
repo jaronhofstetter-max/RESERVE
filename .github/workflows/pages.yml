@@ -24,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Enable RESERVE feature modules
-        run: sed -i 's#</body>#<script src="shopping-v2.js"></script><script src="reserve-core-v3.js"></script></body>#' index.html
+        run: sed -i 's#</body>#<script src="shopping-v2.js"></script><script src="reserve-core-v3.js"></script><script src="cloud-sync-v1.js"></script></body>#' index.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
