@@ -23,8 +23,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Enable smart shopping list
-        run: sed -i 's#</body>#<script src="shopping-v2.js"></script></body>#' index.html
+      - name: Enable RESERVE feature modules
+        run: sed -i 's#</body>#<script src="shopping-v2.js"></script><script src="reserve-core-v3.js"></script></body>#' index.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
