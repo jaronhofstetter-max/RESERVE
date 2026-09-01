@@ -8,6 +8,7 @@ on:
       - 'tools/validate-recipes.mjs'
       - 'tools/build-test-fleet.mjs'
       - 'tools/merge-quality-batches.mjs'
+      - 'tools/test-recommendations.mjs'
       - '.github/workflows/recipes.yml'
   pull_request:
     paths:
@@ -16,6 +17,7 @@ on:
       - 'tools/validate-recipes.mjs'
       - 'tools/build-test-fleet.mjs'
       - 'tools/merge-quality-batches.mjs'
+      - 'tools/test-recommendations.mjs'
       - '.github/workflows/recipes.yml'
   workflow_dispatch:
 
@@ -44,6 +46,8 @@ jobs:
         run: |
           node tools/merge-quality-batches.mjs data/recipes.json data/quality-batch-*.json build/recipes-production.json
           node tools/validate-recipes.mjs build/recipes-production.json
+      - name: Test recommendation behavior
+        run: node tools/test-recommendations.mjs build/recipes-production.json
       - name: Build 100-recipe test fleet
         run: node tools/build-test-fleet.mjs
       - name: Validate 100-recipe test fleet
