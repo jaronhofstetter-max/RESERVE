@@ -1,0 +1,30 @@
+{
+  "id": "beispiel-rezept",
+  "name": "Beispiel Rezept",
+  "type": "Hauptmahlzeit",
+  "diet": "Vegetarisch",
+  "dish": "🍽️",
+  "cuisine": "International",
+  "mealTimes": ["Mittagessen", "Abendessen"],
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "Einfach",
+  "allergens": [],
+  "tags": ["einfach"],
+  "ingredients": [
+    {"name": "Zutat A", "amount": 100, "unit": "g"},
+    {"name": "Zutat B", "amount": 1, "unit": "Stück"}
+  ],
+  "steps": [
+    "Zutaten vorbereiten.",
+    "Alles vollständig garen und servieren."
+  ],
+  "nutrition": {
+    "kcal": 500,
+    "protein": 20,
+    "carbs": 60,
+    "fat": 18,
+    "fiber": 8
+  },
+  "status": "draft"
+}
