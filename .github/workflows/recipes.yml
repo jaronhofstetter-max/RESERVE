@@ -4,12 +4,14 @@ on:
   push:
     paths:
       - 'data/recipes.json'
+      - 'data/quality-batch-*.json'
       - 'tools/validate-recipes.mjs'
       - 'tools/build-test-fleet.mjs'
       - '.github/workflows/recipes.yml'
   pull_request:
     paths:
       - 'data/recipes.json'
+      - 'data/quality-batch-*.json'
       - 'tools/validate-recipes.mjs'
       - 'tools/build-test-fleet.mjs'
       - '.github/workflows/recipes.yml'
@@ -28,8 +30,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Validate production recipe database
+      - name: Validate live recipe database
         run: node tools/validate-recipes.mjs data/recipes.json
+      - name: Validate production quality batch 01
+        run: node tools/validate-recipes.mjs data/quality-batch-01.json
       - name: Build 100-recipe test fleet
         run: node tools/build-test-fleet.mjs
       - name: Validate 100-recipe test fleet
