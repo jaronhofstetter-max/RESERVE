@@ -1,10 +1,10 @@
 {
-  "id": "/RESERVE/",
+  "id": "/",
   "name": "RESERVE",
   "short_name": "RESERVE",
   "description": "Vorrat verwalten, Mahlzeiten planen, Einkauf organisieren und Ernährung im Blick behalten.",
-  "start_url": "/RESERVE/",
-  "scope": "/RESERVE/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#f5f1e8",
   "theme_color": "#173f35",
