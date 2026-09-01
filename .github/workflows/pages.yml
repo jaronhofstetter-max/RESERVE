@@ -1,4 +1,4 @@
-name: Deploy TenderHawk to GitHub Pages
+name: Deploy RESERVE to GitHub Pages
 
 on:
   push:
