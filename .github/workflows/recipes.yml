@@ -5,11 +5,13 @@ on:
     paths:
       - 'data/recipes.json'
       - 'tools/validate-recipes.mjs'
+      - 'tools/build-test-fleet.mjs'
       - '.github/workflows/recipes.yml'
   pull_request:
     paths:
       - 'data/recipes.json'
       - 'tools/validate-recipes.mjs'
+      - 'tools/build-test-fleet.mjs'
       - '.github/workflows/recipes.yml'
   workflow_dispatch:
 
@@ -26,5 +28,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Validate recipe database
+      - name: Validate production recipe database
         run: node tools/validate-recipes.mjs data/recipes.json
+      - name: Build 100-recipe test fleet
+        run: node tools/build-test-fleet.mjs
+      - name: Validate 100-recipe test fleet
+        run: node tools/validate-recipes.mjs build/recipes-100.json
