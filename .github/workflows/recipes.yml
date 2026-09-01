@@ -1,0 +1,30 @@
+name: Validate RESERVE recipes
+
+on:
+  push:
+    paths:
+      - 'data/recipes.json'
+      - 'tools/validate-recipes.mjs'
+      - '.github/workflows/recipes.yml'
+  pull_request:
+    paths:
+      - 'data/recipes.json'
+      - 'tools/validate-recipes.mjs'
+      - '.github/workflows/recipes.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate recipe database
+        run: node tools/validate-recipes.mjs data/recipes.json
