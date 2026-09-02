@@ -1,4 +1,4 @@
-/* RESERVE Autopilot v5: cookable-first ranking, unit-safe stock coverage, strict slots, variety, nutrition and reasons. */
+/* RESERVE Autopilot v5.1: cookable-first ranking, unit-safe stock coverage, strict slots, variety, nutrition and reasons. */
 (function(){
   const DAY=86400000, SLOTS=[['Frühstück','Frühstück'],['Mittagessen','Mittagessen'],['Abendessen','Abendessen']];
   const unitOf=i=>(i.unit||'').toLowerCase()==='stück'?'stück':(i.unit||'').toLowerCase();
@@ -7,9 +7,9 @@
   function approved(){return recipes.filter(r=>(!r.status||r.status==='approved')&&allowed(r))}
   function forSlot(r,slot){const mt=r.mealTimes||[];if(mt.length)return mt.includes(slot);return slot==='Frühstück'?r.type==='Frühstück':r.type==='Hauptmahlzeit'}
   function urgency(r){return adaptRecipe(r).ingredients.reduce((score,i)=>{let d=stock.filter(s=>matches(s.n,i.name)).map(expDays).sort((a,b)=>a-b)[0];return score+(d<=1?15:d<=3?10:d<=7?5:0)},0)}
-  function ledgerAvailable(ledger,name,unit){let e=ledgerEntry(ledger,name);return e&&String(e.u).toLowerCase()===unit?e.v:0}
-  function missingUnits(r,ledger){return adaptRecipe(r).ingredients.reduce((n,i)=>n+(ledgerAvailable(ledger,i.name,unitOf(i))>=i.amount*persons()?0:1),0)}
-  function fitRatio(r,ledger){const a=adaptRecipe(r).ingredients;if(!a.length)return 0;return a.reduce((sum,i)=>{const need=i.amount*persons();if(!need)return sum+1;return sum+Math.min(1,ledgerAvailable(ledger,i.name,unitOf(i))/need)},0)/a.length}
+  function ledgerAvailable(ledger,name,unit){ledger=ledger||stockLedger();let e=ledgerEntry(ledger,name);return e&&String(e.u).toLowerCase()===unit?e.v:0}
+  function missingUnits(r,ledger){ledger=ledger||stockLedger();return adaptRecipe(r).ingredients.reduce((n,i)=>n+(ledgerAvailable(ledger,i.name,unitOf(i))>=i.amount*persons()?0:1),0)}
+  function fitRatio(r,ledger){ledger=ledger||stockLedger();const a=adaptRecipe(r).ingredients;if(!a.length)return 0;return a.reduce((sum,i)=>{const need=i.amount*persons();if(!need)return sum+1;return sum+Math.min(1,ledgerAvailable(ledger,i.name,unitOf(i))/need)},0)/a.length}
   function nutritionScore(r){let n=r.nutrition||{},p=profile();if(p.goal==='Proteinreich')return +(n.protein||0);if(p.goal==='Ballaststoffreich')return +(n.fiber||0)*2;if(p.goal==='Kalorienärmer')return -(+(n.kcal||0));return 0}
   function dayNutritionScore(r,day){let n=r.nutrition||{},k=+(n.kcal||0),protein=+(n.protein||0),fiber=+(n.fiber||0),after={kcal:day.kcal+k,protein:day.protein+protein,fiber:day.fiber+fiber};let score=0;if(after.kcal>2400)score-=(after.kcal-2400)/25;if(after.protein<90)score+=protein*.35;if(after.fiber<30)score+=fiber*.7;return score}
   function reasonFor(r,ledger,day){let ratio=fitRatio(r,ledger),u=urgency(r),n=r.nutrition||{};if(ratio>=.999)return 'vollständig aus deinem Vorrat';if(u>=15)return 'MHD läuft sehr bald ab';if(u>=5)return 'verbraucht bald fälligen Vorrat';if(ratio>=.6)return 'größtenteils aus deinem Vorrat';let p=profile();if(p.goal==='Proteinreich'&&+(n.protein||0)>=25)return 'passt zu deinem Proteinziel';if(p.goal==='Ballaststoffreich'&&+(n.fiber||0)>=7)return 'ballaststoffreiche Wahl';if(p.goal==='Kalorienärmer'&&+(n.kcal||0)<=500)return 'kalorienärmere Wahl';if(day.protein<60&&+(n.protein||0)>=20)return 'verbessert die Tages-Proteinbalance';return 'sorgt für Abwechslung im Wochenplan'}
