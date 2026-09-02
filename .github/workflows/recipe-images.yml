@@ -6,11 +6,7 @@ on:
       max_images:
         description: Maximum number of missing recipe images to generate
         required: true
-        default: '5'
-  push:
-    paths:
-      - 'data/recipes.json'
-      - 'data/quality-batch-*.json'
+        default: '1'
 
 permissions:
   contents: write
@@ -31,16 +27,18 @@ jobs:
         env:
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
           REPLICATE_IMAGE_MODEL: black-forest-labs/flux-1.1-pro
-          MAX_IMAGES: ${{ github.event.inputs.max_images || '5' }}
+          MAX_IMAGES: ${{ github.event.inputs.max_images || '1' }}
         run: node tools/generate-recipe-images.mjs
       - name: Commit generated images
         run: |
-          if git diff --quiet -- assets/recipes; then
-            echo 'No new images.'
-            exit 0
+          git add -A -- assets/recipes
+          if git diff --cached --quiet -- assets/recipes; then
+            echo 'No new images staged.'
+            exit 1
           fi
+          echo 'Generated image changes:'
+          git diff --cached --name-status -- assets/recipes
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets/recipes
           git commit -m 'Generate missing RESERVE recipe images'
           git push origin HEAD:main
