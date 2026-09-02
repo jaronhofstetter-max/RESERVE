@@ -14,19 +14,28 @@ for(const file of ['shopping-v2.js','reserve-core-v3.js','cloud-sync-v1.js','bar
   else ok(`${file} vorhanden`);
 }
 
-for(const needle of ['id="stock"','id="shop"','id="cook"','id="profile"']){
+for(const needle of ['id="stock"','id="shopping"','id="cook"','id="profile"','id="shopList"']){
   if(!html.includes(needle)) fail(`UI-Anker ${needle} fehlt`);
+  else ok(`UI-Anker ${needle} vorhanden`);
+}
+
+for(const module of ['shopping-v2.js','reserve-core-v3.js','cloud-sync-v1.js','barcode-v1.js']){
+  if(!html.includes(`<script src="${module}"></script>`)) fail(`${module} ist im Produktions-HTML nicht eingebunden`);
+  else ok(`${module} im Produktions-HTML eingebunden`);
 }
 
 const core=fs.readFileSync('reserve-core-v3.js','utf8');
 for(const fn of ['finishCook','purchaseToStock','renderCook','renderStock']){
   if(!core.includes(fn)) fail(`Core-Funktion ${fn} fehlt`);
+  else ok(`Core-Funktion ${fn} vorhanden`);
 }
 
 const shop=fs.readFileSync('shopping-v2.js','utf8');
 if(!shop.includes('saveShop')) fail('Einkaufslisten-Persistenz fehlt');
+else ok('Einkaufslisten-Persistenz vorhanden');
 
 const barcode=fs.readFileSync('barcode-v1.js','utf8');
 if(!barcode.includes('BarcodeDetector')&&!barcode.toLowerCase().includes('barcode')) fail('Barcode-Modul ohne Erkennungslogik');
+else ok('Barcode-Erkennungslogik vorhanden');
 
 if(!process.exitCode) ok('RESERVE Smoke-Test bestanden');
