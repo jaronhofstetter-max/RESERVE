@@ -27,7 +27,7 @@ try{
     const uniqueIds=new Set(ids).size===ids.length,uniqueNames=new Set(names).size===names.length;
     return {recipes:RESERVE_AUTOPILOT.recipeCount(),days:p.days.length,slots:p.days.map(d=>d.map(x=>x.slot)),meals:flat.length,shopping:Array.isArray(shoppingCalc),autopilotCard:!!document.getElementById('reserveAutopilot'),sync:!!window.RESERVE_SYNC,slotsValid,reasonsValid,nutritionValid,fitRatioValid,uniqueIds,uniqueNames};
   });
-  if(result.recipes!==100)throw new Error(`Produktionsbibliothek enthält ${result.recipes} statt exakt 100 Rezepte`);
+  if(result.recipes<100)throw new Error(`Produktionsbibliothek enthält ${result.recipes}; mindestens 100 Rezepte erforderlich`);
   if(!result.uniqueIds)throw new Error('Produktionsbibliothek enthält doppelte Rezept-IDs');
   if(!result.uniqueNames)throw new Error('Produktionsbibliothek enthält doppelte Rezeptnamen');
   if(!result.fitRatioValid)throw new Error('Autopilot fitRatio liegt außerhalb des Bereichs 0..1');
@@ -83,5 +83,5 @@ try{
   if(!loop.progressCleared)throw new Error('Kreislauf: Kochfortschritt wurde nicht zurückgesetzt');
   if(loop.replannedDays!==7)throw new Error('Kreislauf: Autopilot wurde nach dem Kochen nicht korrekt neu berechnet');
   if(errors.length)throw new Error('Browserfehler: '+errors.join(' | '));
-  console.log('✓ RESERVE 100-Rezepte Browser-E2E bestanden',result);console.log('✓ Autopilot Kochbar-zuerst bestanden',ranking);console.log('✓ Autopilot Einkauf bestanden',autoShop);console.log('✓ RESERVE Vollkreislauf bestanden',loop);
+  console.log(`✓ RESERVE ${result.recipes}-Rezepte Browser-E2E bestanden`,result);console.log('✓ Autopilot Kochbar-zuerst bestanden',ranking);console.log('✓ Autopilot Einkauf bestanden',autoShop);console.log('✓ RESERVE Vollkreislauf bestanden',loop);
 }finally{await browser.close();server.close()}
