@@ -13,7 +13,7 @@ const errors=[];page.on('pageerror',e=>errors.push(e.message));
 try{
   await page.goto('http://127.0.0.1:4173',{waitUntil:'networkidle'});
   await page.waitForFunction(()=>window.RESERVE_AUTOPILOT&&typeof window.RESERVE_AUTOPILOT.plan==='function');
-  await page.waitForFunction(()=>window.RESERVE_AUTOPILOT.recipeCount()>=50);
+  await page.waitForFunction(()=>window.RESERVE_AUTOPILOT.recipeCount()>=100);
   await page.evaluate(()=>window.RESERVE_AUTOPILOT.render());
   await page.waitForSelector('#reserveAutopilot',{state:'attached'});
   const result=await page.evaluate(()=>{
@@ -21,9 +21,16 @@ try{
     const slotsValid=p.days.every(day=>day.every(m=>!m.recipe||RESERVE_AUTOPILOT.forSlot(m.recipe,m.slot)));
     const reasonsValid=p.days.every(day=>day.every(m=>!m.recipe||typeof m.reason==='string'&&m.reason.length>0));
     const nutritionValid=p.days.every(day=>day.nutrition&&['kcal','protein','fiber'].every(k=>Number.isFinite(day.nutrition[k])&&day.nutrition[k]>=0));
-    return {recipes:RESERVE_AUTOPILOT.recipeCount(),days:p.days.length,slots:p.days.map(d=>d.map(x=>x.slot)),meals:flat.length,shopping:Array.isArray(shoppingCalc),autopilotCard:!!document.getElementById('reserveAutopilot'),sync:!!window.RESERVE_SYNC,slotsValid,reasonsValid,nutritionValid};
+    const ratios=recipes.map(r=>RESERVE_AUTOPILOT.fitRatio(r));
+    const fitRatioValid=ratios.every(x=>Number.isFinite(x)&&x>=0&&x<=1);
+    const ids=recipes.map(r=>r.id),names=recipes.map(r=>r.name.trim().toLocaleLowerCase('de-CH'));
+    const uniqueIds=new Set(ids).size===ids.length,uniqueNames=new Set(names).size===names.length;
+    return {recipes:RESERVE_AUTOPILOT.recipeCount(),days:p.days.length,slots:p.days.map(d=>d.map(x=>x.slot)),meals:flat.length,shopping:Array.isArray(shoppingCalc),autopilotCard:!!document.getElementById('reserveAutopilot'),sync:!!window.RESERVE_SYNC,slotsValid,reasonsValid,nutritionValid,fitRatioValid,uniqueIds,uniqueNames};
   });
-  if(result.recipes<50)throw new Error(`Zu wenige Live-Rezepte: ${result.recipes}`);
+  if(result.recipes!==100)throw new Error(`Produktionsbibliothek enthält ${result.recipes} statt exakt 100 Rezepte`);
+  if(!result.uniqueIds)throw new Error('Produktionsbibliothek enthält doppelte Rezept-IDs');
+  if(!result.uniqueNames)throw new Error('Produktionsbibliothek enthält doppelte Rezeptnamen');
+  if(!result.fitRatioValid)throw new Error('Autopilot fitRatio liegt außerhalb des Bereichs 0..1');
   if(result.days!==7)throw new Error(`Autopilot plant ${result.days} statt 7 Tage`);
   for(const slots of result.slots)for(const required of ['Frühstück','Mittagessen','Abendessen'])if(!slots.includes(required))throw new Error(`Mahlzeit-Slot fehlt: ${required}`);
   if(!result.slotsValid)throw new Error('Autopilot hat ein Rezept einem unzulässigen Mahlzeit-Slot zugeordnet');
@@ -76,5 +83,5 @@ try{
   if(!loop.progressCleared)throw new Error('Kreislauf: Kochfortschritt wurde nicht zurückgesetzt');
   if(loop.replannedDays!==7)throw new Error('Kreislauf: Autopilot wurde nach dem Kochen nicht korrekt neu berechnet');
   if(errors.length)throw new Error('Browserfehler: '+errors.join(' | '));
-  console.log('✓ RESERVE Browser-E2E bestanden',result);console.log('✓ Autopilot Kochbar-zuerst bestanden',ranking);console.log('✓ Autopilot Einkauf bestanden',autoShop);console.log('✓ RESERVE Vollkreislauf bestanden',loop);
+  console.log('✓ RESERVE 100-Rezepte Browser-E2E bestanden',result);console.log('✓ Autopilot Kochbar-zuerst bestanden',ranking);console.log('✓ Autopilot Einkauf bestanden',autoShop);console.log('✓ RESERVE Vollkreislauf bestanden',loop);
 }finally{await browser.close();server.close()}
