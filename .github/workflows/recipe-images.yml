@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       max_images:
-        description: Maximum number of missing recipe images to generate
+        description: Maximum number of missing recipe image candidates to generate
         required: true
         default: '1'
 
@@ -23,22 +23,22 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - name: Generate missing recipe images
+      - name: Generate recipe image candidates for review
         env:
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
           REPLICATE_IMAGE_MODEL: black-forest-labs/flux-1.1-pro
           MAX_IMAGES: ${{ github.event.inputs.max_images || '1' }}
         run: node tools/generate-recipe-images.mjs
-      - name: Commit generated images
+      - name: Commit review candidates
         run: |
-          git add -A -- assets/recipes
-          if git diff --cached --quiet -- assets/recipes; then
-            echo 'No new images staged.'
+          git add -A -- assets/recipe-review
+          if git diff --cached --quiet -- assets/recipe-review; then
+            echo 'No new review candidates staged.'
             exit 1
           fi
-          echo 'Generated image changes:'
-          git diff --cached --name-status -- assets/recipes
+          echo 'Generated review candidates:'
+          git diff --cached --name-status -- assets/recipe-review
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Generate missing RESERVE recipe images'
+          git commit -m 'Generate recipe image candidates for review'
           git push origin HEAD:main
