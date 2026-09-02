@@ -4,7 +4,7 @@ import path from 'node:path';
 const token=process.env.REPLICATE_API_TOKEN;
 if(!token) throw new Error('REPLICATE_API_TOKEN fehlt');
 const model=process.env.REPLICATE_IMAGE_MODEL||'black-forest-labs/flux-1.1-pro';
-const max=Number(process.env.MAX_IMAGES||'5');
+const max=Number(process.env.MAX_IMAGES||'1');
 const root=process.cwd(),outDir=path.join(root,'assets','recipes');
 
 const files=(await fs.readdir(path.join(root,'data'))).filter(n=>/^recipes\.json$|^quality-batch-\d+\.json$/.test(n)).sort();
@@ -22,8 +22,11 @@ console.log(`RESERVE: ${byId.size} Rezepte, ${missing.length} Bilder fehlen; erz
 
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 function promptFor(r){
-  const ingredients=(r.ingredients||[]).map(i=>i.name).join(', ');
-  return `Premium realistic food photography of ${r.name}. The prepared dish must visibly and plausibly match these recipe ingredients: ${ingredients}. Appetizing home-cooked meal, natural portions, dark navy premium table setting, soft natural side light, subtle warm highlights, 45-degree camera angle, shallow depth of field, editorial cookbook photography, clean composition, no people, no hands, no text, no letters, no logos, no watermark, no packaging. Do not add prominent ingredients that are not in the recipe.`;
+  const ingredients=(r.ingredients||[]).map(i=>i.name).filter(Boolean);
+  const required=ingredients.slice(0,6).join(', ');
+  const type=r.type||'meal';
+  const tags=(r.tags||[]).join(', ');
+  return `Create an accurate finished-dish photograph for a recipe app. Recipe: "${r.name}". Recipe category: ${type}. ${tags?`Recipe tags: ${tags}. `:''}The food identity and recipe accuracy are more important than decorative styling. The finished dish must clearly look like ${r.name}. Required recipe ingredients: ${required}. Make the characteristic main ingredients visually recognizable whenever they would normally be visible in the finished dish. Do not reinterpret the dish as risotto, pasta, soup, puree, or another dish unless the recipe itself calls for that. Do not invent savory herbs, parsley, cheese, meat, vegetables, sauces, garnishes, nuts, seeds, flowers, or side dishes unless they are listed in the recipe ingredients. For sweet breakfast porridge or oatmeal, show recognizable oat porridge texture and prominently show any listed fruit or berries; never add parsley or savory garnish. Natural realistic home-cooked portion, premium appetizing food photography, dark navy table setting, soft natural side light, subtle warm highlights, 45-degree camera angle, shallow depth of field, editorial cookbook quality, clean composition. No people, no hands, no text, no letters, no logos, no watermark, no packaging.`;
 }
 async function prediction(r){
   const [owner,name]=model.split('/');
@@ -40,13 +43,16 @@ async function prediction(r){
   if(p.status!=='succeeded') throw new Error(`Bild fehlgeschlagen (${p.status}): ${p.error||'unbekannt'}`);
   const url=Array.isArray(p.output)?p.output[0]:p.output;
   if(!url) throw new Error('Replicate lieferte keine Bild-URL');
-  const img=await fetch(url);if(!img.ok)throw new Error(`Bilddownload ${img.status}`);
-  return Buffer.from(await img.arrayBuffer());
+  const img=await fetch(url,{headers:{Authorization:`Bearer ${token}`}});if(!img.ok)throw new Error(`Bilddownload ${img.status}`);
+  const type=(img.headers.get('content-type')||'').toLowerCase();
+  const bytes=Buffer.from(await img.arrayBuffer());
+  if(bytes.length<10_000)throw new Error(`Bild ${r.id} ist verdächtig klein (${bytes.length} Bytes)`);
+  if(type&&!type.includes('image/'))throw new Error(`Unerwarteter Bildtyp für ${r.id}: ${type}`);
+  return bytes;
 }
 let made=0;
 for(const r of missing.slice(0,max)){
   console.log(`→ ${r.id}`);const bytes=await prediction(r);
-  if(bytes.length<10_000)throw new Error(`Bild ${r.id} ist verdächtig klein (${bytes.length} Bytes)`);
   await fs.writeFile(path.join(outDir,`${r.id}.png`),bytes);made++;
 }
 console.log(`✓ ${made} neue Rezeptbilder erzeugt.`);
