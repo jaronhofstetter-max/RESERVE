@@ -10,89 +10,23 @@ const root=process.cwd(),outDir=path.join(root,'assets','recipes');
 
 const files=(await fs.readdir(path.join(root,'data'))).filter(n=>/^recipes\.json$|^quality-batch-\d+\.json$/.test(n)).sort();
 const byId=new Map();
-for(const file of files){
-  const rows=JSON.parse(await fs.readFile(path.join(root,'data',file),'utf8'));
-  for(const r of rows) if((!r.status||r.status==='approved')&&!byId.has(r.id)) byId.set(r.id,r);
-}
+for(const file of files){const rows=JSON.parse(await fs.readFile(path.join(root,'data',file),'utf8'));for(const r of rows)if((!r.status||r.status==='approved')&&!byId.has(r.id))byId.set(r.id,r)}
 await fs.mkdir(outDir,{recursive:true});
-const missing=[];
-for(const r of byId.values()){
-  try{await fs.access(path.join(outDir,`${r.id}.png`));}catch{missing.push(r)}
-}
+const missing=[];for(const r of byId.values()){try{await fs.access(path.join(outDir,`${r.id}.png`))}catch{missing.push(r)}}
 console.log(`RESERVE: ${byId.size} Rezepte, ${missing.length} Bilder fehlen; erzeuge maximal ${max}.`);
-
-const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-let lastPredictionStart=0;
-function promptFor(r){
-  const ingredients=(r.ingredients||[]).map(i=>i.name).filter(Boolean);
-  const required=ingredients.slice(0,6).join(', ');
-  const type=r.type||'meal';
-  const tags=(r.tags||[]).join(', ');
-  return `Create an accurate finished-dish photograph for a recipe app. Recipe: "${r.name}". Recipe category: ${type}. ${tags?`Recipe tags: ${tags}. `:''}The food identity and recipe accuracy are more important than decorative styling. The finished dish must clearly look like ${r.name}. Required recipe ingredients: ${required}. Make the characteristic main ingredients visually recognizable whenever they would normally be visible in the finished dish. Do not reinterpret the dish as risotto, pasta, soup, puree, or another dish unless the recipe itself calls for that. Do not invent savory herbs, parsley, cheese, meat, vegetables, sauces, garnishes, nuts, seeds, flowers, or side dishes unless they are listed in the recipe ingredients. For sweet breakfast porridge or oatmeal, show recognizable oat porridge texture and prominently show any listed fruit or berries; never add parsley or savory garnish. Natural realistic home-cooked portion, premium appetizing food photography, dark navy table setting, soft natural side light, subtle warm highlights, 45-degree camera angle, shallow depth of field, editorial cookbook quality, clean composition. No people, no hands, no text, no letters, no logos, no watermark, no packaging.`;
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));let lastPredictionStart=0;
+function formRule(r){
+ const s=`${r.name} ${(r.tags||[]).join(' ')}`.toLowerCase();
+ if(s.includes('rührei')||s.includes('ruehrei')||s.includes('scrambled'))return 'MANDATORY DISH FORM: scrambled eggs: soft irregular scrambled egg curds mixed with the listed ingredients. Absolutely no intact fried egg, sunny-side-up egg, poached egg, boiled egg, rice, grains, pasta, or risotto.';
+ if(s.includes('omelett'))return 'MANDATORY DISH FORM: a recognizable folded or open omelette made from beaten eggs. Do not show a fried, poached, or boiled whole egg.';
+ if(s.includes('porridge')||s.includes('oatmeal'))return 'MANDATORY DISH FORM: creamy cooked oat porridge with recognizable oatmeal texture; any listed fruit or berries should be clearly visible. No rice or risotto texture.';
+ if(s.includes('suppe')||s.includes('soup'))return 'MANDATORY DISH FORM: clearly recognizable soup served in a bowl, with the listed ingredients appropriate to the recipe.';
+ if(s.includes('pasta')||s.includes('spaghetti')||s.includes('nudel'))return 'MANDATORY DISH FORM: clearly recognizable cooked pasta/noodles as the main base of the dish; do not replace them with rice or grains.';
+ if(s.includes('bowl'))return 'MANDATORY DISH FORM: a bowl-based dish matching the recipe, with the listed main components clearly recognizable.';
+ if(s.includes('müesli')||s.includes('muesli')||s.includes('müsli'))return 'MANDATORY DISH FORM: recognizable muesli, with oats/cereal and the listed dairy or fruit components; do not depict cooked risotto-like grains.';
+ return 'MANDATORY DISH FORM: preserve the exact preparation and dish form stated by the recipe name; do not substitute a visually different cooking method or staple.';
 }
-async function createPrediction(r){
-  const [owner,name]=model.split('/');
-  if(!owner||!name) throw new Error(`Ungültiges Modell: ${model}`);
-  const endpoint=`https://api.replicate.com/v1/models/${owner}/${name}/predictions`;
-  for(let attempt=0;attempt<6;attempt++){
-    const gap=Date.now()-lastPredictionStart;
-    if(gap<minStartIntervalMs){
-      const wait=minStartIntervalMs-gap;
-      console.log(`  Rate-Limit-Schutz: warte ${Math.ceil(wait/1000)}s…`);
-      await sleep(wait);
-    }
-    lastPredictionStart=Date.now();
-    let res;
-    try{
-      res=await fetch(endpoint,{method:'POST',headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json','Prefer':'wait'},body:JSON.stringify({input:{prompt:promptFor(r),aspect_ratio:'1:1',output_format:'png',output_quality:90,num_outputs:1}})});
-    }catch(err){
-      if(attempt===5) throw err;
-      const wait=Math.min(30000,2000*(2**attempt));
-      console.log(`  Netzwerkfehler: neuer Versuch in ${Math.ceil(wait/1000)}s…`);
-      await sleep(wait);continue;
-    }
-    if(res.ok) return res.json();
-    const text=await res.text();
-    if(res.status===429&&attempt<5){
-      let retry=Number(res.headers.get('retry-after'))||0;
-      try{const body=JSON.parse(text);retry=Number(body.retry_after)||retry;}catch{}
-      const wait=Math.max(1000,(retry||Math.min(30,2**attempt))*1000+750);
-      console.log(`  Replicate 429: warte ${Math.ceil(wait/1000)}s und versuche erneut…`);
-      await sleep(wait);continue;
-    }
-    if(res.status>=500&&attempt<5){
-      const wait=Math.min(30000,2000*(2**attempt));
-      console.log(`  Replicate ${res.status}: neuer Versuch in ${Math.ceil(wait/1000)}s…`);
-      await sleep(wait);continue;
-    }
-    throw new Error(`Replicate ${res.status}: ${text}`);
-  }
-  throw new Error(`Replicate konnte ${r.id} nach mehreren Versuchen nicht starten`);
-}
-async function prediction(r){
-  let p=await createPrediction(r);
-  for(let i=0;!['succeeded','failed','canceled'].includes(p.status)&&i<90;i++){
-    await sleep(2000);
-    const res=await fetch(p.urls.get,{headers:{Authorization:`Bearer ${token}`}});
-    if(!res.ok) throw new Error(`Replicate Status ${res.status}: ${await res.text()}`);
-    p=await res.json();
-  }
-  if(p.status!=='succeeded') throw new Error(`Bild fehlgeschlagen (${p.status}): ${p.error||'unbekannt'}`);
-  const url=Array.isArray(p.output)?p.output[0]:p.output;
-  if(!url) throw new Error('Replicate lieferte keine Bild-URL');
-  const img=await fetch(url,{headers:{Authorization:`Bearer ${token}`}});
-  if(!img.ok)throw new Error(`Bilddownload ${img.status}`);
-  const type=(img.headers.get('content-type')||'').toLowerCase();
-  const bytes=Buffer.from(await img.arrayBuffer());
-  if(bytes.length<10_000)throw new Error(`Bild ${r.id} ist verdächtig klein (${bytes.length} Bytes)`);
-  if(type&&!type.includes('image/'))throw new Error(`Unerwarteter Bildtyp für ${r.id}: ${type}`);
-  return bytes;
-}
-let made=0;
-for(const r of missing.slice(0,max)){
-  console.log(`→ ${r.id}`);
-  const bytes=await prediction(r);
-  await fs.writeFile(path.join(outDir,`${r.id}.png`),bytes);
-  made++;
-}
-console.log(`✓ ${made} neue Rezeptbilder erzeugt.`);
+function promptFor(r){const ingredients=(r.ingredients||[]).map(i=>i.name).filter(Boolean);const required=ingredients.slice(0,8).join(', ');const tags=(r.tags||[]).join(', ');return `Create an accurate finished-dish photograph for a recipe app. Recipe: "${r.name}". Recipe category: ${r.type||'meal'}. ${tags?`Recipe tags: ${tags}. `:''}${formRule(r)} The preparation form is a hard constraint and must be visually obvious at first glance. Food identity and recipe accuracy are more important than decoration. Required recipe ingredients: ${required}. Make characteristic main ingredients recognizable whenever normally visible. Do not reinterpret the dish as risotto, pasta, soup, puree, fried egg, or another dish unless the recipe explicitly calls for it. Do not invent herbs, parsley, cheese, meat, vegetables, sauces, citrus, garnishes, nuts, seeds, flowers, side dishes, rice or grains unless listed in the recipe ingredients. Natural realistic home-cooked portion, premium appetizing food photography, dark navy table setting, soft natural side light, subtle warm highlights, 45-degree camera angle, shallow depth of field, editorial cookbook quality, clean composition. No people, hands, text, letters, logos, watermark, or packaging.`}
+async function createPrediction(r){const [owner,name]=model.split('/');if(!owner||!name)throw new Error(`Ungültiges Modell: ${model}`);const endpoint=`https://api.replicate.com/v1/models/${owner}/${name}/predictions`;for(let attempt=0;attempt<6;attempt++){const gap=Date.now()-lastPredictionStart;if(gap<minStartIntervalMs){const wait=minStartIntervalMs-gap;console.log(`  Rate-Limit-Schutz: warte ${Math.ceil(wait/1000)}s…`);await sleep(wait)}lastPredictionStart=Date.now();let res;try{res=await fetch(endpoint,{method:'POST',headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json','Prefer':'wait'},body:JSON.stringify({input:{prompt:promptFor(r),aspect_ratio:'1:1',output_format:'png',output_quality:90,num_outputs:1}})})}catch(err){if(attempt===5)throw err;const wait=Math.min(30000,2000*(2**attempt));console.log(`  Netzwerkfehler: neuer Versuch in ${Math.ceil(wait/1000)}s…`);await sleep(wait);continue}if(res.ok)return res.json();const text=await res.text();if(res.status===429&&attempt<5){let retry=Number(res.headers.get('retry-after'))||0;try{const body=JSON.parse(text);retry=Number(body.retry_after)||retry}catch{}const wait=Math.max(1000,(retry||Math.min(30,2**attempt))*1000+750);console.log(`  Replicate 429: warte ${Math.ceil(wait/1000)}s und versuche erneut…`);await sleep(wait);continue}if(res.status>=500&&attempt<5){const wait=Math.min(30000,2000*(2**attempt));console.log(`  Replicate ${res.status}: neuer Versuch in ${Math.ceil(wait/1000)}s…`);await sleep(wait);continue}throw new Error(`Replicate ${res.status}: ${text}`)}throw new Error(`Replicate konnte ${r.id} nach mehreren Versuchen nicht starten`)}
+async function prediction(r){let p=await createPrediction(r);for(let i=0;!['succeeded','failed','canceled'].includes(p.status)&&i<90;i++){await sleep(2000);const res=await fetch(p.urls.get,{headers:{Authorization:`Bearer ${token}`}});if(!res.ok)throw new Error(`Replicate Status ${res.status}: ${await res.text()}`);p=await res.json()}if(p.status!=='succeeded')throw new Error(`Bild fehlgeschlagen (${p.status}): ${p.error||'unbekannt'}`);const url=Array.isArray(p.output)?p.output[0]:p.output;if(!url)throw new Error('Replicate lieferte keine Bild-URL');const img=await fetch(url,{headers:{Authorization:`Bearer ${token}`}});if(!img.ok)throw new Error(`Bilddownload ${img.status}`);const type=(img.headers.get('content-type')||'').toLowerCase();const bytes=Buffer.from(await img.arrayBuffer());if(bytes.length<10000)throw new Error(`Bild ${r.id} ist verdächtig klein (${bytes.length} Bytes)`);if(type&&!type.includes('image/'))throw new Error(`Unerwarteter Bildtyp für ${r.id}: ${type}`);return bytes}
+let made=0;for(const r of missing.slice(0,max)){console.log(`→ ${r.id}`);const bytes=await prediction(r);await fs.writeFile(path.join(outDir,`${r.id}.png`),bytes);made++}console.log(`✓ ${made} neue Rezeptbilder erzeugt.`);
