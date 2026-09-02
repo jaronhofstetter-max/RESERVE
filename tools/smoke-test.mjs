@@ -32,6 +32,11 @@ for(const needle of ["schema:2","COOK_PREFIX","validate(data)","MAX_BYTES"]){if(
 const auto=fs.readFileSync('autopilot-v1.js','utf8');
 for(const needle of ["SLOTS","Frühstück","Mittagessen","Abendessen","shoppingFor","expiring","RESERVE_AUTOPILOT"]){if(!auto.includes(needle)) fail(`Autopilot-Prüfung fehlt: ${needle}`);else ok(`Autopilot-Prüfung vorhanden: ${needle}`)}
 if(!auto.includes('days=7')) fail('Autopilot ist nicht auf 7 Tage ausgelegt');else ok('Autopilot plant 7 Tage');
-if(!auto.includes('recipeFitsLedger')||!auto.includes('reserveRecipe')) fail('Autopilot berücksichtigt Vorratsmengen nicht korrekt');else ok('Autopilot verwendet mengenbasiertes Vorrats-Ledger');
+const legacyLedger=auto.includes('recipeFitsLedger')&&auto.includes('reserveRecipe');
+const partialLedger=auto.includes('reservePartial')&&auto.includes('ledgerAvailable')&&auto.includes('Math.min(e.v,need)');
+if(!legacyLedger&&!partialLedger) fail('Autopilot berücksichtigt Vorratsmengen nicht korrekt');
+else ok(partialLedger?'Autopilot verwendet partielle mengenbasierte Vorratsreservierung':'Autopilot verwendet mengenbasiertes Vorrats-Ledger');
+if(partialLedger&&!auto.includes('fitRatio')) fail('Autopilot v3 bewertet teilweise gedeckte Rezepte nicht');else if(partialLedger)ok('Autopilot bewertet teilweise gedeckte Rezepte');
+if(!auto.includes("if(mt.length)return mt.includes(slot)")) fail('Autopilot verwendet keine strikte mealTimes-Zuordnung');else ok('Autopilot verwendet strikte mealTimes-Zuordnung');
 
 if(!process.exitCode) ok('RESERVE Smoke-Test bestanden');
