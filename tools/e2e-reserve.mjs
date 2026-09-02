@@ -17,8 +17,8 @@ try{
   await page.evaluate(()=>window.RESERVE_AUTOPILOT.render());
   await page.waitForSelector('#reserveAutopilot',{state:'attached'});
   const result=await page.evaluate(()=>{
-    const p=RESERVE_AUTOPILOT.plan(7),flat=RESERVE_AUTOPILOT.flatten(p),shopping=RESERVE_AUTOPILOT.shoppingFor(flat);
-    return {recipes:RESERVE_AUTOPILOT.recipeCount(),days:p.days.length,slots:p.days.map(d=>d.map(x=>x.slot)),meals:flat.length,shopping:Array.isArray(shopping),autopilotCard:!!document.getElementById('reserveAutopilot'),sync:!!window.RESERVE_SYNC,barcode:document.body.innerText.toLowerCase().includes('barcode')};
+    const p=RESERVE_AUTOPILOT.plan(7),flat=RESERVE_AUTOPILOT.flatten(p),shoppingCalc=RESERVE_AUTOPILOT.shoppingFor(flat);
+    return {recipes:RESERVE_AUTOPILOT.recipeCount(),days:p.days.length,slots:p.days.map(d=>d.map(x=>x.slot)),meals:flat.length,shopping:Array.isArray(shoppingCalc),autopilotCard:!!document.getElementById('reserveAutopilot'),sync:!!window.RESERVE_SYNC};
   });
   if(result.recipes<50)throw new Error(`Zu wenige Live-Rezepte: ${result.recipes}`);
   if(result.days!==7)throw new Error(`Autopilot plant ${result.days} statt 7 Tage`);
@@ -27,6 +27,36 @@ try{
   if(!result.shopping)throw new Error('Einkaufsberechnung liefert keine Liste');
   if(!result.autopilotCard)throw new Error('Autopilot UI fehlt');
   if(!result.sync)throw new Error('Backup/Sync Modul nicht aktiv');
+
+  const loop=await page.evaluate(()=>{
+    const recipe=recipes.find(r=>(!r.status||r.status==='approved')&&r.ingredients?.length&&r.steps?.length);
+    if(!recipe)throw new Error('Kein Rezept für Kreislauftest gefunden');
+    const adapted=adaptRecipe(recipe),peopleCount=persons();
+    stock=[];shopping=[];
+    localStorage.setItem('reserveStock','[]');localStorage.setItem('reserveShopping','[]');
+    adapted.ingredients.forEach(i=>shopping.push({n:i.name,q:fmt(i.amount*peopleCount,i.unit)}));
+    saveShop();
+    const shoppingBefore=shopping.length;
+    while(shopping.length)purchaseToStock(0);
+    const stockAfterPurchase=stock.length;
+    const cookableBefore=canCook(recipe);
+    const before=adapted.ingredients.map(i=>({name:i.name,unit:i.unit,available:availableAmount(i.name,i.unit)}));
+    localStorage.setItem('reserveCookProgress:'+recipe.id,JSON.stringify(recipe.steps.map(()=>true)));
+    finishCook(recipe.id);
+    const after=adapted.ingredients.map(i=>({name:i.name,unit:i.unit,available:availableAmount(i.name,i.unit)}));
+    const deducted=before.every((x,i)=>after[i].available<x.available||before[i].available===0);
+    const progressCleared=localStorage.getItem('reserveCookProgress:'+recipe.id)===null;
+    const replanned=RESERVE_AUTOPILOT.plan(7);
+    return {recipe:recipe.name,shoppingBefore,shoppingAfter:shopping.length,stockAfterPurchase,cookableBefore,deducted,progressCleared,replannedDays:replanned.days.length};
+  });
+  if(loop.shoppingBefore<1)throw new Error('Kreislauf: Einkaufsliste wurde nicht befüllt');
+  if(loop.shoppingAfter!==0)throw new Error(`Kreislauf: ${loop.shoppingAfter} Einkaufspositionen blieben nach Kauf übrig`);
+  if(loop.stockAfterPurchase<1)throw new Error('Kreislauf: Einkauf wurde nicht in Vorrat übernommen');
+  if(!loop.cookableBefore)throw new Error('Kreislauf: Rezept ist nach Einkauf nicht kochbar');
+  if(!loop.deducted)throw new Error('Kreislauf: Vorratsmengen wurden nach Kochen nicht korrekt reduziert');
+  if(!loop.progressCleared)throw new Error('Kreislauf: Kochfortschritt wurde nicht zurückgesetzt');
+  if(loop.replannedDays!==7)throw new Error('Kreislauf: Autopilot wurde nach dem Kochen nicht korrekt neu berechnet');
   if(errors.length)throw new Error('Browserfehler: '+errors.join(' | '));
   console.log('✓ RESERVE Browser-E2E bestanden',result);
+  console.log('✓ RESERVE Vollkreislauf bestanden',loop);
 }finally{await browser.close();server.close()}
