@@ -12,12 +12,13 @@ const page=await browser.newPage();
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
 try{
   await page.goto('http://127.0.0.1:4173',{waitUntil:'networkidle'});
-  await page.waitForFunction(()=>Array.isArray(window.recipes)&&window.recipes.length>=50);
   await page.waitForFunction(()=>window.RESERVE_AUTOPILOT&&typeof window.RESERVE_AUTOPILOT.plan==='function');
+  await page.waitForFunction(()=>window.RESERVE_AUTOPILOT.recipeCount()>=50);
   const result=await page.evaluate(()=>{
     const p=RESERVE_AUTOPILOT.plan(7),flat=RESERVE_AUTOPILOT.flatten(p),shopping=RESERVE_AUTOPILOT.shoppingFor(flat);
-    return {days:p.days.length,slots:p.days.map(d=>d.map(x=>x.slot)),meals:flat.length,shopping:Array.isArray(shopping),autopilotCard:!!document.getElementById('reserveAutopilot'),sync:!!window.RESERVE_SYNC,barcode:!!document.querySelector('[id*=barcode i], [class*=barcode i]')||document.body.innerText.toLowerCase().includes('barcode')};
+    return {recipes:RESERVE_AUTOPILOT.recipeCount(),days:p.days.length,slots:p.days.map(d=>d.map(x=>x.slot)),meals:flat.length,shopping:Array.isArray(shopping),autopilotCard:!!document.getElementById('reserveAutopilot'),sync:!!window.RESERVE_SYNC,barcode:document.body.innerText.toLowerCase().includes('barcode')};
   });
+  if(result.recipes<50)throw new Error(`Zu wenige Live-Rezepte: ${result.recipes}`);
   if(result.days!==7)throw new Error(`Autopilot plant ${result.days} statt 7 Tage`);
   for(const slots of result.slots)for(const required of ['Frühstück','Mittagessen','Abendessen'])if(!slots.includes(required))throw new Error(`Mahlzeit-Slot fehlt: ${required}`);
   if(result.meals<14)throw new Error(`Zu wenige Mahlzeiten geplant: ${result.meals}`);
