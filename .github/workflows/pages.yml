@@ -34,6 +34,12 @@ jobs:
         run: sed -i 's#</body>#<script src="shopping-v2.js"></script><script src="reserve-core-v3.js"></script><script src="cloud-sync-v1.js"></script><script src="barcode-v1.js"></script><script src="autopilot-v1.js"></script></body>#' index.html
       - name: Smoke test production build
         run: node tools/smoke-test.mjs
+      - name: Install browser test runtime
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Browser end-to-end test
+        run: node tools/e2e-reserve.mjs
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
