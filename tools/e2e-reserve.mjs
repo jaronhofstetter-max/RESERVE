@@ -15,7 +15,7 @@ try{
   await page.waitForFunction(()=>window.RESERVE_AUTOPILOT&&typeof window.RESERVE_AUTOPILOT.plan==='function');
   await page.waitForFunction(()=>window.RESERVE_AUTOPILOT.recipeCount()>=50);
   await page.evaluate(()=>window.RESERVE_AUTOPILOT.render());
-  await page.waitForSelector('#reserveAutopilot');
+  await page.waitForSelector('#reserveAutopilot',{state:'attached'});
   const result=await page.evaluate(()=>{
     const p=RESERVE_AUTOPILOT.plan(7),flat=RESERVE_AUTOPILOT.flatten(p),shopping=RESERVE_AUTOPILOT.shoppingFor(flat);
     return {recipes:RESERVE_AUTOPILOT.recipeCount(),days:p.days.length,slots:p.days.map(d=>d.map(x=>x.slot)),meals:flat.length,shopping:Array.isArray(shopping),autopilotCard:!!document.getElementById('reserveAutopilot'),sync:!!window.RESERVE_SYNC,barcode:document.body.innerText.toLowerCase().includes('barcode')};
