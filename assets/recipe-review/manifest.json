@@ -520,5 +520,335 @@
       "noGeometryErrors": null
     },
     "generatedAt": "2026-09-03T00:22:05.698Z"
+  },
+  {
+    "id": "linsen-bolognese",
+    "name": "Vollkornpasta mit Linsen-Bolognese",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Vollkornpasta mit Linsen-Bolognese",
+      "form": "clearly recognizable cooked pasta as the main base",
+      "vessel": "simple plate or shallow bowl",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "pasta",
+          "detail": "recognizable pasta shapes or strands forming the main base",
+          "prominence": "dominant"
+        },
+        {
+          "label": "linsen",
+          "detail": "many small lentils clearly visible in the dish; they must form a meaningful component and must not be replaced by rice or pasta",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Vollkornpasta",
+        "Linsen",
+        "Tomaten",
+        "Karotten",
+        "Zwiebel"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "rice",
+        "orzo",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "chickpeas",
+        "cheese",
+        "berries",
+        "citrus/lemon",
+        "nuts"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Vollkornpasta",
+      "Linsen",
+      "Tomaten",
+      "Karotten",
+      "Zwiebel"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T00:27:46.409Z"
+  },
+  {
+    "id": "kartoffel-brokkoli-frittata",
+    "name": "Kartoffel-Brokkoli-Frittata",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Kartoffel-Brokkoli-Frittata",
+      "form": "simple plated home-cooked meal using only the listed ingredients",
+      "vessel": "plain plate or bowl appropriate to the dish",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "brokkoli",
+          "detail": "multiple unmistakable green broccoli florets prominently visible across the dish, not just one tiny floret",
+          "prominence": "dominant"
+        },
+        {
+          "label": "kartoffel",
+          "detail": "Kartoffeln must be clearly visible, unmistakable, and occupy a substantial portion of the finished dish rather than appearing as a tiny garnish or being hidden",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Kartoffeln",
+        "Brokkoli",
+        "Eier",
+        "Zwiebel",
+        "Olivenöl"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "parsley/cilantro/basil/mint",
+        "tomatoes",
+        "carrots",
+        "chickpeas",
+        "cheese",
+        "berries",
+        "citrus/lemon",
+        "nuts",
+        "rice"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Kartoffeln",
+      "Brokkoli",
+      "Eier",
+      "Zwiebel",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T00:28:07.310Z"
+  },
+  {
+    "id": "overnight-oats-apfel",
+    "name": "Overnight Oats mit Apfel",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Overnight Oats mit Apfel",
+      "form": "simple plated home-cooked meal using only the listed ingredients",
+      "vessel": "plain plate or bowl appropriate to the dish",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "apfel",
+          "detail": "Apfel must be clearly visible, unmistakable, and occupy a substantial portion of the finished dish rather than appearing as a tiny garnish or being hidden",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Haferflocken",
+        "Haferdrink",
+        "Apfel",
+        "Beeren"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "tomatoes",
+        "carrots",
+        "chickpeas",
+        "cheese",
+        "citrus/lemon",
+        "nuts",
+        "rice"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Haferflocken",
+      "Haferdrink",
+      "Apfel",
+      "Beeren"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T00:28:16.331Z"
+  },
+  {
+    "id": "beeren-quark-bowl",
+    "name": "Beeren-Quark-Bowl mit Haferflocken",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Beeren-Quark-Bowl mit Haferflocken",
+      "form": "clean bowl meal with named ingredients separated enough to recognize",
+      "vessel": "simple bowl",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "beeren",
+          "detail": "Beeren must be clearly visible, unmistakable, and occupy a substantial portion of the finished dish rather than appearing as a tiny garnish or being hidden",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Quark",
+        "Beeren",
+        "Haferflocken",
+        "Banane"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "tomatoes",
+        "carrots",
+        "chickpeas",
+        "cheese",
+        "citrus/lemon",
+        "nuts",
+        "rice"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Quark",
+      "Beeren",
+      "Haferflocken",
+      "Banane"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T00:28:27.259Z"
+  },
+  {
+    "id": "mediterrane-linsen-bowl",
+    "name": "Mediterrane Linsen-Bowl mit Feta",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Mediterrane Linsen-Bowl mit Feta",
+      "form": "clean bowl meal with named ingredients separated enough to recognize",
+      "vessel": "simple bowl",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "linsen",
+          "detail": "many small lentils clearly visible in the dish; they must form a meaningful component and must not be replaced by rice or pasta",
+          "prominence": "dominant"
+        },
+        {
+          "label": "feta",
+          "detail": "several visible white feta cubes or crumbles, clearly distinct from tofu or generic cheese",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Linsen",
+        "Tomaten",
+        "Gurke",
+        "Feta",
+        "Olivenöl"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "carrots",
+        "chickpeas",
+        "berries",
+        "citrus/lemon",
+        "nuts",
+        "rice"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Linsen",
+      "Tomaten",
+      "Gurke",
+      "Feta",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T00:28:38.940Z"
   }
 ]
