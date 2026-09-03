@@ -185,5 +185,340 @@
       "noGeometryErrors": null
     },
     "generatedAt": "2026-09-03T00:07:10.204Z"
+  },
+  {
+    "id": "poulet-tomaten-pasta",
+    "name": "Poulet-Tomaten-Pasta",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Poulet-Tomaten-Pasta",
+      "form": "clearly recognizable cooked pasta as the main base",
+      "vessel": "simple plate or shallow bowl",
+      "mustVisible": [
+        {
+          "label": "pasta",
+          "detail": "recognizable pasta shapes or strands forming the main base"
+        },
+        {
+          "label": "tomaten",
+          "detail": "Tomaten must be clearly visible and unmistakable"
+        },
+        {
+          "label": "poulet",
+          "detail": "Poulet must be clearly visible and unmistakable"
+        }
+      ],
+      "allowedIngredients": [
+        "Poulet",
+        "Vollkornpasta",
+        "Tomaten",
+        "Zwiebel",
+        "Olivenöl"
+      ],
+      "visibleAllowed": [
+        "Poulet",
+        "Tomaten",
+        "Zwiebel"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "rice",
+        "orzo",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "carrots",
+        "chickpeas",
+        "cheese",
+        "berries",
+        "citrus/lemon",
+        "nuts"
+      ],
+      "camera": "single finished serving, 45-degree food-photography angle, simple clean neutral/dark surface, no props that can be mistaken for ingredients"
+    },
+    "requiredIngredients": [
+      "Poulet",
+      "Vollkornpasta",
+      "Tomaten",
+      "Zwiebel",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:21:21.830Z"
+  },
+  {
+    "id": "kartoffel-feta-pfanne",
+    "name": "Kartoffel-Feta-Pfanne",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Kartoffel-Feta-Pfanne",
+      "form": "simple plated home-cooked meal using only the listed ingredients",
+      "vessel": "plain plate or bowl appropriate to the dish",
+      "mustVisible": [
+        {
+          "label": "kartoffel",
+          "detail": "Kartoffeln must be clearly visible and unmistakable"
+        }
+      ],
+      "allowedIngredients": [
+        "Kartoffeln",
+        "Feta",
+        "Tomaten",
+        "Olivenöl"
+      ],
+      "visibleAllowed": [
+        "Kartoffeln",
+        "Feta",
+        "Tomaten"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "carrots",
+        "chickpeas",
+        "berries",
+        "citrus/lemon",
+        "nuts"
+      ],
+      "camera": "single finished serving, 45-degree food-photography angle, simple clean neutral/dark surface, no props that can be mistaken for ingredients"
+    },
+    "requiredIngredients": [
+      "Kartoffeln",
+      "Feta",
+      "Tomaten",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:21:34.157Z"
+  },
+  {
+    "id": "spinat-feta-pasta",
+    "name": "Spinat-Feta-Pasta",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Spinat-Feta-Pasta",
+      "form": "clearly recognizable cooked pasta as the main base",
+      "vessel": "simple plate or shallow bowl",
+      "mustVisible": [
+        {
+          "label": "pasta",
+          "detail": "recognizable pasta shapes or strands forming the main base"
+        },
+        {
+          "label": "spinat",
+          "detail": "Spinat must be clearly visible and unmistakable"
+        }
+      ],
+      "allowedIngredients": [
+        "Vollkornpasta",
+        "Spinat",
+        "Feta",
+        "Olivenöl"
+      ],
+      "visibleAllowed": [
+        "Spinat",
+        "Feta"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "rice",
+        "orzo",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "tomatoes",
+        "carrots",
+        "chickpeas",
+        "berries",
+        "citrus/lemon",
+        "nuts"
+      ],
+      "camera": "single finished serving, 45-degree food-photography angle, simple clean neutral/dark surface, no props that can be mistaken for ingredients"
+    },
+    "requiredIngredients": [
+      "Vollkornpasta",
+      "Spinat",
+      "Feta",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:21:45.224Z"
+  },
+  {
+    "id": "shakshuka-vollkornbrot",
+    "name": "Shakshuka mit Vollkornbrot",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Shakshuka mit Vollkornbrot",
+      "form": "single serving of bread or toast with listed toppings only",
+      "vessel": "simple plate",
+      "mustVisible": [
+        {
+          "label": "bread",
+          "detail": "bread slice clearly visible under toppings"
+        }
+      ],
+      "allowedIngredients": [
+        "Eier",
+        "Tomaten",
+        "Paprika",
+        "Zwiebel",
+        "Vollkornbrot"
+      ],
+      "visibleAllowed": [
+        "Eier",
+        "Tomaten",
+        "Paprika",
+        "Zwiebel"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "parsley/cilantro/basil/mint",
+        "carrots",
+        "chickpeas",
+        "cheese",
+        "berries",
+        "citrus/lemon",
+        "nuts"
+      ],
+      "camera": "single finished serving, 45-degree food-photography angle, simple clean neutral/dark surface, no props that can be mistaken for ingredients"
+    },
+    "requiredIngredients": [
+      "Eier",
+      "Tomaten",
+      "Paprika",
+      "Zwiebel",
+      "Vollkornbrot"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:21:55.065Z"
+  },
+  {
+    "id": "tofu-brokkoli-pfanne",
+    "name": "Tofu-Brokkoli-Pfanne mit Reis",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Tofu-Brokkoli-Pfanne mit Reis",
+      "form": "clearly recognizable cooked rice grains as the main starch",
+      "vessel": "simple plate or shallow bowl",
+      "mustVisible": [
+        {
+          "label": "rice",
+          "detail": "distinct elongated or medium cooked rice grains visibly form the base"
+        },
+        {
+          "label": "brokkoli",
+          "detail": "multiple unmistakable green broccoli florets prominently visible"
+        },
+        {
+          "label": "tofu",
+          "detail": "light beige tofu cubes with clean cut edges, clearly distinct from chicken or cheese"
+        }
+      ],
+      "allowedIngredients": [
+        "Tofu",
+        "Brokkoli",
+        "Reis",
+        "Karotten",
+        "Olivenöl"
+      ],
+      "visibleAllowed": [
+        "Tofu",
+        "Reis",
+        "Karotten"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "orzo",
+        "couscous",
+        "pasta",
+        "parsley/cilantro/basil/mint",
+        "tomatoes",
+        "chickpeas",
+        "cheese",
+        "berries",
+        "citrus/lemon",
+        "nuts"
+      ],
+      "camera": "single finished serving, 45-degree food-photography angle, simple clean neutral/dark surface, no props that can be mistaken for ingredients"
+    },
+    "requiredIngredients": [
+      "Tofu",
+      "Brokkoli",
+      "Reis",
+      "Karotten",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:22:05.698Z"
   }
 ]
