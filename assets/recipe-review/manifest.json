@@ -850,5 +850,684 @@
       "layoutCorrect": null
     },
     "generatedAt": "2026-09-03T00:28:38.940Z"
+  },
+  {
+    "id": "poulet-brokkoli-pasta",
+    "name": "Poulet-Brokkoli-Vollkornpasta",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Poulet-Brokkoli-Vollkornpasta",
+      "form": "clearly recognizable cooked pasta as the main base",
+      "vessel": "simple plate or shallow bowl",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "pasta",
+          "detail": "recognizable pasta shapes or strands forming the main base",
+          "prominence": "dominant"
+        },
+        {
+          "label": "brokkoli",
+          "detail": "multiple unmistakable green broccoli florets prominently visible across the dish, not just one tiny floret",
+          "prominence": "dominant"
+        },
+        {
+          "label": "poulet",
+          "detail": "several clearly visible bite-size cooked chicken pieces; chicken must occupy a substantial portion of the plate and cannot be hidden under sauce or omitted",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Poulet",
+        "Vollkornpasta",
+        "Brokkoli",
+        "Tomaten",
+        "Olivenöl"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "rice",
+        "orzo",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "carrots",
+        "chickpeas",
+        "cheese",
+        "berries",
+        "citrus/lemon",
+        "nuts"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Poulet",
+      "Vollkornpasta",
+      "Brokkoli",
+      "Tomaten",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T09:47:23.839Z"
+  },
+  {
+    "id": "kichererbsen-paprika-pasta",
+    "name": "Kichererbsen-Paprika-Pasta",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Kichererbsen-Paprika-Pasta",
+      "form": "clearly recognizable cooked pasta as the main base",
+      "vessel": "simple plate or shallow bowl",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "pasta",
+          "detail": "recognizable pasta shapes or strands forming the main base",
+          "prominence": "dominant"
+        },
+        {
+          "label": "kichererbsen",
+          "detail": "many whole beige chickpeas with characteristic round shape clearly visible and occupying a substantial part of the dish; do not turn them into meatballs or potatoes",
+          "prominence": "dominant"
+        },
+        {
+          "label": "paprika",
+          "detail": "many clearly visible red/yellow/green bell-pepper pieces distributed through the dish",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Vollkornpasta",
+        "Kichererbsen",
+        "Paprika",
+        "Tomaten",
+        "Olivenöl"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "rice",
+        "orzo",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "carrots",
+        "cheese",
+        "berries",
+        "citrus/lemon",
+        "nuts"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Vollkornpasta",
+      "Kichererbsen",
+      "Paprika",
+      "Tomaten",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T09:47:33.273Z"
+  },
+  {
+    "id": "bananen-hafer-pancakes",
+    "name": "Bananen-Hafer-Pancakes",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Bananen-Hafer-Pancakes",
+      "form": "simple plated home-cooked meal using only the listed ingredients",
+      "vessel": "plain plate or bowl appropriate to the dish",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "bananen",
+          "detail": "Banane must be clearly visible, unmistakable, and occupy a substantial portion of the finished dish rather than appearing as a tiny garnish or being hidden",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Banane",
+        "Eier",
+        "Haferflocken",
+        "Naturjoghurt"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "parsley/cilantro/basil/mint",
+        "tomatoes",
+        "carrots",
+        "chickpeas",
+        "cheese",
+        "berries",
+        "citrus/lemon",
+        "nuts",
+        "rice"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Banane",
+      "Eier",
+      "Haferflocken",
+      "Naturjoghurt"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T09:47:43.756Z"
+  },
+  {
+    "id": "beeren-hafer-porridge",
+    "name": "Beeren-Hafer-Porridge",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Beeren-Hafer-Porridge",
+      "form": "thick creamy cooked oat porridge, visibly soft oatmeal texture, never rice-like or pasta-like",
+      "vessel": "simple bowl",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "oats",
+          "detail": "cooked swollen oat texture visible across the base",
+          "prominence": "dominant"
+        },
+        {
+          "label": "beeren",
+          "detail": "Beeren must be clearly visible, unmistakable, and occupy a substantial portion of the finished dish rather than appearing as a tiny garnish or being hidden",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Haferflocken",
+        "Haferdrink",
+        "Beeren"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "rice",
+        "pasta",
+        "waffles",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "tomatoes",
+        "carrots",
+        "chickpeas",
+        "cheese",
+        "citrus/lemon",
+        "nuts"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Haferflocken",
+      "Haferdrink",
+      "Beeren"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T09:47:55.047Z"
+  },
+  {
+    "id": "apfel-joghurt-hafer-bowl",
+    "name": "Apfel-Joghurt-Hafer-Bowl",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Apfel-Joghurt-Hafer-Bowl",
+      "form": "clean bowl meal with named ingredients separated enough to recognize",
+      "vessel": "simple bowl",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "apfel",
+          "detail": "Apfel must be clearly visible, unmistakable, and occupy a substantial portion of the finished dish rather than appearing as a tiny garnish or being hidden",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Naturjoghurt",
+        "Haferflocken",
+        "Apfel"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "tomatoes",
+        "carrots",
+        "chickpeas",
+        "cheese",
+        "berries",
+        "citrus/lemon",
+        "nuts",
+        "rice"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Naturjoghurt",
+      "Haferflocken",
+      "Apfel"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T09:48:06.333Z"
+  },
+  {
+    "id": "bananen-quark-bowl",
+    "name": "Bananen-Quark-Bowl",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Bananen-Quark-Bowl",
+      "form": "clean bowl meal with named ingredients separated enough to recognize",
+      "vessel": "simple bowl",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "bananen",
+          "detail": "Banane must be clearly visible, unmistakable, and occupy a substantial portion of the finished dish rather than appearing as a tiny garnish or being hidden",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Quark",
+        "Banane",
+        "Beeren"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "tomatoes",
+        "carrots",
+        "chickpeas",
+        "cheese",
+        "citrus/lemon",
+        "nuts",
+        "rice"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Quark",
+      "Banane",
+      "Beeren"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T09:48:17.005Z"
+  },
+  {
+    "id": "tomaten-spinat-ruehrei",
+    "name": "Tomaten-Spinat-Rührei",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Tomaten-Spinat-Rührei",
+      "form": "simple plated home-cooked meal using only the listed ingredients",
+      "vessel": "plain plate or bowl appropriate to the dish",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "tomaten",
+          "detail": "Tomaten must be clearly visible, unmistakable, and occupy a substantial portion of the finished dish rather than appearing as a tiny garnish or being hidden",
+          "prominence": "dominant"
+        },
+        {
+          "label": "spinat",
+          "detail": "clearly recognizable wilted dark-green spinach leaves visibly mixed through the dish",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Eier",
+        "Tomaten",
+        "Spinat",
+        "Olivenöl"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "parsley/cilantro/basil/mint",
+        "carrots",
+        "chickpeas",
+        "cheese",
+        "berries",
+        "citrus/lemon",
+        "nuts",
+        "rice"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Eier",
+      "Tomaten",
+      "Spinat",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T09:48:29.079Z"
+  },
+  {
+    "id": "kichererbsen-spinat-curry",
+    "name": "Kichererbsen-Spinat-Curry",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Kichererbsen-Spinat-Curry",
+      "form": "simple plated home-cooked meal using only the listed ingredients",
+      "vessel": "plain plate or bowl appropriate to the dish",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "kichererbsen",
+          "detail": "many whole beige chickpeas with characteristic round shape clearly visible and occupying a substantial part of the dish; do not turn them into meatballs or potatoes",
+          "prominence": "dominant"
+        },
+        {
+          "label": "spinat",
+          "detail": "clearly recognizable wilted dark-green spinach leaves visibly mixed through the dish",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Kichererbsen",
+        "Spinat",
+        "Tomaten",
+        "Zwiebel",
+        "Currypulver"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "carrots",
+        "cheese",
+        "berries",
+        "citrus/lemon",
+        "nuts",
+        "rice"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Kichererbsen",
+      "Spinat",
+      "Tomaten",
+      "Zwiebel",
+      "Currypulver"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T09:48:38.763Z"
+  },
+  {
+    "id": "linsen-tomaten-pasta",
+    "name": "Linsen-Tomaten-Pasta",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Linsen-Tomaten-Pasta",
+      "form": "clearly recognizable cooked pasta as the main base",
+      "vessel": "simple plate or shallow bowl",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "pasta",
+          "detail": "recognizable pasta shapes or strands forming the main base",
+          "prominence": "dominant"
+        },
+        {
+          "label": "tomaten",
+          "detail": "Tomaten must be clearly visible, unmistakable, and occupy a substantial portion of the finished dish rather than appearing as a tiny garnish or being hidden",
+          "prominence": "dominant"
+        },
+        {
+          "label": "linsen",
+          "detail": "many small lentils clearly visible in the dish; they must form a meaningful component and must not be replaced by rice or pasta",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Vollkornpasta",
+        "Linsen",
+        "Tomaten",
+        "Zwiebel"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "rice",
+        "orzo",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "carrots",
+        "chickpeas",
+        "cheese",
+        "berries",
+        "citrus/lemon",
+        "nuts"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Vollkornpasta",
+      "Linsen",
+      "Tomaten",
+      "Zwiebel"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T09:48:50.017Z"
+  },
+  {
+    "id": "poulet-brokkoli-kartoffeln",
+    "name": "Poulet mit Brokkoli und Kartoffeln",
+    "status": "pending_review",
+    "visualSpec": {
+      "dish": "Poulet mit Brokkoli und Kartoffeln",
+      "form": "simple plated home-cooked meal using only the listed ingredients",
+      "vessel": "plain plate or bowl appropriate to the dish",
+      "layout": "single compact serving; title ingredients occupy the visual center of the dish",
+      "mustVisible": [
+        {
+          "label": "brokkoli",
+          "detail": "multiple unmistakable green broccoli florets prominently visible across the dish, not just one tiny floret",
+          "prominence": "dominant"
+        },
+        {
+          "label": "kartoffel",
+          "detail": "Kartoffeln must be clearly visible, unmistakable, and occupy a substantial portion of the finished dish rather than appearing as a tiny garnish or being hidden",
+          "prominence": "dominant"
+        },
+        {
+          "label": "poulet",
+          "detail": "several clearly visible bite-size cooked chicken pieces; chicken must occupy a substantial portion of the plate and cannot be hidden under sauce or omitted",
+          "prominence": "dominant"
+        }
+      ],
+      "allowedIngredients": [
+        "Poulet",
+        "Kartoffeln",
+        "Brokkoli",
+        "Olivenöl"
+      ],
+      "forbidden": [
+        "decorative herbs",
+        "microgreens",
+        "flowers",
+        "lemon wedges",
+        "unlisted sauce",
+        "unlisted cheese",
+        "unlisted nuts",
+        "unlisted seeds",
+        "unlisted side dishes",
+        "cutlery",
+        "background food props not listed in the recipe",
+        "egg in any form",
+        "parsley/cilantro/basil/mint",
+        "tomatoes",
+        "carrots",
+        "chickpeas",
+        "cheese",
+        "berries",
+        "citrus/lemon",
+        "nuts",
+        "rice"
+      ],
+      "camera": "tight crop around one finished serving; neutral/dark empty background; no edible props outside the serving; 45-degree food-photography angle"
+    },
+    "requiredIngredients": [
+      "Poulet",
+      "Kartoffeln",
+      "Brokkoli",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "titleIngredientsSubstantial": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null,
+      "layoutCorrect": null
+    },
+    "generatedAt": "2026-09-03T09:49:03.073Z"
   }
 ]
