@@ -32,15 +32,15 @@ jobs:
             exit 1
           fi
           if [ "$REQUESTED_MAX" -lt 1 ] || [ "$REQUESTED_MAX" -gt 10 ]; then
-            echo 'Safety stop: image generation is limited to 1-10 candidates while quality is under evaluation.'
+            echo 'Safety stop: generation is limited to 1-10 review candidates.'
             exit 1
           fi
-      - name: Generate recipe image candidates for review
+      - name: Install deterministic renderer
+        run: npm install --no-save sharp@0.33.5
+      - name: Generate deterministic recipe composites
         env:
-          REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
-          REPLICATE_IMAGE_MODEL: black-forest-labs/flux-1.1-pro
           MAX_IMAGES: ${{ github.event.inputs.max_images || '10' }}
-        run: node tools/generate-recipe-images.mjs
+        run: node tools/generate-recipe-composites.mjs
       - name: Commit review candidates
         run: |
           git add -A -- assets/recipe-review
@@ -48,9 +48,9 @@ jobs:
             echo 'No new review candidates staged.'
             exit 1
           fi
-          echo 'Generated review candidates:'
+          echo 'Generated deterministic review candidates:'
           git diff --cached --name-status -- assets/recipe-review
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Generate recipe image candidates for review'
+          git commit -m 'Generate deterministic recipe image candidates'
           git push origin HEAD:main
