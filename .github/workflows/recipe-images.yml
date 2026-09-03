@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       max_images:
-        description: Maximum number of missing recipe image candidates to generate
+        description: Test batch size (maximum 10 review candidates)
         required: true
-        default: '1'
+        default: '10'
 
 permissions:
   contents: write
@@ -23,11 +23,23 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
+      - name: Validate controlled test batch
+        env:
+          REQUESTED_MAX: ${{ github.event.inputs.max_images || '10' }}
+        run: |
+          if ! [[ "$REQUESTED_MAX" =~ ^[0-9]+$ ]]; then
+            echo 'max_images must be an integer.'
+            exit 1
+          fi
+          if [ "$REQUESTED_MAX" -lt 1 ] || [ "$REQUESTED_MAX" -gt 10 ]; then
+            echo 'Safety stop: image generation is limited to 1-10 candidates while quality is under evaluation.'
+            exit 1
+          fi
       - name: Generate recipe image candidates for review
         env:
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
           REPLICATE_IMAGE_MODEL: black-forest-labs/flux-1.1-pro
-          MAX_IMAGES: ${{ github.event.inputs.max_images || '1' }}
+          MAX_IMAGES: ${{ github.event.inputs.max_images || '10' }}
         run: node tools/generate-recipe-images.mjs
       - name: Commit review candidates
         run: |
