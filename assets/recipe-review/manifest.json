@@ -2136,5 +2136,263 @@
       "unlistedIngredientsForbidden": true
     },
     "generatedAt": "2026-09-03T10:40:38.719Z"
+  },
+  {
+    "id": "gemuese-reis-frittata",
+    "name": "Gemüse-Reis-Frittata",
+    "status": "pending_review",
+    "style": "reserve-deterministic-composite-v1",
+    "generator": "tools/generate-recipe-composites.mjs",
+    "requiredIngredients": [
+      "Eier",
+      "Reis",
+      "Paprika",
+      "Spinat",
+      "Olivenöl"
+    ],
+    "renderedIngredientTypes": [
+      "egg",
+      "rice",
+      "pepper",
+      "spinach"
+    ],
+    "checks": {
+      "deterministicIngredients": true,
+      "noInventedIngredients": true,
+      "manualVisualReview": null
+    },
+    "generatedAt": "2026-09-03T10:51:24.053Z"
+  },
+  {
+    "id": "feta-kichererbsen-couscous",
+    "name": "Feta-Kichererbsen-Couscous",
+    "status": "pending_review",
+    "style": "reserve-deterministic-composite-v1",
+    "generator": "tools/generate-recipe-composites.mjs",
+    "requiredIngredients": [
+      "Couscous",
+      "Kichererbsen",
+      "Feta",
+      "Tomaten"
+    ],
+    "renderedIngredientTypes": [
+      "couscous",
+      "chickpea",
+      "feta",
+      "tomato"
+    ],
+    "checks": {
+      "deterministicIngredients": true,
+      "noInventedIngredients": true,
+      "manualVisualReview": null
+    },
+    "generatedAt": "2026-09-03T10:51:24.384Z"
+  },
+  {
+    "id": "poulet-paprika-couscous-bowl",
+    "name": "Poulet-Paprika-Couscous-Bowl",
+    "status": "pending_review",
+    "style": "reserve-deterministic-composite-v1",
+    "generator": "tools/generate-recipe-composites.mjs",
+    "requiredIngredients": [
+      "Poulet",
+      "Couscous",
+      "Paprika",
+      "Tomaten",
+      "Olivenöl"
+    ],
+    "renderedIngredientTypes": [
+      "chicken",
+      "couscous",
+      "pepper",
+      "tomato"
+    ],
+    "checks": {
+      "deterministicIngredients": true,
+      "noInventedIngredients": true,
+      "manualVisualReview": null
+    },
+    "generatedAt": "2026-09-03T10:51:24.694Z"
+  },
+  {
+    "id": "poulet-linsen-bowl",
+    "name": "Poulet-Linsen-Bowl",
+    "status": "pending_review",
+    "style": "reserve-deterministic-composite-v1",
+    "generator": "tools/generate-recipe-composites.mjs",
+    "requiredIngredients": [
+      "Poulet",
+      "Linsen",
+      "Tomaten",
+      "Gurke",
+      "Olivenöl"
+    ],
+    "renderedIngredientTypes": [
+      "chicken",
+      "lentil",
+      "tomato",
+      "cucumber"
+    ],
+    "checks": {
+      "deterministicIngredients": true,
+      "noInventedIngredients": true,
+      "manualVisualReview": null
+    },
+    "generatedAt": "2026-09-03T10:51:25.005Z"
+  },
+  {
+    "id": "rind-brokkoli-reis",
+    "name": "Rind-Brokkoli-Reis",
+    "status": "pending_review",
+    "style": "reserve-deterministic-composite-v1",
+    "generator": "tools/generate-recipe-composites.mjs",
+    "requiredIngredients": [
+      "Rindfleisch",
+      "Reis",
+      "Brokkoli",
+      "Karotten",
+      "Olivenöl"
+    ],
+    "renderedIngredientTypes": [
+      "generic",
+      "rice",
+      "broccoli",
+      "carrot"
+    ],
+    "checks": {
+      "deterministicIngredients": true,
+      "noInventedIngredients": true,
+      "manualVisualReview": null
+    },
+    "generatedAt": "2026-09-03T10:51:25.323Z"
+  },
+  {
+    "id": "rind-kartoffel-gemuese-pfanne",
+    "name": "Rind-Kartoffel-Gemüse-Pfanne",
+    "status": "pending_review",
+    "style": "reserve-deterministic-composite-v1",
+    "generator": "tools/generate-recipe-composites.mjs",
+    "requiredIngredients": [
+      "Rindfleisch",
+      "Kartoffeln",
+      "Paprika",
+      "Zwiebel",
+      "Olivenöl"
+    ],
+    "renderedIngredientTypes": [
+      "generic",
+      "potato",
+      "pepper",
+      "onion"
+    ],
+    "checks": {
+      "deterministicIngredients": true,
+      "noInventedIngredients": true,
+      "manualVisualReview": null
+    },
+    "generatedAt": "2026-09-03T10:51:25.630Z"
+  },
+  {
+    "id": "hackfleisch-kartoffel-tomaten-topf",
+    "name": "Hackfleisch-Kartoffel-Tomaten-Topf",
+    "status": "pending_review",
+    "style": "reserve-deterministic-composite-v1",
+    "generator": "tools/generate-recipe-composites.mjs",
+    "requiredIngredients": [
+      "Rinderhackfleisch",
+      "Kartoffeln",
+      "Tomaten",
+      "Karotten"
+    ],
+    "renderedIngredientTypes": [
+      "mince",
+      "potato",
+      "tomato",
+      "carrot"
+    ],
+    "checks": {
+      "deterministicIngredients": true,
+      "noInventedIngredients": true,
+      "manualVisualReview": null
+    },
+    "generatedAt": "2026-09-03T10:51:25.936Z"
+  },
+  {
+    "id": "poulet-kichererbsen-tomaten-pfanne",
+    "name": "Poulet-Kichererbsen-Tomaten-Pfanne",
+    "status": "pending_review",
+    "style": "reserve-deterministic-composite-v1",
+    "generator": "tools/generate-recipe-composites.mjs",
+    "requiredIngredients": [
+      "Poulet",
+      "Kichererbsen",
+      "Tomaten",
+      "Spinat",
+      "Olivenöl"
+    ],
+    "renderedIngredientTypes": [
+      "chicken",
+      "chickpea",
+      "tomato",
+      "spinach"
+    ],
+    "checks": {
+      "deterministicIngredients": true,
+      "noInventedIngredients": true,
+      "manualVisualReview": null
+    },
+    "generatedAt": "2026-09-03T10:51:26.242Z"
+  },
+  {
+    "id": "linsen-karotten-suppe",
+    "name": "Linsen-Karotten-Suppe",
+    "status": "pending_review",
+    "style": "reserve-deterministic-composite-v1",
+    "generator": "tools/generate-recipe-composites.mjs",
+    "requiredIngredients": [
+      "Linsen",
+      "Karotten",
+      "Zwiebel",
+      "Olivenöl"
+    ],
+    "renderedIngredientTypes": [
+      "lentil",
+      "carrot",
+      "onion"
+    ],
+    "checks": {
+      "deterministicIngredients": true,
+      "noInventedIngredients": true,
+      "manualVisualReview": null
+    },
+    "generatedAt": "2026-09-03T10:51:26.554Z"
+  },
+  {
+    "id": "haehnchen-gemuese-pfanne",
+    "name": "Hähnchen-Gemüse-Pfanne",
+    "status": "pending_review",
+    "style": "reserve-deterministic-composite-v1",
+    "generator": "tools/generate-recipe-composites.mjs",
+    "requiredIngredients": [
+      "Hähnchenbrust",
+      "Brokkoli",
+      "Karotten",
+      "Zwiebel",
+      "Kochsahne",
+      "Olivenöl"
+    ],
+    "renderedIngredientTypes": [
+      "chicken",
+      "broccoli",
+      "carrot",
+      "onion",
+      "generic"
+    ],
+    "checks": {
+      "deterministicIngredients": true,
+      "noInventedIngredients": true,
+      "manualVisualReview": null
+    },
+    "generatedAt": "2026-09-03T10:51:26.868Z"
   }
 ]
