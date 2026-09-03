@@ -1,0 +1,46 @@
+name: Review RESERVE recipe images
+
+on:
+  workflow_dispatch:
+    inputs:
+      approve_ids:
+        description: Comma/space separated recipe IDs to approve and publish
+        required: false
+        default: ''
+      reject_ids:
+        description: Comma/space separated recipe IDs to reject and regenerate later
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reserve-recipe-image-review
+  cancel-in-progress: false
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Apply review decisions
+        env:
+          REVIEW_APPROVE: ${{ github.event.inputs.approve_ids || '' }}
+          REVIEW_REJECT: ${{ github.event.inputs.reject_ids || '' }}
+        run: node tools/review-recipe-images.mjs
+      - name: Commit approved and rejected review results
+        run: |
+          git add -A -- assets/recipe-review assets/recipes
+          if git diff --cached --quiet -- assets/recipe-review assets/recipes; then
+            echo 'No review changes staged.'
+            exit 1
+          fi
+          echo 'Review changes:'
+          git diff --cached --name-status -- assets/recipe-review assets/recipes
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Apply recipe image review decisions'
+          git push origin HEAD:main
