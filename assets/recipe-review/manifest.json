@@ -1807,5 +1807,334 @@
       "Olivenöl"
     ],
     "generatedAt": "2026-09-03T10:32:34.871Z"
+  },
+  {
+    "id": "rind-paprika-reis-pfanne",
+    "name": "Rind-Paprika-Reis-Pfanne",
+    "status": "pending_review",
+    "style": "reserve-editorial-illustration-v2-strict",
+    "visualSpec": {
+      "form": "distinct cooked rice grains as the main base",
+      "ingredients": [
+        "Rindfleisch",
+        "Reis",
+        "Paprika",
+        "Zwiebel",
+        "Olivenöl"
+      ],
+      "must": [
+        "bell pepper pieces, prominent and unmistakable"
+      ],
+      "forbid": []
+    },
+    "requiredIngredients": [
+      "Rindfleisch",
+      "Reis",
+      "Paprika",
+      "Zwiebel",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishFormRequired": true,
+      "titleIngredientsRequired": true,
+      "unlistedIngredientsForbidden": true
+    },
+    "generatedAt": "2026-09-03T10:38:27.637Z"
+  },
+  {
+    "id": "kartoffel-spinat-feta-bowl",
+    "name": "Kartoffel-Spinat-Feta-Bowl",
+    "status": "pending_review",
+    "style": "reserve-editorial-illustration-v2-strict",
+    "visualSpec": {
+      "form": "bowl meal with the named ingredients clearly recognizable",
+      "ingredients": [
+        "Kartoffeln",
+        "Spinat",
+        "Feta",
+        "Tomaten",
+        "Olivenöl"
+      ],
+      "must": [
+        "potato pieces, prominent and unmistakable",
+        "spinach leaves, prominent and unmistakable",
+        "white feta cubes, prominent and unmistakable"
+      ],
+      "forbid": []
+    },
+    "requiredIngredients": [
+      "Kartoffeln",
+      "Spinat",
+      "Feta",
+      "Tomaten",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishFormRequired": true,
+      "titleIngredientsRequired": true,
+      "unlistedIngredientsForbidden": true
+    },
+    "generatedAt": "2026-09-03T10:38:43.256Z"
+  },
+  {
+    "id": "mango-hafer-bowl",
+    "name": "Mango-Hafer-Bowl",
+    "status": "pending_review",
+    "style": "reserve-editorial-illustration-v2-strict",
+    "visualSpec": {
+      "form": "bowl meal with the named ingredients clearly recognizable",
+      "ingredients": [
+        "Haferflocken",
+        "Haferdrink",
+        "Mango"
+      ],
+      "must": [
+        "visible rolled oats/oat texture, prominent and unmistakable"
+      ],
+      "forbid": []
+    },
+    "requiredIngredients": [
+      "Haferflocken",
+      "Haferdrink",
+      "Mango"
+    ],
+    "checks": {
+      "dishFormRequired": true,
+      "titleIngredientsRequired": true,
+      "unlistedIngredientsForbidden": true
+    },
+    "generatedAt": "2026-09-03T10:38:59.547Z"
+  },
+  {
+    "id": "beeren-bananen-porridge",
+    "name": "Beeren-Bananen-Porridge",
+    "status": "pending_review",
+    "style": "reserve-editorial-illustration-v2-strict",
+    "visualSpec": {
+      "form": "thick creamy oat porridge with visible oat texture",
+      "ingredients": [
+        "Haferflocken",
+        "Haferdrink",
+        "Banane",
+        "Beeren"
+      ],
+      "must": [
+        "banana slices, prominent and unmistakable",
+        "berries, prominent and unmistakable"
+      ],
+      "forbid": [
+        "egg",
+        "fried egg",
+        "intact yolk",
+        "pasta",
+        "rice",
+        "citrus fruit",
+        "tomato"
+      ]
+    },
+    "requiredIngredients": [
+      "Haferflocken",
+      "Haferdrink",
+      "Banane",
+      "Beeren"
+    ],
+    "checks": {
+      "dishFormRequired": true,
+      "titleIngredientsRequired": true,
+      "unlistedIngredientsForbidden": true
+    },
+    "generatedAt": "2026-09-03T10:39:13.666Z"
+  },
+  {
+    "id": "quark-apfel-hafer-bowl",
+    "name": "Quark-Apfel-Hafer-Bowl",
+    "status": "pending_review",
+    "style": "reserve-editorial-illustration-v2-strict",
+    "visualSpec": {
+      "form": "bowl meal with the named ingredients clearly recognizable",
+      "ingredients": [
+        "Quark",
+        "Apfel",
+        "Haferflocken"
+      ],
+      "must": [
+        "apple pieces, prominent and unmistakable",
+        "visible rolled oats/oat texture, prominent and unmistakable",
+        "thick quark, prominent and unmistakable"
+      ],
+      "forbid": []
+    },
+    "requiredIngredients": [
+      "Quark",
+      "Apfel",
+      "Haferflocken"
+    ],
+    "checks": {
+      "dishFormRequired": true,
+      "titleIngredientsRequired": true,
+      "unlistedIngredientsForbidden": true
+    },
+    "generatedAt": "2026-09-03T10:39:28.387Z"
+  },
+  {
+    "id": "paprika-feta-ruehrei",
+    "name": "Paprika-Feta-Rührei",
+    "status": "pending_review",
+    "style": "reserve-editorial-illustration-v2-strict",
+    "visualSpec": {
+      "form": "recognizable home-cooked meal",
+      "ingredients": [
+        "Eier",
+        "Paprika",
+        "Feta",
+        "Olivenöl"
+      ],
+      "must": [
+        "bell pepper pieces, prominent and unmistakable",
+        "white feta cubes, prominent and unmistakable"
+      ],
+      "forbid": []
+    },
+    "requiredIngredients": [
+      "Eier",
+      "Paprika",
+      "Feta",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishFormRequired": true,
+      "titleIngredientsRequired": true,
+      "unlistedIngredientsForbidden": true
+    },
+    "generatedAt": "2026-09-03T10:39:42.552Z"
+  },
+  {
+    "id": "linsen-spinat-reis-bowl",
+    "name": "Linsen-Spinat-Reis-Bowl",
+    "status": "pending_review",
+    "style": "reserve-editorial-illustration-v2-strict",
+    "visualSpec": {
+      "form": "distinct cooked rice grains as the main base",
+      "ingredients": [
+        "Linsen",
+        "Reis",
+        "Spinat",
+        "Tomaten"
+      ],
+      "must": [
+        "small flat lentils, prominent and unmistakable",
+        "spinach leaves, prominent and unmistakable"
+      ],
+      "forbid": [
+        "chickpeas",
+        "large round legumes"
+      ]
+    },
+    "requiredIngredients": [
+      "Linsen",
+      "Reis",
+      "Spinat",
+      "Tomaten"
+    ],
+    "checks": {
+      "dishFormRequired": true,
+      "titleIngredientsRequired": true,
+      "unlistedIngredientsForbidden": true
+    },
+    "generatedAt": "2026-09-03T10:39:57.358Z"
+  },
+  {
+    "id": "tofu-paprika-couscous",
+    "name": "Tofu-Paprika-Couscous",
+    "status": "pending_review",
+    "style": "reserve-editorial-illustration-v2-strict",
+    "visualSpec": {
+      "form": "recognizable home-cooked meal",
+      "ingredients": [
+        "Tofu",
+        "Couscous",
+        "Paprika",
+        "Olivenöl"
+      ],
+      "must": [
+        "bell pepper pieces, prominent and unmistakable",
+        "fine couscous grains, prominent and unmistakable"
+      ],
+      "forbid": []
+    },
+    "requiredIngredients": [
+      "Tofu",
+      "Couscous",
+      "Paprika",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishFormRequired": true,
+      "titleIngredientsRequired": true,
+      "unlistedIngredientsForbidden": true
+    },
+    "generatedAt": "2026-09-03T10:40:11.339Z"
+  },
+  {
+    "id": "weisse-bohnen-kartoffel-topf",
+    "name": "Weiße-Bohnen-Kartoffel-Topf",
+    "status": "pending_review",
+    "style": "reserve-editorial-illustration-v2-strict",
+    "visualSpec": {
+      "form": "recognizable home-cooked meal",
+      "ingredients": [
+        "Weiße Bohnen",
+        "Kartoffeln",
+        "Karotten",
+        "Tomaten"
+      ],
+      "must": [
+        "potato pieces, prominent and unmistakable"
+      ],
+      "forbid": []
+    },
+    "requiredIngredients": [
+      "Weiße Bohnen",
+      "Kartoffeln",
+      "Karotten",
+      "Tomaten"
+    ],
+    "checks": {
+      "dishFormRequired": true,
+      "titleIngredientsRequired": true,
+      "unlistedIngredientsForbidden": true
+    },
+    "generatedAt": "2026-09-03T10:40:25.138Z"
+  },
+  {
+    "id": "mediterrane-bohnen-pasta",
+    "name": "Mediterrane Bohnen-Pasta",
+    "status": "pending_review",
+    "style": "reserve-editorial-illustration-v2-strict",
+    "visualSpec": {
+      "form": "recognizable cooked pasta as the main base",
+      "ingredients": [
+        "Vollkornpasta",
+        "Weiße Bohnen",
+        "Tomaten",
+        "Spinat",
+        "Olivenöl"
+      ],
+      "must": [],
+      "forbid": []
+    },
+    "requiredIngredients": [
+      "Vollkornpasta",
+      "Weiße Bohnen",
+      "Tomaten",
+      "Spinat",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishFormRequired": true,
+      "titleIngredientsRequired": true,
+      "unlistedIngredientsForbidden": true
+    },
+    "generatedAt": "2026-09-03T10:40:38.719Z"
   }
 ]
