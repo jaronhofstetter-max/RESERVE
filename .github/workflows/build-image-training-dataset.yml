@@ -1,0 +1,39 @@
+name: Build RESERVE image training dataset
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'assets/recipes/**'
+      - 'data/recipes.json'
+      - 'data/quality-batch-*.json'
+      - 'tools/build-image-training-dataset.mjs'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reserve-image-training-dataset
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Build approved image-caption dataset
+        run: node tools/build-image-training-dataset.mjs
+      - name: Commit dataset metadata
+        run: |
+          git add -A -- training/recipe-images
+          if git diff --cached --quiet -- training/recipe-images; then
+            echo 'Training dataset already up to date.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Refresh RESERVE image training dataset'
+          git push origin HEAD:main
