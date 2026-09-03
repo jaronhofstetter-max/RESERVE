@@ -1,0 +1,189 @@
+[
+  {
+    "id": "tomaten-linsen-pasta",
+    "name": "Tomaten-Linsen-Pasta",
+    "status": "pending_review",
+    "requiredIngredients": [
+      "Vollkornpasta",
+      "Linsen",
+      "Tomaten",
+      "Zwiebel"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:05:32.184Z"
+  },
+  {
+    "id": "rotes-linsen-dal",
+    "name": "Rotes Linsen-Dal mit Reis",
+    "status": "pending_review",
+    "requiredIngredients": [
+      "Rote Linsen",
+      "Reis",
+      "Tomaten",
+      "Zwiebel",
+      "Currypulver"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:05:42.110Z"
+  },
+  {
+    "id": "kichererbsen-curry-reis",
+    "name": "Kichererbsen-Curry mit Reis",
+    "status": "pending_review",
+    "requiredIngredients": [
+      "Kichererbsen",
+      "Reis",
+      "Tomaten",
+      "Zwiebel",
+      "Currypulver"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:05:52.752Z"
+  },
+  {
+    "id": "mediterrane-kichererbsen-bowl",
+    "name": "Mediterrane Kichererbsen-Bowl",
+    "status": "pending_review",
+    "requiredIngredients": [
+      "Kichererbsen",
+      "Tomaten",
+      "Gurke",
+      "Paprika",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:06:04.379Z"
+  },
+  {
+    "id": "griechische-kartoffel-bowl",
+    "name": "Griechische Kartoffel-Bowl",
+    "status": "pending_review",
+    "requiredIngredients": [
+      "Kartoffeln",
+      "Tomaten",
+      "Gurke",
+      "Feta",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:06:16.733Z"
+  },
+  {
+    "id": "gemuese-couscous",
+    "name": "Gemüse-Couscous",
+    "status": "pending_review",
+    "requiredIngredients": [
+      "Couscous",
+      "Paprika",
+      "Karotten",
+      "Zwiebel",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:06:26.316Z"
+  },
+  {
+    "id": "tomaten-couscous-kichererbsen",
+    "name": "Tomaten-Couscous mit Kichererbsen",
+    "status": "pending_review",
+    "requiredIngredients": [
+      "Couscous",
+      "Kichererbsen",
+      "Tomaten",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:06:38.500Z"
+  },
+  {
+    "id": "tofu-gemuese-reis",
+    "name": "Tofu-Gemüse-Reis",
+    "status": "pending_review",
+    "requiredIngredients": [
+      "Tofu",
+      "Reis",
+      "Brokkoli",
+      "Karotten",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:06:47.789Z"
+  },
+  {
+    "id": "tofu-tomaten-pfanne",
+    "name": "Tofu-Tomaten-Pfanne",
+    "status": "pending_review",
+    "requiredIngredients": [
+      "Tofu",
+      "Tomaten",
+      "Paprika",
+      "Olivenöl"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:07:00.211Z"
+  },
+  {
+    "id": "poulet-curry-reis",
+    "name": "Poulet-Curry mit Reis",
+    "status": "pending_review",
+    "requiredIngredients": [
+      "Poulet",
+      "Reis",
+      "Tomaten",
+      "Zwiebel",
+      "Currypulver"
+    ],
+    "checks": {
+      "dishForm": null,
+      "titleIngredientsVisible": null,
+      "noInventedIngredients": null,
+      "noGeometryErrors": null
+    },
+    "generatedAt": "2026-09-03T00:07:10.204Z"
+  }
+]
