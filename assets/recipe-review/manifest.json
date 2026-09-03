@@ -2394,5 +2394,45 @@
       "manualVisualReview": null
     },
     "generatedAt": "2026-09-03T10:51:26.868Z"
+  },
+  {
+    "id": "lachs-kartoffel-spinat",
+    "name": "Lachs mit Kartoffeln und Spinat",
+    "status": "pending_review",
+    "style": "reserve-deterministic-cooked-v2",
+    "dishMode": "pan",
+    "requiredIngredients": [
+      "Lachs",
+      "Kartoffeln",
+      "Spinat",
+      "Olivenöl"
+    ],
+    "checks": {
+      "deterministicIngredients": true,
+      "noInventedIngredients": true,
+      "cookedPresentation": true
+    },
+    "generatedAt": "2026-09-03T15:56:36.656Z"
+  },
+  {
+    "id": "couscous-gemuese-bowl",
+    "name": "Couscous-Gemüse-Bowl",
+    "status": "pending_review",
+    "style": "reserve-deterministic-cooked-v2",
+    "dishMode": "couscous",
+    "requiredIngredients": [
+      "Couscous",
+      "Kichererbsen",
+      "Paprika",
+      "Gurke",
+      "Tomaten",
+      "Olivenöl"
+    ],
+    "checks": {
+      "deterministicIngredients": true,
+      "noInventedIngredients": true,
+      "cookedPresentation": true
+    },
+    "generatedAt": "2026-09-03T15:56:37.170Z"
   }
 ]
