@@ -1,0 +1,35 @@
+[
+  {
+    "id":"poulet-reis-bowl",
+    "description":"Eine ausgewogene Bowl mit saftig durchgegartem Poulet, lockerem Reis und bissfestem Brokkoli. Das Olivenöl verbindet die Komponenten, ohne das Gericht schwer zu machen.",
+    "equipment":["Kochtopf mit Deckel","Bratpfanne","Schneidebrett","Küchenmesser","Kochlöffel","Küchenthermometer empfohlen"],
+    "prepNotes":["Brokkoli waschen und in ähnlich grosse Röschen teilen.","Poulet getrennt von den übrigen Zutaten schneiden; Hände, Brett und Messer danach gründlich reinigen."],
+    "steps":["Reis nach Packungsangabe garen. Nach Ende der Garzeit vom Herd nehmen und 5 Minuten zugedeckt ruhen lassen; die Körner sollen weich, aber nicht breiig sein.","Brokkoli in gleich grosse Röschen schneiden und in wenig Wasser oder Dampf garen, bis er kräftig grün und mit einer Gabel leicht einzustechen, aber noch bissfest ist.","Poulet in etwa gleich grosse Stücke schneiden. Danach Hände, Messer, Brett und alle Flächen reinigen, die mit rohem Geflügel Kontakt hatten.","Olivenöl in einer Pfanne erhitzen und das Poulet unter mehrmaligem Wenden vollständig durchgaren. Im dicksten Stück mindestens 75 °C Kerntemperatur erreichen; innen darf kein rohes rosa Fleisch mehr sichtbar sein.","Reis, Brokkoli und Poulet in einer Schüssel anrichten und sofort servieren."],
+    "doneness":"Reis weich und locker, Brokkoli bissfest und das Poulet im dicksten Stück mindestens 75 °C sowie vollständig durchgegart.",
+    "substitutions":["Poulet kann durch festen Tofu ersetzt werden; Tofu kräftig anbraten, benötigt aber keine Geflügel-Kerntemperatur.","Reis kann durch eine ähnlich portionierte Getreidebeilage ersetzt werden; Flüssigkeitsmenge und Garzeit anpassen."],
+    "leftovers":"Reste rasch abkühlen, abgedeckt im Kühlschrank lagern und innerhalb von 1–2 Tagen verbrauchen. Beim Wiedererwärmen vollständig durcherhitzen.",
+    "safety":"Rohes Poulet nicht abwaschen. Kreuzkontamination vermeiden und Geflügel vollständig auf mindestens 75 °C Kerntemperatur garen."
+  },
+  {
+    "id":"gemuese-omelette",
+    "description":"Ein saftiges Gemüse-Omelette mit Brokkoli und Tomaten. Das Gemüse bleibt leicht bissfest, während die Eier vollständig stocken und das Omelette innen zart bleibt.",
+    "equipment":["Beschichtete Bratpfanne","Schüssel","Schneebesen oder Gabel","Schneidebrett","Küchenmesser","Pfannenwender"],
+    "prepNotes":["Brokkoli und Tomaten waschen. Brokkoli klein schneiden und Tomaten in mundgerechte Stücke teilen.","Eier erst unmittelbar vor dem Braten aufschlagen und verquirlen."],
+    "steps":["Brokkoli in kleine Röschen und Tomaten in mundgerechte Stücke schneiden, damit das Gemüse gleichmässig gart.","Eier in einer Schüssel mit einer Gabel oder einem Schneebesen verrühren, bis Eigelb und Eiweiss gleichmässig verbunden sind.","Olivenöl in einer beschichteten Pfanne auf mittlere Hitze bringen. Brokkoli zuerst anbraten, bis er kräftig grün und fast bissfest ist; Tomaten kurz zum Schluss dazugeben.","Eimasse gleichmässig über das Gemüse giessen. Hitze reduzieren und garen, bis die Oberfläche nicht mehr flüssig ist und beim leichten Neigen der Pfanne keine rohe Eimasse läuft.","Omelette mit dem Pfannenwender lösen, nach Wunsch zusammenklappen und unmittelbar servieren."],
+    "doneness":"Die Eimasse ist vollständig gestockt und zeigt keine flüssigen rohen Stellen; der Brokkoli ist gar, aber noch leicht bissfest.",
+    "substitutions":["Brokkoli kann durch anderes klein geschnittenes Gemüse mit ähnlicher Garzeit ersetzt werden.","Tomaten können durch Paprika ersetzt werden; Paprika etwas früher mit dem Brokkoli anbraten."],
+    "leftovers":"Omelette schmeckt frisch am besten. Reste rasch kühlen, abgedeckt im Kühlschrank aufbewahren und innerhalb von 24 Stunden vollständig durcherhitzt verbrauchen.",
+    "safety":"Rohe Eimasse nicht mit verzehrfertigen Lebensmitteln in Kontakt bringen. Für empfindliche Personen das Omelette vollständig stocken lassen."
+  },
+  {
+    "id":"joghurt-fruechte-bowl",
+    "description":"Eine kühle Frühstücksbowl aus cremigem Naturjoghurt, Haferflocken, Banane und Beeren. Die Haferflocken geben Biss, während Banane und Beeren natürliche Süsse und Frische liefern.",
+    "equipment":["Frühstücksschüssel","Schneidebrett","Küchenmesser","Löffel"],
+    "prepNotes":["Beeren kontrollieren und vorsichtig waschen; Banane erst kurz vor dem Servieren schälen und schneiden."],
+    "steps":["Naturjoghurt in eine saubere Schüssel geben und glatt rühren.","Haferflocken gleichmässig über den Joghurt verteilen. Für eine weichere Konsistenz 3–5 Minuten im Joghurt quellen lassen.","Banane schälen und in gleichmässige Scheiben schneiden. Beeren nach dem Waschen gut abtropfen lassen.","Banane und Beeren auf der Bowl verteilen und sofort servieren, solange die Früchte frisch und die Haferflocken nach Wunsch bissfest sind."],
+    "doneness":"Keine Garstufe erforderlich: Die Bowl ist fertig, wenn die Früchte sauber vorbereitet sind und die gewünschte Quellzeit der Haferflocken erreicht ist.",
+    "substitutions":["Naturjoghurt kann durch eine ungesüsste pflanzliche Joghurtalternative ersetzt werden; Protein- und Fettgehalt können sich verändern.","Beeren können durch anderes frisches Obst ersetzt werden, wobei Süsse und Flüssigkeitsgehalt variieren."],
+    "leftovers":"Am besten frisch essen. Abgedeckte Reste sofort kühlen und innerhalb von 24 Stunden verbrauchen; geschnittene Banane kann sich dabei verfärben.",
+    "safety":"Milchprodukte und vorbereitete Früchte bis zum Verzehr gekühlt halten und nicht unnötig lange bei Raumtemperatur stehen lassen."
+  }
+]
