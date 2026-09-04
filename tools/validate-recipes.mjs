@@ -12,6 +12,7 @@ if(!Array.isArray(recipes)){console.error('Root muss ein Array sein.');process.e
 const ids=new Set(),names=new Map();
 const fail=(i,msg)=>errors.push(`#${i+1}${recipes[i]?.id?` (${recipes[i].id})`:''}: ${msg}`),warn=(i,msg)=>warnings.push(`#${i+1}${recipes[i]?.id?` (${recipes[i].id})`:''}: ${msg}`);
 const meaningful=v=>typeof v==='string'?v.trim().length>=12:Array.isArray(v)?v.length>0&&v.every(x=>typeof x==='string'&&x.trim().length>=3):v&&typeof v==='object'&&Object.keys(v).length>0;
+const detailed=r=>detailFields.every(k=>meaningful(r[k]))&&Array.isArray(r.steps)&&r.steps.length>=3&&r.steps.every(s=>typeof s==='string'&&s.trim().length>=25);
 recipes.forEach((r,i)=>{
   required.forEach(k=>{if(r[k]===undefined||r[k]===null||r[k]==='')fail(i,`${k} fehlt`)});
   if(typeof r.id!=='string'||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(r.id||''))fail(i,'id muss lowercase-kebab-case sein');if(ids.has(r.id))fail(i,`doppelte ID ${r.id}`);ids.add(r.id);
@@ -35,4 +36,11 @@ recipes.forEach((r,i)=>{
     if(!r.image){} // Bilder sind optional; neutrale dish-Symbole sind der vorgesehene Fallback.
   }
 });
+// Wachstums-Gate: Sobald die Produktionsbibliothek über den heutigen Bestand hinaus wächst,
+// müssen ALLE neu hinzukommenden approved Rezepte bereits den vollständigen Detailstandard erfüllen.
+// Legacy-Rezepte bleiben vorerst kompatibel und können kontrolliert nachgerüstet werden.
+const baselineCount=23;
+if(file.endsWith('data/recipes.json')&&recipes.length>baselineCount){
+  recipes.slice(baselineCount).forEach((r,j)=>{if(r.status==='approved'&&!detailed(r))fail(baselineCount+j,'neues approved Rezept erfüllt den vollständigen Detailstandard nicht')});
+}
 console.log(`RESERVE Rezeptprüfung: ${recipes.length} Rezepte, ${recipes.filter(r=>r.status==='approved').length} approved, ${recipes.filter(r=>r.status==='draft').length} draft`);if(warnings.length){console.log(`\nWarnungen (${warnings.length}):`);warnings.forEach(x=>console.log(' - '+x))}if(errors.length){console.error(`\nFehler (${errors.length}):`);errors.forEach(x=>console.error(' - '+x));process.exit(1)}console.log('\n✓ Rezeptdatenbank ist strukturell und semantisch gültig.');
