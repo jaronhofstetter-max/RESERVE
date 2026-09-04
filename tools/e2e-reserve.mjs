@@ -14,6 +14,7 @@ try{
   await page.goto('http://127.0.0.1:4173',{waitUntil:'networkidle'});
   await page.waitForFunction(()=>window.RESERVE_AUTOPILOT&&typeof window.RESERVE_AUTOPILOT.plan==='function');
   await page.waitForFunction(()=>window.RESERVE_AUTOPILOT.recipeCount()>=100);
+  await page.waitForFunction(()=>typeof window.purchaseToStock==='function'&&typeof window.finishCook==='function');
   await page.evaluate(()=>window.RESERVE_AUTOPILOT.render());
   await page.waitForSelector('#reserveAutopilot',{state:'attached'});
   const result=await page.evaluate(()=>{
@@ -24,7 +25,6 @@ try{
     const ratios=recipes.map(r=>RESERVE_AUTOPILOT.fitRatio(r));
     const fitRatioValid=ratios.every(x=>Number.isFinite(x)&&x>=0&&x<=1);
     const ids=recipes.map(r=>r.id),names=recipes.map(r=>r.name.trim().toLocaleLowerCase('de-CH'));
-    const uniqueIds=new Set(ids).size===ids.length,uniqueNames=new Set(names).size===names.length;
     return {recipes:RESERVE_AUTOPILOT.recipeCount(),days:p.days.length,slots:p.days.map(d=>d.map(x=>x.slot)),meals:flat.length,shopping:Array.isArray(shoppingCalc),autopilotCard:!!document.getElementById('reserveAutopilot'),sync:!!window.RESERVE_SYNC,slotsValid,reasonsValid,nutritionValid,fitRatioValid,uniqueIds,uniqueNames};
   });
   if(result.recipes<100)throw new Error(`Produktionsbibliothek enthält ${result.recipes}; mindestens 100 Rezepte erforderlich`);
@@ -68,9 +68,9 @@ try{
     const adapted=adaptRecipe(recipe),peopleCount=persons();stock=[];shopping=[];
     localStorage.setItem('reserveStock','[]');localStorage.setItem('reserveShopping','[]');
     adapted.ingredients.forEach(i=>shopping.push({n:i.name,q:fmt(i.amount*peopleCount,i.unit)}));saveShop();
-    const shoppingBefore=shopping.length;while(shopping.length)purchaseToStock(0);const stockAfterPurchase=stock.length;const cookableBefore=canCook(recipe);
+    const shoppingBefore=shopping.length;while(shopping.length)window.purchaseToStock(0);const stockAfterPurchase=stock.length;const cookableBefore=canCook(recipe);
     const before=adapted.ingredients.map(i=>({name:i.name,unit:i.unit,available:availableAmount(i.name,i.unit)}));
-    localStorage.setItem('reserveCookProgress:'+recipe.id,JSON.stringify(recipe.steps.map(()=>true)));finishCook(recipe.id);
+    localStorage.setItem('reserveCookProgress:'+recipe.id,JSON.stringify(recipe.steps.map(()=>true)));window.finishCook(recipe.id);
     const after=adapted.ingredients.map(i=>({name:i.name,unit:i.unit,available:availableAmount(i.name,i.unit)}));
     const deducted=before.every((x,i)=>after[i].available<x.available||before[i].available===0),progressCleared=localStorage.getItem('reserveCookProgress:'+recipe.id)===null,replanned=RESERVE_AUTOPILOT.plan(7);
     return {recipe:recipe.name,shoppingBefore,shoppingAfter:shopping.length,stockAfterPurchase,cookableBefore,deducted,progressCleared,replannedDays:replanned.days.length};
