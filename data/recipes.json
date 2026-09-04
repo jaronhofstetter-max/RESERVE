@@ -1,22 +1,1256 @@
 [
-{"id":"poulet-reis-bowl","name":"Poulet-Reis-Bowl mit Brokkoli","type":"Hauptmahlzeit","diet":"Alles","dish":"🍲","cuisine":"International","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":10,"cookMinutes":20,"difficulty":"Einfach","allergens":[],"tags":["proteinreich","ausgewogen","Reis"],"ingredients":[{"name":"Poulet","amount":150,"unit":"g"},{"name":"Reis","amount":80,"unit":"g"},{"name":"Brokkoli","amount":200,"unit":"g"},{"name":"Olivenöl","amount":15,"unit":"ml"}],"steps":["Reis garen.","Brokkoli schneiden und garen.","Poulet schneiden und Arbeitsflächen danach reinigen.","Poulet vollständig durchgaren.","Alles anrichten."],"nutrition":{"kcal":640,"protein":46,"carbs":68,"fat":18,"fiber":9},"status":"approved"},
-{"id":"gemuese-omelette","name":"Gemüse-Omelette","type":"Hauptmahlzeit","diet":"Vegetarisch","dish":"🍳","cuisine":"Europäisch","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":8,"cookMinutes":12,"difficulty":"Einfach","allergens":["Ei"],"tags":["vegetarisch","proteinreich","schnell"],"ingredients":[{"name":"Eier","amount":3,"unit":"Stück"},{"name":"Brokkoli","amount":100,"unit":"g"},{"name":"Tomaten","amount":120,"unit":"g"},{"name":"Olivenöl","amount":5,"unit":"ml"}],"steps":["Gemüse schneiden.","Eier verquirlen.","Gemüse anbraten.","Eier zugeben und vollständig stocken lassen.","Servieren."],"nutrition":{"kcal":430,"protein":27,"carbs":18,"fat":27,"fiber":7},"status":"approved"},
-{"id":"joghurt-fruechte-bowl","name":"Joghurt-Früchte-Bowl","type":"Frühstück","diet":"Vegetarisch","dish":"🥣","cuisine":"International","mealTimes":["Frühstück","Zwischenmahlzeit"],"prepMinutes":5,"cookMinutes":0,"difficulty":"Sehr einfach","allergens":["Milch"],"tags":["Frühstück","schnell","fruchtig"],"ingredients":[{"name":"Naturjoghurt","amount":200,"unit":"g"},{"name":"Haferflocken","amount":50,"unit":"g"},{"name":"Banane","amount":1,"unit":"Stück"},{"name":"Beeren","amount":100,"unit":"g"}],"steps":["Joghurt einfüllen.","Haferflocken zugeben.","Obst schneiden und zugeben.","Servieren."],"nutrition":{"kcal":470,"protein":21,"carbs":67,"fat":12,"fiber":10},"status":"approved"},
-{"id":"reis-gemuese-ei","name":"Reis-Gemüse-Pfanne mit Ei","type":"Hauptmahlzeit","diet":"Vegetarisch","dish":"🍛","cuisine":"International","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":10,"cookMinutes":20,"difficulty":"Einfach","allergens":["Ei"],"tags":["vegetarisch","Reis","Gemüse"],"ingredients":[{"name":"Reis","amount":80,"unit":"g"},{"name":"Eier","amount":2,"unit":"Stück"},{"name":"Brokkoli","amount":150,"unit":"g"},{"name":"Karotten","amount":100,"unit":"g"}],"steps":["Reis garen.","Gemüse schneiden.","Gemüse garen.","Reis zugeben.","Eier zugeben und vollständig stocken lassen."],"nutrition":{"kcal":560,"protein":24,"carbs":78,"fat":17,"fiber":9},"status":"approved"},
-{"id":"linsen-gemuese-bowl","name":"Linsen-Gemüse-Bowl","type":"Hauptmahlzeit","diet":"Vegan","dish":"🥗","cuisine":"International","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":10,"cookMinutes":20,"difficulty":"Einfach","allergens":[],"tags":["vegan","ballaststoffreich","Hülsenfrüchte"],"ingredients":[{"name":"Linsen","amount":120,"unit":"g"},{"name":"Reis","amount":70,"unit":"g"},{"name":"Karotten","amount":100,"unit":"g"},{"name":"Tomaten","amount":120,"unit":"g"}],"steps":["Reis garen.","Karotten dünsten.","Tomaten schneiden.","Mit Linsen anrichten."],"nutrition":{"kcal":590,"protein":26,"carbs":92,"fat":10,"fiber":18},"status":"approved"},
-{"id":"kartoffeln-kraeuterquark","name":"Kartoffeln mit Kräuterquark","type":"Hauptmahlzeit","diet":"Vegetarisch","dish":"🥔","cuisine":"Deutschsprachig","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":10,"cookMinutes":25,"difficulty":"Einfach","allergens":["Milch"],"tags":["vegetarisch","Kartoffeln","klassisch"],"ingredients":[{"name":"Kartoffeln","amount":300,"unit":"g"},{"name":"Quark","amount":150,"unit":"g"},{"name":"Gurke","amount":100,"unit":"g"},{"name":"Kräuter","amount":15,"unit":"g"}],"steps":["Kartoffeln kochen.","Gurke schneiden.","Quark mit Gurke und Kräutern mischen.","Servieren."],"nutrition":{"kcal":510,"protein":29,"carbs":70,"fat":11,"fiber":8},"status":"approved"},
-{"id":"vollkornpasta-tomaten","name":"Vollkornpasta mit Tomaten","type":"Hauptmahlzeit","diet":"Vegan","dish":"🍝","cuisine":"Italienisch","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":8,"cookMinutes":18,"difficulty":"Einfach","allergens":["Gluten"],"tags":["vegan","Pasta","Vollkorn"],"ingredients":[{"name":"Vollkornpasta","amount":90,"unit":"g"},{"name":"Tomaten","amount":200,"unit":"g"},{"name":"Zwiebel","amount":60,"unit":"g"},{"name":"Olivenöl","amount":15,"unit":"ml"}],"steps":["Pasta garen.","Zwiebel dünsten.","Tomaten zugeben und köcheln.","Mit Pasta mischen."],"nutrition":{"kcal":570,"protein":19,"carbs":86,"fat":16,"fiber":13},"status":"approved"},
-{"id":"porridge-banane","name":"Porridge mit Banane","type":"Frühstück","diet":"Vegan","dish":"🥣","cuisine":"International","mealTimes":["Frühstück"],"prepMinutes":3,"cookMinutes":7,"difficulty":"Sehr einfach","allergens":["Gluten"],"tags":["vegan","Frühstück","warm"],"ingredients":[{"name":"Haferflocken","amount":60,"unit":"g"},{"name":"Banane","amount":1,"unit":"Stück"},{"name":"Haferdrink","amount":250,"unit":"ml"}],"steps":["Haferflocken und Drink aufkochen.","3–5 Minuten köcheln.","Banane schneiden.","Anrichten."],"nutrition":{"kcal":430,"protein":13,"carbs":73,"fat":10,"fiber":11},"status":"approved"},
-{"id":"vollkornbrot-ei","name":"Vollkornbrot mit Ei","type":"Frühstück","diet":"Vegetarisch","dish":"🍞","cuisine":"Deutschsprachig","mealTimes":["Frühstück","Zwischenmahlzeit"],"prepMinutes":5,"cookMinutes":10,"difficulty":"Sehr einfach","allergens":["Ei","Gluten"],"tags":["vegetarisch","Frühstück","proteinreich"],"ingredients":[{"name":"Vollkornbrot","amount":2,"unit":"Stück"},{"name":"Eier","amount":2,"unit":"Stück"},{"name":"Tomaten","amount":100,"unit":"g"}],"steps":["Eier kochen.","Tomaten schneiden.","Eier schälen.","Mit Brot servieren."],"nutrition":{"kcal":410,"protein":22,"carbs":44,"fat":16,"fiber":7},"status":"approved"},
-{"id":"gemuesesuppe-brot","name":"Gemüsesuppe mit Brot","type":"Hauptmahlzeit","diet":"Vegan","dish":"🍵","cuisine":"Europäisch","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":12,"cookMinutes":22,"difficulty":"Einfach","allergens":["Gluten"],"tags":["vegan","Suppe","Gemüse"],"ingredients":[{"name":"Karotten","amount":150,"unit":"g"},{"name":"Kartoffeln","amount":200,"unit":"g"},{"name":"Zwiebel","amount":60,"unit":"g"},{"name":"Vollkornbrot","amount":2,"unit":"Stück"}],"steps":["Gemüse schneiden.","Zwiebel anschwitzen.","Gemüse mit Wasser bedecken.","15–20 Minuten kochen.","Mit Brot servieren."],"nutrition":{"kcal":450,"protein":14,"carbs":77,"fat":9,"fiber":14},"status":"approved"},
-{"id":"kichererbsen-reis-pfanne","name":"Kichererbsen-Reis-Pfanne","type":"Hauptmahlzeit","diet":"Vegan","dish":"🥘","cuisine":"Mediterran","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":10,"cookMinutes":20,"difficulty":"Einfach","allergens":[],"tags":["vegan","Hülsenfrüchte","Reis"],"ingredients":[{"name":"Kichererbsen","amount":150,"unit":"g"},{"name":"Reis","amount":75,"unit":"g"},{"name":"Paprika","amount":150,"unit":"g"},{"name":"Tomaten","amount":120,"unit":"g"}],"steps":["Reis garen.","Paprika und Tomaten schneiden.","Gemüse anbraten.","Kichererbsen zugeben und erhitzen.","Mit Reis servieren."],"nutrition":{"kcal":610,"protein":23,"carbs":101,"fat":11,"fiber":17},"status":"approved"},
-{"id":"spinat-omelette","name":"Spinat-Omelette","type":"Hauptmahlzeit","diet":"Vegetarisch","dish":"🍳","cuisine":"Europäisch","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":7,"cookMinutes":10,"difficulty":"Einfach","allergens":["Ei"],"tags":["vegetarisch","proteinreich","schnell"],"ingredients":[{"name":"Eier","amount":3,"unit":"Stück"},{"name":"Spinat","amount":120,"unit":"g"},{"name":"Tomaten","amount":100,"unit":"g"},{"name":"Olivenöl","amount":5,"unit":"ml"}],"steps":["Spinat und Tomaten vorbereiten.","Eier verquirlen.","Gemüse kurz garen.","Eier zugeben und vollständig stocken lassen."],"nutrition":{"kcal":390,"protein":28,"carbs":13,"fat":25,"fiber":6},"status":"approved"},
-{"id":"apfel-porridge","name":"Apfel-Porridge","type":"Frühstück","diet":"Vegan","dish":"🥣","cuisine":"International","mealTimes":["Frühstück"],"prepMinutes":5,"cookMinutes":7,"difficulty":"Sehr einfach","allergens":["Gluten"],"tags":["vegan","Frühstück","Obst"],"ingredients":[{"name":"Haferflocken","amount":60,"unit":"g"},{"name":"Haferdrink","amount":250,"unit":"ml"},{"name":"Apfel","amount":1,"unit":"Stück"}],"steps":["Haferflocken mit Drink erhitzen.","Apfel klein schneiden.","Porridge 3–5 Minuten kochen.","Apfel unterheben."],"nutrition":{"kcal":420,"protein":12,"carbs":74,"fat":9,"fiber":10},"status":"approved"},
-{"id":"tomaten-kaese-brot","name":"Tomaten-Käse-Brot","type":"Frühstück","diet":"Vegetarisch","dish":"🥪","cuisine":"Europäisch","mealTimes":["Frühstück","Zwischenmahlzeit"],"prepMinutes":5,"cookMinutes":0,"difficulty":"Sehr einfach","allergens":["Milch","Gluten"],"tags":["vegetarisch","schnell","Brot"],"ingredients":[{"name":"Vollkornbrot","amount":2,"unit":"Stück"},{"name":"Tomaten","amount":120,"unit":"g"},{"name":"Käse","amount":60,"unit":"g"}],"steps":["Tomaten schneiden.","Brot mit Käse belegen.","Tomaten darauflegen und servieren."],"nutrition":{"kcal":440,"protein":24,"carbs":42,"fat":20,"fiber":7},"status":"approved"},
-{"id":"kartoffel-ei-pfanne","name":"Kartoffel-Ei-Pfanne","type":"Hauptmahlzeit","diet":"Vegetarisch","dish":"🥔","cuisine":"Deutschsprachig","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":10,"cookMinutes":20,"difficulty":"Einfach","allergens":["Ei"],"tags":["vegetarisch","Kartoffeln","Pfanne"],"ingredients":[{"name":"Kartoffeln","amount":300,"unit":"g"},{"name":"Eier","amount":2,"unit":"Stück"},{"name":"Zwiebel","amount":50,"unit":"g"},{"name":"Olivenöl","amount":10,"unit":"ml"}],"steps":["Kartoffeln klein schneiden und vorgaren.","Zwiebel schneiden.","Kartoffeln und Zwiebel anbraten.","Eier zugeben und vollständig stocken lassen."],"nutrition":{"kcal":540,"protein":22,"carbs":59,"fat":24,"fiber":7},"status":"approved"},
-{"id":"spaghetti-bolognese","name":"Spaghetti Bolognese","type":"Hauptmahlzeit","diet":"Alles","dish":"🍝","cuisine":"Italienisch","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":15,"cookMinutes":35,"difficulty":"Einfach","allergens":["Gluten"],"tags":["Pasta","Hackfleisch","Tomaten","klassisch"],"ingredients":[{"name":"Spaghetti","amount":100,"unit":"g"},{"name":"Rinderhackfleisch","amount":150,"unit":"g"},{"name":"Tomaten","amount":200,"unit":"g"},{"name":"Zwiebel","amount":60,"unit":"g"},{"name":"Olivenöl","amount":10,"unit":"ml"}],"steps":["Zwiebel fein schneiden.","Olivenöl erhitzen und die Zwiebel glasig dünsten.","Rinderhackfleisch zugeben und vollständig durchbraten.","Tomaten zugeben und die Sauce etwa 20 Minuten köcheln lassen.","Spaghetti nach Packungsanleitung garen.","Spaghetti mit der Bolognese-Sauce anrichten."],"nutrition":{"kcal":690,"protein":42,"carbs":82,"fat":21,"fiber":8},"status":"approved"},
-{"id":"linsen-karotten-suppe","name":"Linsen-Karotten-Suppe","type":"Hauptmahlzeit","diet":"Vegan","dish":"🍵","cuisine":"International","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":10,"cookMinutes":25,"difficulty":"Einfach","allergens":[],"tags":["vegan","Suppe","Linsen","Karotten","ballaststoffreich"],"ingredients":[{"name":"Linsen","amount":100,"unit":"g"},{"name":"Karotten","amount":180,"unit":"g"},{"name":"Zwiebel","amount":60,"unit":"g"},{"name":"Olivenöl","amount":10,"unit":"ml"}],"steps":["Linsen abspülen.","Karotten und Zwiebel klein schneiden.","Zwiebel im Olivenöl glasig dünsten.","Karotten und Linsen zugeben und mit Wasser bedecken.","Etwa 20 Minuten köcheln lassen, bis Linsen und Karotten weich sind.","Nach Wunsch teilweise pürieren und servieren."],"nutrition":{"kcal":430,"protein":24,"carbs":59,"fat":11,"fiber":18},"status":"approved"},
-{"id":"haehnchen-gemuese-pfanne","name":"Hähnchen-Gemüse-Pfanne","type":"Hauptmahlzeit","diet":"Alles","dish":"🍗","cuisine":"International","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":10,"cookMinutes":15,"difficulty":"Einfach","allergens":["Milch"],"tags":["proteinreich","Gemüse","Pfanne","cremig"],"ingredients":[{"name":"Hähnchenbrust","amount":150,"unit":"g"},{"name":"Brokkoli","amount":100,"unit":"g"},{"name":"Karotten","amount":80,"unit":"g"},{"name":"Zwiebel","amount":50,"unit":"g"},{"name":"Kochsahne","amount":100,"unit":"ml"},{"name":"Olivenöl","amount":5,"unit":"ml"}],"steps":["Hähnchenbrust in mundgerechte Stücke schneiden und Arbeitsflächen danach reinigen.","Zwiebel fein hacken, Brokkoli in kleine Röschen teilen und Karotten in Scheiben schneiden.","Olivenöl in einer Pfanne erhitzen und das Hähnchen bei mittlerer Hitze vollständig durchgaren. Herausnehmen und beiseitestellen.","Zwiebel in der gleichen Pfanne glasig dünsten, Karotten hinzufügen und 4–5 Minuten anbraten.","Brokkoli dazugeben und 3–4 Minuten mitbraten.","Kochsahne einrühren und kurz aufkochen.","Hähnchen wieder in die Pfanne geben, alles gut vermengen und 5 Minuten köcheln lassen.","Nach Wunsch mit Kräutern abschmecken und servieren."],"nutrition":{"kcal":520,"protein":43,"carbs":20,"fat":29,"fiber":7},"status":"approved"},
-{"id":"lachs-kartoffel-spinat","name":"Lachs mit Kartoffeln und Spinat","type":"Hauptmahlzeit","diet":"Alles","dish":"🐟","cuisine":"Europäisch","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":10,"cookMinutes":25,"difficulty":"Einfach","allergens":["Fisch"],"tags":["Fisch","proteinreich","Kartoffeln","Spinat"],"ingredients":[{"name":"Lachs","amount":160,"unit":"g"},{"name":"Kartoffeln","amount":250,"unit":"g"},{"name":"Spinat","amount":150,"unit":"g"},{"name":"Olivenöl","amount":10,"unit":"ml"}],"steps":["Kartoffeln waschen, schneiden und garen.","Lachs trocken tupfen.","Olivenöl in einer Pfanne erhitzen und den Lachs vollständig garen.","Spinat kurz zusammenfallen lassen.","Kartoffeln, Spinat und Lachs gemeinsam anrichten."],"nutrition":{"kcal":610,"protein":42,"carbs":48,"fat":28,"fiber":8},"status":"approved"},
-{"id":"couscous-gemuese-bowl","name":"Couscous-Gemüse-Bowl","type":"Hauptmahlzeit","diet":"Vegan","dish":"🥗","cuisine":"Mediterran","mealTimes":["Mittagessen","Abendessen"],"prepMinutes":10,"cookMinutes":10,"difficulty":"Sehr einfach","allergens":["Gluten"],"tags":["vegan","Couscous","Gemüse","schnell"],"ingredients":[{"name":"Couscous","amount":90,"unit":"g"},{"name":"Kichererbsen","amount":120,"unit":"g"},{"name":"Paprika","amount":120,"unit":"g"},{"name":"Gurke","amount":100,"unit":"g"},{"name":"Tomaten","amount":120,"unit":"g"},{"name":"Olivenöl","amount":10,"unit":"ml"}],"steps":["Couscous nach Packungsanleitung mit heißem Wasser quellen lassen.","Paprika, Gurke und Tomaten klein schneiden.","Kichererbsen abspülen und abtropfen lassen.","Couscous auflockern und mit Gemüse und Kichererbsen vermengen.","Olivenöl zugeben und servieren."],"nutrition":{"kcal":590,"protein":22,"carbs":91,"fat":15,"fiber":15},"status":"approved"}
+  {
+    "id": "poulet-reis-bowl",
+    "name": "Poulet-Reis-Bowl mit Brokkoli",
+    "type": "Hauptmahlzeit",
+    "diet": "Alles",
+    "dish": "🍲",
+    "cuisine": "International",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "difficulty": "Einfach",
+    "allergens": [],
+    "tags": [
+      "proteinreich",
+      "ausgewogen",
+      "Reis"
+    ],
+    "ingredients": [
+      {
+        "name": "Poulet",
+        "amount": 150,
+        "unit": "g"
+      },
+      {
+        "name": "Reis",
+        "amount": 80,
+        "unit": "g"
+      },
+      {
+        "name": "Brokkoli",
+        "amount": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 15,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Reis nach Packungsangabe garen. Nach Ende der Garzeit vom Herd nehmen und 5 Minuten zugedeckt ruhen lassen; die Körner sollen weich, aber nicht breiig sein.",
+      "Brokkoli in gleich grosse Röschen schneiden und in wenig Wasser oder Dampf garen, bis er kräftig grün und mit einer Gabel leicht einzustechen, aber noch bissfest ist.",
+      "Poulet in etwa gleich grosse Stücke schneiden. Danach Hände, Messer, Brett und alle Flächen reinigen, die mit rohem Geflügel Kontakt hatten.",
+      "Olivenöl in einer Pfanne erhitzen und das Poulet unter mehrmaligem Wenden vollständig durchgaren. Im dicksten Stück mindestens 75 °C Kerntemperatur erreichen; innen darf kein rohes rosa Fleisch mehr sichtbar sein.",
+      "Reis, Brokkoli und Poulet in einer Schüssel anrichten und sofort servieren."
+    ],
+    "nutrition": {
+      "kcal": 640,
+      "protein": 46,
+      "carbs": 68,
+      "fat": 18,
+      "fiber": 9
+    },
+    "status": "approved",
+    "description": "Eine ausgewogene Bowl mit saftig durchgegartem Poulet, lockerem Reis und bissfestem Brokkoli. Das Olivenöl verbindet die Komponenten, ohne das Gericht schwer zu machen.",
+    "equipment": [
+      "Kochtopf mit Deckel",
+      "Bratpfanne",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Kochlöffel",
+      "Küchenthermometer empfohlen"
+    ],
+    "prepNotes": [
+      "Brokkoli waschen und in ähnlich grosse Röschen teilen.",
+      "Poulet getrennt von den übrigen Zutaten schneiden; Hände, Brett und Messer danach gründlich reinigen."
+    ],
+    "doneness": "Reis weich und locker, Brokkoli bissfest und das Poulet im dicksten Stück mindestens 75 °C sowie vollständig durchgegart.",
+    "substitutions": [
+      "Poulet kann durch festen Tofu ersetzt werden; Tofu kräftig anbraten, benötigt aber keine Geflügel-Kerntemperatur.",
+      "Reis kann durch eine ähnlich portionierte Getreidebeilage ersetzt werden; Flüssigkeitsmenge und Garzeit anpassen."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt im Kühlschrank lagern und innerhalb von 1–2 Tagen verbrauchen. Beim Wiedererwärmen vollständig durcherhitzen.",
+    "safety": "Rohes Poulet nicht abwaschen. Kreuzkontamination vermeiden und Geflügel vollständig auf mindestens 75 °C Kerntemperatur garen."
+  },
+  {
+    "id": "gemuese-omelette",
+    "name": "Gemüse-Omelette",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🍳",
+    "cuisine": "Europäisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 8,
+    "cookMinutes": 12,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Ei"
+    ],
+    "tags": [
+      "vegetarisch",
+      "proteinreich",
+      "schnell"
+    ],
+    "ingredients": [
+      {
+        "name": "Eier",
+        "amount": 3,
+        "unit": "Stück"
+      },
+      {
+        "name": "Brokkoli",
+        "amount": 100,
+        "unit": "g"
+      },
+      {
+        "name": "Tomaten",
+        "amount": 120,
+        "unit": "g"
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 5,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Brokkoli in kleine Röschen und Tomaten in mundgerechte Stücke schneiden, damit das Gemüse gleichmässig gart.",
+      "Eier in einer Schüssel mit einer Gabel oder einem Schneebesen verrühren, bis Eigelb und Eiweiss gleichmässig verbunden sind.",
+      "Olivenöl in einer beschichteten Pfanne auf mittlere Hitze bringen. Brokkoli zuerst anbraten, bis er kräftig grün und fast bissfest ist; Tomaten kurz zum Schluss dazugeben.",
+      "Eimasse gleichmässig über das Gemüse giessen. Hitze reduzieren und garen, bis die Oberfläche nicht mehr flüssig ist und beim leichten Neigen der Pfanne keine rohe Eimasse läuft.",
+      "Omelette mit dem Pfannenwender lösen, nach Wunsch zusammenklappen und unmittelbar servieren."
+    ],
+    "nutrition": {
+      "kcal": 430,
+      "protein": 27,
+      "carbs": 18,
+      "fat": 27,
+      "fiber": 7
+    },
+    "status": "approved",
+    "description": "Ein saftiges Gemüse-Omelette mit Brokkoli und Tomaten. Das Gemüse bleibt leicht bissfest, während die Eier vollständig stocken und das Omelette innen zart bleibt.",
+    "equipment": [
+      "Beschichtete Bratpfanne",
+      "Schüssel",
+      "Schneebesen oder Gabel",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Pfannenwender"
+    ],
+    "prepNotes": [
+      "Brokkoli und Tomaten waschen. Brokkoli klein schneiden und Tomaten in mundgerechte Stücke teilen.",
+      "Eier erst unmittelbar vor dem Braten aufschlagen und verquirlen."
+    ],
+    "doneness": "Die Eimasse ist vollständig gestockt und zeigt keine flüssigen rohen Stellen; der Brokkoli ist gar, aber noch leicht bissfest.",
+    "substitutions": [
+      "Brokkoli kann durch anderes klein geschnittenes Gemüse mit ähnlicher Garzeit ersetzt werden.",
+      "Tomaten können durch Paprika ersetzt werden; Paprika etwas früher mit dem Brokkoli anbraten."
+    ],
+    "leftovers": "Omelette schmeckt frisch am besten. Reste rasch kühlen, abgedeckt im Kühlschrank aufbewahren und innerhalb von 24 Stunden vollständig durcherhitzt verbrauchen.",
+    "safety": "Rohe Eimasse nicht mit verzehrfertigen Lebensmitteln in Kontakt bringen. Für empfindliche Personen das Omelette vollständig stocken lassen."
+  },
+  {
+    "id": "joghurt-fruechte-bowl",
+    "name": "Joghurt-Früchte-Bowl",
+    "type": "Frühstück",
+    "diet": "Vegetarisch",
+    "dish": "🥣",
+    "cuisine": "International",
+    "mealTimes": [
+      "Frühstück",
+      "Zwischenmahlzeit"
+    ],
+    "prepMinutes": 5,
+    "cookMinutes": 0,
+    "difficulty": "Sehr einfach",
+    "allergens": [
+      "Milch"
+    ],
+    "tags": [
+      "Frühstück",
+      "schnell",
+      "fruchtig"
+    ],
+    "ingredients": [
+      {
+        "name": "Naturjoghurt",
+        "amount": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Haferflocken",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Banane",
+        "amount": 1,
+        "unit": "Stück"
+      },
+      {
+        "name": "Beeren",
+        "amount": 100,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Naturjoghurt in eine saubere Schüssel geben und glatt rühren.",
+      "Haferflocken gleichmässig über den Joghurt verteilen. Für eine weichere Konsistenz 3–5 Minuten im Joghurt quellen lassen.",
+      "Banane schälen und in gleichmässige Scheiben schneiden. Beeren nach dem Waschen gut abtropfen lassen.",
+      "Banane und Beeren auf der Bowl verteilen und sofort servieren, solange die Früchte frisch und die Haferflocken nach Wunsch bissfest sind."
+    ],
+    "nutrition": {
+      "kcal": 470,
+      "protein": 21,
+      "carbs": 67,
+      "fat": 12,
+      "fiber": 10
+    },
+    "status": "approved",
+    "description": "Eine kühle Frühstücksbowl aus cremigem Naturjoghurt, Haferflocken, Banane und Beeren. Die Haferflocken geben Biss, während Banane und Beeren natürliche Süsse und Frische liefern.",
+    "equipment": [
+      "Frühstücksschüssel",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Löffel"
+    ],
+    "prepNotes": [
+      "Beeren kontrollieren und vorsichtig waschen; Banane erst kurz vor dem Servieren schälen und schneiden."
+    ],
+    "doneness": "Keine Garstufe erforderlich: Die Bowl ist fertig, wenn die Früchte sauber vorbereitet sind und die gewünschte Quellzeit der Haferflocken erreicht ist.",
+    "substitutions": [
+      "Naturjoghurt kann durch eine ungesüsste pflanzliche Joghurtalternative ersetzt werden; Protein- und Fettgehalt können sich verändern.",
+      "Beeren können durch anderes frisches Obst ersetzt werden, wobei Süsse und Flüssigkeitsgehalt variieren."
+    ],
+    "leftovers": "Am besten frisch essen. Abgedeckte Reste sofort kühlen und innerhalb von 24 Stunden verbrauchen; geschnittene Banane kann sich dabei verfärben.",
+    "safety": "Milchprodukte und vorbereitete Früchte bis zum Verzehr gekühlt halten und nicht unnötig lange bei Raumtemperatur stehen lassen."
+  },
+  {
+    "id": "reis-gemuese-ei",
+    "name": "Reis-Gemüse-Pfanne mit Ei",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🍛",
+    "cuisine": "International",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Ei"
+    ],
+    "tags": [
+      "vegetarisch",
+      "Reis",
+      "Gemüse"
+    ],
+    "ingredients": [
+      {
+        "name": "Reis",
+        "amount": 80,
+        "unit": "g"
+      },
+      {
+        "name": "Eier",
+        "amount": 2,
+        "unit": "Stück"
+      },
+      {
+        "name": "Brokkoli",
+        "amount": 150,
+        "unit": "g"
+      },
+      {
+        "name": "Karotten",
+        "amount": 100,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Reis garen.",
+      "Gemüse schneiden.",
+      "Gemüse garen.",
+      "Reis zugeben.",
+      "Eier zugeben und vollständig stocken lassen."
+    ],
+    "nutrition": {
+      "kcal": 560,
+      "protein": 24,
+      "carbs": 78,
+      "fat": 17,
+      "fiber": 9
+    },
+    "status": "approved"
+  },
+  {
+    "id": "linsen-gemuese-bowl",
+    "name": "Linsen-Gemüse-Bowl",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegan",
+    "dish": "🥗",
+    "cuisine": "International",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "difficulty": "Einfach",
+    "allergens": [],
+    "tags": [
+      "vegan",
+      "ballaststoffreich",
+      "Hülsenfrüchte"
+    ],
+    "ingredients": [
+      {
+        "name": "Linsen",
+        "amount": 120,
+        "unit": "g"
+      },
+      {
+        "name": "Reis",
+        "amount": 70,
+        "unit": "g"
+      },
+      {
+        "name": "Karotten",
+        "amount": 100,
+        "unit": "g"
+      },
+      {
+        "name": "Tomaten",
+        "amount": 120,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Reis garen.",
+      "Karotten dünsten.",
+      "Tomaten schneiden.",
+      "Mit Linsen anrichten."
+    ],
+    "nutrition": {
+      "kcal": 590,
+      "protein": 26,
+      "carbs": 92,
+      "fat": 10,
+      "fiber": 18
+    },
+    "status": "approved"
+  },
+  {
+    "id": "kartoffeln-kraeuterquark",
+    "name": "Kartoffeln mit Kräuterquark",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥔",
+    "cuisine": "Deutschsprachig",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 25,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Milch"
+    ],
+    "tags": [
+      "vegetarisch",
+      "Kartoffeln",
+      "klassisch"
+    ],
+    "ingredients": [
+      {
+        "name": "Kartoffeln",
+        "amount": 300,
+        "unit": "g"
+      },
+      {
+        "name": "Quark",
+        "amount": 150,
+        "unit": "g"
+      },
+      {
+        "name": "Gurke",
+        "amount": 100,
+        "unit": "g"
+      },
+      {
+        "name": "Kräuter",
+        "amount": 15,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Kartoffeln kochen.",
+      "Gurke schneiden.",
+      "Quark mit Gurke und Kräutern mischen.",
+      "Servieren."
+    ],
+    "nutrition": {
+      "kcal": 510,
+      "protein": 29,
+      "carbs": 70,
+      "fat": 11,
+      "fiber": 8
+    },
+    "status": "approved"
+  },
+  {
+    "id": "vollkornpasta-tomaten",
+    "name": "Vollkornpasta mit Tomaten",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegan",
+    "dish": "🍝",
+    "cuisine": "Italienisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 8,
+    "cookMinutes": 18,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Gluten"
+    ],
+    "tags": [
+      "vegan",
+      "Pasta",
+      "Vollkorn"
+    ],
+    "ingredients": [
+      {
+        "name": "Vollkornpasta",
+        "amount": 90,
+        "unit": "g"
+      },
+      {
+        "name": "Tomaten",
+        "amount": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 60,
+        "unit": "g"
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 15,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Pasta garen.",
+      "Zwiebel dünsten.",
+      "Tomaten zugeben und köcheln.",
+      "Mit Pasta mischen."
+    ],
+    "nutrition": {
+      "kcal": 570,
+      "protein": 19,
+      "carbs": 86,
+      "fat": 16,
+      "fiber": 13
+    },
+    "status": "approved"
+  },
+  {
+    "id": "porridge-banane",
+    "name": "Porridge mit Banane",
+    "type": "Frühstück",
+    "diet": "Vegan",
+    "dish": "🥣",
+    "cuisine": "International",
+    "mealTimes": [
+      "Frühstück"
+    ],
+    "prepMinutes": 3,
+    "cookMinutes": 7,
+    "difficulty": "Sehr einfach",
+    "allergens": [
+      "Gluten"
+    ],
+    "tags": [
+      "vegan",
+      "Frühstück",
+      "warm"
+    ],
+    "ingredients": [
+      {
+        "name": "Haferflocken",
+        "amount": 60,
+        "unit": "g"
+      },
+      {
+        "name": "Banane",
+        "amount": 1,
+        "unit": "Stück"
+      },
+      {
+        "name": "Haferdrink",
+        "amount": 250,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Haferflocken und Drink aufkochen.",
+      "3–5 Minuten köcheln.",
+      "Banane schneiden.",
+      "Anrichten."
+    ],
+    "nutrition": {
+      "kcal": 430,
+      "protein": 13,
+      "carbs": 73,
+      "fat": 10,
+      "fiber": 11
+    },
+    "status": "approved"
+  },
+  {
+    "id": "vollkornbrot-ei",
+    "name": "Vollkornbrot mit Ei",
+    "type": "Frühstück",
+    "diet": "Vegetarisch",
+    "dish": "🍞",
+    "cuisine": "Deutschsprachig",
+    "mealTimes": [
+      "Frühstück",
+      "Zwischenmahlzeit"
+    ],
+    "prepMinutes": 5,
+    "cookMinutes": 10,
+    "difficulty": "Sehr einfach",
+    "allergens": [
+      "Ei",
+      "Gluten"
+    ],
+    "tags": [
+      "vegetarisch",
+      "Frühstück",
+      "proteinreich"
+    ],
+    "ingredients": [
+      {
+        "name": "Vollkornbrot",
+        "amount": 2,
+        "unit": "Stück"
+      },
+      {
+        "name": "Eier",
+        "amount": 2,
+        "unit": "Stück"
+      },
+      {
+        "name": "Tomaten",
+        "amount": 100,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Eier kochen.",
+      "Tomaten schneiden.",
+      "Eier schälen.",
+      "Mit Brot servieren."
+    ],
+    "nutrition": {
+      "kcal": 410,
+      "protein": 22,
+      "carbs": 44,
+      "fat": 16,
+      "fiber": 7
+    },
+    "status": "approved"
+  },
+  {
+    "id": "gemuesesuppe-brot",
+    "name": "Gemüsesuppe mit Brot",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegan",
+    "dish": "🍵",
+    "cuisine": "Europäisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 12,
+    "cookMinutes": 22,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Gluten"
+    ],
+    "tags": [
+      "vegan",
+      "Suppe",
+      "Gemüse"
+    ],
+    "ingredients": [
+      {
+        "name": "Karotten",
+        "amount": 150,
+        "unit": "g"
+      },
+      {
+        "name": "Kartoffeln",
+        "amount": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 60,
+        "unit": "g"
+      },
+      {
+        "name": "Vollkornbrot",
+        "amount": 2,
+        "unit": "Stück"
+      }
+    ],
+    "steps": [
+      "Gemüse schneiden.",
+      "Zwiebel anschwitzen.",
+      "Gemüse mit Wasser bedecken.",
+      "15–20 Minuten kochen.",
+      "Mit Brot servieren."
+    ],
+    "nutrition": {
+      "kcal": 450,
+      "protein": 14,
+      "carbs": 77,
+      "fat": 9,
+      "fiber": 14
+    },
+    "status": "approved"
+  },
+  {
+    "id": "kichererbsen-reis-pfanne",
+    "name": "Kichererbsen-Reis-Pfanne",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegan",
+    "dish": "🥘",
+    "cuisine": "Mediterran",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "difficulty": "Einfach",
+    "allergens": [],
+    "tags": [
+      "vegan",
+      "Hülsenfrüchte",
+      "Reis"
+    ],
+    "ingredients": [
+      {
+        "name": "Kichererbsen",
+        "amount": 150,
+        "unit": "g"
+      },
+      {
+        "name": "Reis",
+        "amount": 75,
+        "unit": "g"
+      },
+      {
+        "name": "Paprika",
+        "amount": 150,
+        "unit": "g"
+      },
+      {
+        "name": "Tomaten",
+        "amount": 120,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Reis garen.",
+      "Paprika und Tomaten schneiden.",
+      "Gemüse anbraten.",
+      "Kichererbsen zugeben und erhitzen.",
+      "Mit Reis servieren."
+    ],
+    "nutrition": {
+      "kcal": 610,
+      "protein": 23,
+      "carbs": 101,
+      "fat": 11,
+      "fiber": 17
+    },
+    "status": "approved"
+  },
+  {
+    "id": "spinat-omelette",
+    "name": "Spinat-Omelette",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🍳",
+    "cuisine": "Europäisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 7,
+    "cookMinutes": 10,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Ei"
+    ],
+    "tags": [
+      "vegetarisch",
+      "proteinreich",
+      "schnell"
+    ],
+    "ingredients": [
+      {
+        "name": "Eier",
+        "amount": 3,
+        "unit": "Stück"
+      },
+      {
+        "name": "Spinat",
+        "amount": 120,
+        "unit": "g"
+      },
+      {
+        "name": "Tomaten",
+        "amount": 100,
+        "unit": "g"
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 5,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Spinat und Tomaten vorbereiten.",
+      "Eier verquirlen.",
+      "Gemüse kurz garen.",
+      "Eier zugeben und vollständig stocken lassen."
+    ],
+    "nutrition": {
+      "kcal": 390,
+      "protein": 28,
+      "carbs": 13,
+      "fat": 25,
+      "fiber": 6
+    },
+    "status": "approved"
+  },
+  {
+    "id": "apfel-porridge",
+    "name": "Apfel-Porridge",
+    "type": "Frühstück",
+    "diet": "Vegan",
+    "dish": "🥣",
+    "cuisine": "International",
+    "mealTimes": [
+      "Frühstück"
+    ],
+    "prepMinutes": 5,
+    "cookMinutes": 7,
+    "difficulty": "Sehr einfach",
+    "allergens": [
+      "Gluten"
+    ],
+    "tags": [
+      "vegan",
+      "Frühstück",
+      "Obst"
+    ],
+    "ingredients": [
+      {
+        "name": "Haferflocken",
+        "amount": 60,
+        "unit": "g"
+      },
+      {
+        "name": "Haferdrink",
+        "amount": 250,
+        "unit": "ml"
+      },
+      {
+        "name": "Apfel",
+        "amount": 1,
+        "unit": "Stück"
+      }
+    ],
+    "steps": [
+      "Haferflocken mit Drink erhitzen.",
+      "Apfel klein schneiden.",
+      "Porridge 3–5 Minuten kochen.",
+      "Apfel unterheben."
+    ],
+    "nutrition": {
+      "kcal": 420,
+      "protein": 12,
+      "carbs": 74,
+      "fat": 9,
+      "fiber": 10
+    },
+    "status": "approved"
+  },
+  {
+    "id": "tomaten-kaese-brot",
+    "name": "Tomaten-Käse-Brot",
+    "type": "Frühstück",
+    "diet": "Vegetarisch",
+    "dish": "🥪",
+    "cuisine": "Europäisch",
+    "mealTimes": [
+      "Frühstück",
+      "Zwischenmahlzeit"
+    ],
+    "prepMinutes": 5,
+    "cookMinutes": 0,
+    "difficulty": "Sehr einfach",
+    "allergens": [
+      "Milch",
+      "Gluten"
+    ],
+    "tags": [
+      "vegetarisch",
+      "schnell",
+      "Brot"
+    ],
+    "ingredients": [
+      {
+        "name": "Vollkornbrot",
+        "amount": 2,
+        "unit": "Stück"
+      },
+      {
+        "name": "Tomaten",
+        "amount": 120,
+        "unit": "g"
+      },
+      {
+        "name": "Käse",
+        "amount": 60,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Tomaten schneiden.",
+      "Brot mit Käse belegen.",
+      "Tomaten darauflegen und servieren."
+    ],
+    "nutrition": {
+      "kcal": 440,
+      "protein": 24,
+      "carbs": 42,
+      "fat": 20,
+      "fiber": 7
+    },
+    "status": "approved"
+  },
+  {
+    "id": "kartoffel-ei-pfanne",
+    "name": "Kartoffel-Ei-Pfanne",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥔",
+    "cuisine": "Deutschsprachig",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Ei"
+    ],
+    "tags": [
+      "vegetarisch",
+      "Kartoffeln",
+      "Pfanne"
+    ],
+    "ingredients": [
+      {
+        "name": "Kartoffeln",
+        "amount": 300,
+        "unit": "g"
+      },
+      {
+        "name": "Eier",
+        "amount": 2,
+        "unit": "Stück"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 10,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Kartoffeln klein schneiden und vorgaren.",
+      "Zwiebel schneiden.",
+      "Kartoffeln und Zwiebel anbraten.",
+      "Eier zugeben und vollständig stocken lassen."
+    ],
+    "nutrition": {
+      "kcal": 540,
+      "protein": 22,
+      "carbs": 59,
+      "fat": 24,
+      "fiber": 7
+    },
+    "status": "approved"
+  },
+  {
+    "id": "spaghetti-bolognese",
+    "name": "Spaghetti Bolognese",
+    "type": "Hauptmahlzeit",
+    "diet": "Alles",
+    "dish": "🍝",
+    "cuisine": "Italienisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 35,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Gluten"
+    ],
+    "tags": [
+      "Pasta",
+      "Hackfleisch",
+      "Tomaten",
+      "klassisch"
+    ],
+    "ingredients": [
+      {
+        "name": "Spaghetti",
+        "amount": 100,
+        "unit": "g"
+      },
+      {
+        "name": "Rinderhackfleisch",
+        "amount": 150,
+        "unit": "g"
+      },
+      {
+        "name": "Tomaten",
+        "amount": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 60,
+        "unit": "g"
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 10,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Zwiebel fein schneiden.",
+      "Olivenöl erhitzen und die Zwiebel glasig dünsten.",
+      "Rinderhackfleisch zugeben und vollständig durchbraten.",
+      "Tomaten zugeben und die Sauce etwa 20 Minuten köcheln lassen.",
+      "Spaghetti nach Packungsanleitung garen.",
+      "Spaghetti mit der Bolognese-Sauce anrichten."
+    ],
+    "nutrition": {
+      "kcal": 690,
+      "protein": 42,
+      "carbs": 82,
+      "fat": 21,
+      "fiber": 8
+    },
+    "status": "approved"
+  },
+  {
+    "id": "linsen-karotten-suppe",
+    "name": "Linsen-Karotten-Suppe",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegan",
+    "dish": "🍵",
+    "cuisine": "International",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 25,
+    "difficulty": "Einfach",
+    "allergens": [],
+    "tags": [
+      "vegan",
+      "Suppe",
+      "Linsen",
+      "Karotten",
+      "ballaststoffreich"
+    ],
+    "ingredients": [
+      {
+        "name": "Linsen",
+        "amount": 100,
+        "unit": "g"
+      },
+      {
+        "name": "Karotten",
+        "amount": 180,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 60,
+        "unit": "g"
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 10,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Linsen abspülen.",
+      "Karotten und Zwiebel klein schneiden.",
+      "Zwiebel im Olivenöl glasig dünsten.",
+      "Karotten und Linsen zugeben und mit Wasser bedecken.",
+      "Etwa 20 Minuten köcheln lassen, bis Linsen und Karotten weich sind.",
+      "Nach Wunsch teilweise pürieren und servieren."
+    ],
+    "nutrition": {
+      "kcal": 430,
+      "protein": 24,
+      "carbs": 59,
+      "fat": 11,
+      "fiber": 18
+    },
+    "status": "approved"
+  },
+  {
+    "id": "haehnchen-gemuese-pfanne",
+    "name": "Hähnchen-Gemüse-Pfanne",
+    "type": "Hauptmahlzeit",
+    "diet": "Alles",
+    "dish": "🍗",
+    "cuisine": "International",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 15,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Milch"
+    ],
+    "tags": [
+      "proteinreich",
+      "Gemüse",
+      "Pfanne",
+      "cremig"
+    ],
+    "ingredients": [
+      {
+        "name": "Hähnchenbrust",
+        "amount": 150,
+        "unit": "g"
+      },
+      {
+        "name": "Brokkoli",
+        "amount": 100,
+        "unit": "g"
+      },
+      {
+        "name": "Karotten",
+        "amount": 80,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Kochsahne",
+        "amount": 100,
+        "unit": "ml"
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 5,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Hähnchenbrust in mundgerechte Stücke schneiden und Arbeitsflächen danach reinigen.",
+      "Zwiebel fein hacken, Brokkoli in kleine Röschen teilen und Karotten in Scheiben schneiden.",
+      "Olivenöl in einer Pfanne erhitzen und das Hähnchen bei mittlerer Hitze vollständig durchgaren. Herausnehmen und beiseitestellen.",
+      "Zwiebel in der gleichen Pfanne glasig dünsten, Karotten hinzufügen und 4–5 Minuten anbraten.",
+      "Brokkoli dazugeben und 3–4 Minuten mitbraten.",
+      "Kochsahne einrühren und kurz aufkochen.",
+      "Hähnchen wieder in die Pfanne geben, alles gut vermengen und 5 Minuten köcheln lassen.",
+      "Nach Wunsch mit Kräutern abschmecken und servieren."
+    ],
+    "nutrition": {
+      "kcal": 520,
+      "protein": 43,
+      "carbs": 20,
+      "fat": 29,
+      "fiber": 7
+    },
+    "status": "approved"
+  },
+  {
+    "id": "lachs-kartoffel-spinat",
+    "name": "Lachs mit Kartoffeln und Spinat",
+    "type": "Hauptmahlzeit",
+    "diet": "Alles",
+    "dish": "🐟",
+    "cuisine": "Europäisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 25,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Fisch"
+    ],
+    "tags": [
+      "Fisch",
+      "proteinreich",
+      "Kartoffeln",
+      "Spinat"
+    ],
+    "ingredients": [
+      {
+        "name": "Lachs",
+        "amount": 160,
+        "unit": "g"
+      },
+      {
+        "name": "Kartoffeln",
+        "amount": 250,
+        "unit": "g"
+      },
+      {
+        "name": "Spinat",
+        "amount": 150,
+        "unit": "g"
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 10,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Kartoffeln waschen, schneiden und garen.",
+      "Lachs trocken tupfen.",
+      "Olivenöl in einer Pfanne erhitzen und den Lachs vollständig garen.",
+      "Spinat kurz zusammenfallen lassen.",
+      "Kartoffeln, Spinat und Lachs gemeinsam anrichten."
+    ],
+    "nutrition": {
+      "kcal": 610,
+      "protein": 42,
+      "carbs": 48,
+      "fat": 28,
+      "fiber": 8
+    },
+    "status": "approved"
+  },
+  {
+    "id": "couscous-gemuese-bowl",
+    "name": "Couscous-Gemüse-Bowl",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegan",
+    "dish": "🥗",
+    "cuisine": "Mediterran",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 10,
+    "difficulty": "Sehr einfach",
+    "allergens": [
+      "Gluten"
+    ],
+    "tags": [
+      "vegan",
+      "Couscous",
+      "Gemüse",
+      "schnell"
+    ],
+    "ingredients": [
+      {
+        "name": "Couscous",
+        "amount": 90,
+        "unit": "g"
+      },
+      {
+        "name": "Kichererbsen",
+        "amount": 120,
+        "unit": "g"
+      },
+      {
+        "name": "Paprika",
+        "amount": 120,
+        "unit": "g"
+      },
+      {
+        "name": "Gurke",
+        "amount": 100,
+        "unit": "g"
+      },
+      {
+        "name": "Tomaten",
+        "amount": 120,
+        "unit": "g"
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 10,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Couscous nach Packungsanleitung mit heißem Wasser quellen lassen.",
+      "Paprika, Gurke und Tomaten klein schneiden.",
+      "Kichererbsen abspülen und abtropfen lassen.",
+      "Couscous auflockern und mit Gemüse und Kichererbsen vermengen.",
+      "Olivenöl zugeben und servieren."
+    ],
+    "nutrition": {
+      "kcal": 590,
+      "protein": 22,
+      "carbs": 91,
+      "fat": 15,
+      "fiber": 15
+    },
+    "status": "approved"
+  }
 ]
