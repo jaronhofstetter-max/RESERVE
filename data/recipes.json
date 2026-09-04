@@ -278,11 +278,11 @@
       }
     ],
     "steps": [
-      "Reis garen.",
-      "Gemüse schneiden.",
-      "Gemüse garen.",
-      "Reis zugeben.",
-      "Eier zugeben und vollständig stocken lassen."
+      "Reis nach Packungsangabe garen und danach 5 Minuten zugedeckt ruhen lassen; die Körner sollen weich, aber nicht breiig sein.",
+      "Brokkoli und Karotten möglichst gleichmässig schneiden, damit sie gleichzeitig gar werden.",
+      "Gemüse in der Pfanne bei mittlerer Hitze mit wenig Wasser garen, bis die Karotten leicht einzustechen und der Brokkoli noch bissfest ist.",
+      "Gegarten Reis zum Gemüse geben und unter Wenden erhitzen, bis alles gleichmässig heiss ist.",
+      "Eier verquirlen, über Reis und Gemüse geben und unter Rühren vollständig stocken lassen; es darf keine flüssige rohe Eimasse zurückbleiben."
     ],
     "nutrition": {
       "kcal": 560,
@@ -291,7 +291,27 @@
       "fat": 17,
       "fiber": 9
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Eine herzhafte Reis-Gemüse-Pfanne mit Brokkoli, Karotten und vollständig gestocktem Ei. Der Reis bleibt locker, das Gemüse bissfest und das Ei verbindet alles zu einer sättigenden Mahlzeit.",
+    "equipment": [
+      "Kochtopf mit Deckel",
+      "Bratpfanne",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Schüssel",
+      "Pfannenwender"
+    ],
+    "prepNotes": [
+      "Brokkoli und Karotten waschen; Brokkoli in kleine Röschen und Karotten in dünne Scheiben schneiden.",
+      "Eier erst kurz vor der Verwendung aufschlagen."
+    ],
+    "doneness": "Reis locker und weich, Gemüse bissfest und die Eier vollständig gestockt ohne flüssige Stellen.",
+    "substitutions": [
+      "Brokkoli und Karotten können durch Gemüse mit ähnlicher Garzeit ersetzt werden.",
+      "Reis kann durch eine andere gekochte Getreidebeilage ersetzt werden; Garzeit und Flüssigkeit entsprechend anpassen."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt kühlen und innerhalb von 1–2 Tagen verbrauchen. Reis beim Wiedererwärmen vollständig durcherhitzen und nur einmal erneut erhitzen.",
+    "safety": "Gekochten Reis nicht lange bei Raumtemperatur stehen lassen. Eier vollständig stocken lassen und Reste rasch kühlen."
   },
   {
     "id": "linsen-gemuese-bowl",
@@ -336,10 +356,10 @@
       }
     ],
     "steps": [
-      "Reis garen.",
-      "Karotten dünsten.",
-      "Tomaten schneiden.",
-      "Mit Linsen anrichten."
+      "Reis nach Packungsangabe garen und 5 Minuten zugedeckt ruhen lassen; die Körner sollen weich und locker sein.",
+      "Karotten in dünne Scheiben oder kleine Würfel schneiden und mit wenig Wasser zugedeckt dünsten, bis sie weich, aber nicht zerfallen sind.",
+      "Tomaten in mundgerechte Stücke schneiden und bis zum Anrichten beiseitestellen, damit sie frisch bleiben.",
+      "Vollständig gegarte Linsen erwärmen. Reis, Karotten, Tomaten und Linsen in einer Schüssel anrichten und gleichmässig verteilen."
     ],
     "nutrition": {
       "kcal": 590,
@@ -348,7 +368,26 @@
       "fat": 10,
       "fiber": 18
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Eine vegane, ballaststoffreiche Bowl mit Linsen, lockerem Reis, süsslichen Karotten und frischen Tomaten. Die Komponenten bleiben klar erkennbar und ergeben zusammen eine sättigende Mahlzeit.",
+    "equipment": [
+      "Kochtopf mit Deckel",
+      "kleiner Topf oder Pfanne",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Sieb",
+      "Schüssel"
+    ],
+    "prepNotes": [
+      "Karotten und Tomaten waschen. Bei vorgegarten Linsen Flüssigkeit abgiessen und Linsen kurz abspülen; trockene Linsen müssen vorab nach Packungsangabe vollständig gegart werden."
+    ],
+    "doneness": "Reis und Linsen sind vollständig gar, Karotten weich mit leichtem Biss und die Tomaten bleiben frisch und formstabil.",
+    "substitutions": [
+      "Reis kann durch eine andere Getreidebeilage ersetzt werden; Garzeit und Flüssigkeitsmenge anpassen.",
+      "Karotten können durch anderes festes Gemüse mit ähnlicher Garzeit ersetzt werden."
+    ],
+    "leftovers": "Gekochte Komponenten rasch abkühlen und abgedeckt im Kühlschrank 1–2 Tage aufbewahren. Frische Tomaten nach Möglichkeit erst beim Servieren ergänzen.",
+    "safety": "Trockene Linsen vollständig garen. Gekochten Reis und Linsen nach dem Essen rasch kühlen und beim Wiedererwärmen vollständig durcherhitzen."
   },
   {
     "id": "kartoffeln-kraeuterquark",
@@ -395,10 +434,10 @@
       }
     ],
     "steps": [
-      "Kartoffeln kochen.",
-      "Gurke schneiden.",
-      "Quark mit Gurke und Kräutern mischen.",
-      "Servieren."
+      "Kartoffeln in einen Topf geben, mit Wasser bedecken und sanft kochen, bis eine Messerspitze ohne harten Widerstand bis zur Mitte gleitet.",
+      "Gurke in kleine Würfel oder dünne Stücke schneiden und überschüssige Flüssigkeit bei sehr wässriger Gurke kurz abtropfen lassen.",
+      "Kräuter fein schneiden und mit Quark und Gurke gleichmässig verrühren, bis eine cremige Mischung entsteht.",
+      "Kartoffeln abgiessen, kurz ausdampfen lassen und warm mit dem kühlen Kräuterquark servieren."
     ],
     "nutrition": {
       "kcal": 510,
@@ -407,7 +446,26 @@
       "fat": 11,
       "fiber": 8
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Ein klassisches vegetarisches Gericht aus weich gegarten Kartoffeln und kühlem Kräuterquark mit frischer Gurke. Der Kontrast zwischen warmen Kartoffeln und cremigem Quark macht das einfache Gericht besonders angenehm.",
+    "equipment": [
+      "Kochtopf",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Schüssel",
+      "Gabel oder Löffel"
+    ],
+    "prepNotes": [
+      "Kartoffeln gründlich waschen; Gurke und frische Kräuter ebenfalls waschen und trocknen.",
+      "Kartoffeln ähnlich gross wählen oder grosse Stücke teilen, damit sie gleichmässig garen."
+    ],
+    "doneness": "Die Kartoffeln sind bis zur Mitte weich und lassen sich ohne harten Widerstand einstechen; der Quark ist cremig und gleichmässig vermischt.",
+    "substitutions": [
+      "Quark kann durch einen ähnlich festen ungesüssten Frischkäse oder eine geeignete pflanzliche Alternative ersetzt werden; Konsistenz und Nährwerte verändern sich.",
+      "Gurke kann weggelassen oder durch fein geschnittene Radieschen ersetzt werden."
+    ],
+    "leftovers": "Kräuterquark stets gekühlt aufbewahren und innerhalb von 1–2 Tagen verbrauchen. Gekochte Kartoffeln separat abgedeckt kühlen und vor dem Verzehr vollständig erhitzen oder kalt weiterverwenden.",
+    "safety": "Quark bis zum Servieren gekühlt halten. Gekochte Kartoffeln und Milchprodukte nicht unnötig lange bei Raumtemperatur stehen lassen."
   },
   {
     "id": "vollkornpasta-tomaten",
@@ -454,10 +512,10 @@
       }
     ],
     "steps": [
-      "Pasta garen.",
-      "Zwiebel dünsten.",
-      "Tomaten zugeben und köcheln.",
-      "Mit Pasta mischen."
+      "Vollkornpasta in reichlich kochendem Wasser nach Packungsangabe bissfest garen. Vor dem Abgiessen etwas Kochwasser zurückbehalten.",
+      "Olivenöl bei mittlerer Hitze erwärmen und die fein geschnittene Zwiebel unter Rühren dünsten, bis sie weich und glasig, aber nicht dunkel ist.",
+      "Tomaten zugeben und sanft köcheln lassen, bis sie zerfallen und eine leicht sämige Sauce entsteht; bei Bedarf wenig Pastawasser einrühren.",
+      "Pasta abgiessen, direkt zur Sauce geben und 1–2 Minuten vermengen, bis die Sauce sichtbar an den Nudeln haftet."
     ],
     "nutrition": {
       "kcal": 570,
@@ -466,7 +524,27 @@
       "fat": 16,
       "fiber": 13
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Vollkornpasta in einer einfachen Tomaten-Zwiebel-Sauce. Die Pasta bleibt bissfest, während die Tomaten zu einer leicht sämigen Sauce einkochen, die gut an den Nudeln haftet.",
+    "equipment": [
+      "grosser Kochtopf",
+      "Sieb",
+      "Bratpfanne oder Saucentopf",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Kochlöffel"
+    ],
+    "prepNotes": [
+      "Tomaten waschen und würfeln; Zwiebel schälen und fein schneiden.",
+      "Nudelwasser rechtzeitig aufsetzen, damit Sauce und Pasta möglichst gleichzeitig fertig werden."
+    ],
+    "doneness": "Die Pasta ist bissfest und die Tomatensauce leicht eingedickt; auf dem Teller sammelt sich keine wässrige Flüssigkeit.",
+    "substitutions": [
+      "Vollkornpasta kann durch andere Pasta ersetzt werden; die Garzeit richtet sich nach der Packungsangabe.",
+      "Frische Tomaten können durch ungewürzte Dosentomaten ersetzt werden; die Sauce eventuell etwas länger einkochen."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt 1–2 Tage im Kühlschrank lagern und mit einem kleinen Schuss Wasser vollständig durcherhitzen.",
+    "safety": "Heisse Speisen nicht über längere Zeit bei Raumtemperatur stehen lassen; Reste rasch kühlen und beim Aufwärmen vollständig erhitzen."
   },
   {
     "id": "porridge-banane",
@@ -507,10 +585,10 @@
       }
     ],
     "steps": [
-      "Haferflocken und Drink aufkochen.",
-      "3–5 Minuten köcheln.",
-      "Banane schneiden.",
-      "Anrichten."
+      "Haferflocken und Haferdrink in einen Topf geben und unter gelegentlichem Rühren langsam erhitzen, bis die Mischung zu dampfen und leicht zu köcheln beginnt.",
+      "Hitze reduzieren und 3–5 Minuten sanft köcheln lassen. Regelmässig rühren, bis der Porridge cremig ist und eine Rührspur kurz sichtbar bleibt.",
+      "Banane schälen und in Scheiben schneiden; einen Teil nach Wunsch mit der Gabel zerdrücken, um den Porridge natürlich zu süssen.",
+      "Porridge vom Herd nehmen, kurz stehen lassen und mit der Banane anrichten. Vor dem Essen Temperatur prüfen."
     ],
     "nutrition": {
       "kcal": 430,
@@ -519,7 +597,26 @@
       "fat": 10,
       "fiber": 11
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Ein warmer, cremiger Hafer-Porridge mit süsser Banane. Die Haferflocken quellen im Haferdrink zu einer dickflüssigen Konsistenz, während die Banane Fruchtigkeit und natürliche Süsse bringt.",
+    "equipment": [
+      "kleiner Kochtopf",
+      "Kochlöffel",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Schüssel"
+    ],
+    "prepNotes": [
+      "Banane erst kurz vor dem Servieren schälen und schneiden.",
+      "Haferflocken und Haferdrink abmessen, damit der Porridge nicht zu dünn oder zu fest wird."
+    ],
+    "doneness": "Der Porridge ist cremig und dickflüssig; beim Rühren bleibt kurz eine sichtbare Spur und die Haferflocken sind weich.",
+    "substitutions": [
+      "Haferdrink kann durch einen anderen ungesüssten Pflanzendrink ersetzt werden; Geschmack und Nährwerte verändern sich.",
+      "Banane kann durch weich geschnittenes Obst ersetzt werden; Süsse und Konsistenz variieren."
+    ],
+    "leftovers": "Porridge schmeckt frisch am besten. Reste rasch kühlen, innerhalb von 24 Stunden verbrauchen und beim Erwärmen mit etwas Flüssigkeit wieder cremig rühren.",
+    "safety": "Heissen Porridge vor dem Essen auf eine angenehme Temperatur abkühlen lassen und Reste nicht lange bei Raumtemperatur stehen lassen."
   },
   {
     "id": "vollkornbrot-ei",
@@ -562,10 +659,10 @@
       }
     ],
     "steps": [
-      "Eier kochen.",
-      "Tomaten schneiden.",
-      "Eier schälen.",
-      "Mit Brot servieren."
+      "Eier in einen Topf geben, mit Wasser bedecken und aufkochen. Für vollständig feste Eier nach Erreichen des Kochens etwa 9–10 Minuten garen.",
+      "Tomaten in Scheiben oder mundgerechte Stücke schneiden und auf einem sauberen Brett beiseitestellen.",
+      "Gekochte Eier unter kaltem Wasser kurz abschrecken, vorsichtig schälen und prüfen, dass Eiweiss und Eigelb vollständig fest sind.",
+      "Vollkornbrot mit den Eiern und Tomaten anrichten und unmittelbar servieren."
     ],
     "nutrition": {
       "kcal": 410,
@@ -574,7 +671,25 @@
       "fat": 16,
       "fiber": 7
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Ein unkompliziertes Frühstück aus Vollkornbrot, gekochten Eiern und frischen Tomaten. Das Brot liefert Biss, die Eier sättigendes Protein und die Tomaten eine frische, saftige Komponente.",
+    "equipment": [
+      "kleiner Kochtopf",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Löffel",
+      "Teller"
+    ],
+    "prepNotes": [
+      "Tomaten waschen. Eier auf sichtbare Beschädigungen prüfen und bis zur Verwendung gekühlt lagern."
+    ],
+    "doneness": "Eiweiss und Eigelb sind vollständig fest; die Tomaten sind frisch und das Brot wird erst unmittelbar vor dem Essen angerichtet.",
+    "substitutions": [
+      "Tomaten können durch Gurke oder anderes rohes Gemüse ersetzt werden.",
+      "Vollkornbrot kann durch ein anderes Brot ersetzt werden; Ballaststoff- und Nährwerte können sich ändern."
+    ],
+    "leftovers": "Gekochte ungeschälte Eier gekühlt aufbewahren und zeitnah verbrauchen. Bereits angerichtetes Brot am besten frisch essen, damit es nicht durchweicht.",
+    "safety": "Eier vollständig garen, besonders für empfindliche Personen. Gekochte Eier nach dem Abkühlen im Kühlschrank lagern."
   },
   {
     "id": "gemuesesuppe-brot",
@@ -621,11 +736,11 @@
       }
     ],
     "steps": [
-      "Gemüse schneiden.",
-      "Zwiebel anschwitzen.",
-      "Gemüse mit Wasser bedecken.",
-      "15–20 Minuten kochen.",
-      "Mit Brot servieren."
+      "Karotten und Kartoffeln in ähnlich grosse mundgerechte Stücke, die Zwiebel fein schneiden.",
+      "Zwiebel im Topf bei mittlerer Hitze mit einem kleinen Teil des Kochwassers anschwitzen, bis sie weich und glasig ist.",
+      "Karotten und Kartoffeln zugeben und mit Wasser knapp bedecken. Aufkochen und danach bei reduzierter Hitze sanft köcheln lassen.",
+      "Nach etwa 15 Minuten erstmals prüfen und weitergaren, bis Kartoffeln und Karotten mit einer Gabel ohne harten Widerstand einzustechen sind, aber nicht vollständig zerfallen.",
+      "Suppe heiss in eine Schüssel geben und mit Vollkornbrot servieren."
     ],
     "nutrition": {
       "kcal": 450,
@@ -634,7 +749,26 @@
       "fat": 9,
       "fiber": 14
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Eine einfache vegane Gemüsesuppe mit Karotten, Kartoffeln und Zwiebel, serviert mit Vollkornbrot. Das Gemüse wird weich gegart, behält aber noch Struktur und ergibt eine leichte, wärmende Mahlzeit.",
+    "equipment": [
+      "grosser Kochtopf mit Deckel",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Kochlöffel",
+      "Suppenkelle"
+    ],
+    "prepNotes": [
+      "Karotten und Kartoffeln gründlich waschen und in ähnlich grosse Stücke schneiden; Zwiebel schälen.",
+      "Gleichmässige Stückgrössen sorgen dafür, dass Kartoffeln und Karotten gleichzeitig gar werden."
+    ],
+    "doneness": "Kartoffeln und Karotten sind vollständig gar und leicht einzustechen, behalten aber noch ihre Form; die Suppe ist durchgehend heiss.",
+    "substitutions": [
+      "Ein Teil der Karotten kann durch anderes festes Wurzelgemüse ersetzt werden; Stückgrösse und Garzeit entsprechend anpassen.",
+      "Vollkornbrot kann durch ein anderes Brot ersetzt werden; Nährwerte ändern sich."
+    ],
+    "leftovers": "Suppe rasch abkühlen, abgedeckt 1–2 Tage im Kühlschrank lagern und vor dem Essen einmal vollständig durcherhitzen. Brot separat lagern.",
+    "safety": "Suppe nach dem Kochen nicht lange lauwarm stehen lassen; Reste rasch kühlen und beim Wiedererwärmen vollständig erhitzen."
   },
   {
     "id": "kichererbsen-reis-pfanne",
@@ -679,11 +813,11 @@
       }
     ],
     "steps": [
-      "Reis garen.",
-      "Paprika und Tomaten schneiden.",
-      "Gemüse anbraten.",
-      "Kichererbsen zugeben und erhitzen.",
-      "Mit Reis servieren."
+      "Reis nach Packungsangabe garen und danach zugedeckt 5 Minuten ruhen lassen, bis die Körner weich und locker sind.",
+      "Paprika in mundgerechte Stücke und Tomaten in Würfel schneiden, damit das Gemüse gleichmässig verteilt werden kann.",
+      "Paprika in einer Pfanne bei mittlerer Hitze anbraten, bis sie heiss und leicht gebräunt, aber noch etwas bissfest ist; Tomaten danach kurz mitgaren.",
+      "Vollständig gegarte Kichererbsen zugeben und unter Rühren erhitzen, bis sie bis ins Innere heiss sind.",
+      "Gegarten Reis unterheben oder separat anrichten und das Gericht sofort servieren."
     ],
     "nutrition": {
       "kcal": 610,
@@ -692,7 +826,26 @@
       "fat": 11,
       "fiber": 17
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Eine vegane Pfanne mit Kichererbsen, lockerem Reis, Paprika und Tomaten. Die Kichererbsen werden vollständig erhitzt, die Paprika bleibt leicht bissfest und die Tomaten geben dem Gericht Saftigkeit.",
+    "equipment": [
+      "Kochtopf mit Deckel",
+      "Bratpfanne",
+      "Sieb",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Kochlöffel"
+    ],
+    "prepNotes": [
+      "Paprika und Tomaten waschen und schneiden. Vorgegarte Kichererbsen abgiessen und kurz abspülen; trockene Kichererbsen müssen vorab eingeweicht und vollständig gegart werden."
+    ],
+    "doneness": "Reis locker und gar, Paprika leicht bissfest, Tomaten weich und die Kichererbsen vollständig erhitzt.",
+    "substitutions": [
+      "Paprika kann durch anderes Pfannengemüse mit ähnlicher Garzeit ersetzt werden.",
+      "Reis kann durch eine andere gegarte Getreidebeilage ersetzt werden; Garzeit und Flüssigkeit anpassen."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt 1–2 Tage kühlen und beim Wiedererwärmen vollständig durcherhitzen.",
+    "safety": "Trockene Kichererbsen niemals nur kurz erhitzen, sondern vollständig nach Packungsangabe einweichen und garen. Gekochten Reis rasch kühlen."
   },
   {
     "id": "spinat-omelette",
@@ -739,10 +892,11 @@
       }
     ],
     "steps": [
-      "Spinat und Tomaten vorbereiten.",
-      "Eier verquirlen.",
-      "Gemüse kurz garen.",
-      "Eier zugeben und vollständig stocken lassen."
+      "Spinat kontrollieren und grobe Stiele entfernen; Tomaten in kleine mundgerechte Stücke schneiden.",
+      "Eier in einer Schüssel verquirlen, bis Eigelb und Eiweiss gleichmässig verbunden sind.",
+      "Olivenöl in einer beschichteten Pfanne bei mittlerer Hitze erwärmen. Spinat kurz garen, bis er deutlich zusammenfällt; Tomaten nur kurz mit erwärmen.",
+      "Eimasse über das Gemüse giessen, Hitze reduzieren und garen, bis die Oberfläche nicht mehr flüssig ist und beim Neigen keine rohe Eimasse läuft.",
+      "Omelette vorsichtig lösen, nach Wunsch zusammenklappen und sofort servieren."
     ],
     "nutrition": {
       "kcal": 390,
@@ -751,7 +905,27 @@
       "fat": 25,
       "fiber": 6
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Ein schnelles vegetarisches Omelette mit zart zusammengefallenem Spinat und saftigen Tomaten. Die Eier werden vollständig gestockt, während das Gemüse frisch und aromatisch bleibt.",
+    "equipment": [
+      "beschichtete Bratpfanne",
+      "Schüssel",
+      "Gabel oder Schneebesen",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Pfannenwender"
+    ],
+    "prepNotes": [
+      "Spinat und Tomaten gründlich waschen und abtropfen lassen.",
+      "Eier erst unmittelbar vor dem Braten aufschlagen und verquirlen."
+    ],
+    "doneness": "Der Spinat ist zusammengefallen, die Tomaten sind warm und die Eimasse ist vollständig gestockt ohne flüssige Stellen.",
+    "substitutions": [
+      "Spinat kann durch fein geschnittenes Blattgemüse ersetzt werden, sofern es vollständig gegart wird.",
+      "Tomaten können durch kleine Paprikastücke ersetzt werden; diese etwas länger vorgaren."
+    ],
+    "leftovers": "Am besten frisch essen. Reste rasch kühlen, abgedeckt höchstens 24 Stunden aufbewahren und vollständig durcherhitzen.",
+    "safety": "Rohe Eimasse von verzehrfertigen Lebensmitteln fernhalten und das Omelette für empfindliche Personen vollständig stocken lassen."
   },
   {
     "id": "apfel-porridge",
@@ -792,10 +966,10 @@
       }
     ],
     "steps": [
-      "Haferflocken mit Drink erhitzen.",
-      "Apfel klein schneiden.",
-      "Porridge 3–5 Minuten kochen.",
-      "Apfel unterheben."
+      "Haferflocken und Haferdrink in einem kleinen Topf unter gelegentlichem Rühren langsam erhitzen, bis die Mischung leicht köchelt.",
+      "Apfel vierteln, Kerngehäuse entfernen und das Fruchtfleisch in kleine gleichmässige Stücke schneiden.",
+      "Porridge bei niedriger Hitze 3–5 Minuten sanft köcheln und regelmässig rühren, bis er cremig und deutlich eingedickt ist.",
+      "Apfelstücke unterheben und je nach gewünschtem Biss 1–2 Minuten mit erwärmen oder direkt frisch auf dem fertigen Porridge verteilen."
     ],
     "nutrition": {
       "kcal": 420,
@@ -804,7 +978,26 @@
       "fat": 9,
       "fiber": 10
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Ein warmer veganer Porridge aus Haferflocken und Haferdrink mit frischem Apfel. Die Haferflocken werden cremig, während kleine Apfelstücke Frische und leichten Biss liefern.",
+    "equipment": [
+      "kleiner Kochtopf",
+      "Kochlöffel",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Schüssel"
+    ],
+    "prepNotes": [
+      "Apfel waschen, Kerngehäuse entfernen und erst kurz vor der Verwendung klein schneiden.",
+      "Haferflocken und Haferdrink abmessen, damit die gewünschte Konsistenz zuverlässig erreicht wird."
+    ],
+    "doneness": "Der Porridge ist cremig und dickflüssig, die Haferflocken sind weich und der Apfel hat je nach gewählter Variante noch leichten Biss.",
+    "substitutions": [
+      "Haferdrink kann durch einen anderen ungesüssten Pflanzendrink ersetzt werden; Geschmack und Nährwerte verändern sich.",
+      "Apfel kann durch Birne ersetzt werden; sehr reife Birnen erst am Ende zugeben."
+    ],
+    "leftovers": "Reste rasch kühlen und innerhalb von 24 Stunden verbrauchen. Beim Erwärmen etwas Flüssigkeit zugeben und vollständig erhitzen.",
+    "safety": "Heissen Porridge vor dem Essen auf eine angenehme Temperatur abkühlen lassen und Reste nicht lange bei Raumtemperatur stehen lassen."
   },
   {
     "id": "tomaten-kaese-brot",
