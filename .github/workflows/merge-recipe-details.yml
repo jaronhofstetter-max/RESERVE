@@ -1,0 +1,34 @@
+name: Promote detailed RESERVE recipes
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reserve-recipe-details
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Merge reviewed detail block
+        run: node tools/merge-recipe-details.mjs data/recipes.json data/recipe-details-v1.json
+      - name: Validate enriched production recipes
+        run: node tools/validate-recipes.mjs data/recipes.json
+      - name: Commit validated recipe details
+        run: |
+          git add -- data/recipes.json
+          if git diff --cached --quiet -- data/recipes.json; then
+            echo 'No recipe detail changes to publish.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Promote reviewed detailed recipe guidance'
+          git push origin HEAD:main
