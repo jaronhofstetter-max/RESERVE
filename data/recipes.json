@@ -1040,9 +1040,9 @@
       }
     ],
     "steps": [
-      "Tomaten schneiden.",
-      "Brot mit Käse belegen.",
-      "Tomaten darauflegen und servieren."
+      "Tomaten in dünne, gleichmässige Scheiben schneiden und überschüssigen Saft kurz abtropfen lassen.",
+      "Vollkornbrot unmittelbar vor dem Servieren gleichmässig mit Käse belegen.",
+      "Tomatenscheiben darauf verteilen und direkt servieren, damit das Brot nicht durchweicht."
     ],
     "nutrition": {
       "kcal": 440,
@@ -1051,7 +1051,23 @@
       "fat": 20,
       "fiber": 7
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Ein schnelles Vollkornbrot mit mildem Käse und saftigen frischen Tomaten.",
+    "equipment": [
+      "Schneidebrett",
+      "Küchenmesser",
+      "Teller"
+    ],
+    "prepNotes": [
+      "Tomaten gründlich waschen und Käse bis zur Verwendung gekühlt halten."
+    ],
+    "doneness": "Keine Garstufe erforderlich; Tomaten frisch und Brot noch formstabil.",
+    "substitutions": [
+      "Tomaten können durch Gurke ersetzt werden.",
+      "Käse kann durch eine passende milde Käsealternative ersetzt werden."
+    ],
+    "leftovers": "Belegtes Brot am besten sofort essen; einzelne Zutaten separat gekühlt lagern.",
+    "safety": "Käse bis zur Verwendung gekühlt halten und geschnittene Tomaten nicht unnötig lange bei Raumtemperatur lagern."
   },
   {
     "id": "kartoffel-ei-pfanne",
@@ -1098,10 +1114,10 @@
       }
     ],
     "steps": [
-      "Kartoffeln klein schneiden und vorgaren.",
-      "Zwiebel schneiden.",
-      "Kartoffeln und Zwiebel anbraten.",
-      "Eier zugeben und vollständig stocken lassen."
+      "Kartoffelwürfel in Wasser vorgaren, bis sie fast weich sind, aber beim Abgiessen ihre Form behalten.",
+      "Zwiebel fein schneiden und mit den abgetropften Kartoffeln im Öl bei mittlerer Hitze braten, bis leichte goldene Stellen entstehen.",
+      "Eier verquirlen und über Kartoffeln und Zwiebel geben.",
+      "Unter vorsichtigem Wenden weitergaren, bis keine flüssige rohe Eimasse mehr sichtbar ist."
     ],
     "nutrition": {
       "kcal": 540,
@@ -1110,7 +1126,24 @@
       "fat": 24,
       "fiber": 7
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Herzhafte vegetarische Pfanne mit goldenen Kartoffeln, weicher Zwiebel und vollständig gestocktem Ei.",
+    "equipment": [
+      "Kochtopf",
+      "Bratpfanne",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Pfannenwender"
+    ],
+    "prepNotes": [
+      "Kartoffeln in ähnlich grosse Stücke schneiden, damit sie gleichmässig garen; Eier erst kurz vor der Verwendung aufschlagen."
+    ],
+    "doneness": "Kartoffeln innen weich und aussen leicht gebräunt; Eier vollständig gestockt.",
+    "substitutions": [
+      "Zwiebel kann durch fein geschnittenen Lauch ersetzt werden."
+    ],
+    "leftovers": "Rasch kühlen, höchstens 24 Stunden gekühlt lagern und vollständig durcherhitzen.",
+    "safety": "Rohe Eier hygienisch behandeln und vollständig stocken lassen."
   },
   {
     "id": "spaghetti-bolognese",
@@ -1163,12 +1196,11 @@
       }
     ],
     "steps": [
-      "Zwiebel fein schneiden.",
-      "Olivenöl erhitzen und die Zwiebel glasig dünsten.",
-      "Rinderhackfleisch zugeben und vollständig durchbraten.",
-      "Tomaten zugeben und die Sauce etwa 20 Minuten köcheln lassen.",
-      "Spaghetti nach Packungsanleitung garen.",
-      "Spaghetti mit der Bolognese-Sauce anrichten."
+      "Zwiebel fein schneiden und im Olivenöl bei mittlerer Hitze glasig dünsten.",
+      "Rinderhackfleisch zugeben, zerteilen und unter Wenden vollständig durchbraten, bis keine rohen Stellen mehr vorhanden sind.",
+      "Tomaten zugeben und die Sauce etwa 20 Minuten sanft köcheln lassen, bis sie sichtbar eingedickt ist.",
+      "Spaghetti in reichlich kochendem Wasser nach Packungsangabe bissfest garen und abgiessen.",
+      "Spaghetti mit der heissen Bolognese-Sauce anrichten und sofort servieren."
     ],
     "nutrition": {
       "kcal": 690,
@@ -1177,7 +1209,25 @@
       "fat": 21,
       "fiber": 8
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Klassische Spaghetti mit kräftiger Tomaten-Hackfleisch-Sauce und bissfester Pasta.",
+    "equipment": [
+      "Grosser Kochtopf",
+      "Bratpfanne oder Saucentopf",
+      "Sieb",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Kochlöffel"
+    ],
+    "prepNotes": [
+      "Rohes Hackfleisch getrennt von verzehrfertigen Lebensmitteln halten; Zwiebel und Tomaten vor dem Braten vorbereiten."
+    ],
+    "doneness": "Hackfleisch vollständig durchgegart, Sauce sämig eingekocht und Spaghetti bissfest.",
+    "substitutions": [
+      "Spaghetti können durch andere Pasta ersetzt werden; Garzeit nach Packungsangabe anpassen."
+    ],
+    "leftovers": "Sauce und Pasta rasch kühlen, 1–2 Tage gekühlt lagern und vollständig durcherhitzen.",
+    "safety": "Rohes Hackfleisch von fertigen Lebensmitteln fernhalten und vollständig durchgaren."
   },
   {
     "id": "linsen-karotten-suppe",
@@ -1224,12 +1274,11 @@
       }
     ],
     "steps": [
-      "Linsen abspülen.",
-      "Karotten und Zwiebel klein schneiden.",
-      "Zwiebel im Olivenöl glasig dünsten.",
-      "Karotten und Linsen zugeben und mit Wasser bedecken.",
-      "Etwa 20 Minuten köcheln lassen, bis Linsen und Karotten weich sind.",
-      "Nach Wunsch teilweise pürieren und servieren."
+      "Linsen in einem Sieb gründlich abspülen, Karotten und Zwiebel klein schneiden.",
+      "Zwiebel im Olivenöl bei mittlerer Hitze glasig dünsten.",
+      "Karotten und Linsen zugeben, mit ausreichend Wasser bedecken und aufkochen.",
+      "Hitze reduzieren und sanft köcheln lassen, bis die Linsen vollständig gar und die Karotten ohne harten Widerstand einzustechen sind.",
+      "Nach Wunsch einen Teil pürieren und nochmals vollständig erhitzen."
     ],
     "nutrition": {
       "kcal": 430,
@@ -1238,7 +1287,25 @@
       "fat": 11,
       "fiber": 18
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Wärmende vegane Suppe aus vollständig gegarten Linsen, süsslichen Karotten und Zwiebel.",
+    "equipment": [
+      "Kochtopf mit Deckel",
+      "Sieb",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Kochlöffel",
+      "Pürierstab optional"
+    ],
+    "prepNotes": [
+      "Linsen abspülen und Garhinweise der verwendeten Sorte beachten; Karotten in ähnlich grosse Stücke schneiden."
+    ],
+    "doneness": "Linsen vollständig weich und Karotten durchgegart; Suppe durchgehend heiss.",
+    "substitutions": [
+      "Karotten können teilweise durch anderes Wurzelgemüse ersetzt werden; Garzeit anpassen."
+    ],
+    "leftovers": "Rasch abkühlen, 1–2 Tage gekühlt lagern und vor dem Essen vollständig durcherhitzen.",
+    "safety": "Linsen vollständig garen und fertige Suppe nach dem Kochen nicht lange lauwarm stehen lassen."
   },
   {
     "id": "haehnchen-gemuese-pfanne",
@@ -1296,14 +1363,11 @@
       }
     ],
     "steps": [
-      "Hähnchenbrust in mundgerechte Stücke schneiden und Arbeitsflächen danach reinigen.",
-      "Zwiebel fein hacken, Brokkoli in kleine Röschen teilen und Karotten in Scheiben schneiden.",
-      "Olivenöl in einer Pfanne erhitzen und das Hähnchen bei mittlerer Hitze vollständig durchgaren. Herausnehmen und beiseitestellen.",
-      "Zwiebel in der gleichen Pfanne glasig dünsten, Karotten hinzufügen und 4–5 Minuten anbraten.",
-      "Brokkoli dazugeben und 3–4 Minuten mitbraten.",
-      "Kochsahne einrühren und kurz aufkochen.",
-      "Hähnchen wieder in die Pfanne geben, alles gut vermengen und 5 Minuten köcheln lassen.",
-      "Nach Wunsch mit Kräutern abschmecken und servieren."
+      "Brokkoli in kleine Röschen, Karotten in dünne Scheiben und Zwiebel fein schneiden.",
+      "Hähnchen separat in gleichmässige Stücke schneiden und anschliessend alle Kontaktflächen reinigen.",
+      "Öl erhitzen und Hähnchen unter Wenden garen, bis im dicksten Stück mindestens 75 °C Kerntemperatur erreicht sind; herausnehmen.",
+      "Zwiebel und Karotten in derselben Pfanne garen, Brokkoli zugeben und bissfest werden lassen.",
+      "Kochsahne einrühren, kurz aufkochen, Hähnchen zurückgeben und alles mehrere Minuten vollständig erhitzen."
     ],
     "nutrition": {
       "kcal": 520,
@@ -1312,7 +1376,24 @@
       "fat": 29,
       "fiber": 7
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Cremige Hähnchen-Gemüse-Pfanne mit Brokkoli, Karotten und Kochsahne.",
+    "equipment": [
+      "Bratpfanne",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Kochlöffel",
+      "Küchenthermometer empfohlen"
+    ],
+    "prepNotes": [
+      "Gemüse zuerst vorbereiten; rohes Hähnchen danach separat schneiden und Hände, Brett und Messer gründlich reinigen."
+    ],
+    "doneness": "Hähnchen mindestens 75 °C Kerntemperatur; Gemüse gar mit leichtem Biss und Sauce heiss und cremig.",
+    "substitutions": [
+      "Brokkoli kann durch anderes geeignetes Gemüse ersetzt werden; Garzeit anpassen."
+    ],
+    "leftovers": "Rasch kühlen, 1–2 Tage gekühlt lagern und vollständig durcherhitzen.",
+    "safety": "Rohes Geflügel nicht waschen, Kreuzkontamination vermeiden und mindestens 75 °C Kerntemperatur erreichen."
   },
   {
     "id": "lachs-kartoffel-spinat",
@@ -1360,11 +1441,11 @@
       }
     ],
     "steps": [
-      "Kartoffeln waschen, schneiden und garen.",
-      "Lachs trocken tupfen.",
-      "Olivenöl in einer Pfanne erhitzen und den Lachs vollständig garen.",
-      "Spinat kurz zusammenfallen lassen.",
-      "Kartoffeln, Spinat und Lachs gemeinsam anrichten."
+      "Kartoffeln in Wasser sanft garen, bis eine Messerspitze ohne harten Widerstand bis zur Mitte gleitet.",
+      "Lachs trocken tupfen und Öl in einer Pfanne bei mittlerer Hitze erwärmen.",
+      "Lachs von beiden Seiten garen, bis das Fleisch im dicksten Bereich opak ist und sich leicht in Lamellen teilen lässt.",
+      "Spinat in der Pfanne kurz erhitzen, bis er vollständig zusammengefallen ist.",
+      "Kartoffeln, Spinat und Lachs unmittelbar gemeinsam anrichten."
     ],
     "nutrition": {
       "kcal": 610,
@@ -1373,7 +1454,24 @@
       "fat": 28,
       "fiber": 8
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Saftiger Lachs mit weich gegarten Kartoffeln und zart zusammengefallenem Spinat.",
+    "equipment": [
+      "Kochtopf",
+      "Bratpfanne",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Pfannenwender"
+    ],
+    "prepNotes": [
+      "Kartoffeln in ähnlich grosse Stücke schneiden; Lachs bis zur Zubereitung gekühlt halten und trocken tupfen."
+    ],
+    "doneness": "Kartoffeln vollständig weich, Spinat zusammengefallen und Lachs im dicksten Bereich opak und leicht blättrig.",
+    "substitutions": [
+      "Spinat kann durch anderes geeignetes Blattgemüse ersetzt werden."
+    ],
+    "leftovers": "Fischreste rasch kühlen, innerhalb von 24 Stunden verbrauchen und vollständig erhitzen.",
+    "safety": "Lachs gekühlt halten, sauber verarbeiten und für empfindliche Personen vollständig durchgaren."
   },
   {
     "id": "couscous-gemuese-bowl",
@@ -1431,11 +1529,11 @@
       }
     ],
     "steps": [
-      "Couscous nach Packungsanleitung mit heißem Wasser quellen lassen.",
-      "Paprika, Gurke und Tomaten klein schneiden.",
-      "Kichererbsen abspülen und abtropfen lassen.",
-      "Couscous auflockern und mit Gemüse und Kichererbsen vermengen.",
-      "Olivenöl zugeben und servieren."
+      "Couscous nach Packungsangabe mit der vorgesehenen Menge heissem Wasser übergiessen und zugedeckt quellen lassen.",
+      "Paprika, Gurke und Tomaten in kleine, ähnlich grosse Stücke schneiden.",
+      "Vollständig gegarte Kichererbsen abspülen und gut abtropfen lassen.",
+      "Gequollenen Couscous mit einer Gabel auflockern und mit Gemüse sowie Kichererbsen vermengen.",
+      "Olivenöl gleichmässig unterheben und direkt servieren."
     ],
     "nutrition": {
       "kcal": 590,
@@ -1444,6 +1542,23 @@
       "fat": 15,
       "fiber": 15
     },
-    "status": "approved"
+    "status": "approved",
+    "description": "Frische vegane Couscous-Bowl mit Kichererbsen, Paprika, Gurke und Tomaten.",
+    "equipment": [
+      "Schüssel mit Deckel oder Teller",
+      "Sieb",
+      "Schneidebrett",
+      "Küchenmesser",
+      "Gabel"
+    ],
+    "prepNotes": [
+      "Gemüse waschen; nur vollständig gegarte Kichererbsen verwenden und Konservenware abspülen."
+    ],
+    "doneness": "Couscous locker und ohne harte Körner; Gemüse frisch und Kichererbsen vollständig gegart.",
+    "substitutions": [
+      "Paprika, Gurke oder Tomaten können durch anderes geeignetes frisches Gemüse ersetzt werden."
+    ],
+    "leftovers": "Abgedeckt gekühlt 1–2 Tage lagern; frisches Gemüse kann dabei weicher werden.",
+    "safety": "Nur vollständig gegarte Kichererbsen verwenden und fertige Bowl gekühlt halten."
   }
 ]
