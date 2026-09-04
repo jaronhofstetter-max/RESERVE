@@ -27,13 +27,53 @@ Neue und überarbeitete Rezepte sollen zusätzlich möglichst folgende Informati
 
 - `description`: kurze, konkrete Beschreibung von Geschmack, Konsistenz und fertigem Gericht
 - `equipment`: tatsächlich benötigte Küchengeräte
-- `prepNotes`: sinnvolle Vorbereitungshinweise, z. B. Waschen, Schneiden, Abtropfen oder Vorheizen
-- `doneness`: erkennbare Gar- und Konsistenzmerkmale statt nur Zeitangaben
-- `substitutions`: sinnvolle Ersatzmöglichkeiten mit Auswirkungen auf Geschmack oder Zubereitung
+- `prepNotes`: sinnvolle Vorbereitungshinweise
+- `doneness`: erkennbare Gar- und Konsistenzmerkmale
+- `substitutions`: sinnvolle Ersatzmöglichkeiten
 - `leftovers`: Aufbewahrung, Haltbarkeit und Resteverwertung
-- `safety`: relevante Lebensmittel- und Temperaturhinweise, besonders bei Fleisch, Geflügel, Fisch und Ei
+- `safety`: relevante Lebensmittel- und Temperaturhinweise
 
 Die Kochschritte sollen nicht nur Aktionen nennen, sondern dem Nutzer sagen, woran er erkennt, dass der jeweilige Schritt gelungen ist. Wo sinnvoll sollen Hitze, Dauer, Konsistenz, Farbe oder Kerntemperatur angegeben werden.
+
+## Vorsorge- und Ressourcen-Metadaten
+
+Für den Ausbau auf 10'000 Rezepte erhält jedes neue Rezept zusätzlich maschinenlesbare Ressourcenmerkmale. Sie erlauben RESERVE, dieselbe Rezeptbibliothek im Alltag, bei knappem Vorrat und in einem Stromausfall zu verwenden.
+
+Empfohlener Block:
+
+```json
+"resilience": {
+  "noCook": false,
+  "power": "normal",
+  "refrigeration": "required",
+  "shelfStableShare": 0.25,
+  "waterMl": 500,
+  "onePot": true
+}
+```
+
+Regeln:
+- `noCook`: Gericht kann ohne Erhitzen vollständig zubereitet werden.
+- `power`: `none`, `low` oder `normal`. `none` bedeutet ohne elektrische Kochenergie; `low` ist für einfache/stromsparende Zubereitung wie eine einzelne Kochstelle gedacht.
+- `refrigeration`: `none`, `afterOpening` oder `required`.
+- `shelfStableShare`: Anteil der Zutaten von 0 bis 1, die typischerweise ungekühlt und länger haltbar bevorratet werden können. Dies ist eine RESERVE-Klassifikation und keine Haltbarkeitsgarantie.
+- `waterMl`: ungefähr benötigtes Wasser pro Person für die Zubereitung, zusätzlich zum Trinkwasser.
+- `onePot`: Zubereitung benötigt höchstens ein Kochgefäss.
+
+Bestehende Legacy-Rezepte dürfen zunächst ohne diesen Block bestehen bleiben. Neue Batches sollen ihn enthalten. Fehlende Resilienz-Metadaten dürfen niemals automatisch als blackout-tauglich interpretiert werden.
+
+## Skalierungsarchitektur für 10'000 Rezepte
+
+Die kanonischen Rezepte bleiben die vollständige Quelle. Für die Auslieferung werden daraus kompakte Suchindizes erzeugt. Die Benutzeroberfläche soll bei wachsender Bibliothek nicht dauerhaft alle vollständigen Rezepte rendern, sondern zunächst anhand von Zutaten, Ernährungsform, Mahlzeit, Zeit und Resilienzmerkmalen Kandidaten auswählen und nur die relevantesten Ergebnisse darstellen.
+
+Geplante Indizes:
+- Rezept-ID → Metadaten
+- Zutat → Rezept-IDs
+- Ernährungsform → Rezept-IDs
+- Mahlzeit → Rezept-IDs
+- Resilienz/Blackout → Rezept-IDs
+
+Die ausführlichen Kochinformationen bleiben vollständig erhalten und werden erst für ausgewählte Rezepte benötigt. Damit bleibt die Qualität unabhängig von der Bibliotheksgrösse erhalten.
 
 ## Zulässige Einheiten
 
