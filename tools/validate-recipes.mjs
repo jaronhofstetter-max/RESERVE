@@ -5,11 +5,13 @@ const allowed={
   type:new Set(['Frühstück','Hauptmahlzeit']),diet:new Set(['Alles','Vegetarisch','Vegan']),difficulty:new Set(['Sehr einfach','Einfach','Mittel','Anspruchsvoll']),unit:new Set(['g','ml','Stück']),meal:new Set(['Frühstück','Mittagessen','Zwischenmahlzeit','Abendessen']),status:new Set(['draft','approved'])
 };
 const required=['id','name','type','diet','dish','cuisine','mealTimes','prepMinutes','cookMinutes','difficulty','allergens','tags','ingredients','steps','nutrition','status'];
+const detailFields=['description','equipment','prepNotes','doneness','substitutions','leftovers','safety'];
 const nutritionFields=['kcal','protein','carbs','fat','fiber'],errors=[],warnings=[];let recipes;
 try{recipes=JSON.parse(fs.readFileSync(file,'utf8'))}catch(e){console.error('JSON konnte nicht gelesen werden:',e.message);process.exit(1)}
 if(!Array.isArray(recipes)){console.error('Root muss ein Array sein.');process.exit(1)}
 const ids=new Set(),names=new Map();
 const fail=(i,msg)=>errors.push(`#${i+1}${recipes[i]?.id?` (${recipes[i].id})`:''}: ${msg}`),warn=(i,msg)=>warnings.push(`#${i+1}${recipes[i]?.id?` (${recipes[i].id})`:''}: ${msg}`);
+const meaningful=v=>typeof v==='string'?v.trim().length>=12:Array.isArray(v)?v.length>0&&v.every(x=>typeof x==='string'&&x.trim().length>=3):v&&typeof v==='object'&&Object.keys(v).length>0;
 recipes.forEach((r,i)=>{
   required.forEach(k=>{if(r[k]===undefined||r[k]===null||r[k]==='')fail(i,`${k} fehlt`)});
   if(typeof r.id!=='string'||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(r.id||''))fail(i,'id muss lowercase-kebab-case sein');if(ids.has(r.id))fail(i,`doppelte ID ${r.id}`);ids.add(r.id);
@@ -21,8 +23,16 @@ recipes.forEach((r,i)=>{
   if(!Array.isArray(r.allergens))fail(i,'allergens muss ein Array sein');else if(r.allergens.some(x=>typeof x!=='string'||!x.trim()))fail(i,'allergens enthält ungültigen Eintrag');
   if(!Array.isArray(r.tags)||r.tags.length<1)fail(i,'tags muss mindestens einen Eintrag haben');else if(r.tags.some(x=>typeof x!=='string'||!x.trim()))fail(i,'tags enthält ungültigen Eintrag');
   if(!Array.isArray(r.ingredients)||r.ingredients.length<2)fail(i,'mindestens 2 Zutaten erforderlich');else{const ing=new Set();r.ingredients.forEach((x,j)=>{if(!x||typeof x.name!=='string'||!x.name.trim())fail(i,`Zutat ${j+1}: name fehlt`);let key=(x?.name||'').trim().toLowerCase();if(key&&ing.has(key))warn(i,`Zutat ${j+1}: ${x.name} mehrfach im Rezept`);ing.add(key);if(!Number.isFinite(x?.amount)||x.amount<=0)fail(i,`Zutat ${j+1}: amount muss > 0 sein`);if(!allowed.unit.has(x?.unit))fail(i,`Zutat ${j+1}: ungültige Einheit ${x?.unit}`);if(x?.unit==='Stück'&&!Number.isInteger(x.amount))warn(i,`Zutat ${j+1}: Stück-Menge ist nicht ganzzahlig`)})}
-  if(!Array.isArray(r.steps)||r.steps.length<2)fail(i,'mindestens 2 Kochschritte erforderlich');else r.steps.forEach((s,j)=>{if(typeof s!=='string'||s.trim().length<8)fail(i,`Schritt ${j+1} ist zu kurz`)});
+  if(!Array.isArray(r.steps)||r.steps.length<2)fail(i,'mindestens 2 Kochschritte erforderlich');else r.steps.forEach((s,j)=>{if(typeof s!=='string'||s.trim().length<8)fail(i,`Schritt ${j+1} ist zu kurz`);else if(r.status==='approved'&&s.trim().length<25)warn(i,`Schritt ${j+1} ist knapp; Ziel sind konkrete Handgriffe plus Gar-/Konsistenzmerkmal`) });
   if(!r.nutrition||typeof r.nutrition!=='object'||Array.isArray(r.nutrition))fail(i,'nutrition fehlt');else{nutritionFields.forEach(k=>{if(!Number.isFinite(r.nutrition[k])||r.nutrition[k]<0)fail(i,`nutrition.${k} muss >= 0 sein`)});let n=r.nutrition;if(Number.isFinite(n.kcal)&&Number.isFinite(n.protein)&&Number.isFinite(n.carbs)&&Number.isFinite(n.fat)){let macro=n.protein*4+n.carbs*4+n.fat*9;if(n.kcal>0&&Math.abs(macro-n.kcal)/n.kcal>.45)warn(i,'Nährwert-kcal weichen stark von Protein/Kohlenhydraten/Fett ab')}if(n.fiber>n.carbs&&n.carbs>0)warn(i,'Ballaststoffe sind höher als Kohlenhydrate – prüfen')}
-  if(r.status==='approved'){if(!r.mealTimes?.length)fail(i,'approved Rezept ohne mealTimes');if(!r.tags?.length)fail(i,'approved Rezept ohne Tags');if(!r.image)warn(i,'kein explizites image-Feld; Fallback assets/recipes/<id>.png wird verwendet')}
+  detailFields.forEach(k=>{if(r[k]!==undefined&&!meaningful(r[k]))warn(i,`${k} ist vorhanden, aber zu knapp/leer`)});
+  if(r.status==='approved'){
+    if(!r.mealTimes?.length)fail(i,'approved Rezept ohne mealTimes');if(!r.tags?.length)fail(i,'approved Rezept ohne Tags');
+    if(!meaningful(r.description))warn(i,'Qualitätsausbau: description fehlt');
+    if(!meaningful(r.equipment))warn(i,'Qualitätsausbau: equipment fehlt');
+    if(!meaningful(r.doneness))warn(i,'Qualitätsausbau: doneness fehlt');
+    if(!meaningful(r.leftovers))warn(i,'Qualitätsausbau: leftovers fehlt');
+    if(!r.image){} // Bilder sind optional; neutrale dish-Symbole sind der vorgesehene Fallback.
+  }
 });
 console.log(`RESERVE Rezeptprüfung: ${recipes.length} Rezepte, ${recipes.filter(r=>r.status==='approved').length} approved, ${recipes.filter(r=>r.status==='draft').length} draft`);if(warnings.length){console.log(`\nWarnungen (${warnings.length}):`);warnings.forEach(x=>console.log(' - '+x))}if(errors.length){console.error(`\nFehler (${errors.length}):`);errors.forEach(x=>console.error(' - '+x));process.exit(1)}console.log('\n✓ Rezeptdatenbank ist strukturell und semantisch gültig.');
