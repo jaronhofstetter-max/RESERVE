@@ -1,0 +1,31 @@
+name: Promote new RESERVE recipes
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Promote reviewed recipe batch
+        run: node tools/promote-new-recipes.mjs data/recipes.json data/new-recipes-batch-01.json
+      - name: Validate production recipes
+        run: node tools/validate-recipes.mjs data/recipes.json
+      - name: Commit production recipe growth
+        run: |
+          if git diff --quiet -- data/recipes.json; then
+            echo "No recipe changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/recipes.json
+          git commit -m "Promote reviewed new recipes"
+          git push origin main
