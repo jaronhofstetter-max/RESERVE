@@ -31,6 +31,14 @@ jobs:
           node tools/validate-recipes.mjs build/recipes-live.json
           cp build/recipes-live.json data/recipes.json
           node tools/build-recipe-index.mjs data/recipes.json data/recipe-index.json
+      - name: Check JavaScript syntax
+        run: |
+          node --check shopping-v2.js
+          node --check reserve-core-v3.js
+          node --check cloud-sync-v1.js
+          node --check barcode-v1.js
+          node --check autopilot-v1.js
+          node --check emergency-v1.js
       - name: Enable RESERVE feature modules
         run: sed -i 's#</body>#<script src="shopping-v2.js"></script><script src="reserve-core-v3.js"></script><script src="cloud-sync-v1.js"></script><script src="barcode-v1.js"></script><script src="autopilot-v1.js"></script><script src="emergency-v1.js"></script></body>#' index.html
       - name: Smoke test production build
