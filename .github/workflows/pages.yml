@@ -41,12 +41,13 @@ jobs:
           node --check autopilot-v1.js
           node --check emergency-v1.js
           node --check reserve-stock-protection-v1.js
+          node --check pantry-intelligence-v1.js
           node --check recipe-index-runtime-v1.js
           node --check recipe-detail-runtime-v1.js
       - name: Enable compact recipe delivery
         run: sed -i "s#fetch('data/recipes.json',{cache:'no-store'})#fetch('data/recipe-catalog.json',{cache:'no-store'})#" index.html
       - name: Enable RESERVE feature modules
-        run: sed -i 's#</body>#<script src="shopping-v2.js"></script><script src="reserve-core-v3.js"></script><script src="cloud-sync-v1.js"></script><script src="barcode-v1.js"></script><script src="autopilot-v1.js"></script><script src="emergency-v1.js"></script><script src="recipe-index-runtime-v1.js"></script><script src="recipe-detail-runtime-v1.js"></script><script src="reserve-stock-protection-v1.js"></script></body>#' index.html
+        run: sed -i 's#</body>#<script src="shopping-v2.js"></script><script src="reserve-core-v3.js"></script><script src="cloud-sync-v1.js"></script><script src="barcode-v1.js"></script><script src="autopilot-v1.js"></script><script src="emergency-v1.js"></script><script src="recipe-index-runtime-v1.js"></script><script src="recipe-detail-runtime-v1.js"></script><script src="reserve-stock-protection-v1.js"></script><script src="pantry-intelligence-v1.js"></script></body>#' index.html
       - name: Smoke test production build
         run: node tools/smoke-test.mjs
       - name: Install browser test runtime
