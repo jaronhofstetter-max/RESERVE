@@ -14,7 +14,15 @@ try{
   await page.goto('http://127.0.0.1:4173',{waitUntil:'networkidle'});
   await page.waitForFunction(()=>window.RESERVE_AUTOPILOT&&typeof window.RESERVE_AUTOPILOT.plan==='function');
   await page.waitForFunction(()=>window.RESERVE_AUTOPILOT.recipeCount()>=100);
-  await page.waitForFunction(()=>typeof window.purchaseToStock==='function'&&typeof window.finishCook==='function');
+  const coreState=await page.evaluate(()=>({
+    purchaseToStock:typeof window.purchaseToStock,
+    finishCook:typeof window.finishCook,
+    availableAmount:typeof window.availableAmount,
+    renderPlan:typeof window.renderPlan,
+    scripts:[...document.scripts].map(s=>s.src||'inline').filter(Boolean),
+    resources:performance.getEntriesByType('resource').map(r=>r.name).filter(n=>n.includes('.js'))
+  }));
+  if(coreState.purchaseToStock!=='function'||coreState.availableAmount!=='function')throw new Error('RESERVE Core nicht aktiv: '+JSON.stringify(coreState)+' | pageerrors='+errors.join(' | '));
   await page.evaluate(()=>window.RESERVE_AUTOPILOT.render());
   await page.waitForSelector('#reserveAutopilot',{state:'attached'});
   const result=await page.evaluate(()=>{
@@ -25,7 +33,7 @@ try{
     const ratios=recipes.map(r=>RESERVE_AUTOPILOT.fitRatio(r));
     const fitRatioValid=ratios.every(x=>Number.isFinite(x)&&x>=0&&x<=1);
     const ids=recipes.map(r=>r.id),names=recipes.map(r=>r.name.trim().toLocaleLowerCase('de-CH'));
-    return {recipes:RESERVE_AUTOPILOT.recipeCount(),days:p.days.length,slots:p.days.map(d=>d.map(x=>x.slot)),meals:flat.length,shopping:Array.isArray(shoppingCalc),autopilotCard:!!document.getElementById('reserveAutopilot'),sync:!!window.RESERVE_SYNC,slotsValid,reasonsValid,nutritionValid,fitRatioValid,uniqueIds,uniqueNames};
+    return {recipes:RESERVE_AUTOPILOT.recipeCount(),days:p.days.length,slots:p.days.map(d=>d.map(x=>x.slot)),meals:flat.length,shopping:Array.isArray(shoppingCalc),autopilotCard:!!document.getElementById('reserveAutopilot'),sync:!!window.RESERVE_SYNC,slotsValid,reasonsValid,nutritionValid,fitRatioValid,uniqueIds:new Set(ids).size===ids.length,uniqueNames:new Set(names).size===names.length};
   });
   if(result.recipes<100)throw new Error(`Produktionsbibliothek enthält ${result.recipes}; mindestens 100 Rezepte erforderlich`);
   if(!result.uniqueIds)throw new Error('Produktionsbibliothek enthält doppelte Rezept-IDs');
