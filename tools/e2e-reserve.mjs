@@ -14,82 +14,26 @@ try{
   await page.goto('http://127.0.0.1:4173',{waitUntil:'networkidle'});
   await page.waitForFunction(()=>window.RESERVE_AUTOPILOT&&typeof window.RESERVE_AUTOPILOT.plan==='function');
   await page.waitForFunction(()=>window.RESERVE_AUTOPILOT.recipeCount()>=100);
-  const coreState=await page.evaluate(()=>({
-    purchaseToStock:typeof window.purchaseToStock,
-    finishCook:typeof window.finishCook,
-    availableAmount:typeof window.availableAmount,
-    renderPlan:typeof window.renderPlan,
-    scripts:[...document.scripts].map(s=>s.src||'inline').filter(Boolean),
-    resources:performance.getEntriesByType('resource').map(r=>r.name).filter(n=>n.includes('.js'))
-  }));
+  await page.waitForFunction(()=>window.RESERVE_STOCK_PROTECTION&&window.RESERVE_PANTRY_INTELLIGENCE);
+  const coreState=await page.evaluate(()=>({purchaseToStock:typeof window.purchaseToStock,finishCook:typeof window.finishCook,availableAmount:typeof window.availableAmount,renderPlan:typeof window.renderPlan,scripts:[...document.scripts].map(s=>s.src||'inline').filter(Boolean),resources:performance.getEntriesByType('resource').map(r=>r.name).filter(n=>n.includes('.js'))}));
   if(coreState.purchaseToStock!=='function'||coreState.availableAmount!=='function')throw new Error('RESERVE Core nicht aktiv: '+JSON.stringify(coreState)+' | pageerrors='+errors.join(' | '));
-  await page.evaluate(()=>window.RESERVE_AUTOPILOT.render());
-  await page.waitForSelector('#reserveAutopilot',{state:'attached'});
-  const result=await page.evaluate(()=>{
-    const p=RESERVE_AUTOPILOT.plan(7),flat=RESERVE_AUTOPILOT.flatten(p),shoppingCalc=RESERVE_AUTOPILOT.shoppingFor(flat);
-    const slotsValid=p.days.every(day=>day.every(m=>!m.recipe||RESERVE_AUTOPILOT.forSlot(m.recipe,m.slot)));
-    const reasonsValid=p.days.every(day=>day.every(m=>!m.recipe||typeof m.reason==='string'&&m.reason.length>0));
-    const nutritionValid=p.days.every(day=>day.nutrition&&['kcal','protein','fiber'].every(k=>Number.isFinite(day.nutrition[k])&&day.nutrition[k]>=0));
-    const ratios=recipes.map(r=>RESERVE_AUTOPILOT.fitRatio(r));
-    const fitRatioValid=ratios.every(x=>Number.isFinite(x)&&x>=0&&x<=1);
-    const ids=recipes.map(r=>r.id),names=recipes.map(r=>r.name.trim().toLocaleLowerCase('de-CH'));
-    return {recipes:RESERVE_AUTOPILOT.recipeCount(),days:p.days.length,slots:p.days.map(d=>d.map(x=>x.slot)),meals:flat.length,shopping:Array.isArray(shoppingCalc),autopilotCard:!!document.getElementById('reserveAutopilot'),sync:!!window.RESERVE_SYNC,slotsValid,reasonsValid,nutritionValid,fitRatioValid,uniqueIds:new Set(ids).size===ids.length,uniqueNames:new Set(names).size===names.length};
-  });
-  if(result.recipes<100)throw new Error(`Produktionsbibliothek enthält ${result.recipes}; mindestens 100 Rezepte erforderlich`);
-  if(!result.uniqueIds)throw new Error('Produktionsbibliothek enthält doppelte Rezept-IDs');
-  if(!result.uniqueNames)throw new Error('Produktionsbibliothek enthält doppelte Rezeptnamen');
-  if(!result.fitRatioValid)throw new Error('Autopilot fitRatio liegt außerhalb des Bereichs 0..1');
-  if(result.days!==7)throw new Error(`Autopilot plant ${result.days} statt 7 Tage`);
-  for(const slots of result.slots)for(const required of ['Frühstück','Mittagessen','Abendessen'])if(!slots.includes(required))throw new Error(`Mahlzeit-Slot fehlt: ${required}`);
-  if(!result.slotsValid)throw new Error('Autopilot hat ein Rezept einem unzulässigen Mahlzeit-Slot zugeordnet');
-  if(!result.reasonsValid)throw new Error('Autopilot liefert nicht für jede geplante Mahlzeit einen Grund');
-  if(!result.nutritionValid)throw new Error('Autopilot liefert ungültige Tages-Nährwerte');
-  if(result.meals<14)throw new Error(`Zu wenige Mahlzeiten geplant: ${result.meals}`);
-  if(!result.shopping)throw new Error('Einkaufsberechnung liefert keine Liste');
-  if(!result.autopilotCard)throw new Error('Autopilot UI fehlt');
-  if(!result.sync)throw new Error('Backup/Sync Modul nicht aktiv');
+  await page.evaluate(()=>window.RESERVE_AUTOPILOT.render());await page.waitForSelector('#reserveAutopilot',{state:'attached'});
+  const result=await page.evaluate(()=>{const p=RESERVE_AUTOPILOT.plan(7),flat=RESERVE_AUTOPILOT.flatten(p),shoppingCalc=RESERVE_AUTOPILOT.shoppingFor(flat),slotsValid=p.days.every(day=>day.every(m=>!m.recipe||RESERVE_AUTOPILOT.forSlot(m.recipe,m.slot))),reasonsValid=p.days.every(day=>day.every(m=>!m.recipe||typeof m.reason==='string'&&m.reason.length>0)),nutritionValid=p.days.every(day=>day.nutrition&&['kcal','protein','fiber'].every(k=>Number.isFinite(day.nutrition[k])&&day.nutrition[k]>=0)),ratios=recipes.map(r=>RESERVE_AUTOPILOT.fitRatio(r)),fitRatioValid=ratios.every(x=>Number.isFinite(x)&&x>=0&&x<=1),ids=recipes.map(r=>r.id),names=recipes.map(r=>r.name.trim().toLocaleLowerCase('de-CH'));return {recipes:RESERVE_AUTOPILOT.recipeCount(),days:p.days.length,slots:p.days.map(d=>d.map(x=>x.slot)),meals:flat.length,shopping:Array.isArray(shoppingCalc),autopilotCard:!!document.getElementById('reserveAutopilot'),sync:!!window.RESERVE_SYNC,slotsValid,reasonsValid,nutritionValid,fitRatioValid,uniqueIds:new Set(ids).size===ids.length,uniqueNames:new Set(names).size===names.length}});
+  if(result.recipes<100)throw new Error(`Produktionsbibliothek enthält ${result.recipes}; mindestens 100 Rezepte erforderlich`);if(!result.uniqueIds)throw new Error('Produktionsbibliothek enthält doppelte Rezept-IDs');if(!result.uniqueNames)throw new Error('Produktionsbibliothek enthält doppelte Rezeptnamen');if(!result.fitRatioValid)throw new Error('Autopilot fitRatio liegt außerhalb des Bereichs 0..1');if(result.days!==7)throw new Error(`Autopilot plant ${result.days} statt 7 Tage`);for(const slots of result.slots)for(const required of ['Frühstück','Mittagessen','Abendessen'])if(!slots.includes(required))throw new Error(`Mahlzeit-Slot fehlt: ${required}`);if(!result.slotsValid)throw new Error('Autopilot hat ein Rezept einem unzulässigen Mahlzeit-Slot zugeordnet');if(!result.reasonsValid)throw new Error('Autopilot liefert nicht für jede geplante Mahlzeit einen Grund');if(!result.nutritionValid)throw new Error('Autopilot liefert ungültige Tages-Nährwerte');if(result.meals<14)throw new Error(`Zu wenige Mahlzeiten geplant: ${result.meals}`);if(!result.shopping)throw new Error('Einkaufsberechnung liefert keine Liste');if(!result.autopilotCard)throw new Error('Autopilot UI fehlt');if(!result.sync)throw new Error('Backup/Sync Modul nicht aktiv');
 
-  const ranking=await page.evaluate(()=>{
-    const candidates=recipes.filter(r=>(!r.status||r.status==='approved')&&r.ingredients?.length&&r.steps?.length);
-    const target=candidates.find(r=>(r.mealTimes||[]).includes('Mittagessen'))||candidates.find(r=>(r.mealTimes||[]).includes('Abendessen'));
-    if(!target)throw new Error('Kein Rezept für Autopilot-Rangtest');
-    stock=[];shopping=[];localStorage.setItem('reserveStock','[]');localStorage.setItem('reserveShopping','[]');
-    adaptRecipe(target).ingredients.forEach(i=>stock.push({n:i.name,q:fmt(i.amount*persons(),i.unit),e:'',c:'Test'}));
-    localStorage.setItem('reserveStock',JSON.stringify(stock));
-    const slot=(target.mealTimes||[]).includes('Mittagessen')?'Mittagessen':'Abendessen';
-    const p=RESERVE_AUTOPILOT.plan(1),meal=p.days[0].find(x=>x.slot===slot);
-    return {target:target.id,chosen:meal?.recipe?.id||'',slot,chosenCookable:meal?.recipe?canCook(meal.recipe):false,reason:meal?.reason||''};
-  });
-  if(!ranking.chosenCookable)throw new Error(`Autopilot-Rangfolge: für ${ranking.slot} wurde trotz kochbarer Auswahl kein vollständig kochbares Rezept gewählt`);
+  const ranking=await page.evaluate(()=>{const candidates=recipes.filter(r=>(!r.status||r.status==='approved')&&r.ingredients?.length&&r.steps?.length),target=candidates.find(r=>(r.mealTimes||[]).includes('Mittagessen'))||candidates.find(r=>(r.mealTimes||[]).includes('Abendessen'));if(!target)throw new Error('Kein Rezept für Autopilot-Rangtest');stock=[];shopping=[];localStorage.setItem('reserveStock','[]');localStorage.setItem('reserveShopping','[]');adaptRecipe(target).ingredients.forEach(i=>stock.push({n:i.name,q:fmt(i.amount*persons(),i.unit),e:'',c:'Test'}));localStorage.setItem('reserveStock',JSON.stringify(stock));const slot=(target.mealTimes||[]).includes('Mittagessen')?'Mittagessen':'Abendessen',p=RESERVE_AUTOPILOT.plan(1),meal=p.days[0].find(x=>x.slot===slot);return {target:target.id,chosen:meal?.recipe?.id||'',slot,chosenCookable:meal?.recipe?canCook(meal.recipe):false,reason:meal?.reason||''}});if(!ranking.chosenCookable)throw new Error(`Autopilot-Rangfolge: für ${ranking.slot} wurde trotz kochbarer Auswahl kein vollständig kochbares Rezept gewählt`);
 
-  const autoShop=await page.evaluate(()=>{
-    stock=[];shopping=[];localStorage.setItem('reserveStock','[]');localStorage.setItem('reserveShopping','[]');RESERVE_AUTOPILOT.render();
-    const button=document.getElementById('reserveAutoShop'),enabled=!!button&&!button.disabled,before=shopping.length;
-    if(enabled)button.click();
-    return {enabled,before,after:shopping.length,text:button?.textContent||''};
-  });
-  if(autoShop.enabled&&autoShop.after<=autoShop.before)throw new Error('Autopilot-Einkaufsbutton hat keine fehlenden Mengen ergänzt');
+  const autoShop=await page.evaluate(()=>{stock=[];shopping=[];localStorage.setItem('reserveStock','[]');localStorage.setItem('reserveShopping','[]');RESERVE_AUTOPILOT.render();const button=document.getElementById('reserveAutoShop'),enabled=!!button&&!button.disabled,before=shopping.length;if(enabled)button.click();return {enabled,before,after:shopping.length,text:button?.textContent||''}});if(autoShop.enabled&&autoShop.after<=autoShop.before)throw new Error('Autopilot-Einkaufsbutton hat keine fehlenden Mengen ergänzt');
 
-  const loop=await page.evaluate(()=>{
-    const recipe=recipes.find(r=>(!r.status||r.status==='approved')&&r.ingredients?.length&&r.steps?.length);
-    if(!recipe)throw new Error('Kein Rezept für Kreislauftest gefunden');
-    const adapted=adaptRecipe(recipe),peopleCount=persons();stock=[];shopping=[];
-    localStorage.setItem('reserveStock','[]');localStorage.setItem('reserveShopping','[]');
-    adapted.ingredients.forEach(i=>shopping.push({n:i.name,q:fmt(i.amount*peopleCount,i.unit)}));saveShop();
-    const shoppingBefore=shopping.length;while(shopping.length)window.purchaseToStock(0);const stockAfterPurchase=stock.length;const cookableBefore=canCook(recipe);
-    const before=adapted.ingredients.map(i=>({name:i.name,unit:i.unit,available:availableAmount(i.name,i.unit)}));
-    localStorage.setItem('reserveCookProgress:'+recipe.id,JSON.stringify(recipe.steps.map(()=>true)));window.finishCook(recipe.id);
-    const after=adapted.ingredients.map(i=>({name:i.name,unit:i.unit,available:availableAmount(i.name,i.unit)}));
-    const deducted=before.every((x,i)=>after[i].available<x.available||before[i].available===0),progressCleared=localStorage.getItem('reserveCookProgress:'+recipe.id)===null,replanned=RESERVE_AUTOPILOT.plan(7);
-    return {recipe:recipe.name,shoppingBefore,shoppingAfter:shopping.length,stockAfterPurchase,cookableBefore,deducted,progressCleared,replannedDays:replanned.days.length};
-  });
-  if(loop.shoppingBefore<1)throw new Error('Kreislauf: Einkaufsliste wurde nicht befüllt');
-  if(loop.shoppingAfter!==0)throw new Error(`Kreislauf: ${loop.shoppingAfter} Einkaufspositionen blieben nach Kauf übrig`);
-  if(loop.stockAfterPurchase<1)throw new Error('Kreislauf: Einkauf wurde nicht in Vorrat übernommen');
-  if(!loop.cookableBefore)throw new Error('Kreislauf: Rezept ist nach Einkauf nicht kochbar');
-  if(!loop.deducted)throw new Error('Kreislauf: Vorratsmengen wurden nach Kochen nicht korrekt reduziert');
-  if(!loop.progressCleared)throw new Error('Kreislauf: Kochfortschritt wurde nicht zurückgesetzt');
-  if(loop.replannedDays!==7)throw new Error('Kreislauf: Autopilot wurde nach dem Kochen nicht korrekt neu berechnet');
-  if(errors.length)throw new Error('Browserfehler: '+errors.join(' | '));
-  console.log(`✓ RESERVE ${result.recipes}-Rezepte Browser-E2E bestanden`,result);console.log('✓ Autopilot Kochbar-zuerst bestanden',ranking);console.log('✓ Autopilot Einkauf bestanden',autoShop);console.log('✓ RESERVE Vollkreislauf bestanden',loop);
+  const loop=await page.evaluate(()=>{const recipe=recipes.find(r=>(!r.status||r.status==='approved')&&r.ingredients?.length&&r.steps?.length);if(!recipe)throw new Error('Kein Rezept für Kreislauftest gefunden');const adapted=adaptRecipe(recipe),peopleCount=persons();stock=[];shopping=[];localStorage.setItem('reserveStock','[]');localStorage.setItem('reserveShopping','[]');adapted.ingredients.forEach(i=>shopping.push({n:i.name,q:fmt(i.amount*peopleCount,i.unit)}));saveShop();const shoppingBefore=shopping.length;while(shopping.length)window.purchaseToStock(0);const stockAfterPurchase=stock.length,cookableBefore=canCook(recipe),before=adapted.ingredients.map(i=>({name:i.name,unit:i.unit,available:availableAmount(i.name,i.unit)}));localStorage.setItem('reserveCookProgress:'+recipe.id,JSON.stringify(recipe.steps.map(()=>true)));window.finishCook(recipe.id);const after=adapted.ingredients.map(i=>({name:i.name,unit:i.unit,available:availableAmount(i.name,i.unit)})),deducted=before.every((x,i)=>after[i].available<x.available||before[i].available===0),progressCleared=localStorage.getItem('reserveCookProgress:'+recipe.id)===null,replanned=RESERVE_AUTOPILOT.plan(7);return {recipe:recipe.name,shoppingBefore,shoppingAfter:shopping.length,stockAfterPurchase,cookableBefore,deducted,progressCleared,replannedDays:replanned.days.length}});
+  if(loop.shoppingBefore<1)throw new Error('Kreislauf: Einkaufsliste wurde nicht befüllt');if(loop.shoppingAfter!==0)throw new Error(`Kreislauf: ${loop.shoppingAfter} Einkaufspositionen blieben nach Kauf übrig`);if(loop.stockAfterPurchase<1)throw new Error('Kreislauf: Einkauf wurde nicht in Vorrat übernommen');if(!loop.cookableBefore)throw new Error('Kreislauf: Rezept ist nach Einkauf nicht kochbar');if(!loop.deducted)throw new Error('Kreislauf: Vorratsmengen wurden nach Kochen nicht korrekt reduziert');if(!loop.progressCleared)throw new Error('Kreislauf: Kochfortschritt wurde nicht zurückgesetzt');if(loop.replannedDays!==7)throw new Error('Kreislauf: Autopilot wurde nach dem Kochen nicht korrekt neu berechnet');
+
+  const reserve=await page.evaluate(()=>{const oldEmergency=window.RESERVE_EMERGENCY;window.RESERVE_EMERGENCY={...(oldEmergency||{}),protectedReserve:()=>({enabled:true,safe:true,mealGap:0,mealTarget:21})};stock=[{n:'Testreis',q:'600 g',e:'2030-01-01',c:'Normal',reserveProtected:false},{n:'Testreis',q:'600 g',e:'2030-01-02',c:'Reserve',reserveProtected:true}];localStorage.setItem('reserveStock',JSON.stringify(stock));const protectedAvailable=availableAmount('Testreis','g'),ledgerProtected=stockLedger()['testreis']?.v||0;window.RESERVE_EMERGENCY={...(oldEmergency||{}),protectedReserve:()=>({enabled:false,safe:true,mealGap:0,mealTarget:21})};const unprotectedAvailable=availableAmount('Testreis','g'),ledgerUnprotected=stockLedger()['testreis']?.v||0;window.RESERVE_EMERGENCY=oldEmergency;return {protectedAvailable,ledgerProtected,unprotectedAvailable,ledgerUnprotected}});
+  if(reserve.protectedAvailable!==600||reserve.ledgerProtected!==600)throw new Error('Notreserve-Schutz: geschützte Charge wurde dem Normalbestand zugerechnet');if(reserve.unprotectedAvailable!==1200||reserve.ledgerUnprotected!==1200)throw new Error('Notreserve-Schutz: deaktivierter Schutz gibt Reserve nicht korrekt frei');
+
+  const emergencyPurchase=await page.evaluate(()=>{stock=[];shopping=[{n:'Notwasser Test',q:'9 l',emergencyGenerated:true}];localStorage.setItem('reserveStock','[]');localStorage.setItem('reserveShopping',JSON.stringify(shopping));window.purchaseToStock(0);const added=stock.find(x=>x.n==='Notwasser Test');return {exists:!!added,protected:!!added?.reserveProtected,shoppingLeft:shopping.length}});if(!emergencyPurchase.exists||!emergencyPurchase.protected)throw new Error('Notreserve-Einkauf wird nicht automatisch geschützt');if(emergencyPurchase.shoppingLeft!==0)throw new Error('Notreserve-Einkauf bleibt nach Übernahme in Einkaufsliste');
+
+  const intelligence=await page.evaluate(()=>{const api=window.RESERVE_PANTRY_INTELLIGENCE;stock=[{n:'Testnudeln',q:'1000 g',e:'2030-01-01',c:'Normal',reserveProtected:false}];localStorage.setItem('reserveStock',JSON.stringify(stock));const warnings=api.consumptionWarnings(7);return {version:api.version,forecast:Array.isArray(api.quantityForecast(7)),warnings:Array.isArray(warnings),actions:warnings.every(w=>!w.action||typeof w.actionLabel==='string')}});if(!intelligence.forecast||!intelligence.warnings||!intelligence.actions)throw new Error('Vorratsintelligenz: Prognose/Warnungsaktionen ungültig');
+
+  if(errors.length)throw new Error('Browserfehler: '+errors.join(' | '));console.log(`✓ RESERVE ${result.recipes}-Rezepte Browser-E2E bestanden`,result);console.log('✓ Autopilot Kochbar-zuerst bestanden',ranking);console.log('✓ Autopilot Einkauf bestanden',autoShop);console.log('✓ RESERVE Vollkreislauf bestanden',loop);console.log('✓ Notreserve-Schutz bestanden',reserve);console.log('✓ Notreserve-Einkauf bestanden',emergencyPurchase);console.log('✓ Vorratsintelligenz bestanden',intelligence);
 }finally{await browser.close();server.close()}
