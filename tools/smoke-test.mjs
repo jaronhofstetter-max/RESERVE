@@ -9,13 +9,24 @@ const recipes=JSON.parse(fs.readFileSync('data/recipes.json','utf8'));
 if(!Array.isArray(recipes)||recipes.length<50) fail('Produktionsbibliothek enthält weniger als 50 Rezepte');
 else ok(`Produktionsbibliothek geladen: ${recipes.length} Rezepte`);
 
-const modules=['shopping-v2.js','reserve-core-v3.js','cloud-sync-v1.js','barcode-v1.js','autopilot-v1.js'];
+const modules=['shopping-v2.js','reserve-core-v3.js','cloud-sync-v1.js','barcode-v1.js','autopilot-v1.js','recipe-index-runtime-v1.js','recipe-detail-runtime-v1.js'];
 for(const file of modules){if(!fs.existsSync(file)) fail(`${file} fehlt`);else ok(`${file} vorhanden`)}
 
 for(const needle of ['id="stock"','id="shopping"','id="cook"','id="profile"','id="shopList"']){
   if(!html.includes(needle)) fail(`UI-Anker ${needle} fehlt`);else ok(`UI-Anker ${needle} vorhanden`);
 }
 for(const module of modules){if(!html.includes(`<script src="${module}"></script>`)) fail(`${module} ist im Produktions-HTML nicht eingebunden`);else ok(`${module} im Produktions-HTML eingebunden`)}
+
+const catalogPath='data/recipe-catalog.json',manifestPath='data/recipe-details-manifest.json';
+if(!fs.existsSync(catalogPath)||!fs.existsSync(manifestPath))fail('Kompakte Rezeptauslieferung wurde nicht erzeugt');
+else{
+  const catalog=JSON.parse(fs.readFileSync(catalogPath,'utf8')),manifest=JSON.parse(fs.readFileSync(manifestPath,'utf8'));
+  if(catalog.length!==recipes.length)fail(`Rezeptkatalog enthält ${catalog.length} statt ${recipes.length} Rezepte`);else ok(`Kompakter Rezeptkatalog enthält ${catalog.length} Rezepte`);
+  if(manifest.count!==recipes.length)fail('Detail-Manifest passt nicht zur Produktionsbibliothek');else ok(`Detail-Manifest deckt ${manifest.count} Rezepte ab`);
+  const shardPaths=[...new Set(Object.values(manifest.recipes||{}))];
+  if(!shardPaths.length||shardPaths.some(p=>!fs.existsSync(p)))fail('Mindestens ein Rezept-Detailshard fehlt');else ok(`${shardPaths.length} Rezept-Detailshards vorhanden`);
+  if(!html.includes("fetch('data/recipe-catalog.json',{cache:'no-store'})"))fail('Produktions-HTML lädt nicht den kompakten Rezeptkatalog');else ok('Produktions-HTML lädt kompakten Rezeptkatalog');
+}
 
 const core=fs.readFileSync('reserve-core-v3.js','utf8');
 for(const fn of ['finishCook','purchaseToStock','renderCook','renderStock']){if(!core.includes(fn)) fail(`Core-Funktion ${fn} fehlt`);else ok(`Core-Funktion ${fn} vorhanden`)}
