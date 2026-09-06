@@ -46,6 +46,7 @@ jobs:
           node --check pantry-intelligence-v1.js
           node --check recipe-index-runtime-v1.js
           node --check recipe-detail-runtime-v1.js
+          node --check tools/e2e-consumption.mjs
       - name: Enable compact recipe delivery
         run: sed -i "s#fetch('data/recipes.json',{cache:'no-store'})#fetch('data/recipe-catalog.json',{cache:'no-store'})#" index.html
       - name: Enable RESERVE feature modules
@@ -57,7 +58,9 @@ jobs:
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
       - name: Browser end-to-end test
-        run: node tools/e2e-reserve.mjs
+        run: |
+          node tools/e2e-reserve.mjs
+          node tools/e2e-consumption.mjs
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
