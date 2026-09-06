@@ -1,0 +1,14 @@
+/* RESERVE consumption learning v1.0 — local household usage history and conservative demand forecasts. */
+(function(){
+  const KEY='reserveConsumptionHistoryV1',MAX=2000;
+  const norm=s=>{try{return typeof N==='function'?N(s):String(s||'').toLowerCase()}catch{return String(s||'').toLowerCase()}};
+  const unit=u=>String(u||'').toLowerCase()==='stück'?'stück':String(u||'').toLowerCase();
+  function read(){try{const x=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(x)?x:[]}catch{return []}}
+  function write(rows){localStorage.setItem(KEY,JSON.stringify((rows||[]).slice(-MAX)))}
+  function record(event){const amount=Number(event?.amount);if(!event?.name||!Number.isFinite(amount)||amount<=0)return null;const row={id:'use-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8),at:event.at||new Date().toISOString(),name:event.name,amount,unit:unit(event.unit),source:event.source||'unknown'};if(event.recipeId)row.recipeId=event.recipeId;if(event.recipeName)row.recipeName=event.recipeName;const rows=read();rows.push(row);write(rows);return row}
+  function recordBatch(events,meta={}){const at=meta.at||new Date().toISOString(),rows=read(),added=[];(events||[]).forEach(e=>{const amount=Number(e?.amount);if(!e?.name||!Number.isFinite(amount)||amount<=0)return;const row={id:'use-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8),at,name:e.name,amount,unit:unit(e.unit),source:meta.source||e.source||'unknown'};if(meta.recipeId)row.recipeId=meta.recipeId;if(meta.recipeName)row.recipeName=meta.recipeName;rows.push(row);added.push(row)});write(rows);return added}
+  function history(name,u,days=90){const cutoff=Date.now()-Math.max(1,days)*86400000,n=norm(name),cu=unit(u);return read().filter(x=>Date.parse(x.at)>=cutoff&&norm(x.name)===n&&(!cu||unit(x.unit)===cu))}
+  function forecast(name,u,days=7,lookback=90){const rows=history(name,u,lookback),dates=rows.map(x=>Date.parse(x.at)).filter(Number.isFinite);if(!rows.length)return{known:false,name,unit:unit(u),days,events:0,daily:0,expected:0,confidence:'none'};const total=rows.reduce((s,x)=>s+Number(x.amount||0),0),oldest=Math.min(...dates),observed=Math.max(1,Math.min(lookback,(Date.now()-oldest)/86400000+1)),daily=total/observed,span=Math.max(0,(Math.max(...dates)-oldest)/86400000),confidence=rows.length>=8&&span>=21?'high':rows.length>=4&&span>=7?'medium':'low';return{known:true,name,unit:unit(u),days,events:rows.length,observedDays:+observed.toFixed(1),daily:+daily.toFixed(3),expected:+(daily*days).toFixed(2),confidence}}
+  function summary(days=7,lookback=90){const groups=new Map();read().forEach(x=>{const k=norm(x.name)+'|'+unit(x.unit);if(!groups.has(k))groups.set(k,{name:x.name,unit:unit(x.unit)});});return [...groups.values()].map(x=>forecast(x.name,x.unit,days,lookback)).filter(x=>x.known).sort((a,b)=>b.expected-a.expected)}
+  window.RESERVE_CONSUMPTION={version:'1.0',record,recordBatch,history,forecast,summary,read};
+})();
