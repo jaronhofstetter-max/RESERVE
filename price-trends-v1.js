@@ -1,0 +1,11 @@
+/* RESERVE Price Trends v1.0 — turn durable purchases into price-change and savings signals. */
+(function(){
+ const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');
+ function rows(){try{return window.RESERVE_PURCHASE_HISTORY?.rows?.()||[]}catch{return[]}}
+ function productRows(name){const key=norm(name);return rows().filter(x=>x.key===key||x.key?.includes(key)||key.includes(x.key||'')).sort((a,b)=>String(a.purchasedAt).localeCompare(String(b.purchasedAt)))}
+ function trend(name,u){const xs=productRows(name).filter(x=>!u||x.unit===String(u).toLowerCase()||((u==='l')&&x.unit==='ml')||((u==='kg')&&x.unit==='g'));if(!xs.length)return null;const latest=xs[xs.length-1],previous=xs.length>1?xs[xs.length-2]:null;const latestRate=+latest.rate||0,previousRate=previous?(+previous.rate||0):null,change=previousRate>0?(latestRate-previousRate)/previousRate*100:null;return{name:latest.name,observations:xs.length,latestRate,previousRate,changePct:change,direction:change==null?'unknown':change>1?'up':change<-1?'down':'stable',latestAt:latest.purchasedAt,unit:latest.unit}}
+ function allTrends(){const seen=new Set(),out=[];for(const x of rows().slice().reverse()){if(seen.has(x.key))continue;seen.add(x.key);const t=trend(x.name);if(t)out.push(t)}return out}
+ function baseline(name,u){const xs=productRows(name);if(xs.length<2)return null;const old=xs.slice(0,-1),q=old.reduce((s,x)=>s+(+x.quantity||0),0);if(q<=0)return null;const base=old.reduce((s,x)=>s+(+x.rate||0)*(+x.quantity||0),0)/q;if(u==='kg')return base*1000;if(u==='l')return base*1000;return base}
+ function shoppingSavings(items){let current=0,baselineCost=0,compared=0;for(const x of items||[]){const q=+x.quantity||+x.v||0,u=x.unit||x.u||'stück',name=x.name||x.n||'';let cur=null;try{cur=window.RESERVE_PRICE_LEARNING?.learnedRate?.(name,u)}catch{}const old=baseline(name,u);if(Number.isFinite(cur)&&Number.isFinite(old)&&q>0){current+=cur*q;baselineCost+=old*q;compared++}}return{compared,current:Math.round(current*100)/100,baseline:Math.round(baselineCost*100)/100,savings:Math.round((baselineCost-current)*100)/100}}
+ window.RESERVE_PRICE_TRENDS={version:'1.0',productRows,trend,allTrends,baseline,shoppingSavings};
+})();
