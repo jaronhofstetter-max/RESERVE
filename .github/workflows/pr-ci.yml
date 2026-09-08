@@ -33,6 +33,8 @@ jobs:
           node --check cloud-sync-v1.js
           node --check barcode-v1.js
           node --check receipt-capture-v1.js
+          node --check price-learning-v1.js
+          node --check weekly-price-bridge-v1.js
           node --check autopilot-v1.js
           node --check autopilot-v2.js
           node --check emergency-food-classifier-v1.js
@@ -53,10 +55,11 @@ jobs:
           node --check tools/e2e-weekly-plan-v2.mjs
           node --check tools/e2e-smart-today.mjs
           node --check tools/e2e-receipt-capture.mjs
+          node --check tools/e2e-price-learning.mjs
       - name: Enable compact recipe delivery
         run: sed -i "s#fetch('data/recipes.json',{cache:'no-store'})#fetch('data/recipe-catalog.json',{cache:'no-store'})#" index.html
       - name: Enable RESERVE feature modules
-        run: sed -i 's#</body>#<script src="shopping-v2.js"></script><script src="reserve-core-v3.js"></script><script src="cloud-sync-v1.js"></script><script src="barcode-v1.js"></script><script src="receipt-capture-v1.js"></script><script src="autopilot-v1.js"></script><script src="emergency-food-classifier-v1.js"></script><script src="emergency-v1.js"></script><script src="recipe-index-runtime-v1.js"></script><script src="recipe-detail-runtime-v1.js"></script><script src="consumption-learning-v1.js"></script><script src="expiry-consumption-v1.js"></script><script src="expiry-ui-v1.js"></script><script src="reserve-stock-protection-v1.js"></script><script src="pantry-intelligence-v1.js"></script><script src="smart-priorities-v1.js"></script><script src="today-dashboard-v1.js"></script><script src="weekly-plan-v2.js"></script><script src="autopilot-v2.js"></script></body>#' index.html
+        run: sed -i 's#</body>#<script src="shopping-v2.js"></script><script src="reserve-core-v3.js"></script><script src="cloud-sync-v1.js"></script><script src="barcode-v1.js"></script><script src="receipt-capture-v1.js"></script><script src="price-learning-v1.js"></script><script src="autopilot-v1.js"></script><script src="emergency-food-classifier-v1.js"></script><script src="emergency-v1.js"></script><script src="recipe-index-runtime-v1.js"></script><script src="recipe-detail-runtime-v1.js"></script><script src="consumption-learning-v1.js"></script><script src="expiry-consumption-v1.js"></script><script src="expiry-ui-v1.js"></script><script src="reserve-stock-protection-v1.js"></script><script src="pantry-intelligence-v1.js"></script><script src="smart-priorities-v1.js"></script><script src="today-dashboard-v1.js"></script><script src="weekly-plan-v2.js"></script><script src="weekly-price-bridge-v1.js"></script><script src="autopilot-v2.js"></script></body>#' index.html
       - name: Smoke test production build
         run: node tools/smoke-test.mjs
       - name: Install browser test runtime
@@ -72,3 +75,4 @@ jobs:
           node tools/e2e-weekly-plan-v2.mjs
           node tools/e2e-smart-today.mjs
           node tools/e2e-receipt-capture.mjs
+          node tools/e2e-price-learning.mjs
