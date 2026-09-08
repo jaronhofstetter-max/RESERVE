@@ -1,0 +1,535 @@
+[
+  {
+    "id": "apfel-hafer-bowl",
+    "name": "Apfel-Hafer-Bowl",
+    "image": "assets/recipes/apfel-hafer-bowl.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Apfel-Hafer-Bowl, single bowl meal, visible recipe ingredients: Haferflocken, Haferdrink, Apfel, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Haferflocken",
+      "Haferdrink",
+      "Apfel"
+    ],
+    "dishForm": "single bowl meal",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "apfel-joghurt-bowl",
+    "name": "Apfel-Joghurt-Bowl",
+    "image": "assets/recipes/apfel-joghurt-bowl.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Apfel-Joghurt-Bowl, single bowl meal, visible recipe ingredients: Naturjoghurt, Apfel, Haferflocken, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Naturjoghurt",
+      "Apfel",
+      "Haferflocken"
+    ],
+    "dishForm": "single bowl meal",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "apfel-porridge",
+    "name": "Apfel-Porridge",
+    "image": "assets/recipes/apfel-porridge.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Apfel-Porridge, creamy cooked oat porridge, visible recipe ingredients: Haferflocken, Haferdrink, Apfel, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Haferflocken",
+      "Haferdrink",
+      "Apfel"
+    ],
+    "dishForm": "creamy cooked oat porridge",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "bananen-joghurt-mueesli",
+    "name": "Bananen-Joghurt-Müesli",
+    "image": "assets/recipes/bananen-joghurt-mueesli.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Bananen-Joghurt-Müesli, muesli bowl with visible oat flakes, visible recipe ingredients: Naturjoghurt, Haferflocken, Banane, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Naturjoghurt",
+      "Haferflocken",
+      "Banane"
+    ],
+    "dishForm": "muesli bowl with visible oat flakes",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "bananen-porridge-zimt",
+    "name": "Bananen-Porridge mit Zimt",
+    "image": "assets/recipes/bananen-porridge-zimt.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Bananen-Porridge mit Zimt, creamy cooked oat porridge, visible recipe ingredients: Haferflocken, Haferdrink, Banane, Zimt, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Haferflocken",
+      "Haferdrink",
+      "Banane",
+      "Zimt"
+    ],
+    "dishForm": "creamy cooked oat porridge",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "beeren-hafer-bowl",
+    "name": "Beeren-Hafer-Bowl",
+    "image": "assets/recipes/beeren-hafer-bowl.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Beeren-Hafer-Bowl, single bowl meal, visible recipe ingredients: Haferflocken, Haferdrink, Beeren, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Haferflocken",
+      "Haferdrink",
+      "Beeren"
+    ],
+    "dishForm": "single bowl meal",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "beeren-joghurt-bowl",
+    "name": "Beeren-Joghurt-Bowl",
+    "image": "assets/recipes/beeren-joghurt-bowl.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Beeren-Joghurt-Bowl, single bowl meal, visible recipe ingredients: Naturjoghurt, Beeren, Haferflocken, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Naturjoghurt",
+      "Beeren",
+      "Haferflocken"
+    ],
+    "dishForm": "single bowl meal",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "beeren-porridge",
+    "name": "Beeren-Porridge",
+    "image": "assets/recipes/beeren-porridge.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Beeren-Porridge, creamy cooked oat porridge, visible recipe ingredients: Haferflocken, Haferdrink, Beeren, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Haferflocken",
+      "Haferdrink",
+      "Beeren"
+    ],
+    "dishForm": "creamy cooked oat porridge",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "bircher-mueesli",
+    "name": "Bircher-Müesli",
+    "image": "assets/recipes/bircher-mueesli.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Bircher-Müesli, muesli bowl with visible oat flakes, visible recipe ingredients: Haferflocken, Naturjoghurt, Apfel, Milch, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Haferflocken",
+      "Naturjoghurt",
+      "Apfel",
+      "Milch"
+    ],
+    "dishForm": "muesli bowl with visible oat flakes",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "brokkoli-reis-pfanne",
+    "name": "Brokkoli-Reis-Pfanne",
+    "image": "assets/recipes/brokkoli-reis-pfanne.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Brokkoli-Reis-Pfanne, cooked rice dish with distinct rice grains, visible recipe ingredients: Reis, Brokkoli, Zwiebel, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Reis",
+      "Brokkoli",
+      "Zwiebel",
+      "Olivenöl"
+    ],
+    "dishForm": "cooked rice dish with distinct rice grains",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "gemuese-omelette",
+    "name": "Gemüse-Omelette",
+    "image": "assets/recipes/gemuese-omelette.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Gemüse-Omelette, omelette made from beaten eggs, visible recipe ingredients: Eier, Brokkoli, Tomaten, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Eier",
+      "Brokkoli",
+      "Tomaten",
+      "Olivenöl"
+    ],
+    "dishForm": "omelette made from beaten eggs",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "gemuesesuppe-brot",
+    "name": "Gemüsesuppe mit Brot",
+    "image": "assets/recipes/gemuesesuppe-brot.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Gemüsesuppe mit Brot, soup, visible recipe ingredients: Karotten, Kartoffeln, Zwiebel, Vollkornbrot, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Karotten",
+      "Kartoffeln",
+      "Zwiebel",
+      "Vollkornbrot"
+    ],
+    "dishForm": "soup",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "gurken-kaese-brot",
+    "name": "Gurken-Käse-Brot",
+    "image": "assets/recipes/gurken-kaese-brot.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Gurken-Käse-Brot, bread or toast dish, visible recipe ingredients: Vollkornbrot, Käse, Gurke, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Vollkornbrot",
+      "Käse",
+      "Gurke"
+    ],
+    "dishForm": "bread or toast dish",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "hackfleisch-reis-pfanne",
+    "name": "Hackfleisch-Reis-Pfanne",
+    "image": "assets/recipes/hackfleisch-reis-pfanne.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Hackfleisch-Reis-Pfanne, cooked rice dish with distinct rice grains, visible recipe ingredients: Rinderhackfleisch, Reis, Paprika, Zwiebel, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Rinderhackfleisch",
+      "Reis",
+      "Paprika",
+      "Zwiebel"
+    ],
+    "dishForm": "cooked rice dish with distinct rice grains",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "joghurt-fruechte-bowl",
+    "name": "Joghurt-Früchte-Bowl",
+    "image": "assets/recipes/joghurt-fruechte-bowl.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Joghurt-Früchte-Bowl, single bowl meal, visible recipe ingredients: Naturjoghurt, Haferflocken, Banane, Beeren, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Naturjoghurt",
+      "Haferflocken",
+      "Banane",
+      "Beeren"
+    ],
+    "dishForm": "single bowl meal",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "kaese-omelette",
+    "name": "Käse-Omelette",
+    "image": "assets/recipes/kaese-omelette.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Käse-Omelette, omelette made from beaten eggs, visible recipe ingredients: Eier, Käse, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Eier",
+      "Käse",
+      "Olivenöl"
+    ],
+    "dishForm": "omelette made from beaten eggs",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "kartoffel-brokkoli-pfanne",
+    "name": "Kartoffel-Brokkoli-Pfanne",
+    "image": "assets/recipes/kartoffel-brokkoli-pfanne.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Kartoffel-Brokkoli-Pfanne, simple home-cooked plated meal, visible recipe ingredients: Kartoffeln, Brokkoli, Zwiebel, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Kartoffeln",
+      "Brokkoli",
+      "Zwiebel",
+      "Olivenöl"
+    ],
+    "dishForm": "simple home-cooked plated meal",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "kartoffel-ei-pfanne",
+    "name": "Kartoffel-Ei-Pfanne",
+    "image": "assets/recipes/kartoffel-ei-pfanne.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Kartoffel-Ei-Pfanne, simple home-cooked plated meal, visible recipe ingredients: Kartoffeln, Eier, Zwiebel, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Kartoffeln",
+      "Eier",
+      "Zwiebel",
+      "Olivenöl"
+    ],
+    "dishForm": "simple home-cooked plated meal",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "kartoffeln-kraeuterquark",
+    "name": "Kartoffeln mit Kräuterquark",
+    "image": "assets/recipes/kartoffeln-kraeuterquark.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Kartoffeln mit Kräuterquark, simple home-cooked plated meal, visible recipe ingredients: Kartoffeln, Quark, Gurke, Kräuter, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Kartoffeln",
+      "Quark",
+      "Gurke",
+      "Kräuter"
+    ],
+    "dishForm": "simple home-cooked plated meal",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "kichererbsen-reis-pfanne",
+    "name": "Kichererbsen-Reis-Pfanne",
+    "image": "assets/recipes/kichererbsen-reis-pfanne.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Kichererbsen-Reis-Pfanne, cooked rice dish with distinct rice grains, visible recipe ingredients: Kichererbsen, Reis, Paprika, Tomaten, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Kichererbsen",
+      "Reis",
+      "Paprika",
+      "Tomaten"
+    ],
+    "dishForm": "cooked rice dish with distinct rice grains",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "kichererbsen-tomaten-topf",
+    "name": "Kichererbsen-Tomaten-Topf",
+    "image": "assets/recipes/kichererbsen-tomaten-topf.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Kichererbsen-Tomaten-Topf, moist stew, visible recipe ingredients: Kichererbsen, Tomaten, Zwiebel, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Kichererbsen",
+      "Tomaten",
+      "Zwiebel",
+      "Olivenöl"
+    ],
+    "dishForm": "moist stew",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "linsen-gemuese-bowl",
+    "name": "Linsen-Gemüse-Bowl",
+    "image": "assets/recipes/linsen-gemuese-bowl.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Linsen-Gemüse-Bowl, single bowl meal, visible recipe ingredients: Linsen, Reis, Karotten, Tomaten, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Linsen",
+      "Reis",
+      "Karotten",
+      "Tomaten"
+    ],
+    "dishForm": "single bowl meal",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "linsen-kartoffel-topf",
+    "name": "Linsen-Kartoffel-Topf",
+    "image": "assets/recipes/linsen-kartoffel-topf.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Linsen-Kartoffel-Topf, moist stew, visible recipe ingredients: Linsen, Kartoffeln, Karotten, Zwiebel, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Linsen",
+      "Kartoffeln",
+      "Karotten",
+      "Zwiebel"
+    ],
+    "dishForm": "moist stew",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "linsen-reis-pfanne",
+    "name": "Linsen-Reis-Pfanne",
+    "image": "assets/recipes/linsen-reis-pfanne.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Linsen-Reis-Pfanne, cooked rice dish with distinct rice grains, visible recipe ingredients: Linsen, Reis, Karotten, Zwiebel, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Linsen",
+      "Reis",
+      "Karotten",
+      "Zwiebel"
+    ],
+    "dishForm": "cooked rice dish with distinct rice grains",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "paprika-reis-pfanne",
+    "name": "Paprika-Reis-Pfanne",
+    "image": "assets/recipes/paprika-reis-pfanne.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Paprika-Reis-Pfanne, cooked rice dish with distinct rice grains, visible recipe ingredients: Reis, Paprika, Zwiebel, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Reis",
+      "Paprika",
+      "Zwiebel",
+      "Olivenöl"
+    ],
+    "dishForm": "cooked rice dish with distinct rice grains",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "pasta-brokkoli",
+    "name": "Pasta mit Brokkoli",
+    "image": "assets/recipes/pasta-brokkoli.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Pasta mit Brokkoli, cooked pasta dish, visible recipe ingredients: Vollkornpasta, Brokkoli, Olivenöl, Zwiebel, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Vollkornpasta",
+      "Brokkoli",
+      "Olivenöl",
+      "Zwiebel"
+    ],
+    "dishForm": "cooked pasta dish",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "porridge-banane",
+    "name": "Porridge mit Banane",
+    "image": "assets/recipes/porridge-banane.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Porridge mit Banane, creamy cooked oat porridge, visible recipe ingredients: Haferflocken, Banane, Haferdrink, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Haferflocken",
+      "Banane",
+      "Haferdrink"
+    ],
+    "dishForm": "creamy cooked oat porridge",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "poulet-gemuese-pfanne",
+    "name": "Poulet-Gemüse-Pfanne",
+    "image": "assets/recipes/poulet-gemuese-pfanne.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Poulet-Gemüse-Pfanne, simple home-cooked plated meal, visible recipe ingredients: Poulet, Brokkoli, Paprika, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Poulet",
+      "Brokkoli",
+      "Paprika",
+      "Olivenöl"
+    ],
+    "dishForm": "simple home-cooked plated meal",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "poulet-kartoffel-pfanne",
+    "name": "Poulet-Kartoffel-Pfanne",
+    "image": "assets/recipes/poulet-kartoffel-pfanne.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Poulet-Kartoffel-Pfanne, simple home-cooked plated meal, visible recipe ingredients: Poulet, Kartoffeln, Paprika, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Poulet",
+      "Kartoffeln",
+      "Paprika",
+      "Olivenöl"
+    ],
+    "dishForm": "simple home-cooked plated meal",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "poulet-reis-bowl",
+    "name": "Poulet-Reis-Bowl mit Brokkoli",
+    "image": "assets/recipes/poulet-reis-bowl.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Poulet-Reis-Bowl mit Brokkoli, cooked rice dish with distinct rice grains, visible recipe ingredients: Poulet, Reis, Brokkoli, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Poulet",
+      "Reis",
+      "Brokkoli",
+      "Olivenöl"
+    ],
+    "dishForm": "cooked rice dish with distinct rice grains",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "reis-gemuese-ei",
+    "name": "Reis-Gemüse-Pfanne mit Ei",
+    "image": "assets/recipes/reis-gemuese-ei.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Reis-Gemüse-Pfanne mit Ei, cooked rice dish with distinct rice grains, visible recipe ingredients: Reis, Eier, Brokkoli, Karotten, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Reis",
+      "Eier",
+      "Brokkoli",
+      "Karotten"
+    ],
+    "dishForm": "cooked rice dish with distinct rice grains",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "spaghetti-bolognese",
+    "name": "Spaghetti Bolognese",
+    "image": "assets/recipes/spaghetti-bolognese.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Spaghetti Bolognese, cooked pasta dish, visible recipe ingredients: Spaghetti, Rinderhackfleisch, Tomaten, Zwiebel, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Spaghetti",
+      "Rinderhackfleisch",
+      "Tomaten",
+      "Zwiebel",
+      "Olivenöl"
+    ],
+    "dishForm": "cooked pasta dish",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "spinat-omelette",
+    "name": "Spinat-Omelette",
+    "image": "assets/recipes/spinat-omelette.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Spinat-Omelette, omelette made from beaten eggs, visible recipe ingredients: Eier, Spinat, Tomaten, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Eier",
+      "Spinat",
+      "Tomaten",
+      "Olivenöl"
+    ],
+    "dishForm": "omelette made from beaten eggs",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "spinat-ruehrei",
+    "name": "Spinat-Rührei",
+    "image": "assets/recipes/spinat-ruehrei.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Spinat-Rührei, simple home-cooked plated meal, visible recipe ingredients: Eier, Spinat, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Eier",
+      "Spinat",
+      "Olivenöl"
+    ],
+    "dishForm": "simple home-cooked plated meal",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "tomaten-kaese-brot",
+    "name": "Tomaten-Käse-Brot",
+    "image": "assets/recipes/tomaten-kaese-brot.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Tomaten-Käse-Brot, bread or toast dish, visible recipe ingredients: Vollkornbrot, Tomaten, Käse, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Vollkornbrot",
+      "Tomaten",
+      "Käse"
+    ],
+    "dishForm": "bread or toast dish",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "tomaten-reis-pfanne",
+    "name": "Tomaten-Reis-Pfanne",
+    "image": "assets/recipes/tomaten-reis-pfanne.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Tomaten-Reis-Pfanne, cooked rice dish with distinct rice grains, visible recipe ingredients: Reis, Tomaten, Zwiebel, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Reis",
+      "Tomaten",
+      "Zwiebel",
+      "Olivenöl"
+    ],
+    "dishForm": "cooked rice dish with distinct rice grains",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "tomaten-ruehrei",
+    "name": "Tomaten-Rührei",
+    "image": "assets/recipes/tomaten-ruehrei.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Tomaten-Rührei, simple home-cooked plated meal, visible recipe ingredients: Eier, Tomaten, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Eier",
+      "Tomaten",
+      "Olivenöl"
+    ],
+    "dishForm": "simple home-cooked plated meal",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "vollkornbrot-ei",
+    "name": "Vollkornbrot mit Ei",
+    "image": "assets/recipes/vollkornbrot-ei.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Vollkornbrot mit Ei, bread or toast dish, visible recipe ingredients: Vollkornbrot, Eier, Tomaten, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Vollkornbrot",
+      "Eier",
+      "Tomaten"
+    ],
+    "dishForm": "bread or toast dish",
+    "source": "approved-production-image"
+  },
+  {
+    "id": "vollkornpasta-tomaten",
+    "name": "Vollkornpasta mit Tomaten",
+    "image": "assets/recipes/vollkornpasta-tomaten.png",
+    "caption": "RESERVEFOOD, realistic premium recipe-app food photograph of Vollkornpasta mit Tomaten, cooked pasta dish, visible recipe ingredients: Vollkornpasta, Tomaten, Zwiebel, Olivenöl, all named main ingredients clearly recognizable and present in substantial quantity, only recipe ingredients visible, no invented garnish or side dishes, single finished serving, physically correct plate or bowl geometry, no cutlery, no hands, no people, no text, no logo, no watermark, dark neutral table, soft natural side light, 45-degree editorial cookbook photography, realistic home-cooked texture",
+    "ingredients": [
+      "Vollkornpasta",
+      "Tomaten",
+      "Zwiebel",
+      "Olivenöl"
+    ],
+    "dishForm": "cooked pasta dish",
+    "source": "approved-production-image"
+  }
+]
