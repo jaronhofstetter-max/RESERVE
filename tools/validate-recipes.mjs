@@ -18,7 +18,7 @@ const preResilienceApprovedIds=new Set(['poulet-reis-bowl','gemuese-omelette','j
 const legacyDetailIds=new Set(['poulet-reis-bowl','gemuese-omelette','joghurt-fruechte-bowl','reis-gemuese-ei','linsen-gemuese-bowl','kartoffeln-kraeuterquark','vollkornpasta-tomaten','porridge-banane','vollkornbrot-ei','gemuesesuppe-brot','kichererbsen-reis-pfanne','spinat-omelette','apfel-porridge','tomaten-kaese-brot','kartoffel-ei-pfanne','spaghetti-bolognese','linsen-karotten-suppe','haehnchen-gemuese-pfanne','lachs-kartoffel-spinat','couscous-gemuese-bowl']);
 recipes.forEach((r,i)=>{
  required.forEach(k=>{if(r[k]===undefined||r[k]===null||r[k]==='')fail(i,`${k} fehlt`)});
- if(typeof r.id!=='string'||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(r.id||''))fail(i,'id muss lowercase-kebab-case sein');if(ids.has(r.id))fail(i,`doppelte ID ${r.id}`);ids.add(r.id);
+ if(typeof r.id!=='string'||!/^[\p{Ll}0-9]+(?:-[\p{Ll}0-9]+)*$/u.test(r.id||''))fail(i,'id muss lowercase-kebab-case sein');if(ids.has(r.id))fail(i,`doppelte ID ${r.id}`);ids.add(r.id);
  if(typeof r.name!=='string'||r.name.trim().length<3)fail(i,'name muss mindestens 3 Zeichen haben');const nk=(r.name||'').trim().toLowerCase();if(nk){if(names.has(nk))warn(i,`gleicher Anzeigename wie #${names.get(nk)+1}`);else names.set(nk,i)}
  if(!allowed.type.has(r.type))fail(i,`ungültiger type: ${r.type}`);if(!allowed.diet.has(r.diet))fail(i,`ungültige diet: ${r.diet}`);if(!allowed.difficulty.has(r.difficulty))fail(i,`ungültige difficulty: ${r.difficulty}`);if(!allowed.status.has(r.status))fail(i,`ungültiger status: ${r.status}`);
  if(typeof r.dish!=='string'||!r.dish.trim())fail(i,'dish fehlt');if(typeof r.cuisine!=='string'||r.cuisine.trim().length<2)fail(i,'cuisine fehlt/zu kurz');
