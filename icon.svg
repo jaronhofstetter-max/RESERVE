@@ -1,15 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="HOFILIGHT ONE H">
-<defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#061523"/><stop offset=".55" stop-color="#0b2942"/><stop offset="1" stop-color="#04111d"/></linearGradient>
-  <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#d9edff"/><stop offset=".43" stop-color="#1d8fff"/><stop offset="1" stop-color="#0068d8"/></linearGradient>
-  <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1594ff"/><stop offset="1" stop-color="#0062cb"/></linearGradient>
-  <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<rect x="10" y="10" width="492" height="492" rx="104" fill="url(#bg)"/>
-<rect x="29" y="29" width="454" height="454" rx="86" fill="none" stroke="url(#edge)" stroke-width="8"/>
-<g filter="url(#glow)">
-  <path d="M150 142h74l-34 86h102l34-86h74l-91 228h-74l35-88H168l-35 88H59l91-228Z" fill="url(#blue)"/>
-  <path d="M188 228h104l-18 54H168l20-54Z" fill="#eaf6ff" opacity=".95"/>
-</g>
-<path d="M92 404c48-38 87-56 117-56 25 0 44 10 63 30 18-15 37-23 57-23 28 0 59 16 92 49-54-13-105-18-153-16-55 2-114 7-176 16Z" fill="#9fd2ff" opacity=".28"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="RESERVE shield leaf">
+<rect width="512" height="512" rx="112" fill="#173f35"/>
+<path d="M256 78 390 126v103c0 91-53 162-134 205-81-43-134-114-134-205V126l134-48Z" fill="none" stroke="#f5f1e8" stroke-width="28" stroke-linejoin="round"/>
+<path d="M323 153c-82 8-139 48-151 116-9 50 17 91 61 104 54 16 103-23 109-91 4-43-8-88-19-129Z" fill="#f5f1e8"/>
+<path d="M184 353c33-71 74-119 132-166-38 55-63 111-78 174" fill="none" stroke="#173f35" stroke-width="18" stroke-linecap="round"/>
 </svg>
