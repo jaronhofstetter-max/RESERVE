@@ -50,6 +50,7 @@ jobs:
           node --check tools/e2e-expiry-ui.mjs
           node --check tools/e2e-autopilot-v2.mjs
           node --check tools/e2e-weekly-plan-v2.mjs
+          node --check tools/e2e-smart-today.mjs
       - name: Enable compact recipe delivery
         run: sed -i "s#fetch('data/recipes.json',{cache:'no-store'})#fetch('data/recipe-catalog.json',{cache:'no-store'})#" index.html
       - name: Enable RESERVE feature modules
@@ -67,3 +68,4 @@ jobs:
           node tools/e2e-expiry-ui.mjs
           node tools/e2e-autopilot-v2.mjs
           node tools/e2e-weekly-plan-v2.mjs
+          node tools/e2e-smart-today.mjs
