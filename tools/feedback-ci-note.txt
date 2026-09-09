@@ -1,0 +1,1 @@
+RESERVE feedback v1 is syntax-checked and browser-tested in pull-request CI before merge.
