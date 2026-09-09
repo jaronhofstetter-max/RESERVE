@@ -17,13 +17,13 @@ function equipment(r){
 function description(r){
   const ins=names(r).slice(0,3).join(', ');
   const kind=r.type==='Frühstück'?'Frühstück':'Hauptgericht';
-  return `${r.name} ist ein ${r.difficulty.toLowerCase()}es ${kind} mit ${ins}. Die Mengen sind für eine Portion ausgelegt; entscheidend sind die beschriebenen Gar- und Konsistenzmerkmale statt nur die Uhrzeit.`;
+  return `${r.name} ist ein unkompliziertes ${kind} mit ${ins}. Die Mengen sind für eine Portion ausgelegt; entscheidend sind die beschriebenen Gar- und Konsistenzmerkmale statt nur die Uhrzeit.`;
 }
 function prepNotes(r){
   const t=lower(r),a=[];
-  if(/gemüse|brokkoli|tomat|gurke|paprika|karotte|apfel|spinat/.test(t))a.push('Frisches Gemüse oder Obst vor dem Schneiden waschen und beschädigte Stellen entfernen.');
+  if(/gemüse|brokkoli|tomat|gurke|paprika|karotte|apfel|spinat|beere|banane|birne/.test(t))a.push('Frisches Gemüse oder Obst vor dem Schneiden waschen und beschädigte Stellen entfernen.');
   if(/poulet|hähn|huhn|hackfleisch|rind/.test(t))a.push('Rohes Fleisch getrennt von verzehrfertigen Zutaten vorbereiten; Brett, Messer und Hände danach gründlich reinigen.');
-  if(/kichererbs|linsen/.test(t))a.push('Bei vorgegarten Hülsenfrüchten Flüssigkeit abgiessen und kurz abspülen; bei trockener Ware die Packungsangaben zur Garzeit beachten.');
+  if(/kichererbs|linsen|bohnen/.test(t))a.push('Bei vorgegarten Hülsenfrüchten Flüssigkeit abgiessen und kurz abspülen; bei trockener Ware die Packungsangaben zur Garzeit beachten.');
   return a.length?a:['Alle Zutaten abwiegen beziehungsweise abzählen und griffbereit bereitstellen.'];
 }
 function doneness(r){
@@ -35,12 +35,13 @@ function doneness(r){
   if(/porridge/.test(t))return 'Der Porridge ist cremig und dickflüssig; beim Rühren bleibt für einen Moment eine sichtbare Spur.';
   if(/reis/.test(t))return 'Der Reis ist weich, aber nicht breiig; die Körner sind gar und es steht keine freie Kochflüssigkeit mehr im Topf.';
   if(/kartoff/.test(t))return 'Die Kartoffeln lassen sich mit einer Messerspitze ohne harten Widerstand einstechen.';
-  if(/suppe|dal|linsen/.test(t))return 'Die festen Zutaten sind weich und die Flüssigkeit hat eine gleichmässige, zum Gericht passende Konsistenz.';
+  if(/suppe|dal|linsen|bohnen/.test(t))return 'Die festen Zutaten sind weich und die Flüssigkeit hat eine gleichmässige, zum Gericht passende Konsistenz.';
+  if(r.cookMinutes===0)return 'Alle Zutaten sind vollständig vorbereitet, gleichmässig verteilt und das Gericht hat die vorgesehene servierfertige Konsistenz.';
   return 'Das Gericht ist gleichmässig heiss; die Hauptzutaten haben die im letzten Kochschritt beschriebene Konsistenz erreicht.';
 }
 function leftovers(r){
   const t=lower(r);
-  if(/joghurt|quark|brot|bowl/.test(t)&&r.cookMinutes===0)return 'Am besten frisch servieren. Reste abgedeckt im Kühlschrank lagern und möglichst innerhalb von 24 Stunden verbrauchen.';
+  if(/joghurt|quark|brot|bowl|müesli|muesli/.test(t)&&r.cookMinutes===0)return 'Am besten frisch servieren. Reste abgedeckt im Kühlschrank lagern und möglichst innerhalb von 24 Stunden verbrauchen.';
   return 'Reste rasch abkühlen lassen, abgedeckt im Kühlschrank lagern und innerhalb von 1–2 Tagen vollständig durcherhitzt beziehungsweise passend zum Gericht gekühlt verbrauchen.';
 }
 function safety(r){
@@ -55,6 +56,7 @@ function substitutions(r){
   if(t.includes('reis'))a.push('Reis kann durch eine ähnlich portionierte Getreidebeilage ersetzt werden; Garzeit und Flüssigkeitsmenge entsprechend anpassen.');
   if(/joghurt|quark/.test(t))a.push('Milchprodukt kann durch eine ungesüsste pflanzliche Alternative ersetzt werden; Konsistenz und Nährwerte verändern sich.');
   if(/poulet|hähn|huhn/.test(t))a.push('Poulet kann durch festen Tofu ersetzt werden; Tofu benötigt keine Geflügel-Kerntemperatur, sollte aber kräftig angebraten werden.');
+  if(!a.length)a.push('Einzelne Zutaten nur durch funktional ähnliche Alternativen ersetzen und dabei Garzeit, Flüssigkeitsmenge sowie Allergene entsprechend anpassen.');
   return a;
 }
 
@@ -64,7 +66,7 @@ for(const r of recipes){
   r.equipment ||= equipment(r);
   r.prepNotes ||= prepNotes(r);
   r.doneness ||= doneness(r);
-  r.substitutions ||= substitutions(r);
+  if(!Array.isArray(r.substitutions)||r.substitutions.length===0)r.substitutions=substitutions(r);
   r.leftovers ||= leftovers(r);
   r.safety ||= safety(r);
 }
