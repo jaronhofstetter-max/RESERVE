@@ -1,0 +1,25 @@
+name: RESERVE Feedback CI
+
+on:
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "feedback-v1.js"
+      - "tools/e2e-feedback.mjs"
+      - ".github/workflows/pr-ci.yml"
+      - ".github/workflows/feedback-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  feedback:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check feedback syntax
+        run: |
+          node --check feedback-v1.js
+          node --check tools/e2e-feedback.mjs
+      - name: Verify production-style injection
+        run: grep -q 'feedback-v1.js' .github/workflows/pr-ci.yml
