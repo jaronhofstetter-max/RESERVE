@@ -29,8 +29,8 @@ try{
   const nav=await page.evaluate(()=>Array.from(document.querySelectorAll('button,a')).filter(el=>{const t=(el.textContent||'').trim().toLowerCase();return t.includes('vorrat')||t.includes('profil')||t.includes('einkauf')||t.includes('rezepte')||t.includes('plan');}).map(el=>({text:(el.textContent||'').trim(),w:el.getBoundingClientRect().width,h:el.getBoundingClientRect().height})).filter(x=>x.w>0&&x.h>0));
   if(nav.length<3)throw Error('Mobile Navigation nicht ausreichend sichtbar: '+JSON.stringify(nav));
 
-  const controls=await page.evaluate(()=>Array.from(document.querySelectorAll('button,input,select,textarea')).filter(el=>{const r=el.getBoundingClientRect();return r.width>0&&r.height>0;}).map(el=>{const r=el.getBoundingClientRect();return{tag:el.tagName,w:r.width,h:r.height,left:r.left,right:r.right};}));
-  const clipped=controls.filter(x=>x.left<-2||x.right>innerWidth+2);
+  const controls=await page.evaluate(()=>({viewport:innerWidth,items:Array.from(document.querySelectorAll('button,input,select,textarea')).filter(el=>{const r=el.getBoundingClientRect();return r.width>0&&r.height>0;}).map(el=>{const r=el.getBoundingClientRect();return{tag:el.tagName,w:r.width,h:r.height,left:r.left,right:r.right};})}));
+  const clipped=controls.items.filter(x=>x.left<-2||x.right>controls.viewport+2);
   if(clipped.length)throw Error('Mobile Bedienelemente abgeschnitten: '+JSON.stringify(clipped.slice(0,5)));
 
   const state=await page.evaluate(()=>{
