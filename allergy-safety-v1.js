@@ -36,11 +36,26 @@
     const profile=document.getElementById('profile');
     if(profile&&!document.getElementById('allergySafetyNotice')){
       const card=profile.querySelector('.card');
-      if(card){const box=document.createElement('div');box.id='allergySafetyNotice';box.setAttribute('role','alert');box.style.cssText='margin:12px 0;padding:12px;border:1px solid #e08a2e;border-radius:10px;background:#fff8ef';box.innerHTML='<strong>Allergie-Sicherheit</strong><br><span class="small">RESERVE kann Rezepte anhand deiner Angaben filtern, ersetzt aber keine Prüfung der Zutaten- und Allergenkennzeichnung. Bei Allergien oder Unverträglichkeiten immer Produktetiketten, Spurenhinweise und Kreuzkontamination selbst prüfen. Im Zweifel nicht verwenden.</span>';const avoid=document.getElementById('avoid');(avoid||card.firstChild).insertAdjacentElement(avoid?'afterend':'beforebegin',box)}}
+      if(card){
+        const box=document.createElement('div');
+        box.id='allergySafetyNotice';
+        box.setAttribute('role','alert');
+        box.style.cssText='margin:12px 0;padding:12px;border:1px solid #e08a2e;border-radius:10px;background:#fff8ef';
+        box.innerHTML='<strong>Allergie-Sicherheit</strong><br><span class="small">RESERVE kann Rezepte anhand deiner Angaben filtern, ersetzt aber keine Prüfung der Zutaten- und Allergenkennzeichnung. Bei Allergien oder Unverträglichkeiten immer Produktetiketten, Spurenhinweise und Kreuzkontamination selbst prüfen. Im Zweifel nicht verwenden.</span>';
+        const avoid=document.getElementById('avoid');
+        if(avoid) avoid.insertAdjacentElement('afterend',box); else card.insertBefore(box,card.firstChild);
+      }
     }
     const cook=document.getElementById('cookView');
-    if(cook&&!document.getElementById('cookAllergyReminder')){const box=document.createElement('div');box.id='cookAllergyReminder';box.className='small';box.style.cssText='margin:10px 0;padding:10px;border-radius:9px;background:#fff8ef;border:1px solid #e08a2e';box.textContent='Allergien: Vor dem Kochen Zutatenetiketten, Spurenhinweise und mögliche Kreuzkontamination prüfen.';cook.parentElement.insertBefore(box,cook)}
+    if(cook&&!document.getElementById('cookAllergyReminder')){
+      const box=document.createElement('div');
+      box.id='cookAllergyReminder';box.className='small';
+      box.style.cssText='margin:10px 0;padding:10px;border-radius:9px;background:#fff8ef;border:1px solid #e08a2e';
+      box.textContent='Allergien: Vor dem Kochen Zutatenetiketten, Spurenhinweise und mögliche Kreuzkontamination prüfen.';
+      cook.parentElement.insertBefore(box,cook);
+    }
   }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',notice);else notice();
-  const observer=new MutationObserver(()=>notice());observer.observe(document.body,{childList:true,subtree:true});
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',notice); else notice();
+  const observer=new MutationObserver(()=>notice());
+  observer.observe(document.body,{childList:true,subtree:true});
 })();
