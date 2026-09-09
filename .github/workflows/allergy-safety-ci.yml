@@ -1,0 +1,25 @@
+name: RESERVE Allergy Safety CI
+
+on:
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "allergy-safety-v1.js"
+      - ".github/workflows/pages.yml"
+      - ".github/workflows/allergy-safety-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  allergy-safety:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Check allergy safety module syntax
+        run: node --check allergy-safety-v1.js
+      - name: Verify production integration
+        run: |
+          grep -q 'node --check allergy-safety-v1.js' .github/workflows/pages.yml
+          grep -q '<script src="allergy-safety-v1.js"></script>' .github/workflows/pages.yml
