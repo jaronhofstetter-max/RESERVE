@@ -12,29 +12,86 @@
       "mustVisible": ["short macaroni", "potato cubes", "melted cheese", "browned onion rings", "applesauce served separately"],
       "forbidden": ["chives", "parsley", "flowers", "bacon", "whole apples as garnish", "lemon", "extra side dishes"],
       "sources": [
-        {"url": "https://www.swissmilk.ch/de/rezepte-kochideen/rezepte/LM200309_57_A/aelplermagronen/", "role": "authenticity_reference", "reuse": "reference_only", "note": "Swissmilk describes the classic dish with potatoes, pasta, cheese, cream, browned onions and applesauce."},
-        {"url": "https://www.myswitzerland.com/de-ch/planung/ueber-die-schweiz/brauchtum-und-tradition/schweizer-kueche/", "role": "authenticity_reference", "reuse": "reference_only", "note": "Switzerland Tourism describes Älplermagronen as potatoes, macaroni, cheese and cream with fried onions and applesauce."}
+        {"url":"https://www.swissmilk.ch/de/rezepte-kochideen/rezepte/LM200309_57_A/aelplermagronen/","role":"authenticity_reference","reuse":"reference_only"},
+        {"url":"https://www.myswitzerland.com/de-ch/planung/ueber-die-schweiz/brauchtum-und-tradition/schweizer-kueche/","role":"authenticity_reference","reuse":"reference_only"}
       ]
     },
     "roesti-mit-spiegelei": {
-      "status": "ready",
-      "dishForm": "one compact round golden-brown potato rösti with visible grated potato strands, topped or accompanied by two simple fried eggs",
-      "mustVisible": ["round rösti cake", "crisp grated potato strands", "two fried eggs"],
-      "forbidden": ["herbs", "salad", "tomatoes", "cheese", "bacon", "sauce", "decorative garnish"],
-      "sources": [
-        {"url": "https://www.aboutswitzerland.eda.admin.ch/de/schweizer-nationalgerichte", "role": "authenticity_reference", "reuse": "reference_only", "note": "Official Swiss information describes Rösti as a flat potato cake browned in butter and notes fried egg as a common topping."},
-        {"url": "https://www.myswitzerland.com/de-ch/planung/ueber-die-schweiz/brauchtum-und-tradition/schweizer-kueche/", "role": "authenticity_reference", "reuse": "reference_only", "note": "Switzerland Tourism describes Rösti as a flat round grated-potato speciality, often served with fried egg."}
+      "status":"ready","dishForm":"one compact round golden-brown potato rösti with visible grated potato strands, topped or accompanied by two simple fried eggs","mustVisible":["round rösti cake","crisp grated potato strands","two fried eggs"],"forbidden":["herbs","salad","tomatoes","cheese","bacon","sauce","decorative garnish"],
+      "sources":[
+        {"url":"https://www.aboutswitzerland.eda.admin.ch/de/schweizer-nationalgerichte","role":"authenticity_reference","reuse":"reference_only"},
+        {"url":"https://www.myswitzerland.com/de-ch/planung/ueber-die-schweiz/brauchtum-und-tradition/schweizer-kueche/","role":"authenticity_reference","reuse":"reference_only"}
       ]
     },
-    "ghackets-mit-hoernli": {"status":"needs_sources","dishForm":"short Hörnli pasta with loose minced-meat sauce; applesauce separately","mustVisible":["Hörnli pasta","loose minced meat sauce","applesauce separately"],"forbidden":["meatballs","spaghetti","herb garnish"]},
-    "bündner-gerstensuppe": {"status":"needs_sources","dishForm":"rustic thick barley soup with visible pearl barley and small vegetable pieces","mustVisible":["pearl barley","soup broth","small vegetable pieces"],"forbidden":["pasta","rice","large decorative herbs"]},
-    "waadtlaender-papet": {"status":"needs_sources","dishForm":"soft creamy leek-and-potato stew, rustic and pale green-white","mustVisible":["leek","potato pieces","creamy stew texture"],"forbidden":["pasta","rice","salad garnish"]},
-    "tessiner-polenta-pilze": {"status":"needs_sources","dishForm":"soft yellow polenta with sautéed mushrooms visibly served on top or alongside","mustVisible":["yellow polenta","mushrooms"],"forbidden":["pasta","rice","tomato garnish"]},
-    "walliser-cholera": {"status":"needs_sources","dishForm":"rustic baked savoury pie with browned pastry and visible layered filling when cut","mustVisible":["browned pastry","savoury pie wedge","layered filling"],"forbidden":["pizza appearance","open tart styling","decorative herbs"]},
-    "fotzelschnitten-apfelkompott": {"status":"needs_sources","dishForm":"golden pan-fried bread slices with cinnamon-sugar character, applesauce or apple compote separately","mustVisible":["fried bread slices","apple compote"],"forbidden":["berries","mint","ice cream"]},
-    "kaesewahe-schweizer-art": {"status":"needs_sources","dishForm":"round Swiss cheese tart with set golden cheese filling and pastry rim","mustVisible":["cheese tart","pastry rim","golden baked surface"],"forbidden":["pizza toppings","tomatoes","herbs"]},
-    "maluns-apfelmus": {"status":"needs_sources","dishForm":"crumbly golden-brown potato flour granules, rustic and irregular; applesauce separately","mustVisible":["crumbly Maluns granules","applesauce separately"],"forbidden":["rösti cake","pasta","herb garnish"]},
-    "berner-platte-einfach": {"status":"needs_sources","dishForm":"plain hearty Bernese plate with the recipe meats, potatoes and sauerkraut arranged naturally","mustVisible":["potatoes","sauerkraut","recipe meat components"],"forbidden":["fine-dining garnish","salad","sauce drizzle"]},
-    "zuercher-geschnetzeltes-roesti": {"status":"needs_sources","dishForm":"thin sliced veal in pale creamy mushroom sauce served beside a crisp round rösti","mustVisible":["sliced veal","creamy mushroom sauce","round rösti"],"forbidden":["whole steak","pasta","rice","herb garnish"]}
+    "ghackets-mit-hoernli": {
+      "status":"ready","dishForm":"short Hörnli pasta with loose browned minced-meat sauce; applesauce served separately","mustVisible":["Hörnli pasta","loose minced meat sauce","applesauce separately"],"forbidden":["meatballs","spaghetti","herb garnish","salad"],
+      "sources":[
+        {"url":"https://migusto.migros.ch/de/rezepte/ghackets-mit-hoernli","role":"authenticity_reference","reuse":"reference_only"},
+        {"url":"https://www.coop.ch/de/marken-inspiration/rezepte/rind/ghackets-mit-hoernli/rc/77/r/10729","role":"authenticity_reference","reuse":"reference_only"}
+      ]
+    },
+    "bündner-gerstensuppe": {
+      "status":"ready","dishForm":"rustic substantial barley soup with visible pearl barley, small diced root vegetables and pieces of meat in broth","mustVisible":["pearl barley","soup broth","small vegetable pieces","meat pieces"],"forbidden":["pasta","rice","large decorative herbs","cream swirl"],
+      "sources":[
+        {"url":"https://www.rtr.ch/emissiuns/decodar-nossa-cultura/kulinarik-rezepte/rezept-aus-graubuenden-buendner-gerstensuppe","role":"regional_authenticity_reference","reuse":"reference_only"},
+        {"url":"https://www.swissmilk.ch/de/rezepte-kochideen/grundrezepte/","role":"secondary_swiss_reference","reuse":"reference_only"}
+      ]
+    },
+    "waadtlaender-papet": {
+      "status":"ready","dishForm":"soft rustic leek-and-potato mixture, pale green-white and spoon-soft, served as a bed or side for Vaud sausage","mustVisible":["soft leek","potato pieces","moist stew texture"],"forbidden":["pasta","rice","salad garnish","crisp raw leek"],
+      "sources":[
+        {"url":"https://www.vd.ch/culture/patrimoine-mobilier-non-cantonal-et-immateriel-1/inventaire-cantonal-du-patrimoine-immateriel/pratiques-sociales/toute-lannee/papet-vaudois","role":"official_regional_authenticity_reference","reuse":"reference_only"},
+        {"url":"https://migusto.migros.ch/fr/recettes/papet-vaudois","role":"secondary_swiss_reference","reuse":"reference_only"}
+      ]
+    },
+    "tessiner-polenta-pilze": {
+      "status":"ready","dishForm":"soft yellow polenta with clearly sautéed sliced mushrooms served on top or in a shallow well","mustVisible":["soft yellow polenta","sautéed mushrooms"],"forbidden":["pasta","rice","tomato garnish","salad"],
+      "sources":[
+        {"url":"https://www.rsi.ch/food/ricette/Polenta-e-funghi-vegana--718614.html","role":"ticino_broadcaster_reference","reuse":"reference_only"},
+        {"url":"https://migusto.migros.ch/it/ricette/polenta-e-funghi-rosolati","role":"secondary_swiss_reference","reuse":"reference_only"}
+      ]
+    },
+    "walliser-cholera": {
+      "status":"ready","dishForm":"closed rustic savoury pie with a browned puff-pastry top and visible potato, leek, apple, onion and cheese filling at the cut edge","mustVisible":["closed browned pastry","pie wedge or cut pie","layered vegetable-cheese filling"],"forbidden":["pizza appearance","open tart styling","decorative herbs","meat filling"],
+      "sources":[
+        {"url":"https://www.valais.ch/de/geniessen/walliser-spezialitaeten/rezepte/cholera","role":"official_regional_authenticity_reference","reuse":"reference_only"},
+        {"url":"https://info.polizeiwallis.ch/ein-einblick-in/2020/cholera-eine-gommertradition/","role":"regional_tradition_reference","reuse":"reference_only"}
+      ]
+    },
+    "fotzelschnitten-apfelkompott": {
+      "status":"ready","dishForm":"thick slices of bread soaked in egg-milk and pan-fried golden on both faces, cinnamon-sugar character, apple compote served separately","mustVisible":["golden fried bread slices","apple compote separately"],"forbidden":["berries","mint","ice cream","maple syrup","whipped cream"],
+      "sources":[
+        {"url":"https://migusto.migros.ch/de/rezepte/fotzelschnitte","role":"swiss_reference","reuse":"reference_only"},
+        {"url":"https://www.swissmilk.ch/de/rezepte-kochideen/","role":"secondary_swiss_reference","reuse":"reference_only"}
+      ]
+    },
+    "kaesewahe-schweizer-art": {
+      "status":"ready","dishForm":"round low Swiss cheese tart with a pastry rim and evenly set golden baked cheese filling","mustVisible":["round cheese tart","pastry rim","golden baked cheese surface"],"forbidden":["pizza toppings","tomatoes","herbs","fruit","nuts"],
+      "sources":[
+        {"url":"https://migusto.migros.ch/de/rezepte/kaesewaehe","role":"swiss_reference","reuse":"reference_only"},
+        {"url":"https://www.swissmilk.ch/de/rezepte-kochideen/rezepte/LM200003_24_MEN003B024A/zwiebel-kaesewaehe/","role":"secondary_swiss_form_reference","reuse":"reference_only"}
+      ]
+    },
+    "maluns-apfelmus": {
+      "status":"ready","dishForm":"loose irregular golden-brown potato-and-flour crumbs or small granules, never compressed into a cake; applesauce served separately","mustVisible":["crumbly Maluns granules","golden-brown toasted surfaces","applesauce separately"],"forbidden":["rösti cake","pasta","herb garnish","dumplings"],
+      "sources":[
+        {"url":"https://www.rtr.ch/emissiuns/decodar-nossa-cultura/kulinarik-rezepte/rezept-aus-graubuenden-maluns","role":"regional_authenticity_reference","reuse":"reference_only"},
+        {"url":"https://www.graubuenden.ch/de/graubuenden/allgemeine-informationen/essen-trinken","role":"regional_context_reference","reuse":"reference_only"}
+      ]
+    },
+    "berner-platte-einfach": {
+      "status":"ready","dishForm":"hearty rustic Bernese plate with sauerkraut, potatoes and the recipe's cooked smoked meat components arranged in generous sections","mustVisible":["potatoes","sauerkraut","recipe meat components"],"forbidden":["fine-dining garnish","salad","sauce drizzle","fried meat"],
+      "sources":[
+        {"url":"https://www.swissmilk.ch/de/rezepte-kochideen/rezepte/LM200311_57_A/berner-platte/","role":"swiss_reference","reuse":"reference_only"},
+        {"url":"https://bern.com/de/aktuelles/stories-und-tipps/berner-spezialitaeten-zum-selberkochen","role":"official_regional_reference","reuse":"reference_only"}
+      ]
+    },
+    "zuercher-geschnetzeltes-roesti": {
+      "status":"ready","dishForm":"thin strips of veal in a pale creamy mushroom sauce served beside a crisp round grated-potato rösti","mustVisible":["thin sliced veal","creamy mushroom sauce","round rösti"],"forbidden":["whole steak","pasta","rice","herb garnish","salad"],
+      "sources":[
+        {"url":"https://www.zuerich.com/de/essen-trinken/typisch-und-traditionell/zuercher-spezialitaeten/zuerich-geschnetzeltes","role":"official_regional_authenticity_reference","reuse":"reference_only"},
+        {"url":"https://www.swissmilk.ch/de/rezepte-kochideen/rezepte/LM201401_83/zuercher-geschnetzeltes/","role":"swiss_reference","reuse":"reference_only"}
+      ]
+    }
   }
 }
