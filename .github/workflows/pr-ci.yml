@@ -26,6 +26,10 @@ jobs:
           cp build/recipes-live.json data/recipes.json
           node tools/build-recipe-index.mjs data/recipes.json data/recipe-index.json
           node tools/build-recipe-delivery.mjs data/recipes.json data/recipe-details data/recipe-catalog.json data/recipe-details-manifest.json
+      - name: Validate recipe image factory
+        env:
+          REQUIRE_ALL_IMAGE_REFERENCES: "1"
+        run: node tools/build-recipe-image-specs.mjs
       - name: Check JavaScript syntax
         run: |
           node --check shopping-v2.js
@@ -51,6 +55,8 @@ jobs:
           node --check pantry-intelligence-v1.js
           node --check recipe-index-runtime-v1.js
           node --check recipe-detail-runtime-v1.js
+          node --check tools/build-recipe-image-specs.mjs
+          node --check tools/generate-authentic-recipe-photos.mjs
           node --check tools/e2e-consumption.mjs
           node --check tools/e2e-expiry-ui.mjs
           node --check tools/e2e-autopilot-v2.mjs
