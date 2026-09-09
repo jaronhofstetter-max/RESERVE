@@ -1,0 +1,88 @@
+(()=>{
+  'use strict';
+
+  const KEY='reserveUsageMetricsV1';
+  const VERSION=1;
+  const SECTION_RULES=[
+    ['vorrat',/\bvorrat\b/i],
+    ['einkauf',/\beinkauf/i],
+    ['rezepte',/\brezept/i],
+    ['plan',/\b(plan|wochenplan)\b/i],
+    ['profil',/\bprofil\b/i],
+    ['heute',/\bheute\b/i]
+  ];
+
+  function fresh(){
+    return {
+      version:VERSION,
+      sessions:0,
+      onboardingCompleted:false,
+      firstStockCreated:false,
+      sectionVisits:{vorrat:0,einkauf:0,rezepte:0,plan:0,profil:0,heute:0}
+    };
+  }
+
+  function read(){
+    try{
+      const value=JSON.parse(localStorage.getItem(KEY)||'null');
+      if(!value||value.version!==VERSION)return fresh();
+      const base=fresh();
+      return {
+        ...base,
+        ...value,
+        sectionVisits:{...base.sectionVisits,...(value.sectionVisits||{})}
+      };
+    }catch(_){return fresh();}
+  }
+
+  function write(metrics){
+    try{localStorage.setItem(KEY,JSON.stringify(metrics));}catch(_){}
+  }
+
+  function mutate(fn){
+    const metrics=read();
+    fn(metrics);
+    write(metrics);
+    return metrics;
+  }
+
+  function detectMilestones(){
+    mutate(metrics=>{
+      if(localStorage.getItem('reserveOnboardingDone')==='1')metrics.onboardingCompleted=true;
+      try{
+        const stock=JSON.parse(localStorage.getItem('reserveStock')||'[]');
+        if(Array.isArray(stock)&&stock.length>0)metrics.firstStockCreated=true;
+      }catch(_){}
+    });
+  }
+
+  function sectionFromLabel(label){
+    const text=String(label||'').trim().replace(/\s+/g,' ');
+    for(const [section,re] of SECTION_RULES)if(re.test(text))return section;
+    return null;
+  }
+
+  function onClick(event){
+    const target=event.target&&event.target.closest?event.target.closest('button,a,[role="button"]'):null;
+    if(!target)return;
+    const section=sectionFromLabel(target.getAttribute('aria-label')||target.textContent||'');
+    if(!section)return;
+    mutate(metrics=>{metrics.sectionVisits[section]=(metrics.sectionVisits[section]||0)+1;});
+  }
+
+  function start(){
+    mutate(metrics=>{metrics.sessions=(metrics.sessions||0)+1;});
+    detectMilestones();
+    document.addEventListener('click',onClick,true);
+    const timer=setInterval(detectMilestones,750);
+    window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});
+  }
+
+  window.reserveUsageMeasurementV1={
+    getSummary:()=>read(),
+    reset:()=>write(fresh())
+  };
+
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});
+  else start();
+})();
