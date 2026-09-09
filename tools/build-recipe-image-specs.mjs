@@ -16,7 +16,8 @@ const specs=[];
 for(const [id,p] of Object.entries(refs.profiles||{})){
   const r=recipes.get(id);if(!r)throw new Error(`Referenzprofil ohne Rezept: ${id}`);
   const sources=Array.isArray(p.sources)?p.sources:[];
-  const sourceReady=sources.length>=min&&sources.every(s=>s.url&&s.role==='authenticity_reference'&&s.reuse==='reference_only');
+  const validRole=s=>typeof s.role==='string'&&/(authenticity|regional|swiss|reference)/.test(s.role);
+  const sourceReady=sources.length>=min&&sources.every(s=>s.url&&validRole(s)&&s.reuse==='reference_only');
   const allowed=(r.ingredients||[]).map(i=>i.name).filter(Boolean);
   specs.push({
     id,
