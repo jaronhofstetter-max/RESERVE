@@ -19,10 +19,13 @@ jobs:
         uses: actions/checkout@v4
       - name: Build validated live recipe library
         run: |
+          node tools/enrich-recipes-v1.mjs data/recipes.json
+          for f in data/quality-batch-*.json; do node tools/enrich-recipes-v1.mjs "$f"; done
           node tools/validate-recipes.mjs data/recipes.json
           for f in data/quality-batch-*.json; do node tools/validate-recipes.mjs "$f"; done
           node tools/merge-quality-batches.mjs data/recipes.json data/quality-batch-*.json build/recipes-live.json
           node tools/validate-recipes.mjs build/recipes-live.json
+          REQUIRE_COMPLETE_RECIPE_QUALITY=1 node tools/audit-recipe-quality.mjs build/recipes-live.json
           cp build/recipes-live.json data/recipes.json
           node tools/build-recipe-index.mjs data/recipes.json data/recipe-index.json
           node tools/build-recipe-delivery.mjs data/recipes.json data/recipe-details data/recipe-catalog.json data/recipe-details-manifest.json
@@ -55,6 +58,8 @@ jobs:
           node --check pantry-intelligence-v1.js
           node --check recipe-index-runtime-v1.js
           node --check recipe-detail-runtime-v1.js
+          node --check tools/enrich-recipes-v1.mjs
+          node --check tools/audit-recipe-quality.mjs
           node --check tools/build-recipe-image-specs.mjs
           node --check tools/generate-authentic-recipe-photos.mjs
           node --check tools/e2e-consumption.mjs
