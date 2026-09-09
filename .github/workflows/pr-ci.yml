@@ -27,6 +27,8 @@ jobs:
           node tools/build-recipe-index.mjs data/recipes.json data/recipe-index.json
           node tools/build-recipe-delivery.mjs data/recipes.json data/recipe-details data/recipe-catalog.json data/recipe-details-manifest.json
       - name: Validate recipe image factory
+        env:
+          REQUIRE_ALL_IMAGE_REFERENCES: "1"
         run: node tools/build-recipe-image-specs.mjs
       - name: Check JavaScript syntax
         run: |
