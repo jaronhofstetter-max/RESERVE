@@ -1,0 +1,1 @@
+Visual cabinet + search + details only. Existing stock storage remains authoritative.
