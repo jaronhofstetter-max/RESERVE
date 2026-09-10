@@ -1,0 +1,2 @@
+import fs from 'node:fs';
+const js=fs.readFileSync('cabinet-inventory-v1.js','utf8');const pages=fs.readFileSync('.github/workflows/pages.yml','utf8');if(!js.includes("localStorage.getItem('reserveStock')"))throw Error('Cabinet must read reserveStock');if(!pages.includes('<script src="cabinet-inventory-v1.js"></script>'))throw Error('Pages build does not enable cabinet');console.log('Cabinet integration check: OK');
