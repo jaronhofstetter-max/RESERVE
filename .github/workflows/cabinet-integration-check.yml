@@ -1,0 +1,12 @@
+name: RESERVE Cabinet Integration Guard
+on:
+  pull_request:
+    branches: ["main"]
+permissions:
+  contents: read
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: node tools/cabinet-inventory-check.mjs
