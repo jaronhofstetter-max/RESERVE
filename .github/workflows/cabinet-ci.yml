@@ -1,0 +1,25 @@
+name: RESERVE Cabinet Inventory CI
+
+on:
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  cabinet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check cabinet syntax and Pages integration
+        run: |
+          node --check cabinet-inventory-v1.js
+          node --check tools/e2e-cabinet-inventory.mjs
+          grep -q 'cabinet-inventory-v1.js' .github/workflows/pages.yml
+      - name: Install browser test runtime
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Test cabinet search and details
+        run: node tools/e2e-cabinet-inventory.mjs
