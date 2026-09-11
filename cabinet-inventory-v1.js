@@ -1,4 +1,4 @@
-/* RESERVE cabinet inventory v1.2 — searchable, editable pantry cabinet backed by reserveStock. */
+/* RESERVE cabinet inventory v1.3 — searchable, editable pantry cabinet with quantity consumption. */
 (function(){
   const $=id=>document.getElementById(id);
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -12,6 +12,8 @@
   function expiryClass(s){const d=daysLeft(s?.e);return d==null?'':d<0?'cab-expired':d<=3?'cab-soon':''}
   function queueRender(){if(renderQueued)return;renderQueued=true;requestAnimationFrame(()=>{renderQueued=false;render()})}
   function syncIfChanged(){const now=rawStock();if(now!==lastStockRaw)queueRender()}
+  function parseQty(value){const m=String(value||'').toLowerCase().replace(',','.').match(/([0-9.]+)\s*(kg|g|l|ml|stück|stuck|stk)?/);if(!m)return null;let v=Number(m[1]),u=m[2]||'stück';if(!Number.isFinite(v)||v<0)return null;if(u==='kg'){v*=1000;u='g'}if(u==='l'){v*=1000;u='ml'}if(u==='stuck'||u==='stk')u='stück';return{v,u}}
+  function formatQty(v,u){v=Math.round(v*10)/10;if(u==='g'&&v>=1000)return(v/1000)+' kg';if(u==='ml'&&v>=1000)return(v/1000)+' l';return v+' '+u}
 
   function render(){
     const host=$('reserveCabinet');if(!host)return;
@@ -35,15 +37,33 @@
     queueRender();
   }
 
+  function recordConsumption(s,amount,unit,removed){
+    try{const key='reserveConsumptionHistory',history=JSON.parse(localStorage.getItem(key)||'[]');history.push({n:s.n,amount,unit,barcode:s.barcode||'',consumedAt:new Date().toISOString(),removed:!!removed});localStorage.setItem(key,JSON.stringify(history.slice(-500)))}catch(_){ }
+  }
+
+  function consume(index,value){
+    const next=getStock(),s=next[index];if(!s)return{ok:false,message:'Produkt nicht gefunden.'};
+    const have=parseQty(s.q),use=parseQty(value);if(!have||!use)return{ok:false,message:'Menge konnte nicht gelesen werden.'};
+    if(have.u!==use.u)return{ok:false,message:'Bitte dieselbe Einheit wie beim Bestand verwenden.'};
+    if(use.v<=0)return{ok:false,message:'Bitte eine Menge größer als 0 eingeben.'};
+    if(use.v>have.v)return{ok:false,message:'Die Entnahmemenge ist größer als der vorhandene Bestand.'};
+    const left=Math.max(0,have.v-use.v),removed=left===0;
+    recordConsumption(s,use.v,use.u,removed);
+    if(removed)next.splice(index,1);else{next[index]={...s,q:formatQty(left,have.u),updatedAt:new Date().toISOString()}}
+    commitStock(next);return{ok:true,removed,left,unit:have.u};
+  }
+
   function detail(index){
     const rows=getStock(),s=rows[index],d=$('cabinetDetail');if(!s||!d)return;
     const cats=['Getreide & Beilagen','Gemüse & Früchte','Protein','Milchprodukte','Sonstiges'];
     const options=cats.map(c=>`<option ${c===(s.c||'Sonstiges')?'selected':''}>${esc(c)}</option>`).join('');
-    d.innerHTML=`<div class="cab-detail-card"><button class="cab-close" aria-label="Schließen">×</button><div class="cab-detail-icon">${icon(s)}</div><h3>Produkt bearbeiten</h3><form id="cabinetEditForm"><label>Name<input id="cabEditName" value="${esc(s.n)}" required></label><label>Menge<input id="cabEditQty" value="${esc(s.q)}" required></label><label>Ablaufdatum<input id="cabEditExpiry" type="date" value="${esc(s.e||'')}"></label><label>Kategorie<select id="cabEditCat">${options}</select></label><div class="cab-actions"><button type="submit">Speichern</button><button type="button" class="secondary cab-delete">Entfernen</button></div></form></div>`;
+    const parsed=parseQty(s.q),unit=parsed?.u||'';
+    d.innerHTML=`<div class="cab-detail-card"><button class="cab-close" aria-label="Schließen">×</button><div class="cab-detail-icon">${icon(s)}</div><h3>Produkt verwalten</h3><form id="cabinetEditForm"><label>Name<input id="cabEditName" value="${esc(s.n)}" required></label><label>Menge<input id="cabEditQty" value="${esc(s.q)}" required></label><label>Ablaufdatum<input id="cabEditExpiry" type="date" value="${esc(s.e||'')}"></label><label>Kategorie<select id="cabEditCat">${options}</select></label><div class="cab-actions"><button type="submit">Speichern</button><button type="button" class="secondary cab-delete">Entfernen</button></div></form><div class="cab-consume"><h4>Verbraucht / entnommen</h4><p class="small muted">Aktueller Bestand: ${esc(s.q)}</p><div class="cab-consume-row"><input id="cabConsumeQty" inputmode="decimal" placeholder="z. B. ${unit==='g'?'250 g':unit==='ml'?'250 ml':unit==='stück'?'1 Stück':'Menge'}"><button type="button" id="cabConsumeBtn">Bestand reduzieren</button></div><p id="cabConsumeStatus" class="small muted"></p></div></div>`;
     d.hidden=false;
     d.querySelector('.cab-close').onclick=()=>{d.hidden=true};
     d.querySelector('#cabinetEditForm').onsubmit=e=>{e.preventDefault();const next=getStock();if(!next[index])return;next[index]={...next[index],n:$('cabEditName').value.trim(),q:$('cabEditQty').value.trim(),e:$('cabEditExpiry').value,c:$('cabEditCat').value};if(!next[index].n||!next[index].q)return;commitStock(next);d.hidden=true};
     d.querySelector('.cab-delete').onclick=()=>{const next=getStock();next.splice(index,1);commitStock(next);d.hidden=true};
+    d.querySelector('#cabConsumeBtn').onclick=()=>{const result=consume(index,$('cabConsumeQty').value);const status=$('cabConsumeStatus');if(!result.ok){status.className='small bad';status.textContent=result.message;return}status.className='small good';status.textContent=result.removed?'Bestand aufgebraucht. Produkt wurde aus dem aktiven Vorrat entfernt.':'Bestand aktualisiert: '+formatQty(result.left,result.unit)+' übrig.';setTimeout(()=>{d.hidden=true},350)};
   }
 
   function installStockEvents(){
@@ -61,14 +81,14 @@
   function mount(){
     const list=$('stockList');if(!list||$('reserveCabinet'))return;
     const box=document.createElement('div');box.className='card cabinet-card';
-    box.innerHTML='<div class="cab-head"><div><h2>Vorratsschrank</h2><p class="muted">Finde, bearbeite und verwalte Lebensmittel schnell.</p></div><span id="cabinetCount" class="pill good"></span></div><input id="cabinetSearch" type="search" placeholder="Im Vorrat suchen, z. B. Spaghetti oder Milchprodukte" aria-label="Vorrat durchsuchen"><div id="reserveCabinet"></div><div id="cabinetDetail" class="cab-detail" hidden></div>';
+    box.innerHTML='<div class="cab-head"><div><h2>Vorratsschrank</h2><p class="muted">Finde, bearbeite, entnimm und verwalte Lebensmittel schnell.</p></div><span id="cabinetCount" class="pill good"></span></div><input id="cabinetSearch" type="search" placeholder="Im Vorrat suchen, z. B. Spaghetti oder Milchprodukte" aria-label="Vorrat durchsuchen"><div id="reserveCabinet"></div><div id="cabinetDetail" class="cab-detail" hidden></div>';
     list.insertAdjacentElement('beforebegin',box);
-    const style=document.createElement('style');style.textContent='.cabinet-card{overflow:hidden}.cab-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.cab-head h2{margin-bottom:4px}.cab-frame{margin-top:14px;padding:18px 14px 8px;border:9px solid #73543a;border-radius:14px;background:repeating-linear-gradient(to bottom,#ead9b9 0,#ead9b9 142px,#76583e 142px,#76583e 154px);display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:18px 10px;min-height:174px}.cab-product{min-height:118px;margin:0;padding:9px 6px;background:#fffdf8e8;color:var(--ink);border:1px solid #c9b48f;border-radius:12px;box-shadow:0 4px 8px #4d372326;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.cab-product strong{font-size:13px;line-height:1.15}.cab-product span:not(.cab-icon),.cab-product small{font-size:11px}.cab-icon{font-size:35px}.cab-soon{outline:3px solid #e5a72f}.cab-expired{outline:3px solid #b44}.cab-empty{padding:30px;text-align:center}.cab-detail{position:fixed;inset:0;z-index:9999;background:#0008;display:grid;place-items:center;padding:18px}.cab-detail[hidden]{display:none}.cab-detail-card{position:relative;width:min(430px,100%);max-height:90vh;overflow:auto;background:var(--card);border-radius:18px;padding:22px}.cab-detail-card label{display:block;margin-top:8px;font-weight:700}.cab-close{position:absolute;right:12px;top:8px;background:transparent;color:var(--ink);font-size:26px}.cab-detail-icon{font-size:52px}.cab-actions{display:flex;gap:8px;flex-wrap:wrap}.cab-actions button{flex:1}@media(max-width:520px){.cab-frame{grid-template-columns:repeat(3,1fr);padding-left:8px;padding-right:8px}.cab-product{min-height:110px}.cab-head{display:block}}';document.head.appendChild(style);
+    const style=document.createElement('style');style.textContent='.cabinet-card{overflow:hidden}.cab-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.cab-head h2{margin-bottom:4px}.cab-frame{margin-top:14px;padding:18px 14px 8px;border:9px solid #73543a;border-radius:14px;background:repeating-linear-gradient(to bottom,#ead9b9 0,#ead9b9 142px,#76583e 142px,#76583e 154px);display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:18px 10px;min-height:174px}.cab-product{min-height:118px;margin:0;padding:9px 6px;background:#fffdf8e8;color:var(--ink);border:1px solid #c9b48f;border-radius:12px;box-shadow:0 4px 8px #4d372326;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.cab-product strong{font-size:13px;line-height:1.15}.cab-product span:not(.cab-icon),.cab-product small{font-size:11px}.cab-icon{font-size:35px}.cab-soon{outline:3px solid #e5a72f}.cab-expired{outline:3px solid #b44}.cab-empty{padding:30px;text-align:center}.cab-detail{position:fixed;inset:0;z-index:9999;background:#0008;display:grid;place-items:center;padding:18px}.cab-detail[hidden]{display:none}.cab-detail-card{position:relative;width:min(430px,100%);max-height:90vh;overflow:auto;background:var(--card);border-radius:18px;padding:22px}.cab-detail-card label{display:block;margin-top:8px;font-weight:700}.cab-close{position:absolute;right:12px;top:8px;background:transparent;color:var(--ink);font-size:26px}.cab-detail-icon{font-size:52px}.cab-actions,.cab-consume-row{display:flex;gap:8px;flex-wrap:wrap}.cab-actions button{flex:1}.cab-consume{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}.cab-consume h4{margin:0 0 4px}.cab-consume-row input{flex:2;min-width:160px}.cab-consume-row button{flex:1;min-width:140px}@media(max-width:520px){.cab-frame{grid-template-columns:repeat(3,1fr);padding-left:8px;padding-right:8px}.cab-product{min-height:110px}.cab-head{display:block}.cab-consume-row{display:block}}';document.head.appendChild(style);
     let searchTimer=null;$('cabinetSearch').addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(queueRender,80)});
     installStockEvents();
     render();
   }
 
-  window.RESERVE_CABINET={version:'1.2',render,getStock,sync:syncIfChanged};
+  window.RESERVE_CABINET={version:'1.3',render,getStock,sync:syncIfChanged,consume,parseQty};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 })();
