@@ -56,6 +56,7 @@ jobs:
           node tools/e2e-usage-measurement.mjs
           node tools/e2e-shopping-scan.mjs
           node tools/e2e-cabinet-inventory.mjs
+          node tools/e2e-full-pantry-cycle.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
