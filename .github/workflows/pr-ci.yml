@@ -78,6 +78,9 @@ jobs:
           node --check tools/e2e-feedback.mjs
           node --check tools/e2e-usage-measurement.mjs
           node --check tools/e2e-shopping-scan.mjs
+          node --check tools/check-pilot-5.mjs
+      - name: Validate pilot test structure
+        run: node tools/check-pilot-5.mjs
       - name: Enable compact recipe delivery
         run: sed -i "s#fetch('data/recipes.json',{cache:'no-store'})#fetch('data/recipe-catalog.json',{cache:'no-store'})#" index.html
       - name: Enable RESERVE feature modules
