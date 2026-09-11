@@ -1,94 +1,41 @@
-/* RESERVE cabinet inventory v1.3 — searchable, editable pantry cabinet with quantity consumption. */
+/* RESERVE cabinet inventory v1.4 — searchable pantry cabinet with consumption and minimum-stock auto replenishment. */
 (function(){
-  const $=id=>document.getElementById(id);
+  const $=id=>document.getElementById(id),RULES_KEY='reserveMinimumStockRules';
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');
   const rawStock=()=>localStorage.getItem('reserveStock')||'[]';
   const getStock=()=>{try{const v=JSON.parse(rawStock());return Array.isArray(v)?v:[]}catch(_){return[]}};
   let lastStockRaw=rawStock(),renderQueued=false;
 
-  function icon(s){const t=norm((s?.n||'')+' '+(s?.c||''));if(/pasta|spaghetti|nudel/.test(t))return'🍝';if(/reis/.test(t))return'🍚';if(/brot|mehl|getreide|hafer/.test(t))return'🌾';if(/milch/.test(t))return'🥛';if(/kase|käse/.test(t))return'🧀';if(/ei\b|eier/.test(t))return'🥚';if(/apfel|obst|frucht|banan|beere/.test(t))return'🍎';if(/gemuse|gemüse|tomat|kartoff|karott|zucchini/.test(t))return'🥕';if(/fleisch|rind|poulet|hahn/.test(t))return'🥩';if(/fisch/.test(t))return'🐟';if(/wasser|saft|getrank|getränk/.test(t))return'💧';if(/dose|konserve/.test(t))return'🥫';return'📦'}
+  function icon(s){const t=norm((s?.n||'')+' '+(s?.c||''));if(/pasta|spaghetti|nudel/.test(t))return'🍝';if(/reis/.test(t))return'🍚';if(/brot|mehl|getreide|hafer/.test(t))return'🌾';if(/milch/.test(t))return'🥛';if(/kase|käse/.test(t))return'🧀';if(/ei|eier/.test(t))return'🥚';if(/apfel|obst|frucht|banan|beere/.test(t))return'🍎';if(/gemuse|tomat|kartoff|karott|zucchini/.test(t))return'🥕';if(/fleisch|rind|poulet|hahn/.test(t))return'🥩';if(/fisch/.test(t))return'🐟';if(/wasser|saft|getrank/.test(t))return'💧';if(/dose|konserve/.test(t))return'🥫';return'📦'}
   function daysLeft(date){if(!date)return null;return Math.ceil((new Date(date+'T23:59:59')-new Date())/86400000)}
   function expiryClass(s){const d=daysLeft(s?.e);return d==null?'':d<0?'cab-expired':d<=3?'cab-soon':''}
   function queueRender(){if(renderQueued)return;renderQueued=true;requestAnimationFrame(()=>{renderQueued=false;render()})}
-  function syncIfChanged(){const now=rawStock();if(now!==lastStockRaw)queueRender()}
+  function syncIfChanged(){const now=rawStock();if(now!==lastStockRaw){evaluateMinimumStock();queueRender()}}
   function parseQty(value){const m=String(value||'').toLowerCase().replace(',','.').match(/([0-9.]+)\s*(kg|g|l|ml|stück|stuck|stk)?/);if(!m)return null;let v=Number(m[1]),u=m[2]||'stück';if(!Number.isFinite(v)||v<0)return null;if(u==='kg'){v*=1000;u='g'}if(u==='l'){v*=1000;u='ml'}if(u==='stuck'||u==='stk')u='stück';return{v,u}}
   function formatQty(v,u){v=Math.round(v*10)/10;if(u==='g'&&v>=1000)return(v/1000)+' kg';if(u==='ml'&&v>=1000)return(v/1000)+' l';return v+' '+u}
-
-  function render(){
-    const host=$('reserveCabinet');if(!host)return;
-    lastStockRaw=rawStock();
-    const q=norm($('cabinetSearch')?.value),all=getStock();
-    const rows=all.map((s,i)=>({s,i})).filter(x=>!q||norm((x.s.n||'')+' '+(x.s.c||'')+' '+(x.s.q||'')).includes(q));
-    $('cabinetCount').textContent=rows.length+(q?' Treffer':' Produkte');
-    if(!rows.length){host.innerHTML='<div class="cab-empty">'+(q?'Kein Produkt gefunden.':'Dein Vorratsschrank ist noch leer.')+'</div>';return}
-    host.innerHTML='<div class="cab-frame">'+rows.map(x=>`<button class="cab-product ${expiryClass(x.s)}" data-index="${x.i}" aria-label="${esc(x.s.n)}, ${esc(x.s.q)}"><span class="cab-icon">${icon(x.s)}</span><strong>${esc(x.s.n)}</strong><span>${esc(x.s.q)}</span>${x.s.e?`<small>${esc(x.s.e)}</small>`:''}</button>`).join('')+'</div>';
-    host.querySelectorAll('.cab-product').forEach(b=>b.onclick=()=>detail(+b.dataset.index));
+  function ruleKey(s){return s?.barcode?'barcode:'+String(s.barcode):'name:'+norm(s?.n)}
+  function getRules(){try{const v=JSON.parse(localStorage.getItem(RULES_KEY)||'{}');return v&&typeof v==='object'?v:{}}catch(_){return{}}}
+  function saveRules(r){localStorage.setItem(RULES_KEY,JSON.stringify(r))}
+  function shoppingRows(){try{const v=JSON.parse(localStorage.getItem('reserveShopping')||'[]');return Array.isArray(v)?v:[]}catch(_){return[]}}
+  function commitShopping(next){try{if(typeof shopping!=='undefined'&&Array.isArray(shopping)){shopping.splice(0,shopping.length,...next);if(typeof saveShop==='function'){saveShop();return}}}catch(_){ }localStorage.setItem('reserveShopping',JSON.stringify(next));try{if(typeof renderShop==='function')renderShop()}catch(_){ }}
+  function evaluateMinimumStock(){
+    const rules=getRules(),rows=getStock(),shop=shoppingRows();let changed=false;
+    Object.entries(rules).forEach(([key,r])=>{const min=parseQty(r.q);if(!min)return;let have=0;rows.forEach(s=>{if(ruleKey(s)!==key)return;const p=parseQty(s.q);if(p&&p.u===min.u)have+=p.v});const deficit=Math.max(0,min.v-have);const idx=shop.findIndex(x=>x.minimumStockKey===key);if(deficit>0){const item={n:r.n,q:formatQty(deficit,min.u),autoReplenish:true,minimumStock:true,minimumStockKey:key};if(idx>=0){if(shop[idx].q!==item.q||shop[idx].n!==item.n){shop[idx]={...shop[idx],...item};changed=true}}else{shop.push(item);changed=true}}else if(idx>=0){shop.splice(idx,1);changed=true}});
+    for(let i=shop.length-1;i>=0;i--){if(shop[i].minimumStockKey&&!rules[shop[i].minimumStockKey]){shop.splice(i,1);changed=true}}
+    if(changed)commitShopping(shop);return shop;
   }
+  function setMinimumRule(previous,current,value){const rules=getRules(),oldKey=ruleKey(previous),newKey=ruleKey(current);if(oldKey!==newKey)delete rules[oldKey];const p=parseQty(value);if(value.trim()&&p)rules[newKey]={n:current.n,q:formatQty(p.v,p.u),barcode:current.barcode||''};else delete rules[newKey];saveRules(rules);evaluateMinimumStock()}
 
-  function commitStock(next){
-    try{
-      if(typeof stock!=='undefined'&&Array.isArray(stock)){
-        stock.splice(0,stock.length,...next);
-        if(typeof saveStock==='function'){saveStock();return}
-      }
-    }catch(_){ }
-    localStorage.setItem('reserveStock',JSON.stringify(next));
-    queueRender();
-  }
+  function render(){const host=$('reserveCabinet');if(!host)return;lastStockRaw=rawStock();const q=norm($('cabinetSearch')?.value),all=getStock();const rows=all.map((s,i)=>({s,i})).filter(x=>!q||norm((x.s.n||'')+' '+(x.s.c||'')+' '+(x.s.q||'')).includes(q));$('cabinetCount').textContent=rows.length+(q?' Treffer':' Produkte');if(!rows.length){host.innerHTML='<div class="cab-empty">'+(q?'Kein Produkt gefunden.':'Dein Vorratsschrank ist noch leer.')+'</div>';return}host.innerHTML='<div class="cab-frame">'+rows.map(x=>`<button class="cab-product ${expiryClass(x.s)}" data-index="${x.i}" aria-label="${esc(x.s.n)}, ${esc(x.s.q)}"><span class="cab-icon">${icon(x.s)}</span><strong>${esc(x.s.n)}</strong><span>${esc(x.s.q)}</span>${x.s.e?`<small>${esc(x.s.e)}</small>`:''}</button>`).join('')+'</div>';host.querySelectorAll('.cab-product').forEach(b=>b.onclick=()=>detail(+b.dataset.index))}
 
-  function recordConsumption(s,amount,unit,removed){
-    try{const key='reserveConsumptionHistory',history=JSON.parse(localStorage.getItem(key)||'[]');history.push({n:s.n,amount,unit,barcode:s.barcode||'',consumedAt:new Date().toISOString(),removed:!!removed});localStorage.setItem(key,JSON.stringify(history.slice(-500)))}catch(_){ }
-  }
+  function commitStock(next){try{if(typeof stock!=='undefined'&&Array.isArray(stock)){stock.splice(0,stock.length,...next);if(typeof saveStock==='function'){saveStock();evaluateMinimumStock();return}}}catch(_){ }localStorage.setItem('reserveStock',JSON.stringify(next));evaluateMinimumStock();queueRender()}
+  function recordConsumption(s,amount,unit,removed){try{const key='reserveConsumptionHistory',history=JSON.parse(localStorage.getItem(key)||'[]');history.push({n:s.n,amount,unit,barcode:s.barcode||'',consumedAt:new Date().toISOString(),removed:!!removed});localStorage.setItem(key,JSON.stringify(history.slice(-500)))}catch(_){ }}
+  function consume(index,value){const next=getStock(),s=next[index];if(!s)return{ok:false,message:'Produkt nicht gefunden.'};const have=parseQty(s.q),use=parseQty(value);if(!have||!use)return{ok:false,message:'Menge konnte nicht gelesen werden.'};if(have.u!==use.u)return{ok:false,message:'Bitte dieselbe Einheit wie beim Bestand verwenden.'};if(use.v<=0)return{ok:false,message:'Bitte eine Menge größer als 0 eingeben.'};if(use.v>have.v)return{ok:false,message:'Die Entnahmemenge ist größer als der vorhandene Bestand.'};const left=Math.max(0,have.v-use.v),removed=left===0;recordConsumption(s,use.v,use.u,removed);if(removed)next.splice(index,1);else next[index]={...s,q:formatQty(left,have.u),updatedAt:new Date().toISOString()};commitStock(next);return{ok:true,removed,left,unit:have.u}}
 
-  function consume(index,value){
-    const next=getStock(),s=next[index];if(!s)return{ok:false,message:'Produkt nicht gefunden.'};
-    const have=parseQty(s.q),use=parseQty(value);if(!have||!use)return{ok:false,message:'Menge konnte nicht gelesen werden.'};
-    if(have.u!==use.u)return{ok:false,message:'Bitte dieselbe Einheit wie beim Bestand verwenden.'};
-    if(use.v<=0)return{ok:false,message:'Bitte eine Menge größer als 0 eingeben.'};
-    if(use.v>have.v)return{ok:false,message:'Die Entnahmemenge ist größer als der vorhandene Bestand.'};
-    const left=Math.max(0,have.v-use.v),removed=left===0;
-    recordConsumption(s,use.v,use.u,removed);
-    if(removed)next.splice(index,1);else{next[index]={...s,q:formatQty(left,have.u),updatedAt:new Date().toISOString()}}
-    commitStock(next);return{ok:true,removed,left,unit:have.u};
-  }
+  function detail(index){const rows=getStock(),s=rows[index],d=$('cabinetDetail');if(!s||!d)return;const cats=['Getreide & Beilagen','Gemüse & Früchte','Protein','Milchprodukte','Sonstiges'];const options=cats.map(c=>`<option ${c===(s.c||'Sonstiges')?'selected':''}>${esc(c)}</option>`).join('');const parsed=parseQty(s.q),unit=parsed?.u||'',rule=getRules()[ruleKey(s)];d.innerHTML=`<div class="cab-detail-card"><button class="cab-close" aria-label="Schließen">×</button><div class="cab-detail-icon">${icon(s)}</div><h3>Produkt verwalten</h3><form id="cabinetEditForm"><label>Name<input id="cabEditName" value="${esc(s.n)}" required></label><label>Menge<input id="cabEditQty" value="${esc(s.q)}" required></label><label>Ablaufdatum<input id="cabEditExpiry" type="date" value="${esc(s.e||'')}"></label><label>Kategorie<select id="cabEditCat">${options}</select></label><label>Mindestbestand<input id="cabEditMinimum" value="${esc(rule?.q||'')}" placeholder="z. B. 2 l oder 500 g"><span class="small muted">Unter diesem Bestand kommt das Produkt automatisch auf die Einkaufsliste.</span></label><div class="cab-actions"><button type="submit">Speichern</button><button type="button" class="secondary cab-delete">Entfernen</button></div></form><div class="cab-consume"><h4>Verbraucht / entnommen</h4><p class="small muted">Aktueller Bestand: ${esc(s.q)}</p><div class="cab-consume-row"><input id="cabConsumeQty" inputmode="decimal" placeholder="z. B. ${unit==='g'?'250 g':unit==='ml'?'250 ml':unit==='stück'?'1 Stück':'Menge'}"><button type="button" id="cabConsumeBtn">Bestand reduzieren</button></div><p id="cabConsumeStatus" class="small muted"></p></div></div>`;d.hidden=false;d.querySelector('.cab-close').onclick=()=>{d.hidden=true};d.querySelector('#cabinetEditForm').onsubmit=e=>{e.preventDefault();const next=getStock();if(!next[index])return;const before={...next[index]},updated={...next[index],n:$('cabEditName').value.trim(),q:$('cabEditQty').value.trim(),e:$('cabEditExpiry').value,c:$('cabEditCat').value};if(!updated.n||!updated.q)return;const minimum=$('cabEditMinimum').value.trim();if(minimum&&!parseQty(minimum)){const status=$('cabConsumeStatus');status.className='small bad';status.textContent='Mindestbestand konnte nicht gelesen werden.';return}next[index]=updated;commitStock(next);setMinimumRule(before,updated,minimum);d.hidden=true};d.querySelector('.cab-delete').onclick=()=>{const next=getStock(),before=next[index];next.splice(index,1);commitStock(next);setMinimumRule(before,before,'');d.hidden=true};d.querySelector('#cabConsumeBtn').onclick=()=>{const result=consume(index,$('cabConsumeQty').value),status=$('cabConsumeStatus');if(!result.ok){status.className='small bad';status.textContent=result.message;return}status.className='small good';status.textContent=result.removed?'Bestand aufgebraucht. Nachkauf wird bei aktivem Mindestbestand automatisch berechnet.':'Bestand aktualisiert: '+formatQty(result.left,result.unit)+' übrig.';setTimeout(()=>{d.hidden=true},350)}}
 
-  function detail(index){
-    const rows=getStock(),s=rows[index],d=$('cabinetDetail');if(!s||!d)return;
-    const cats=['Getreide & Beilagen','Gemüse & Früchte','Protein','Milchprodukte','Sonstiges'];
-    const options=cats.map(c=>`<option ${c===(s.c||'Sonstiges')?'selected':''}>${esc(c)}</option>`).join('');
-    const parsed=parseQty(s.q),unit=parsed?.u||'';
-    d.innerHTML=`<div class="cab-detail-card"><button class="cab-close" aria-label="Schließen">×</button><div class="cab-detail-icon">${icon(s)}</div><h3>Produkt verwalten</h3><form id="cabinetEditForm"><label>Name<input id="cabEditName" value="${esc(s.n)}" required></label><label>Menge<input id="cabEditQty" value="${esc(s.q)}" required></label><label>Ablaufdatum<input id="cabEditExpiry" type="date" value="${esc(s.e||'')}"></label><label>Kategorie<select id="cabEditCat">${options}</select></label><div class="cab-actions"><button type="submit">Speichern</button><button type="button" class="secondary cab-delete">Entfernen</button></div></form><div class="cab-consume"><h4>Verbraucht / entnommen</h4><p class="small muted">Aktueller Bestand: ${esc(s.q)}</p><div class="cab-consume-row"><input id="cabConsumeQty" inputmode="decimal" placeholder="z. B. ${unit==='g'?'250 g':unit==='ml'?'250 ml':unit==='stück'?'1 Stück':'Menge'}"><button type="button" id="cabConsumeBtn">Bestand reduzieren</button></div><p id="cabConsumeStatus" class="small muted"></p></div></div>`;
-    d.hidden=false;
-    d.querySelector('.cab-close').onclick=()=>{d.hidden=true};
-    d.querySelector('#cabinetEditForm').onsubmit=e=>{e.preventDefault();const next=getStock();if(!next[index])return;next[index]={...next[index],n:$('cabEditName').value.trim(),q:$('cabEditQty').value.trim(),e:$('cabEditExpiry').value,c:$('cabEditCat').value};if(!next[index].n||!next[index].q)return;commitStock(next);d.hidden=true};
-    d.querySelector('.cab-delete').onclick=()=>{const next=getStock();next.splice(index,1);commitStock(next);d.hidden=true};
-    d.querySelector('#cabConsumeBtn').onclick=()=>{const result=consume(index,$('cabConsumeQty').value);const status=$('cabConsumeStatus');if(!result.ok){status.className='small bad';status.textContent=result.message;return}status.className='small good';status.textContent=result.removed?'Bestand aufgebraucht. Produkt wurde aus dem aktiven Vorrat entfernt.':'Bestand aktualisiert: '+formatQty(result.left,result.unit)+' übrig.';setTimeout(()=>{d.hidden=true},350)};
-  }
-
-  function installStockEvents(){
-    if(!window.__reserveStockStorageHook){
-      const original=Storage.prototype.setItem;
-      Storage.prototype.setItem=function(key,value){original.apply(this,arguments);if(this===localStorage&&key==='reserveStock')window.dispatchEvent(new Event('reserve:stock-changed'))};
-      window.__reserveStockStorageHook=true;
-    }
-    window.addEventListener('reserve:stock-changed',syncIfChanged);
-    window.addEventListener('storage',e=>{if(e.key==='reserveStock')syncIfChanged()});
-    window.addEventListener('focus',syncIfChanged);
-    document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncIfChanged()});
-  }
-
-  function mount(){
-    const list=$('stockList');if(!list||$('reserveCabinet'))return;
-    const box=document.createElement('div');box.className='card cabinet-card';
-    box.innerHTML='<div class="cab-head"><div><h2>Vorratsschrank</h2><p class="muted">Finde, bearbeite, entnimm und verwalte Lebensmittel schnell.</p></div><span id="cabinetCount" class="pill good"></span></div><input id="cabinetSearch" type="search" placeholder="Im Vorrat suchen, z. B. Spaghetti oder Milchprodukte" aria-label="Vorrat durchsuchen"><div id="reserveCabinet"></div><div id="cabinetDetail" class="cab-detail" hidden></div>';
-    list.insertAdjacentElement('beforebegin',box);
-    const style=document.createElement('style');style.textContent='.cabinet-card{overflow:hidden}.cab-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.cab-head h2{margin-bottom:4px}.cab-frame{margin-top:14px;padding:18px 14px 8px;border:9px solid #73543a;border-radius:14px;background:repeating-linear-gradient(to bottom,#ead9b9 0,#ead9b9 142px,#76583e 142px,#76583e 154px);display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:18px 10px;min-height:174px}.cab-product{min-height:118px;margin:0;padding:9px 6px;background:#fffdf8e8;color:var(--ink);border:1px solid #c9b48f;border-radius:12px;box-shadow:0 4px 8px #4d372326;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.cab-product strong{font-size:13px;line-height:1.15}.cab-product span:not(.cab-icon),.cab-product small{font-size:11px}.cab-icon{font-size:35px}.cab-soon{outline:3px solid #e5a72f}.cab-expired{outline:3px solid #b44}.cab-empty{padding:30px;text-align:center}.cab-detail{position:fixed;inset:0;z-index:9999;background:#0008;display:grid;place-items:center;padding:18px}.cab-detail[hidden]{display:none}.cab-detail-card{position:relative;width:min(430px,100%);max-height:90vh;overflow:auto;background:var(--card);border-radius:18px;padding:22px}.cab-detail-card label{display:block;margin-top:8px;font-weight:700}.cab-close{position:absolute;right:12px;top:8px;background:transparent;color:var(--ink);font-size:26px}.cab-detail-icon{font-size:52px}.cab-actions,.cab-consume-row{display:flex;gap:8px;flex-wrap:wrap}.cab-actions button{flex:1}.cab-consume{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}.cab-consume h4{margin:0 0 4px}.cab-consume-row input{flex:2;min-width:160px}.cab-consume-row button{flex:1;min-width:140px}@media(max-width:520px){.cab-frame{grid-template-columns:repeat(3,1fr);padding-left:8px;padding-right:8px}.cab-product{min-height:110px}.cab-head{display:block}.cab-consume-row{display:block}}';document.head.appendChild(style);
-    let searchTimer=null;$('cabinetSearch').addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(queueRender,80)});
-    installStockEvents();
-    render();
-  }
-
-  window.RESERVE_CABINET={version:'1.3',render,getStock,sync:syncIfChanged,consume,parseQty};
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
+  function installStockEvents(){if(!window.__reserveStockStorageHook){const original=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){original.apply(this,arguments);if(this===localStorage&&key==='reserveStock')window.dispatchEvent(new Event('reserve:stock-changed'))};window.__reserveStockStorageHook=true}window.addEventListener('reserve:stock-changed',syncIfChanged);window.addEventListener('storage',e=>{if(e.key==='reserveStock')syncIfChanged()});window.addEventListener('focus',syncIfChanged);document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncIfChanged()})}
+  function mount(){const list=$('stockList');if(!list||$('reserveCabinet'))return;const box=document.createElement('div');box.className='card cabinet-card';box.innerHTML='<div class="cab-head"><div><h2>Vorratsschrank</h2><p class="muted">Finde, bearbeite, entnimm und verwalte Lebensmittel schnell.</p></div><span id="cabinetCount" class="pill good"></span></div><input id="cabinetSearch" type="search" placeholder="Im Vorrat suchen, z. B. Spaghetti oder Milchprodukte" aria-label="Vorrat durchsuchen"><div id="reserveCabinet"></div><div id="cabinetDetail" class="cab-detail" hidden></div>';list.insertAdjacentElement('beforebegin',box);const style=document.createElement('style');style.textContent='.cabinet-card{overflow:hidden}.cab-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.cab-head h2{margin-bottom:4px}.cab-frame{margin-top:14px;padding:18px 14px 8px;border:9px solid #73543a;border-radius:14px;background:repeating-linear-gradient(to bottom,#ead9b9 0,#ead9b9 142px,#76583e 142px,#76583e 154px);display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:18px 10px;min-height:174px}.cab-product{min-height:118px;margin:0;padding:9px 6px;background:#fffdf8e8;color:var(--ink);border:1px solid #c9b48f;border-radius:12px;box-shadow:0 4px 8px #4d372326;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.cab-product strong{font-size:13px;line-height:1.15}.cab-product span:not(.cab-icon),.cab-product small{font-size:11px}.cab-icon{font-size:35px}.cab-soon{outline:3px solid #e5a72f}.cab-expired{outline:3px solid #b44}.cab-empty{padding:30px;text-align:center}.cab-detail{position:fixed;inset:0;z-index:9999;background:#0008;display:grid;place-items:center;padding:18px}.cab-detail[hidden]{display:none}.cab-detail-card{position:relative;width:min(430px,100%);max-height:90vh;overflow:auto;background:var(--card);border-radius:18px;padding:22px}.cab-detail-card label{display:block;margin-top:8px;font-weight:700}.cab-detail-card label .small{display:block;font-weight:400;margin-top:2px}.cab-close{position:absolute;right:12px;top:8px;background:transparent;color:var(--ink);font-size:26px}.cab-detail-icon{font-size:52px}.cab-actions,.cab-consume-row{display:flex;gap:8px;flex-wrap:wrap}.cab-actions button{flex:1}.cab-consume{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}.cab-consume h4{margin:0 0 4px}.cab-consume-row input{flex:2;min-width:160px}.cab-consume-row button{flex:1;min-width:140px}@media(max-width:520px){.cab-frame{grid-template-columns:repeat(3,1fr);padding-left:8px;padding-right:8px}.cab-product{min-height:110px}.cab-head{display:block}.cab-consume-row{display:block}}';document.head.appendChild(style);let searchTimer=null;$('cabinetSearch').addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(queueRender,80)});installStockEvents();evaluateMinimumStock();render()}
+  window.RESERVE_CABINET={version:'1.4',render,getStock,sync:syncIfChanged,consume,parseQty,evaluateMinimumStock,getRules};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 })();
