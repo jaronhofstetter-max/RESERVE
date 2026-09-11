@@ -1,4 +1,4 @@
-/* RESERVE product icons v2.0 — central food classifier for dishes, mixed foods and single ingredients. */
+/* RESERVE product icons v2.1 — central food classifier for dishes, mixed foods and single ingredients. */
 (function(){
   const text=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
   const compact=s=>text(s).replace(/\s+/g,'');
@@ -72,10 +72,11 @@
     return{kind:'food',type:'unknown',icon:'🍽️'};
   }
   const iconFor=s=>classify(s).icon;
-  function applyCabinet(){const rows=window.RESERVE_CABINET?.getStock?.()||[];document.querySelectorAll('.cab-product[data-index]').forEach(card=>{const i=Number(card.dataset.index),el=card.querySelector('.cab-icon');if(el&&rows[i])el.textContent=iconFor(rows[i])})}
-  function applyDetail(){const detail=document.querySelector('#cabinetDetail:not([hidden]) .cab-detail-icon');if(!detail)return;detail.textContent=iconFor({n:document.getElementById('cabEditName')?.value||'',c:document.getElementById('cabEditCat')?.value||''})}
+  function setText(el,next){if(el&&el.textContent!==next)el.textContent=next}
+  function applyCabinet(){const rows=window.RESERVE_CABINET?.getStock?.()||[];document.querySelectorAll('.cab-product[data-index]').forEach(card=>{const i=Number(card.dataset.index),el=card.querySelector('.cab-icon');if(el&&rows[i])setText(el,iconFor(rows[i]))})}
+  function applyDetail(){const detail=document.querySelector('#cabinetDetail:not([hidden]) .cab-detail-icon');if(!detail)return;setText(detail,iconFor({n:document.getElementById('cabEditName')?.value||'',c:document.getElementById('cabEditCat')?.value||''}))}
   function apply(){applyCabinet();applyDetail()}
-  function boot(){apply();const observer=new MutationObserver(()=>requestAnimationFrame(apply));observer.observe(document.body,{childList:true,subtree:true});document.addEventListener('input',e=>{if(e.target?.id==='cabEditName')requestAnimationFrame(applyDetail)});document.addEventListener('change',e=>{if(e.target?.id==='cabEditCat')requestAnimationFrame(applyDetail)});window.addEventListener('reserve:stock-changed',()=>requestAnimationFrame(apply))}
+  function boot(){apply();let queued=false;const observer=new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;apply()})});observer.observe(document.body,{childList:true,subtree:true});document.addEventListener('input',e=>{if(e.target?.id==='cabEditName')requestAnimationFrame(applyDetail)});document.addEventListener('change',e=>{if(e.target?.id==='cabEditCat')requestAnimationFrame(applyDetail)});window.addEventListener('reserve:stock-changed',()=>requestAnimationFrame(apply))}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
-  window.RESERVE_PRODUCT_ICONS={version:'2.0',classify,iconFor,apply};
+  window.RESERVE_PRODUCT_ICONS={version:'2.1',classify,iconFor,apply};
 })();
