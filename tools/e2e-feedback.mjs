@@ -16,9 +16,8 @@ await new Promise(r=>server.listen(4175,'127.0.0.1',r));
 const browser=await chromium.launch({headless:true});
 try{
   const page=await browser.newPage({viewport:{width:390,height:844}});
-  const opened=[];
   await page.addInitScript(()=>{
-    const answers=['2','Mehr Übersicht beim Wochenplan'];
+    const answers=['1','Barcode wurde nicht erkannt','Barcode'];
     window.prompt=()=>answers.shift()??null;
     window.open=(url)=>{window.__reserveFeedbackUrl=String(url);return null;};
   });
@@ -27,16 +26,19 @@ try{
   if(await button.count()!==1)throw Error('Feedback button fehlt');
   if(!(await button.isVisible()))throw Error('Feedback button ist nicht sichtbar');
   const box=await button.boundingBox();
-  if(!box||box.x<0||box.x+box.width>390)throw Error('Feedback button im Smartphone-Viewport abgeschnitten');
+  if(!box||box.x<0||box.x+box.width>390||box.y<0||box.y+box.height>844)throw Error('Feedback button im Smartphone-Viewport abgeschnitten');
+  if(box.y+box.height>790)throw Error('Feedback button liegt zu tief und kann die mobile Navigation überdecken');
   await button.click();
   const url=await page.evaluate(()=>window.__reserveFeedbackUrl||'');
-  opened.push(url);
   if(!url.includes('github.com/jaronhofstetter-max/RESERVE/issues/new'))throw Error('Feedback-Ziel ist falsch: '+url);
   const parsed=new URL(url);
-  if(!parsed.searchParams.get('title')?.includes('[RESERVE Idee]'))throw Error('Feedback-Typ fehlt');
-  if(!parsed.searchParams.get('body')?.includes('Mehr Übersicht beim Wochenplan'))throw Error('Feedback-Beschreibung fehlt');
-  console.log('✓ Feedback-Einstieg sichtbar und mobil nutzbar');
-  console.log('✓ Problem/Idee erzeugt vorbereiteten GitHub-Issue-Entwurf');
+  if(!parsed.searchParams.get('title')?.includes('[RESERVE Pilot Problem]'))throw Error('Pilot-Feedback-Typ fehlt');
+  const body=parsed.searchParams.get('body')||'';
+  if(!body.includes('Barcode wurde nicht erkannt'))throw Error('Feedback-Beobachtung fehlt');
+  if(!body.includes('**Bereich:** Barcode'))throw Error('Feedback-Bereich fehlt');
+  if(!body.includes('Viewport: 390×844'))throw Error('Viewport-Kontext fehlt');
+  console.log('✓ Pilot-Feedback mobil sichtbar ohne Bottom-Nav-Überdeckung');
+  console.log('✓ Reibung, Bereich und technischer Kontext landen im vorbereiteten Issue');
 } finally {
   await browser.close();
   server.close();
