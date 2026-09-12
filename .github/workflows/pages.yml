@@ -45,6 +45,7 @@ jobs:
       - name: Browser end-to-end test
         run: |
           node tools/e2e-reserve.mjs
+          node tools/e2e-mobile-resilience.mjs
           node tools/e2e-consumption.mjs
           node tools/e2e-expiry-ui.mjs
           node tools/e2e-autopilot-v2.mjs
