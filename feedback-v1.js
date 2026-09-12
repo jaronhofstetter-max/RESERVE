@@ -4,20 +4,28 @@
   const ISSUE_URL=`https://github.com/${REPO}/issues/new`;
 
   function openFeedback(){
-    const type=window.prompt('Was möchtest du melden?\n1 = Problem\n2 = Idee','1');
+    const type=window.prompt('Wie lief RESERVE gerade?\n1 = Etwas hat mich gestört\n2 = Idee / Wunsch\n3 = Hat gut funktioniert','1');
     if(type===null)return;
-    const kind=String(type).trim()==='2'?'Idee':'Problem';
-    const text=window.prompt(`${kind}: Beschreibe kurz, was du uns mitteilen möchtest.`,'');
+    const choice=String(type).trim();
+    const kind=choice==='2'?'Idee':choice==='3'?'Lob':'Problem';
+    const question=kind==='Problem'
+      ?'Wo bist du hängen geblieben oder was war unnötig mühsam?'
+      :kind==='Idee'?'Was würde dir RESERVE im Alltag noch leichter machen?'
+      :'Was hat für dich besonders gut funktioniert?';
+    const text=window.prompt(question,'');
     if(!text||!text.trim())return;
-    const title=`[RESERVE ${kind}] ${text.trim().slice(0,70)}`;
+    const area=window.prompt('Wo war das? (z.B. Start, Barcode, Vorrat, Rezepte, Einkauf)','');
+    const title=`[RESERVE Pilot ${kind}] ${text.trim().slice(0,65)}`;
     const body=[
       `**Typ:** ${kind}`,
+      `**Bereich:** ${(area||'Nicht angegeben').trim()||'Nicht angegeben'}`,
       '',
-      '**Beschreibung**',
+      '**Beobachtung**',
       text.trim(),
       '',
       '---',
-      `RESERVE Feedback · ${new Date().toISOString()}`,
+      `RESERVE Pilot-Feedback · ${new Date().toISOString()}`,
+      `Viewport: ${window.innerWidth}×${window.innerHeight}`,
       `Browser: ${navigator.userAgent}`
     ].join('\n');
     const url=`${ISSUE_URL}?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
@@ -29,9 +37,9 @@
     const button=document.createElement('button');
     button.id='reserve-feedback-button';
     button.type='button';
-    button.textContent='Problem melden / Idee senden';
-    button.setAttribute('aria-label','Problem melden oder Idee senden');
-    button.style.cssText='position:fixed;right:12px;bottom:12px;z-index:9998;max-width:calc(100vw - 24px);padding:10px 14px;border-radius:999px;border:1px solid currentColor;background:var(--card,#fff);color:inherit;font:inherit;font-size:13px;box-shadow:0 2px 10px rgba(0,0,0,.12);cursor:pointer';
+    button.textContent='Feedback';
+    button.setAttribute('aria-label','Feedback zur Nutzung von RESERVE senden');
+    button.style.cssText='position:fixed;right:12px;bottom:max(76px,calc(12px + env(safe-area-inset-bottom)));z-index:9998;max-width:calc(100vw - 24px);padding:9px 13px;border-radius:999px;border:1px solid currentColor;background:var(--card,#fff);color:inherit;font:inherit;font-size:13px;box-shadow:0 2px 10px rgba(0,0,0,.12);cursor:pointer';
     button.addEventListener('click',openFeedback);
     document.body.appendChild(button);
   }
