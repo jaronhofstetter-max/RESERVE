@@ -1,0 +1,11 @@
+/* RESERVE barcode learning v1.0 — remembers final user corrections and enriches scanned products with automatic icons. */
+(function(){
+ const KEY='reserveBarcodeProductsV1',$=id=>document.getElementById(id),digits=s=>String(s||'').replace(/\D/g,'');
+ function read(){try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'?x:{}}catch{return{}}}
+ function iconFor(name,cat){return window.RESERVE_PRODUCT_ICONS?.iconFor?.({n:name,c:cat})||'🍽️'}
+ function rememberFinal(code,name,qty,cat){code=digits(code);name=String(name||'').trim();qty=String(qty||'').trim();if(!code||!name||!qty)return null;const m=read(),old=m[code]||{},icon=iconFor(name,cat);m[code]={...old,code,name,qty,cat:cat||'Sonstiges',icon,foodState:'food',rememberedAt:new Date().toISOString(),learnedFromCorrection:true};localStorage.setItem(KEY,JSON.stringify(m));return m[code]}
+ function decorate(){const box=$('barcodeResult'),name=$('scanName')?.value?.trim(),cat=$('scanCat')?.value;if(!box||!name)return;let badge=box.querySelector('.reserve-scan-icon');if(!badge){badge=document.createElement('span');badge.className='reserve-scan-icon';badge.style.cssText='font-size:1.5rem;margin-right:.45rem;vertical-align:middle';const target=box.querySelector('.available-card b');if(target)target.prepend(badge)}if(badge)badge.textContent=iconFor(name,cat)+' '}
+ function capture(){const code=digits($('barcodeInput')?.value),name=$('scanName')?.value,qty=$('scanQty')?.value,cat=$('scanCat')?.value;if(!code||!name||!qty)return;setTimeout(()=>rememberFinal(code,name,window.RESERVE_MULTIPACK?.normalizeInput?.(qty)||qty,cat),0)}
+ function boot(){const add=$('scanAdd');if(add&&!add.dataset.barcodeLearning){add.dataset.barcodeLearning='1';add.addEventListener('click',capture,true)}const box=$('barcodeResult');if(box){new MutationObserver(decorate).observe(box,{childList:true,subtree:true})}['scanName','scanCat'].forEach(id=>$(id)?.addEventListener(id==='scanCat'?'change':'input',decorate));decorate()}
+ window.RESERVE_BARCODE_LEARNING={version:'1.0',rememberFinal,iconFor,read};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+})();
