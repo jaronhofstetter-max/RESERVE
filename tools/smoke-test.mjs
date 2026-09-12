@@ -25,7 +25,9 @@ else{
   if(manifest.count!==recipes.length)fail('Detail-Manifest passt nicht zur Produktionsbibliothek');else ok(`Detail-Manifest deckt ${manifest.count} Rezepte ab`);
   const shardPaths=[...new Set(Object.values(manifest.recipes||{}))];
   if(!shardPaths.length||shardPaths.some(p=>!fs.existsSync(p)))fail('Mindestens ein Rezept-Detailshard fehlt');else ok(`${shardPaths.length} Rezept-Detailshards vorhanden`);
-  if(!html.includes("fetch('data/recipe-catalog.json',{cache:'no-store'})"))fail('Produktions-HTML lädt nicht den kompakten Rezeptkatalog');else ok('Produktions-HTML lädt kompakten Rezeptkatalog');
+  if(!html.includes("fetch('data/recipe-catalog.json',{cache:'default'})"))fail('Produktions-HTML lädt den kompakten Rezeptkatalog nicht cache-freundlich');else ok('Produktions-HTML lädt kompakten Rezeptkatalog cache-freundlich');
+  if(!html.includes('loadProfile();refresh();const loadRecipesLater'))fail('Sofortige UI-Aktivierung vor Rezeptladen fehlt');else ok('UI wird vor dem Rezeptladen aktiviert');
+  if(html.includes("recipe-catalog.json',{cache:'no-store'}"))fail('Rezeptkatalog erzwingt weiterhin Netzwerk-Neuladen');else ok('Rezeptkatalog erzwingt kein Netzwerk-Neuladen');
 }
 
 const core=fs.readFileSync('reserve-core-v3.js','utf8');
