@@ -1,13 +1,11 @@
-/* RESERVE product icons v2.1 — central food classifier for dishes, mixed foods and single ingredients. */
+/* RESERVE product icons v2.2 — central food classifier with typing-safe observer updates. */
 (function(){
   const text=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
   const compact=s=>text(s).replace(/\s+/g,'');
   const meta=s=>text([s?.n,s?.c,s?.category,s?.categories,s?.categories_tags,s?.generic_name,s?.product_name,s?.labels].flat().filter(Boolean).join(' '));
   const hit=(value,re)=>re.test(value);
   function classify(s){
-    const n=text(s?.n||s?.product_name),nc=compact(s?.n||s?.product_name),m=meta(s),c=text(s?.c||s?.category||s?.categories);
-
-    // Prepared meals / mixed foods always win over ingredient words contained in their names.
+    const n=text(s?.n||s?.product_name),m=meta(s),c=text(s?.c||s?.category||s?.categories);
     if(hit(m,/(^| )sushi( |$)|maki|nigiri|sashimi/))return{kind:'dish',type:'sushi',icon:'🍣'};
     if(hit(m,/pizza|flammkuchen/))return{kind:'dish',type:'pizza',icon:'🍕'};
     if(hit(m,/burger|hamburger|cheeseburger/))return{kind:'dish',type:'burger',icon:'🍔'};
@@ -19,8 +17,6 @@
     if(hit(m,/salatmix|salat mix|mischsalat|gemischter salat|prepared salad|meal salad|pok[eé] bowl|poke bowl|bowl meal/))return{kind:'dish',type:'salad-meal',icon:'🥗'};
     if(hit(m,/fertiggericht|ready meal|prepared meal|prepared dish|complete meal|meal kit|menu meal/))return{kind:'dish',type:'prepared-meal',icon:'🍽️'};
     if(hit(m,/muesli|musli|granola|porridge|overnight oats/))return{kind:'mixed',type:'cereal',icon:'🥣'};
-
-    // Single foods and recognizable product families.
     if(hit(n,/essig|vinegar/))return{kind:'ingredient',type:'vinegar',icon:'🍶'};
     if(hit(n,/poulet|huhn|hahn|chicken|geflugel|truthahn|pute/))return{kind:'ingredient',type:'poultry',icon:'🍗'};
     if(hit(n,/rind|beef|fleisch|schwein|wurst|salami|speck|ham |schinken/))return{kind:'ingredient',type:'meat',icon:'🥩'};
@@ -60,8 +56,6 @@
     if(hit(n,/honig|honey/))return{kind:'ingredient',type:'honey',icon:'🍯'};
     if(hit(n,/schokolade|chocolate|kakao|cocoa/))return{kind:'ingredient',type:'chocolate',icon:'🍫'};
     if(hit(n,/dose|konserve|canned/))return{kind:'ingredient',type:'canned',icon:'🥫'};
-
-    // Product/category metadata fallback. Avoid partial-word rules such as "ei".
     if(hit(m,/sushi|prepared meals|ready meals|fertiggerichte/))return{kind:'dish',type:'prepared-meal',icon:'🍽️'};
     if(hit(c,/gemuse|vegetable/))return{kind:'category',type:'vegetable',icon:'🥦'};
     if(hit(c,/frucht|obst|fruit/))return{kind:'category',type:'fruit',icon:'🍎'};
@@ -76,7 +70,17 @@
   function applyCabinet(){const rows=window.RESERVE_CABINET?.getStock?.()||[];document.querySelectorAll('.cab-product[data-index]').forEach(card=>{const i=Number(card.dataset.index),el=card.querySelector('.cab-icon');if(el&&rows[i])setText(el,iconFor(rows[i]))})}
   function applyDetail(){const detail=document.querySelector('#cabinetDetail:not([hidden]) .cab-detail-icon');if(!detail)return;setText(detail,iconFor({n:document.getElementById('cabEditName')?.value||'',c:document.getElementById('cabEditCat')?.value||''}))}
   function apply(){applyCabinet();applyDetail()}
-  function boot(){apply();let queued=false;const observer=new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;apply()})});observer.observe(document.body,{childList:true,subtree:true});document.addEventListener('input',e=>{if(e.target?.id==='cabEditName')requestAnimationFrame(applyDetail)});document.addEventListener('change',e=>{if(e.target?.id==='cabEditCat')requestAnimationFrame(applyDetail)});window.addEventListener('reserve:stock-changed',()=>requestAnimationFrame(apply))}
+  function typing(){return !!(window.RESERVE_INPUT_GUARD?.isTyping?.()||window.RESERVE_PERFORMANCE?.isTyping?.())}
+  function boot(){
+    apply();let queued=false,retry=null;
+    const run=()=>{if(typing()){clearTimeout(retry);retry=setTimeout(run,950);return}queued=false;apply()};
+    const observer=new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(run)});
+    observer.observe(document.body,{childList:true,subtree:true});
+    document.addEventListener('input',e=>{if(e.target?.id==='cabEditName')requestAnimationFrame(()=>{if(!typing())applyDetail()})});
+    document.addEventListener('change',e=>{if(e.target?.id==='cabEditCat')requestAnimationFrame(applyDetail)});
+    window.addEventListener('reserve:stock-changed',()=>requestAnimationFrame(run));
+    window.addEventListener('pagehide',()=>{observer.disconnect();clearTimeout(retry)},{once:true});
+  }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
-  window.RESERVE_PRODUCT_ICONS={version:'2.1',classify,iconFor,apply};
+  window.RESERVE_PRODUCT_ICONS={version:'2.2',classify,iconFor,apply};
 })();
