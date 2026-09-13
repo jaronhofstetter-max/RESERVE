@@ -56,6 +56,18 @@
     }
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',notice); else notice();
-  const observer=new MutationObserver(()=>notice());
+  let queued=false,retry=null;
+  function scheduleNotice(){
+    if(queued)return;queued=true;
+    const run=()=>{
+      if(window.RESERVE_INPUT_GUARD?.isTyping?.()||window.RESERVE_PERFORMANCE?.isTyping?.()){
+        clearTimeout(retry);retry=setTimeout(run,950);return;
+      }
+      queued=false;notice();
+    };
+    requestAnimationFrame(run);
+  }
+  const observer=new MutationObserver(scheduleNotice);
   observer.observe(document.body,{childList:true,subtree:true});
+  window.addEventListener('pagehide',()=>{observer.disconnect();clearTimeout(retry)},{once:true});
 })();
