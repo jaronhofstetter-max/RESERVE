@@ -15,7 +15,11 @@ for(const file of modules){if(!fs.existsSync(file)) fail(`${file} fehlt`);else o
 for(const needle of ['id="stock"','id="shopping"','id="cook"','id="profile"','id="shopList"']){
   if(!html.includes(needle)) fail(`UI-Anker ${needle} fehlt`);else ok(`UI-Anker ${needle} vorhanden`);
 }
-for(const module of modules){if(!html.includes(`<script src="${module}"></script>`)) fail(`${module} ist im Produktions-HTML nicht eingebunden`);else ok(`${module} im Produktions-HTML eingebunden`)}
+const escapeRegExp=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+for(const module of modules){
+  const scriptPattern=new RegExp(`<script\\s+src=["']${escapeRegExp(module)}(?:\\?[^"']*)?["'][^>]*><\\/script>`,'i');
+  if(!scriptPattern.test(html)) fail(`${module} ist im Produktions-HTML nicht eingebunden`);else ok(`${module} im Produktions-HTML eingebunden`);
+}
 
 const catalogPath='data/recipe-catalog.json',manifestPath='data/recipe-details-manifest.json';
 if(!fs.existsSync(catalogPath)||!fs.existsSync(manifestPath))fail('Kompakte Rezeptauslieferung wurde nicht erzeugt');
