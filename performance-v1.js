@@ -1,178 +1,27 @@
-/* RESERVE performance v1.4 — protect mobile typing and diagnose real-device main-thread stalls. */
+/* RESERVE performance v1.5 — protect interaction fast paths and keep heavy work off the main interaction lane. */
 (function(){
-  let idleQueue=[],idleScheduled=false,searchTimer=null,searchTicket=0,typingTimer=null,typingUntil=0;
+  let idleQueue=[],idleScheduled=false,searchTimer=null,searchTicket=0,typingTimer=null,typingUntil=0,homeTicket=0;
   const ric=window.requestIdleCallback||function(cb){return setTimeout(()=>cb({didTimeout:false,timeRemaining:()=>8}),40)};
   const SEARCH_DELAY_MS=140,MAX_SEARCH_RESULTS=36,TYPE_QUIET_MS=420;
   function isTyping(){return performance.now()<typingUntil}
-  function markTyping(){
-    typingUntil=performance.now()+TYPE_QUIET_MS;
-    document.documentElement.classList.add('reserve-typing');
-    clearTimeout(typingTimer);
-    typingTimer=setTimeout(()=>document.documentElement.classList.remove('reserve-typing'),TYPE_QUIET_MS+40);
-  }
-  function installTypingCSS(){
-    if(document.getElementById('reservePerfCss'))return;
-    const s=document.createElement('style');s.id='reservePerfCss';s.textContent=`
-      html.reserve-typing *,html.reserve-typing *::before,html.reserve-typing *::after{animation-play-state:paused!important;transition:none!important}
-      #stock .card:not(#barcodeCard),#cabinetInventory .cab-product{content-visibility:auto;contain-intrinsic-size:auto 140px}
-      #barcodeCard{contain:layout style paint}
-    `;document.head.appendChild(s)
-  }
+  function markTyping(){typingUntil=performance.now()+TYPE_QUIET_MS;document.documentElement.classList.add('reserve-typing');clearTimeout(typingTimer);typingTimer=setTimeout(()=>document.documentElement.classList.remove('reserve-typing'),TYPE_QUIET_MS+40)}
+  function installTypingCSS(){if(document.getElementById('reservePerfCss'))return;const s=document.createElement('style');s.id='reservePerfCss';s.textContent=`html.reserve-typing *,html.reserve-typing *::before,html.reserve-typing *::after{animation-play-state:paused!important;transition:none!important}#stock .card:not(#barcodeCard),#cabinetInventory .cab-product{content-visibility:auto;contain-intrinsic-size:auto 140px}#barcodeCard{contain:layout style paint}`;document.head.appendChild(s)}
   function schedule(){if(idleScheduled||isTyping())return;idleScheduled=true;ric(flush)}
   function idle(fn){idleQueue.push(fn);if(isTyping())setTimeout(schedule,TYPE_QUIET_MS+20);else schedule()}
-  function flush(deadline){
-    idleScheduled=false;
-    if(isTyping()){setTimeout(schedule,TYPE_QUIET_MS+20);return}
-    let budget=24;
-    while(idleQueue.length&&budget--&&(deadline.didTimeout||deadline.timeRemaining()>2)){
-      const fn=idleQueue.shift();try{fn()}catch(e){console.warn('RESERVE idle task',e)}
-      if(isTyping())break;
-    }
-    if(idleQueue.length)schedule()
-  }
-  function lazyImages(root=document){
-    if(isTyping())return;
-    if(root?.nodeType===1&&root.matches?.('img:not([loading])')){root.loading='lazy';root.decoding='async'}
-    root?.querySelectorAll?.('img:not([loading])').forEach(img=>{img.loading='lazy';img.decoding='async'})
-  }
+  function flush(deadline){idleScheduled=false;if(isTyping()){setTimeout(schedule,TYPE_QUIET_MS+20);return}let budget=18;while(idleQueue.length&&budget--&&(deadline.didTimeout||deadline.timeRemaining()>2)){const fn=idleQueue.shift();try{fn()}catch(e){console.warn('RESERVE idle task',e)}if(isTyping())break}if(idleQueue.length)schedule()}
+  function lazyImages(root=document){if(isTyping())return;if(root?.nodeType===1&&root.matches?.('img:not([loading])')){root.loading='lazy';root.decoding='async'}root?.querySelectorAll?.('img:not([loading])').forEach(img=>{img.loading='lazy';img.decoding='async'})}
+  function lazyActivePanel(){const panel=document.querySelector('.panel.active')||document;idle(()=>lazyImages(panel))}
   function warmCore(){['data/recipe-catalog.json','data/recipe-index.json'].forEach(href=>{if(document.head.querySelector(`link[href="${href}"]`))return;const l=document.createElement('link');l.rel='prefetch';l.href=href;l.as='fetch';l.crossOrigin='anonymous';document.head.appendChild(l)})}
-  function observe(){
-    if(!('MutationObserver'in window))return;
-    const pending=new Set();let queued=false,retryTimer=null;
-    const flushNodes=()=>{
-      queued=false;
-      if(isTyping()){clearTimeout(retryTimer);retryTimer=setTimeout(flushNodes,TYPE_QUIET_MS+30);return}
-      const nodes=[...pending];pending.clear();for(const node of nodes)lazyImages(node)
-    };
-    const mo=new MutationObserver(records=>{
-      for(const record of records)for(const node of record.addedNodes)if(node.nodeType===1)pending.add(node);
-      if(pending.size&&!queued){queued=true;if(isTyping())retryTimer=setTimeout(flushNodes,TYPE_QUIET_MS+30);else requestAnimationFrame(flushNodes)}
-    });
-    mo.observe(document.body,{childList:true,subtree:true});
-    window.addEventListener('pagehide',()=>{mo.disconnect();clearTimeout(retryTimer)},{once:true})
-  }
   function activePanel(){return document.querySelector('.panel.active')?.id||'home'}
-  function renderSearchNow(){
-    if(typeof recipes==='undefined'||!window.searchResults||!window.recipeSearch)return;
-    const q=N(recipeSearch.value),diet=fDiet?.value||'',difficulty=fDifficulty?.value||'',cuisine=fCuisine?.value||'',list=[];
-    for(const r of recipes){
-      if(diet&&r.diet!==diet)continue;
-      if(difficulty&&r.difficulty!==difficulty)continue;
-      if(cuisine&&r.cuisine!==cuisine)continue;
-      if(q&&!N(r.name).includes(q)&&!r.ingredients.some(i=>N(i.name).includes(q)))continue;
-      if(!allowed(r))continue;
-      list.push(r);
-      if(list.length>=MAX_SEARCH_RESULTS)break;
-    }
-    searchResults.innerHTML=`<div class="recipe-card-grid">${list.map(recipeCard).join('')}</div>${list.length===MAX_SEARCH_RESULTS?'<p class="small muted">Weitere Treffer werden beim Verfeinern der Suche angezeigt.</p>':''}`;
-  }
-  function renderSearchFast(){clearTimeout(searchTimer);const ticket=++searchTicket;searchTimer=setTimeout(()=>{if(ticket===searchTicket)renderSearchNow()},SEARCH_DELAY_MS)}
-  function renderPanel(id){
-    try{
-      if(id==='home'){
-        if(window.stockCount)stockCount.textContent=stock.length;
-        if(window.recipeCount)recipeCount.textContent=recipes.length;
-        if(window.dishCount)dishCount.textContent=recipes.filter(canCook).length;
-        renderOnboarding();renderSmart();renderQuality();
-      }else if(id==='stock')renderStock();
-      else if(id==='menu')renderPlan();
-      else if(id==='search')renderSearchNow();
-      else if(id==='cook')renderCook();
-      else if(id==='shopping')renderShop();
-    }catch(e){console.warn('RESERVE panel render',id,e)}
-  }
-  function refreshFast(){
-    if(window.stockCount)stockCount.textContent=stock.length;
-    if(window.recipeCount)recipeCount.textContent=recipes.length;
-    const id=activePanel();renderPanel(id);
-    window.dispatchEvent(new CustomEvent('reserve:ui-refreshed',{detail:{panel:id}}));
-  }
-  function showFast(id,btn){
-    document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===id));
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    if(btn)btn.classList.add('active');
-    requestAnimationFrame(()=>setTimeout(()=>renderPanel(id),0));
-  }
-  function installHotPath(){
-    try{window.renderSearch=renderSearchFast;renderSearch=renderSearchFast}catch(_){window.renderSearch=renderSearchFast}
-    try{window.refresh=refreshFast;refresh=refreshFast}catch(_){window.refresh=refreshFast}
-    try{window.show=showFast;show=showFast}catch(_){window.show=showFast}
-  }
-
-  function installDiagnostics(){
-    let query='';try{query=new URLSearchParams(location.search).get('reserveDiag')||''}catch(_){ }
-    try{if(query==='1')localStorage.setItem('reserveDiagV1','1');if(query==='0')localStorage.removeItem('reserveDiagV1')}catch(_){ }
-    let enabled=query==='1';try{enabled=enabled||localStorage.getItem('reserveDiagV1')==='1'}catch(_){ }
-    if(!enabled)return null;
-
-    const stats={startedAt:Date.now(),inputLast:0,inputMax:0,inputCount:0,longCount:0,longTotal:0,longMax:0,loopMax:0,loopCount:0,uiRefresh:0,storageCount:0,storageTotal:0,storageMax:0,hotspots:new Map()};
-    const round=n=>Math.round((Number(n)||0)*10)/10;
-    function recordHotspot(name,duration){
-      const prev=stats.hotspots.get(name)||{count:0,total:0,max:0,last:0};
-      prev.count++;prev.total+=duration;prev.last=duration;prev.max=Math.max(prev.max,duration);stats.hotspots.set(name,prev)
-    }
-    function topHotspots(){return [...stats.hotspots.entries()].sort((a,b)=>b[1].max-a[1].max).slice(0,4)}
-    function report(){
-      const hot=topHotspots().map(([name,s])=>`${name}: max ${round(s.max)} ms, avg ${round(s.total/s.count)} ms (${s.count}x)`).join('\n')||'keine gemessenen Render-Hotspots';
-      return [
-        'RESERVE Diagnose v1',
-        `Build: ${window.RESERVE_BUILD||'unbekannt'}`,
-        `Performance: 1.4`,
-        `Input→Frame: zuletzt ${round(stats.inputLast)} ms | max ${round(stats.inputMax)} ms | ${stats.inputCount} Messungen`,
-        `Long Tasks ≥50ms: ${stats.longCount} | gesamt ${round(stats.longTotal)} ms | max ${round(stats.longMax)} ms`,
-        `Event-Loop-Stau >50ms: ${stats.loopCount} | max ${round(stats.loopMax)} ms`,
-        `UI refresh: ${stats.uiRefresh}`,
-        `localStorage.setItem: ${stats.storageCount}x | gesamt ${round(stats.storageTotal)} ms | max ${round(stats.storageMax)} ms`,
-        'Hotspots:',hot,
-        `Panel: ${activePanel()}`,
-        `Laufzeit: ${Math.round((Date.now()-stats.startedAt)/1000)} s`,
-        `Browser: ${navigator.userAgent}`
-      ].join('\n')
-    }
-    function reset(){stats.startedAt=Date.now();stats.inputLast=stats.inputMax=stats.inputCount=stats.longCount=stats.longTotal=stats.longMax=stats.loopMax=stats.loopCount=stats.uiRefresh=stats.storageCount=stats.storageTotal=stats.storageMax=0;stats.hotspots.clear();paint()}
-
-    const box=document.createElement('aside');box.id='reservePerfDiag';box.setAttribute('aria-label','RESERVE Performance Diagnose');box.style.cssText='position:fixed;z-index:2147483646;left:8px;right:8px;bottom:8px;max-height:42vh;overflow:auto;background:rgba(15,23,42,.94);color:#fff;border-radius:12px;padding:10px;font:12px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;box-shadow:0 8px 30px rgba(0,0,0,.35);text-align:left';
-    const pre=document.createElement('pre');pre.style.cssText='margin:0 0 8px;white-space:pre-wrap;word-break:break-word;color:#fff';
-    const controls=document.createElement('div');controls.style.cssText='display:flex;gap:6px;flex-wrap:wrap';
-    function button(label,fn){const b=document.createElement('button');b.type='button';b.textContent=label;b.style.cssText='font:inherit;padding:6px 9px;border:0;border-radius:7px;background:#fff;color:#111;min-height:32px';b.addEventListener('click',fn);controls.appendChild(b)}
-    button('Bericht kopieren',async()=>{const text=report();try{await navigator.clipboard.writeText(text)}catch(_){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(__){ }ta.remove()}});
-    button('Zurücksetzen',reset);
-    button('Schließen',()=>{box.hidden=true});
-    box.append(pre,controls);document.body.appendChild(box);
-    function paint(){if(!box.hidden)pre.textContent=report()}
-    const paintTimer=setInterval(paint,500);
-
-    document.addEventListener('input',()=>{const start=performance.now();requestAnimationFrame(()=>{const d=performance.now()-start;stats.inputLast=d;stats.inputMax=Math.max(stats.inputMax,d);stats.inputCount++})},{capture:true,passive:true});
-    window.addEventListener('reserve:ui-refreshed',()=>stats.uiRefresh++,{passive:true});
-
-    try{
-      const po=new PerformanceObserver(list=>{for(const e of list.getEntries()){stats.longCount++;stats.longTotal+=e.duration;stats.longMax=Math.max(stats.longMax,e.duration)}});
-      po.observe({type:'longtask',buffered:true});window.addEventListener('pagehide',()=>po.disconnect(),{once:true})
-    }catch(_){ }
-
-    let expected=performance.now()+250;
-    const loopTimer=setInterval(()=>{const now=performance.now(),lag=Math.max(0,now-expected);expected=now+250;if(lag>50){stats.loopCount++;stats.loopMax=Math.max(stats.loopMax,lag)}},250);
-
-    const storage=window.localStorage,originalSet=storage?.setItem?.bind(storage);
-    if(originalSet){try{storage.setItem=function(k,v){const t=performance.now();const out=originalSet(k,v);const d=performance.now()-t;stats.storageCount++;stats.storageTotal+=d;stats.storageMax=Math.max(stats.storageMax,d);return out}}catch(_){ }}
-
-    const names=['renderStock','renderPlan','renderSearch','renderCook','renderShop','renderSmart','renderQuality','renderOnboarding','refresh','show'];
-    function wrapGlobals(){
-      for(const name of names){const fn=window[name];if(typeof fn!=='function'||fn.__reserveDiagWrapped)continue;const wrapped=function(...args){const t=performance.now();try{return fn.apply(this,args)}finally{recordHotspot(name,performance.now()-t)}};wrapped.__reserveDiagWrapped=true;wrapped.__reserveDiagOriginal=fn;try{window[name]=wrapped}catch(_){ }}
-    }
-    wrapGlobals();const wrapTimer=setInterval(wrapGlobals,1200);
-    window.addEventListener('pagehide',()=>{clearInterval(paintTimer);clearInterval(loopTimer);clearInterval(wrapTimer)},{once:true});
-    paint();
-    return{enabled:true,stats,report,reset,paint}
-  }
-
-  function boot(){
-    installTypingCSS();
-    document.addEventListener('input',e=>{if(e.target?.matches?.('input,textarea,[contenteditable="true"]'))markTyping()},{capture:true,passive:true});
-    document.addEventListener('keydown',e=>{if(e.target?.matches?.('input,textarea,[contenteditable="true"]'))markTyping()},{capture:true,passive:true});
-    lazyImages();observe();installHotPath();idle(warmCore);
-    const diagnostics=installDiagnostics();if(diagnostics)window.RESERVE_DIAGNOSTICS=diagnostics
-  }
+  function renderSearchNow(){if(typeof recipes==='undefined'||!window.searchResults||!window.recipeSearch)return;const q=N(recipeSearch.value),diet=fDiet?.value||'',difficulty=fDifficulty?.value||'',cuisine=fCuisine?.value||'',list=[];for(const r of recipes){if(diet&&r.diet!==diet)continue;if(difficulty&&r.difficulty!==difficulty)continue;if(cuisine&&r.cuisine!==cuisine)continue;if(q&&!N(r.name).includes(q)&&!r.ingredients.some(i=>N(i.name).includes(q)))continue;if(!allowed(r))continue;list.push(r);if(list.length>=MAX_SEARCH_RESULTS)break}searchResults.innerHTML=`<div class="recipe-card-grid">${list.map(recipeCard).join('')}</div>${list.length===MAX_SEARCH_RESULTS?'<p class="small muted">Weitere Treffer werden beim Verfeinern der Suche angezeigt.</p>':''}`}
+  function renderSearchFast(){clearTimeout(searchTimer);const ticket=++searchTicket;searchTimer=setTimeout(()=>{if(ticket===searchTicket&&!isTyping())renderSearchNow()},SEARCH_DELAY_MS)}
+  function renderHomeDeferred(){const ticket=++homeTicket;idle(()=>{if(ticket!==homeTicket||isTyping()||activePanel()!=='home')return;try{renderSmart()}catch(e){console.warn('RESERVE home smart render',e)}idle(()=>{if(ticket!==homeTicket||isTyping()||activePanel()!=='home')return;try{renderQuality()}catch(e){console.warn('RESERVE home quality render',e)}})})}
+  function renderPanel(id){try{if(id==='home'){if(window.stockCount)stockCount.textContent=stock.length;if(window.recipeCount)recipeCount.textContent=recipes.length;if(window.dishCount)dishCount.textContent=recipes.filter(canCook).length;renderOnboarding();renderHomeDeferred()}else if(id==='stock')renderStock();else if(id==='menu')renderPlan();else if(id==='search')renderSearchNow();else if(id==='cook')renderCook();else if(id==='shopping')renderShop()}catch(e){console.warn('RESERVE panel render',id,e)}}
+  function refreshFast(){if(window.stockCount)stockCount.textContent=stock.length;if(window.recipeCount)recipeCount.textContent=recipes.length;const id=activePanel();renderPanel(id);window.dispatchEvent(new CustomEvent('reserve:ui-refreshed',{detail:{panel:id}}))}
+  function showFast(id,btn){document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');requestAnimationFrame(()=>setTimeout(()=>{renderPanel(id);window.dispatchEvent(new CustomEvent('reserve:ui-refreshed',{detail:{panel:id}}))},0))}
+  function installHotPath(){try{window.renderSearch=renderSearchFast;renderSearch=renderSearchFast}catch(_){window.renderSearch=renderSearchFast}try{window.refresh=refreshFast;refresh=refreshFast}catch(_){window.refresh=refreshFast}try{window.show=showFast;show=showFast}catch(_){window.show=showFast}}
+  function installDiagnostics(){let query='';try{query=new URLSearchParams(location.search).get('reserveDiag')||''}catch(_){ }try{if(query==='1')localStorage.setItem('reserveDiagV1','1');if(query==='0')localStorage.removeItem('reserveDiagV1')}catch(_){ }let enabled=query==='1';try{enabled=enabled||localStorage.getItem('reserveDiagV1')==='1'}catch(_){ }if(!enabled)return null;const stats={startedAt:Date.now(),inputLast:0,inputMax:0,inputCount:0,longCount:0,longTotal:0,longMax:0,loopMax:0,loopCount:0,uiRefresh:0,storageCount:0,storageTotal:0,storageMax:0,hotspots:new Map()};const round=n=>Math.round((Number(n)||0)*10)/10;function recordHotspot(name,duration){const prev=stats.hotspots.get(name)||{count:0,total:0,max:0,last:0};prev.count++;prev.total+=duration;prev.last=duration;prev.max=Math.max(prev.max,duration);stats.hotspots.set(name,prev)}function topHotspots(){return [...stats.hotspots.entries()].sort((a,b)=>b[1].max-a[1].max).slice(0,4)}function report(){const hot=topHotspots().map(([name,s])=>`${name}: max ${round(s.max)} ms, avg ${round(s.total/s.count)} ms (${s.count}x)`).join('\n')||'keine gemessenen Render-Hotspots';return ['RESERVE Diagnose v1',`Build: ${window.RESERVE_BUILD||'unbekannt'}`,'Performance: 1.5',`Input→Frame: zuletzt ${round(stats.inputLast)} ms | max ${round(stats.inputMax)} ms | ${stats.inputCount} Messungen`,`Long Tasks ≥50ms: ${stats.longCount} | gesamt ${round(stats.longTotal)} ms | max ${round(stats.longMax)} ms`,`Event-Loop-Stau >50ms: ${stats.loopCount} | max ${round(stats.loopMax)} ms`,`UI refresh: ${stats.uiRefresh}`,`localStorage.setItem: ${stats.storageCount}x | gesamt ${round(stats.storageTotal)} ms | max ${round(stats.storageMax)} ms`,'Hotspots:',hot,`Panel: ${activePanel()}`,`Laufzeit: ${Math.round((Date.now()-stats.startedAt)/1000)} s`,`Browser: ${navigator.userAgent}`].join('\n')}function reset(){stats.startedAt=Date.now();stats.inputLast=stats.inputMax=stats.inputCount=stats.longCount=stats.longTotal=stats.longMax=stats.loopMax=stats.loopCount=stats.uiRefresh=stats.storageCount=stats.storageTotal=stats.storageMax=0;stats.hotspots.clear();paint()}const box=document.createElement('aside');box.id='reservePerfDiag';box.setAttribute('aria-label','RESERVE Performance Diagnose');box.style.cssText='position:fixed;z-index:2147483646;left:8px;right:8px;bottom:8px;max-height:42vh;overflow:auto;background:rgba(15,23,42,.94);color:#fff;border-radius:12px;padding:10px;font:12px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;box-shadow:0 8px 30px rgba(0,0,0,.35);text-align:left';const pre=document.createElement('pre');pre.style.cssText='margin:0 0 8px;white-space:pre-wrap;word-break:break-word;color:#fff';const controls=document.createElement('div');controls.style.cssText='display:flex;gap:6px;flex-wrap:wrap';function button(label,fn){const b=document.createElement('button');b.type='button';b.textContent=label;b.style.cssText='font:inherit;padding:6px 9px;border:0;border-radius:7px;background:#fff;color:#111;min-height:32px';b.addEventListener('click',fn);controls.appendChild(b)}button('Bericht kopieren',async()=>{const text=report();try{await navigator.clipboard.writeText(text)}catch(_){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(__){ }ta.remove()}});button('Zurücksetzen',reset);button('Schließen',()=>{box.hidden=true});box.append(pre,controls);document.body.appendChild(box);function paint(){if(!box.hidden)pre.textContent=report()}const paintTimer=setInterval(paint,500);document.addEventListener('input',()=>{const start=performance.now();requestAnimationFrame(()=>{const d=performance.now()-start;stats.inputLast=d;stats.inputMax=Math.max(stats.inputMax,d);stats.inputCount++})},{capture:true,passive:true});window.addEventListener('reserve:ui-refreshed',()=>stats.uiRefresh++,{passive:true});try{const po=new PerformanceObserver(list=>{for(const e of list.getEntries()){stats.longCount++;stats.longTotal+=e.duration;stats.longMax=Math.max(stats.longMax,e.duration)}});po.observe({type:'longtask',buffered:true});window.addEventListener('pagehide',()=>po.disconnect(),{once:true})}catch(_){ }let expected=performance.now()+250;const loopTimer=setInterval(()=>{const t=performance.now(),lag=Math.max(0,t-expected);expected=t+250;if(lag>50){stats.loopCount++;stats.loopMax=Math.max(stats.loopMax,lag)}},250);const storage=window.localStorage,originalSet=storage?.setItem?.bind(storage);if(originalSet){try{storage.setItem=function(k,v){const t=performance.now(),out=originalSet(k,v),d=performance.now()-t;stats.storageCount++;stats.storageTotal+=d;stats.storageMax=Math.max(stats.storageMax,d);return out}}catch(_){ }}const names=['renderStock','renderPlan','renderSearch','renderCook','renderShop','renderSmart','renderQuality','renderOnboarding','refresh','show'];function wrapGlobals(){for(const name of names){const fn=window[name];if(typeof fn!=='function'||fn.__reserveDiagWrapped)continue;const wrapped=function(...args){const t=performance.now();try{return fn.apply(this,args)}finally{recordHotspot(name,performance.now()-t)}};wrapped.__reserveDiagWrapped=true;wrapped.__reserveDiagOriginal=fn;try{window[name]=wrapped}catch(_){ }}}wrapGlobals();const wrapTimer=setInterval(wrapGlobals,1200);window.addEventListener('pagehide',()=>{clearInterval(paintTimer);clearInterval(loopTimer);clearInterval(wrapTimer)},{once:true});paint();return{enabled:true,stats,report,reset,paint}}
+  function boot(){installTypingCSS();document.addEventListener('input',e=>{if(e.target?.matches?.('input,textarea,[contenteditable="true"]'))markTyping()},{capture:true,passive:true});document.addEventListener('keydown',e=>{if(e.target?.matches?.('input,textarea,[contenteditable="true"]'))markTyping()},{capture:true,passive:true});window.addEventListener('reserve:ui-refreshed',lazyActivePanel,{passive:true});lazyImages();installHotPath();idle(warmCore);const diagnostics=installDiagnostics();if(diagnostics)window.RESERVE_DIAGNOSTICS=diagnostics}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
-  window.RESERVE_PERFORMANCE={version:'1.4',idle,lazyImages,warmCore,renderSearchNow,renderSearchFast,refreshFast,showFast,isTyping,markTyping,maxSearchResults:MAX_SEARCH_RESULTS,searchDelayMs:SEARCH_DELAY_MS};
+  window.RESERVE_PERFORMANCE={version:'1.5',idle,lazyImages,warmCore,renderSearchNow,renderSearchFast,refreshFast,showFast,isTyping,markTyping,maxSearchResults:MAX_SEARCH_RESULTS,searchDelayMs:SEARCH_DELAY_MS};
 })();
