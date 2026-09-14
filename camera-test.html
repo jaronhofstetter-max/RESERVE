@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>RESERVE Kamera-Test</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:#f5f1e8;color:#1d2925}.wrap{max-width:720px;margin:auto;padding:18px}h1{margin:0 0 6px;color:#173f35}.muted{color:#6c746f}.card{background:#fffdf8;border:1px solid #ded8ca;border-radius:16px;padding:16px;margin:14px 0}button{border:0;background:#173f35;color:#fff;padding:13px 16px;border-radius:10px;font-weight:800;font-size:16px;margin:4px 6px 4px 0}button.secondary{background:#e9e3d6;color:#173f35}video{width:100%;min-height:260px;max-height:58vh;background:#000;border-radius:14px;object-fit:cover;display:block}.status{padding:10px 12px;border-radius:10px;background:#edf4ef;margin-top:10px}.bad{background:#f7dfdc;color:#8b2d27}pre{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#fff;border-radius:12px;padding:12px;font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;max-height:38vh;overflow:auto}
+</style>
+</head>
+<body><div class="wrap">
+<h1>RESERVE Kamera-Isolation</h1>
+<p class="muted">Nur Kamera und Messung. Kein Barcode-Decoder, keine Rezepte, kein Vorrat, keine RESERVE-Hintergrundmodule.</p>
+<div class="card"><button id="start">Kamera starten</button><button id="stop" class="secondary" disabled>Kamera stoppen</button><div id="status" class="status">Bereit.</div></div>
+<div class="card"><video id="video" autoplay muted playsinline></video></div>
+<div class="card"><pre id="report"></pre><button id="reset" class="secondary">Messung zurücksetzen</button></div>
+</div>
+<script>
+(()=>{'use strict';
+let stream=null,started=performance.now(),longCount=0,longTotal=0,longMax=0,loopCount=0,loopMax=0,frames=0,lastFrameAt=0,frameGapMax=0,frameWatch=null;
+const $=id=>document.getElementById(id),status=$('status'),video=$('video'),report=$('report');
+function setStatus(t,bad=false){status.textContent=t;status.className='status'+(bad?' bad':'')}
+function round(n){return Math.round((Number(n)||0)*10)/10}
+function text(){const track=stream?.getVideoTracks?.()[0],settings=track?.getSettings?.()||{};return [
+'RESERVE Kamera-Isolation v1',
+`Laufzeit: ${Math.round((performance.now()-started)/1000)} s`,
+`Stream: ${stream?'aktiv':'aus'}`,
+`Video readyState: ${video.readyState} | ${video.videoWidth||0}×${video.videoHeight||0}`,
+`Track: ${settings.width||'?'}×${settings.height||'?'} @ ${settings.frameRate||'?'} fps`,
+`Video-Frames beobachtet: ${frames} | größter Frame-Abstand ${round(frameGapMax)} ms`,
+`Long Tasks ≥50ms: ${longCount} | gesamt ${round(longTotal)} ms | max ${round(longMax)} ms`,
+`Event-Loop-Stau >50ms: ${loopCount} | max ${round(loopMax)} ms`,
+`Browser: ${navigator.userAgent}`
+].join('\n')}
+function paint(){report.textContent=text()}
+try{const po=new PerformanceObserver(list=>{for(const e of list.getEntries()){longCount++;longTotal+=e.duration;longMax=Math.max(longMax,e.duration)}});po.observe({type:'longtask',buffered:true})}catch(_){ }
+let expected=performance.now()+250;setInterval(()=>{const now=performance.now(),lag=Math.max(0,now-expected);expected=now+250;if(lag>50){loopCount++;loopMax=Math.max(loopMax,lag)}paint()},250);
+function watchFrames(){if(!stream)return;const now=performance.now();if(lastFrameAt)frameGapMax=Math.max(frameGapMax,now-lastFrameAt);lastFrameAt=now;frames++;if('requestVideoFrameCallback'in HTMLVideoElement.prototype)video.requestVideoFrameCallback(watchFrames);else frameWatch=requestAnimationFrame(watchFrames)}
+async function start(){stop();setStatus('Kamera wird gestartet …');try{stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:'environment'},width:{ideal:640,max:960},height:{ideal:480,max:720},frameRate:{ideal:12,max:15}}});video.srcObject=stream;await video.play();$('start').disabled=true;$('stop').disabled=false;setStatus('Kamera läuft. Bewege sie 20–30 Sekunden.');lastFrameAt=0;frames=0;frameGapMax=0;if('requestVideoFrameCallback'in HTMLVideoElement.prototype)video.requestVideoFrameCallback(watchFrames);else frameWatch=requestAnimationFrame(watchFrames)}catch(e){stream=null;setStatus('Kamera konnte nicht gestartet werden: '+(e?.name||'Fehler')+' '+(e?.message||''),true);$('start').disabled=false;$('stop').disabled=true}paint()}
+function stop(){if(frameWatch)cancelAnimationFrame(frameWatch);frameWatch=null;if(stream){for(const t of stream.getTracks())t.stop();stream=null}try{video.pause()}catch(_){}video.srcObject=null;$('start').disabled=false;$('stop').disabled=true;setStatus('Kamera gestoppt.');paint()}
+function reset(){started=performance.now();longCount=longTotal=longMax=loopCount=loopMax=frames=lastFrameAt=frameGapMax=0;paint()}
+$('start').addEventListener('click',start);$('stop').addEventListener('click',stop);$('reset').addEventListener('click',reset);window.addEventListener('pagehide',stop,{once:true});paint();
+})();
+</script></body></html>
