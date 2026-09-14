@@ -1,4 +1,4 @@
-/* RESERVE scanner priority v1.2 — event-driven fast lane for camera and post-scan interaction. */
+/* RESERVE scanner priority v1.3 — event-driven fast lane for camera and post-scan interaction. */
 (function(){
   'use strict';
   let active=false,holdUntil=0,releaseTimer=null,pendingRefresh=false,installTimer=null;
@@ -18,7 +18,16 @@
     const wrapped=function(...args){if(busy()){if(name==='refresh')pendingRefresh=true;return}return fn.apply(this,args)};
     wrapped.__reserveScannerPriorityWrapped=true;wrapped.__reserveScannerPriorityOriginal=fn;try{window[name]=wrapped}catch(_){ }
   }
-  function install(){heavyNames.forEach(wrap);wrap('refresh')}
+  function installIdleGate(){
+    const perf=window.RESERVE_PERFORMANCE;if(!perf?.idle||perf.__scannerPriorityIdle)return;
+    const base=perf.idle.bind(perf);
+    perf.idle=function(fn){
+      const run=()=>{if(busy()){setTimeout(run,180);return}base(fn)};
+      if(busy())setTimeout(run,180);else base(fn);
+    };
+    perf.__scannerPriorityIdle=true;
+  }
+  function install(){heavyNames.forEach(wrap);wrap('refresh');installIdleGate()}
   window.addEventListener('reserve:camera-state',e=>{
     const state=String(e.detail?.state||'');install();
     if(state==='start-request'||state==='starting'||state==='started'){
@@ -32,5 +41,5 @@
   window.addEventListener('reserve:ui-refreshed',install,{passive:true});
   installTimer=setTimeout(install,0);
   window.addEventListener('pagehide',()=>{clearTimeout(releaseTimer);clearTimeout(installTimer)},{once:true});
-  window.RESERVE_SCANNER_PRIORITY={version:'1.2',busy,install,get active(){return active},get holdUntil(){return holdUntil}};
+  window.RESERVE_SCANNER_PRIORITY={version:'1.3',busy,install,get active(){return active},get holdUntil(){return holdUntil}};
 })();
