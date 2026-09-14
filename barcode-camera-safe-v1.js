@@ -1,4 +1,4 @@
-/* RESERVE barcode camera safe v1.0 — low-load camera scanning for physical mobile devices. */
+/* RESERVE barcode camera safe v1.1 — low-load camera scanning for physical mobile devices; recursion-safe stop path. */
 (function(){
   'use strict';
   let controls=null,stream=null,scanTimer=null,running=false,backend='none';
@@ -10,12 +10,11 @@
   }
   function setButtons(active){const a=$('startScan'),b=$('stopScan');if(a)a.style.display=active?'none':'inline-block';if(b)b.style.display=active?'inline-block':'none'}
   function video(){return $('barcodeVideo')}
-  function finish(code){code=String(code||'').replace(/\D/g,'');if(!code)return false;safeStop();const input=$('barcodeInput');if(input)input.value=code;emit('detected',{code});window.RESERVE_BARCODE?.lookup?.(code);return true}
+  function finish(code){code=String(code||'').replace(/\D/g,'');if(!code)return false;safeStop();const input=$('barcodeInput');if(input)input.value=code;emit('detected',{code});setTimeout(()=>window.RESERVE_BARCODE?.lookup?.(code),0);return true}
   function safeStop(){
     running=false;if(scanTimer)clearTimeout(scanTimer);scanTimer=null;
     if(controls){try{controls.stop()}catch(_){ }controls=null}
     if(stream){try{stream.getTracks().forEach(t=>t.stop())}catch(_){ }stream=null}
-    try{window.RESERVE_BARCODE?.stopCamera?.()}catch(_){ }
     const v=video();if(v){try{v.pause()}catch(_){ }try{v.srcObject=null}catch(_){ }v.style.display='none'}
     setButtons(false);emit('stopped');
   }
@@ -48,5 +47,5 @@
     window.addEventListener('pagehide',safeStop,{once:true});emit('installed');
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
-  window.RESERVE_CAMERA_SAFE={version:'1.0',start:safeStart,stop:safeStop,get state(){return{running,backend}}};
+  window.RESERVE_CAMERA_SAFE={version:'1.1',start:safeStart,stop:safeStop,get state(){return{running,backend}}};
 })();
