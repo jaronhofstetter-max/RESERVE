@@ -1,7 +1,6 @@
-/* RESERVE product icons v2.2 — central food classifier with typing-safe observer updates. */
+/* RESERVE product icons v2.3 — central food classifier with event-driven updates and no global DOM observer. */
 (function(){
   const text=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
-  const compact=s=>text(s).replace(/\s+/g,'');
   const meta=s=>text([s?.n,s?.c,s?.category,s?.categories,s?.categories_tags,s?.generic_name,s?.product_name,s?.labels].flat().filter(Boolean).join(' '));
   const hit=(value,re)=>re.test(value);
   function classify(s){
@@ -71,16 +70,15 @@
   function applyDetail(){const detail=document.querySelector('#cabinetDetail:not([hidden]) .cab-detail-icon');if(!detail)return;setText(detail,iconFor({n:document.getElementById('cabEditName')?.value||'',c:document.getElementById('cabEditCat')?.value||''}))}
   function apply(){applyCabinet();applyDetail()}
   function typing(){return !!(window.RESERVE_INPUT_GUARD?.isTyping?.()||window.RESERVE_PERFORMANCE?.isTyping?.())}
+  const later=fn=>{if(window.RESERVE_PERFORMANCE?.idle)window.RESERVE_PERFORMANCE.idle(fn);else if('requestIdleCallback'in window)requestIdleCallback(fn,{timeout:700});else setTimeout(fn,30)};
+  function schedule(){if(typing())return;later(()=>{if(!typing())apply()})}
   function boot(){
-    apply();let queued=false,retry=null;
-    const run=()=>{if(typing()){clearTimeout(retry);retry=setTimeout(run,950);return}queued=false;apply()};
-    const observer=new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(run)});
-    observer.observe(document.body,{childList:true,subtree:true});
+    apply();
     document.addEventListener('input',e=>{if(e.target?.id==='cabEditName')requestAnimationFrame(()=>{if(!typing())applyDetail()})});
-    document.addEventListener('change',e=>{if(e.target?.id==='cabEditCat')requestAnimationFrame(applyDetail)});
-    window.addEventListener('reserve:stock-changed',()=>requestAnimationFrame(run));
-    window.addEventListener('pagehide',()=>{observer.disconnect();clearTimeout(retry)},{once:true});
+    document.addEventListener('change',e=>{if(e.target?.id==='cabEditCat')requestAnimationFrame(()=>{if(!typing())applyDetail()})});
+    window.addEventListener('reserve:stock-changed',schedule,{passive:true});
+    window.addEventListener('reserve:ui-refreshed',e=>{if(e.detail?.panel==='stock')schedule()},{passive:true});
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
-  window.RESERVE_PRODUCT_ICONS={version:'2.2',classify,iconFor,apply};
+  window.RESERVE_PRODUCT_ICONS={version:'2.3',classify,iconFor,apply};
 })();
