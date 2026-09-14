@@ -1,57 +1,36 @@
-/* RESERVE scanner priority v1.1 — pause nonessential rendering while camera/scan work is active on mobile. */
+/* RESERVE scanner priority v1.2 — event-driven fast lane for camera and post-scan interaction. */
 (function(){
   'use strict';
-  let active=false,holdUntil=0,releaseTimer=null,pendingRefresh=false,installTimer=null,maintenanceTimer=null;
-  const HOLD_AFTER_STOP_MS=3800;
+  let active=false,holdUntil=0,releaseTimer=null,pendingRefresh=false,installTimer=null;
+  const HOLD_AFTER_STOP_MS=2600;
   const heavyNames=['renderSmart','renderPlan','renderSearch','renderCook','renderShop','renderQuality','renderOnboarding'];
-  const originals=new Map();
-  const now=()=>performance.now();
+  const originals=new Map(),now=()=>performance.now();
   function busy(){return active||now()<holdUntil}
-  function armHold(ms=HOLD_AFTER_STOP_MS){holdUntil=Math.max(holdUntil,now()+ms);clearTimeout(releaseTimer);releaseTimer=setTimeout(flush,Math.max(0,holdUntil-now())+40)}
+  function armHold(ms=HOLD_AFTER_STOP_MS){holdUntil=Math.max(holdUntil,now()+ms);clearTimeout(releaseTimer);releaseTimer=setTimeout(flush,Math.max(0,holdUntil-now())+30)}
   function flush(){
-    if(busy()){clearTimeout(releaseTimer);releaseTimer=setTimeout(flush,Math.max(80,holdUntil-now()+40));return}
+    if(busy()){clearTimeout(releaseTimer);releaseTimer=setTimeout(flush,Math.max(60,holdUntil-now()+30));return}
     document.documentElement.classList.remove('reserve-scanner-busy');
-    if(pendingRefresh){pendingRefresh=false;try{originals.get('refresh')?.()}catch(e){console.warn('RESERVE scanner priority refresh',e)}}
+    if(pendingRefresh){pendingRefresh=false;const fn=originals.get('refresh');if(typeof fn==='function'){const run=()=>{try{fn()}catch(e){console.warn('RESERVE scanner priority refresh',e)}};if(window.RESERVE_PERFORMANCE?.idle)window.RESERVE_PERFORMANCE.idle(run);else setTimeout(run,0)}}
   }
   function wrap(name){
     const fn=window[name];if(typeof fn!=='function'||fn.__reserveScannerPriorityWrapped)return;
     originals.set(name,fn);
-    const wrapped=function(...args){
-      if(busy()){
-        if(name==='refresh')pendingRefresh=true;
-        return;
-      }
-      return fn.apply(this,args);
-    };
-    wrapped.__reserveScannerPriorityWrapped=true;wrapped.__reserveScannerPriorityOriginal=fn;
-    try{window[name]=wrapped}catch(_){ }
+    const wrapped=function(...args){if(busy()){if(name==='refresh')pendingRefresh=true;return}return fn.apply(this,args)};
+    wrapped.__reserveScannerPriorityWrapped=true;wrapped.__reserveScannerPriorityOriginal=fn;try{window[name]=wrapped}catch(_){ }
   }
-  function install(){
-    heavyNames.forEach(wrap);wrap('refresh');
-    if(window.RESERVE_PERFORMANCE?.idle&&!window.RESERVE_PERFORMANCE.__scannerPriorityIdle){
-      const originalIdle=window.RESERVE_PERFORMANCE.idle.bind(window.RESERVE_PERFORMANCE);
-      window.RESERVE_PERFORMANCE.idle=function(fn){
-        if(!busy())return originalIdle(fn);
-        const retry=()=>busy()?setTimeout(retry,500):originalIdle(fn);setTimeout(retry,500);
-      };
-      window.RESERVE_PERFORMANCE.__scannerPriorityIdle=true;
-    }
-  }
+  function install(){heavyNames.forEach(wrap);wrap('refresh')}
   window.addEventListener('reserve:camera-state',e=>{
-    const state=String(e.detail?.state||'');
+    const state=String(e.detail?.state||'');install();
     if(state==='start-request'||state==='starting'||state==='started'){
-      active=true;holdUntil=0;clearTimeout(releaseTimer);
-      document.documentElement.classList.add('reserve-scanner-busy');
+      active=true;holdUntil=0;clearTimeout(releaseTimer);document.documentElement.classList.add('reserve-scanner-busy');
     }else if(state==='detected'){
-      active=false;armHold(4200);
-      document.documentElement.classList.add('reserve-scanner-busy');
+      active=false;armHold(1800);document.documentElement.classList.add('reserve-scanner-busy');
     }else if(state==='stopped'||state==='error'){
-      active=false;armHold();
-      document.documentElement.classList.add('reserve-scanner-busy');
+      active=false;armHold();document.documentElement.classList.add('reserve-scanner-busy');
     }
   },{passive:true});
-  maintenanceTimer=setInterval(()=>{if(!busy())document.documentElement.classList.remove('reserve-scanner-busy');install()},500);
+  window.addEventListener('reserve:ui-refreshed',install,{passive:true});
   installTimer=setTimeout(install,0);
-  window.addEventListener('pagehide',()=>{clearTimeout(releaseTimer);clearTimeout(installTimer);clearInterval(maintenanceTimer)},{once:true});
-  window.RESERVE_SCANNER_PRIORITY={version:'1.1',busy,install,get active(){return active},get holdUntil(){return holdUntil}};
+  window.addEventListener('pagehide',()=>{clearTimeout(releaseTimer);clearTimeout(installTimer)},{once:true});
+  window.RESERVE_SCANNER_PRIORITY={version:'1.2',busy,install,get active(){return active},get holdUntil(){return holdUntil}};
 })();
