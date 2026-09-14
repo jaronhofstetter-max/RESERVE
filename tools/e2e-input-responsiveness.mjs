@@ -24,28 +24,40 @@ try{
   await page.evaluate(()=>{try{window.show?.('stock')}catch(_){ }});
   await page.waitForSelector('#scanName',{timeout:10000});
   const result=await page.evaluate(async()=>{
+    const nextFrame=()=>new Promise(resolve=>requestAnimationFrame(()=>resolve(performance.now())));
+    const measureField=async(input,text)=>{
+      input.value='';input.focus();
+      const sync=[],frames=[];
+      for(const ch of text){
+        const t0=performance.now();
+        input.value+=ch;
+        input.dispatchEvent(new InputEvent('beforeinput',{bubbles:true,inputType:'insertText',data:ch}));
+        input.dispatchEvent(new InputEvent('input',{bubbles:true,inputType:'insertText',data:ch}));
+        const t1=performance.now();
+        sync.push(t1-t0);
+        const frame=await nextFrame();frames.push(frame-t1);
+      }
+      return{value:input.value,sync,frames,maxSync:Math.max(...sync),maxFrame:Math.max(...frames)};
+    };
+
+    // Headless mobile Chromium can throttle animation frames. Measure a plain field
+    // in the same document so the regression gate judges RESERVE overhead, not CI cadence.
+    const baseline=document.createElement('input');baseline.id='reservePerfBaseline';baseline.style.cssText='position:fixed;left:0;top:0;width:1px;height:1px;opacity:.01';document.body.appendChild(baseline);
+    const baselineResult=await measureField(baseline,'Joghurt');baseline.remove();
+
     const input=document.getElementById('scanName');
     const box=document.getElementById('barcodeResult');
     if(box)box.innerHTML='<div class="missing-card"><b>Neues Produkt</b></div>';
-    input.value='';input.focus();
-    const samples=[];
-    for(const ch of 'Joghurt'){
-      const started=performance.now();
-      input.value+=ch;
-      input.dispatchEvent(new InputEvent('beforeinput',{bubbles:true,inputType:'insertText',data:ch}));
-      input.dispatchEvent(new InputEvent('input',{bubbles:true,inputType:'insertText',data:ch}));
-      await new Promise(requestAnimationFrame);
-      samples.push(performance.now()-started);
-    }
-    const refreshStart=performance.now();
-    window.refresh?.();
-    const refreshBlocking=performance.now()-refreshStart;
-    const typed=input.value;
+    const scanResult=await measureField(input,'Joghurt');
+
+    const refreshStart=performance.now();window.refresh?.();const refreshBlocking=performance.now()-refreshStart;
+    const frameOverhead=Math.max(0,scanResult.maxFrame-baselineResult.maxFrame);
     input.blur();
-    return{typed,samples,maxFrame:Math.max(...samples),refreshBlocking,guard:window.RESERVE_INPUT_GUARD?.version};
+    return{baseline:baselineResult,scan:scanResult,frameOverhead,refreshBlocking,guard:window.RESERVE_INPUT_GUARD?.version};
   });
-  if(result.typed!=='Joghurt')throw new Error('Typing regression: '+JSON.stringify(result));
-  if(result.maxFrame>250)throw new Error('Input-to-frame budget exceeded: '+JSON.stringify(result));
+  if(result.scan.value!=='Joghurt')throw new Error('Typing regression: '+JSON.stringify(result));
+  if(result.scan.maxSync>80)throw new Error('Synchronous input handlers exceed budget: '+JSON.stringify(result));
+  if(result.frameOverhead>150)throw new Error('RESERVE frame overhead exceeds baseline budget: '+JSON.stringify(result));
   if(result.refreshBlocking>100)throw new Error('Refresh blocked while field focused: '+JSON.stringify(result));
   console.log('Input responsiveness OK',JSON.stringify(result));
 }finally{
