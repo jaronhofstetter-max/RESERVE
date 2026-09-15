@@ -1,4 +1,4 @@
-/* RESERVE product icons v2.4 — central food classifier with Rösti potato recognition. */
+/* RESERVE product icons v2.5 — central food classifier; cabinet icons stay authoritative after every cabinet rerender/search. */
 (function(){
   const text=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
   const meta=s=>text([s?.n,s?.c,s?.category,s?.categories,s?.categories_tags,s?.generic_name,s?.product_name,s?.labels].flat().filter(Boolean).join(' '));
@@ -69,16 +69,19 @@
   function applyCabinet(){const rows=window.RESERVE_CABINET?.getStock?.()||[];document.querySelectorAll('.cab-product[data-index]').forEach(card=>{const i=Number(card.dataset.index),el=card.querySelector('.cab-icon');if(el&&rows[i])setText(el,iconFor(rows[i]))})}
   function applyDetail(){const detail=document.querySelector('#cabinetDetail:not([hidden]) .cab-detail-icon');if(!detail)return;setText(detail,iconFor({n:document.getElementById('cabEditName')?.value||'',c:document.getElementById('cabEditCat')?.value||''}))}
   function apply(){applyCabinet();applyDetail()}
-  function typing(){return !!(window.RESERVE_INPUT_GUARD?.isTyping?.()||window.RESERVE_PERFORMANCE?.isTyping?.())}
-  const later=fn=>{if(window.RESERVE_PERFORMANCE?.idle)window.RESERVE_PERFORMANCE.idle(fn);else if('requestIdleCallback'in window)requestIdleCallback(fn,{timeout:700});else setTimeout(fn,30)};
-  function schedule(){if(typing())return;later(()=>{if(!typing())apply()})}
+  const soon=fn=>requestAnimationFrame(()=>requestAnimationFrame(fn));
   function boot(){
-    apply();
-    document.addEventListener('input',e=>{if(e.target?.id==='cabEditName')requestAnimationFrame(()=>{if(!typing())applyDetail()})});
-    document.addEventListener('change',e=>{if(e.target?.id==='cabEditCat')requestAnimationFrame(()=>{if(!typing())applyDetail()})});
-    window.addEventListener('reserve:stock-changed',schedule,{passive:true});
-    window.addEventListener('reserve:ui-refreshed',e=>{if(e.detail?.panel==='stock')schedule()},{passive:true});
+    apply();soon(apply);
+    document.addEventListener('input',e=>{
+      if(e.target?.id==='cabinetSearch'){soon(applyCabinet);return}
+      if(e.target?.id==='cabEditName')soon(applyDetail)
+    });
+    document.addEventListener('change',e=>{if(e.target?.id==='cabEditCat')soon(applyDetail)});
+    window.addEventListener('reserve:stock-changed',()=>soon(apply),{passive:true});
+    window.addEventListener('reserve:ui-refreshed',()=>soon(apply),{passive:true});
+    window.addEventListener('pageshow',()=>soon(apply),{passive:true});
+    window.addEventListener('focus',()=>soon(apply),{passive:true});
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
-  window.RESERVE_PRODUCT_ICONS={version:'2.4',classify,iconFor,apply};
+  window.RESERVE_PRODUCT_ICONS={version:'2.5',classify,iconFor,apply};
 })();
