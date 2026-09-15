@@ -1,4 +1,4 @@
-/* RESERVE product icons v2.3 — central food classifier with event-driven updates and no global DOM observer. */
+/* RESERVE product icons v2.4 — central food classifier with Rösti potato recognition. */
 (function(){
   const text=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
   const meta=s=>text([s?.n,s?.c,s?.category,s?.categories,s?.categories_tags,s?.generic_name,s?.product_name,s?.labels].flat().filter(Boolean).join(' '));
@@ -21,7 +21,7 @@
     if(hit(n,/rind|beef|fleisch|schwein|wurst|salami|speck|ham |schinken/))return{kind:'ingredient',type:'meat',icon:'🥩'};
     if(hit(n,/brokkoli/))return{kind:'ingredient',type:'broccoli',icon:'🥦'};
     if(hit(n,/tomat/))return{kind:'ingredient',type:'tomato',icon:'🍅'};
-    if(hit(n,/kartoff/))return{kind:'ingredient',type:'potato',icon:'🥔'};
+    if(hit(n,/kartoff|rosti|roesti/))return{kind:'ingredient',type:'potato',icon:'🥔'};
     if(hit(n,/karott|mohre|ruebli|rubli/))return{kind:'ingredient',type:'carrot',icon:'🥕'};
     if(hit(n,/zucchini|gurke|cucumber/))return{kind:'ingredient',type:'cucumber',icon:'🥒'};
     if(hit(n,/paprika|peperoni|bell pepper/))return{kind:'ingredient',type:'pepper',icon:'🫑'};
@@ -80,5 +80,5 @@
     window.addEventListener('reserve:ui-refreshed',e=>{if(e.detail?.panel==='stock')schedule()},{passive:true});
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
-  window.RESERVE_PRODUCT_ICONS={version:'2.3',classify,iconFor,apply};
+  window.RESERVE_PRODUCT_ICONS={version:'2.4',classify,iconFor,apply};
 })();
