@@ -1,4 +1,4 @@
-/* RESERVE barcode camera safe v1.7 — pantry scanner uses the same proven ZXing decode path as shopping. */
+/* RESERVE barcode camera safe v1.8 — deterministic pantry scan -> product lookup handoff. */
 (function(){
 'use strict';
 let controls=null,running=false,bindTimer=null;const $=id=>document.getElementById(id);
@@ -6,10 +6,11 @@ const emit=(state,extra={})=>{try{window.dispatchEvent(new CustomEvent('reserve:
 function status(t,bad=false){const e=$('barcodeStatus');if(e){e.textContent=t;e.className='small '+(bad?'bad':'muted')}}
 function buttons(active){const a=$('startScan'),b=$('stopScan');if(a)a.style.display=active?'none':'inline-block';if(b)b.style.display=active?'inline-block':'none'}
 function stop(){running=false;if(controls){try{controls.stop()}catch{}controls=null}const v=$('barcodeVideo');if(v){try{v.pause()}catch{}try{v.srcObject=null}catch{}v.style.display='none'}buttons(false);emit('stopped')}
-function scanned(raw){const code=String(raw||'').replace(/\D/g,'');if(!code)return;stop();const input=$('barcodeInput');if(input)input.value=code;emit('detected',{code});requestAnimationFrame(()=>setTimeout(()=>{const hit=window.RESERVE_BARCODE_SEARCH?.resolveVerified?.(code);if(!hit)window.RESERVE_BARCODE?.lookup?.(code)},0))}
+function lookup(code){code=String(code||'').replace(/\D/g,'');if(!code)return false;const input=$('barcodeInput');if(input)input.value=code;status('Produkt wird gesucht…');try{const verified=window.RESERVE_BARCODE_SEARCH?.resolveVerified?.(code);if(verified)return true}catch{}try{const out=window.RESERVE_BARCODE?.lookup?.(code);if(out&&typeof out.catch==='function')out.catch(()=>{});return !!out}catch{return false}}
+function scanned(raw){const code=String(raw||'').replace(/\D/g,'');if(!code)return;stop();const input=$('barcodeInput');if(input)input.value=code;emit('detected',{code});lookup(code)}
 async function camera(){if(!navigator.mediaDevices?.getUserMedia){status('Kamera nicht verfügbar. Barcode bitte manuell eingeben.',true);return}stop();running=true;buttons(true);emit('start-request');try{const ZX=await window.RESERVE_BARCODE?.loadZXing?.();if(!ZX)throw new Error('ZXing unavailable');const v=$('barcodeVideo');if(!v)throw new Error('video missing');v.style.display='block';const reader=new ZX.BrowserMultiFormatOneDReader();status('Barcode vor die Kamera halten.');emit('starting');controls=await reader.decodeFromConstraints({audio:false,video:{facingMode:{ideal:'environment'}}},v,result=>{if(running&&result)scanned(result.getText?.()||result.text||'')});emit('started')}catch(e){stop();status('Scanner konnte nicht gestartet werden. Bitte Kameraberechtigung prüfen oder Barcode manuell eingeben.',true);emit('error',{name:e?.name||'Error'})}}
 function bind(){const start=$('startScan'),end=$('stopScan');if(!start||!end)return false;if(start.dataset.reservePantryScanner==='1')return true;const a=start.cloneNode(true),b=end.cloneNode(true);start.replaceWith(a);end.replaceWith(b);a.dataset.reservePantryScanner='1';b.dataset.reservePantryScanner='1';a.addEventListener('click',camera);b.addEventListener('click',stop);if(window.RESERVE_BARCODE){window.RESERVE_BARCODE.startCamera=camera;window.RESERVE_BARCODE.stopCamera=stop}emit('installed');return true}
 function install(){if(bind()){if(bindTimer){clearInterval(bindTimer);bindTimer=null}}else if(!bindTimer)bindTimer=setInterval(()=>{if(bind()){clearInterval(bindTimer);bindTimer=null}},250)}
 window.addEventListener('reserve:ui-refreshed',install);window.addEventListener('pageshow',install);window.addEventListener('pagehide',stop);if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
-window.RESERVE_CAMERA_SAFE={version:'1.7',start:camera,stop,rebind:install,get state(){return{running,backend:'zxing'}}};
+window.RESERVE_CAMERA_SAFE={version:'1.8',start:camera,stop,lookup,rebind:install,get state(){return{running,backend:'zxing'}}};
 })();
