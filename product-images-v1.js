@@ -1,0 +1,13 @@
+/* RESERVE product images v1.0 — use learned Open Food Facts packshots in the cabinet, with emoji fallback. */
+(function(){
+'use strict';
+const MEMORY_KEY='reserveBarcodeProductsV1';
+function memory(){try{const v=JSON.parse(localStorage.getItem(MEMORY_KEY)||'{}');return v&&typeof v==='object'?v:{}}catch{return{}}}
+function stock(){try{const v=JSON.parse(localStorage.getItem('reserveStock')||'[]');return Array.isArray(v)?v:[]}catch{return[]}}
+function safe(url){url=String(url||'').trim();return /^https:\/\//i.test(url)?url:''}
+function imageFor(row,mem){return safe(row?.image)||safe(row?.barcode&&mem[String(row.barcode)]?.image)}
+function apply(){const rows=window.RESERVE_CABINET?.getStock?.()||stock(),mem=memory();document.querySelectorAll('.cab-product[data-index]').forEach(card=>{const row=rows[Number(card.dataset.index)],host=card.querySelector('.cab-icon'),url=imageFor(row,mem);if(!host)return;if(!url){host.classList.remove('cab-has-image');host.querySelector('img')?.remove();window.RESERVE_PRODUCT_ICONS?.apply?.();return}if(host.dataset.productImage===url&&host.querySelector('img'))return;host.dataset.productImage=url;host.classList.add('cab-has-image');host.textContent='';const img=document.createElement('img');img.src=url;img.alt='';img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';img.addEventListener('error',()=>{host.classList.remove('cab-has-image');host.removeAttribute('data-product-image');img.remove();host.textContent=window.RESERVE_PRODUCT_ICONS?.iconFor?.(row)||'🍽️'},{once:true});host.appendChild(img)})}
+const soon=()=>requestAnimationFrame(()=>requestAnimationFrame(apply));
+function boot(){const style=document.createElement('style');style.textContent='.cab-icon.cab-has-image{width:64px;height:64px;display:flex;align-items:center;justify-content:center}.cab-icon.cab-has-image img{display:block;width:64px;height:64px;object-fit:contain;border-radius:10px;background:#fff}';document.head.appendChild(style);soon();window.addEventListener('reserve:stock-changed',soon,{passive:true});window.addEventListener('reserve:ui-refreshed',soon,{passive:true});window.addEventListener('reserve:barcode-product-found',soon,{passive:true});window.addEventListener('pageshow',soon,{passive:true});document.addEventListener('input',e=>{if(e.target?.id==='cabinetSearch')soon()})}
+window.RESERVE_PRODUCT_IMAGES={version:'1.0',apply,imageFor};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+})();
