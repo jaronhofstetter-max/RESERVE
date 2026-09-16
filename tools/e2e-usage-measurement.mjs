@@ -33,7 +33,14 @@ try{
     const feedback=document.createElement('button');feedback.id='reserve-feedback-button';feedback.textContent='Feedback';document.body.appendChild(feedback);feedback.click();
   });
 
-  await page.waitForTimeout(1200);
+  // Usage measurement is intentionally deferred through the performance idle queue.
+  // Wait for the observable milestones instead of relying on a fixed timer, which is
+  // flaky on busy GitHub Actions runners.
+  await page.waitForFunction(()=>{
+    const s=window.reserveUsageMeasurementV1?.getSummary?.();
+    return !!(s&&s.onboardingCompleted===true&&s.firstStockCreated===true&&s.activated===true&&(s.sectionVisits?.rezepte||0)>=1&&(s.barcodeScans||0)>=1&&(s.barcodeAdds||0)>=1&&(s.feedbackOpened||0)>=1);
+  },null,{timeout:10000});
+
   const summary=await page.evaluate(()=>window.reserveUsageMeasurementV1.getSummary());
   if(summary.version!==2)throw new Error('usage metrics version missing');
   if(summary.sessions<1)throw new Error('session was not counted');
