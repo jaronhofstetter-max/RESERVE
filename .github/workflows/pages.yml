@@ -55,7 +55,7 @@ jobs:
           node tools/e2e-weekly-plan-v2.mjs
           node tools/e2e-receipt-capture.mjs
           node tools/e2e-price-learning.mjs
-          node tools/e2e-price-trends-v1.mjs
+          node tools/e2e-price-trends.mjs
           node tools/e2e-feedback.mjs
           node tools/e2e-usage-measurement.mjs
           node tools/e2e-shopping-scan.mjs
