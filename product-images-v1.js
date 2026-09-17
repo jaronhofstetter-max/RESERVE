@@ -1,14 +1,16 @@
-/* RESERVE product images v1.3 — learned OFF packshots with emoji fallback and current container-aware display. */
+/* RESERVE product images v1.4 — learned OFF packshots with exact-name recovery for legacy rows and emoji fallback. */
 (function(){
 'use strict';
 const MEMORY_KEY='reserveBarcodeProductsV1';
+const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
 function memory(){try{const v=JSON.parse(localStorage.getItem(MEMORY_KEY)||'{}');return v&&typeof v==='object'?v:{}}catch{return{}}}
 function stock(){try{const v=JSON.parse(localStorage.getItem('reserveStock')||'[]');return Array.isArray(v)?v:[]}catch{return[]}}
 function safe(url){url=String(url||'').trim();return /^https:\/\//i.test(url)?url:''}
-function imageFor(row,mem){return safe(row?.image)||safe(row?.barcode&&mem[String(row.barcode)]?.image)}
+function exactNameImage(row,mem){const key=norm(row?.n),hits=Object.values(mem||{}).filter(x=>norm(x?.name)===key&&safe(x?.image));return key&&hits.length===1?safe(hits[0].image):''}
+function imageFor(row,mem){return safe(row?.image)||safe(row?.barcode&&mem[String(row.barcode)]?.image)||exactNameImage(row,mem)}
 function apply(){const rows=window.RESERVE_CABINET?.getStock?.()||stock(),mem=memory();document.querySelectorAll('.cab-product[data-index]').forEach(card=>{const row=rows[Number(card.dataset.index)],host=card.querySelector('.cab-icon'),url=imageFor(row,mem);if(!host)return;if(!url){host.classList.remove('cab-has-image');host.querySelector('img')?.remove();window.RESERVE_PRODUCT_ICONS?.apply?.();return}if(host.dataset.productImage===url&&host.querySelector('img'))return;host.dataset.productImage=url;host.classList.add('cab-has-image');host.textContent='';const img=document.createElement('img');img.src=url;img.alt=row?.n?row.n+' Produktbild':'';img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';img.addEventListener('error',()=>{host.classList.remove('cab-has-image');host.removeAttribute('data-product-image');img.remove();host.textContent=window.RESERVE_PRODUCT_ICONS?.iconFor?.(row)||'🍽️'},{once:true});host.appendChild(img)})}
 const soon=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>{apply();window.RESERVE_CONTAINER_UNITS?.decorate?.()}));
-function loadContainers(){if(window.RESERVE_CONTAINER_UNITS||document.querySelector('script[data-reserve-container-units]'))return;const s=document.createElement('script');s.src='container-units-v1.js?v=20260917-container-units-9';s.async=true;s.dataset.reserveContainerUnits='1';s.onload=soon;document.body.appendChild(s)}
+function loadContainers(){if(window.RESERVE_CONTAINER_UNITS||document.querySelector('script[data-reserve-container-units]'))return;const s=document.createElement('script');s.src='container-units-v1.js?v=20260917-container-units-10';s.async=true;s.dataset.reserveContainerUnits='1';s.onload=soon;document.body.appendChild(s)}
 function boot(){const style=document.createElement('style');style.textContent='.cab-icon.cab-has-image{width:64px;height:64px;display:flex;align-items:center;justify-content:center}.cab-icon.cab-has-image img{display:block;width:64px;height:64px;object-fit:contain;border-radius:10px;background:#fff}';document.head.appendChild(style);loadContainers();soon();window.addEventListener('reserve:stock-changed',soon,{passive:true});window.addEventListener('reserve:ui-refreshed',soon,{passive:true});window.addEventListener('reserve:barcode-product-found',soon,{passive:true});window.addEventListener('pageshow',soon,{passive:true});document.addEventListener('input',e=>{if(e.target?.id==='cabinetSearch')soon()})}
-window.RESERVE_PRODUCT_IMAGES={version:'1.3',apply,imageFor};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+window.RESERVE_PRODUCT_IMAGES={version:'1.4',apply,imageFor,exactNameImage};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
