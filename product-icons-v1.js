@@ -1,10 +1,11 @@
-/* RESERVE product icons v2.5 — central food classifier; cabinet icons stay authoritative after every cabinet rerender/search. */
+/* RESERVE product icons v2.6 — safe fallback classifier; real cabinet packshots stay authoritative. */
 (function(){
   const text=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
   const meta=s=>text([s?.n,s?.c,s?.category,s?.categories,s?.categories_tags,s?.generic_name,s?.product_name,s?.labels].flat().filter(Boolean).join(' '));
   const hit=(value,re)=>re.test(value);
   function classify(s){
     const n=text(s?.n||s?.product_name),m=meta(s),c=text(s?.c||s?.category||s?.categories);
+    if(hit(n,/schoko|choco|chocolate|kakao|cocoa|praline|bonbon/))return{kind:'ingredient',type:'chocolate',icon:'🍫'};
     if(hit(m,/(^| )sushi( |$)|maki|nigiri|sashimi/))return{kind:'dish',type:'sushi',icon:'🍣'};
     if(hit(m,/pizza|flammkuchen/))return{kind:'dish',type:'pizza',icon:'🍕'};
     if(hit(m,/burger|hamburger|cheeseburger/))return{kind:'dish',type:'burger',icon:'🍔'};
@@ -53,9 +54,7 @@
     if(hit(n,/tee| tea/))return{kind:'ingredient',type:'tea',icon:'🍵'};
     if(hit(n,/saft|juice|limonade|softdrink|cola/))return{kind:'ingredient',type:'drink',icon:'🧃'};
     if(hit(n,/honig|honey/))return{kind:'ingredient',type:'honey',icon:'🍯'};
-    if(hit(n,/schokolade|chocolate|kakao|cocoa/))return{kind:'ingredient',type:'chocolate',icon:'🍫'};
     if(hit(n,/dose|konserve|canned/))return{kind:'ingredient',type:'canned',icon:'🥫'};
-    if(hit(m,/sushi|prepared meals|ready meals|fertiggerichte/))return{kind:'dish',type:'prepared-meal',icon:'🍽️'};
     if(hit(c,/gemuse|vegetable/))return{kind:'category',type:'vegetable',icon:'🥦'};
     if(hit(c,/frucht|obst|fruit/))return{kind:'category',type:'fruit',icon:'🍎'};
     if(hit(c,/protein|fleisch|meat/))return{kind:'category',type:'protein',icon:'🍗'};
@@ -65,23 +64,12 @@
     return{kind:'food',type:'unknown',icon:'🍽️'};
   }
   const iconFor=s=>classify(s).icon;
-  function setText(el,next){if(el&&el.textContent!==next)el.textContent=next}
+  function setText(el,next){if(!el||el.classList.contains('cab-has-image')||el.querySelector('img'))return;if(el.textContent!==next)el.textContent=next}
   function applyCabinet(){const rows=window.RESERVE_CABINET?.getStock?.()||[];document.querySelectorAll('.cab-product[data-index]').forEach(card=>{const i=Number(card.dataset.index),el=card.querySelector('.cab-icon');if(el&&rows[i])setText(el,iconFor(rows[i]))})}
   function applyDetail(){const detail=document.querySelector('#cabinetDetail:not([hidden]) .cab-detail-icon');if(!detail)return;setText(detail,iconFor({n:document.getElementById('cabEditName')?.value||'',c:document.getElementById('cabEditCat')?.value||''}))}
   function apply(){applyCabinet();applyDetail()}
   const soon=fn=>requestAnimationFrame(()=>requestAnimationFrame(fn));
-  function boot(){
-    apply();soon(apply);
-    document.addEventListener('input',e=>{
-      if(e.target?.id==='cabinetSearch'){soon(applyCabinet);return}
-      if(e.target?.id==='cabEditName')soon(applyDetail)
-    });
-    document.addEventListener('change',e=>{if(e.target?.id==='cabEditCat')soon(applyDetail)});
-    window.addEventListener('reserve:stock-changed',()=>soon(apply),{passive:true});
-    window.addEventListener('reserve:ui-refreshed',()=>soon(apply),{passive:true});
-    window.addEventListener('pageshow',()=>soon(apply),{passive:true});
-    window.addEventListener('focus',()=>soon(apply),{passive:true});
-  }
+  function boot(){apply();soon(apply);document.addEventListener('input',e=>{if(e.target?.id==='cabinetSearch'){soon(applyCabinet);return}if(e.target?.id==='cabEditName')soon(applyDetail)});document.addEventListener('change',e=>{if(e.target?.id==='cabEditCat')soon(applyDetail)});window.addEventListener('reserve:stock-changed',()=>soon(apply),{passive:true});window.addEventListener('reserve:ui-refreshed',()=>soon(apply),{passive:true});window.addEventListener('pageshow',()=>soon(apply),{passive:true});window.addEventListener('focus',()=>soon(apply),{passive:true})}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
-  window.RESERVE_PRODUCT_ICONS={version:'2.5',classify,iconFor,apply};
+  window.RESERVE_PRODUCT_ICONS={version:'2.6',classify,iconFor,apply};
 })();
