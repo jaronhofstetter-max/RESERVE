@@ -44,7 +44,9 @@ const cases=[
   ['06.2026 L5008','2026-06-30'],
   ['06.2034 L6222','2034-06-30'],
   ['Mindestens haltbar bis Ende 02.2027 CF 1909 1','2027-02-28'],
-  ['BBE: 02.2027','2027-02-28']
+  ['BBE: 02.2027','2027-02-28'],
+  // Green dot-matrix print on a dark can lid; LOT line must not win.
+  ['MHD: 02/2028 LOT: 95752','2028-02-29']
 ];
 for(const [text,want] of cases){
   const got=api.parseDate(text);
