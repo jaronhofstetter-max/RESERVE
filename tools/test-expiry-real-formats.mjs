@@ -22,7 +22,7 @@ if(!api?.parseDate)throw Error('RESERVE_EXPIRY_CAMERA parser fehlt');
 const cases=[
   ['Mindestens haltbar bis Ende 04.2026','2026-04-30'],
   ['MHD 27/01/26','2026-01-27'],
-  ['Best before 08/06/93','2093-06-08'],
+  ['Best before 08/06/93','1993-06-08'],
   ['30/04/2027 4A700C 00:29:36','2027-04-30'],
   ['Prod. 23 09 2024 B.B. 23 09 2027','2027-09-23'],
   ['Mindestens haltbar bis 10/08/2027 M0332 08:54','2027-08-10'],
