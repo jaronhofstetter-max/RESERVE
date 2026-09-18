@@ -51,6 +51,7 @@ jobs:
           node tools/e2e-input-responsiveness.mjs
           node tools/e2e-consumption.mjs
           node tools/e2e-expiry-ui.mjs
+          node tools/test-expiry-real-formats.mjs
           node tools/e2e-autopilot-v2.mjs
           node tools/e2e-weekly-plan-v2.mjs
           node tools/e2e-receipt-capture.mjs
