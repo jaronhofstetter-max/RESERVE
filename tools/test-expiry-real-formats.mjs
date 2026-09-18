@@ -32,12 +32,15 @@ const cases=[
   ['31.12.2026 11:14 L2026835425','2026-12-31'],
   ['L27U02 02.2029','2029-02-28'],
   ['02.02.2027 05:18 L2026545717','2027-02-02'],
-  ['Best before 03:29 19 03 2029 Prod. 19 03 2026','2029-03-19']
+  ['Best before 03:29 19 03 2029 Prod. 19 03 2026','2029-03-19'],
+  ['12.2027 L1965 10 48','2027-12-31']
 ];
 for(const [text,want] of cases){
   const got=api.parseDate(text);
   if(got!==want)throw Error(`MHD parser: "${text}" => ${got}, erwartet ${want}`);
 }
+// A badly misread far-future month must not be auto-applied.
+if(api.parseDate('04.2057 L1965 10 48')!=='')throw Error('Unplausibles OCR-MHD 04.2057 wurde automatisch akzeptiert');
 // A production date must lose against a nearby explicitly marked best-before date.
 const mixed=api.candidates('Prod. 19 03 2026. Mindestens haltbar bis 19 03 2029');
 if(mixed[0]?.date!=='2029-03-19')throw Error('Produktionsdatum wurde fälschlich als MHD priorisiert: '+JSON.stringify(mixed));
