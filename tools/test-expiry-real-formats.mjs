@@ -45,6 +45,8 @@ const cases=[
   ['06.2034 L6222','2034-06-30'],
   ['Mindestens haltbar bis Ende 02.2027 CF 1909 1','2027-02-28'],
   ['BBE: 02.2027','2027-02-28'],
+  // Tuna can: explicit BBE month/year must beat nearby batch/production-like codes.
+  ['AN55M9 99L02EJAJ M90D1R BBE: 03.2031','2031-03-31'],
   // Green dot-matrix print on a dark can lid; LOT line must not win.
   ['MHD: 02/2028 LOT: 95752','2028-02-29']
 ];
