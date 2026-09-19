@@ -1,4 +1,4 @@
-/* RESERVE expiry vision v1.2 — secure Vision bridge with tolerant response normalization and safe diagnostics. */
+/* RESERVE expiry vision v1.3 — expose safe upstream error codes for diagnostics. */
 (function(){'use strict';
 const cfg=()=>window.RESERVE_EXPIRY_VISION_CONFIG||{};let last={ok:false,reason:'not-run',status:0};
 function valid(x){return x&&/^\d{4}-\d{2}-\d{2}$/.test(x.date||'')&&['day','month'].includes(x.precision)&&Number(x.confidence)>=0&&Number(x.confidence)<=1}
@@ -33,12 +33,12 @@ async function analyze(file){
   const fd=new FormData();fd.append('image',file,'expiry.jpg');
   let r;try{r=await fetch(endpoint,{method:'POST',body:fd,headers:{'Accept':'application/json'},credentials:'omit'})}
   catch(e){last={ok:false,reason:'network-or-cors',status:0};return null}
-  if(!r.ok){last={ok:false,reason:'http',status:r.status};return null}
+  if(!r.ok){let e=null;try{e=await r.json()}catch{};last={ok:false,reason:'http',status:r.status,code:String(e?.code||''),upstreamStatus:Number(e?.upstreamStatus)||0,message:String(e?.upstreamMessage||e?.error||'').slice(0,240)};return null}
   let x;try{x=await r.json()}catch{last={ok:false,reason:'invalid-json',status:r.status};return null}
   const n=normalize(x);
   if(!valid(n)){last={ok:false,reason:'invalid-response',status:r.status,shape:x&&typeof x==='object'?Object.keys(x).slice(0,8):[]};return null}
   last={ok:true,reason:'ok',status:r.status,confidence:Number(n.confidence)};return n;
 }
 function diagnostic(){return {...last}}
-window.RESERVE_EXPIRY_VISION={version:'1.2',analyze,valid,normalize,diagnostic};
+window.RESERVE_EXPIRY_VISION={version:'1.3',analyze,valid,normalize,diagnostic};
 })();
