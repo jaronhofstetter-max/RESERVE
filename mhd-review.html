@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MHD-Prüfplatz · RESERVE</title>
+<meta name="description" content="Lokale Beschriftung von MHD-Fotos für die RESERVE-Erkennung.">
+<style>
+:root{--green:#1f6b49;--dark:#163d2e;--cream:#f5f1e7;--card:#fffdf8;--line:#d9d4c8;--ink:#24312b;--muted:#68736d;--danger:#a83c32;--focus:#cfe9db}*{box-sizing:border-box}body{margin:0;font:16px/1.45 Inter,system-ui,sans-serif;background:var(--cream);color:var(--ink)}header{background:var(--dark);color:#fff;padding:16px}.head{max-width:1400px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-size:1.35rem;font-weight:900;letter-spacing:.08em}.head a{color:#fff}.shell{max-width:1400px;margin:auto;padding:16px}.setup,.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}.setup{margin-bottom:14px}.loaders,.stats,.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.file{position:relative;overflow:hidden;display:inline-flex}.file input{position:absolute;inset:0;opacity:0;cursor:pointer}button,.button{border:0;border-radius:11px;padding:11px 15px;background:var(--green);color:#fff;font:inherit;font-weight:800;cursor:pointer;text-decoration:none}.secondary{background:#e8e3d8;color:var(--dark)}.danger{background:#f4dfdc;color:var(--danger)}button:disabled{opacity:.5;cursor:not-allowed}.stat{padding:7px 10px;border-radius:999px;background:#e7efe9;font-weight:700}.muted{color:var(--muted)}.workspace{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(340px,.65fr);gap:14px}.viewer{min-height:520px;display:grid;place-items:center;background:#17221d;border-radius:14px;overflow:hidden;position:relative}.viewer img{display:block;max-width:100%;max-height:72vh;object-fit:contain}.empty{color:#d9e2dd;text-align:center;padding:24px}.counter{position:absolute;left:12px;top:12px;background:#000a;color:#fff;padding:5px 9px;border-radius:999px;font-size:.85rem}.form{display:grid;gap:12px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}label{font-weight:750;font-size:.9rem}input,select{width:100%;margin-top:5px;border:1px solid #c9c4b8;border-radius:10px;padding:11px;background:#fff;color:var(--ink);font:inherit}input:focus,select:focus,button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}.meta{font-size:.86rem;background:#f0ede5;border-radius:10px;padding:10px;overflow-wrap:anywhere}.notice{padding:10px 12px;border-left:4px solid var(--green);background:#eaf4ee}.notice.error{border-color:var(--danger);background:#f9e9e6}.nav{display:grid;grid-template-columns:1fr 1fr;gap:10px}.footer-actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}@media(max-width:900px){.workspace{grid-template-columns:1fr}.viewer{min-height:360px}.viewer img{max-height:55vh}}@media(max-width:520px){.row{grid-template-columns:1fr}.shell{padding:10px}.head{align-items:flex-start}.brand{font-size:1.15rem}}
+</style>
+</head>
+<body>
+<header><div class="head"><div><div class="brand">RESERVE</div><div>MHD-Prüfplatz</div></div><a href="index.html">Zurück zu RESERVE</a></div></header>
+<main class="shell">
+<section class="setup">
+  <div class="loaders">
+    <label class="file button">Beschriftungstabelle wählen<input id="csvInput" type="file" accept=".csv,text/csv"></label>
+    <label class="file button secondary">Bildordner wählen<input id="folderInput" type="file" accept="image/*" webkitdirectory multiple></label>
+    <button id="exportBtn" type="button" disabled>Geprüfte CSV exportieren</button>
+  </div>
+  <p class="muted">Das Prüfarchiv entpacken, zuerst <b>annotations_review.csv</b> und danach den Ordner <b>review_images</b> wählen. Alle Daten bleiben auf diesem Gerät.</p>
+  <div class="stats"><span class="stat" id="totalStat">0 Bilder</span><span class="stat" id="doneStat">0 geprüft</span><span class="stat" id="readyStat">0 trainingsfähig</span></div>
+</section>
+<div class="workspace">
+  <section class="card"><div class="viewer"><div class="counter" id="counter">0 / 0</div><img id="photo" alt="Zu prüfender Datumsaufdruck" hidden><div class="empty" id="empty">Prüfbestand laden, um zu beginnen.</div></div><div class="nav"><button id="prevBtn" class="secondary" type="button" disabled>← Zurück</button><button id="nextBtn" class="secondary" type="button" disabled>Weiter →</button></div></section>
+  <section class="card form">
+    <div><label for="imageId">Bild</label><input id="imageId" readonly></div>
+    <div class="row"><label for="confirmedExpiry">Bestätigtes Datum<input id="confirmedExpiry" placeholder="JJJJ-MM-TT oder JJJJ-MM" autocomplete="off"></label><label for="datePrecision">Genauigkeit<select id="datePrecision"><option value="">Bitte wählen</option><option value="exact_day">Tag genau</option><option value="month_only">Nur Monat</option><option value="unreadable">Unlesbar</option><option value="no_date">Kein Datum sichtbar</option></select></label></div>
+    <label for="dateRole">Datumsart<select id="dateRole"><option value="">Bitte wählen</option><option value="mhd">MHD / mindestens haltbar</option><option value="exp">EXP / Verbrauchsdatum</option><option value="production">Produktionsdatum</option><option value="lot">Charge / Losnummer</option><option value="unknown">Unklar</option><option value="no_date">Kein Datum</option></select></label>
+    <label for="productGroup">Produktgruppe<input id="productGroup" placeholder="z. B. THON-ROSE-001" autocomplete="off"></label>
+    <div class="row"><label for="domain">Bereich<select id="domain"><option value="food">Lebensmittel</option><option value="supplement">Nahrungsergänzung</option><option value="medicine_review">Arzneimittel – separat prüfen</option><option value="other">Andere</option></select></label><label for="decision">Entscheidung<select id="decision"><option value="needs_review">Noch offen</option><option value="accepted">Beschriftung bestätigt</option><option value="rejected">Bild ungeeignet</option></select></label></div>
+    <label for="notes">Notiz<input id="notes" placeholder="Optional: Reflexion, unscharf, mehrere Daten …"></label>
+    <div class="meta" id="sourceMeta">Keine Quelldaten geladen.</div>
+    <div id="message" class="notice" hidden></div>
+    <div class="actions"><button id="saveBtn" type="button" disabled>Speichern & weiter</button><button id="skipBtn" class="secondary" type="button" disabled>Überspringen</button><button id="rejectBtn" class="danger" type="button" disabled>Ablehnen</button></div>
+  </section>
+</div>
+</main>
+<script src="mhd-review-v1.js"></script>
+</body></html>

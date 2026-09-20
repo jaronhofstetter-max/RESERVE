@@ -52,6 +52,8 @@ jobs:
           node --check consumption-learning-v1.js
           node --check expiry-consumption-v1.js
           node --check expiry-ui-v1.js
+          node --check expiry-learning-v1.js
+          node --check mhd-review-v1.js
           node --check smart-priorities-v1.js
           node --check today-dashboard-v1.js
           node --check weekly-plan-v2.js
@@ -109,3 +111,4 @@ jobs:
           node tools/e2e-feedback.mjs
           node tools/e2e-usage-measurement.mjs
           node tools/e2e-shopping-scan.mjs
+          node tools/e2e-mhd-review.mjs
