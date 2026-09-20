@@ -1,4 +1,4 @@
-/* RESERVE expiry vision v1.5 — resize/compress MHD photos before Vision upload and keep diagnostics concise. */
+/* RESERVE expiry vision v1.6 — one controlled retry for transient/rate-limit Vision failures. */
 (function(){'use strict';
 const cfg=()=>window.RESERVE_EXPIRY_VISION_CONFIG||{};let last={ok:false,reason:'not-run',status:0};
 function valid(x){return x&&/^\d{4}-\d{2}-\d{2}$/.test(x.date||'')&&['day','month'].includes(x.precision)&&Number(x.confidence)>=0&&Number(x.confidence)<=1}
@@ -34,14 +34,13 @@ async function analyze(file){
   const c=cfg(),endpoint=c.endpoint||'/api/expiry-vision';last={ok:false,reason:'starting',status:0};
   if(!endpoint){last={ok:false,reason:'no-endpoint',status:0};return null}
   const upload=await compactImage(file);const fd=new FormData();fd.append('image',upload,'expiry.jpg');
-  let r;try{r=await fetch(endpoint,{method:'POST',body:fd,headers:{'Accept':'application/json'},credentials:'omit'})}
-  catch(e){last={ok:false,reason:'network-or-cors',status:0};return null}
-  if(!r.ok){let e=null;try{e=await r.json()}catch{};last={ok:false,reason:'http',status:r.status,code:String(e?.code||''),upstreamStatus:Number(e?.upstreamStatus)||0,message:String(e?.upstreamMessage||e?.error||'').slice(0,120),bodyKeys:e&&typeof e==='object'?Object.keys(e).slice(0,12):[]};return null}
+  const send=()=>fetch(endpoint,{method:'POST',body:fd,headers:{'Accept':'application/json'},credentials:'omit'});let r;try{r=await send()}catch(e){last={ok:false,reason:'network-or-cors',status:0};return null}
+  if(!r.ok){let e=null;try{e=await r.json()}catch{};const up=Number(e?.upstreamStatus)||0,code=String(e?.code||'');if((up===429||up>=500||r.status>=500)&&r.status!==504){await new Promise(ok=>setTimeout(ok,1200));try{r=await send();e=null;if(!r.ok){try{e=await r.json()}catch{}}}catch{last={ok:false,reason:'network-or-cors',status:0};return null}}if(!r.ok){last={ok:false,reason:'http',status:r.status,code:String(e?.code||code),upstreamStatus:Number(e?.upstreamStatus)||up,message:String(e?.upstreamMessage||e?.error||'').slice(0,120),bodyKeys:e&&typeof e==='object'?Object.keys(e).slice(0,12):[]};return null}}
   let x;try{x=await r.json()}catch{last={ok:false,reason:'invalid-json',status:r.status};return null}
   const n=normalize(x);
   if(!valid(n)){last={ok:false,reason:'invalid-response',status:r.status,shape:x&&typeof x==='object'?Object.keys(x).slice(0,8):[]};return null}
   last={ok:true,reason:'ok',status:r.status,confidence:Number(n.confidence)};return n;
 }
 function diagnostic(){return {...last}}
-window.RESERVE_EXPIRY_VISION={version:'1.5',analyze,valid,normalize,diagnostic};
+window.RESERVE_EXPIRY_VISION={version:'1.6',analyze,valid,normalize,diagnostic};
 })();
