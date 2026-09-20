@@ -5,7 +5,7 @@ const server=http.createServer((req,res)=>{let p=decodeURIComponent(req.url.spli
 const browser=await chromium.launch({headless:true}),page=await browser.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
 try{
  await page.goto('http://127.0.0.1:4178',{waitUntil:'networkidle'});
- await page.waitForFunction(()=>window.RESERVE_SMART_PRIORITIES?.version==='1.1'&&window.RESERVE_TODAY?.version==='1.1');
+ await page.waitForFunction(()=>window.RESERVE_SMART_PRIORITIES?.recipePriorities&&window.RESERVE_TODAY?.render);
  const result=await page.evaluate(async()=>{
   const d=new Date();d.setDate(d.getDate()+2);const expiry=d.toISOString().slice(0,10);
   stock=[{n:'Test Karotte',q:'500 g',e:expiry,c:'Gemüse & Früchte'}];
