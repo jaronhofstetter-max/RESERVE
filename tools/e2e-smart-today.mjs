@@ -13,7 +13,7 @@ try{
   const priorities=RESERVE_SMART_PRIORITIES.recipePriorities();
   RESERVE_TODAY.render();await new Promise(r=>setTimeout(r,20));
   const before=document.getElementById('reserveToday')?.innerText||'';
-  stock=[];document.body.dispatchEvent(new Event('click',{bubbles:true}));await new Promise(r=>setTimeout(r,30));
+  stock=[];window.dispatchEvent(new Event('reserve:stock-changed'));await new Promise(r=>setTimeout(r,120));
   const after=document.getElementById('reserveToday')?.innerText||'';
   return{priority:priorities[0]?.recipe?.name||'',before,after};
  });
