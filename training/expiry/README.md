@@ -23,3 +23,13 @@ node tools/evaluate-expiry-predictions.mjs training/expiry/dataset/validation.js
 ```
 
 Production activation stays blocked until there are at least 200 independent validation images, every image has a prediction, and exact-date accuracy is at least 97%. Until then, local OCR and the existing vision fallback remain authoritative.
+
+## Synthetic pretraining data
+
+Generate deterministic, RESERVE-owned training images with varied date formats, dot-matrix printing, contrast, glare, noise and packaging-like surfaces:
+
+```bash
+node tools/generate-synthetic-expiry-dataset.mjs training/expiry/synthetic 2000 20260920
+```
+
+Synthetic images are always marked `synthetic: true` and `split: train`. They must never enter validation or test sets. Only independently photographed and confirmed real packages count toward the 200-image/97%-accuracy production gate.
