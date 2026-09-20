@@ -33,12 +33,12 @@ async function analyze(file){
   const fd=new FormData();fd.append('image',file,'expiry.jpg');
   let r;try{r=await fetch(endpoint,{method:'POST',body:fd,headers:{'Accept':'application/json'},credentials:'omit'})}
   catch(e){last={ok:false,reason:'network-or-cors',status:0};return null}
-  if(!r.ok){let e=null;try{e=await r.json()}catch{};last={ok:false,reason:'http',status:r.status,code:String(e?.code||''),upstreamStatus:Number(e?.upstreamStatus)||0,message:String(e?.upstreamMessage||e?.error||'').slice(0,240)};return null}
+  if(!r.ok){let e=null;try{e=await r.json()}catch{};last={ok:false,reason:'http',status:r.status,code:String(e?.code||''),upstreamStatus:Number(e?.upstreamStatus)||0,message:String(e?.upstreamMessage||e?.error||'').slice(0,240),bodyKeys:e&&typeof e==='object'?Object.keys(e).slice(0,12):[]};return null}
   let x;try{x=await r.json()}catch{last={ok:false,reason:'invalid-json',status:r.status};return null}
   const n=normalize(x);
   if(!valid(n)){last={ok:false,reason:'invalid-response',status:r.status,shape:x&&typeof x==='object'?Object.keys(x).slice(0,8):[]};return null}
   last={ok:true,reason:'ok',status:r.status,confidence:Number(n.confidence)};return n;
 }
 function diagnostic(){return {...last}}
-window.RESERVE_EXPIRY_VISION={version:'1.3',analyze,valid,normalize,diagnostic};
+window.RESERVE_EXPIRY_VISION={version:'1.4',analyze,valid,normalize,diagnostic};
 })();
