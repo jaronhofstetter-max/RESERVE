@@ -1,4 +1,5 @@
 dataset/
+synthetic/
 *.json
 *.jsonl
 *.jpg
