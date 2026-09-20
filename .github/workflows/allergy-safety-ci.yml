@@ -22,4 +22,4 @@ jobs:
       - name: Verify production integration
         run: |
           grep -q 'allergy-safety-v1.js' .github/workflows/pages.yml
-          grep -q '<script src="allergy-safety-v1.js"></script>' .github/workflows/pages.yml
+          grep -Eq '<script src="allergy-safety-v1\.js(\?[^\"]*)?"></script>' .github/workflows/pages.yml
