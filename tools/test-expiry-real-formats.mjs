@@ -59,4 +59,7 @@ if(api.parseDate('04.2057 L1965 10 48')!=='')throw Error('Unplausibles OCR-MHD 0
 // A production date must lose against a nearby explicitly marked best-before date.
 const mixed=api.candidates('Prod. 19 03 2026. Mindestens haltbar bis 19 03 2029');
 if(mixed[0]?.date!=='2029-03-19')throw Error('Produktionsdatum wurde fälschlich als MHD priorisiert: '+JSON.stringify(mixed));
+// One plausible OCR hallucination must lose against the date repeated by other image variants.
+const consensus=api.selectConsensus(['04.2027','MHD: 03.2031','BBE 03/2031 LOT 95752']);
+if(consensus?.date!=='2031-03-31'||consensus.votes!==2)throw Error('OCR-Konsens hat eine Einzelablesung bevorzugt: '+JSON.stringify(consensus));
 console.log('Expiry parser real-package regression tests: OK');
