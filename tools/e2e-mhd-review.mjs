@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import http from 'node:http';
+import {chromium} from 'playwright';
+
+const root=process.cwd(),tmp=fs.mkdtempSync(path.join(os.tmpdir(),'reserve-mhd-review-')),images=path.join(tmp,'review_images');
+fs.mkdirSync(images);fs.writeFileSync(path.join(images,'S01_P001.jpg'),Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=','base64'));
+fs.writeFileSync(path.join(tmp,'annotations_review.csv'),'\uFEFFimage_id,source_id,source_page,domain,review_status,training_eligible\r\nS01_P001,S01,1,food_review,needs_human_review,no_until_label_confirmed\r\n');
+const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.csv':'text/csv','.jpg':'image/jpeg'};
+const server=http.createServer((req,res)=>{const name=req.url==='/'?'mhd-review.html':decodeURIComponent(req.url.split('?')[0]).replace(/^\//,'');const file=path.resolve(root,name);if(!file.startsWith(root)||!fs.existsSync(file)){res.writeHead(404);return res.end('Not found')}res.setHeader('Content-Type',types[path.extname(file)]||'application/octet-stream');fs.createReadStream(file).pipe(res)});
+await new Promise(ok=>server.listen(0,'127.0.0.1',ok));const port=server.address().port,browser=await chromium.launch({headless:true});
+try{const page=await browser.newPage({viewport:{width:390,height:844}});await page.goto(`http://127.0.0.1:${port}/mhd-review.html`);await page.setInputFiles('#csvInput',path.join(tmp,'annotations_review.csv'));await page.setInputFiles('#folderInput',images);await page.fill('#confirmedExpiry','2026-04-30');await page.selectOption('#datePrecision','exact_day');await page.selectOption('#dateRole','mhd');await page.fill('#productGroup','ROESTI-001');await page.selectOption('#decision','accepted');await page.click('#saveBtn');if(await page.textContent('#doneStat')!=='1 geprüft')throw Error('Review progress was not saved');if(await page.textContent('#readyStat')!=='1 trainingsfähig')throw Error('Training eligibility was not calculated');if(await page.getAttribute('#photo','hidden')!==null)throw Error('Selected review image is not visible');const download=page.waitForEvent('download');await page.click('#exportBtn');const item=await download;if(!item.suggestedFilename().endsWith('.csv'))throw Error('CSV export failed');console.log('MHD review UI: OK')}finally{await browser.close();server.close();fs.rmSync(tmp,{recursive:true,force:true})}
