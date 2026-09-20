@@ -78,6 +78,10 @@ jobs:
           node --check tools/e2e-feedback.mjs
           node --check tools/e2e-usage-measurement.mjs
           node --check tools/e2e-shopping-scan.mjs
+      - name: Test expiry AI data pipelines
+        run: |
+          node tools/test-expiry-training-pipeline.mjs
+          node tools/test-synthetic-expiry-dataset.mjs
       - name: Enable fast startup and compact recipe delivery
         run: |
           sed -i "s#fetch('data/recipes.json',{cache:'no-store'})#fetch('data/recipe-catalog.json',{cache:'default'})#" index.html
