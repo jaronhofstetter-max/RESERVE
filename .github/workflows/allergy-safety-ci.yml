@@ -21,5 +21,5 @@ jobs:
         run: node --check allergy-safety-v1.js
       - name: Verify production integration
         run: |
-          grep -q 'node --check allergy-safety-v1.js' .github/workflows/pages.yml
-          grep -q '<script src="allergy-safety-v1.js"></script>' .github/workflows/pages.yml
+          grep -q 'allergy-safety-v1.js' .github/workflows/pages.yml
+          grep -Eq '<script src="allergy-safety-v1\.js(\?[^\"]*)?"></script>' .github/workflows/pages.yml

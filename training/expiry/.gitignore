@@ -1,0 +1,7 @@
+dataset/
+*.json
+*.jsonl
+*.jpg
+*.jpeg
+*.png
+*.webp
