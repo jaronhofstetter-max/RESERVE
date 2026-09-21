@@ -30,6 +30,7 @@
     <label for="productGroup">Produktgruppe<input id="productGroup" placeholder="z. B. THON-ROSE-001" autocomplete="off"></label>
     <div class="row"><label for="domain">Bereich<select id="domain"><option value="food">Lebensmittel</option><option value="supplement">Nahrungsergänzung</option><option value="medicine_review">Arzneimittel – separat prüfen</option><option value="other">Andere</option></select></label><label for="decision">Entscheidung<select id="decision"><option value="needs_review">Noch offen</option><option value="accepted">Beschriftung bestätigt</option><option value="rejected">Bild ungeeignet</option></select></label></div>
     <label for="notes">Notiz<input id="notes" placeholder="Optional: Reflexion, unscharf, mehrere Daten …"></label>
+    <div class="notice" id="machineSuggestion" hidden><b>Maschineller Vorschlag</b><div id="machineSuggestionText"></div><button id="applySuggestionBtn" class="secondary" type="button">Vorschlag übernehmen</button></div>
     <div class="meta" id="sourceMeta">Keine Quelldaten geladen.</div>
     <div id="message" class="notice" hidden></div>
     <div class="actions"><button id="saveBtn" type="button" disabled>Speichern & weiter</button><button id="skipBtn" class="secondary" type="button" disabled>Überspringen</button><button id="rejectBtn" class="danger" type="button" disabled>Ablehnen</button></div>
