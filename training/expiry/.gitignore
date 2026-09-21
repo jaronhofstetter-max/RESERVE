@@ -1,5 +1,8 @@
 dataset/
 synthetic/
+synthetic-train/
+synthetic-holdout/
+model-v0/
 *.json
 *.jsonl
 *.jpg
