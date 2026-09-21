@@ -33,3 +33,19 @@ node tools/generate-synthetic-expiry-dataset.mjs training/expiry/synthetic 2000 
 ```
 
 Synthetic images are always marked `synthetic: true` and `split: train`. They must never enter validation or test sets. Only independently photographed and confirmed real packages count toward the 200-image/97%-accuracy production gate.
+
+## Reproduce the local OCR v0 baseline
+
+The v0 experiment fine-tunes the official float `eng.traineddata` from
+`tesseract-ocr/tessdata_best`. Pass that file explicitly so the compact system
+model is never mistaken for a trainable model:
+
+```bash
+tools/train-expiry-tesseract-v0.sh /path/to/tessdata_best/eng.traineddata
+```
+
+The script creates 2,000 synthetic training images and a separate 300-image
+synthetic holdout, trains a local model, and benchmarks both stock English OCR
+and the RESERVE candidate. Generated images, checkpoints, and model binaries
+remain ignored. The first reproducible v0 run improved exact synthetic-holdout
+accuracy from 5.00% to 28.67%; it is an experiment, not production approval.
