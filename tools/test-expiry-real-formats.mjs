@@ -49,6 +49,7 @@ const cases=[
   ['AN55M9 99L02EJAJ M90D1R BBE: 03.2031','2031-03-31'],
   // Green dot-matrix print on a dark can lid; LOT line must not win.
   ['MHD: 02/2028 LOT: 95752','2028-02-29']
+  ,['Mindestens haltbar bis Ende 2029','2029-12-31']
 ];
 for(const [text,want] of cases){
   const got=api.parseDate(text);
@@ -62,4 +63,7 @@ if(mixed[0]?.date!=='2029-03-19')throw Error('Produktionsdatum wurde fälschlich
 // One plausible OCR hallucination must lose against the date repeated by other image variants.
 const consensus=api.selectConsensus(['04.2027','MHD: 03.2031','BBE 03/2031 LOT 95752']);
 if(consensus?.date!=='2031-03-31'||consensus.votes!==2)throw Error('OCR-Konsens hat eine Einzelablesung bevorzugt: '+JSON.stringify(consensus));
+const month=api.candidates('Mindestens haltbar bis Ende 11.2026')[0],year=api.candidates('MHD Ende 2029')[0];
+if(month?.kind!=='month'||month.date!=='2026-11-30')throw Error('Monatsgenauigkeit fehlt: '+JSON.stringify(month));
+if(year?.kind!=='year'||year.date!=='2029-12-31')throw Error('Jahresgenauigkeit fehlt: '+JSON.stringify(year));
 console.log('Expiry parser real-package regression tests: OK');

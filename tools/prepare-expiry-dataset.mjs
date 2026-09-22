@@ -11,14 +11,16 @@ if(payload?.schema!=='reserve-expiry-training-v1'||!Array.isArray(payload.exampl
 fs.mkdirSync(path.join(output,'images'),{recursive:true});
 const rows=[],seen=new Map();
 for(const [i,x] of payload.examples.entries()){
-  if(!/^\d{4}-\d{2}-\d{2}$/.test(String(x.confirmedDate||'')))throw Error(`Invalid confirmed date at example ${i+1}`);
+  const target=String(x.confirmedDate||''),precision=x.datePrecision||(/^\d{4}$/.test(target)?'year':/^\d{4}-\d{2}$/.test(target)?'month':'day'),expected=precision==='year'?/^\d{4}$/:precision==='month'?/^\d{4}-(?:0[1-9]|1[0-2])$/:/^\d{4}-(?:0[1-9]|1[0-2])-\d{2}$/;
+  if(!expected.test(target))throw Error(`Invalid confirmed date or precision at example ${i+1}`);
   const match=String(x.image||'').match(/^data:(image\/(?:jpeg|png|webp));base64,(.+)$/);
   if(!match)throw Error(`Invalid image at example ${i+1}`);
   const bytes=Buffer.from(match[2],'base64');
   if(bytes.length<100)throw Error(`Empty image at example ${i+1}`);
   const sha=crypto.createHash('sha256').update(bytes).digest('hex'),previous=seen.get(sha);if(previous){if(previous!==x.confirmedDate)throw Error(`Conflicting labels for duplicate image at example ${i+1}`);continue}seen.set(sha,x.confirmedDate);const ext=match[1]==='image/png'?'png':match[1]==='image/webp'?'webp':'jpg',file=`${sha.slice(0,20)}.${ext}`;
   fs.writeFileSync(path.join(output,'images',file),bytes);
-  rows.push({id:sha,image:`images/${file}`,target:x.confirmedDate,predicted:x.predictedDate||'',corrected:!!x.corrected,source:x.source||'',confidence:Number(x.confidence)||0,rawOCR:String(x.rawOCR||'')});
+  const product=x.product&&typeof x.product==='object'?{barcode:String(x.product.barcode||''),name:String(x.product.name||''),brand:String(x.product.brand||''),quantity:String(x.product.quantity||''),category:String(x.product.category||''),containerType:String(x.product.containerType||''),source:String(x.product.source||'')}:null;
+  rows.push({id:sha,image:`images/${file}`,target,datePrecision:precision,inventoryEffectiveDate:String(x.inventoryEffectiveDate||target),predicted:x.predictedDate||'',predictedDatePrecision:x.predictedDatePrecision||'',corrected:!!x.corrected,source:x.source||'',confidence:Number(x.confidence)||0,rawOCR:String(x.rawOCR||''),...(product?{product}:{})});
 }
 rows.sort((a,b)=>a.id.localeCompare(b.id));
 const validation=rows.filter((_,i)=>i%5===0),train=rows.filter((_,i)=>i%5!==0);
