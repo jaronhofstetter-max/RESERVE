@@ -36,6 +36,7 @@ jobs:
           bash -n tools/train-expiry-tesseract-v0.sh
       - name: Test expiry AI data pipelines
         run: |
+          node tools/test-expiry-date-inputs.mjs
           node tools/test-expiry-training-pipeline.mjs
           node tools/test-synthetic-expiry-dataset.mjs
       - name: Enable fast startup and compact recipe delivery
@@ -48,7 +49,7 @@ jobs:
         run: |
           sed -i 's/20260920-expiry-lowcost-1/20260922-expiry-product-date-1/g' index.html
           sed -i 's/20260920-expiry-camera-13/20260922-partial-date-1/g' index.html
-          sed -i 's/20260920-expiry-learning-1/20260922-partial-date-1/g' index.html
+          sed -i 's/20260920-expiry-learning-1/20260922-printed-date-input-1/g' index.html
           sed -i 's/20260917-package-rows-1/20260922-product-link-1/g' index.html
           sed -i 's/20260914-sync-1/20260922-grouped-batches-1/g' index.html
           sed -i 's/20260918-container-units-11/20260922-container-units-12/g' index.html
