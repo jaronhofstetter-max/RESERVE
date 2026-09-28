@@ -40,6 +40,7 @@ jobs:
           node tools/test-expiry-training-pipeline.mjs
           node tools/test-synthetic-expiry-dataset.mjs
           node tools/test-product-capture-assist.mjs
+          node tools/test-container-type-migration.mjs
       - name: Enable fast startup and compact recipe delivery
         run: |
           sed -i "s#fetch('data/recipes.json',{cache:'no-store'})#fetch('data/recipe-catalog.json',{cache:'default'})#" index.html
@@ -55,7 +56,7 @@ jobs:
           sed -i 's/20260917-package-rows-1/20260922-snacks-category-1/g' index.html
           sed -i 's/20260922-snacks-category-1/20260928-product-capture-1/g' index.html
           sed -i 's/20260914-sync-1/20260922-grouped-batches-1/g' index.html
-          sed -i 's/20260918-container-units-11/20260922-container-units-12/g' index.html
+          sed -i 's/20260918-container-units-11/20260928-container-units-13/g' index.html
       - name: Smoke test production build
         run: node tools/smoke-test.mjs
       - name: Install browser test runtime
