@@ -1,8 +1,19 @@
-/* RESERVE product capture assist v1.0 — fills missing quantity from visible text and proposes packaging conservatively. */
+/* RESERVE product capture assist v1.1 — fills missing quantity and packaging from product data or photo OCR, with confidence gates. */
 (function(){'use strict';
 const $=id=>typeof document!=='undefined'?document.getElementById(id):null;
 const clean=s=>String(s||'').replace(/\u00a0/g,' ').replace(/,/g,'.').replace(/\s+/g,' ').trim();
 const TYPES=['Packung','Beutel','Becher','Flasche','Dose','Glas','Karton','Schachtel','Tube','Rolle','Stück'];
+const PACKAGING_RULES=[
+  ['Glas',/\b(glass|glas|jar|bocal|verre|vasetto)\b/i],
+  ['Flasche',/\b(bottle|flasche|bouteille|bottiglia)\b/i],
+  ['Dose',/\b(can|tin|dose|bo[iî]te|lattina)\b/i],
+  ['Becher',/\b(cup|tub|becher|pot|gobelet|vaschetta)\b/i],
+  ['Beutel',/\b(bag|pouch|sachet|beutel|tüte|tuete|sacchetto)\b/i],
+  ['Karton',/\b(carton|karton|tetra\s?pak|brick)\b/i],
+  ['Schachtel',/\b(box|schachtel|bo[iî]te en carton)\b/i],
+  ['Tube',/\b(tube|tubetto)\b/i],
+  ['Rolle',/\b(roll|rolle|rouleau|rotolo)\b/i]
+];
 function amount(value,unit){value=Number(value);unit=String(unit).toLowerCase();if(unit==='cl')return `${value*10} ml`;if(unit==='dl')return `${value*100} ml`;return `${value} ${unit}`}
 function quantityFromText(text){
   const s=clean(text).replace(/[×xX*]/g,' × ');let m=s.match(/(?:^|\D)(\d{1,2})\s*×\s*(\d+(?:\.\d+)?)\s*(kg|g|ml|cl|dl|l)\b/i);
@@ -13,14 +24,14 @@ function quantityFromText(text){
   return m?`${Number(m[1])} Stück`:'';
 }
 function packagingText(p){return clean([p?.packaging,p?.packaging_text,p?.packaging_tags?.join?.(' '),p?.packagings?.map?.(x=>[x.shape,x.material].join(' ')).join(' ')].filter(Boolean).join(' ')).toLowerCase()}
+function packagingFromText(text,source='Foto-Text',confidence=.82){
+  const value=clean(text).toLowerCase();
+  for(const [type,re] of PACKAGING_RULES)if(re.test(value))return{type,confidence,source};
+  return null;
+}
 function packagingFromProduct(p,name=''){
-  const meta=packagingText(p),n=clean(name).toLowerCase(),rules=[
-    ['Glas',/\b(glass|glas|jar|bocal|verre)\b/],['Flasche',/\b(bottle|flasche|bouteille|bottiglia)\b/],
-    ['Dose',/\b(can|tin|dose|bo[iî]te|lattina)\b/],['Becher',/\b(cup|tub|becher|pot|gobelet)\b/],
-    ['Beutel',/\b(bag|pouch|sachet|beutel|tüte|tuete)\b/],['Karton',/\b(carton|tetra\s?pak|brick)\b/],
-    ['Schachtel',/\b(box|schachtel)\b/],['Tube',/\btube\b/],['Rolle',/\b(roll|rolle)\b/]
-  ];
-  for(const [type,re] of rules)if(re.test(meta))return{type,confidence:.95,source:'Produktdaten'};
+  const meta=packagingText(p),n=clean(name).toLowerCase(),fromMetadata=packagingFromText(meta,'Produktdaten',.95);
+  if(fromMetadata)return fromMetadata;
   const inferred=window.RESERVE_CONTAINER_UNITS?.typeFor?.(name,'');
   if(inferred&&TYPES.includes(inferred))return{type:inferred,confidence:.65,source:'Produktname'};
   if(/honig|marmelade|konfitüre|konfiture|pesto/.test(n))return{type:'Glas',confidence:.7,source:'Produktname'};
@@ -28,10 +39,10 @@ function packagingFromProduct(p,name=''){
 }
 function show(message){let el=$('productCaptureAssistStatus');if(!el){const anchor=$('scanContainerType')?.closest('label')||$('scanQty');if(!anchor)return;el=document.createElement('div');el.id='productCaptureAssistStatus';el.className='small muted';el.style.marginTop='5px';anchor.insertAdjacentElement('afterend',el)}el.textContent=message}
 function applyQuantity(text,source='Foto'){const input=$('scanQty');if(!input||input.value.trim())return'';const q=quantityFromText(text);if(!q)return'';input.value=q;input.dispatchEvent(new Event('input',{bubbles:true}));show(`Menge aus ${source} vorgeschlagen: ${q} – bitte prüfen.`);return q}
-function applyPackaging(suggestion){const sel=$('scanContainerType');if(!sel||!suggestion?.type||sel.dataset.touched)return false;sel.value=suggestion.type;sel.dataset.suggested='1';show(`Verpackung vorgeschlagen: ${suggestion.type} (${Math.round(suggestion.confidence*100)} %, ${suggestion.source}) – bitte prüfen.`);return true}
+function applyPackaging(suggestion){const sel=$('scanContainerType');if(!sel||!suggestion?.type||sel.dataset.touched)return false;const confidence=Number(suggestion.confidence)||0;if(confidence<.6){show(`Verpackung nicht sicher erkannt (${Math.round(confidence*100)} %). Bitte auswählen.`);return false}sel.value=suggestion.type;sel.dataset.suggested='1';sel.dataset.suggestionConfidence=String(confidence);const label=confidence>=.9?'erkannt':'vorgeschlagen';show(`Verpackung ${label}: ${suggestion.type} (${Math.round(confidence*100)} %, ${suggestion.source})${confidence<.9?' – bitte prüfen.':''}`);return true}
 function applyProduct(p,name){const q=quantityFromText([p?.quantity,p?.product_name,p?.product_name_de,p?.packaging].filter(Boolean).join(' '));if(q)applyQuantity(q,'Produktdaten');const packaging=packagingFromProduct(p,name);applyPackaging(packaging);return{quantity:q,packaging}}
-function applyOCR(text){return applyQuantity(text,'Foto')}
-window.RESERVE_PRODUCT_CAPTURE_ASSIST={version:'1.0',quantityFromText,packagingFromProduct,applyProduct,applyPackaging,applyOCR};
+function applyOCR(text){const quantity=applyQuantity(text,'Foto'),packaging=packagingFromText(text);if(packaging)applyPackaging(packaging);return{quantity,packaging}}
+window.RESERVE_PRODUCT_CAPTURE_ASSIST={version:'1.1',quantityFromText,packagingFromText,packagingFromProduct,applyProduct,applyPackaging,applyOCR};
 function hookLearning(){const api=window.RESERVE_EXPIRY_LEARNING;if(!api?.stage||api.stage.__productAssist)return setTimeout(hookLearning,120);const original=api.stage;function wrapped(file,result){if(result?.raw)applyOCR(result.raw);return original(file,result)}wrapped.__productAssist=true;api.stage=wrapped}
 if(typeof document!=='undefined')hookLearning();
 })();
