@@ -53,8 +53,10 @@ jobs:
           sed -i 's/20260920-expiry-camera-13/20260922-partial-date-1/g' index.html
           sed -i 's/20260920-expiry-learning-1/20260922-printed-date-input-1/g' index.html
           sed -i 's#<script src="expiry-learning-v1.js?v=20260922-printed-date-input-1"></script>#<script src="expiry-learning-v1.js?v=20260922-printed-date-input-1"></script><script src="product-capture-assist-v1.js?v=20260928-product-capture-1"></script>#' index.html
-          sed -i 's/20260917-package-rows-1/20260922-snacks-category-1/g' index.html
-          sed -i 's/20260922-snacks-category-1/20260928-product-capture-1/g' index.html
+          sed -i 's/20260917-package-rows-1/20260922-snacks-category-1/g' index.html          sed -i 's/20260922-snacks-category-1/20260928-product-capture-1/g' index.html
+          sed -i 's/20260928-product-capture-1/20260929-expanded-categories-1/g' index.html
+          sed -i 's/20260929-compact-editor-1/20260929-expanded-categories-1/g' index.html
+          sed -i 's#receipt-capture-v1.js"></script>#receipt-capture-v1.js?v=20260929-expanded-categories-1"></script>#g' index.html
           sed -i 's/20260914-sync-1/20260929-compact-editor-1/g' index.html
           sed -i 's/20260918-container-units-11/20260928-container-units-13/g' index.html
       - name: Smoke test production build
