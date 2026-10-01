@@ -18,6 +18,8 @@ vm.createContext(sandbox);
 vm.runInContext(source,sandbox);
 const api=sandbox.RESERVE_EXPIRY_CAMERA;
 if(!api?.parseDate)throw Error('RESERVE_EXPIRY_CAMERA parser fehlt');
+if(api.version!=='1.21'||typeof api.exportMetrics!=='function')throw Error('MHD v1.21 oder Messdatenexport fehlt');
+if(!source.includes("exportButton.textContent='Messdaten exportieren'"))throw Error('Sichtbarer Messdatenexport fehlt');
 
 const cases=[
   ['Mindestens haltbar bis Ende 04.2026','2026-04-30'],
@@ -50,6 +52,9 @@ const cases=[
   // Green dot-matrix print on a dark can lid; LOT line must not win.
   ['MHD: 02/2028 LOT: 95752','2028-02-29']
   ,['Mindestens haltbar bis Ende 2029','2029-12-31']
+  ,['11.2020','2020-11-30']
+  ,['MHD 25107127 11:50','2027-07-25']
+  ,['MHD 10012027','2027-01-10']
 ];
 for(const [text,want] of cases){
   const got=api.parseDate(text);
