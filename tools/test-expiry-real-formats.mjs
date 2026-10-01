@@ -18,7 +18,7 @@ vm.createContext(sandbox);
 vm.runInContext(source,sandbox);
 const api=sandbox.RESERVE_EXPIRY_CAMERA;
 if(!api?.parseDate)throw Error('RESERVE_EXPIRY_CAMERA parser fehlt');
-if(api.version!=='1.23'||typeof api.exportMetrics!=='function')throw Error('MHD v1.23 oder Messdatenexport fehlt');
+if(api.version!=='1.24'||typeof api.exportMetrics!=='function')throw Error('MHD v1.24 oder Messdatenexport fehlt');
 if(!source.includes("exportButton.textContent='Messdaten exportieren'"))throw Error('Sichtbarer Messdatenexport fehlt');
 
 const cases=[
@@ -47,6 +47,7 @@ const cases=[
   ['06.2034 L6222','2034-06-30'],
   ['Mindestens haltbar bis Ende 02.2027 CF 1909 1','2027-02-28'],
   ['BBE: 02.2027','2027-02-28'],
+  ['MHD Ende 05 2028','2028-05-31'],
   // Tuna can: explicit BBE month/year must beat nearby batch/production-like codes.
   ['AN55M9 99L02EJAJ M90D1R BBE: 03.2031','2031-03-31'],
   // Green dot-matrix print on a dark can lid; LOT line must not win.
