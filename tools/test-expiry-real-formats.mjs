@@ -18,7 +18,7 @@ vm.createContext(sandbox);
 vm.runInContext(source,sandbox);
 const api=sandbox.RESERVE_EXPIRY_CAMERA;
 if(!api?.parseDate)throw Error('RESERVE_EXPIRY_CAMERA parser fehlt');
-if(api.version!=='1.21'||typeof api.exportMetrics!=='function')throw Error('MHD v1.21 oder Messdatenexport fehlt');
+if(api.version!=='1.22'||typeof api.exportMetrics!=='function')throw Error('MHD v1.22 oder Messdatenexport fehlt');
 if(!source.includes("exportButton.textContent='Messdaten exportieren'"))throw Error('Sichtbarer Messdatenexport fehlt');
 
 const cases=[
@@ -71,4 +71,5 @@ if(consensus?.date!=='2031-03-31'||consensus.votes!==2)throw Error('OCR-Konsens 
 const month=api.candidates('Mindestens haltbar bis Ende 11.2026')[0],year=api.candidates('MHD Ende 2029')[0];
 if(month?.kind!=='month'||month.date!=='2026-11-30')throw Error('Monatsgenauigkeit fehlt: '+JSON.stringify(month));
 if(year?.kind!=='year'||year.date!=='2029-12-31')throw Error('Jahresgenauigkeit fehlt: '+JSON.stringify(year));
+if(!api.samePrecision('2027-02-28','2027-02')||!api.samePrecision('2027-12-31','2027')||api.samePrecision('2027-02-28','2027-03'))throw Error('Teilgenaue Bestätigung wird falsch verglichen');
 console.log('Expiry parser real-package regression tests: OK');
