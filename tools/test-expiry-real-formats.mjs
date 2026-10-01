@@ -18,7 +18,7 @@ vm.createContext(sandbox);
 vm.runInContext(source,sandbox);
 const api=sandbox.RESERVE_EXPIRY_CAMERA;
 if(!api?.parseDate)throw Error('RESERVE_EXPIRY_CAMERA parser fehlt');
-if(api.version!=='1.22'||typeof api.exportMetrics!=='function')throw Error('MHD v1.22 oder Messdatenexport fehlt');
+if(api.version!=='1.23'||typeof api.exportMetrics!=='function')throw Error('MHD v1.23 oder Messdatenexport fehlt');
 if(!source.includes("exportButton.textContent='Messdaten exportieren'"))throw Error('Sichtbarer Messdatenexport fehlt');
 
 const cases=[
