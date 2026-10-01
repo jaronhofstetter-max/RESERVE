@@ -18,7 +18,7 @@ vm.createContext(sandbox);
 vm.runInContext(source,sandbox);
 const api=sandbox.RESERVE_EXPIRY_CAMERA;
 if(!api?.parseDate)throw Error('RESERVE_EXPIRY_CAMERA parser fehlt');
-if(api.version!=='1.24'||typeof api.exportMetrics!=='function')throw Error('MHD v1.24 oder Messdatenexport fehlt');
+if(api.version!=='1.25'||typeof api.exportMetrics!=='function')throw Error('MHD v1.25 oder Messdatenexport fehlt');
 if(!source.includes("exportButton.textContent='Messdaten exportieren'"))throw Error('Sichtbarer Messdatenexport fehlt');
 
 const cases=[
@@ -69,6 +69,7 @@ if(mixed[0]?.date!=='2029-03-19')throw Error('Produktionsdatum wurde fälschlich
 // One plausible OCR hallucination must lose against the date repeated by other image variants.
 const consensus=api.selectConsensus(['04.2027','MHD: 03.2031','BBE 03/2031 LOT 95752']);
 if(consensus?.date!=='2031-03-31'||consensus.votes!==2)throw Error('OCR-Konsens hat eine Einzelablesung bevorzugt: '+JSON.stringify(consensus));
+const bandScores=new Array(100).fill(1);for(let i=58;i<68;i++)bandScores[i]=40;const rankedBands=api.rankBandStarts(bandScores,.34,3);if(!rankedBands.some(x=>x>=.34&&x<=.64))throw Error('Adaptiver Datumszeilen-Sucher verfehlt die kontrastreiche Zeile: '+JSON.stringify(rankedBands));
 const month=api.candidates('Mindestens haltbar bis Ende 11.2026')[0],year=api.candidates('MHD Ende 2029')[0];
 if(month?.kind!=='month'||month.date!=='2026-11-30')throw Error('Monatsgenauigkeit fehlt: '+JSON.stringify(month));
 if(year?.kind!=='year'||year.date!=='2029-12-31')throw Error('Jahresgenauigkeit fehlt: '+JSON.stringify(year));
