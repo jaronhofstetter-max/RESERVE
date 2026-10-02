@@ -24,6 +24,20 @@ node tools/evaluate-expiry-predictions.mjs training/expiry/dataset/validation.js
 
 Production activation stays blocked until there are at least 200 independent validation images, every image has a prediction, and exact-date accuracy is at least 97%. Until then, local OCR and the existing vision fallback remain authoritative.
 
+## Model 2 dataset
+
+Merge a directory of incremental exports, remove exact duplicate images, and keep every
+product/barcode in exactly one split:
+
+```bash
+node tools/prepare-expiry-model-v2-dataset.mjs /path/to/exports /path/to/model-v2-dataset
+```
+
+The report records invalid rows, conflicting labels, product groups, date precision,
+candidate safety labels, and split sizes. Surface condition is a separate label:
+`qualityLabel=wrinkled` must not be treated as blur unless an independent focus signal
+also says that the date glyphs are unreadable.
+
 ## Synthetic pretraining data
 
 Generate deterministic, RESERVE-owned training images with varied date formats, dot-matrix printing, contrast, glare, noise and packaging-like surfaces:
