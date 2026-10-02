@@ -18,7 +18,7 @@ vm.createContext(sandbox);
 vm.runInContext(source,sandbox);
 const api=sandbox.RESERVE_EXPIRY_CAMERA;
 if(!api?.parseDate)throw Error('RESERVE_EXPIRY_CAMERA parser fehlt');
-if(api.version!=='1.26'||typeof api.exportMetrics!=='function')throw Error('MHD v1.26 oder Messdatenexport fehlt');
+if(api.version!=='1.27'||typeof api.exportMetrics!=='function')throw Error('MHD v1.27 oder Messdatenexport fehlt');
 if(!source.includes("exportButton.textContent='Messdaten exportieren'"))throw Error('Sichtbarer Messdatenexport fehlt');
 
 const cases=[
@@ -70,7 +70,9 @@ if(mixed[0]?.date!=='2029-03-19')throw Error('Produktionsdatum wurde fälschlich
 const consensus=api.selectConsensus(['04.2027','MHD: 03.2031','BBE 03/2031 LOT 95752']);
 if(consensus?.date!=='2031-03-31'||consensus.votes!==2)throw Error('OCR-Konsens hat eine Einzelablesung bevorzugt: '+JSON.stringify(consensus));
 if(api.credibleSuggestion({date:'2000-05-31',votes:1,bestScore:5}))throw Error('Schwacher alter Fehlwert wurde als Vorschlag zugelassen');
-if(!api.credibleSuggestion({date:'1997-08-31',votes:1,bestScore:13}))throw Error('Klar markiertes historisches MHD wurde blockiert');
+if(api.credibleSuggestion({date:'1997-08-31',votes:1,bestScore:13}))throw Error('Historische Einzelablesung wurde trotz fehlendem Konsens zugelassen');
+if(!api.credibleSuggestion({date:'1997-08-31',votes:2,bestScore:5}))throw Error('Historisches MHD mit Variantenkonsens wurde blockiert');
+if(source.includes("source='local-uncertain';confidence=Math.min(.6,best.bestScore/25);apply(date)"))throw Error('Unsicheres lokales Ergebnis wird noch automatisch eingetragen');
 const bandScores=new Array(100).fill(1);for(let i=58;i<68;i++)bandScores[i]=40;const rankedBands=api.rankBandStarts(bandScores,.34,3);if(!rankedBands.some(x=>x>=.34&&x<=.64))throw Error('Adaptiver Datumszeilen-Sucher verfehlt die kontrastreiche Zeile: '+JSON.stringify(rankedBands));
 const month=api.candidates('Mindestens haltbar bis Ende 11.2026')[0],year=api.candidates('MHD Ende 2029')[0];
 if(month?.kind!=='month'||month.date!=='2026-11-30')throw Error('Monatsgenauigkeit fehlt: '+JSON.stringify(month));
