@@ -1,4 +1,4 @@
-/* RESERVE product capture assist v1.2 — product metadata plus guided high-resolution MHD capture. */
+/* RESERVE product capture assist v1.4 — wrinkle-tolerant guided MHD capture. */
 (function(){'use strict';
 const $=id=>typeof document!=='undefined'?document.getElementById(id):null;
 const clean=s=>String(s||'').replace(/\u00a0/g,' ').replace(/,/g,'.').replace(/\s+/g,' ').trim();
@@ -54,19 +54,8 @@ function expiryGuide(container){
   Object.assign(label.style,{position:'absolute',left:'50%',bottom:'calc(100% + 8px)',transform:'translateX(-50%)',padding:'5px 9px',borderRadius:'8px',background:'rgba(0,0,0,.76)',color:'#fff',font:'600 12px system-ui',whiteSpace:'nowrap'});
   guide.appendChild(label);host.appendChild(guide);return guide;
 }
-function regionQuality(canvas){
-  const c=canvas.getContext('2d',{willReadFrequently:true}),{data}=c.getImageData(0,0,canvas.width,canvas.height);let light=0,lightSq=0,edges=0,n=0;
-  const step=Math.max(1,Math.floor(Math.sqrt(canvas.width*canvas.height/45000)));
-  for(let y=0;y<canvas.height-step;y+=step)for(let x=0;x<canvas.width-step;x+=step){
-    const i=(y*canvas.width+x)*4,ix=i+step*4,iy=i+step*canvas.width*4;
-    const g=(data[i]*.299+data[i+1]*.587+data[i+2]*.114),gx=Math.abs(g-(data[ix]*.299+data[ix+1]*.587+data[ix+2]*.114)),gy=Math.abs(g-(data[iy]*.299+data[iy+1]*.587+data[iy+2]*.114));
-    light+=g;lightSq+=g*g;edges+=gx+gy;n++;
-  }
-  const brightness=n?light/n:0,contrast=n?Math.sqrt(Math.max(0,lightSq/n-brightness*brightness)):0,sharpness=n?edges/n:0,issues=[];
-  const minSharpness=contrast>=35?7:contrast>=20?9:11;
-  if(brightness<45)issues.push('zu dunkel');if(brightness>235)issues.push('überbelichtet');if(sharpness<minSharpness)issues.push('unscharf');
-  return{brightness:Math.round(brightness),contrast:Math.round(contrast*10)/10,sharpness:Math.round(sharpness*10)/10,minSharpness,acceptable:issues.length===0,issues};
-}
+function qualityFromPixels(data,width,height){let light=0,lightSq=0,edges=0,n=0;const step=Math.max(1,Math.floor(Math.sqrt(width*height/45000))),tileCols=4,tileRows=3,tileEdges=new Float32Array(tileCols*tileRows),tileCounts=new Uint32Array(tileCols*tileRows);for(let y=0;y<height-step;y+=step)for(let x=0;x<width-step;x+=step){const i=(y*width+x)*4,ix=i+step*4,iy=i+step*width*4,g=data[i]*.299+data[i+1]*.587+data[i+2]*.114,gx=Math.abs(g-(data[ix]*.299+data[ix+1]*.587+data[ix+2]*.114)),gy=Math.abs(g-(data[iy]*.299+data[iy+1]*.587+data[iy+2]*.114)),edge=gx+gy,tile=Math.min(tileRows-1,Math.floor(y/height*tileRows))*tileCols+Math.min(tileCols-1,Math.floor(x/width*tileCols));light+=g;lightSq+=g*g;edges+=edge;n++;tileEdges[tile]+=edge;tileCounts[tile]++}const brightness=n?light/n:0,contrast=n?Math.sqrt(Math.max(0,lightSq/n-brightness*brightness)):0,sharpness=n?edges/n:0,tileSharpness=Array.from(tileEdges,(sum,i)=>tileCounts[i]?sum/tileCounts[i]:0).sort((a,b)=>a-b),detailSharpness=tileSharpness[Math.max(0,Math.floor(tileSharpness.length*.75))]||0,minSharpness=contrast>=35?7:contrast>=20?9:11,printDetail=contrast>=18&&detailSharpness>=minSharpness*1.08,issues=[];if(brightness<45)issues.push('zu dunkel');if(brightness>235)issues.push('überbelichtet');if(sharpness<minSharpness&&!printDetail)issues.push('unscharf');return{brightness:Math.round(brightness),contrast:Math.round(contrast*10)/10,sharpness:Math.round(sharpness*10)/10,detailSharpness:Math.round(detailSharpness*10)/10,minSharpness,printDetail,acceptable:issues.length===0,issues}}
+function regionQuality(canvas){const c=canvas.getContext('2d',{willReadFrequently:true}),{data}=c.getImageData(0,0,canvas.width,canvas.height);return qualityFromPixels(data,canvas.width,canvas.height)}
 function captureExpiryRegion(video,options={}){
   if(!video?.videoWidth||!video?.videoHeight)throw new Error('Kamerabild ist noch nicht bereit.');
   const region=options.region||GUIDE,sx=Math.round(region.x*video.videoWidth),sy=Math.round(region.y*video.videoHeight),sw=Math.round(region.width*video.videoWidth),sh=Math.round(region.height*video.videoHeight);
@@ -76,7 +65,7 @@ function captureExpiryRegion(video,options={}){
   if(options.emit!==false)window.dispatchEvent(new CustomEvent('reserve:expiry-region',{detail:result}));return result;
 }
 function guideMessage(result){const q=result?.quality;if(!q)return'';const message=q.acceptable?`MHD-Nahaufnahme bereit (Schärfe ${q.sharpness}).`:`Bitte erneut fotografieren: ${q.issues.join(', ')}.`;show(message);return message}
-window.RESERVE_PRODUCT_CAPTURE_ASSIST={version:'1.3',quantityFromText,packagingFromText,packagingFromProduct,applyProduct,applyPackaging,applyOCR,expiryGuide,captureExpiryRegion,regionQuality,guideMessage,expiryGuideRegion:{...GUIDE}};
+window.RESERVE_PRODUCT_CAPTURE_ASSIST={version:'1.4',quantityFromText,packagingFromText,packagingFromProduct,applyProduct,applyPackaging,applyOCR,expiryGuide,captureExpiryRegion,regionQuality,qualityFromPixels,guideMessage,expiryGuideRegion:{...GUIDE}};
 function hookLearning(){const api=window.RESERVE_EXPIRY_LEARNING;if(!api?.stage||api.stage.__productAssist)return setTimeout(hookLearning,120);const original=api.stage;function wrapped(file,result){if(result?.raw)applyOCR(result.raw);return original(file,result)}wrapped.__productAssist=true;api.stage=wrapped}
 if(typeof document!=='undefined')hookLearning();
 })();
