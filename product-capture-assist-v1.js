@@ -1,4 +1,4 @@
-/* RESERVE product capture assist v1.4 — wrinkle-tolerant guided MHD capture. */
+/* RESERVE product capture assist v1.5 — wrinkle-tolerant MHD capture plus product-photo quantity OCR. */
 (function(){'use strict';
 const $=id=>typeof document!=='undefined'?document.getElementById(id):null;
 const clean=s=>String(s||'').replace(/\u00a0/g,' ').replace(/,/g,'.').replace(/\s+/g,' ').trim();
@@ -14,6 +14,7 @@ const PACKAGING_RULES=[
   ['Tube',/\b(tube|tubetto)\b/i],
   ['Rolle',/\b(roll|rolle|rouleau|rotolo)\b/i]
 ];
+let productOCRPromise=null;
 function amount(value,unit){value=Number(value);unit=String(unit).toLowerCase();if(unit==='cl')return `${value*10} ml`;if(unit==='dl')return `${value*100} ml`;return `${value} ${unit}`}
 function quantityFromText(text){
   const s=clean(text).replace(/[×xX*]/g,' × ');let m=s.match(/(?:^|\D)(\d{1,2})\s*×\s*(\d+(?:\.\d+)?)\s*(kg|g|ml|cl|dl|l)\b/i);
@@ -42,6 +43,10 @@ function applyQuantity(text,source='Foto'){const input=$('scanQty');if(!input||i
 function applyPackaging(suggestion){const sel=$('scanContainerType');if(!sel||!suggestion?.type||sel.dataset.touched)return false;const confidence=Number(suggestion.confidence)||0;if(confidence<.6){show(`Verpackung nicht sicher erkannt (${Math.round(confidence*100)} %). Bitte auswählen.`);return false}sel.value=suggestion.type;sel.dataset.suggested='1';sel.dataset.suggestionConfidence=String(confidence);const label=confidence>=.9?'erkannt':'vorgeschlagen';show(`Verpackung ${label}: ${suggestion.type} (${Math.round(confidence*100)} %, ${suggestion.source})${confidence<.9?' – bitte prüfen.':''}`);return true}
 function applyProduct(p,name){const q=quantityFromText([p?.quantity,p?.product_name,p?.product_name_de,p?.packaging].filter(Boolean).join(' '));if(q)applyQuantity(q,'Produktdaten');const packaging=packagingFromProduct(p,name);applyPackaging(packaging);return{quantity:q,packaging}}
 function applyOCR(text){const quantity=applyQuantity(text,'Foto'),packaging=packagingFromText(text);if(packaging)applyPackaging(packaging);return{quantity,packaging}}
+function loadProductOCR(){if(window.Tesseract)return Promise.resolve(window.Tesseract);if(productOCRPromise)return productOCRPromise;productOCRPromise=new Promise((ok,no)=>{const existing=document.querySelector('script[src*="tesseract"]');if(existing){existing.addEventListener('load',()=>ok(window.Tesseract),{once:true});existing.addEventListener('error',no,{once:true});return}const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';s.crossOrigin='anonymous';s.onload=()=>ok(window.Tesseract);s.onerror=no;document.head.appendChild(s)});return productOCRPromise}
+async function nativeProductText(file){if(!('TextDetector'in window))return'';try{const bmp=await createImageBitmap(file),blocks=await(new TextDetector()).detect(bmp);bmp.close?.();return blocks.map(x=>x.rawValue||'').join(' ')}catch{return''}}
+async function productCanvas(file){const bmp=await createImageBitmap(file),max=1200,scale=Math.min(1,max/Math.max(1,bmp.width)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(bmp.width*scale));c.height=Math.max(1,Math.round(bmp.height*scale));const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(bmp,0,0,c.width,c.height);bmp.close?.();return c}
+async function readQuantityFromPhoto(file){const input=$('scanQty');if(!file||!input||input.value.trim())return'';show('Mengenangabe auf dem Produktbild wird gelesen …');let text=await nativeProductText(file),quantity=quantityFromText(text);if(!quantity){try{const T=await loadProductOCR(),canvas=await productCanvas(file),job=T?.recognize?.(canvas,'eng'),timeout=new Promise((_,no)=>setTimeout(()=>no(Error('product_ocr_timeout')),16000)),result=await Promise.race([job,timeout]);text=result?.data?.text||'';quantity=quantityFromText(text)}catch{}}if(input.value.trim())return'';if(quantity){applyQuantity(quantity,'Produktbild');return quantity}show('Keine Mengenangabe sicher erkannt – bitte Menge eintragen.');return''}
 const GUIDE={x:.14,y:.38,width:.72,height:.24};
 function expiryGuide(container){
   container=container||$('scanCamera')||$('cameraPreview')||document.querySelector('[data-reserve-camera]');
@@ -65,7 +70,7 @@ function captureExpiryRegion(video,options={}){
   if(options.emit!==false)window.dispatchEvent(new CustomEvent('reserve:expiry-region',{detail:result}));return result;
 }
 function guideMessage(result){const q=result?.quality;if(!q)return'';const message=q.acceptable?`MHD-Nahaufnahme bereit (Schärfe ${q.sharpness}).`:`Bitte erneut fotografieren: ${q.issues.join(', ')}.`;show(message);return message}
-window.RESERVE_PRODUCT_CAPTURE_ASSIST={version:'1.4',quantityFromText,packagingFromText,packagingFromProduct,applyProduct,applyPackaging,applyOCR,expiryGuide,captureExpiryRegion,regionQuality,qualityFromPixels,guideMessage,expiryGuideRegion:{...GUIDE}};
+window.RESERVE_PRODUCT_CAPTURE_ASSIST={version:'1.5',quantityFromText,packagingFromText,packagingFromProduct,applyProduct,applyPackaging,applyOCR,readQuantityFromPhoto,nativeProductText,expiryGuide,captureExpiryRegion,regionQuality,qualityFromPixels,guideMessage,expiryGuideRegion:{...GUIDE}};
 function hookLearning(){const api=window.RESERVE_EXPIRY_LEARNING;if(!api?.stage||api.stage.__productAssist)return setTimeout(hookLearning,120);const original=api.stage;function wrapped(file,result){if(result?.raw)applyOCR(result.raw);return original(file,result)}wrapped.__productAssist=true;api.stage=wrapped}
 if(typeof document!=='undefined')hookLearning();
 })();
