@@ -18,7 +18,8 @@ vm.createContext(sandbox);
 vm.runInContext(source,sandbox);
 const api=sandbox.RESERVE_EXPIRY_CAMERA;
 if(!api?.parseDate)throw Error('RESERVE_EXPIRY_CAMERA parser fehlt');
-if(api.version!=='1.27'||typeof api.exportMetrics!=='function')throw Error('MHD v1.27 oder Messdatenexport fehlt');
+if(api.version!=='1.28'||typeof api.exportMetrics!=='function')throw Error('MHD v1.28 oder Messdatenexport fehlt');
+if(!source.includes("make('original layout','raw'")||!source.includes("make('original sparse','raw'")||!source.includes('beste adaptive zeile links gedreht'))throw Error('Gestaffelte Modell-2-Bildvarianten fehlen');
 if(!source.includes("exportButton.textContent='Messdaten exportieren'"))throw Error('Sichtbarer Messdatenexport fehlt');
 
 const cases=[
