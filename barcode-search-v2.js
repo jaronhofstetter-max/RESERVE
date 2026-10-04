@@ -2,7 +2,7 @@
 (function(){
 'use strict';
 const $=id=>document.getElementById(id),digits=s=>String(s||'').replace(/\D/g,''),norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();const cache=new Map();let installTimer=null,sequence=0;
-const SWISS={'7616800460383':{name:'M-Classic Berner Rösti',qty:'250 g',cat:'Kartoffeln',brand:'M-Classic',source:'Migros Migipedia',verified:'2026-09-15'}};
+const SWISS={'7616800460383':{name:'M-Classic Berner Rösti',qty:'250 g',cat:'Kartoffeln',brand:'M-Classic',source:'Migros Migipedia',verified:'2026-09-15'},'7623186883880':{name:'Migros Lebkuchenherzen – dunkle Schokolade, Aprikosenfüllung',qty:'',cat:'Snacks & Süßwaren',brand:'Migros',source:'Migros Migipedia',verified:'2026-10-04'}};
 function variants(raw){const code=digits(raw),out=[];const add=x=>{x=digits(x);if(x&&x.length>=8&&!out.includes(x))out.push(x)};add(code);if(code.length===12)add('0'+code);if(code.length===13&&code[0]==='0')add(code.slice(1));if(code.length===14&&code[0]==='0')add(code.slice(1));return out}
 function swiss(code){for(const v of variants(code)){const p=SWISS[v];if(p)return{p,name:p.name,qty:p.qty,cat:p.cat,brand:p.brand||'',source:p.source,image:p.image||''}}return null}
 function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}

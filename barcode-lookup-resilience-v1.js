@@ -8,6 +8,12 @@
   const CACHE_KEY='reserveBarcodeLookupCacheV1';
   const CACHE_TTL_MS=30*24*60*60*1000;
   const SWISS_PRODUCTS={
+    '7623186883880':{
+      code:'7623186883880', product_name_de:'Migros Lebkuchenherzen – dunkle Schokolade, Aprikosenfüllung',
+      product_name:'Migros Lebkuchenherzen', brands:'Migros', quantity:'',
+      categories:'Lebkuchen, Süssgebäck, Snacks', categories_tags:['de:lebkuchen','de:süssgebäck','de:snacks'],
+      reserve_source:'Migros / Migipedia verified'
+    },
     '7616800460383':{
       code:'7616800460383',
       product_name_de:'M-Classic Berner Rösti',
