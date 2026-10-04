@@ -61,7 +61,7 @@ jobs:
           sed -i 's/20260928-product-capture-1/20260929-expanded-categories-1/g' index.html
           sed -i 's/20260929-expanded-categories-1/20261001-product-images-1/g' index.html
           sed -i 's/20260917-broad-image-search-2/20261001-single-product-image-1/g' index.html
-          sed -i 's#<script src="barcode-search-v2.js?v=20261001-single-product-image-1"></script>#<script src="barcode-search-v2.js?v=20261004-community-catalog-1"></script><script src="product-community-v1.js?v=20261004-image-replacement-1"></script><script src="packaging-vision-v2.js?v=20261004-packaging-vision-1"></script>#' index.html
+          sed -i 's#<script src="barcode-search-v2.js?v=20261001-single-product-image-1"></script>#<script src="barcode-search-v2.js?v=20261004-community-catalog-1"></script><script src="product-community-v1.js?v=20261004-direct-image-replacement-1"></script><script src="packaging-vision-v2.js?v=20261004-packaging-vision-1"></script>#' index.html
           sed -i 's/20260929-compact-editor-1/20260929-expanded-categories-1/g' index.html
           sed -i 's#receipt-capture-v1.js"></script>#receipt-capture-v1.js?v=20260929-expanded-categories-1"></script>#g' index.html
           sed -i 's/20260914-sync-1/20260929-compact-editor-1/g' index.html
