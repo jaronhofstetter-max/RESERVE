@@ -1,6 +1,7 @@
 /* RESERVE product images v1.6 — preferred local photos and render-synchronized photo cards. */
 (function(){
 'use strict';
+if(window.RESERVE_PRODUCT_IMAGES)return;
 const MEMORY_KEY='reserveBarcodeProductsV1';
 const ownImages=new Map();let ownNames=new Map(),refreshGeneration=0;
 async function refreshOwnImages(){const generation=++refreshGeneration;try{const records=await window.RESERVE_PRODUCT_COMMUNITY?.rows?.();if(!records||generation!==refreshGeneration)return;const names=new Map(),active=new Set();for(const record of records){if(!(record.photo instanceof Blob))continue;const code=String(record.barcode||'').replace(/\D/g,'');if(!code)continue;active.add(code);const old=ownImages.get(code),stamp=record.updatedAt||record.createdAt||'';if(!old||old.stamp!==stamp){if(old)URL.revokeObjectURL(old.url);ownImages.set(code,{url:URL.createObjectURL(record.photo),stamp})}const name=norm(record.name);if(name){const hits=names.get(name)||[];hits.push(code);names.set(name,hits)}}for(const [code,value] of ownImages)if(!active.has(code)){URL.revokeObjectURL(value.url);ownImages.delete(code)}ownNames=names;soon()}catch{}}
