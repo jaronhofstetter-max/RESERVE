@@ -23,5 +23,5 @@ try{
   console.log('Container units: explizite Gebinde + konservative Heuristik + Gesamtbestand OK');
 }finally{
   await browser.close();
-  server.close();
+  server.kill();
 }
