@@ -36,7 +36,7 @@ function packagingFromProduct(p,name=''){
   const inferred=window.RESERVE_CONTAINER_UNITS?.typeFor?.(name,'');
   if(inferred&&TYPES.includes(inferred))return{type:inferred,confidence:.65,source:'Produktname'};
   if(/marmelade|konfitüre|konfiture|pesto/.test(n))return{type:'Glas',confidence:.7,source:'Produktname'};
-  return{type:'Packung',confidence:.45,source:'Standard'};
+  return{type:'',confidence:0,source:'keine sichere Angabe'};
 }
 function show(message){let el=$('productCaptureAssistStatus');if(!el){const anchor=$('scanContainerType')?.closest('label')||$('scanQty');if(!anchor)return;el=document.createElement('div');el.id='productCaptureAssistStatus';el.className='small muted';el.style.marginTop='5px';anchor.insertAdjacentElement('afterend',el)}el.textContent=message}
 function applyQuantity(text,source='Foto'){const input=$('scanQty');if(!input||input.value.trim())return'';const q=quantityFromText(text);if(!q)return'';input.value=q;input.dispatchEvent(new Event('input',{bubbles:true}));show(`Menge aus ${source} vorgeschlagen: ${q} – bitte prüfen.`);return q}
