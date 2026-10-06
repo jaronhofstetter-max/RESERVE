@@ -1,6 +1,10 @@
-/* RESERVE expiry vision v1.7 — no immediate retry on TPM limits; crop likely text band before upload. */
+/* RESERVE expiry vision v1.8 — bounded requests and persistent overload circuit breaker. */
 (function(){'use strict';
-const cfg=()=>window.RESERVE_EXPIRY_VISION_CONFIG||{};let last={ok:false,reason:'not-run',status:0};
+const cfg=()=>window.RESERVE_EXPIRY_VISION_CONFIG||{},COOLDOWN_KEY='reserveExpiryVisionCooldownV1';let last={ok:false,reason:'not-run',status:0};
+function blockedUntil(){try{return Math.max(0,Number(localStorage.getItem(COOLDOWN_KEY))||0)}catch{return 0}}
+function block(ms){const until=Date.now()+Math.max(0,ms);try{localStorage.setItem(COOLDOWN_KEY,String(until))}catch{}return until}
+function clearCooldown(){try{localStorage.removeItem(COOLDOWN_KEY)}catch{}last={ok:false,reason:'reset',status:0}}
+function available(){return Date.now()>=blockedUntil()}
 function valid(x){return x&&/^\d{4}-\d{2}-\d{2}$/.test(x.date||'')&&['day','month'].includes(x.precision)&&Number(x.confidence)>=0&&Number(x.confidence)<=1}
 function jsonish(v){
   if(!v)return null;if(typeof v==='object')return v;
@@ -42,14 +46,15 @@ async function compactImage(file){
 async function analyze(file){
   const c=cfg(),endpoint=c.endpoint||'/api/expiry-vision';last={ok:false,reason:'starting',status:0};
   if(!endpoint){last={ok:false,reason:'no-endpoint',status:0};return null}
+  const until=blockedUntil();if(Date.now()<until){last={ok:false,reason:'cooldown',status:0,retryAfterMs:until-Date.now()};return null}
   const upload=await compactImage(file);const fd=new FormData();fd.append('image',upload,'expiry.jpg');
-  const send=()=>fetch(endpoint,{method:'POST',body:fd,headers:{'Accept':'application/json'},credentials:'omit'});let r;try{r=await send()}catch(e){last={ok:false,reason:'network-or-cors',status:0};return null}
-  if(!r.ok){let e=null;try{e=await r.json()}catch{};const up=Number(e?.upstreamStatus)||0,code=String(e?.code||'');if((up>=500||r.status>=500)&&up!==429&&r.status!==504){await new Promise(ok=>setTimeout(ok,1200));try{r=await send();e=null;if(!r.ok){try{e=await r.json()}catch{}}}catch{last={ok:false,reason:'network-or-cors',status:0};return null}}if(!r.ok){last={ok:false,reason:'http',status:r.status,code:String(e?.code||code),upstreamStatus:Number(e?.upstreamStatus)||up,message:String(e?.upstreamMessage||e?.error||'').slice(0,120),bodyKeys:e&&typeof e==='object'?Object.keys(e).slice(0,12):[]};return null}}
+  const send=async()=>{const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),4500);try{return await fetch(endpoint,{method:'POST',body:fd,headers:{'Accept':'application/json'},credentials:'omit',signal:ctl.signal})}finally{clearTimeout(timer)}};let r;try{r=await send()}catch(e){const until=block(60000);last={ok:false,reason:e?.name==='AbortError'?'timeout':'network-or-cors',status:0,retryAfterMs:until-Date.now()};return null}
+  if(!r.ok){let e=null;try{e=await r.json()}catch{};const up=Number(e?.upstreamStatus)||0,code=String(e?.code||''),overloaded=up===429||r.status===429||code==='openai_http_429';if(overloaded){const until=block(15*60*1000);last={ok:false,reason:'cooldown',status:r.status,code,upstreamStatus:up,retryAfterMs:until-Date.now()};return null}if((up>=500||r.status>=500)&&r.status!==504){await new Promise(ok=>setTimeout(ok,700));try{r=await send();e=null;if(!r.ok){try{e=await r.json()}catch{}}}catch{const until=block(60000);last={ok:false,reason:'network-or-cors',status:0,retryAfterMs:until-Date.now()};return null}}if(!r.ok){const until=(r.status>=500||up>=500)?block(2*60*1000):0;last={ok:false,reason:'http',status:r.status,code:String(e?.code||code),upstreamStatus:Number(e?.upstreamStatus)||up,message:String(e?.upstreamMessage||e?.error||'').slice(0,120),retryAfterMs:until?until-Date.now():0,bodyKeys:e&&typeof e==='object'?Object.keys(e).slice(0,12):[]};return null}}
   let x;try{x=await r.json()}catch{last={ok:false,reason:'invalid-json',status:r.status};return null}
   const n=normalize(x);
   if(!valid(n)){last={ok:false,reason:'invalid-response',status:r.status,shape:x&&typeof x==='object'?Object.keys(x).slice(0,8):[]};return null}
   last={ok:true,reason:'ok',status:r.status,confidence:Number(n.confidence)};return n;
 }
 function diagnostic(){return {...last}}
-window.RESERVE_EXPIRY_VISION={version:'1.7',analyze,valid,normalize,diagnostic};
+window.RESERVE_EXPIRY_VISION={version:'1.8',analyze,valid,normalize,diagnostic,available,blockedUntil,clearCooldown};
 })();
