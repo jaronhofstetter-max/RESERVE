@@ -4,7 +4,7 @@ const DB='reserveProductCommunityV1',STORE='submissions',CONSENT='reserveProduct
 function db(){if(dbPromise)return dbPromise;dbPromise=new Promise((ok,no)=>{const r=indexedDB.open(DB,1);r.onupgradeneeded=()=>{const d=r.result;if(!d.objectStoreNames.contains(STORE)){const s=d.createObjectStore(STORE,{keyPath:'barcode'});s.createIndex('status','status')}};r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)});return dbPromise}
 async function store(mode='readonly'){const d=await db();return d.transaction(STORE,mode).objectStore(STORE)}
 async function get(code){const s=await store();return new Promise((ok,no)=>{const r=s.get(digits(code));r.onsuccess=()=>ok(r.result||null);r.onerror=()=>no(r.error)})}
-async function put(row){const s=await store('readwrite');return new Promise((ok,no)=>{const r=s.put(row);r.onsuccess=()=>ok(row);r.onerror=()=>no(r.error)})}
+async function put(row){const s=await store('readwrite');return new Promise((ok,no)=>{const r=s.put(row);r.onsuccess=()=>{s.transaction.oncomplete=()=>{window.dispatchEvent(new CustomEvent('reserve:product-photo-changed',{detail:{barcode:row.barcode}}));ok(row)}};r.onerror=()=>no(r.error)})}
 async function rows(){const s=await store();return new Promise((ok,no)=>{const r=s.getAll();r.onsuccess=()=>ok(r.result||[]);r.onerror=()=>no(r.error)})}
 function consent(){return localStorage.getItem(CONSENT)==='1'}
 function setConsent(v){localStorage.setItem(CONSENT,v?'1':'0')}
