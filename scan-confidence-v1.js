@@ -15,7 +15,7 @@ function render(){
   const add=$('scanAdd');if(!add)return;
   let box=$('scanConfidenceSummary');if(!box){box=document.createElement('section');box.id='scanConfidenceSummary';box.className='item';box.style.cssText='margin-top:12px;padding:13px';add.before(box)}
   const rows=state(),ready=rows.slice(0,3).every(x=>x.level!=='open');
-  box.innerHTML=`<b>Scan-Ergebnis prüfen</b><div style="display:grid;gap:7px;margin-top:9px">${rows.map(x=>`<div style="display:flex;justify-content:space-between;gap:12px"><span>${x.level==='ok'?'✅':x.level==='check'?'⚠️':'○'} ${x.label}</span><strong style="text-align:right">${escapeHtml(x.value)}</strong></div>`).join('')}</div><div class="small ${ready?'good':'muted'}" style="margin-top:9px">${ready?'Produktangaben vollständig. Vor dem Hinzufügen kurz prüfen.':'Offene Angaben ergänzen; RESERVE lernt bestätigte Korrekturen für diesen Barcode.'}</div>`;
+  box.innerHTML=`<b>Scan-Ergebnis prüfen</b><div style="display:grid;gap:7px;margin-top:9px">${rows.map(x=>`<div style="display:flex;justify-content:space-between;gap:12px"><span>${x.level==='ok'?'✅':x.level==='check'?'⚠️':'○'} ${x.label}</span><strong style="text-align:right">${escapeHtml(x.value)}</strong></div>`).join('')}</div><div class="small ${ready?'good':'muted'}" style="margin-top:9px">${ready?'Angaben kurz prüfen.':'Fehlende Angaben ergänzen.'}</div>`;
 }
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function schedule(){clearTimeout(timer);timer=setTimeout(render,20)}
