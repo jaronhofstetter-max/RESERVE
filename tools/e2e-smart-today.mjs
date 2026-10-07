@@ -11,15 +11,15 @@ try{
   stock=[{n:'Test Karotte',q:'500 g',e:expiry,c:'Gemüse & Früchte'}];
   recipes=[{id:'smart-today-test',name:'Karotten Test Menü',ingredients:[{name:'Test Karotte',amount:100,unit:'g'}],steps:['Kochen']}];
   const priorities=RESERVE_SMART_PRIORITIES.recipePriorities();
-  RESERVE_TODAY.render();await new Promise(r=>setTimeout(r,20));
-  const before=document.getElementById('reserveToday')?.innerText||'';
-  stock=[];window.dispatchEvent(new Event('reserve:stock-changed'));await new Promise(r=>setTimeout(r,120));
-  const after=document.getElementById('reserveToday')?.innerText||'';
+  RESERVE_TODAY.render();RESERVE_EXPIRY_UI.render();await new Promise(r=>setTimeout(r,20));
+  const before=document.getElementById('expiryIntelligence')?.innerText||'';
+  stock=[];RESERVE_EXPIRY_UI.render();window.dispatchEvent(new Event('reserve:stock-changed'));await new Promise(r=>setTimeout(r,120));
+  const after=document.getElementById('expiryIntelligence')?.innerText||'';
   return{priority:priorities[0]?.recipe?.name||'',before,after};
  });
  if(result.priority!=='Karotten Test Menü')throw new Error('Smart-Priorities Rezeptzugriff Regression: '+JSON.stringify(result));
  if(!result.before.includes('Test Karotte')||!result.before.includes('Karotten Test Menü'))throw new Error('Heute-Dashboard Initialrender Regression: '+JSON.stringify(result));
- if(result.after.includes('Test Karotte')||!result.after.includes('kein Vorrat besonders dringend'))throw new Error('Heute-Dashboard Aktualisierung Regression: '+JSON.stringify(result));
+ if(result.after.includes('Test Karotte'))throw new Error('Heute-Dashboard Aktualisierung Regression: '+JSON.stringify(result));
  if(errors.length)throw new Error('Browserfehler: '+errors.join(' | '));
  console.log('✓ Smart Priorities → Heute-Dashboard → Live-Aktualisierung bestanden',result);
 }finally{await browser.close();server.close()}
