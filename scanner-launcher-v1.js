@@ -6,7 +6,7 @@
   const returning=params.get('scannerReturn')==='1';
   const diag=params.get('reserveDiag')==='1';
   function cleanUrl(){
-    try{const u=new URL(location.href);u.searchParams.delete('reserveScanned');u.searchParams.delete('scannerReturn');history.replaceState(null,'',u.pathname+(u.search||'')+'#stock')}catch(_){ }
+    try{const u=new URL(location.href);u.searchParams.delete('reserveScanned');u.searchParams.delete('scannerReturn');history.replaceState(null,'',u.pathname+(u.search||'')+'#reserve-capture')}catch(_){ }
   }
   function openScanner(){location.href='/scanner-standalone.html?diag='+(diag?'1':'0')+'&cb=standalone1'}
   function installButton(){

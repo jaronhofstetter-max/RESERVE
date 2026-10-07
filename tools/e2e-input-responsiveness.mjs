@@ -21,7 +21,7 @@ const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,
 try{
   await page.goto(`http://127.0.0.1:${port}/?reserveDiag=0`,{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>window.RESERVE_INPUT_GUARD?.version==='1.1'&&window.RESERVE_PERFORMANCE,{timeout:10000});
-  await page.evaluate(()=>{try{window.show?.('stock')}catch(_){ }});
+  await page.evaluate(()=>{try{window.RESERVE_VISUAL_FLOW?window.RESERVE_VISUAL_FLOW.openCapture():window.show?.('stock')}catch(_){ }});
   await page.waitForSelector('#scanName',{timeout:10000});
   const result=await page.evaluate(async()=>{
     const nextFrame=()=>new Promise(resolve=>requestAnimationFrame(()=>resolve(performance.now())));
