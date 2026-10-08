@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "description": "Manually specified regression cases; not an estimate of real-world model accuracy.",
+  "categories": [
+    {"name":"Steak","expected":"Protein"},
+    {"name":"Schwarztee mit Pfirsich","expected":"Kaffee & Tee"},
+    {"name":"Pfefferminztee","expected":"Kaffee & Tee"},
+    {"name":"Salzgebäck","expected":"Snacks & Süßwaren"},
+    {"name":"Paprikapulver","expected":"Gewürze"},
+    {"name":"Kichererbsen Mehl","expected":"Getreide & Beilagen"},
+    {"name":"Penne Rigate No 66","expected":"Getreide & Beilagen"},
+    {"name":"Fusilli N° 78","expected":"Getreide & Beilagen"},
+    {"name":"Joghurt Schokolade","expected":"Milchprodukte"},
+    {"name":"Naturjoghurt","expected":"Milchprodukte"},
+    {"name":"Wasser","expected":"Getränke"},
+    {"name":"Protein Pulver","expected":"Protein"},
+    {"name":"Tofu","expected":"Protein"},
+    {"name":"Unbekanntes Produkt 123","expected":"Sonstiges"}
+  ],
+  "ingredients": [
+    {"a":"Penne Rigate No 66","b":"Pasta","expected":true},
+    {"a":"Fusilli N° 78","b":"Nudeln","expected":true},
+    {"a":"Rote Linsen","b":"Linsen","expected":true},
+    {"a":"Karotte","b":"Rüebli","expected":true},
+    {"a":"Zucchini","b":"Zucchetti","expected":true},
+    {"a":"Basmati Reis","b":"Langkornreis","expected":true},
+    {"a":"Ei","b":"Reis","expected":false},
+    {"a":"Milch","b":"Milchschokolade","expected":false},
+    {"a":"Milch","b":"Kokosmilch","expected":false},
+    {"a":"Butter","b":"Erdnussbutter","expected":false},
+    {"a":"Kichererbsen","b":"Kichererbsen Mehl","expected":false},
+    {"a":"Joghurt Schokolade","b":"Naturjoghurt","expected":false},
+    {"a":"Pfefferminztee","b":"Pfeffer","expected":false},
+    {"a":"Protein Shake","b":"Protein Riegel","expected":false},
+    {"a":"Tomaten Reis Fertiggericht","b":"Tomaten","expected":false},
+    {"a":"Salz","b":"Salzkartoffeln","expected":false},
+    {"a":"Unbekannt","b":"Protein","expected":false}
+  ]
+}
