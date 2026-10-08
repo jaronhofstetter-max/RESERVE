@@ -4,7 +4,7 @@
  const words=s=>NORM(s).split(/\s+/).filter(x=>x.length>1&&!STOP.has(x)),canonical=s=>{const n=NORM(s);if(ALIAS_MAP.has(n))return ALIAS_MAP.get(n);const w=words(n);for(const [alias,key] of ALIAS_MAP)if(alias.includes(' ')&&w.join(' ').includes(alias))return key;for(const x of w)if(ALIAS_MAP.has(x))return ALIAS_MAP.get(x);return null},tokens=s=>new Set(words(s));
  const pantry=()=>window.RESERVE_PANTRY_INTELLIGENCE,confidenceOk=x=>x?.learned&&(x.learned.confidence==='medium'||x.learned.confidence==='high');
  const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'),recipes=()=>Array.isArray(window.recipes)?window.recipes:[];
- function ingredientMatch(a,b){const A=NORM(a),B=NORM(b);if(!A||!B)return false;if(A===B)return true;const ca=canonical(A),cb=canonical(B);if(ca&&cb)return ca===cb;const ta=tokens(A),tb=tokens(B);return [...ta].some(x=>tb.has(x)&&x.length>=4)}
+ function ingredientMatch(a,b){return window.RESERVE_INGREDIENTS?.match(a,b)??(NORM(a)===NORM(b)&&!!NORM(a))}
  const minutes=r=>Math.max(0,(Number(r.prepMinutes)||0)+(Number(r.cookMinutes)||0))||999;
  const KEY='reserveAutopilotChoiceLearningV1',readLearn=()=>{try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return{shown:x.shown||{},chosen:x.chosen||{},completed:x.completed||{},completionEvents:x.completionEvents||[]}}catch{return{shown:{},chosen:{},completed:{},completionEvents:[]}}},saveLearn=x=>{try{localStorage.setItem(KEY,JSON.stringify(x))}catch{}};
  function learnScore(id){const x=readLearn(),shown=+x.shown[id]||0,chosen=+x.chosen[id]||0,completed=+x.completed[id]||0;if(shown<3)return 0;return Math.max(-60,Math.min(100,(completed/shown-.2)*150+(chosen/shown-.34)*35))}

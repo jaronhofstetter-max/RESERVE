@@ -13,7 +13,7 @@
  function mealFits(r,t){const a=Array.isArray(r.mealTimes)?r.mealTimes:[];return a.includes(t)||(t!=='Frühstück'&&a.includes('Hauptmahlzeit'))}
  function stockMap(){const m={};try{stock.forEach(s=>{const p=parseAmount(s.q);if(!p)return;const k=norm(s.n)+'|'+unit(p.u);(m[k]??={name:s.n,unit:unit(p.u),v:0}).v+=p.v})}catch{}return m}
  function adapt(r){try{return typeof adaptRecipe==='function'?adaptRecipe(r):r}catch{return r}}
- function findStockKey(m,name,u){return Object.keys(m).find(k=>{const [n,ku]=k.split('|');return ku===u&&(n.includes(norm(name))||norm(name).includes(n))})}
+ function findStockKey(m,name,u){return Object.keys(m).find(k=>{const [n,ku]=k.split('|');return ku===u&&(window.RESERVE_INGREDIENTS?.match(m[k].name,name)??(n===norm(name)))})}
  function recipeCoverage(r,m){const xs=adapt(r).ingredients||[];if(!xs.length)return 0;let sum=0;for(const i of xs){const u=unit(i.unit),need=(+i.amount||0)*people(),key=findStockKey(m,i.name,u),have=key?m[key].v:0;sum+=need>0?Math.min(1,have/need):1}return sum/xs.length}
  function fallbackRate(u){u=unit(u);if(u==='kg')return 5;if(u==='g')return .005;if(u==='l')return 2.5;if(u==='ml')return .0025;if(u==='stück')return .8;return 1}
  function priceEstimate(name,amount,u){const fallback=fallbackRate(u);try{const e=window.RESERVE_PRICE_LEARNING?.estimate?.(name,amount,u,fallback);if(e&&Number.isFinite(+e.amount))return{amount:+e.amount,source:e.source||'fallback',rate:+e.rate||fallback}}catch{}return{amount:Math.max(0,+amount||0)*fallback,source:'fallback',rate:fallback}}

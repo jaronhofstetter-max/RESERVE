@@ -3,7 +3,7 @@
   const unitOf=i=>(i.unit||'').toLowerCase()==='stück'?'stück':i.unit;
   const parseDate=s=>s?new Date(s+'T00:00:00').getTime():Number.MAX_SAFE_INTEGER;
   const ingredientIcons={reis:'🍚',eier:'🥚',ei:'🥚',brokkoli:'🥦',poulet:'🍗',hähnchen:'🍗',haehnchen:'🍗',kartoffeln:'🥔',kartoffel:'🥔',tomaten:'🍅',tomate:'🍅',spinat:'🥬',paprika:'🫑',zucchini:'🥒',champignons:'🍄',apfel:'🍎',banane:'🍌',joghurt:'🥣',milch:'🥛',käse:'🧀',kaese:'🧀',brot:'🍞',vollkornbrot:'🍞',pasta:'🍝',spaghetti:'🍝',linsen:'🫘',kichererbsen:'🫘',lachs:'🐟'};
-  function matchName(a,b){a=N(a);b=N(b);return a===b||a.includes(b)||b.includes(a)}
+  function matchName(a,b){return window.RESERVE_INGREDIENTS?.match(a,b)??(N(a)===N(b)&&!!N(a))}
   function icon(name){return ingredientIcons[N(name)]||'🥣'}
   function batches(name){return stock.filter(s=>matchName(s.n,name)).map((s,index)=>({s,index,p:parseAmount(s.q)})).filter(x=>x.p).sort((a,b)=>parseDate(a.s.e)-parseDate(b.s.e));}
   function available(name,unit){unit=(unit||'').toLowerCase()==='stück'?'stück':unit;return batches(name).filter(x=>x.p.u===unit).reduce((n,x)=>n+x.p.v,0)}

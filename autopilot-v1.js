@@ -3,7 +3,7 @@
  const DAY=86400000,SLOTS=[['Frühstück','Frühstück'],['Mittagessen','Mittagessen'],['Abendessen','Abendessen']];
  const unitOf=i=>(i.unit||'').toLowerCase()==='stück'?'stück':(i.unit||'').toLowerCase();
  const expDays=s=>{if(!s||!s.e)return 9999;return Math.ceil((new Date(s.e+'T23:59:59').getTime()-Date.now())/DAY)};
- const matches=(a,b)=>{a=N(a);b=N(b);return a===b||a.includes(b)||b.includes(a)},pref=()=>typeof profile==='function'?(profile()||{}):{};
+ const matches=(a,b)=>{return window.RESERVE_INGREDIENTS?.match(a,b)??(N(a)===N(b)&&!!N(a))},pref=()=>typeof profile==='function'?(profile()||{}):{};
  function emergency(){try{return window.RESERVE_EMERGENCY?.protectedReserve?.()||null}catch{return null}}
  function approved(){return recipes.filter(r=>(!r.status||r.status==='approved')&&allowed(r))}
  function forSlot(r,slot){const mt=r.mealTimes||[];if(mt.length)return mt.includes(slot);return slot==='Frühstück'?r.type==='Frühstück':r.type==='Hauptmahlzeit'}
