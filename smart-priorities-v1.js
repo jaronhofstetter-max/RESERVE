@@ -4,7 +4,7 @@
  const stockRows=()=>{try{return Array.isArray(stock)?stock:[]}catch{return[]}};
  const recipeRows=()=>{try{if(typeof recipes!=='undefined'&&Array.isArray(recipes))return recipes}catch{}try{return Array.isArray(window.recipes)?window.recipes:[]}catch{return[]}};
  const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');
- const match=(a,b)=>{a=norm(a);b=norm(b);return !!a&&!!b&&(a===b||a.includes(b)||b.includes(a))};
+ const match=(a,b)=>{return window.RESERVE_INGREDIENTS?.match(a,b)??(norm(a)===norm(b)&&!!norm(a))};
  function daysToExpiry(row){if(!row?.e)return Infinity;const t=new Date(row.e+'T23:59:59').getTime();return Number.isFinite(t)?Math.ceil((t-Date.now())/DAY):Infinity}
  function demand(name,unit){try{return window.RESERVE_PANTRY_INTELLIGENCE?.quantityForecast?.(7)?.find(x=>x.unit===unit&&match(x.name,name))||null}catch{return null}}
  function eatFirst(limit=8){return stockRows().map((row,index)=>{const p=window.parseAmount?.(row.q),days=daysToExpiry(row);if(!p||days<0||!Number.isFinite(days)||days>14)return null;const d=demand(row.n,p.u),daily=Number(d?.dailyUse||0),coverage=daily>0?p.v/daily:Infinity;let score=Math.max(0,15-days)*10;if(days<=3)score+=60;if(daily>0)score+=Math.min(40,daily*7);if(Number.isFinite(coverage)&&coverage>days)score+=25;return{row,index,days,score,demand:d||null,reason:days===0?'läuft heute ab':days<=3?`läuft in ${days} Tagen ab`:days<=7?`nur noch ${days} Tage haltbar`:`innerhalb von ${days} Tagen verbrauchen`}}).filter(Boolean).sort((a,b)=>b.score-a.score||a.days-b.days).slice(0,limit)}
