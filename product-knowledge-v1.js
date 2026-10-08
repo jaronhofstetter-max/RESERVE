@@ -41,12 +41,14 @@ function lookup(code){const p=project(get(code));return p?{...legacy()[digits(co
 function products(){return Object.values(read().products).map(copy)}
 function map(){const m=legacy();for(const p of products())if(p.barcode)m[p.barcode]={...m[p.barcode],...project(p)};return m}
 function exact(name){const hits=byName(name);return hits.length===1?copy(hits[0]):null}
-function ingredientName(name){const hits=byName(name);if(!hits.length)return'';const values=hits.map(p=>p.fields.ingredient?.state==='confirmed'?p.fields.ingredient.value:'');return values.every(v=>v&&norm(v)===norm(values[0]))?values[0]:''}
+function ingredientIdentity(name){const hits=byName(name);if(!hits.length)return{state:'unknown',value:''};const values=hits.map(p=>p.fields.ingredient?.state==='confirmed'?p.fields.ingredient.value:'');if(values.every(v=>v&&norm(v)===norm(values[0])))return{state:'confirmed',value:values[0]};return{state:values.some(Boolean)?'ambiguous':'unknown',value:''}}
+function ingredientName(name){return ingredientIdentity(name).value}
+
 function resolve(row,{localImage=''}={}){const p=digits(row?.barcode)?get(row.barcode):exact(row?.n||row?.name),profile=project(p);return{...profile,ingredient:ingredientName(row?.n||row?.name),image:localImage||(p?.fields.image?.state==='confirmed'?profile?.image:'')||safeImage(row?.image)||profile?.image||''}}
 function migrate(){const data=read(),m=legacy();let changed=false;for(const [code,row]of Object.entries(m)){if(!row?.name||data.products['barcode:'+digits(code)])continue;const id='barcode:'+digits(code),confirmed=row.trusted===true||row.learnedFromCorrection===true,fields={};for(const [k,value]of Object.entries(fieldsFor(row)))fields[k]={value,state:confirmed?'confirmed':'suggested',source:confirmed?'legacy-confirmed':'legacy-product-data',at:row.rememberedAt||''};data.products[id]={id,barcode:digits(code),name:row.name,fields,createdAt:row.rememberedAt||'',updatedAt:row.rememberedAt||''};changed=true;}if(changed){try{write(data)}catch{return false}}return changed;}
 function recognize(row){const p=digits(row?.barcode||row?.code)?get(row.barcode||row.code):exact(row?.n||row?.name),fields=p?.fields||{},name=fields.name?.value||text(row?.n||row?.name);const ingredient=fields.ingredient?.state==='confirmed'?fields.ingredient.value:'',candidate=window.RESERVE_INGREDIENTS?.canonical(name),safeCandidate=candidate&&window.RESERVE_INGREDIENTS?.match(name,candidate)?candidate:'';return{product:p,category:{value:fields.category?.value||window.RESERVE_BARCODE?.categoryFor?.(name,'')||'Sonstiges',state:fields.category?.state||'suggested'},ingredient:{value:ingredient||safeCandidate,state:ingredient?'confirmed':safeCandidate?'suggested':'unknown'}}}
 function examples(){return copy(read().examples)}
-window.RESERVE_PRODUCT_KNOWLEDGE={version:'1.0',get,lookup,observe,confirm,products,map,resolve,recognize,ingredientName,examples,migrate,valid,storageKey:KEY};
+window.RESERVE_PRODUCT_KNOWLEDGE={version:'1.0',get,lookup,observe,confirm,products,map,resolve,recognize,ingredientIdentity,ingredientName,examples,migrate,valid,storageKey:KEY};
 migrate();
 window.addEventListener('storage',event=>{if(event.key===KEY||event.key===null){cached=null;nameIndex=null}});
 })();
