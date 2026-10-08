@@ -4,12 +4,15 @@
  const words=s=>NORM(s).split(/\s+/).filter(x=>x.length>1&&!STOP.has(x)),canonical=s=>{const n=NORM(s);if(ALIAS_MAP.has(n))return ALIAS_MAP.get(n);const w=words(n);for(const [alias,key] of ALIAS_MAP)if(alias.includes(' ')&&w.join(' ').includes(alias))return key;for(const x of w)if(ALIAS_MAP.has(x))return ALIAS_MAP.get(x);return null},tokens=s=>new Set(words(s));
 
  const forms=s=>{const n=NORM(s);return ['mehl','pulver','tee','saft','sirup','schokolade','riegel','sauce','suppe','gewurz','joghurt'].filter(x=>n.includes(x)).sort().join('|')};
- function match(a,b){const ia=window.RESERVE_PRODUCT_KNOWLEDGE?.ingredientIdentity(a),ib=window.RESERVE_PRODUCT_KNOWLEDGE?.ingredientIdentity(b);if(ia?.state==='ambiguous'||ib?.state==='ambiguous')return false;a=ia?.value||a;b=ib?.value||b;const A=NORM(a),B=NORM(b);if(!A||!B)return false;if(A===B)return true;if(forms(A)!==forms(B))return false;
+ function computeMatch(a,b){const ia=window.RESERVE_PRODUCT_KNOWLEDGE?.ingredientIdentity(a),ib=window.RESERVE_PRODUCT_KNOWLEDGE?.ingredientIdentity(b);if(ia?.state==='ambiguous'||ib?.state==='ambiguous')return false;a=ia?.value||a;b=ib?.value||b;const A=NORM(a),B=NORM(b);if(!A||!B)return false;if(A===B)return true;if(forms(A)!==forms(B))return false;
  // Flavoured dairy and mixed dishes must not stand in for their plain ingredient.
  if(/joghurt/.test(A+B)&&(/schokol|vanill|frucht|erdbeer/.test(A)||/schokol|vanill|frucht|erdbeer/.test(B)))return false;
  const identities=s=>new Set(words(s).map(x=>ALIAS_MAP.get(x)).filter(Boolean));if(identities(A).size>1||identities(B).size>1)return false;const ca=canonical(A),cb=canonical(B);if(ca&&cb)return ca===cb;
  // Unknown names require the same words, rather than one shared word or substring.
  const clean=s=>words(s).sort().join(' ');return !!clean(A)&&clean(A)===clean(B);
  }
+ const matches=new Map();
+ function match(a,b){const key=JSON.stringify([a,b]);if(matches.has(key))return matches.get(key);const result=computeMatch(a,b);if(matches.size>=20000)matches.clear();matches.set(key,result);return result}
+ const invalidate=()=>matches.clear();window.addEventListener?.('reserve:product-knowledge-changed',invalidate);window.addEventListener?.('storage',invalidate);
  window.RESERVE_INGREDIENTS={match,canonical};
 })();
