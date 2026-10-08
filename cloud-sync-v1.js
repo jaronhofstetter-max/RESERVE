@@ -1,7 +1,7 @@
 /* RESERVE cloud-ready sync layer v2.
    Local-first today; validates backups and includes per-recipe cooking progress. */
 (function(){
-  const KEYS=['reserveStock','reserveShopping','reserveProfile','reserveProductKnowledgeV1','reserveBarcodeProductsV1'];
+  const KEYS=['reserveStock','reserveShopping','reserveProfile','reserveProductKnowledgeV1','reserveBarcodeProductsV1','reservePersonalRecipesV1'];
   const COOK_PREFIX='reserveCookProgress:';
   const META='reserveSyncMeta';
   const MAX_BYTES=2*1024*1024;
@@ -24,6 +24,7 @@
     if(data.values.reserveProfile!=null&&!validProfile(data.values.reserveProfile))return 'Profildaten im Backup sind ungültig.';
     if(data.values.reserveProductKnowledgeV1!=null&&!window.RESERVE_PRODUCT_KNOWLEDGE?.valid?.(data.values.reserveProductKnowledgeV1))return 'Produktwissen im Backup ist ungültig.';
     if(data.values.reserveBarcodeProductsV1!=null&&(typeof data.values.reserveBarcodeProductsV1!=='object'||Array.isArray(data.values.reserveBarcodeProductsV1)))return 'Produktdaten im Backup sind ungültig.';
+    if(data.values.reservePersonalRecipesV1!=null&&!window.RESERVE_PERSONAL_RECIPES?.validRecords?.(data.values.reservePersonalRecipesV1))return 'Eigene Rezepte im Backup sind ungültig.';
     if(data.cookingProgress!=null&&(typeof data.cookingProgress!=='object'||Array.isArray(data.cookingProgress)))return 'Kochfortschritt im Backup ist ungültig.';
     return null;
   }

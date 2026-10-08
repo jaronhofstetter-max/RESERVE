@@ -1,0 +1,11 @@
+# Personal recipes v1
+
+Home and Search offer “Meine Rezepte”. Customers can import up to six screenshots, photograph a printed recipe, paste text, or enter a recipe manually. Tesseract.js 5 loads only when image import is requested. OCR runs in a browser worker with German and English language data; recipe images are not submitted to the expiry recognition endpoint or a server-side model. This is text recognition and conservative parsing, not a new trained recipe model.
+
+The review retains original ingredient lines and steps. The original portion count is required. Explicit preparation/cooking times may be read; absent time and nutrition are not invented. Fractions and metric units convert to per-person amounts for the existing inventory matcher. Unknown quantities, ranges, tablespoons and unmeasured packaging remain visible. Such recipes can be saved but do not enter automatic inventory/planning calculations until corrected. Personal recipe ingredients are not automatically substituted for disliked ingredients.
+
+Metadata lives in reservePersonalRecipesV1. Compressed, uncropped dish photos live in IndexedDB reservePersonalRecipePhotosV1, keyed by recipe ID. Full cookbook export/restore includes metadata and photos. The general RESERVE backup includes recipe metadata; full photo backup uses the cookbook export. There is no public sharing or model training contribution.
+
+Confirmed quantitative recipes join the recipe collection after catalog loads and can appear in search/suggestions. Personal detail and cooking use an escaped, image-first page rather than fabricated nutrition or generic generated descriptions. Ingredient quantities shown for cooking match the household portion count used by existing stock consumption. Source steps remain as recorded. Cooking updates stock only after all steps are checked and current inventory/diet suitability is revalidated.
+
+Tests cover conservative parsing, fractions and normalization, original-portion scaling, unresolved data, screenshot import workflow, photo persistence, stock consumption, escaping and a complete cookbook export. Browser OCR workflow tests inject deterministic OCR output; they do not establish real-photo OCR accuracy. The separate real OCR smoke test exercises the engine on a clear generated screenshot.
