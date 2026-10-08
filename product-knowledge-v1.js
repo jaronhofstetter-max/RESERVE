@@ -37,7 +37,7 @@ function syncStock(p){if(!p.barcode)return;let rows;try{rows=JSON.parse(localSto
 function observe(row,source='product-data'){return upsert(row,{source})}
 function confirm(row,options={}){return upsert(row,{...options,confirmed:true,source:options.source||'customer-confirmed'})}
 function get(code){return copy(read().products['barcode:'+digits(code)]||null)}
-function lookup(code){return project(get(code))}
+function lookup(code){const p=project(get(code));return p?{...legacy()[digits(code)],...p}:null}
 function products(){return Object.values(read().products).map(copy)}
 function map(){const m=legacy();for(const p of products())if(p.barcode)m[p.barcode]={...m[p.barcode],...project(p)};return m}
 function exact(name){const hits=byName(name);return hits.length===1?copy(hits[0]):null}
