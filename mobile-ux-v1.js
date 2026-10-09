@@ -16,12 +16,12 @@
   .grid{gap:8px}.metric b{font-size:22px}
   button,input,select{min-height:44px}
   button{touch-action:manipulation}
-  .cab-frame{grid-template-columns:minmax(0,1fr)!important;padding:0!important;gap:14px!important}
+  .cab-frame{grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:0!important;gap:14px!important}
   .cab-product{min-width:0!important;width:100%;overflow:hidden}
   .cab-product strong,.cab-product span,.cab-product small{max-width:100%;overflow:hidden;text-overflow:ellipsis}
   .recipe-card-grid{grid-template-columns:1fr!important}
 }
-@media(max-width:380px){header nav .tab{font-size:10px;padding-left:2px;padding-right:2px}.card{padding:12px}.cab-frame{grid-template-columns:minmax(0,1fr)!important}}
+@media(max-width:380px){header nav .tab{font-size:10px;padding-left:2px;padding-right:2px}.card{padding:12px}.cab-frame{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 `;
     document.head.appendChild(style);
     const nav=document.querySelector('header nav');if(!nav)return;
