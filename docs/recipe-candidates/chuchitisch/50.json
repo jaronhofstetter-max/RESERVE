@@ -1,0 +1,45 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Spaghetti mit Tomatensauce",
+  "image": "50.webp",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "",
+  "prepTime": "PT0S",
+  "cookTime": "PT1200S",
+  "totalTime": "PT1200S",
+  "recipeYield": "6 Personen",
+  "keywords": "  Einfach,  Sauce,  Europa,  Italien,  Hauptspeise,  Gesund,  Eher schnell,  Vegetarisch,  ",
+  "recipeIngredient": [
+    "Olivenöl",
+    "1   Zwiebel",
+    "1   Knoblauchzehe",
+    "400  g geschälte Tomaten",
+    "700  g passierte Tomaten",
+    "2  EL Tomatenpüree",
+    "1  EL Italienische Kräuter",
+    "1½  TL Gemüsebouillon",
+    "1  TL Zucker",
+    "Salz",
+    "Pfeffer",
+    "1  dl Weisswein",
+    "1  Zweig Basilikum",
+    "1  kg Spaghetti",
+    "---",
+    "Reibkäse"
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "recipeInstructions": "Die Zwiebel hacken und in reichlich Olivenöl andünsten. Mit Weisswein ablöschen und diesen etwas einkochen lassen, dass die Zwiebeln gerade noch bedeckt sind.\n\nGeschälte Tomaten würfeln und zusammen mit der Passata beigeben. Den Knoblauch dazupressen und die italienischen Kräuter (getrocknete Mischung oder frisch gehackten Rosmarin, Thymian und Basilikum) dazumischen. Mit Bouillonpaste würzen. Aufkochen und bei reduzierter Hitze 15 min köcheln lassen. Mit Salz, Pfeffer und etwas Zucker abschmecken.\n\nSpaghetti in Salzwasser al dente kochen (gemäss Angaben auf der Packung). Die Spaghetti in die heisse Tomatensauce geben, etwas Olivenöl und je nach Geschmack Reibkäse dazugeben und gut mischen. Ist die Sauce zu fest, mit etwas Spaghettikochwasser verdünnen. Mit frischem Basilikum und Reibkäse servieren.\n",
+  "source": "http://chuchitisch.ch/recipes/50",
+  "originalImage": "http://chuchitisch.ch/chuchitisch/download_picture/lightroom/782_Spaghetti+mit+Tomatensauce.png",
+  "review": {
+    "recipeAuthor": "Hannes und Martina",
+    "photoAuthor": "Separate Fotografenangabe auf der Rezeptseite nicht gefunden; vor Veröffentlichung im App-Katalog klären.",
+    "status": "candidate",
+    "nutrition": "Nicht bereitgestellt; keine Werte erfunden."
+  }
+}

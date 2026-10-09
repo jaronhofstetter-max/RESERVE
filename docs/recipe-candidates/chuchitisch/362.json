@@ -1,0 +1,39 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Broccoli-Linsen-Salat",
+  "image": "362.webp",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "",
+  "prepTime": "PT0S",
+  "cookTime": "PT900S",
+  "totalTime": "PT2100S",
+  "recipeYield": "2 Personen",
+  "keywords": "  Salat,  Einfach,  Multikulti,  Abendessen unter der Woche,  Mittelschnell,  Vegetarisch,  Vegan,  ",
+  "recipeIngredient": [
+    "150  g Beluga-Linsen",
+    "1   Broccoli",
+    "10   Dörrtomaten",
+    "1   Frühlingszwiebel",
+    "Salatsauce: 7½ cl Zitronensaft",
+    "Salatsauce: 5 cl Rapsöl",
+    "Salatsauce: 2½ cl Cenovis",
+    "Salatsauce: ⅘ TL Senf",
+    "Salatsauce: Salz"
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "recipeInstructions": "Linsen gemäss Packungsangaben 20-30 Minuten in ungesalzenem Wasser gar kochen.\n\nBroccoli in Röschen schneiden und die Röschen z.B. im Dampfkörbchen bissfest garen, dann mit kaltem Wasser abschrecken.\n\nDörrtomaten in Stücke schneiden, Frühlingszwiebeln ebenfalls klein schneiden. Zusammen mit den Broccoliröschen zu den gekochten Linsen geben.\n\nSalatsauce dazu geben, alles gut mischen und lauwarm oder kalt servieren.\n\nSalatsauce: Alle Zutaten gut mischen.",
+  "source": "http://chuchitisch.ch/recipes/362",
+  "originalImage": "http://chuchitisch.ch/chuchitisch/download_picture/lightroom/442_Broccoli-Linsen-Salat.png",
+  "review": {
+    "recipeAuthor": "Hannes und Martina",
+    "photoAuthor": "Separate Fotografenangabe auf der Rezeptseite nicht gefunden; vor Veröffentlichung im App-Katalog klären.",
+    "status": "candidate",
+    "nutrition": "Nicht bereitgestellt; keine Werte erfunden."
+  },
+  "includedRecipeSource": "http://chuchitisch.ch/recipes/25"
+}

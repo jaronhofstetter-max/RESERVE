@@ -1,0 +1,42 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Minestrone",
+  "image": "402.webp",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "",
+  "prepTime": "PT43200S",
+  "cookTime": "PT1800S",
+  "totalTime": "PT49200S",
+  "recipeYield": "6 Personen",
+  "keywords": "  Vorspeise,  Italien,  Hauptspeise,  Einfach,  Deftig,  Suppe,  Tagelang,  Vegetarisch,  ",
+  "recipeIngredient": [
+    "200  g getrocknete Borlottibohnen",
+    "200  g Stangensellerie",
+    "300  g Karotten",
+    "300  g festkochende Kartoffeln",
+    "300  g Lauch",
+    "2   Zwiebeln",
+    "1   Knoblauchzehe",
+    "5  EL Olivenöl",
+    "2  l Gemüsebouillon",
+    "2  dl Weisswein",
+    "4   Tomaten",
+    "200  g Pennette",
+    "3  EL Reibkäse"
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "recipeInstructions": "Die Bohnen über Nacht in kaltem Wasser einweichen (in einer genügend grossen Schüssel, da sich die Bohnen im Volumen verdoppeln).\nIn frischem Wasser ohne Salz 50 Minuten gar kochen.\n\nDie grünen Blättchen vom Stangensellerie abzupfen (die können am Ende gehackt über die Suppe gestreut werden) und die Stangen in 0.5-1 cm grosse Stücke schneiden. Das Grün vom Lauch wegschneiden und den Rest wie den Sellerie in Stücke schneiden.\nKartoffeln und Karotten schälen und in gleich grosse, 1 cm grosse Würfelchen schneiden. Zwiebeln und Knoblauch hacken.\n\nAlles Gemüse mischen und in einem grossen Topf im Olivenöl andünsten. Bouillon, Weisswein und die abgegossenen, gekochten Bohnen dazu geben. 30 Minuten zugedeckt bei kleiner Hitze köcheln lassen.\n\nDie Tomaten entkernen und in Würfelchen schneiden. Zusammen mit den Teigwaren zur Suppe geben und 10 Minuten fertig kochen.\n\nDie Suppe servieren und mit Reibkäse und gehackten Sellerieblättchen bestreuen.",
+  "source": "http://chuchitisch.ch/recipes/402",
+  "originalImage": "http://chuchitisch.ch/chuchitisch/download_picture/lightroom/493_Minestrone.png",
+  "review": {
+    "recipeAuthor": "Hannes und Martina",
+    "photoAuthor": "Separate Fotografenangabe auf der Rezeptseite nicht gefunden; vor Veröffentlichung im App-Katalog klären.",
+    "status": "candidate",
+    "nutrition": "Nicht bereitgestellt; keine Werte erfunden."
+  }
+}
