@@ -5,12 +5,12 @@
     if(document.getElementById('reserveMobileUX'))return;
     const style=document.createElement('style');style.id='reserveMobileUX';style.textContent=`
 @media(max-width:750px){
-  body{padding-bottom:78px;-webkit-tap-highlight-color:transparent}
-  header{padding:14px 12px 8px;position:relative}
+  body{padding-bottom:142px;-webkit-tap-highlight-color:transparent}
+  header{padding:14px 12px 8px;position:relative;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;transform:none!important;filter:none!important}
   header .brand{font-size:24px}
-  header nav{position:fixed;z-index:1000;left:0;right:0;bottom:0;margin:0;padding:7px 8px calc(7px + env(safe-area-inset-bottom));background:#173f35;display:grid;grid-template-columns:repeat(5,1fr);gap:3px;overflow:visible;box-shadow:0 -4px 18px #0002}
+  header nav{position:fixed!important;top:auto!important;z-index:1000;left:0;right:0;bottom:0;margin:0;padding:7px 8px calc(7px + env(safe-area-inset-bottom));background:#173f35;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:3px;overflow:visible;box-shadow:0 -4px 18px #0002}
   header nav .tab{min-width:0;margin:0;padding:10px 3px;border:0;border-radius:10px;font-size:11px;line-height:1.15;overflow:hidden;text-overflow:ellipsis}
-  header nav .tab:nth-child(4),header nav .tab:nth-child(5){display:none}
+  header nav .tab{display:block!important}
   main{padding:12px}
   .card{padding:14px;margin-bottom:10px;border-radius:14px}
   .grid{gap:8px}.metric b{font-size:22px}
@@ -25,7 +25,7 @@
 `;
     document.head.appendChild(style);
     const nav=document.querySelector('header nav');if(!nav)return;
-    // Keep the five highest-frequency mobile destinations visible in the fixed bottom bar.
+    // All destinations remain visible in the mobile bottom navigation.
     const labels={home:'Home',stock:'Vorrat',menu:'Plan',shopping:'Einkauf',profile:'Profil'};
     [...nav.querySelectorAll('.tab')].forEach(btn=>{const m=String(btn.getAttribute('onclick')||'').match(/show\('([^']+)'/);if(m&&labels[m[1]]){btn.dataset.mobileLabel=labels[m[1]];btn.setAttribute('aria-label',labels[m[1]])}});
   }
