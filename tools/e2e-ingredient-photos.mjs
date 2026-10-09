@@ -1,0 +1,30 @@
+import fs from 'node:fs';
+import http from 'node:http';
+import assert from 'node:assert/strict';
+import {chromium} from 'playwright';
+const scripts=['ingredient-identity-v1.js','reserve-core-v3.js','product-community-v1.js','product-images-v1.js'];
+const html=fs.readFileSync('index.html','utf8').replace('</body>',scripts.map(f=>`<script src="${f}"></script>`).join('')+'</body>');
+const server=http.createServer((req,res)=>{const path=req.url.split('?')[0];try{res.setHeader('Content-Type',path.endsWith('.js')?'text/javascript':path.endsWith('.json')?'application/json':'text/html');res.end(path==='/'?html:fs.readFileSync('.'+path));}catch{res.writeHead(404);res.end();}});
+await new Promise(r=>server.listen(0,'127.0.0.1',r));
+let browser;
+try{
+  browser=await chromium.launch();const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];
+  page.on('pageerror',e=>errors.push(e.message));await page.route('https://**',r=>r.abort());
+  await page.goto(`http://127.0.0.1:${server.address().port}`);
+  await page.waitForFunction(()=>recipes.some(r=>r.id==='spaghetti-bolognese')&&window.RESERVE_PRODUCT_COMMUNITY&&window.RESERVE_PRODUCT_IMAGES);
+  const photos=await page.evaluate(()=>{const c=document.createElement('canvas');c.width=60;c.height=90;const ctx=c.getContext('2d');ctx.fillStyle='red';ctx.fillRect(0,0,60,90);const early=c.toDataURL('image/png');ctx.fillStyle='blue';ctx.fillRect(0,0,60,90);return{early,late:c.toDataURL('image/png')};});
+  await page.evaluate(async photos=>{stock=[{n:'Spaghetti',q:'300 g',e:'2032-01-01',image:photos.late},{n:'Spaghetti',q:'200 g',e:'2030-01-01',barcode:'1234567890123',image:photos.early},{n:'Rinderhackfleisch',q:'0 g',image:photos.late},{n:'Olivenöl',q:'20 g',image:photos.late}];localStorage.setItem('reserveStock',JSON.stringify(stock));await startCook('spaghetti-bolognese');},photos);
+  const pasta=page.locator('#cookView .ingredient[data-ingredient-name="Spaghetti"]');
+  await page.waitForFunction(src=>document.querySelector('#cookView .ingredient[data-ingredient-name="Spaghetti"] img')?.getAttribute('src')===src,photos.early);
+  assert.equal(await page.locator('#cookView .ingredient[data-ingredient-name="Rinderhackfleisch"] img').count(),0);
+  assert.equal(await page.locator('#cookView .ingredient[data-ingredient-name="Olivenöl"] img').count(),0);
+  await page.evaluate(async()=>{const c=document.createElement('canvas');c.width=60;c.height=90;c.getContext('2d').fillRect(0,0,60,90);const photo=await new Promise(r=>c.toBlob(r,'image/png'));await RESERVE_PRODUCT_COMMUNITY.put({barcode:'1234567890123',name:'Spaghetti',photo,updatedAt:'ingredient-photo-test'});await RESERVE_PRODUCT_IMAGES.refreshOwnImages();});
+  await page.waitForFunction(()=>document.querySelector('#cookView .ingredient[data-ingredient-name="Spaghetti"] img')?.getAttribute('src')?.startsWith('blob:'));
+  await page.waitForFunction(()=>document.querySelector('#cookView .ingredient[data-ingredient-name="Spaghetti"] img')?.naturalWidth>0);
+  await page.evaluate(async()=>{stock=[];localStorage.setItem('reserveStock','[]');await renderCook();});
+  assert.equal(await pasta.locator('img').count(),0);
+  assert.ok((await pasta.locator('.ingredient-visual').innerText()).trim().length>0);
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
+  assert.deepEqual(errors,[]);
+  console.log('Ingredient photos: FEFO stock photo, own-photo replacement, zero stock and wrong-unit exclusion, empty-stock fallback and mobile layout OK');
+}finally{await browser?.close();server.close();}
