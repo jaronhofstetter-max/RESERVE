@@ -66,7 +66,7 @@ jobs:
           sed -i 's/20260920-expiry-vision-17/20261006-overload-circuit-1/g' index.html
           sed -i 's/20260920-expiry-learning-1/20261002-mhd-safety-1/g' index.html
           sed -i 's/20261002-mhd-safety-1/20261006-partial-date-ui-1/g' index.html
-          sed -i 's#<script src="expiry-learning-v1.js?v=20261006-partial-date-ui-1"></script>#<script src="expiry-learning-v1.js?v=20261006-partial-date-ui-1"></script><script src="product-capture-assist-v1.js?v=20261008-knowledge-1"></script><script src="scan-confidence-v1.js?v=20261010-checklist-layout-1"></script>#' index.html
+          sed -i 's#<script src="expiry-learning-v1.js?v=20261006-partial-date-ui-1"></script>#<script src="expiry-learning-v1.js?v=20261006-partial-date-ui-1"></script><script src="product-capture-assist-v1.js?v=20261008-knowledge-1"></script><script src="scan-confidence-v1.js?v=20261010-simple-checklist-2"></script>#' index.html
           sed -i 's/20260917-package-rows-1/20260922-snacks-category-1/g' index.html
           sed -i 's/20260922-snacks-category-1/20260928-product-capture-1/g' index.html
           sed -i 's/20260928-product-capture-1/20260929-expanded-categories-1/g' index.html
