@@ -26,6 +26,7 @@ jobs:
           for f in data/quality-batch-*.json; do node tools/validate-recipes.mjs "$f"; done
           node tools/merge-quality-batches.mjs data/recipes.json data/quality-batch-*.json build/recipes-live.json
           cp build/recipes-live.json data/recipes.json
+          node tools/apply-recipe-photos.mjs data/recipes.json
           node tools/build-recipe-index.mjs data/recipes.json data/recipe-index.json
           node tools/build-recipe-delivery.mjs data/recipes.json data/recipe-details data/recipe-catalog.json data/recipe-details-manifest.json
       - name: Check JavaScript syntax
@@ -83,7 +84,9 @@ jobs:
       - name: Enable approved retailer data when available
         run: node tools/enable-retailer-catalog.mjs
       - name: Smoke test production build
-        run: node tools/smoke-test.mjs
+        run: |
+          node tools/smoke-test.mjs
+          node tools/test-recipe-photos.mjs
       - name: Install browser test runtime
         run: |
           npm install --no-save playwright@1.55.0

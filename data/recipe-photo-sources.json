@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-10-09",
+  "photos": [
+    {
+      "recipeId": "poulet-reis-bowl",
+      "path": "assets/recipe-photos/poulet-reis-bowl.webp",
+      "source": "https://www.pexels.com/photo/white-rice-chicken-and-broccoli-on-black-non-stick-pan-105588/",
+      "author": "Keegan Evans",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "review": "Poulet, Reis und Brokkoli; Pfanne statt Bowl; Serviervorschlag."
+    },
+    {
+      "recipeId": "spaghetti-bolognese",
+      "path": "assets/recipe-photos/spaghetti-bolognese.webp",
+      "source": "https://www.pexels.com/photo/appetizing-pasta-bolognese-served-with-parsley-6287525/",
+      "author": "Klaus Nielsen",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "review": "Spaghetti mit Fleisch-Tomaten-Sauce; Petersilie als Garnitur."
+    },
+    {
+      "recipeId": "spaghetti-carbonara-classica",
+      "path": "assets/recipe-photos/spaghetti-carbonara-classica.webp",
+      "source": "https://www.pexels.com/photo/spaghetti-carbonara-on-a-plate-19062760/",
+      "author": "Nadin Sh",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "review": "Carbonara mit Schweinefleisch und Käse; genaue Käse-/Fleischsorte nicht aus Foto überprüfbar; Serviervorschlag."
+    },
+    {
+      "recipeId": "bananen-porridge-zimt",
+      "path": "assets/recipe-photos/bananen-porridge-zimt.webp",
+      "source": "https://www.pexels.com/photo/delicious-banana-cinnamon-oatmeal-breakfast-bowl-28792769/",
+      "author": "dytmeri",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "review": "Haferbrei mit Banane und Zimt; Flüssigkeitsbasis nicht visuell überprüfbar; Serviervorschlag."
+    }
+  ]
+}
