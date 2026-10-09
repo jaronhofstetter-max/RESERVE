@@ -1,16 +1,13 @@
-/* Product grid density: local preference, two-finger pinch and accessible controls. */
+/* Product grid density: saved preference and two-finger pinch. */
 (function(){
 const KEY='reserveGridColumns';let columns=2,gesture=null,suppressUntil=0;
 try{const saved=Number(localStorage.getItem(KEY));if(Number.isInteger(saved)&&saved>=2&&saved<=10)columns=saved}catch{}
-function set(value){columns=Math.max(2,Math.min(10,Math.round(value)));const host=document.getElementById('reserveCabinet');if(!host)return;host.style.setProperty('--cab-columns',columns);host.style.setProperty('--cab-gap',columns>6?'4px':columns>3?'8px':'14px');const label=document.getElementById('cabGridDensity');if(label)label.textContent=columns+' Spalten';document.getElementById('cabGridLarger').disabled=columns===2;document.getElementById('cabGridSmaller').disabled=columns===10;try{localStorage.setItem(KEY,String(columns))}catch{}}
+function set(value){columns=Math.max(2,Math.min(10,Math.round(value)));const host=document.getElementById('reserveCabinet');if(!host)return;host.style.setProperty('--cab-columns',columns);host.style.setProperty('--cab-gap',columns>6?'4px':columns>3?'8px':'14px');try{localStorage.setItem(KEY,String(columns))}catch{}}
 function boot(){const host=document.getElementById('reserveCabinet');if(!host)return;const style=document.createElement('style');style.textContent=`
 #reserveCabinet .cab-frame{grid-template-columns:repeat(var(--cab-columns,2),minmax(0,1fr))!important;gap:var(--cab-gap,14px)!important;touch-action:pan-y}
 #reserveCabinet .cab-product{aspect-ratio:1/1.12;min-height:0!important;min-width:0!important;padding:clamp(2px,1vw,10px)!important;border-radius:10px;gap:0}
 #reserveCabinet .cab-product .cab-icon{height:100%!important;width:100%!important;min-height:0;min-width:0;font-size:clamp(14px,4vw,42px)}
-.cab-grid-controls{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin:12px 0 0}
-.cab-grid-controls button{margin:0;min-width:44px;min-height:44px;padding:8px 12px}
-.cab-grid-controls span{font-size:14px;min-width:70px;text-align:center}
-`;document.head.appendChild(style);const controls=document.createElement('div');controls.className='cab-grid-controls';controls.setAttribute('role','group');controls.setAttribute('aria-label','Größe der Produktbilder');controls.innerHTML='<button type="button" class="secondary" id="cabGridLarger" aria-label="Größere Produktbilder, weniger Spalten">＋</button><span id="cabGridDensity" aria-live="polite"></span><button type="button" class="secondary" id="cabGridSmaller" aria-label="Kleinere Produktbilder, mehr Spalten">−</button>';host.before(controls);document.getElementById('cabGridLarger').onclick=()=>set(columns-1);document.getElementById('cabGridSmaller').onclick=()=>set(columns+1);set(columns);
+`;document.head.appendChild(style);set(columns);
 const distance=t=>Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);
 host.addEventListener('touchstart',e=>{if(e.touches.length===2){const d=distance(e.touches);gesture=d>0?{distance:d,columns}:null;suppressUntil=Date.now()+500;if(e.cancelable)e.preventDefault()}else gesture=null},{passive:false});
 host.addEventListener('touchmove',e=>{if(!gesture||e.touches.length!==2)return;if(e.cancelable)e.preventDefault();const d=distance(e.touches);if(d>0)set(gesture.columns*gesture.distance/d);suppressUntil=Date.now()+500},{passive:false});
