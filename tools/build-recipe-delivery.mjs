@@ -15,7 +15,7 @@ for(const name of fs.readdirSync(outDir))if(/^shard-\d+\.json$/.test(name))fs.un
 const catalog=recipes.map(r=>({
   id:r.id,name:r.name,...(r.image?{image:r.image,imageCredit:r.imageCredit}:{}),type:r.type,diet:r.diet,dish:r.dish||'🍽️',cuisine:r.cuisine,difficulty:r.difficulty,status:r.status,
   mealTimes:r.mealTimes||[],prepMinutes:r.prepMinutes||0,cookMinutes:r.cookMinutes||0,tags:r.tags||[],nutrition:r.nutrition||{},
-  allergens:r.allergens||[],ingredients:r.ingredients||[],resilience:r.resilience||null,
+  allergens:r.allergens||[],ingredients:r.ingredients||[],resilience:r.resilience||null,waitMinutes:r.waitMinutes||0,
   steps:['Rezeptdetails werden beim Öffnen geladen.','Rezeptdetails werden beim Öffnen geladen.'],
   detailShard:null,detailLoaded:false
 }));

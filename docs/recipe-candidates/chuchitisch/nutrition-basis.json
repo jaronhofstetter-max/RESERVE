@@ -1,0 +1,362 @@
+{
+  "dataset": "USDA SR Legacy 2018",
+  "download": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_json_2018-04.zip",
+  "values": {
+    "168927": {
+      "fdcId": 168927,
+      "description": "Pasta, dry, unenriched",
+      "per100g": {
+        "protein": 13.0,
+        "fiber": 3.2,
+        "fat": 1.51,
+        "carbs": 74.7,
+        "kcal": 371
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/168927/nutrients"
+    },
+    "172420": {
+      "fdcId": 172420,
+      "description": "Lentils, raw",
+      "per100g": {
+        "fat": 1.06,
+        "fiber": 10.7,
+        "protein": 24.6,
+        "carbs": 63.4,
+        "kcal": 352
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/172420/nutrients"
+    },
+    "170379": {
+      "fdcId": 170379,
+      "description": "Broccoli, raw",
+      "per100g": {
+        "carbs": 6.64,
+        "kcal": 34.0,
+        "fat": 0.37,
+        "protein": 2.82,
+        "fiber": 2.6
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170379/nutrients"
+    },
+    "168567": {
+      "fdcId": 168567,
+      "description": "Tomatoes, sun-dried",
+      "per100g": {
+        "carbs": 55.8,
+        "kcal": 258,
+        "protein": 14.1,
+        "fiber": 12.3,
+        "fat": 2.97
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/168567/nutrients"
+    },
+    "171413": {
+      "fdcId": 171413,
+      "description": "Oil, olive, salad or cooking",
+      "per100g": {
+        "fat": 100,
+        "carbs": 0.0,
+        "kcal": 884,
+        "protein": 0.0,
+        "fiber": 0.0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/171413/nutrients"
+    },
+    "172336": {
+      "fdcId": 172336,
+      "description": "Oil, canola",
+      "per100g": {
+        "fat": 100,
+        "protein": 0.0,
+        "carbs": 0.0,
+        "kcal": 884,
+        "fiber": 0.0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/172336/nutrients"
+    },
+    "167747": {
+      "fdcId": 167747,
+      "description": "Lemon juice, raw",
+      "per100g": {
+        "protein": 0.35,
+        "fiber": 0.3,
+        "fat": 0.24,
+        "carbs": 6.9,
+        "kcal": 22.0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/167747/nutrients"
+    },
+    "172234": {
+      "fdcId": 172234,
+      "description": "Mustard, prepared, yellow",
+      "per100g": {
+        "protein": 3.74,
+        "fiber": 4.0,
+        "fat": 3.34,
+        "carbs": 5.83,
+        "kcal": 60.0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/172234/nutrients"
+    },
+    "175189": {
+      "fdcId": 175189,
+      "description": "Beans, cranberry (roman), mature seeds, raw",
+      "per100g": {
+        "fiber": 24.7,
+        "fat": 1.23,
+        "carbs": 60.0,
+        "kcal": 335,
+        "protein": 23.0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/175189/nutrients"
+    },
+    "169988": {
+      "fdcId": 169988,
+      "description": "Celery, raw",
+      "per100g": {
+        "kcal": 14.0,
+        "carbs": 2.97,
+        "fat": 0.17,
+        "fiber": 1.6,
+        "protein": 0.69
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/169988/nutrients"
+    },
+    "170393": {
+      "fdcId": 170393,
+      "description": "Carrots, raw",
+      "per100g": {
+        "protein": 0.93,
+        "fat": 0.24,
+        "carbs": 9.58,
+        "kcal": 41.0,
+        "fiber": 2.8
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170393/nutrients"
+    },
+    "170026": {
+      "fdcId": 170026,
+      "description": "Potatoes, flesh and skin, raw",
+      "per100g": {
+        "fat": 0.09,
+        "kcal": 77.0,
+        "protein": 2.05,
+        "fiber": 2.1,
+        "carbs": 17.5
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170026/nutrients"
+    },
+    "169246": {
+      "fdcId": 169246,
+      "description": "Leeks, (bulb and lower leaf-portion), raw",
+      "per100g": {
+        "kcal": 61.0,
+        "fat": 0.3,
+        "fiber": 1.8,
+        "protein": 1.5,
+        "carbs": 14.2
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/169246/nutrients"
+    },
+    "170000": {
+      "fdcId": 170000,
+      "description": "Onions, raw",
+      "per100g": {
+        "fat": 0.1,
+        "carbs": 9.34,
+        "kcal": 40.0,
+        "protein": 1.1,
+        "fiber": 1.7
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170000/nutrients"
+    },
+    "169230": {
+      "fdcId": 169230,
+      "description": "Garlic, raw",
+      "per100g": {
+        "carbs": 33.1,
+        "kcal": 149,
+        "fiber": 2.1,
+        "protein": 6.36,
+        "fat": 0.5
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/169230/nutrients"
+    },
+    "170051": {
+      "fdcId": 170051,
+      "description": "Tomatoes, red, ripe, canned, packed in tomato juice",
+      "per100g": {
+        "fat": 0.25,
+        "carbs": 3.47,
+        "kcal": 16.0,
+        "fiber": 1.9,
+        "protein": 0.79
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170051/nutrients"
+    },
+    "170457": {
+      "fdcId": 170457,
+      "description": "Tomatoes, red, ripe, raw, year round average",
+      "per100g": {
+        "carbs": 3.89,
+        "kcal": 18.0,
+        "fat": 0.2,
+        "fiber": 1.2,
+        "protein": 0.88
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170457/nutrients"
+    },
+    "170460": {
+      "fdcId": 170460,
+      "description": "Tomato products, canned, puree, without salt added",
+      "per100g": {
+        "carbs": 8.98,
+        "kcal": 38.0,
+        "protein": 1.65,
+        "fiber": 1.9,
+        "fat": 0.21
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170460/nutrients"
+    },
+    "170459": {
+      "fdcId": 170459,
+      "description": "Tomato products, canned, paste, without salt added (Includes foods for USDA's Food Distribution Program)",
+      "per100g": {
+        "carbs": 18.9,
+        "kcal": 82.0,
+        "fat": 0.47,
+        "protein": 4.32,
+        "fiber": 4.1
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170459/nutrients"
+    },
+    "170848": {
+      "fdcId": 170848,
+      "description": "Cheese, parmesan, hard",
+      "per100g": {
+        "fat": 25.0,
+        "fiber": 0.0,
+        "protein": 35.8,
+        "carbs": 3.22,
+        "kcal": 392
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170848/nutrients"
+    },
+    "174837": {
+      "fdcId": 174837,
+      "description": "Alcoholic beverage, wine, table, white",
+      "per100g": {
+        "fat": 0.0,
+        "fiber": 0.0,
+        "carbs": 2.6,
+        "protein": 0.07,
+        "kcal": 82.0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/174837/nutrients"
+    },
+    "169655": {
+      "fdcId": 169655,
+      "description": "Sugars, granulated",
+      "per100g": {
+        "protein": 0.0,
+        "fat": 0.0,
+        "kcal": 387,
+        "carbs": 100,
+        "fiber": 0.0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/169655/nutrients"
+    },
+    "171583": {
+      "fdcId": 171583,
+      "description": "Soup, vegetable broth, ready to serve",
+      "per100g": {
+        "protein": 0.24,
+        "fiber": 0.0,
+        "fat": 0.07,
+        "carbs": 0.93,
+        "kcal": 5.0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/171583/nutrients"
+    },
+    "170005": {
+      "fdcId": 170005,
+      "description": "Onions, spring or scallions (includes tops and bulb), raw",
+      "per100g": {
+        "kcal": 32.0,
+        "fat": 0.19,
+        "protein": 1.83,
+        "fiber": 2.6,
+        "carbs": 7.34
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170005/nutrients"
+    },
+    "172232": {
+      "fdcId": 172232,
+      "description": "Basil, fresh",
+      "per100g": {
+        "fat": 0.64,
+        "carbs": 2.65,
+        "kcal": 23.0,
+        "fiber": 1.6,
+        "protein": 3.15
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/172232/nutrients"
+    },
+    "171317": {
+      "fdcId": 171317,
+      "description": "Spices, basil, dried",
+      "per100g": {
+        "fat": 4.07,
+        "carbs": 47.8,
+        "kcal": 233,
+        "fiber": 37.7,
+        "protein": 23.0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/171317/nutrients"
+    },
+    "170931": {
+      "fdcId": 170931,
+      "description": "Spices, pepper, black",
+      "per100g": {
+        "fat": 3.26,
+        "carbs": 64.0,
+        "kcal": 251,
+        "protein": 10.4,
+        "fiber": 25.3
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170931/nutrients"
+    },
+    "170416": {
+      "fdcId": 170416,
+      "description": "Parsley, fresh",
+      "per100g": {
+        "carbs": 6.33,
+        "kcal": 36.0,
+        "fat": 0.79,
+        "protein": 2.97,
+        "fiber": 3.3
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170416/nutrients"
+    },
+    "cenovis": {
+      "description": "Cenovis Flüssigwürze",
+      "per100g": {
+        "kcal": 74,
+        "protein": 13.6,
+        "carbs": 4.6,
+        "fat": 0.1,
+        "fiber": 0
+      },
+      "source": "https://shop.cenovis.ch/de/cenovis/shop/cenovis-flussigwurze",
+      "notes": "Fett <0.1 g: obere Grenze verwendet. Ballaststoffe nicht angegeben: als 0 angesetzt."
+    }
+  },
+  "assumptions": [
+    "Generische Linsen als Näherung für Beluga-Linsen; generische trockene Pasta für Spaghetti und Pennette.",
+    "Öldichte 0.91 g/ml, Wein und Saft 1 g/ml; Cenovis-Dichte mangels Herstellerangabe 1 g/ml.",
+    "Kohlenhydrate nach USDA inklusive Ballaststoffen; Angaben sind Schätzwerte, keine EU-Etikettwerte.",
+    "Gemüsebouillon-Pulver im Spaghettirezept mangels bestimmter Marke nicht in den Nährwerten erfasst.",
+    "Senf gelb und Parmesan als Näherung; tatsächliche Produkte beeinflussen Nährwerte.",
+    "Alkoholretention nicht modelliert; Rohweinenergie vollständig enthalten."
+  ]
+}

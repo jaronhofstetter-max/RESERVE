@@ -1,10 +1,10 @@
 # RESERVE: drei Alltagsrezepte mit Originalfoto
 
-Vorbereitete Quellensammlung, noch nicht im App-Katalog aktiviert. Stand: 10.10.2026.
+Quellensammlung zur aktivierten Qualitätscharge `data/quality-batch-chuchitisch-v1.json`. Stand: 10.10.2026.
 
-Die Rezeptseiten nennen Hannes und Martina als Rezeptautoren. Die strukturierten Quelldaten verlinken CC BY-SA 3.0. Die Website erklärt diese Lizenz auch für ihre Bilder. Eine getrennte Fotografenangabe wurde auf den Rezeptseiten nicht gefunden; dieser Punkt ist vor Aufnahme in den App-Katalog offen.
+Die Rezeptseiten nennen Hannes und Martina als Rezeptautoren. Die strukturierten Quelldaten verlinken CC BY-SA 3.0. Die Website erklärt diese Lizenz auch für ihre Bilder. Die Lizenzseite verlangt eigene Fotos. Die Bildangabe wird dem veröffentlichten Autorenkonto Hannes und Martina / Chuchitisch zugeschrieben; eine separate Fotografenbestätigung liegt nicht vor.
 
-Die übernommenen Rezepttexte und Fotos dieser Sammlung stehen unter [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). Fotos nur als WebP komprimiert; Zutaten und Originalportionen beibehalten. Die eingebundene Salatsauce wurde beim Linsensalat aus der sichtbaren Rezeptseite ergänzt. Keine Nährwerte erfunden.
+Die übernommenen Rezepttexte und Fotos dieser Sammlung stehen unter [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). Fotos nur als WebP komprimiert; Zutaten und Originalportionen beibehalten. Die eingebundene Salatsauce wurde beim Linsensalat aus der sichtbaren Rezeptseite ergänzt. Nährwerte für die App-Adaption wurden aus USDA SR Legacy und Herstellerangaben berechnet; [Datenbasis und Annahmen](nutrition-basis.json).
 
 ## Spaghetti mit Tomatensauce
 
@@ -106,10 +106,10 @@ Die Tomaten entkernen und in Würfelchen schneiden. Zusammen mit den Teigwaren z
 
 Die Suppe servieren und mit Reibkäse und gehackten Sellerieblättchen bestreuen.
 
-## Prüfung vor App-Aufnahme
+## Umsetzung in RESERVE
 
-- Bildurheber eindeutig zuordnen.
-- Zutaten für die Vorratserkennung strukturieren; Mengen ohne Angabe als solche erhalten.
-- Nährwerte verlässlich berechnen und als Schätzung kennzeichnen.
-- Lizenz- und Quellenhinweise in den Rezeptdetails einbinden.
+- Bildnachweis mit Autorenkonto, Quelle, Lizenz und dokumentierter Zuschreibungsbasis.
+- Zutaten pro Person in g/ml strukturiert; ergänzte Mengen und Stückgewichte im Rezeptnachweis dokumentiert.
+- Nährwerte nachvollziehbar berechnet und in der Kochansicht als Schätzung gekennzeichnet.
+- Quelle und Rezeptlizenz über „Quelle & Lizenz“ in der Kochansicht; Fotos zusätzlich im Bildnachweis.
 - Minestrone: Einweichzeit separat anzeigen; mit trockenen Bohnen kein schnelles Feierabendgericht.

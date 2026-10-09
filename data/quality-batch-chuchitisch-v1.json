@@ -1,0 +1,619 @@
+[
+  {
+    "id": "chuchitisch-spaghetti-tomatensauce",
+    "name": "Spaghetti mit Tomatensauce",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🍝",
+    "cuisine": "Italienisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 8,
+    "cookMinutes": 20,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Gluten",
+      "Milch",
+      "Sellerie",
+      "Sulfite"
+    ],
+    "tags": [
+      "Originalfoto",
+      "Chuchitisch",
+      "vegetarisch"
+    ],
+    "ingredients": [
+      {
+        "name": "Spaghetti",
+        "amount": 166.67,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 16.67,
+        "unit": "g"
+      },
+      {
+        "name": "Knoblauch",
+        "amount": 0.5,
+        "unit": "g"
+      },
+      {
+        "name": "Tomaten aus der Dose",
+        "amount": 66.67,
+        "unit": "g"
+      },
+      {
+        "name": "Passierte Tomaten",
+        "amount": 116.67,
+        "unit": "g"
+      },
+      {
+        "name": "Tomatenmark",
+        "amount": 5,
+        "unit": "g"
+      },
+      {
+        "name": "Italienische Kräuter",
+        "amount": 0.5,
+        "unit": "g"
+      },
+      {
+        "name": "Gemüsebouillon",
+        "amount": 1.25,
+        "unit": "g"
+      },
+      {
+        "name": "Zucker",
+        "amount": 0.67,
+        "unit": "g"
+      },
+      {
+        "name": "Weisswein",
+        "amount": 16.67,
+        "unit": "ml"
+      },
+      {
+        "name": "Basilikum",
+        "amount": 1,
+        "unit": "g"
+      },
+      {
+        "name": "Reibkäse",
+        "amount": 10,
+        "unit": "g"
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 8,
+        "unit": "ml"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.5,
+        "unit": "g"
+      },
+      {
+        "name": "Pfeffer",
+        "amount": 0.1,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Zwiebel und Knoblauch schälen und fein hacken. Dosentomaten klein schneiden und Basilikum waschen.",
+      "Zwiebel im Olivenöl glasig dünsten. Mit Weisswein ablöschen und etwas einkochen lassen.",
+      "Dosentomaten, passierte Tomaten, Tomatenmark, Knoblauch und Kräuter zugeben. Mit Bouillon würzen und etwa 15 Minuten bei kleiner Hitze köcheln lassen.",
+      "Spaghetti in Salzwasser nach Packungsangabe bissfest kochen; vor dem Abgiessen etwas Kochwasser auffangen.",
+      "Sauce mit Salz, Pfeffer und Zucker abschmecken. Spaghetti mit der Sauce mischen und bei Bedarf mit Kochwasser lockern. Mit Basilikum und Reibkäse servieren."
+    ],
+    "nutrition": {
+      "kcal": 806.3,
+      "protein": 28.3,
+      "carbs": 141.7,
+      "fat": 12.8,
+      "fiber": 9.5
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy 2018; keine Messung des fertigen Gerichts.",
+      "basis": "Eine Portion; Rohgewichte und angenommene Stückgewichte. Reibkäse eingerechnet; Alkoholabbau beim Kochen nicht abgezogen. Kohlenhydrate nach USDA einschliesslich Ballaststoffen; tatsächliche Produkte und Mengen können abweichen.",
+      "sources": "docs/recipe-candidates/chuchitisch/nutrition-basis.json",
+      "ingredients": [
+        {
+          "name": "Spaghetti",
+          "grams": 166.67,
+          "foodKey": "168927"
+        },
+        {
+          "name": "Zwiebel",
+          "grams": 16.67,
+          "foodKey": "170000"
+        },
+        {
+          "name": "Knoblauch",
+          "grams": 0.5,
+          "foodKey": "169230"
+        },
+        {
+          "name": "Tomaten aus der Dose",
+          "grams": 66.67,
+          "foodKey": "170051"
+        },
+        {
+          "name": "Passierte Tomaten",
+          "grams": 116.67,
+          "foodKey": "170460"
+        },
+        {
+          "name": "Tomatenmark",
+          "grams": 5,
+          "foodKey": "170459"
+        },
+        {
+          "name": "Italienische Kräuter",
+          "grams": 0.5,
+          "foodKey": "171317"
+        },
+        {
+          "name": "Zucker",
+          "grams": 0.67,
+          "foodKey": "169655"
+        },
+        {
+          "name": "Weisswein",
+          "grams": 16.67,
+          "foodKey": "174837"
+        },
+        {
+          "name": "Basilikum",
+          "grams": 1,
+          "foodKey": "172232"
+        },
+        {
+          "name": "Reibkäse",
+          "grams": 10,
+          "foodKey": "170848"
+        },
+        {
+          "name": "Olivenöl",
+          "grams": 7.28,
+          "foodKey": "171413"
+        },
+        {
+          "name": "Pfeffer",
+          "grams": 0.1,
+          "foodKey": "170931"
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Spaghetti mit Tomatensauce nach Chuchitisch, mit dem Originalfoto der Quelle. Die Mengen gelten für eine Person.",
+    "equipment": [
+      "Kochtopf",
+      "Saucentopf",
+      "Sieb",
+      "Schneidebrett",
+      "Küchenmesser"
+    ],
+    "prepNotes": [
+      "Die Originalmenge entspricht rund 167 g trockenen Spaghetti pro Person und ist eine grosse Portion.",
+      "Für die vegetarische Variante Reibkäse mit mikrobiellem Lab wählen. Bei Bouillon und Wein die Zutatenliste prüfen."
+    ],
+    "doneness": "Die Spaghetti sind bissfest; die Tomatensauce haftet an ihnen und ist leicht eingedickt.",
+    "substitutions": [
+      "Weisswein durch dieselbe Menge Wasser ersetzen; Geschmack und Nährwerte verändern sich.",
+      "Reibkäse kann beim Servieren weggelassen werden; Milch-Allergen und berechnete Nährwerte ändern sich dadurch."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt im Kühlschrank lagern und innerhalb von 1–2 Tagen verbrauchen. Vor dem Essen vollständig durcherhitzen.",
+    "safety": "Gemüse vor der Zubereitung waschen; zubereitete Speisen rasch abkühlen und gekühlt lagern. Produktetiketten auf zusätzliche Allergene prüfen.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "https://chuchitisch.ch/recipes/50",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "adaptation": "Von 6 auf 1 Person umgerechnet; Zutatenbezeichnungen vereinheitlicht; Zwiebel und Knoblauch nach angenommenem Stückgewicht in Gramm angegeben. In der Quelle nicht bezifferte Mengen ergänzt: Olivenöl 8 ml, Reibkäse 10 g, Basilikum 1 g, Salz 0.5 g, Pfeffer 0.1 g pro Person. EL/TL als angenommene Gewichte umgerechnet. Schritte neu gegliedert; Vorbereitungszeit ergänzt.",
+      "originalServings": 6
+    },
+    "waitMinutes": 0,
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.6,
+      "waterMl": 1000,
+      "noCook": false,
+      "onePot": false
+    }
+  },
+  {
+    "id": "chuchitisch-broccoli-linsen-salat",
+    "name": "Broccoli-Linsen-Salat",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegan",
+    "dish": "🥗",
+    "cuisine": "Schweizer Alltagsküche",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 20,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Gluten",
+      "Soja",
+      "Senf"
+    ],
+    "tags": [
+      "Originalfoto",
+      "Chuchitisch",
+      "vegan"
+    ],
+    "ingredients": [
+      {
+        "name": "Beluga-Linsen",
+        "amount": 75,
+        "unit": "g"
+      },
+      {
+        "name": "Brokkoli",
+        "amount": 150,
+        "unit": "g"
+      },
+      {
+        "name": "Dörrtomaten",
+        "amount": 15,
+        "unit": "g"
+      },
+      {
+        "name": "Frühlingszwiebel",
+        "amount": 15,
+        "unit": "g"
+      },
+      {
+        "name": "Zitronensaft",
+        "amount": 37.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Rapsöl",
+        "amount": 25,
+        "unit": "ml"
+      },
+      {
+        "name": "Cenovis Flüssigwürze",
+        "amount": 12.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Senf",
+        "amount": 2,
+        "unit": "g"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.1,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Beluga-Linsen in einem Sieb abspülen und nach Packungsangabe etwa 20–30 Minuten in ungesalzenem Wasser gar kochen.",
+      "Brokkoli waschen, in Röschen teilen und im Dampfeinsatz bissfest garen. Mit kaltem Wasser abschrecken und abtropfen lassen.",
+      "Dörrtomaten und Frühlingszwiebel klein schneiden. Zitronensaft, Rapsöl, Cenovis Flüssigwürze und Senf gut verrühren; erst danach bei Bedarf mit wenig Salz abschmecken.",
+      "Gegarte Linsen abgiessen und mit Brokkoli, Dörrtomaten und Frühlingszwiebel vermengen. Salatsauce unterheben und lauwarm oder gekühlt servieren."
+    ],
+    "nutrition": {
+      "kcal": 578.3,
+      "protein": 27.0,
+      "carbs": 70.3,
+      "fat": 24.7,
+      "fiber": 14.4
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy 2018 und Herstellerangaben Cenovis; keine Messung des fertigen Gerichts.",
+      "basis": "Eine Portion; Rohgewichte und angenommene Stückgewichte. Alle Zutaten der Salatsauce eingerechnet. Kohlenhydrate nach USDA einschliesslich Ballaststoffen; tatsächliche Produkte und Mengen können abweichen.",
+      "sources": "docs/recipe-candidates/chuchitisch/nutrition-basis.json",
+      "ingredients": [
+        {
+          "name": "Beluga-Linsen",
+          "grams": 75,
+          "foodKey": "172420"
+        },
+        {
+          "name": "Brokkoli",
+          "grams": 150,
+          "foodKey": "170379"
+        },
+        {
+          "name": "Dörrtomaten",
+          "grams": 15,
+          "foodKey": "168567"
+        },
+        {
+          "name": "Frühlingszwiebel",
+          "grams": 15,
+          "foodKey": "170005"
+        },
+        {
+          "name": "Zitronensaft",
+          "grams": 37.5,
+          "foodKey": "167747"
+        },
+        {
+          "name": "Rapsöl",
+          "grams": 22.75,
+          "foodKey": "172336"
+        },
+        {
+          "name": "Cenovis Flüssigwürze",
+          "grams": 12.5,
+          "foodKey": "cenovis"
+        },
+        {
+          "name": "Senf",
+          "grams": 2,
+          "foodKey": "172234"
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Broccoli-Linsen-Salat nach Chuchitisch, mit dem Originalfoto der Quelle. Die Mengen gelten für eine Person.",
+    "equipment": [
+      "Kochtopf",
+      "Dampfeinsatz",
+      "Sieb",
+      "Schüssel",
+      "Schneidebrett",
+      "Küchenmesser"
+    ],
+    "prepNotes": [
+      "Beluga-Linsen trocken abwiegen; die gegarten Linsen wiegen durch aufgenommenes Wasser mehr.",
+      "Cenovis ist für diese Adaption ausdrücklich die Flüssigwürze. Sie enthält Gluten und Soja; die Sauce zuerst probieren, bevor zusätzlich gesalzen wird."
+    ],
+    "doneness": "Die Linsen sind gar und behalten ihre Form; der Brokkoli ist bissfest.",
+    "substitutions": [
+      "Dörrtomaten ohne Öl verwenden; bei in Öl eingelegten Tomaten ändern sich Fettgehalt und Anrichtung.",
+      "Cenovis lässt sich durch eine verträgliche Würzsauce ersetzen; Allergene und Nährwerte neu prüfen."
+    ],
+    "leftovers": "Linsen und Brokkoli nach dem Garen rasch abkühlen, den Salat abgedeckt im Kühlschrank lagern und innerhalb von 1–2 Tagen gekühlt verbrauchen.",
+    "safety": "Gemüse vor der Zubereitung waschen; zubereitete Speisen rasch abkühlen und gekühlt lagern. Produktetiketten auf zusätzliche Allergene prüfen.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "https://chuchitisch.ch/recipes/362",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "adaptation": "Von 2 auf 1 Person umgerechnet; separat eingebundene Salatsauce übernommen. Stückgewichte angenommen: Brokkoli 300 g, 10 Dörrtomaten 30 g, Frühlingszwiebel 30 g für das Originalrezept. Cenovis als Flüssigwürze konkretisiert; Senf-TL nach angenommener Dichte in Gramm umgerechnet, zusätzliche Salzmenge 0.1 g pro Person angesetzt. Schritte neu gegliedert.",
+      "originalServings": 2,
+      "includedSource": "https://chuchitisch.ch/recipes/25"
+    },
+    "waitMinutes": 0,
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.4,
+      "waterMl": 700,
+      "noCook": false,
+      "onePot": false
+    }
+  },
+  {
+    "id": "chuchitisch-minestrone",
+    "name": "Minestrone mit Borlottibohnen und Pasta",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🍲",
+    "cuisine": "Italienisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 90,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Gluten",
+      "Milch",
+      "Sellerie",
+      "Sulfite"
+    ],
+    "tags": [
+      "Originalfoto",
+      "Chuchitisch",
+      "vegetarisch"
+    ],
+    "ingredients": [
+      {
+        "name": "Borlottibohnen",
+        "amount": 33.33,
+        "unit": "g"
+      },
+      {
+        "name": "Stangensellerie",
+        "amount": 33.33,
+        "unit": "g"
+      },
+      {
+        "name": "Karotten",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Kartoffeln",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Lauch",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 33.33,
+        "unit": "g"
+      },
+      {
+        "name": "Knoblauch",
+        "amount": 0.5,
+        "unit": "g"
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 12.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Gemüsebouillon zubereitet",
+        "amount": 333.33,
+        "unit": "ml"
+      },
+      {
+        "name": "Weisswein",
+        "amount": 33.33,
+        "unit": "ml"
+      },
+      {
+        "name": "Tomaten",
+        "amount": 80,
+        "unit": "g"
+      },
+      {
+        "name": "Pasta",
+        "amount": 33.33,
+        "unit": "g"
+      },
+      {
+        "name": "Reibkäse",
+        "amount": 5,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Trockene Borlottibohnen in reichlich kaltem Wasser mindestens über Nacht, ungefähr 12 Stunden, einweichen. Einweichwasser anschliessend abgiessen.",
+      "Bohnen mit frischem Wasser ohne Salz aufkochen und nach Packungsangabe ungefähr 50 Minuten vollständig weich kochen. Das Kochwasser abgiessen.",
+      "Sellerie, Karotten, Kartoffeln und Lauch waschen und putzen; Kartoffeln und Karotten schälen. Gemüse in etwa 1 cm grosse Stücke schneiden. Zwiebel und Knoblauch fein hacken.",
+      "Gemüse im Olivenöl in einem grossen Topf andünsten. Zubereitete Gemüsebouillon, Weisswein und gegarte Bohnen zugeben und etwa 30 Minuten bei kleiner Hitze zugedeckt köcheln lassen.",
+      "Tomaten klein schneiden und mit den kleinen Nudeln zur Suppe geben. Ungefähr 10 Minuten beziehungsweise bis zum vollständigen Garen der Nudeln weiterkochen.",
+      "Prüfen, dass Bohnen und Gemüse vollständig weich sind. Mit Reibkäse bestreuen und heiss servieren."
+    ],
+    "nutrition": {
+      "kcal": 522.1,
+      "protein": 18.2,
+      "carbs": 77.0,
+      "fat": 14.3,
+      "fiber": 14.7
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy 2018; keine Messung des fertigen Gerichts.",
+      "basis": "Eine Portion; Rohgewichte und angenommene Stückgewichte. Reibkäse eingerechnet; Alkoholabbau beim Kochen nicht abgezogen. Kohlenhydrate nach USDA einschliesslich Ballaststoffen; tatsächliche Produkte und Mengen können abweichen.",
+      "sources": "docs/recipe-candidates/chuchitisch/nutrition-basis.json",
+      "ingredients": [
+        {
+          "name": "Borlottibohnen",
+          "grams": 33.33,
+          "foodKey": "175189"
+        },
+        {
+          "name": "Stangensellerie",
+          "grams": 33.33,
+          "foodKey": "169988"
+        },
+        {
+          "name": "Karotten",
+          "grams": 50,
+          "foodKey": "170393"
+        },
+        {
+          "name": "Kartoffeln",
+          "grams": 50,
+          "foodKey": "170026"
+        },
+        {
+          "name": "Lauch",
+          "grams": 50,
+          "foodKey": "169246"
+        },
+        {
+          "name": "Zwiebel",
+          "grams": 33.33,
+          "foodKey": "170000"
+        },
+        {
+          "name": "Knoblauch",
+          "grams": 0.5,
+          "foodKey": "169230"
+        },
+        {
+          "name": "Olivenöl",
+          "grams": 11.375,
+          "foodKey": "171413"
+        },
+        {
+          "name": "Gemüsebouillon zubereitet",
+          "grams": 333.33,
+          "foodKey": "171583"
+        },
+        {
+          "name": "Weisswein",
+          "grams": 33.33,
+          "foodKey": "174837"
+        },
+        {
+          "name": "Tomaten",
+          "grams": 80,
+          "foodKey": "170457"
+        },
+        {
+          "name": "Pasta",
+          "grams": 33.33,
+          "foodKey": "168927"
+        },
+        {
+          "name": "Reibkäse",
+          "grams": 5,
+          "foodKey": "170848"
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Minestrone nach Chuchitisch, mit dem Originalfoto der Quelle. Die Mengen gelten für eine Person. Zusätzlich 12 Stunden Einweichzeit für die trockenen Bohnen einplanen.",
+    "equipment": [
+      "Grosser Kochtopf",
+      "Schüssel zum Einweichen",
+      "Sieb",
+      "Schneidebrett",
+      "Küchenmesser"
+    ],
+    "prepNotes": [
+      "Zusätzlich zur Vorbereitungs- und Kochzeit ungefähr 12 Stunden Einweichzeit einplanen.",
+      "Borlottibohnen trocken abwiegen. Gemüsebouillon ist hier bereits mit Wasser zubereitet, kein konzentriertes Pulver.",
+      "Reibkäse für vegetarische Ernährung mit mikrobiellem Lab wählen; Bouillon und Wein auf weitere Allergene prüfen."
+    ],
+    "doneness": "Bohnen und Kartoffeln sind vollständig weich und die kleinen Nudeln haben keinen harten Kern mehr.",
+    "substitutions": [
+      "Bei vorgegarten Borlottibohnen entfallen Einweichen und Vorkochen. Gegarte Bohnen erst beim Suppenansatz beigeben; die Menge muss vom Trocken- auf das Abtropfgewicht angepasst werden."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt im Kühlschrank lagern und innerhalb von 1–2 Tagen verbrauchen. Vor dem Essen vollständig durcherhitzen.",
+    "safety": "Gemüse vor der Zubereitung waschen; zubereitete Speisen rasch abkühlen und gekühlt lagern. Produktetiketten auf zusätzliche Allergene prüfen.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "https://chuchitisch.ch/recipes/402",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "adaptation": "Von 6 auf 1 Person umgerechnet; Stückgewichte angenommen: Zwiebel 100 g, Knoblauchzehe 3 g, Tomate 120 g. EL Olivenöl mit 15 ml und EL Reibkäse mit 10 g angenommen. Einweichzeit separat erfasst; 50 Minuten Bohnenvorkochen plus 40 Minuten Suppengaren als Kochzeit angegeben. Schritte neu gegliedert.",
+      "originalServings": 6
+    },
+    "waitMinutes": 720,
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.4,
+      "waterMl": 500,
+      "noCook": false,
+      "onePot": false
+    }
+  }
+]

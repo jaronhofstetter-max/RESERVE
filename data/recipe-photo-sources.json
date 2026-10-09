@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-10-09",
+  "reviewedAt": "2026-10-10",
   "photos": [
     {
       "recipeId": "poulet-reis-bowl",
@@ -249,6 +249,51 @@
       "kind": "photograph",
       "servingSuggestion": true,
       "adaptation": "Verkleinert und als WebP komprimiert; Bildinhalt unverändert."
+    },
+    {
+      "recipeId": "chuchitisch-spaghetti-tomatensauce",
+      "path": "assets/recipe-photos/chuchitisch-spaghetti-tomatensauce.webp",
+      "source": "https://chuchitisch.ch/recipes/50",
+      "author": "Hannes und Martina / Chuchitisch",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Spaghetti mit Tomatensauce",
+      "provider": "Chuchitisch",
+      "adaptation": "Als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Originalfoto zum übernommenen Rezept; Zutatenmengen für RESERVE auf eine Person umgerechnet.",
+      "creditBasis": "Rezeptautor laut Quelle Hannes und Martina. Lizenzseite verlangt eigene Fotos; keine abweichende Fotografenangabe auf Rezeptseite gefunden. Zuschreibung zum veröffentlichten Autorenkonto, nicht separat bestätigt."
+    },
+    {
+      "recipeId": "chuchitisch-broccoli-linsen-salat",
+      "path": "assets/recipe-photos/chuchitisch-broccoli-linsen-salat.webp",
+      "source": "https://chuchitisch.ch/recipes/362",
+      "author": "Hannes und Martina / Chuchitisch",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Broccoli-Linsen-Salat",
+      "provider": "Chuchitisch",
+      "adaptation": "Als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Originalfoto zum übernommenen Rezept; Zutatenmengen für RESERVE auf eine Person umgerechnet.",
+      "creditBasis": "Rezeptautor laut Quelle Hannes und Martina. Lizenzseite verlangt eigene Fotos; keine abweichende Fotografenangabe auf Rezeptseite gefunden. Zuschreibung zum veröffentlichten Autorenkonto, nicht separat bestätigt."
+    },
+    {
+      "recipeId": "chuchitisch-minestrone",
+      "path": "assets/recipe-photos/chuchitisch-minestrone.webp",
+      "source": "https://chuchitisch.ch/recipes/402",
+      "author": "Hannes und Martina / Chuchitisch",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Minestrone",
+      "provider": "Chuchitisch",
+      "adaptation": "Als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Originalfoto zum übernommenen Rezept; Zutatenmengen für RESERVE auf eine Person umgerechnet.",
+      "creditBasis": "Rezeptautor laut Quelle Hannes und Martina. Lizenzseite verlangt eigene Fotos; keine abweichende Fotografenangabe auf Rezeptseite gefunden. Zuschreibung zum veröffentlichten Autorenkonto, nicht separat bestätigt."
     }
   ]
 }
