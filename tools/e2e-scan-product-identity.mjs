@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import http from 'node:http';
+import assert from 'node:assert/strict';
+import {chromium} from 'playwright';
+const server=http.createServer((req,res)=>{const p=req.url.split('?')[0];try{res.setHeader('Content-Type',p.endsWith('.js')?'text/javascript':p.endsWith('.json')?'application/json':p.endsWith('.css')?'text/css':'text/html');res.end(fs.readFileSync(p==='/'?'index.html':'.'+p))}catch{res.writeHead(404);res.end()}});
+await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
+try{browser=await chromium.launch();const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.route('https://**',r=>r.abort());
+ await page.goto(`http://127.0.0.1:${server.address().port}/`,{waitUntil:'networkidle'});await page.waitForFunction(()=>window.RESERVE_SCAN_IDENTITY&&document.getElementById('scanIngredient'));
+ await page.evaluate(()=>{RESERVE_VISUAL_FLOW.openCapture();RESERVE_BARCODE.beginUnknown('7612345678981')});
+ await page.locator('#scanName').fill('Agnesi Fusilli');assert.equal(await page.locator('#scanIngredient').inputValue(),'Fusilli');
+ await page.locator('#scanQty').fill('500 g');await page.locator('#scanExpiry').fill('2030-01-01');await page.locator('#scanAdd').click();await page.waitForFunction(()=>!document.getElementById('scanAdd').disabled);
+ const saved=await page.evaluate(()=>({ingredient:RESERVE_PRODUCT_KNOWLEDGE.recognize({barcode:'7612345678981'}).ingredient,spaghetti:availableAmount('Spaghetti','g'),fusilli:availableAmount('Fusilli','g')}));assert.equal(saved.ingredient.value,'Fusilli');assert.equal(saved.ingredient.state,'confirmed');assert.equal(saved.spaghetti,0);assert.equal(saved.fusilli,500);
+ await page.reload({waitUntil:'networkidle'});await page.waitForFunction(()=>window.RESERVE_SCAN_IDENTITY&&document.getElementById('scanIngredient'));await page.evaluate(()=>{RESERVE_VISUAL_FLOW.openCapture();return RESERVE_BARCODE.lookup('7612345678981')});
+ await page.waitForFunction(()=>document.getElementById('scanIngredient').value==='Fusilli');assert.equal(await page.locator('#scanQty').inputValue(),'500 g');assert.equal(await page.locator('#scanExpiry').inputValue(),'');
+ await page.evaluate(()=>RESERVE_BARCODE.beginUnknown('7612345678982'));await page.locator('#scanName').fill('Eigenes Hausprodukt');await page.waitForTimeout(50);assert.equal(await page.locator('#scanIngredient').inputValue(),'');assert.equal(await page.locator('#scanConfidenceSummary .scan-check-row').first().locator('.scan-check-mark').innerText(),'');
+ await page.locator('#scanIngredient').fill('Spaghetti');await page.locator('#scanQty').fill('300 g');await page.locator('#scanAdd').click();await page.waitForFunction(()=>!document.getElementById('scanAdd').disabled);
+ await page.evaluate(()=>RESERVE_BARCODE.lookup('7612345678982'));await page.waitForFunction(()=>document.getElementById('scanIngredient').value==='Spaghetti');
+ await page.locator('#scanName').fill('Barilla Penne');assert.equal(await page.locator('#scanIngredient').inputValue(),'Penne');
+ await page.locator('#scanName').fill('Spaghetti Fusilli');assert.equal(await page.locator('#scanIngredient').inputValue(),'');assert.equal(await page.locator('#scanIngredientChoices button').count(),2);await page.locator('#scanIngredientChoices button').filter({hasText:'Fusilli'}).click();assert.equal(await page.locator('#scanIngredient').inputValue(),'Fusilli');
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);assert.deepEqual(errors,[]);
+ console.log('Scan product identity: automatic Fusilli, exact recipe stock, saved barcode recall, unknown empty check, correction recall, name-change reset and ambiguous choice OK');
+}finally{await browser?.close();server.close()}

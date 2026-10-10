@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+const storage=new Map(),listeners={};const c={console,document:{readyState:'loading',addEventListener(){}},CustomEvent:class{constructor(type){this.type=type}},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)}};c.window=c;c.addEventListener=(k,f)=>(listeners[k]??=[]).push(f);c.dispatchEvent=e=>(listeners[e.type]||[]).forEach(f=>f(e));vm.createContext(c);
+for(const f of ['product-identity-v1.js','ingredient-identity-v1.js','product-knowledge-v1.js'])vm.runInContext(fs.readFileSync(f,'utf8'),c);
+const api=c.RESERVE_PRODUCT_IDENTITY,k=c.RESERVE_PRODUCT_KNOWLEDGE,m=c.RESERVE_INGREDIENTS.match;
+const cases=[['Agnesi Fusilli N° 78','Fusilli'],['Barilla Spaghetti No 5','Spaghetti'],['Pasta Penne Rigate','Penne'],['Bio Rote Linsen','Rote Linsen'],['Alnatura Olivenöl extra vergine','Olivenöl'],['Rindshackfleisch 300 g','Rinderhackfleisch'],['Broccoli frisch','Brokkoli']];for(const [name,expected]of cases)assert.equal(api.analyze(name).ingredient,expected,name);
+for(const name of ['Produkt 7612345678901','Kichererbsen Mehl','Poulet mit Reis','Naturjoghurt Vanille','Milch Schokolade','Tomaten Sauce'])assert.equal(api.analyze(name).state,'unknown',name);
+assert.equal(api.analyze('Spaghetti Fusilli').state,'ambiguous');
+ k.confirm({barcode:'7612345678990',n:'Spaghetti Fusilli',q:'500 g'},{ingredient:'Fusilli'});assert.ok(m('Spaghetti Fusilli','Fusilli'));assert.equal(m('Spaghetti Fusilli','Spaghetti'),false);
+for(const [a,b]of [['Fusilli','Spaghetti'],['Rote Linsen','Grüne Linsen'],['Rindshackfleisch','Schweinehackfleisch'],['Olivenöl','Rapsöl']])assert.equal(m(a,b),false,`${a}/${b}`);
+assert.ok(m('Agnesi Fusilli','Fusilli'));assert.ok(m('Penne Rigate','Pasta'));assert.ok(m('Rindshackfleisch','Rinderhackfleisch'));
+const row={barcode:'7612345678901',n:'Agnesi Fusilli',q:'500 g'};k.confirm(row,{source:'scan-confirmed'});assert.equal(k.recognize(row).ingredient.value,'Fusilli');assert.equal(k.recognize(row).ingredient.state,'confirmed');assert.equal(k.lookup(row.barcode).name,row.n);assert.equal(k.examples().find(x=>x.barcode===row.barcode).ingredient,'Fusilli');
+k.observe({...row,n:'Spaghetti'},'catalog');assert.equal(k.recognize(row).ingredient.value,'Fusilli');
+k.confirm({...row,n:'Unbekanntes Hausprodukt'});assert.equal(k.recognize({barcode:row.barcode}).ingredient.value,'');
+k.confirm({...row,n:'Unbekanntes Hausprodukt'},{ingredient:'Spaghetti',source:'scan-ingredient-correction'});assert.equal(k.recognize({barcode:row.barcode}).ingredient.value,'Spaghetti');assert.ok(m('Unbekanntes Hausprodukt','Spaghetti'));
+k.confirm({...row,barcode:'7612345678902',n:'Unbekanntes Hausprodukt'},{ingredient:'Fusilli'});assert.equal(k.ingredientIdentity('Unbekanntes Hausprodukt').state,'ambiguous');assert.equal(k.resolve({barcode:row.barcode,n:'Unbekanntes Hausprodukt'}).ingredient,'Spaghetti');assert.equal(k.resolve({barcode:'7612345678902',n:'Unbekanntes Hausprodukt'}).ingredient,'Fusilli');
+console.log('Scan identity: precise variants, unknown/mixed names, barcode confirmation, corrections, stale mapping and conflicting names OK');

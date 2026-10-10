@@ -5,7 +5,7 @@ function state(){
   const name=$('scanName')?.value?.trim()||'',qty=$('scanQty')?.value?.trim()||'',pack=$('scanContainerType')?.value||'',expiry=$('scanExpiry')?.value||'',expiryText=$('expiryCameraStatus')?.textContent||'',packSel=$('scanContainerType');
   const validQty=!!qty&&!!window.RESERVE_BARCODE?.parsedAmount?.(qty),packConfirmed=packSel?.dataset.touched==='1',packConfidence=Number(packSel?.dataset.visualConfidence||packSel?.dataset.suggestionConfidence)||0,expiryUncertain=/unsicher|nicht automatisch/i.test(expiryText);
   return[
-    {label:'Produkt',value:name||'Noch nicht erkannt',level:name?'ok':'open'},
+    {label:'Produkt',value:name||'Noch nicht erkannt',level:name&&(!window.RESERVE_SCAN_IDENTITY||window.RESERVE_SCAN_IDENTITY.assignment())?'ok':'open'},
     {label:'Menge',value:validQty?qty:'Noch nicht sicher erkannt',level:validQty?'ok':'open'},
     {label:'Verpackung',value:pack||(name?'Bitte auswählen':'Noch nicht erkannt'),level:pack?(packConfirmed||packConfidence>=.78?'ok':'check'):'open'},
     {label:'MHD',value:expiry?(expiryUncertain?'Bitte prüfen':expiry):'Noch fotografieren oder eingeben',level:expiry?(expiryUncertain?'check':'ok'):'open'}

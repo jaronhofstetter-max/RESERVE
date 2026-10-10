@@ -10,7 +10,15 @@ The optional “Für Rezepte zuordnen” field explicitly connects a product to 
 
 The existing barcode-memory API is maintained as a compatibility projection. Existing corrections are imported without deleting original data. Product knowledge and its compatibility projection are included in ordinary backups. Own photo blobs remain subject to their existing photo storage/export mechanisms; the JSON backup does not newly export them.
 
-## Repeatable checks
+## Scan food identity
+
+`product-identity-v1.js` derives a conservative food identity from explicit words in a product name. It distinguishes pasta shapes, oil types, minced meat types and selected legumes. Mixed dishes, conflicting variants and unrecognized names remain unassigned. This is a local rule system, not an image classifier or an accuracy guarantee.
+
+The scan shows one compact “Lebensmittel” field, prefilled for a recognized name or a previously confirmed barcode. The customer can correct it; a name or barcode change resets an unsaved assignment. Unknown assignments leave the product checklist box empty. Product-name evidence is a suggestion until the customer saves the scan. Saving retains the exact ingredient with the existing barcode record. A later product-name correction clears or replaces a stale ingredient, and catalog suggestions cannot overwrite confirmed fields. Recipes and ingredient photos use the shared matcher; a known pasta shape cannot silently stand in for another shape even when an old generic pasta correction exists.
+
+Run `node tools/test-product-identity.mjs` for deterministic identity regressions. CI also runs `tools/e2e-scan-product-identity.mjs` to check saving, reload, barcode recall, recipe quantities, corrections and ambiguous choices in the production build.
+
+## Existing knowledge checks
 
 Run `node tools/test-product-knowledge.mjs`. It reads `data/benchmarks/product-knowledge-v1.json` and writes `build/product-knowledge-benchmark.json`. The fixture contains 31 manually specified category and ingredient cases, plus checks for provenance, quantity separation, persistence, migration, corrections and photo priority. CI also runs `tools/e2e-product-knowledge.mjs` against the production build.
 
