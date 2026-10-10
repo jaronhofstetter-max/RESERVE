@@ -7,6 +7,8 @@ for(const file of ['ingredient-identity-v1.js','barcode-v1.js'])vm.runInContext(
 const match=context.window.RESERVE_INGREDIENTS.match;
 for(const [a,b] of [['Penne Rigate No 66','Pasta'],['Fusilli N° 78','Nudeln'],['Rote Linsen','Linsen'],['Karotte','Rüebli'],['Brokkoli','Broccoli'],['Zucchini','Zucchetti'],['Basmati Reis','Langkornreis']])assert.ok(match(a,b),`${a}/${b}`);
 for(const [a,b] of [['Ei','Reis'],['Milch','Milchschokolade'],['Butter','Erdnussbutter'],['Milch','Kokosmilch'],['Kichererbsen','Kichererbsen Mehl'],['Joghurt Schokolade','Naturjoghurt'],['Pfefferminztee','Pfeffer'],['Protein Shake','Protein Riegel'],['Tomaten Reis Fertiggericht','Tomaten'],['','']])assert.equal(match(a,b),false,`${a}/${b}`);
+for(const [a,b] of [['Agnesi Fusilli','Spaghetti'],['Penne Rigate','Spaghetti'],['Farfalle','Fusilli'],['Rigatoni','Penne']])assert.equal(match(a,b),false,`${a}/${b}`);
+assert.ok(match('Barilla Spaghetti No 5','Spaghetti'));
 const category=context.window.RESERVE_BARCODE.categoryFor;
 for(const [name,expected] of [['Steak','Protein'],['Kichererbsen Mehl','Getreide & Beilagen'],['Salzgebäck','Snacks & Süßwaren'],['Schwarztee mit Pfirsich','Kaffee & Tee'],['Paprikapulver','Gewürze'],['Joghurt Schokolade','Milchprodukte']])assert.equal(category(name,'food'),expected,name);
 assert.equal(category('Penne Rigate','protein enriched pasta'),'Getreide & Beilagen');
