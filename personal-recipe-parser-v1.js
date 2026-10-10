@@ -11,7 +11,7 @@ function parseText(text){
  const noise=/^(?:\d{1,2}:\d{2}(?:\s|$)|https?:\/\/|www\.|kikkoman[’'®©\s]*$|zutaten kopieren|zum starten antippen|schritt.für.schritt.kochen|leicht gemacht|starten antippen)/i;
  function flush(){if(pending){ingredients.push(pending);unresolved.push({type:'unpaired-quantity',raw:pending});pending='';}}
  for(const line of lines){
-  if(noise.test(line)){ignored.push(line);continue;}
+  if(noise.test(line)||/^(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/\S*)?$/i.test(line)){ignored.push(line);continue;}
   const p=line.replace(/portion\(en\)/ig,'Portionen').match(/(?:für|for)\s*(\d+)\s*(?:personen|portionen|people|servings)|(?:portionen|servings)\s*:?\s*(\d+)|(\d+)\s*(?:portionen|servings)\b/i);
   if(p){portions=p[1]||p[2]||p[3];if(/^(zutaten|ingredients)/i.test(line))mode='ingredients';continue;}
   const time=line.match(/^(?:(\d+)\s*(?:min\.?|minutes)\s*)?(vorbereitung(?:szeit)?|prep(?:aration)?(?: time)?|kochzeit|garzeit|cook(?:ing)? time)\s*:?\s*(?:(\d+)\s*(?:min\.?|minutes))?/i);
@@ -22,7 +22,8 @@ function parseText(text){
   if(/^schritt\s+\d+\s*[:.)]?$/i.test(line)){flush();mode='steps';stepIndex=steps.length;steps.push('');continue;}
   if(mode==='ingredients'){
    if(/^(?:für (?:die|den|das) .+|zusätzlich)\s*:\s*$/i.test(line)){flush();ignored.push(line);continue;}
-   if(quantity.test(line)){flush();pending=line;continue;}
+   const normalizedQuantity=line.replace(/(\d)([¼½¾])/g,'$1 $2').replace(/[¼½¾]/g,c=>({'¼':'1/4','½':'1/2','¾':'3/4'}[c]));
+   if(quantity.test(normalizedQuantity)){flush();pending=line;continue;}
    if(pending){ingredients.push(pending+' '+line);pending='';continue;}
    // Only explicit continuations are joined; ambiguous lines stay visible for review.
    if(ingredients.length&&/^(?:\(|oder\b|mit\b|und\b|supp(en)?basis\b|geschmack\b)/i.test(line)&&!measured.test(line))ingredients[ingredients.length-1]+=' '+line;

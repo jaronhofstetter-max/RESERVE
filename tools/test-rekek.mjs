@@ -8,3 +8,6 @@ assert.equal(r.steps,'Gemüse schneiden. In den Topf geben.\nGaren.');assert.equ
 const pending=p.parseText('Suppe\nZutaten\n200 g\nZubereitung\nKochen.');assert.equal(pending.ingredients,'200 g');assert.equal(pending.unresolved.length,1);
 const ambiguous=p.parseText('Suppe\nZutaten\nPfeffer nach Geschmack\nZubereitung\nKochen.');assert.equal(ambiguous.ingredients,'Pfeffer nach Geschmack');
 console.log('REKEK regression: split quantities, wrapped alternatives, repeated ingredients, page noise, numbered steps and unresolved amounts OK. Synthetic text tests only.');
+
+assert.equal(p.parseText('example.ch\nSuppe\nZutaten\n2½ EL\nÖl\nZubereitung\nKochen.').ingredients,'2½ EL Öl');
+assert.equal(p.parseText('example.ch\nSuppe\nZutaten\n200 g Gemüse\nZubereitung\nKochen.').name,'Suppe');
