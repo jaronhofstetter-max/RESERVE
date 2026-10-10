@@ -22,7 +22,7 @@
       const id=history.state?.reserveSection||'home';
       if(!main(id))return;
       restoring=true;window.show(id,tab(id));restoring=false;
-      requestAnimationFrame(()=>window.scrollTo(0,0));
+      requestAnimationFrame(()=>window.scrollTo(0,Number(history.state?.reserveScroll)||0));
     }
     // Existing product/capture routes run first; main routes restore afterwards.
     window.addEventListener('popstate',()=>setTimeout(restore,0));
