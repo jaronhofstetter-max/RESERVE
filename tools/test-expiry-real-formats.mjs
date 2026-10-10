@@ -81,3 +81,15 @@ if(month?.kind!=='month'||month.date!=='2026-11-30')throw Error('Monatsgenauigke
 if(year?.kind!=='year'||year.date!=='2029-12-31')throw Error('Jahresgenauigkeit fehlt: '+JSON.stringify(year));
 if(!api.samePrecision('2027-02-28','2027-02')||!api.samePrecision('2027-12-31','2027')||api.samePrecision('2027-02-28','2027-03'))throw Error('Teilgenaue Bestätigung wird falsch verglichen');
 console.log('Expiry parser real-package regression tests: OK');
+
+const hint={textContent:'Unsicherer lokaler Vorschlag: 2028-02 – nicht automatisch eingetragen.',className:'small muted'};
+const field={type:'month',value:'2028-12',dataset:{effectiveDate:'2028-02-29'},validity:{valid:true}};
+sandbox.document.getElementById=id=>id==='expiryCameraStatus'?hint:id==='scanExpiry'?field:null;
+if(!api.manualDateChanged(field)||field.dataset.effectiveDate!=='2028-12-31'||hint.textContent!=='')throw Error('Manuelle Monatskorrektur hat alten Scan-Hinweis oder effektives Datum nicht ersetzt');
+sandbox.document.readyState='loading';
+vm.runInContext(fs.readFileSync('scan-confidence-v1.js','utf8'),sandbox);
+if(sandbox.RESERVE_SCAN_CONFIDENCE.state()[3].level!=='ok')throw Error('Manuell korrigiertes MHD hat kein grünes Häkchen');
+field.value='';if(sandbox.RESERVE_SCAN_CONFIDENCE.state()[3].level!=='open')throw Error('Gelöschtes MHD bleibt abgehakt');
+field.value='2028-12';field.validity.valid=false;if(api.manualDateChanged(field)||sandbox.RESERVE_SCAN_CONFIDENCE.state()[3].level!=='open')throw Error('Ungültiges Datum wird bestätigt');
+field.validity.valid=true;hint.textContent='Unsicherer lokaler Vorschlag';if(sandbox.RESERVE_SCAN_CONFIDENCE.state()[3].level!=='check')throw Error('Neuer unsicherer Scan wird ungeprüft abgehakt');
+console.log('Manual MHD correction: checklist, month-end, empty/invalid dates and uncertain scans OK');
