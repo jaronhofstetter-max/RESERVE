@@ -294,6 +294,21 @@
       "adaptation": "Als WebP komprimiert; Bildinhalt unverändert.",
       "review": "Originalfoto zum übernommenen Rezept; Zutatenmengen für RESERVE auf eine Person umgerechnet.",
       "creditBasis": "Rezeptautor laut Quelle Hannes und Martina. Lizenzseite verlangt eigene Fotos; keine abweichende Fotografenangabe auf Rezeptseite gefunden. Zuschreibung zum veröffentlichten Autorenkonto, nicht separat bestätigt."
+    },
+    {
+      "recipeId": "chuchitisch-maroni-linsen-suppe",
+      "path": "assets/recipe-photos/chuchitisch-maroni-linsen-suppe.webp",
+      "source": "https://chuchitisch.ch/recipes/277",
+      "author": "Hannes und Martina / Chuchitisch",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Maroni-Linsen-Suppe",
+      "provider": "Chuchitisch",
+      "adaptation": "Als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Originalfoto zum übernommenen Rezept; Zutatenmengen für RESERVE auf eine Person umgerechnet.",
+      "creditBasis": "Rezeptautor laut Quelle Hannes und Martina. Lizenzseite verlangt eigene Fotos; keine abweichende Fotografenangabe auf Rezeptseite gefunden. Zuschreibung zum veröffentlichten Autorenkonto, nicht separat bestätigt."
     }
   ]
 }

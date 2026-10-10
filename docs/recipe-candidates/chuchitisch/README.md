@@ -113,3 +113,6 @@ Die Suppe servieren und mit Reibkäse und gehackten Sellerieblättchen bestreuen
 - Nährwerte nachvollziehbar berechnet und in der Kochansicht als Schätzung gekennzeichnet.
 - Quelle und Rezeptlizenz über „Quelle & Lizenz“ in der Kochansicht; Fotos zusätzlich im Bildnachweis.
 - Minestrone: Einweichzeit separat anzeigen; mit trockenen Bohnen kein schnelles Feierabendgericht.
+## Maroni-Linsen-Suppe
+
+Freigegeben am 10.10.2026. [Originalrezept](http://chuchitisch.ch/recipes/277), Hannes und Martina, Text und Originalfoto CC BY-SA 3.0. [Originaldaten](277.json) · [Originalfoto als WebP](277.webp). Original: 2 Personen, 60 Minuten. Mengenannahmen und Umrechnung sind im Rezeptnachweis dokumentiert; Nährwertannahmen im nutritionEstimate-Block und nutrition-basis.json.

@@ -1,0 +1,33 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Maroni-Linsen-Suppe",
+  "image": "277.webp",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "",
+  "prepTime": "PT0S",
+  "cookTime": "PT3600S",
+  "totalTime": "PT3600S",
+  "recipeYield": "2 Personen",
+  "keywords": "  Vorspeise,  Für Gäste,  Schweiz,  Herbst,  Einfach,  Zum Vorbereiten,  Suppe,  Raffiniert,  Abendessen unter der Woche,  Mittelschnell,  Vegetarisch,  Saisonal,  ",
+  "recipeIngredient": [
+    "200  g Maroni",
+    "70  g Linsen",
+    "30  g Linsen",
+    "1   Zwiebel",
+    "10  g Butter",
+    "1  TL Currypulver",
+    "8  dl Wasser",
+    "1  EL Rohrzucker",
+    "1  EL Zitronensaft",
+    "   Salz",
+    "1  dl Halbrahm",
+    ""
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+  "recipeInstructions": "Zwiebeln hacken und in der Butter dünsten.\r\nLinsen und Maroni dazugeben und kurz weiterdämpfen. Mit Wasser ablöschen. Curry, Rohrzucker und etwas Salz dazu geben, bei kleiner Hitze ca 45 Minuten köcheln lassen, gelegentlich umrühren.\r\n\r\nSuppe mit dem Mixstab pürieren. Zitronensaft und Rahm dazu geben, mit Salz abschmecken, aufkochen lassen und servieren."
+}

@@ -615,5 +615,188 @@
       "noCook": false,
       "onePot": false
     }
+  },
+  {
+    "id": "chuchitisch-maroni-linsen-suppe",
+    "name": "Maroni-Linsen-Suppe",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥣",
+    "cuisine": "Schweiz",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 50,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Milch"
+    ],
+    "tags": [
+      "Originalfoto",
+      "Chuchitisch",
+      "Schweiz",
+      "Herbst",
+      "vegetarisch"
+    ],
+    "ingredients": [
+      {
+        "name": "Maroni",
+        "amount": 100,
+        "unit": "g"
+      },
+      {
+        "name": "Rote Linsen",
+        "amount": 35,
+        "unit": "g"
+      },
+      {
+        "name": "Braune Linsen",
+        "amount": 15,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Butter",
+        "amount": 5,
+        "unit": "g"
+      },
+      {
+        "name": "Currypulver",
+        "amount": 1,
+        "unit": "g"
+      },
+      {
+        "name": "Wasser",
+        "amount": 400,
+        "unit": "ml"
+      },
+      {
+        "name": "Rohrzucker",
+        "amount": 6,
+        "unit": "g"
+      },
+      {
+        "name": "Zitronensaft",
+        "amount": 7.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.5,
+        "unit": "g"
+      },
+      {
+        "name": "Halbrahm",
+        "amount": 50,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Zwiebel schälen, fein hacken und in der Butter bei mittlerer Hitze glasig dünsten. Geschälte Maroni und die trockenen roten und braunen Linsen bereitstellen.",
+      "Linsen und Maroni dazugeben und kurz mitdünsten. Mit Wasser ablöschen; Curry, Rohrzucker und etwas Salz einrühren.",
+      "Bei kleiner Hitze etwa 45 Minuten köcheln lassen und gelegentlich umrühren, bis Maroni und Linsen weich sind. Bei Bedarf wenig Wasser ergänzen.",
+      "Topf vom Herd nehmen und die Suppe mit dem Stabmixer vorsichtig pürieren. Zitronensaft und Halbrahm einrühren, nochmals aufkochen und abschmecken."
+    ],
+    "nutrition": {
+      "kcal": 553.0,
+      "protein": 16.2,
+      "fat": 15.6,
+      "carbs": 89.4,
+      "fiber": 6.8
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy 2018; keine Messung des fertigen Gerichts.",
+      "basis": "Eine Portion. Zwiebel-Stückgewicht und EL/TL-Gewichte angenommen; Halbrahm mit USDA light cream (19.1 % Fett) angenähert. Ballaststoffe der Maroni sind im Datensatz nicht angegeben und daher nicht eingerechnet. Tatsächliche Produkte können abweichen.",
+      "sources": "docs/recipe-candidates/chuchitisch/nutrition-basis.json",
+      "ingredients": [
+        {
+          "name": "Maroni",
+          "grams": 100,
+          "foodKey": "170575"
+        },
+        {
+          "name": "Rote Linsen",
+          "grams": 35,
+          "foodKey": "172420"
+        },
+        {
+          "name": "Braune Linsen",
+          "grams": 15,
+          "foodKey": "172420"
+        },
+        {
+          "name": "Zwiebel",
+          "grams": 50,
+          "foodKey": "170000"
+        },
+        {
+          "name": "Butter",
+          "grams": 5,
+          "foodKey": "173430"
+        },
+        {
+          "name": "Currypulver",
+          "grams": 1,
+          "foodKey": "170924"
+        },
+        {
+          "name": "Rohrzucker",
+          "grams": 6,
+          "foodKey": "168833"
+        },
+        {
+          "name": "Zitronensaft",
+          "grams": 7.5,
+          "foodKey": "167747"
+        },
+        {
+          "name": "Halbrahm",
+          "grams": 50,
+          "foodKey": "170857"
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Cremige Schweizer Maroni-Linsen-Suppe nach Chuchitisch, mit Curry und Halbrahm sowie dem Originalfoto der Quelle. Die Mengen gelten für eine Person.",
+    "equipment": [
+      "Suppentopf",
+      "Stabmixer",
+      "Schneidebrett",
+      "Küchenmesser"
+    ],
+    "prepNotes": [
+      "Geschälte Maroni verwenden; die Menge bezieht sich auf den essbaren Anteil.",
+      "Rote und braune Linsen trocken abwiegen. Die Gesamtzeit der Quelle beträgt etwa 60 Minuten."
+    ],
+    "doneness": "Maroni und Linsen sind weich; die pürierte Suppe ist cremig und ohne harte Stücke.",
+    "substitutions": [
+      "Halbrahm kann durch eine pflanzliche Kochcreme ersetzt werden; Geschmack, Allergene und Nährwerte ändern sich."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt im Kühlschrank lagern und innerhalb von 1–2 Tagen verbrauchen. Vor dem Essen vollständig durcherhitzen.",
+    "safety": "Beim Pürieren der heissen Suppe den Mixkopf eingetaucht halten, um Spritzer zu vermeiden. Milchprodukte gekühlt lagern; Produktetiketten auf Allergene prüfen.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "https://chuchitisch.ch/recipes/277",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "adaptation": "Von 2 auf 1 Person umgerechnet; Schritte neu gegliedert. Kleine Zwiebel mit 100 g im Original angesetzt; Curry-TL mit 2 g, Rohrzucker-EL mit 12 g und Zitronensaft-EL mit 15 ml umgerechnet. Nicht bezifferte Salzmenge mit 0.5 g pro Person angesetzt. 60 Minuten Gesamtzeit auf 10 Minuten Vorbereitung und 50 Minuten Kochen aufgeteilt. Nährwerte als Schätzung ergänzt.",
+      "originalServings": 2
+    },
+    "waitMinutes": 0,
+    "resilience": {
+      "noCook": false,
+      "onePot": true,
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.7,
+      "waterMl": 400
+    }
   }
 ]

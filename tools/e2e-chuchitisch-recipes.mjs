@@ -34,6 +34,8 @@ try{
     assert.ok((await page.locator('#cookView .recipe-source').innerText()).includes('CC BY-SA 3.0'));
     assert.equal(await page.locator('#cookView .recipe-source a').first().getAttribute('href'),recipe.recipeCredit.source);
   }
+  await page.evaluate(()=>startCook('chuchitisch-minestrone'));
+  await page.waitForSelector('#cookView .recipe-source');
   assert.ok((await page.locator('#cookView').innerText()).includes('+ 12 Std. Einweichen'));
   await page.evaluate(()=>{localStorage.setItem('reserveProfile',JSON.stringify({people:2,diet:'Alles',avoid:'',dislikes:'',goal:'Schnell',maxMinutes:180}));});
   await page.evaluate(()=>startCook('chuchitisch-broccoli-linsen-salat'));

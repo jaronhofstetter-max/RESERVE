@@ -349,6 +349,65 @@
       },
       "source": "https://shop.cenovis.ch/de/cenovis/shop/cenovis-flussigwurze",
       "notes": "Fett <0.1 g: obere Grenze verwendet. Ballaststoffe nicht angegeben: als 0 angesetzt."
+    },
+    "168833": {
+      "fdcId": 168833,
+      "description": "Sugars, brown",
+      "per100g": {
+        "fat": 0.0,
+        "carbs": 98.1,
+        "kcal": 380,
+        "protein": 0.12,
+        "fiber": 0.0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/168833/nutrients"
+    },
+    "170575": {
+      "fdcId": 170575,
+      "description": "Nuts, chestnuts, european, raw, peeled",
+      "per100g": {
+        "protein": 1.63,
+        "fat": 1.25,
+        "carbs": 44.2,
+        "kcal": 196
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170575/nutrients"
+    },
+    "170857": {
+      "fdcId": 170857,
+      "description": "Cream, fluid, light (coffee cream or table cream)",
+      "per100g": {
+        "protein": 2.96,
+        "fat": 19.1,
+        "carbs": 3.66,
+        "kcal": 195,
+        "fiber": 0.0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170857/nutrients"
+    },
+    "170924": {
+      "fdcId": 170924,
+      "description": "Spices, curry powder",
+      "per100g": {
+        "kcal": 325,
+        "fiber": 53.2,
+        "protein": 14.3,
+        "fat": 14.0,
+        "carbs": 55.8
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170924/nutrients"
+    },
+    "173430": {
+      "fdcId": 173430,
+      "description": "Butter, without salt",
+      "per100g": {
+        "kcal": 717,
+        "fat": 81.1,
+        "carbs": 0.06,
+        "protein": 0.85,
+        "fiber": 0.0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/173430/nutrients"
     }
   },
   "assumptions": [
