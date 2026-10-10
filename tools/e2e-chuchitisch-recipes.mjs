@@ -27,6 +27,7 @@ try{
     await page.waitForSelector('#cookView .recipe-source');
     assert.equal(await page.locator('#cookView h2').innerText(),recipe.name);
     await page.waitForFunction(()=>{const img=document.querySelector('#cookView .recipe-visual img');return img?.complete&&img.naturalWidth>0;});
+    assert.equal(await page.evaluate(()=>{const visual=document.querySelector('#cookView .recipe-visual'),img=visual.querySelector('img'),credit=document.querySelector('#cookView .recipe-photo-credit'),title=document.querySelector('#cookView .cook-title');return img.getBoundingClientRect().bottom<=visual.getBoundingClientRect().bottom+1&&visual.getBoundingClientRect().bottom<=credit.getBoundingClientRect().top+1&&credit.getBoundingClientRect().bottom<=title.getBoundingClientRect().top+1;}),true);
     assert.equal(await page.locator('#cookView details.recipe-source').getAttribute('open'),null);
     assert.ok((await page.locator('#cookView').innerText()).includes('Nährwerte pro Person · Schätzung'));
     await page.locator('#cookView .recipe-source summary').click();
