@@ -36,7 +36,8 @@ function parseText(text){
    continue;
   }
   if(mode==='steps'){
-   if(/^(?:\d+(?:[.,]\d+)?|[¼½¾])\s*(?:g|kg|ml|l|EL|TL)\b/i.test(line)&&!/\b(?:kochen|garen|braten|zugeben|hinzufügen|schneiden|mischen|rühren)\b/i.test(line)&&lines.slice(lineNumber+1).some(x=>!x)){summary=true;ignored.push(line);continue;}
+   const following=lines.slice(lineNumber),end=following.findIndex(x=>!x),paragraph=following.slice(0,end<0?following.length:end).join(' ');
+   if(/^(?:\d+(?:[.,]\d+)?|[¼½¾])\s*(?:g|kg|ml|l|EL|TL)\b/i.test(line)&&/\s[–—]\s*(?:\d|[¼½¾])/.test(paragraph)&&!/\b(?:kochen|garen|braten|zugeben|hinzufügen|schneiden|mischen|rühren|sieben|unterheben|einrühren|vermengen|erhitzen)\b/i.test(paragraph)&&end>=0){summary=true;ignored.push(line);continue;}
    if(summary){ignored.push(line);continue;}
    const numbered=line.match(/^\d+[.)]\s*(.+)$/);
    if(numbered){stepIndex=steps.length;steps.push(numbered[1]);}

@@ -23,3 +23,5 @@ for(const raw of ['1 bis 2 Prisen Salz','1–2 Prisen Salz','1 halber Nudelkocht
 assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient('2 Blatt Gelatine').unit,'blatt');
 assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient('5 Esslöffel Sirup').unit,'el');
 assert.equal(p.parseText('Obst\nZutaten\nObst\nZubereitung\nWaschen.\nErfasst von: Autor\nStammt von Wikipedia, Hauptautor war Test').steps,'Waschen.');
+
+assert.equal(p.parseText('Kuchen\nZubereitung\n200 g Mehl unterheben.\n\nBacken.').steps,'200 g Mehl unterheben.\nBacken.');
