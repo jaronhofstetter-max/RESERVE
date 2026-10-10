@@ -18,3 +18,8 @@ assert.equal(timeColumns.ingredients,'120 g Gemüse (alternativ: Kürbis oder Se
 assert.equal(timeColumns.steps,'Gemüse garen.');
 assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient('¼ Bund Petersilie').unit,'bund');
 assert.equal(p.parseText('Suppe\nZubereitung\n200 g Gemüse kochen.\n\nServieren.').steps,'200 g Gemüse kochen.\nServieren.');
+
+for(const raw of ['1 bis 2 Prisen Salz','1–2 Prisen Salz','1 halber Nudelkochtopf Wasser']){const x=context.window.RESERVE_RECIPE_PARSER.ingredient(raw);assert.equal(x.amount,null);assert.equal(x.uncertain,true);}
+assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient('2 Blatt Gelatine').unit,'blatt');
+assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient('5 Esslöffel Sirup').unit,'el');
+assert.equal(p.parseText('Obst\nZutaten\nObst\nZubereitung\nWaschen.\nErfasst von: Autor\nStammt von Wikipedia, Hauptautor war Test').steps,'Waschen.');
