@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "synthetic-001",
+  "recipeGroup": "synthetic-001",
+  "split": "train",
+  "reviewStatus": "verified",
+  "source": {"kind": "synthetic", "url": null, "author": "RESERVE", "textTrainingAllowed": true, "imageTrainingAllowed": true, "rightsEvidence": "Selbst verfasstes Textbeispiel ohne fremdes Bild; kein Foto-Test."},
+  "pages": [{"id": "page-1", "image": null, "ocr": "Gemüsepfanne\nFür 2 Portionen\nZutaten\n200 g\nKarotten\n1/2 EL Öl\nZubereitung\nKarotten schneiden.\nIn Öl garen."}],
+  "expected": {
+    "name": "Gemüsepfanne", "portions": 2,
+    "ingredients": [
+      {"raw": "200 g Karotten", "name": "Karotten", "amount": 200, "unit": "g", "section": "Zutaten", "page": "page-1"},
+      {"raw": "1/2 EL Öl", "name": "Öl", "amount": 0.5, "unit": "EL", "section": "Zutaten", "page": "page-1"}
+    ],
+    "steps": [{"text": "Karotten schneiden.", "page": "page-1"}, {"text": "In Öl garen.", "page": "page-1"}],
+    "ignored": [], "unresolved": []
+  }
+}

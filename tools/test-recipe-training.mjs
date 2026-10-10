@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {validate} from './check-recipe-training.mjs';
+const r=JSON.parse(fs.readFileSync('training/recipes/examples/synthetic.json','utf8'));
+assert.deepEqual(validate([r]),[]);
+assert.ok(validate([r,{...r,id:'copy',split:'test'}]).some(x=>x.includes('Splits')));
+assert.ok(validate([{...r,source:{...r.source,textTrainingAllowed:false}}]).length);
+assert.ok(validate([{...r,expected:{...r.expected,unresolved:['Menge unlesbar']}}]).length);
+assert.deepEqual(validate([{...r,split:'review',reviewStatus:'pending',source:{},expected:{...r.expected,unresolved:['Menge unlesbar']}}]),[]);
+assert.ok(validate([{...r,expected:{...r.expected,ingredients:[{...r.expected.ingredients[0],page:'missing'}]}}]).length);
+console.log('Trainingsprüfung: Freigaben, offene Fragen, Seitenbezüge und Split-Trennung OK.');
