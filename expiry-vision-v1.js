@@ -43,15 +43,16 @@ async function compactImage(file){
     const blob=await new Promise(ok=>cv.toBlob(ok,'image/jpeg',0.72));return blob||file
   }catch{return file}
 }
-async function analyze(file){
+async function analyze(file,{signal}={}){
+  if(signal?.aborted)return null;
   const c=cfg(),endpoint=c.endpoint||'/api/expiry-vision';last={ok:false,reason:'starting',status:0};
   if(!endpoint){last={ok:false,reason:'no-endpoint',status:0};return null}
   const until=blockedUntil();if(Date.now()<until){last={ok:false,reason:'cooldown',status:0,retryAfterMs:until-Date.now()};return null}
-  const upload=await compactImage(file);const fd=new FormData();fd.append('image',upload,'expiry.jpg');
-  const send=async()=>{const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),4500);try{return await fetch(endpoint,{method:'POST',body:fd,headers:{'Accept':'application/json'},credentials:'omit',signal:ctl.signal})}finally{clearTimeout(timer)}};let r;try{r=await send()}catch(e){const until=block(60000);last={ok:false,reason:e?.name==='AbortError'?'timeout':'network-or-cors',status:0,retryAfterMs:until-Date.now()};return null}
-  if(!r.ok){let e=null;try{e=await r.json()}catch{};const up=Number(e?.upstreamStatus)||0,code=String(e?.code||''),overloaded=up===429||r.status===429||code==='openai_http_429';if(overloaded){const until=block(15*60*1000);last={ok:false,reason:'cooldown',status:r.status,code,upstreamStatus:up,retryAfterMs:until-Date.now()};return null}if((up>=500||r.status>=500)&&r.status!==504){await new Promise(ok=>setTimeout(ok,700));try{r=await send();e=null;if(!r.ok){try{e=await r.json()}catch{}}}catch{const until=block(60000);last={ok:false,reason:'network-or-cors',status:0,retryAfterMs:until-Date.now()};return null}}if(!r.ok){const until=(r.status>=500||up>=500)?block(2*60*1000):0;last={ok:false,reason:'http',status:r.status,code:String(e?.code||code),upstreamStatus:Number(e?.upstreamStatus)||up,message:String(e?.upstreamMessage||e?.error||'').slice(0,120),retryAfterMs:until?until-Date.now():0,bodyKeys:e&&typeof e==='object'?Object.keys(e).slice(0,12):[]};return null}}
+  const upload=await compactImage(file);if(signal?.aborted)return null;const fd=new FormData();fd.append('image',upload,'expiry.jpg');
+  const send=async()=>{const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),4500),cancel=()=>ctl.abort();signal?.addEventListener('abort',cancel,{once:true});if(signal?.aborted)ctl.abort();try{return await fetch(endpoint,{method:'POST',body:fd,headers:{'Accept':'application/json'},credentials:'omit',signal:ctl.signal})}finally{clearTimeout(timer);signal?.removeEventListener('abort',cancel)}};let r;try{r=await send()}catch(e){if(signal?.aborted)return null;const until=block(60000);last={ok:false,reason:e?.name==='AbortError'?'timeout':'network-or-cors',status:0,retryAfterMs:until-Date.now()};return null}
+  if(signal?.aborted)return null;if(!r.ok){let e=null;try{e=await r.json()}catch{};if(signal?.aborted)return null;const up=Number(e?.upstreamStatus)||0,code=String(e?.code||''),overloaded=up===429||r.status===429||code==='openai_http_429';if(overloaded){const until=block(15*60*1000);last={ok:false,reason:'cooldown',status:r.status,code,upstreamStatus:up,retryAfterMs:until-Date.now()};return null}if((up>=500||r.status>=500)&&r.status!==504){await new Promise(ok=>setTimeout(ok,700));if(signal?.aborted)return null;try{r=await send();e=null;if(!r.ok){try{e=await r.json()}catch{}}}catch{if(signal?.aborted)return null;const until=block(60000);last={ok:false,reason:'network-or-cors',status:0,retryAfterMs:until-Date.now()};return null}}if(!r.ok){const until=(r.status>=500||up>=500)?block(2*60*1000):0;last={ok:false,reason:'http',status:r.status,code:String(e?.code||code),upstreamStatus:Number(e?.upstreamStatus)||up,message:String(e?.upstreamMessage||e?.error||'').slice(0,120),retryAfterMs:until?until-Date.now():0,bodyKeys:e&&typeof e==='object'?Object.keys(e).slice(0,12):[]};return null}}
   let x;try{x=await r.json()}catch{last={ok:false,reason:'invalid-json',status:r.status};return null}
-  const n=normalize(x);
+  if(signal?.aborted)return null;const n=normalize(x);
   if(!valid(n)){last={ok:false,reason:'invalid-response',status:r.status,shape:x&&typeof x==='object'?Object.keys(x).slice(0,8):[]};return null}
   last={ok:true,reason:'ok',status:r.status,confidence:Number(n.confidence)};return n;
 }
