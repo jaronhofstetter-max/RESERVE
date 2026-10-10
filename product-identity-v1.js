@@ -9,6 +9,7 @@ const groups=[
  ['Hülsenfrüchte',[['Rote Linsen','rote linsen|red lentils'],['Grüne Linsen','grune linsen|green lentils'],['Braune Linsen','braune linsen|brown lentils'],['Kichererbsen','kichererbse|kichererbsen'],['Kidneybohnen','kidneybohne|kidneybohnen|kidney beans'],['Borlottibohnen','borlottibohnen|borlotti']]],
  ['Reis',[['Basmatireis','basmati|basmatireis'],['Jasminreis','jasminreis|jasmine rice'],['Risottoreis','risottoreis|arborio|carnaroli']]],
  ['Gemüse & Früchte',[['Tomaten','tomate|tomaten|cherrytomate|cherrytomaten|cocktailtomate|cocktailtomaten'],['Zwiebel','zwiebel|zwiebeln'],['Knoblauch','knoblauch|knoblauchzehe|knoblauchzehen'],['Brokkoli','brokkoli|broccoli'],['Karotte','karotte|karotten|mohre|mohren|ruebli|rubli'],['Zucchini','zucchini|zucchetti'],['Kartoffeln','kartoffel|kartoffeln'],['Blumenkohl','blumenkohl|karfiol'],['Aubergine','aubergine|auberginen|melanzani'],['Apfel','apfel'],['Zitrone','zitrone|zitronen']]],
+ ['Gebäck & Snacks',[['Buttergebäck','buttergeback|buttergebaeck|petit beurre'],['Kekse','keks|kekse|biscuit|biscuits|cookie|cookies|sables'],['Reiswaffeln','reiswaffel|reiswaffeln']]],
  ['Weitere',[['Tofu','tofu'],['Haferflocken','haferflocken'],['Butter','butter'],['Eier','ei|eier'],['Milch','milch|vollmilch'],['Naturjoghurt','naturjoghurt|naturjogurt']]]
 ];
 const rules=groups.flatMap(([family,items])=>items.map(([ingredient,pattern])=>({family,ingredient,test:new RegExp('(?:^| )('+pattern+')(?: |$)')})));
@@ -19,5 +20,6 @@ function analyze(name){const n=norm(name);if(!n||excluded.test(n)||/(?:^| )(?:mi
  const hit=hits[0];if((hit.ingredient==='Milch'&&/kokos|mandel|hafer|soja|schokol/.test(n))||(hit.ingredient==='Naturjoghurt'&&/vanill|schokol|erdbeer|frucht/.test(n)))return{state:'unknown',ingredient:'',family:'',candidates:[]};
  return{state:'recognized',ingredient:hit.ingredient,family:hit.family,candidates:[hit.ingredient]};
 }
-window.RESERVE_PRODUCT_IDENTITY={version:'1.0',analyze,options:()=>rules.map(x=>x.ingredient)};
+function compatible(name,ingredient){const baked=/(geback|gebaeck|biscuit|keks|cookie|sables|waffel|kuchen|cake)/.test(norm(name)),plainRice=/^(reis|basmatireis|jasminreis|langkornreis|vollkornreis|risottoreis|rice)$/.test(norm(ingredient));return !(baked&&plainRice);}
+window.RESERVE_PRODUCT_IDENTITY={version:'1.1',analyze,compatible,options:()=>rules.map(x=>x.ingredient)};
 })();

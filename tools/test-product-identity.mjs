@@ -7,6 +7,10 @@ const api=c.RESERVE_PRODUCT_IDENTITY,k=c.RESERVE_PRODUCT_KNOWLEDGE,m=c.RESERVE_I
 const cases=[['Agnesi Fusilli N° 78','Fusilli'],['Barilla Spaghetti No 5','Spaghetti'],['Pasta Penne Rigate','Penne'],['Bio Rote Linsen','Rote Linsen'],['Alnatura Olivenöl extra vergine','Olivenöl'],['Rindshackfleisch 300 g','Rinderhackfleisch'],['Broccoli frisch','Brokkoli']];for(const [name,expected]of cases)assert.equal(api.analyze(name).ingredient,expected,name);
 for(const name of ['Produkt 7612345678901','Kichererbsen Mehl','Poulet mit Reis','Naturjoghurt Vanille','Milch Schokolade','Tomaten Sauce'])assert.equal(api.analyze(name).state,'unknown',name);
 assert.equal(api.analyze('Spaghetti Fusilli').state,'ambiguous');
+for(const name of ['Buttergebäck','Schweizer Buttergebäck','Petit Beurre','Reiswaffeln','Buttergebäck mit Reis'])assert.equal(m(name,'Reis'),false,name);
+k.confirm({barcode:'7612345678991',n:'Buttergebäck',q:'500 g'},{ingredient:'Reis'});assert.equal(m('Buttergebäck','Reis'),false,'A stale rice correction cannot turn butter biscuits into rice');
+assert.notEqual(k.recognize({barcode:'7612345678991'}).ingredient.value,'Reis');
+k.confirm({barcode:'7612345678991',n:'Buttergebäck',q:'500 g'});assert.equal(k.recognize({barcode:'7612345678991'}).ingredient.value,'Buttergebäck');
  k.confirm({barcode:'7612345678990',n:'Spaghetti Fusilli',q:'500 g'},{ingredient:'Fusilli'});assert.ok(m('Spaghetti Fusilli','Fusilli'));assert.equal(m('Spaghetti Fusilli','Spaghetti'),false);
 for(const [a,b]of [['Fusilli','Spaghetti'],['Rote Linsen','Grüne Linsen'],['Rindshackfleisch','Schweinehackfleisch'],['Olivenöl','Rapsöl']])assert.equal(m(a,b),false,`${a}/${b}`);
 assert.ok(m('Agnesi Fusilli','Fusilli'));assert.ok(m('Penne Rigate','Pasta'));assert.ok(m('Rindshackfleisch','Rinderhackfleisch'));
