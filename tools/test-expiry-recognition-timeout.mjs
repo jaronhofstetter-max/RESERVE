@@ -26,3 +26,15 @@ const success=harness();const done=success.ctx.RESERVE_EXPIRY_CAMERA.processFile
 const cloud=harness();cloud.cloud();const cloudJob=cloud.ctx.RESERVE_EXPIRY_CAMERA.processFile({});await flush();assert.ok(cloud.signal());cloud.advance(10000);await cloudJob;assert.equal(cloud.signal().aborted,true);cloud.resolveCloud({date:'2026-11-14',precision:'day',confidence:.99});await flush();assert.equal(cloud.field.value,'');assert.equal(cloud.status().textContent,'MHD nicht erkannt, bitte manuell eintragen.');
 const manual=harness();const manualJob=manual.ctx.RESERVE_EXPIRY_CAMERA.processFile({});await flush();manual.field.value='2027-03-01';manual.ctx.RESERVE_EXPIRY_CAMERA.manualDateChanged(manual.field);await manualJob;manual.resolveNative('Best before 14.11.2026');await flush();manual.advance(10000);assert.equal(manual.field.value,'2027-03-01');assert.equal(manual.status().textContent,'');
 console.log('MHD spinner, exact 10-second deadline, success, cloud abort and late/manual input protection: OK');
+// Early success must skip unused image work while keeping every fallback variant available.
+const lazy=harness();let canvasCount=0,closed=0;const create=lazy.ctx.document.createElement;
+lazy.ctx.document.createElement=tag=>{if(tag==='canvas')canvasCount++;return create(tag)};
+lazy.ctx.createImageBitmap=async()=>({width:100,height:50,close(){closed++}});
+const prepared=await lazy.ctx.RESERVE_EXPIRY_CAMERA.prepareVariants({});assert.equal(canvasCount,0);
+assert.equal(prepared.length,5);assert.equal(prepared[0].name,'original layout');assert.equal(prepared[0].psm,6);
+const first=prepared[0].canvas;assert.equal(canvasCount,1);assert.equal(first.width,173);assert.equal(prepared[0].canvas,first);assert.equal(canvasCount,1);
+void prepared[1].canvas;assert.equal(canvasCount,2);prepared.dispose();assert.equal(closed,1);
+const slow=await lazy.ctx.RESERVE_EXPIRY_CAMERA.prepareVariants({},'fallback');const before=canvasCount;assert.ok(slow.length>=6);void slow[0].canvas;assert.equal(canvasCount,before+1);slow.dispose();assert.equal(closed,2);
+success.ctx.RESERVE_EXPIRY_CAMERA.confirmMetric('2026-11-14');const summary=success.ctx.RESERVE_EXPIRY_CAMERA.performanceSummary();assert.equal(summary.confirmed,1);assert.equal(summary.correct,1);assert.equal(summary.correctWithinFiveSeconds,1);assert.equal(summary.targetMs,5000);assert.equal(summary.limitMs,10000);assert.ok(success.ctx.RESERVE_EXPIRY_CAMERA.metrics()[0].passes.length>=2);
+assert.equal(h.ctx.RESERVE_EXPIRY_CAMERA.performanceSummary().confirmedAccuracy,null);assert.equal(h.ctx.RESERVE_EXPIRY_CAMERA.performanceSummary().timeouts,1);
+console.log('Lazy original/fallback variants, bitmap release and honest speed/accuracy summary: OK');
