@@ -11,3 +11,10 @@ console.log('REKEK regression: split quantities, wrapped alternatives, repeated 
 
 assert.equal(p.parseText('example.ch\nSuppe\nZutaten\n2½ EL\nÖl\nZubereitung\nKochen.').ingredients,'2½ EL Öl');
 assert.equal(p.parseText('example.ch\nSuppe\nZutaten\n200 g Gemüse\nZubereitung\nKochen.').name,'Suppe');
+
+const timeColumns=p.parseText('Suppe\n10 Min. 15 Min.\nVorbereitungszeit Kochzeit\nZutaten\n120 g Gemüse (alternativ:\nKürbis oder Sellerie)\n1 TL Sauce mit\nSojasauce und Essig, mit\nZitrone\n¼ Bund Petersilie\nZubereitung\nSchritt 1\n120 g Gemüse – 1 TL Sauce\n\nGemüse garen.');
+assert.equal(timeColumns.prepMinutes,10);assert.equal(timeColumns.cookMinutes,15);
+assert.equal(timeColumns.ingredients,'120 g Gemüse (alternativ: Kürbis oder Sellerie)\n1 TL Sauce mit Sojasauce und Essig, mit Zitrone\n¼ Bund Petersilie');
+assert.equal(timeColumns.steps,'Gemüse garen.');
+assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient('¼ Bund Petersilie').unit,'bund');
+assert.equal(p.parseText('Suppe\nZubereitung\n200 g Gemüse kochen.\n\nServieren.').steps,'200 g Gemüse kochen.\nServieren.');
