@@ -94,5 +94,10 @@ assert.equal(p.parseCardSteps('1. Mischen.\n2 EL Wasser zugeben.\n2. Formen.\n3.
 assert.equal(p.cardHeaderRegions([], {top:100},600,800,90).title,null);
 const titleRegion=p.cardHeaderRegions([{words:[{text:'Langer',bbox:box(600,100,900,240)},{text:'Titel',bbox:box(920,100,1100,180)}]}],{top:340},1500,1500,250).title;
 assert.ok(titleRegion.y1<210);assert.ok(titleRegion.x0<500);
+const numericUnitRows=rows.map((r,i)=>({...r,words:i?[]:[{text:'500',bbox:box(10,40,50,55)},{text:'9',bbox:box(55,40,65,55)}]}));
+assert.ok(p.ingredientRowBoxes([labels.concat(numericUnitRows),labels.concat(numericUnitRows)])[0].measureBBox);
+assert.equal(p.reviewMeasuredReadings(malformed,['500 9','500 9']).measureReread,false);
+assert.equal(p.reviewCardMetadata(['Omas Königsberger Klopse ¢','Omas Königsberger Klopse ¢'],[]).name,'Omas Königsberger Klopse');
+assert.equal(p.reviewCardMetadata(['Gericht für 99 ¢','Gericht für 99 ¢'],[]).name,'Gericht für 99 ¢');
 console.log('Card refinements: punctuation preserves digits, literal amount rereads reject conflicting numbers, serving/title disagreement rejection, Spritzer remains unconvertible, and sequential preparation markers passed.');
 
