@@ -55,8 +55,26 @@ try{
   assert.equal(await page.locator('#personalConfirmed').isChecked(),false);
   assert.ok((await page.locator('#personalOCREvidence').inputValue()).includes('Unlesbare Karte'));
   assert.ok(!(await page.locator('#personalRaw').inputValue()).includes('Nachlesung PSM'));
+  // Pixel-divider card with two conflicting amounts. These are mocked reads,
+  // deliberately unrelated to recipe reference labels or real-photo accuracy.
+  await page.evaluate(()=>{RESERVE_PERSONAL_RECIPES.edit();let calls=0;const bbox=(x0,y0,x1,y1)=>({x0,y0,x1,y1});const column={text:'Zutaten:\n500 g Fleisch\n1 Ei\n2 EL Kräuter\n1 TL Senf\n1 EL Mehl',lines:[{text:'Zutaten:',bbox:bbox(8,5,120,25)},...['500 g Fleisch','1 Ei','2 EL Kräuter','1 TL Senf','1 EL Mehl'].map((text,i)=>({text,bbox:bbox(10,50+i*50,290,75+i*50)}))]};window.Tesseract={createWorker:async()=>({setParameters:async()=>{},terminate:async()=>{},recognize:async()=>{calls++;let data;if(calls===1)data={text:'Unlesbare Karte'};else if(calls===2||calls===3)data={text:'Vollbild '+calls,words:Array.from({length:6},(_,i)=>({text:'1',bbox:bbox(100,200+i*45,110,220+i*45)}))};else if(calls===4||calls===6)data={...column,text:column.text+(calls===6?'\nAbweichung':'')};else if(calls===5||calls===7)data={text:'1. Mischen.\n2. Formen.\n3. Garen.'+(calls===7?'\nAbweichung':'')};else data={text:['500 g Fleisch','800 g Fleisch','1 Ei','1 Ei','2 EL Kräuter','2 EL Kräuter','1 TL Senf','','1 EL Mehl','1 EL Mehl'][calls-8]||''};return{data}}})};});
+  const card=Buffer.from(await page.evaluate(()=>{const c=document.createElement('canvas');c.width=600;c.height=800;const x=c.getContext('2d');x.fillStyle='white';x.fillRect(0,0,600,800);x.fillStyle='black';x.fillRect(258,150,2,600);return c.toDataURL('image/png').split(',')[1]}),'base64');
+  await page.locator('#personalScreenshots').setInputFiles({name:'row-review.png',mimeType:'image/png',buffer:card});
+  await page.waitForFunction(()=>document.getElementById('personalStatus').textContent.includes('Zeilenweise Nachlesung'));
+  assert.equal(await page.locator('#personalRowReview tr').count(),6);
+  assert.equal(await page.locator('#personalName').inputValue(),'');
+  assert.equal(await page.locator('#personalPortions').inputValue(),'');
+  assert.ok((await page.locator('#personalIngredients').inputValue()).startsWith('Menge ungeklärt: 500 g Fleisch\n1 Ei'));
+  assert.ok((await page.locator('#personalIngredients').inputValue()).includes('Menge ungeklärt: 1 TL Senf'));
+  assert.ok((await page.locator('#personalOCREvidence').inputValue()).includes('800 g Fleisch'));
+  assert.equal(await page.locator('#personalConfirmed').isChecked(),false);
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
+  await page.screenshot({path:`build/rekek-browser-review/ingredient-rows-${width}.png`,fullPage:true});
+  await page.evaluate(()=>RESERVE_PERSONAL_RECIPES.edit());
+  assert.equal(await page.locator('#personalRowReview').isVisible(),false);
   assert.deepEqual(errors,[]);
   await page.close();
  }
  console.log('REKEK Chromium review: mobile and desktop, original photo upload, candidate choice, confirmation reset, save gating, confirmed save, reset and JSON import passed. Mock OCR only.');
 }finally{await browser.close();server.close();}
+

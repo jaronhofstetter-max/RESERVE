@@ -45,3 +45,26 @@ const divider=p.findRecipeDivider(pixels);assert.ok(divider);assert.ok(Math.abs(
 const left='Zutaten:\n500 g Fleisch\n1 Ei\n2 EL Petersilie\n1 TL Senf\n1 EL Mehl',right='1. Mischen.\n2. Formen.\n3. Garen.';
 assert.ok(p.agreedRecipeColumns([left,left],[right,right]));assert.equal(p.agreedRecipeColumns([left,left.replace('500','800')],[right,right]),null);assert.equal(p.agreedRecipeColumns([left,left],[right,'2. Formen.']),null);assert.equal(p.agreedRecipeColumns([left.replace('Zutaten:','Liste'),left.replace('Zutaten:','Liste')],[right,right]),null);
 console.log('Browser card fallback: pixel divider, blank rejection, exact OCR column agreement and disagreement rejection passed.');
+
+const box=(x0,y0,x1,y1)=>({x0,y0,x1,y1});
+const numbers=Array.from({length:6},(_,i)=>({text:String(i+1),bbox:box(100,50+i*20,110,60+i*20)}));
+assert.equal(p.quantityColumnStart([{words:numbers}],{top:30,bottom:190,centerX:240},600),95);
+assert.equal(p.quantityColumnStart([{words:numbers.slice(0,4)}],{top:30,bottom:190,centerX:240},600),null);
+const labels=[{text:'Zutaten:',bbox:box(5,5,100,20)}];
+const rows=Array.from({length:5},(_,i)=>({text:`${i+1} g Zutat`,bbox:box(5,40+i*30,180,55+i*30)}));
+assert.equal(p.ingredientRowBoxes([labels.concat(rows),labels.concat(rows)]).length,5);
+assert.equal(p.ingredientRowBoxes([rows,rows]).length,0);
+assert.equal(p.ingredientRowBoxes([labels.concat(rows.slice(0,4)),labels.concat(rows.slice(0,4))]).length,0);
+const conflict=p.reviewIngredientReadings(['500 g Fleisch','800 g Fleisch']);assert.equal(conflict.agreement,false);assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient(conflict.expression).amount,null);
+assert.equal(p.reviewIngredientReadings(['• 1 Ei','1 Ei']).agreement,true);
+assert.equal(p.reviewIngredientReadings(['1 Ei','']).agreement,false);
+assert.equal(p.reviewIngredientReadings(['',''],['4 TL Senf']).expression,'Menge ungeklärt: 4 TL Senf');
+assert.equal(p.reviewIngredientReadings(['o 1 Ei','1 Ei']).agreement,false);
+assert.equal(p.reviewIngredientReadings(['500 a Fleisch','500 g Fleisch']).agreement,false);
+assert.equal(p.reviewIngredientReadings(['500 g Fleisch','500 g Fleisch']).reviewRequired,true);
+assert.equal(p.reviewIngredientReadings(['© 500 ml Brühe','© 500 ml Brühe']).expression,'500 ml Brühe');
+assert.equal(p.reviewIngredientReadings(['500 q Fleisch','500 q Fleisch']).quantityClear,false);
+assert.equal(p.reviewIngredientReadings(['e1 Ei','e1 Ei']).quantityClear,false);
+assert.equal(p.reviewIngredientReadings(['Salz & Pfeffer','Salz & Pfeffer']).quantityClear,false);
+console.log('Ingredient row review: pixel-independent numeric alignment, literal label gate, paired rows, conflicting quantity suppression and preserved OCR evidence passed.');
+
