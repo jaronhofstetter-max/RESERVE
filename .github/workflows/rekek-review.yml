@@ -1,0 +1,34 @@
+name: REKEK browser review
+on:
+  pull_request:
+    paths:
+      - 'personal-recipe*.js'
+      - 'tools/*rekek*'
+      - '.github/workflows/rekek-review.yml'
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium test runtime
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Check parser and review flow
+        run: |
+          node tools/test-personal-recipe-parser.mjs
+          node tools/test-rekek.mjs
+          node tools/e2e-rekek-review.mjs
+      - name: Save review screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rekek-browser-review
+          path: build/rekek-browser-review
+          if-no-files-found: ignore
