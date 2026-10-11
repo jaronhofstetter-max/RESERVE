@@ -68,3 +68,26 @@ assert.equal(p.reviewIngredientReadings(['e1 Ei','e1 Ei']).quantityClear,false);
 assert.equal(p.reviewIngredientReadings(['Salz & Pfeffer','Salz & Pfeffer']).quantityClear,false);
 console.log('Ingredient row review: pixel-independent numeric alignment, literal label gate, paired rows, conflicting quantity suppression and preserved OCR evidence passed.');
 
+for(const raw of ['‚ 500 ml Brühe','‚100 ml Sahne',', 1 Spritzer Zitronensaft'])assert.equal(p.reviewIngredientReadings([raw,raw]).quantityClear,true);
+assert.equal(p.reviewIngredientReadings([',5 l Wasser',',5 l Wasser']).quantityClear,false);
+assert.equal(p.reviewIngredientReadings(['0 g Salz','0 g Salz']).quantityClear,false);
+assert.equal(p.reviewIngredientReadings(['Salz & Pfeffer','Salz & Pfeffer']).expression,'Salz & Pfeffer');
+assert.equal(p.reviewIngredientReadings(['Salz & Pfeffer','Salz & Pfeffer']).noQuantity,true);
+assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient('1 Spritzer Zitronensaft').unit,'spritzer');
+assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient('1 Spritzer Zitronensaft').uncertain,true);
+const malformed=p.reviewIngredientReadings(['500 a Fleisch','500 a Fleisch']);
+assert.equal(p.reviewMeasuredReadings(malformed,['500 g','500 g']).expression,'500 g Fleisch');
+assert.equal(p.reviewMeasuredReadings(malformed,['500 g','500 ml']).measureReread,false);
+assert.equal(p.reviewMeasuredReadings(malformed,['500 a','500 a']).measureReread,false);
+assert.equal(p.reviewMeasuredReadings(malformed,['500 g','800 g']).measureReread,false);
+assert.equal(p.reviewMeasuredReadings(p.reviewIngredientReadings(['500 g Fleisch','800 g Fleisch']),['500 g','500 g']).quantityClear,false);
+assert.equal(p.reviewCardMetadata(['Schneller Gemüsetopf ♡','Schneller Gemüsetopf'],['für 6 Personen','für 6 Personen ♡']).name,'Schneller Gemüsetopf');
+assert.equal(p.reviewCardMetadata(['Schneller Gemüsetopf','Gemüsetopf'],['für 6 Personen','für 4 Personen']).name,'');
+assert.equal(p.reviewCardMetadata([],['für 6 Personen','6']).portions,'');
+assert.equal(p.reviewCardMetadata([],['für 6 Personen','für 6 Personen']).portions,'6');
+const sequential=p.parseCardSteps('1. Zutaten mischen.\n2 Formen.\n15 Minuten ruhen lassen.\n3. Garen.');assert.equal(sequential.count,3);assert.ok(sequential.steps.includes('Formen. 15 Minuten'));assert.equal(sequential.sequenceComplete,true);
+assert.equal(p.parseCardSteps('1. Mischen.\n2. Formen.\n4. Garen.').sequenceComplete,false);
+assert.equal(p.parseCardSteps('1. Mischen.\n2 EL Wasser zugeben.\n2. Formen.\n3. Garen.').count,3);
+assert.equal(p.cardHeaderRegions([], {top:100},600,800,90).title,null);
+console.log('Card refinements: punctuation preserves digits, literal amount rereads reject conflicting numbers, serving/title disagreement rejection, Spritzer remains unconvertible, and sequential preparation markers passed.');
+
