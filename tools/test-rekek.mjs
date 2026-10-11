@@ -25,3 +25,9 @@ assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient('5 Esslöffel Sirup
 assert.equal(p.parseText('Obst\nZutaten\nObst\nZubereitung\nWaschen.\nErfasst von: Autor\nStammt von Wikipedia, Hauptautor war Test').steps,'Waschen.');
 
 assert.equal(p.parseText('Kuchen\nZubereitung\n200 g Mehl unterheben.\n\nBacken.').steps,'200 g Mehl unterheben.\nBacken.');
+
+const multiple=p.parseCandidates('Reisgericht\nZutaten\n200 g Reis\nZubereitung\nReis kochen.\n\nGemüsesuppe\n4 Personen\nZutaten:\n1 l Wasser\n200 g Gemüse\nZubereitung\nGemüse kochen.');
+assert.equal(multiple.candidates.length,2);assert.equal(multiple.candidates[0].name,'Reisgericht');assert.equal(multiple.candidates[1].name,'Gemüsesuppe');assert.equal(multiple.candidates[0].steps,'Reis kochen.');assert.equal(multiple.candidates[1].ingredients,'1 l Wasser\n200 g Gemüse');assert.equal(multiple.reviewRequired,true);
+const broken=p.parseCandidates('Reisgericht\nZutaten\n200 g Reis\nZubereitung\nKochen.\nGemüsesuppe\nZutaten\n200 g Gemüse');assert.equal(broken.candidates.length,0);assert.equal(broken.issue,'recipe-boundaries-uncertain');
+const one=p.parseCandidates('Kuchen\nZutaten\n200 g Mehl\nFür die Sauce:\n20 g Butter\nZubereitung\nBacken.');assert.equal(one.candidates.length,1);assert.equal(one.multipleRecipes,false);assert.equal(one.candidates[0].ingredients,'200 g Mehl\n20 g Butter');
+console.log('Browser recipe candidates: explicit recipe boundaries, serving metadata, separate steps, incomplete section rejection and sauce preservation passed. Synthetic text cases only.');
