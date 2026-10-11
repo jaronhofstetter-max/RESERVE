@@ -137,15 +137,20 @@ function reviewMeasuredReadings(row,reads){
 }
 function cardHeaderRegions(reads,divider,width,height,front){
  const rows=ocrLines(reads[0]),titles=rows.filter(l=>l.bbox.y1<divider.top&&l.bbox.x1-l.bbox.x0>width*.25&&l.bbox.y1-l.bbox.y0>height*.015&&/[a-zäöüß]{3}/i.test(l.text)&&!/\b(?:personen|portionen|servings)\b/i.test(l.text));
- const title=titles.sort((a,b)=>(b.bbox.y1-b.bbox.y0)-(a.bbox.y1-a.bbox.y0))[0];
- let servings=null;for(const l of reads.flatMap(ocrLines)){if(l.bbox.y1>divider.top)continue;const ws=l.words||[];for(let i=0;i+2<ws.length;i++){if(/^(?:für|for)$/i.test(clean(ws[i].text))&&/^\d+$/.test(clean(ws[i+1].text))&&/^(?:personen|portionen|people|servings)$/i.test(clean(ws[i+2].text))&&ws.slice(i,i+3).every(w=>w.bbox)){const a=ws.slice(i,i+3).map(w=>w.bbox);servings={x0:Math.min(...a.map(b=>b.x0)),y0:Math.min(...a.map(b=>b.y0)),x1:Math.max(...a.map(b=>b.x1)),y1:Math.max(...a.map(b=>b.y1))};break;}}if(servings)break;}
- const pad=(b,wide=false)=>b?{x0:Math.max(0,wide?Math.min(front,b.x0-width*.025):b.x0-8),y0:Math.max(0,b.y0-8),x1:Math.min(width,b.x1+width*.025),y1:Math.min(divider.top,b.y1+8)}:null;
- return{title:pad(title?.bbox,true),servings:pad(servings)};
+ let title=titles.sort((a,b)=>(b.bbox.y1-b.bbox.y0)-(a.bbox.y1-a.bbox.y0))[0];
+ const headerWords=(reads[0]?.words||rows.flatMap(l=>l.words)).filter(w=>w.bbox&&w.bbox.y1<divider.top&&w.bbox.x0>front-width*.08&&w.bbox.y1-w.bbox.y0>height*.018&&/[a-zäöüß]{3}/i.test(w.text));
+ const tolerance=median(headerWords.map(w=>w.bbox.y1-w.bbox.y0))*.55,groups=[];
+ for(const word of headerWords){const cy=(word.bbox.y0+word.bbox.y1)/2,group=groups.find(g=>Math.abs(g.cy-cy)<tolerance);if(group)group.words.push(word);else groups.push({cy,words:[word]});}
+ const wordTitles=groups.map(g=>{const heights=g.words.map(w=>w.bbox.y1-w.bbox.y0),y0=Math.min(...g.words.map(w=>w.bbox.y0));return{height:median(heights),bbox:{x0:Math.min(...g.words.map(w=>w.bbox.x0)),y0,x1:Math.max(...g.words.map(w=>w.bbox.x1)),y1:Math.min(Math.max(...g.words.map(w=>w.bbox.y1)),y0+Math.min(...heights)*1.15)}};}).filter(g=>g.bbox.x1-g.bbox.x0>width*.25).sort((a,b)=>b.height-a.height);
+ if(wordTitles.length)title=wordTitles[0];
+ let servings=null,expectedPortions='';for(const l of reads.flatMap(ocrLines)){if(l.bbox.y1>divider.top)continue;const ws=l.words||[];for(let i=0;i+2<ws.length;i++){if(/^(?:für|for)$/i.test(clean(ws[i].text))&&/^\d+$/.test(clean(ws[i+1].text))&&/^(?:personen|portionen|people|servings)$/i.test(clean(ws[i+2].text))&&ws.slice(i,i+3).every(w=>w.bbox)){const a=ws.slice(i,i+3).map(w=>w.bbox);servings={x0:Math.min(...a.map(b=>b.x0)),y0:Math.min(...a.map(b=>b.y0)),x1:Math.max(...a.map(b=>b.x1)),y1:Math.max(...a.map(b=>b.y1))};expectedPortions=clean(ws[i+1].text);break;}}if(servings)break;}
+ const pad=(b,wide=false)=>b?{x0:Math.max(0,wide?Math.max(front,b.x0-width*.15):b.x0-8),y0:Math.max(0,b.y0-8),x1:Math.min(width,b.x1+width*.025),y1:Math.min(divider.top,b.y1+8)}:null;
+ return{title:pad(title?.bbox,true),servings:pad(servings),expectedPortions};
 }
-function reviewCardMetadata(titleReads,servingReads){
- const titles=titleReads.map(s=>clean(s).replace(/\s*[♡♥❤©]+\s*$/u,'').replace(/\s+/g,' '));
+function reviewCardMetadata(titleReads,servingReads,expectedPortions=''){
+ const titles=titleReads.map(s=>clean(s).replace(/\s*[♡♥❤©|]+\s*$/u,'').replace(/\s+/g,' '));
  const name=titles.length===2&&titles[0]===titles[1]&&titles[0].length<=200&&titles[0].split(' ').length>=2&&!/^\d/.test(titles[0])?titles[0]:'';
- const values=servingReads.map(s=>String(s).match(/(?:für|for)\s*(\d+)\s*(?:personen|portionen|people|servings)\b/i)?.[1]||'');
+ const values=servingReads.map(s=>{const literal=String(s).match(/(?:für|for)\s*(\d+)\s*(?:personen|portionen|people|servings)\b/i)?.[1];if(literal)return literal;const value=String(s).match(/^(?:für|for)\s*(\d+)\s+/i)?.[1];return expectedPortions&&value===expectedPortions?value:'';});
  const portions=values.length===2&&values[0]&&values[0]===values[1]&&Number(values[0])>=1&&Number(values[0])<=100?values[0]:'';
  return{name,portions,reviewRequired:true};
 }

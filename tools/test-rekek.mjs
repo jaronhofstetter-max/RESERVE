@@ -85,9 +85,14 @@ assert.equal(p.reviewCardMetadata(['Schneller Gemüsetopf ♡','Schneller Gemüs
 assert.equal(p.reviewCardMetadata(['Schneller Gemüsetopf','Gemüsetopf'],['für 6 Personen','für 4 Personen']).name,'');
 assert.equal(p.reviewCardMetadata([],['für 6 Personen','6']).portions,'');
 assert.equal(p.reviewCardMetadata([],['für 6 Personen','für 6 Personen']).portions,'6');
+assert.equal(p.reviewCardMetadata([],['für 6 Fersonen','für 6 Fersonen'],'6').portions,'6');
+assert.equal(p.reviewCardMetadata([],['für 6 Fersonen','für 4 Fersonen'],'6').portions,'');
+assert.equal(p.reviewCardMetadata([],['für 6 Fersonen','für 6 Fersonen']).portions,'');
 const sequential=p.parseCardSteps('1. Zutaten mischen.\n2 Formen.\n15 Minuten ruhen lassen.\n3. Garen.');assert.equal(sequential.count,3);assert.ok(sequential.steps.includes('Formen. 15 Minuten'));assert.equal(sequential.sequenceComplete,true);
 assert.equal(p.parseCardSteps('1. Mischen.\n2. Formen.\n4. Garen.').sequenceComplete,false);
 assert.equal(p.parseCardSteps('1. Mischen.\n2 EL Wasser zugeben.\n2. Formen.\n3. Garen.').count,3);
 assert.equal(p.cardHeaderRegions([], {top:100},600,800,90).title,null);
+const titleRegion=p.cardHeaderRegions([{words:[{text:'Langer',bbox:box(600,100,900,240)},{text:'Titel',bbox:box(920,100,1100,180)}]}],{top:340},1500,1500,250).title;
+assert.ok(titleRegion.y1<210);assert.ok(titleRegion.x0<500);
 console.log('Card refinements: punctuation preserves digits, literal amount rereads reject conflicting numbers, serving/title disagreement rejection, Spritzer remains unconvertible, and sequential preparation markers passed.');
 
