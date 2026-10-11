@@ -37,3 +37,11 @@ const decorated=p.parseText('_ PAPRIKA-RAHM-HÄHNCHEN\nMIT BANDNUDELN\nZutaten:\
 assert.equal(decorated.ingredients,'* 2 Hähnchenbrüste\n* 200g Bandnudeln\n* Salz, Pfeffer');assert.equal(decorated.steps,'Hähnchenbrüste in Stücke schneiden.\nBandnudeln kochen.');
 assert.equal(p.parseText('Suppe\n_ Zutaten:\n200 g Gemüse\n— Zubereitung:\nKochen.').steps,'Kochen.');
 console.log('Observed live photo OCR regression: decorated section heading keeps preparation out of ingredients.');
+
+const pixels={width:100,height:160,data:new Uint8ClampedArray(100*160*4).fill(255)};
+assert.equal(p.findRecipeDivider(pixels),null);
+for(let y=30;y<140;y++){const x=Math.round(43+.04*(y-80)),i=(y*100+x)*4;pixels.data[i]=pixels.data[i+1]=pixels.data[i+2]=0;}
+const divider=p.findRecipeDivider(pixels);assert.ok(divider);assert.ok(Math.abs(divider.centerX-43)<5);assert.ok(divider.bottom-divider.top>100);
+const left='Zutaten:\n500 g Fleisch\n1 Ei\n2 EL Petersilie\n1 TL Senf\n1 EL Mehl',right='1. Mischen.\n2. Formen.\n3. Garen.';
+assert.ok(p.agreedRecipeColumns([left,left],[right,right]));assert.equal(p.agreedRecipeColumns([left,left.replace('500','800')],[right,right]),null);assert.equal(p.agreedRecipeColumns([left,left],[right,'2. Formen.']),null);assert.equal(p.agreedRecipeColumns([left.replace('Zutaten:','Liste'),left.replace('Zutaten:','Liste')],[right,right]),null);
+console.log('Browser card fallback: pixel divider, blank rejection, exact OCR column agreement and disagreement rejection passed.');
