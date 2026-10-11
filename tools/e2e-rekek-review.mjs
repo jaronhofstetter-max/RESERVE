@@ -46,6 +46,15 @@ try{
   assert.equal(await page.locator('#personalPortions').inputValue(),'');
   assert.equal(await page.locator('#personalSteps').inputValue(),'Zutaten mischen.\nOder backen.');
   assert.equal(await page.locator('#personalConfirmed').isChecked(),false);
+  await page.evaluate(()=>{RESERVE_PERSONAL_RECIPES.edit();let calls=0;window.cardReadCalls=0;window.Tesseract={createWorker:async()=>({setParameters:async()=>{},terminate:async()=>{},recognize:async()=>{window.cardReadCalls=++calls;return{data:{text:calls===1?'Unlesbare Karte':'Gemüsetopf\nZutaten:\n200 g Gemüse\n1 l Wasser\n2 Stück Kartoffeln\nZubereitung:\n1. Waschen.\n2. Kochen.\n3. Servieren.'}}}})};});
+  await page.locator('#personalScreenshots').setInputFiles({name:'reread.png',mimeType:'image/png',buffer});
+  await page.waitForFunction(()=>document.getElementById('personalStatus').textContent.includes('Lesarten stimmen'));
+  assert.equal(await page.evaluate(()=>window.cardReadCalls),3);
+  assert.equal(await page.locator('#personalName').inputValue(),'Gemüsetopf');
+  assert.equal(await page.locator('#personalIngredients').inputValue(),'200 g Gemüse\n1 l Wasser\n2 Stück Kartoffeln');
+  assert.equal(await page.locator('#personalConfirmed').isChecked(),false);
+  assert.ok((await page.locator('#personalOCREvidence').inputValue()).includes('Unlesbare Karte'));
+  assert.ok(!(await page.locator('#personalRaw').inputValue()).includes('Nachlesung PSM'));
   assert.deepEqual(errors,[]);
   await page.close();
  }
