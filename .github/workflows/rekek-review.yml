@@ -20,11 +20,16 @@ jobs:
         run: |
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
+      - name: Prepare production module integration
+        run: node tools/prepare-rekek-browser-build.mjs
       - name: Check parser and review flow
         run: |
           node tools/test-personal-recipe-parser.mjs
           node tools/test-rekek.mjs
           node tools/e2e-rekek-review.mjs
+          node tools/e2e-personal-recipes.mjs
+          node tools/e2e-rekek-import.mjs
+          node tools/e2e-personal-recipe-ocr.mjs
       - name: Save review screenshots
         if: always()
         uses: actions/upload-artifact@v4
