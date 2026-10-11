@@ -6,10 +6,10 @@ try{
  await page.addInitScript(()=>{const texts=['Gemüsetopf\nFür 2 Portionen\nZutaten\n200 g\nKarotten','1 bis 2 Prisen Salz\nSchritt-für-Schritt-Kochen\nleicht gemacht! Zum\nStarten antippen.','Zubereitung\nSchritt 1\nGemüse schneiden.\nSchritt 2\nGaren.\nErfasst von: Testautor'];let i=0;window.Tesseract={createWorker:async()=>({setParameters:async()=>{},recognize:async()=>({data:{text:texts[i++]||''}}),terminate:async()=>{}})};});
  await page.goto(`http://127.0.0.1:${server.address().port}/`);await page.waitForFunction(()=>window.RESERVE_PERSONAL_RECIPES&&window.RESERVE_REKEK);
  const result=await page.evaluate(async()=>{
-  RESERVE_PERSONAL_RECIPES.edit();const canvas=document.createElement('canvas');canvas.width=40;canvas.height=40;const blob=await new Promise(r=>canvas.toBlob(r));
+  RESERVE_PERSONAL_RECIPES.edit();document.getElementById('personalSameRecipe').checked=true;const canvas=document.createElement('canvas');canvas.width=40;canvas.height=40;const blob=await new Promise(r=>canvas.toBlob(r));
   await RESERVE_PERSONAL_RECIPES.importScreenshots(Array.from({length:3},(_,i)=>new File([blob],'page-'+i+'.png',{type:'image/png'})));
   const get=id=>document.getElementById(id),out={version:RESERVE_REKEK.version,name:get('personalName').value,ingredients:get('personalIngredients').value,steps:get('personalSteps').value,warning:get('personalUncertain').textContent,rangeUncertain:RESERVE_RECIPE_PARSER.ingredient('1 bis 2 Prisen Salz').uncertain};
-  RESERVE_PERSONAL_RECIPES.edit();out.newWarning=get('personalUncertain').textContent;out.newIngredients=get('personalIngredients').value;return out;
+  RESERVE_PERSONAL_RECIPES.edit();document.getElementById('personalSameRecipe').checked=true;out.newWarning=get('personalUncertain').textContent;out.newIngredients=get('personalIngredients').value;return out;
  });
  assert.equal(result.version,'0.3.0');assert.equal(result.name,'Gemüsetopf');assert.equal(result.ingredients,'200 g Karotten\n1 bis 2 Prisen Salz');assert.equal(result.steps,'Gemüse schneiden.\nGaren.');assert.ok(result.rangeUncertain);assert.match(result.warning,/1 Zutat/);assert.ok(!result.warning.includes('Prisen'));assert.equal(result.newWarning,'');assert.equal(result.newIngredients,'');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
  console.log('REKEK mobile import: split quantities, ranges, page noise, steps, concise warning and fresh editor OK. Mock OCR, not photo accuracy.');
