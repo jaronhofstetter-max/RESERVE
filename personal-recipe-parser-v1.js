@@ -118,7 +118,7 @@ function ingredientRowBoxes(passes){
 }
 function reviewIngredientReadings(reads,source=[]){
  // Punctuation bullets are removable; letters and digits are never repaired.
- const normalized=reads.map(s=>clean(s).replace(/^(?:[•·*+–-«»©]\s*|\.\s+)/, '').replace(/\s+/g,' '));
+ const normalized=reads.map(s=>clean(s).replace(/^(?:[•·*+–«»©-]\s*|\.\s+)/, '').replace(/\s+/g,' '));
  const agreed=normalized.length===2&&normalized[0]&&normalized[0]===normalized[1];
  const text=agreed?normalized[0]:(normalized.find(s=>s)||source.find(s=>s)||'Unlesbare Zutatenzeile');
  const quantityClear=!!agreed&&ingredient(text).amount!==null&&!/^\d+(?:[.,]\d+)?\s+(?![gl]\s)[a-z]\s+/i.test(text);
