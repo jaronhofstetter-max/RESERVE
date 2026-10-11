@@ -71,7 +71,7 @@ async function rereadRecipeCard(canvas,original,ticket){
  if(!smallDivider)return{accepted:null,evidence:evidence.join('\n')};
  const divider={...smallDivider,centerX:smallDivider.centerX/scale,top:smallDivider.top/scale,bottom:smallDivider.bottom/scale,referenceY:smallDivider.referenceY/scale};
  const margin=4/scale,x1=Math.floor(divider.centerX+Math.min(divider.slope*(divider.top-divider.referenceY),divider.slope*(divider.bottom-divider.referenceY))-margin),x2=Math.ceil(divider.centerX+Math.max(divider.slope*(divider.top-divider.referenceY),divider.slope*(divider.bottom-divider.referenceY))+margin),top=Math.floor(divider.top),bottom=Math.min(canvas.height,Math.ceil(divider.bottom));
- const front=K.quantityColumnStart(full,divider,canvas.width),leftX=front??0;
+ const front=K.quantityColumnStart(full,divider,canvas.width),leftX=front===null?0:Math.max(0,Math.floor(front-canvas.width*.03));
  const crop=(x,y,w,h,factor=1)=>{const c=document.createElement('canvas');c.width=Math.max(1,Math.round(w*factor));c.height=Math.max(1,Math.round(h*factor));c.getContext('2d').drawImage(canvas,x,y,w,h,0,0,c.width,c.height);return c;};
  if(x1<=leftX||x2>=canvas.width||bottom<=top)return{accepted:null,evidence:evidence.join('\n')};
  const factor=front===null?1:2,left=crop(leftX,top,x1-leftX,bottom-top,factor),right=crop(x2,top,canvas.width-x2,bottom-top),lr=[],rr=[];
@@ -85,7 +85,7 @@ async function rereadRecipeCard(canvas,original,ticket){
  const rows=[];
  for(const [i,row] of boxes.entries()){
   status('Zutatenzeile '+(i+1)+' von '+boxes.length+' wird nachgelesen …');
-  const b=row.bbox,x=Math.max(leftX,leftX+b.x0/factor-3),y=Math.max(top,top+b.y0/factor),endX=Math.min(x1,leftX+b.x1/factor+5),endY=Math.min(bottom,top+b.y1/factor);
+  const b=row.bbox,x=Math.max(front,leftX+b.x0/factor-3),y=Math.max(top,top+b.y0/factor),endX=Math.min(x1,leftX+b.x1/factor+5),endY=Math.min(bottom,top+b.y1/factor);
   if(endX<=x||endY<=y)return{accepted:null,evidence:evidence.join('\n')};
   const image=crop(x,y,endX-x,endY-y,3),reads=[];for(const mode of [7,6])reads.push((await read(image,mode)).text||'');
   const review=K.reviewIngredientReadings(reads,row.source);rows.push(review);evidence.push('Zutatenzeile '+(i+1)+' · Lesarten 7 / 6:',...reads);
