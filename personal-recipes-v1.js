@@ -57,7 +57,7 @@ function showRowReview(rows){
  const host=$('personalRowReview');host.replaceChildren();host.hidden=!rows.length;if(!rows.length)return;
  const heading=document.createElement('h3');heading.textContent='Zutatenzeilen prüfen';const note=document.createElement('p');note.textContent='Übereinstimmung ist keine Bestätigung. Abweichende Mengen bleiben ungeklärt. Jede Zeile am Original prüfen.';
  const table=document.createElement('table'),head=document.createElement('tr');for(const text of ['Zeile','Lesart 1','Lesart 2','Prüfung']){const th=document.createElement('th');th.textContent=text;head.append(th)}table.append(head);
- for(const [i,row] of rows.entries()){const tr=document.createElement('tr');for(const text of [String(i+1),row.reads[0]||'Nicht erkannt',row.reads[1]||'Nicht erkannt',row.agreement?'Stimmt überein · prüfen':'Menge ungeklärt']){const td=document.createElement('td');td.textContent=text;tr.append(td)}table.append(tr)}host.append(heading,note,table);
+ for(const [i,row] of rows.entries()){const tr=document.createElement('tr');for(const text of [String(i+1),row.reads[0]||'Nicht erkannt',row.reads[1]||'Nicht erkannt',row.quantityClear?'Stimmt überein · prüfen':'Menge ungeklärt']){const td=document.createElement('td');td.textContent=text;tr.append(td)}table.append(tr)}host.append(heading,note,table);
 }
 async function rereadRecipeCard(canvas,original,ticket){
  const K=window.RESERVE_REKEK;

@@ -118,10 +118,11 @@ function ingredientRowBoxes(passes){
 }
 function reviewIngredientReadings(reads,source=[]){
  // Punctuation bullets are removable; letters and digits are never repaired.
- const normalized=reads.map(s=>clean(s).replace(/^[•·*+–-]\s*/, '').replace(/\s+/g,' '));
+ const normalized=reads.map(s=>clean(s).replace(/^(?:[•·*+–-«»©]\s*|\.\s+)/, '').replace(/\s+/g,' '));
  const agreed=normalized.length===2&&normalized[0]&&normalized[0]===normalized[1];
  const text=agreed?normalized[0]:(normalized.find(s=>s)||source.find(s=>s)||'Unlesbare Zutatenzeile');
- return{reads:reads.slice(),source:source.slice(),agreement:!!agreed,reviewRequired:true,quantityInferred:false,expression:agreed?text:'Menge ungeklärt: '+text};
+ const quantityClear=!!agreed&&ingredient(text).amount!==null&&!/^\d+(?:[.,]\d+)?\s+(?![gl]\s)[a-z]\s+/i.test(text);
+ return{reads:reads.slice(),source:source.slice(),agreement:!!agreed,quantityClear,reviewRequired:true,quantityInferred:false,expression:quantityClear?text:'Menge ungeklärt: '+text};
 }
 function validRecord(r){return r&&/^personal-[a-z0-9-]+$/.test(r.id)&&typeof r.name==='string'&&r.name.length>0&&r.name.length<=200&&Number.isFinite(r.portions)&&r.portions>0&&r.portions<=100&&Array.isArray(r.ingredientLines)&&r.ingredientLines.length>0&&r.ingredientLines.length<=100&&r.ingredientLines.every(s=>typeof s==='string'&&s.length>0&&s.length<=500)&&Array.isArray(r.steps)&&r.steps.length>0&&r.steps.length<=100&&r.steps.every(s=>typeof s==='string'&&s.length>0&&s.length<=3000)&&['Alles','Vegetarisch','Vegan'].includes(r.diet)&&[r.prepMinutes,r.cookMinutes].every(n=>n===null||Number.isFinite(n)&&n>=0&&n<=1440)&&(!r.source||typeof r.source==='string'&&r.source.length<=2000)}
 function toRecipe(r,image=''){const parsed=r.ingredientLines.map(ingredient),pantryReady=parsed.every(x=>!x.uncertain);return{id:r.id,name:r.name,personal:true,pantryReady,detailLoaded:true,description:'',type:'Hauptmahlzeit',diet:r.diet,dish:'🍽️',cuisine:'Eigenes Rezept',difficulty:'',status:'approved',mealTimes:['Mittagessen','Abendessen'],prepMinutes:r.prepMinutes||0,cookMinutes:r.cookMinutes||0,ingredients:parsed.map(x=>({name:x.name,amount:x.amount/r.portions,unit:x.unit})),steps:r.steps.slice(),nutrition:{},allergens:[],image}}

@@ -62,5 +62,9 @@ assert.equal(p.reviewIngredientReadings(['',''],['4 TL Senf']).expression,'Menge
 assert.equal(p.reviewIngredientReadings(['o 1 Ei','1 Ei']).agreement,false);
 assert.equal(p.reviewIngredientReadings(['500 a Fleisch','500 g Fleisch']).agreement,false);
 assert.equal(p.reviewIngredientReadings(['500 g Fleisch','500 g Fleisch']).reviewRequired,true);
+assert.equal(p.reviewIngredientReadings(['© 500 ml Brühe','© 500 ml Brühe']).expression,'500 ml Brühe');
+assert.equal(p.reviewIngredientReadings(['500 q Fleisch','500 q Fleisch']).quantityClear,false);
+assert.equal(p.reviewIngredientReadings(['e1 Ei','e1 Ei']).quantityClear,false);
+assert.equal(p.reviewIngredientReadings(['Salz & Pfeffer','Salz & Pfeffer']).quantityClear,false);
 console.log('Ingredient row review: pixel-independent numeric alignment, literal label gate, paired rows, conflicting quantity suppression and preserved OCR evidence passed.');
 
