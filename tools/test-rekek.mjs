@@ -31,3 +31,9 @@ assert.equal(multiple.candidates.length,2);assert.equal(multiple.candidates[0].n
 const broken=p.parseCandidates('Reisgericht\nZutaten\n200 g Reis\nZubereitung\nKochen.\nGemüsesuppe\nZutaten\n200 g Gemüse');assert.equal(broken.candidates.length,0);assert.equal(broken.issue,'recipe-boundaries-uncertain');
 const one=p.parseCandidates('Kuchen\nZutaten\n200 g Mehl\nFür die Sauce:\n20 g Butter\nZubereitung\nBacken.');assert.equal(one.candidates.length,1);assert.equal(one.multipleRecipes,false);assert.equal(one.candidates[0].ingredients,'200 g Mehl\n20 g Butter');
 console.log('Browser recipe candidates: explicit recipe boundaries, serving metadata, separate steps, incomplete section rejection and sauce preservation passed. Synthetic text cases only.');
+
+// Observed live OCR defect on user photo 04: decoration before preparation heading.
+const decorated=p.parseText('_ PAPRIKA-RAHM-HÄHNCHEN\nMIT BANDNUDELN\nZutaten:\n* 2 Hähnchenbrüste\n* 200g Bandnudeln\n* Salz, Pfeffer\n_ Zubereitung:\n1. Hähnchenbrüste in Stücke\nschneiden.\n2. Bandnudeln kochen.');
+assert.equal(decorated.ingredients,'* 2 Hähnchenbrüste\n* 200g Bandnudeln\n* Salz, Pfeffer');assert.equal(decorated.steps,'Hähnchenbrüste in Stücke schneiden.\nBandnudeln kochen.');
+assert.equal(p.parseText('Suppe\n_ Zutaten:\n200 g Gemüse\n— Zubereitung:\nKochen.').steps,'Kochen.');
+console.log('Observed live photo OCR regression: decorated section heading keeps preparation out of ingredients.');
