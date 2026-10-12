@@ -15,6 +15,8 @@ function parseText(text){
  function flush(){if(pending){ingredients.push(pending);unresolved.push({type:'unpaired-quantity',raw:pending});pending='';}}
  for(const [lineNumber,line] of lines.entries()){
   if(!line){summary=false;if(mode==='steps'&&unnumberedStep)stepIndex=-1;continue;}
+  if(/^(?:Gefällt\s+[\d.,]+|Alle\s+\d+\s+Kommentare)/i.test(line)){flush();mode='other';ignored.push(line);continue;}
+  if(/^(?:[Xx]\s+[vVwW]\s+|(?:Instagram|Facebook|TikTok)\s+(?:Anmelden|Registrieren)|@[\w.]+|mehr\s*$)/i.test(line)){ignored.push(line);continue;}
   if(recipeUIBoundary(line)){flush();mode='other';ignored.push(line);continue;}
   if(/^(?:erfasst von\s*:|stammt von\b|hauptautor\b|edit\s*:)/i.test(line)){ignored.push(line);continue;}
   if(noise.test(line)||/^KIKKOMAN[^a-z]*$/u.test(line)||/^[x×=+<>|\s-]+$/i.test(line)||/^(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/\S*)?$/i.test(line)){ignored.push(line);continue;}
@@ -30,6 +32,14 @@ function parseText(text){
   if(/^(?:zubereitung|anleitung|zubereitungsschritte|instructions|preparation|method)(?:\s|:|$)|^so\s+wird(?:[’'‘`]?s|\s+es)?\s+gemacht(?:\s|:|$)/i.test(line)){flush();mode='steps';stepIndex=-1;continue;}
   if(/^(nährwerte|nährwertangaben|nutrition|tipps?|quelle)(?:\s|:|$)/i.test(line)){flush();mode='other';continue;}
   if(/^schritt\s+\d+\s*[:.)]?$/i.test(line)){flush();mode='steps';stepIndex=steps.length;steps.push('');continue;}
+  // A headingless instruction paragraph requires established ingredients and explicit cooking actions.
+  if((!mode||mode==='ingredients')&&ingredients.length>=3&&!pending&&!measured.test(line)){
+   const rest=lines.slice(lineNumber),stop=rest.findIndex(x=>!x),paragraph=rest.slice(0,stop<0?rest.length:stop).join(' ');
+   const actions=paragraph.match(/\b(?:schlagen|unterrühren|verrühren|vorheizen|aufsetzen|schälen|schneiden|anbraten|vermischen|unterheben|aufkochen|backen|verarbeiten|aufschlagen|rösten|erhitzen|garen)\b/gi)||[];
+   if(actions.length&&/\b(?:schlagen|unterrühren|verrühren|vorheizen|aufsetzen|schälen|schneiden|anbraten|vermischen|unterheben|aufkochen|backen|verarbeiten|aufschlagen|rösten|erhitzen|garen)\b/i.test(line)&&paragraph.split(/\s+/).length>=7&&/[.!]/.test(paragraph)){
+    flush();mode='steps';stepIndex=-1;unnumberedStep=false;unresolved.push({type:'inferred-preparation-boundary',raw:line});
+   }
+  }
   if(mode==='ingredients'){
    if(/\s\d+[.)]\s+[a-zäöüß]/i.test(line)){unresolved.push({type:'mixed-columns',raw:line});}
    if(/^(?:für (?:die|den|das) .+|zusätzlich)\s*:\s*$/i.test(line)){flush();ignored.push(line);continue;}
@@ -51,7 +61,7 @@ function parseText(text){
    else{unnumberedStep=true;stepIndex=steps.length;steps.push(line);}
    continue;
   }
-  if(!mode&&measured.test(line)&&!ingredient(line).uncertain){ingredients.push(line);continue;}
+  if(!mode&&measured.test(line)&&(Number.isFinite(ingredient(line).amount)||/^\d+\s*[-–]\s*\d+\s*(?:g|kg|ml|l|EL|TL)\b/i.test(line))){ingredients.push(line);mode='ingredients';continue;}
   if(!mode&&!name)name=line;
   else if(!mode&&/\b(?:in|mit|und|auf|aus|an)\s*$/i.test(name)&&/^[a-zäöüß]/i.test(line)&&!/[.!?:]$/.test(line))name+=' '+line;
  }
@@ -165,7 +175,8 @@ function reviewIngredientReadings(reads,source=[]){
  const agreed=selected.length===2&&selected[0]&&selected[0]===selected[1];
  const text=agreed?selected[0]:(selected.find(s=>s)||original.find(s=>s)||'Unlesbare Zutatenzeile');
  const collapsedFraction=/^(?:optional\s*:\s*)?(?:\d{2}|[%‰])\s*(?:EL|TL)\b/i.test(text);
- const quantityClear=!!agreed&&!collapsedFraction&&ingredient(text).amount>0&&!/^\d+(?:[.,]\d+)?\s+(?![gl]\s)[a-z]\s+/i.test(text);
+ const preservedQuantityAgreement=!preservedSource||normalized.every(s=>s&&ingredient(s).amount===ingredient(text).amount&&ingredient(s).unit===ingredient(text).unit);
+ const quantityClear=!!agreed&&preservedQuantityAgreement&&!collapsedFraction&&ingredient(text).amount>0&&!/^\d+(?:[.,]\d+)?\s+(?![gl]\s)[a-z]\s+/i.test(text);
  const noQuantity=!!agreed&&!/[\d¼½¾⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞%‰]/.test(text);
  return{reads:reads.slice(),source:source.slice(),preservedSource,agreement:!!agreed,quantityClear,noQuantity,reviewRequired:true,quantityInferred:false,expression:quantityClear||noQuantity?text:'Menge ungeklärt: '+text};
 }
