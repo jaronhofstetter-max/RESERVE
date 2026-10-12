@@ -158,3 +158,9 @@ assert.equal(capturedBoxes[0].multiline,false);
 
 assert.equal(p.reviewIngredientReadings(["es Salz & Pfeffer", "es Salz & Pfeffer"],["+ Salz & Pfeffer", "» Salz & Pfeffer"]).expression,"Salz & Pfeffer");
 assert.equal(p.reviewIngredientReadings(["2 EL Olivenol", "2 EL Olivenol"],["2 EL Olivenöl", "2 EL Olivenöl"]).preservedSource,true);
+
+for(const [input,amount] of [["⅓ EL Öl",1/3],["⅔ TL Salz",2/3],["⅛ TL Pfeffer",1/8],["1⅝ EL Öl",1.625],["1⁄2 EL Honig",.5]]){assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient(input).amount,amount);}
+assert.equal(p.reviewMeasuredReadings(p.reviewIngredientReadings(["12 EL Honig","12 EL Honig"]),["1½ EL","1½ EL"]).expression,"1 1/2 EL Honig");
+assert.equal(p.reviewMeasuredReadings(p.reviewIngredientReadings(["12 EL Honig","12 EL Honig"]),["12 EL","12 EL"]).quantityClear,false);
+assert.equal(p.reviewMeasuredReadings(p.reviewIngredientReadings(["12 EL Honig","12 EL Honig"]),["1⁄2 EL","1½ EL"]).quantityClear,false);
+console.log("Literal vulgar fractions and fraction slashes preserved; repeated or conflicting collapsed readings remain unresolved.");
