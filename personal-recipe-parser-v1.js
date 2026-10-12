@@ -155,13 +155,17 @@ function ingredientRowBoxes(passes){
 function cleanIngredientReading(text){return clean(text).replace(/^(?:[•·*+–«»©‚-]\s*|[.,]\s+)/, '').replace(/\s+/g,' ');}
 function reviewIngredientReadings(reads,source=[]){
  // Punctuation bullets are removable; letters and digits are never repaired.
- const normalized=reads.map(cleanIngredientReading);
- const agreed=normalized.length===2&&normalized[0]&&normalized[0]===normalized[1];
- const text=agreed?normalized[0]:(normalized.find(s=>s)||source.find(s=>s)||'Unlesbare Zutatenzeile');
+ const normalized=reads.map(cleanIngredientReading),original=source.map(cleanIngredientReading);
+ // A tighter crop must not overwrite stable full-column text with new crop artifacts.
+ const stableSource=original.length===2&&original[0]&&original[0]===original[1];
+ const preservedSource=!!stableSource&&normalized.every(s=>s!==original[0]);
+ const selected=preservedSource?original:normalized;
+ const agreed=selected.length===2&&selected[0]&&selected[0]===selected[1];
+ const text=agreed?selected[0]:(selected.find(s=>s)||original.find(s=>s)||'Unlesbare Zutatenzeile');
  const collapsedFraction=/^(?:optional\s*:\s*)?(?:\d{2}|[%‰])\s*(?:EL|TL)\b/i.test(text);
  const quantityClear=!!agreed&&!collapsedFraction&&ingredient(text).amount>0&&!/^\d+(?:[.,]\d+)?\s+(?![gl]\s)[a-z]\s+/i.test(text);
  const noQuantity=!!agreed&&!/[\d¼½¾%‰]/.test(text);
- return{reads:reads.slice(),source:source.slice(),agreement:!!agreed,quantityClear,noQuantity,reviewRequired:true,quantityInferred:false,expression:quantityClear||noQuantity?text:'Menge ungeklärt: '+text};
+ return{reads:reads.slice(),source:source.slice(),preservedSource,agreement:!!agreed,quantityClear,noQuantity,reviewRequired:true,quantityInferred:false,expression:quantityClear||noQuantity?text:'Menge ungeklärt: '+text};
 }
 function reviewMeasuredReadings(row,reads){
  const measureText=s=>cleanIngredientReading(s).replace(/(\d)([¼½¾])/g,'$1 $2').replace(/[¼½¾]/g,c=>({'¼':'1/4','½':'1/2','¾':'3/4'}[c]));
