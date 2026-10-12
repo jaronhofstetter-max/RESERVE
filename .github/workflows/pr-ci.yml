@@ -101,6 +101,7 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Browser end-to-end test
         run: |
+          node tools/test-recipe-photos.mjs
           node tools/e2e-reserve.mjs
           node tools/e2e-consumption.mjs
           node tools/e2e-expiry-ui.mjs

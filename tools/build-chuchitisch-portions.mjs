@@ -57,6 +57,13 @@ const used=new Set(specs.flatMap(s=>s.rows.filter(r=>r.key!==null).map(r=>String
 fs.writeFileSync(`${dir}/nutrition-basis-2026-10-12.json`,JSON.stringify({retrievedAt:'2026-10-12',method:'Per ingredient: grams / 100 × per100g, then divide by portions. Available carbs = USDA total carbs minus fibre; manufacturer carbs already exclude fibre.',values:Object.fromEntries([...used].map(k=>[k,values[k]])),assumptions:specs.map(s=>({id:s.id,portions:s.servings,notes:s.notes,originalBatchIngredients:s.rows}))},null,2)+'\n');
 fs.writeFileSync('data/quality-batch-chuchitisch-v2.json',JSON.stringify(batch,null,2)+'\n');
 const manifest=JSON.parse(fs.readFileSync('data/recipe-photo-sources.json'));
-for(const s of specs){const r=batch.find(r=>r.id===s.id),source=JSON.parse(fs.readFileSync(`${dir}/${s.source}.json`));const path=`assets/recipe-photos/${s.id}.png`;fs.copyFileSync(`${dir}/${s.source}.png`,path);if(!manifest.photos.some(p=>p.recipeId===s.id))manifest.photos.push({recipeId:s.id,path,source:source.source,author:'Hannes und Martina / Chuchitisch',provider:'Chuchitisch',title:source.name,license:'CC BY-SA 3.0',licenseUrl:source.licenseUrl,adaptation:'Unverändertes Originalfoto; die App kann einen Ausschnitt anzeigen.',review:'Originalfoto zum übernommenen Rezept. Kein separat benannter Fotograf; Zuschreibung an das veröffentlichende Autorenkonto.',reviewedAt:'2026-10-12'});}
+for(const s of specs){
+ const source=JSON.parse(fs.readFileSync(`${dir}/${s.source}.json`));
+ const path=`assets/recipe-photos/${s.id}.webp`;
+ if(!fs.existsSync(path))throw Error(`Missing compressed photograph: ${path}. Convert the archived source PNG to WebP first.`);
+ const photo={recipeId:s.id,path,source:source.source.replace('http:','https:'),kind:'photograph',author:'Hannes und Martina / Chuchitisch',provider:'Chuchitisch',title:source.name,license:'CC BY-SA 3.0',licenseUrl:source.licenseUrl,adaptation:'Originalfoto als WebP komprimiert; die App kann einen Ausschnitt anzeigen.',review:'Originalfoto zum übernommenen Rezept. Kein separat benannter Fotograf; Zuschreibung an das veröffentlichende Autorenkonto.',reviewedAt:'2026-10-12'};
+ const existing=manifest.photos.findIndex(p=>p.recipeId===s.id);
+ if(existing<0)manifest.photos.push(photo);else manifest.photos[existing]=photo;
+}
 fs.writeFileSync('data/recipe-photo-sources.json',JSON.stringify(manifest,null,2)+'\n');
 for(const r of batch)console.log(r.id,JSON.stringify(r.nutrition));
