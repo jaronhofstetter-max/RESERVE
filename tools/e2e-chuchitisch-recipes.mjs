@@ -3,7 +3,7 @@ import http from 'node:http';
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
 
-const imports=JSON.parse(fs.readFileSync('data/quality-batch-chuchitisch-v1.json','utf8'));
+const imports=['data/quality-batch-chuchitisch-v1.json','data/quality-batch-chuchitisch-v2.json'].flatMap(file=>JSON.parse(fs.readFileSync(file,'utf8')));
 const scripts=['ingredient-identity-v1.js','reserve-core-v3.js','recipe-detail-runtime-v1.js'];
 const html=fs.readFileSync('index.html','utf8').replace("fetch('data/recipes.json',{cache:'no-store'})","fetch('data/recipe-catalog.json',{cache:'no-store'})").replace('</body>',scripts.map(f=>`<script src="${f}"></script>`).join('')+'</body>');
 const server=http.createServer((req,res)=>{

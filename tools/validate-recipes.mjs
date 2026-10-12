@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 
 const file=process.argv[2]||'data/recipes.json';
-const allowed={type:new Set(['Frühstück','Hauptmahlzeit']),diet:new Set(['Alles','Vegetarisch','Vegan']),difficulty:new Set(['Sehr einfach','Einfach','Mittel','Anspruchsvoll']),unit:new Set(['g','ml','Stück']),meal:new Set(['Frühstück','Mittagessen','Zwischenmahlzeit','Abendessen']),status:new Set(['draft','approved']),power:new Set(['none','low','normal']),refrigeration:new Set(['none','afterOpening','required'])};
+const allowed={type:new Set(['Frühstück','Hauptmahlzeit','Dessert']),diet:new Set(['Alles','Vegetarisch','Vegan']),difficulty:new Set(['Sehr einfach','Einfach','Mittel','Anspruchsvoll']),unit:new Set(['g','ml','Stück']),meal:new Set(['Frühstück','Mittagessen','Zwischenmahlzeit','Abendessen']),status:new Set(['draft','approved']),power:new Set(['none','low','normal']),refrigeration:new Set(['none','afterOpening','required'])};
 const required=['id','name','type','diet','dish','cuisine','mealTimes','prepMinutes','cookMinutes','difficulty','allergens','tags','ingredients','steps','nutrition','status'];
 const detailFields=['description','equipment','prepNotes','doneness','substitutions','leftovers','safety'];
 const nutritionFields=['kcal','protein','carbs','fat','fiber'],errors=[],warnings=[];let recipes;
