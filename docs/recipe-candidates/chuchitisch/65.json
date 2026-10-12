@@ -1,0 +1,41 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Pilzrisotto",
+  "image": "http://www.chuchitisch.ch//chuchitisch/download_picture/lightroom/43_Pilzrisotto.png",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "",
+  "prepTime": "PT0S",
+  "cookTime": "PT1800S",
+  "totalTime": "PT1800S",
+  "recipeYield": "2 Personen",
+  "keywords": "  Europa,  Italien,  Hauptspeise,  Eher schnell,  Vegetarisch,  ",
+  "recipeIngredient": [
+    "100  g Champignons",
+    "50  g Eierschwämme",
+    "200  g Risottoreis",
+    "1   Zwiebel",
+    "3  EL Olivenöl",
+    "1  dl Weisswein",
+    "2  l Gemüsebouillon",
+    "100  g Reibkäse",
+    "1  EL Butter"
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+  "recipeInstructions": "Die Pilze säubern und in mundgerechte Stücke schneiden, die Zwiebel klein hacken. Die Bouillon gemäss Packungsangabe kochen und auf dem heissen Kochfeld stehen lassen.\r\nDie Zwiebelstückchen in einer Pfanne im heissen Olivenöl andünsten, den Reis dazugeben und mitdünsten, bis er glasig ist. Mit dem Weisswein ablöschen. Etwas warme Bouillon dazu geben, und unter Rühren einkochen lassen. Diesen Schritt so lange wiederholen, bis der Reis bissfest gekocht ist. \r\nDie Pilze in einer Bratpfanne in der Butter schmoren und zum Risotto dazugeben. Den Reibkäse unters Risotto rühren und nur noch kurz warm werden lassen. So viel Bouillon dazugeben, dass das Risotto leicht verfliesst, wenn man es auf dem Teller anrichtet.",
+  "source": "http://chuchitisch.ch/recipes/65",
+  "originalImage": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/43_Pilzrisotto.png",
+  "reviewedAt": "2026-10-12",
+  "status": "candidate",
+  "photoSha256": "40b63acf415961f132c0e0139d3bbc19ddf7f7c5b2fff8e1b1b8dfe9a5cfb902",
+  "textLicense": "CC BY-SA 3.0",
+  "photoLicense": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "licenseEvidence": "http://chuchitisch.ch/chuchitisch/lizenz",
+  "attributionBasis": "Veröffentlichendes Autorenkonto; kein separater Fotograf genannt.",
+  "importNotes": "2 l bereitgestellte Bouillon nicht automatisch als verzehrt berechnen."
+}

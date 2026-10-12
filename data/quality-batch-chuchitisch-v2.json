@@ -1,0 +1,831 @@
+[
+  {
+    "id": "chuchitisch-pilzrisotto",
+    "name": "Pilzrisotto",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🍚",
+    "cuisine": "Italienisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Milch",
+      "Sellerie",
+      "Sulfite"
+    ],
+    "tags": [
+      "Originalfoto",
+      "Chuchitisch"
+    ],
+    "ingredients": [
+      {
+        "name": "Champignons",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Eierschwämme",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Risottoreis",
+        "amount": 100,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 22.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Weisswein",
+        "amount": 50,
+        "unit": "ml"
+      },
+      {
+        "name": "Gemüsebouillon",
+        "amount": 300,
+        "unit": "ml"
+      },
+      {
+        "name": "Reibkäse",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Butter",
+        "amount": 7,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Die Pilze säubern und in mundgerechte Stücke schneiden, die Zwiebel klein hacken.",
+      "Die Bouillon gemäss Packungsangabe kochen und auf dem heissen Kochfeld stehen lassen.",
+      "Die Zwiebelstückchen in einer Pfanne im heissen Olivenöl andünsten, den Reis dazugeben und mitdünsten, bis er glasig ist.",
+      "Mit dem Weisswein ablöschen.",
+      "Etwas warme Bouillon dazu geben, und unter Rühren einkochen lassen.",
+      "Diesen Schritt so lange wiederholen, bis der Reis bissfest gekocht ist.",
+      "Die Pilze in einer Bratpfanne in der Butter schmoren und zum Risotto dazugeben.",
+      "Den Reibkäse unters Risotto rühren und nur noch kurz warm werden lassen.",
+      "So viel Bouillon dazugeben, dass das Risotto leicht verfliesst, wenn man es auf dem Teller anrichtet."
+    ],
+    "nutrition": {
+      "kcal": 879.69,
+      "protein": 28.19,
+      "carbs": 89.16,
+      "fat": 39.75,
+      "fiber": 3
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy und Findus-Produktdeklaration; keine Messung des fertigen Gerichts.",
+      "basis": "Eine Portion; essbare Rohgewichte. USDA-Gesamtkohlenhydrate um Ballaststoffe bereinigt. Produktwerte und Gewichte sind Näherungen; Für 2 Personen: 1 Zwiebel = 100 g, 1 EL Butter = 14 g, 1 EL Öl = 15 ml; Öldichte 0.91 g/ml. Die Quelle stellt 2 l Bouillon bereit. Geschätzter Verbrauch: 600 ml für 200 g trockenen Reis; nach Bedarf mehr oder weniger zugeben. Risottoreis mit rohem weissem Mittelkornreis angenähert. Eierschwämme mit Champignon-Nährwerten angenähert; Reibkäse als Parmesan berechnet. Wein vollständig eingerechnet, Alkoholabbau nicht modelliert.",
+      "sources": "docs/recipe-candidates/chuchitisch/nutrition-basis-2026-10-12.json",
+      "ingredients": [
+        {
+          "name": "Champignons",
+          "grams": 50,
+          "foodKey": 169251,
+          "excluded": false
+        },
+        {
+          "name": "Eierschwämme",
+          "grams": 25,
+          "foodKey": 169251,
+          "excluded": false
+        },
+        {
+          "name": "Risottoreis",
+          "grams": 100,
+          "foodKey": 168879,
+          "excluded": false
+        },
+        {
+          "name": "Zwiebel",
+          "grams": 50,
+          "foodKey": 170000,
+          "excluded": false
+        },
+        {
+          "name": "Olivenöl",
+          "grams": 20.48,
+          "foodKey": 171413,
+          "excluded": false
+        },
+        {
+          "name": "Weisswein",
+          "grams": 50,
+          "foodKey": 174837,
+          "excluded": false
+        },
+        {
+          "name": "Gemüsebouillon",
+          "grams": 300,
+          "foodKey": 171583,
+          "excluded": false
+        },
+        {
+          "name": "Reibkäse",
+          "grams": 50,
+          "foodKey": 170848,
+          "excluded": false
+        },
+        {
+          "name": "Butter",
+          "grams": 7,
+          "foodKey": 173430,
+          "excluded": false
+        }
+      ],
+      "originalBatchTotals": {
+        "kcal": 1759.38,
+        "protein": 56.38,
+        "carbs": 178.32,
+        "fat": 79.49,
+        "fiber": 6
+      }
+    },
+    "status": "approved",
+    "description": "Pilzrisotto nach Chuchitisch mit dem Originalfoto der Quelle. Mengen und Nährwerte gelten für eine Person.",
+    "equipment": [
+      "Kochtopf",
+      "Bratpfanne",
+      "Kelle"
+    ],
+    "prepNotes": [
+      "Für 2 Personen: 1 Zwiebel = 100 g, 1 EL Butter = 14 g, 1 EL Öl = 15 ml; Öldichte 0.91 g/ml.",
+      "Die Quelle stellt 2 l Bouillon bereit. Geschätzter Verbrauch: 600 ml für 200 g trockenen Reis; nach Bedarf mehr oder weniger zugeben.",
+      "Risottoreis mit rohem weissem Mittelkornreis angenähert. Eierschwämme mit Champignon-Nährwerten angenähert; Reibkäse als Parmesan berechnet. Wein vollständig eingerechnet, Alkoholabbau nicht modelliert.",
+      "Produktetiketten auf weitere Allergene prüfen. Für die vegetarische Variante Käse mit mikrobiellem Lab wählen."
+    ],
+    "doneness": "Der Reis ist bissfest und cremig; das Risotto verfliesst leicht auf dem Teller.",
+    "substitutions": [
+      "Die verwendeten Produkte können ausgetauscht werden; Mengen, Allergene und Nährwerte dann entsprechend neu prüfen."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt gekühlt lagern und zeitnah verbrauchen.",
+    "safety": "Saubere Geräte verwenden, Obst und Gemüse waschen und verderbliche Zutaten gekühlt aufbewahren.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "http://chuchitisch.ch/recipes/65",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "originalServings": 2,
+      "adaptation": "Auf eine Portion umgerechnet; Mengenannahmen: Für 2 Personen: 1 Zwiebel = 100 g, 1 EL Butter = 14 g, 1 EL Öl = 15 ml; Öldichte 0.91 g/ml. Die Quelle stellt 2 l Bouillon bereit. Geschätzter Verbrauch: 600 ml für 200 g trockenen Reis; nach Bedarf mehr oder weniger zugeben. Risottoreis mit rohem weissem Mittelkornreis angenähert. Eierschwämme mit Champignon-Nährwerten angenähert; Reibkäse als Parmesan berechnet. Wein vollständig eingerechnet, Alkoholabbau nicht modelliert. Zubereitung aus der Originalquelle gegliedert; Garmerkmale ergänzt."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.3,
+      "waterMl": 300,
+      "noCook": false,
+      "onePot": false
+    }
+  },
+  {
+    "id": "chuchitisch-capuns",
+    "name": "Capuns",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥬",
+    "cuisine": "Schweizerisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 25,
+    "difficulty": "Anspruchsvoll",
+    "allergens": [
+      "Gluten",
+      "Milch",
+      "Ei",
+      "Sellerie"
+    ],
+    "tags": [
+      "Originalfoto",
+      "Chuchitisch"
+    ],
+    "ingredients": [
+      {
+        "name": "Pilze",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Weissbrot",
+        "amount": 18.75,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Petersilie",
+        "amount": 3.75,
+        "unit": "g"
+      },
+      {
+        "name": "Schnittlauch",
+        "amount": 3.75,
+        "unit": "g"
+      },
+      {
+        "name": "Butter",
+        "amount": 7.5,
+        "unit": "g"
+      },
+      {
+        "name": "Weizenmehl",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.75,
+        "unit": "g"
+      },
+      {
+        "name": "Milch",
+        "amount": 12.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Wasser",
+        "amount": 12.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Ei",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Krautstielblätter",
+        "amount": 100,
+        "unit": "g"
+      },
+      {
+        "name": "Gemüsebouillon",
+        "amount": 62.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Vollrahm",
+        "amount": 62.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Bergkäse",
+        "amount": 25,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Die Pilze reinigen und klein schneiden. Das Brot ohne Rinde in kleine Würfel schneiden und die Zwiebel hacken. Die Butter schmelzen und das Brot, die Pilze und die Zwiebel darin ca. 3 Minuten andämpfen und dann beiseite stellen. Die Kräuter hacken und dazugeben.",
+      "Das Mehl mit dem Salz vermischen und in einer Schüssel eine Mulde formen. Eier, Milch und Wasser verquirlen und in die Mulde giessen. Zu einem Teig mischen und mit einer Kelle klopfen, bis der Teig Blasen wirft.",
+      "Die Pilz-Brot-Mischung unter den Teig mischen.",
+      "Die Krautstielblätter reinigen und die grobe mittlere Blattrispe herausschneiden. In einem grossen Topf voller siedendem Salzwasser 1-2 Minuten blanchieren. In einen Topf mit kaltem Wasser geben zum abschrecken. Auf Küchenpapier auslegen und trocken tupfen.",
+      "Auf jedes Blatt (wenn die Blätter klein oder zerrissen sind können sie überlappend ausgelegt werden) je einen Esslöffel Füllung geben. Die Blattseiten drüberschlagen und das Capuns aufrollen.",
+      "Die Capuns nebeneinander in eine weite Pfanne legen. Bouillon und Rahm dazu geben, aufkochen und sofort die Hitze reduzieren. Circa 8 Min knapp unter dem Siedepunkt zugedeckt ziehen lassen. In Tellern anrichten und mit geriebenem Bergkäse bestreuen."
+    ],
+    "nutrition": {
+      "kcal": 683.5,
+      "protein": 21.5,
+      "carbs": 54.9,
+      "fat": 41.1,
+      "fiber": 4.26
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy und Findus-Produktdeklaration; keine Messung des fertigen Gerichts.",
+      "basis": "Eine Portion; essbare Rohgewichte. USDA-Gesamtkohlenhydrate um Ballaststoffe bereinigt. Produktwerte und Gewichte sind Näherungen; Für 4 Personen: 1 Zwiebel = 100 g, ½ Kräuterbund = 15 g, 1 Ei ohne Schale = 50 g, 20 Krautstielblätter = 400 g. Die Zutatenliste nennt 250 ml Rahm, der Anleitungstext dagegen Milch für den Sud. Diese Fassung verwendet den Rahm aus der Zutatenliste. Pilze als Champignons, Weissbrot als französisches Weissbrot und Bergkäse mit Cheddar-Nährwerten angenähert; Flüssigkeiten vereinfacht 1 ml = 1 g. Blanchierwasser und dessen Salz nicht eingerechnet.",
+      "sources": "docs/recipe-candidates/chuchitisch/nutrition-basis-2026-10-12.json",
+      "ingredients": [
+        {
+          "name": "Pilze",
+          "grams": 25,
+          "foodKey": 169251,
+          "excluded": false
+        },
+        {
+          "name": "Weissbrot",
+          "grams": 18.75,
+          "foodKey": 172675,
+          "excluded": false
+        },
+        {
+          "name": "Zwiebel",
+          "grams": 25,
+          "foodKey": 170000,
+          "excluded": false
+        },
+        {
+          "name": "Petersilie",
+          "grams": 3.75,
+          "foodKey": 170416,
+          "excluded": false
+        },
+        {
+          "name": "Schnittlauch",
+          "grams": 3.75,
+          "foodKey": 169994,
+          "excluded": false
+        },
+        {
+          "name": "Butter",
+          "grams": 7.5,
+          "foodKey": 173430,
+          "excluded": false
+        },
+        {
+          "name": "Weizenmehl",
+          "grams": 50,
+          "foodKey": 169761,
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 0.75,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Milch",
+          "grams": 12.5,
+          "foodKey": 171265,
+          "excluded": false
+        },
+        {
+          "name": "Wasser",
+          "grams": 12.5,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Ei",
+          "grams": 25,
+          "foodKey": 171287,
+          "excluded": false
+        },
+        {
+          "name": "Krautstielblätter",
+          "grams": 100,
+          "foodKey": 169991,
+          "excluded": false
+        },
+        {
+          "name": "Gemüsebouillon",
+          "grams": 62.5,
+          "foodKey": 171583,
+          "excluded": false
+        },
+        {
+          "name": "Vollrahm",
+          "grams": 62.5,
+          "foodKey": 170859,
+          "excluded": false
+        },
+        {
+          "name": "Bergkäse",
+          "grams": 25,
+          "foodKey": 173414,
+          "excluded": false
+        }
+      ],
+      "originalBatchTotals": {
+        "kcal": 2734,
+        "protein": 86.01,
+        "carbs": 219.61,
+        "fat": 164.39,
+        "fiber": 17.02
+      }
+    },
+    "status": "approved",
+    "description": "Capuns nach Chuchitisch mit dem Originalfoto der Quelle. Mengen und Nährwerte gelten für eine Person.",
+    "equipment": [
+      "Schüssel",
+      "Kochtopf",
+      "Weite Pfanne",
+      "Schneidebrett"
+    ],
+    "prepNotes": [
+      "Für 4 Personen: 1 Zwiebel = 100 g, ½ Kräuterbund = 15 g, 1 Ei ohne Schale = 50 g, 20 Krautstielblätter = 400 g.",
+      "Die Zutatenliste nennt 250 ml Rahm, der Anleitungstext dagegen Milch für den Sud. Diese Fassung verwendet den Rahm aus der Zutatenliste.",
+      "Pilze als Champignons, Weissbrot als französisches Weissbrot und Bergkäse mit Cheddar-Nährwerten angenähert; Flüssigkeiten vereinfacht 1 ml = 1 g. Blanchierwasser und dessen Salz nicht eingerechnet.",
+      "Produktetiketten auf weitere Allergene prüfen. Für die vegetarische Variante Käse mit mikrobiellem Lab wählen."
+    ],
+    "doneness": "Die Füllung ist vollständig gestockt, auch in der Mitte nicht mehr teigig; die Blätter sind zart.",
+    "substitutions": [
+      "Die verwendeten Produkte können ausgetauscht werden; Mengen, Allergene und Nährwerte dann entsprechend neu prüfen."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt gekühlt lagern und zeitnah verbrauchen.",
+    "safety": "Saubere Geräte verwenden, Obst und Gemüse waschen und verderbliche Zutaten gekühlt aufbewahren.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "http://chuchitisch.ch/recipes/621",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "originalServings": 4,
+      "adaptation": "Auf eine Portion umgerechnet; Mengenannahmen: Für 4 Personen: 1 Zwiebel = 100 g, ½ Kräuterbund = 15 g, 1 Ei ohne Schale = 50 g, 20 Krautstielblätter = 400 g. Die Zutatenliste nennt 250 ml Rahm, der Anleitungstext dagegen Milch für den Sud. Diese Fassung verwendet den Rahm aus der Zutatenliste. Pilze als Champignons, Weissbrot als französisches Weissbrot und Bergkäse mit Cheddar-Nährwerten angenähert; Flüssigkeiten vereinfacht 1 ml = 1 g. Blanchierwasser und dessen Salz nicht eingerechnet. Zubereitung aus der Originalquelle gegliedert; Garmerkmale ergänzt."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.3,
+      "waterMl": 1500,
+      "noCook": false,
+      "onePot": false
+    }
+  },
+  {
+    "id": "chuchitisch-tessiner-maronikuchen",
+    "name": "Tessiner Maronikuchen",
+    "type": "Dessert",
+    "diet": "Vegetarisch",
+    "dish": "🍰",
+    "cuisine": "Schweizerisch",
+    "mealTimes": [
+      "Zwischenmahlzeit"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 40,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Milch",
+      "Ei",
+      "Haselnüsse"
+    ],
+    "tags": [
+      "Originalfoto",
+      "Chuchitisch",
+      "Dessert",
+      "Kuchen"
+    ],
+    "ingredients": [
+      {
+        "name": "Maronipüree, gezuckert",
+        "amount": 33.33,
+        "unit": "g"
+      },
+      {
+        "name": "Ei",
+        "amount": 16.67,
+        "unit": "g"
+      },
+      {
+        "name": "Zucker",
+        "amount": 4.17,
+        "unit": "g"
+      },
+      {
+        "name": "Butter",
+        "amount": 17.08,
+        "unit": "g"
+      },
+      {
+        "name": "Haselnüsse",
+        "amount": 4.17,
+        "unit": "g"
+      },
+      {
+        "name": "Backpulver",
+        "amount": 0.67,
+        "unit": "g"
+      },
+      {
+        "name": "Vanillezucker",
+        "amount": 0.67,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Eigelb, Zucker und Vanillezucker 5 Minuten schaumig rühren.",
+      "Die geschmolzene, aber nicht heisse Butter dazugeben und 2 Minuten weiterrühren.",
+      "Maronipürée und Haselnüsse auf die Masse geben und mischen. Backpulver ebenfalls dazu rühren.",
+      "Eiweisse zu Schnee schlagen und vorsichtig darunter heben.",
+      "Den Teig in eine mit Backpapier belegte und eingebutterte Springform (Durchmesser: 22-24 cm) geben. Im vorgeheizten Backofen bei 220 °C ca. 30-40 Minuten backen."
+    ],
+    "nutrition": {
+      "kcal": 267.86,
+      "protein": 3.53,
+      "carbs": 21.59,
+      "fat": 18.47,
+      "fiber": 2.4
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy und Findus-Produktdeklaration; keine Messung des fertigen Gerichts.",
+      "basis": "Eine Portion; essbare Rohgewichte. USDA-Gesamtkohlenhydrate um Ballaststoffe bereinigt. Produktwerte und Gewichte sind Näherungen; Ein Kuchen von 22–24 cm Durchmesser wird in 12 gleich grosse Stücke geteilt; eine Portion entspricht einem Stück. 4 Eier ohne Schale = 200 g; ½ Päckchen Backpulver = 8 g, 1 Päckchen Vanillezucker = 8 g. Zusätzlich 5 g Butter zum Einfetten berücksichtigt. Gezuckertes Maronipüree mit Findus-Produktwerten berechnet; andere Produkte können abweichen. Backpulver nicht in Nährwerte eingerechnet.",
+      "sources": "docs/recipe-candidates/chuchitisch/nutrition-basis-2026-10-12.json",
+      "ingredients": [
+        {
+          "name": "Maronipüree, gezuckert",
+          "grams": 33.33,
+          "foodKey": "findusMarroni",
+          "excluded": false
+        },
+        {
+          "name": "Ei",
+          "grams": 16.67,
+          "foodKey": 171287,
+          "excluded": false
+        },
+        {
+          "name": "Zucker",
+          "grams": 4.17,
+          "foodKey": 169655,
+          "excluded": false
+        },
+        {
+          "name": "Butter",
+          "grams": 17.08,
+          "foodKey": 173430,
+          "excluded": false
+        },
+        {
+          "name": "Haselnüsse",
+          "grams": 4.17,
+          "foodKey": 170581,
+          "excluded": false
+        },
+        {
+          "name": "Backpulver",
+          "grams": 0.67,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Vanillezucker",
+          "grams": 0.67,
+          "foodKey": 169655,
+          "excluded": false
+        }
+      ],
+      "originalBatchTotals": {
+        "kcal": 3214.31,
+        "protein": 42.34,
+        "carbs": 259.06,
+        "fat": 221.65,
+        "fiber": 28.85
+      }
+    },
+    "status": "approved",
+    "description": "Tessiner Maronikuchen nach Chuchitisch. Eine Portion entspricht einem von zwölf Kuchenstücken.",
+    "equipment": [
+      "Springform 22–24 cm",
+      "Backpapier",
+      "Rührschüssel",
+      "Handmixer",
+      "Backofen"
+    ],
+    "prepNotes": [
+      "Ein Kuchen von 22–24 cm Durchmesser wird in 12 gleich grosse Stücke geteilt; eine Portion entspricht einem Stück.",
+      "4 Eier ohne Schale = 200 g; ½ Päckchen Backpulver = 8 g, 1 Päckchen Vanillezucker = 8 g. Zusätzlich 5 g Butter zum Einfetten berücksichtigt.",
+      "Gezuckertes Maronipüree mit Findus-Produktwerten berechnet; andere Produkte können abweichen. Backpulver nicht in Nährwerte eingerechnet.",
+      "Produktetiketten auf weitere Allergene prüfen. Für die vegetarische Variante Käse mit mikrobiellem Lab wählen."
+    ],
+    "doneness": "Die Mitte ist gestockt; bei der Stäbchenprobe haftet kein flüssiger Teig am Stäbchen.",
+    "substitutions": [
+      "Die verwendeten Produkte können ausgetauscht werden; Mengen, Allergene und Nährwerte dann entsprechend neu prüfen."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt gekühlt lagern und zeitnah verbrauchen.",
+    "safety": "Saubere Geräte verwenden, Obst und Gemüse waschen und verderbliche Zutaten gekühlt aufbewahren.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "http://chuchitisch.ch/recipes/445",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "originalServings": 12,
+      "adaptation": "Auf eine Portion umgerechnet; Mengenannahmen: Ein Kuchen von 22–24 cm Durchmesser wird in 12 gleich grosse Stücke geteilt; eine Portion entspricht einem Stück. 4 Eier ohne Schale = 200 g; ½ Päckchen Backpulver = 8 g, 1 Päckchen Vanillezucker = 8 g. Zusätzlich 5 g Butter zum Einfetten berücksichtigt. Gezuckertes Maronipüree mit Findus-Produktwerten berechnet; andere Produkte können abweichen. Backpulver nicht in Nährwerte eingerechnet. Zubereitung aus der Originalquelle gegliedert; Garmerkmale ergänzt."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.3,
+      "waterMl": 0,
+      "noCook": false,
+      "onePot": false
+    }
+  },
+  {
+    "id": "chuchitisch-birchermueesli",
+    "name": "Birchermüesli nach Chuchitisch",
+    "type": "Frühstück",
+    "diet": "Vegetarisch",
+    "dish": "🥣",
+    "cuisine": "Schweizerisch",
+    "mealTimes": [
+      "Frühstück"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 0,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Milch",
+      "Gluten",
+      "Soja"
+    ],
+    "tags": [
+      "Originalfoto",
+      "Chuchitisch"
+    ],
+    "ingredients": [
+      {
+        "name": "Apfel",
+        "amount": 90,
+        "unit": "g"
+      },
+      {
+        "name": "Orange",
+        "amount": 75,
+        "unit": "g"
+      },
+      {
+        "name": "Banane",
+        "amount": 60,
+        "unit": "g"
+      },
+      {
+        "name": "Naturjoghurt",
+        "amount": 60,
+        "unit": "g"
+      },
+      {
+        "name": "Halbrahm",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "name": "Zitronensaft",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "name": "Haferflocken",
+        "amount": 20,
+        "unit": "g"
+      },
+      {
+        "name": "Sojaflocken",
+        "amount": 5,
+        "unit": "g"
+      },
+      {
+        "name": "Kokosflocken",
+        "amount": 2.5,
+        "unit": "g"
+      },
+      {
+        "name": "Himbeeren",
+        "amount": 20,
+        "unit": "g"
+      },
+      {
+        "name": "Zucker",
+        "amount": 5,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Banane und Orange schälen und in mundgerechte Stücke schneiden; den Apfel waschen und grob raffeln.",
+      "Obst mit Joghurt, Halbrahm, Zitronensaft, Flocken und Himbeeren in einer Schüssel mischen.",
+      "Nach Geschmack süssen, nochmals gut verrühren und bis zum Servieren gekühlt aufbewahren."
+    ],
+    "nutrition": {
+      "kcal": 348.95,
+      "protein": 9.04,
+      "carbs": 52.6,
+      "fat": 9.34,
+      "fiber": 9.76
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy und Findus-Produktdeklaration; keine Messung des fertigen Gerichts.",
+      "basis": "Eine Portion; essbare Rohgewichte. USDA-Gesamtkohlenhydrate um Ballaststoffe bereinigt. Produktwerte und Gewichte sind Näherungen; Essbare Gewichte für 2 Personen: 1 Apfel = 180 g, 1 Orange = 150 g, 1 Banane = 120 g, 10 Himbeeren = 40 g. 1 EL Joghurt = 15 g, 1 EL Flüssigkeit = 15 ml, 1 EL Hafer-/Sojaflocken = 10 g, 1 EL Kokosflocken = 5 g. Zucker nach Geschmack mit 10 g angesetzt. Flocken als Haferflocken konkretisiert; Sojaflocken mit trockenen Sojabohnen angenähert, Halbrahm mit USDA light cream. Flüssigkeiten vereinfacht 1 ml = 1 g. Eigene Rezeptfassung; bestehendes Bircher-Müesli bleibt erhalten.",
+      "sources": "docs/recipe-candidates/chuchitisch/nutrition-basis-2026-10-12.json",
+      "ingredients": [
+        {
+          "name": "Apfel",
+          "grams": 90,
+          "foodKey": 171688,
+          "excluded": false
+        },
+        {
+          "name": "Orange",
+          "grams": 75,
+          "foodKey": 169097,
+          "excluded": false
+        },
+        {
+          "name": "Banane",
+          "grams": 60,
+          "foodKey": 173944,
+          "excluded": false
+        },
+        {
+          "name": "Naturjoghurt",
+          "grams": 60,
+          "foodKey": 171284,
+          "excluded": false
+        },
+        {
+          "name": "Halbrahm",
+          "grams": 15,
+          "foodKey": 170857,
+          "excluded": false
+        },
+        {
+          "name": "Zitronensaft",
+          "grams": 15,
+          "foodKey": 167747,
+          "excluded": false
+        },
+        {
+          "name": "Haferflocken",
+          "grams": 20,
+          "foodKey": 173904,
+          "excluded": false
+        },
+        {
+          "name": "Sojaflocken",
+          "grams": 5,
+          "foodKey": 174270,
+          "excluded": false
+        },
+        {
+          "name": "Kokosflocken",
+          "grams": 2.5,
+          "foodKey": 170170,
+          "excluded": false
+        },
+        {
+          "name": "Himbeeren",
+          "grams": 20,
+          "foodKey": 167755,
+          "excluded": false
+        },
+        {
+          "name": "Zucker",
+          "grams": 5,
+          "foodKey": 169655,
+          "excluded": false
+        }
+      ],
+      "originalBatchTotals": {
+        "kcal": 697.9,
+        "protein": 18.08,
+        "carbs": 105.19,
+        "fat": 18.67,
+        "fiber": 19.52
+      }
+    },
+    "status": "approved",
+    "description": "Birchermüesli nach Chuchitisch mit dem Originalfoto der Quelle. Mengen und Nährwerte gelten für eine Person.",
+    "equipment": [
+      "Schüssel",
+      "Reibe",
+      "Küchenmesser"
+    ],
+    "prepNotes": [
+      "Essbare Gewichte für 2 Personen: 1 Apfel = 180 g, 1 Orange = 150 g, 1 Banane = 120 g, 10 Himbeeren = 40 g.",
+      "1 EL Joghurt = 15 g, 1 EL Flüssigkeit = 15 ml, 1 EL Hafer-/Sojaflocken = 10 g, 1 EL Kokosflocken = 5 g. Zucker nach Geschmack mit 10 g angesetzt.",
+      "Flocken als Haferflocken konkretisiert; Sojaflocken mit trockenen Sojabohnen angenähert, Halbrahm mit USDA light cream. Flüssigkeiten vereinfacht 1 ml = 1 g. Eigene Rezeptfassung; bestehendes Bircher-Müesli bleibt erhalten.",
+      "Produktetiketten auf weitere Allergene prüfen. Für die vegetarische Variante Käse mit mikrobiellem Lab wählen."
+    ],
+    "doneness": "Das Müesli ist gleichmässig verrührt; Obst und Flocken sind mit Joghurt und Rahm benetzt.",
+    "substitutions": [
+      "Die verwendeten Produkte können ausgetauscht werden; Mengen, Allergene und Nährwerte dann entsprechend neu prüfen."
+    ],
+    "leftovers": "Abgedeckt im Kühlschrank lagern und zeitnah verzehren; vor dem Servieren nochmals umrühren.",
+    "safety": "Saubere Geräte verwenden, Obst und Gemüse waschen und verderbliche Zutaten gekühlt aufbewahren.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "http://chuchitisch.ch/recipes/128",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "originalServings": 2,
+      "adaptation": "Auf eine Portion umgerechnet; Mengenannahmen: Essbare Gewichte für 2 Personen: 1 Apfel = 180 g, 1 Orange = 150 g, 1 Banane = 120 g, 10 Himbeeren = 40 g. 1 EL Joghurt = 15 g, 1 EL Flüssigkeit = 15 ml, 1 EL Hafer-/Sojaflocken = 10 g, 1 EL Kokosflocken = 5 g. Zucker nach Geschmack mit 10 g angesetzt. Flocken als Haferflocken konkretisiert; Sojaflocken mit trockenen Sojabohnen angenähert, Halbrahm mit USDA light cream. Flüssigkeiten vereinfacht 1 ml = 1 g. Eigene Rezeptfassung; bestehendes Bircher-Müesli bleibt erhalten. Zubereitung aus der Originalquelle gegliedert; Garmerkmale ergänzt."
+    },
+    "resilience": {
+      "power": "none",
+      "refrigeration": "required",
+      "shelfStableShare": 0.3,
+      "waterMl": 0,
+      "noCook": true,
+      "onePot": false
+    }
+  }
+]

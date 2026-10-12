@@ -6,7 +6,7 @@ Jedes veröffentlichte Rezept muss diese Felder enthalten:
 
 - `id`: eindeutige, stabile ID in Kleinbuchstaben
 - `name`: Anzeigename
-- `type`: `Frühstück` oder `Hauptmahlzeit`
+- `type`: `Frühstück`, `Hauptmahlzeit` oder `Dessert`. Desserts verwenden `mealTimes: ["Zwischenmahlzeit"]` und werden dadurch nicht als Mittag- oder Abendessen im Wochenplan verwendet.
 - `diet`: `Alles`, `Vegetarisch` oder `Vegan`
 - `dish`: neutrales Symbol/Visual-Fallback
 - `cuisine`: Küchenstil/Herkunft
