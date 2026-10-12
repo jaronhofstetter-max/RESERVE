@@ -155,3 +155,6 @@ assert.ok(capturedBoxes[3].bbox.y0<=321&&capturedBoxes[3].bbox.y1>=421);
 assert.ok(capturedBoxes[4].bbox.y0<=444&&capturedBoxes[4].bbox.y1>=546);
 assert.equal(capturedBoxes[3].multiline,true);
 assert.equal(capturedBoxes[0].multiline,false);
+
+assert.equal(p.reviewIngredientReadings(["es Salz & Pfeffer", "es Salz & Pfeffer"],["+ Salz & Pfeffer", "» Salz & Pfeffer"]).expression,"Salz & Pfeffer");
+assert.equal(p.reviewIngredientReadings(["2 EL Olivenol", "2 EL Olivenol"],["2 EL Olivenöl", "2 EL Olivenöl"]).preservedSource,true);
