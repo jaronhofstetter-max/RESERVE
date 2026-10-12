@@ -135,3 +135,43 @@ assert.equal(p.reviewCardMetadata(['Omas Königsberger Klopse ¢','Omas Königsb
 assert.equal(p.reviewCardMetadata(['Gericht für 99 ¢','Gericht für 99 ¢'],[]).name,'Gericht für 99 ¢');
 console.log('Card refinements: punctuation preserves digits, literal amount rereads reject conflicting numbers, serving/title disagreement rejection, Spritzer remains unconvertible, and sequential preparation markers passed.');
 
+
+for(const heading of ["SO WIRD’S GEMACHT: N", "So wird es gemacht:", "So wird\'s gemacht:"]) {
+ const draft=p.parseText("Burger\nZUTATEN\n2 Burgerbrötchen\n"+heading+"\nFür die Sauce Senf und Ketchup mischen.");
+ assert.equal(draft.ingredients,"2 Burgerbrötchen");assert.equal(draft.steps,"Für die Sauce Senf und Ketchup mischen.");
+}
+
+assert.equal(p.parseText("Burger\nZutaten\n2 Brötchen\nSo wird’s gemacht:\nSauce mischen und\nabschmecken.\n\nBurger braten.").steps,"Sauce mischen und abschmecken.\nBurger braten.");
+
+const capturedLines=JSON.parse(fs.readFileSync("tools/fixtures/rekek-captured-ingredient-lines.json","utf8"));
+const capturedBoxes=p.ingredientRowBoxes(capturedLines);
+assert.equal(capturedBoxes.length,7);
+assert.ok(capturedBoxes.every(r=>r.bbox.y1<700));
+assert.ok(capturedBoxes[3].source.some(s=>s.includes("Olivenöl")));
+assert.ok(capturedBoxes[4].source.some(s=>s.includes("oder gepresst")));
+console.log("Captured original-image geometry: seven ingredient groups, joined wraps, photograph noise excluded.");
+
+assert.ok(capturedBoxes[3].bbox.y0<=321&&capturedBoxes[3].bbox.y1>=421);
+assert.ok(capturedBoxes[4].bbox.y0<=444&&capturedBoxes[4].bbox.y1>=546);
+assert.equal(capturedBoxes[3].multiline,true);
+assert.equal(capturedBoxes[0].multiline,false);
+
+assert.equal(p.reviewIngredientReadings(["es Salz & Pfeffer", "es Salz & Pfeffer"],["+ Salz & Pfeffer", "» Salz & Pfeffer"]).expression,"Salz & Pfeffer");
+assert.equal(p.reviewIngredientReadings(["2 EL Olivenol", "2 EL Olivenol"],["2 EL Olivenöl", "2 EL Olivenöl"]).preservedSource,true);
+
+for(const [input,amount] of [["⅓ EL Öl",1/3],["⅔ TL Salz",2/3],["⅛ TL Pfeffer",1/8],["1⅝ EL Öl",1.625],["1⁄2 EL Honig",.5]]){assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient(input).amount,amount);}
+assert.equal(p.reviewMeasuredReadings(p.reviewIngredientReadings(["12 EL Honig","12 EL Honig"]),["1½ EL","1½ EL"]).expression,"1 1/2 EL Honig");
+assert.equal(p.reviewMeasuredReadings(p.reviewIngredientReadings(["12 EL Honig","12 EL Honig"]),["12 EL","12 EL"]).quantityClear,false);
+assert.equal(p.reviewMeasuredReadings(p.reviewIngredientReadings(["12 EL Honig","12 EL Honig"]),["1⁄2 EL","1½ EL"]).quantityClear,false);
+console.log("Literal vulgar fractions and fraction slashes preserved; repeated or conflicting collapsed readings remain unresolved.");
+
+const headingless=p.parseText("Kuchen\n3 Eier\n200 g Zucker\n2 EL Mehl\n\nEier und Zucker schaumig schlagen. Nach und nach Mehl\nunterrühren.\n\nNach dem Erkalten den Boden teilen.");
+assert.equal(headingless.ingredients,"3 Eier\n200 g Zucker\n2 EL Mehl");assert.match(headingless.steps,/Eier und Zucker schaumig schlagen/);
+assert.ok(headingless.unresolved.some(x=>x.type==="inferred-preparation-boundary"));
+assert.equal(p.parseText("Salat\nZutaten\n2 Tomaten\n1 Zwiebel\n2 EL Öl\nPetersilie, fein gehackt").steps,"");
+
+const preserveUnknown=p.parseText("Kuchen\n3 Eier\n200 g Zucker\n2 EL Mehl\n28. Sahne\nSalz, Pfeffer\n\nAlles verrühren und in der Form backen.");
+assert.ok(preserveUnknown.ingredients.includes("28. Sahne"));assert.ok(preserveUnknown.ingredients.includes("Salz, Pfeffer"));
+
+assert.equal(p.reviewIngredientReadings(["500 a Fleisch","500 a Fleisch"],["500 g Fleisch","500 g Fleisch"]).quantityClear,false);
+assert.equal(p.reviewIngredientReadings(["1 TL Senf", ""],["1 TL Senf","1 TL Senf"]).quantityClear,false);
