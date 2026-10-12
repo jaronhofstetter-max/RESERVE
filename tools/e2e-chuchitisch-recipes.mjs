@@ -9,7 +9,7 @@ const html=fs.readFileSync('index.html','utf8').replace("fetch('data/recipes.jso
 const server=http.createServer((req,res)=>{
   const path=req.url.split('?')[0];
   try{
-    res.setHeader('Content-Type',path.endsWith('.js')?'text/javascript':path.endsWith('.json')?'application/json':path.endsWith('.webp')?'image/webp':'text/html');
+    res.setHeader('Content-Type',path.endsWith('.js')?'text/javascript':path.endsWith('.json')?'application/json':path.endsWith('.webp')?'image/webp':path.endsWith('.png')?'image/png':'text/html');
     res.end(path==='/'?html:fs.readFileSync('.'+path));
   }catch{res.writeHead(404);res.end();}
 });

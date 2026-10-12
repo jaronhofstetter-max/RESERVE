@@ -27,6 +27,7 @@ jobs:
           node tools/validate-recipes.mjs build/recipes-live.json
           REQUIRE_COMPLETE_RECIPE_QUALITY=1 node tools/audit-recipe-quality.mjs build/recipes-live.json
           cp build/recipes-live.json data/recipes.json
+          node tools/apply-recipe-photos.mjs data/recipes.json
           node tools/build-recipe-index.mjs data/recipes.json data/recipe-index.json
           node tools/build-recipe-delivery.mjs data/recipes.json data/recipe-details data/recipe-catalog.json data/recipe-details-manifest.json
       - name: Validate recipe image factory
@@ -114,3 +115,4 @@ jobs:
           node tools/e2e-usage-measurement.mjs
           node tools/e2e-shopping-scan.mjs
           node tools/e2e-mhd-review.mjs
+          node tools/e2e-chuchitisch-recipes.mjs
