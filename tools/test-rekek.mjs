@@ -135,3 +135,23 @@ assert.equal(p.reviewCardMetadata(['Omas Königsberger Klopse ¢','Omas Königsb
 assert.equal(p.reviewCardMetadata(['Gericht für 99 ¢','Gericht für 99 ¢'],[]).name,'Gericht für 99 ¢');
 console.log('Card refinements: punctuation preserves digits, literal amount rereads reject conflicting numbers, serving/title disagreement rejection, Spritzer remains unconvertible, and sequential preparation markers passed.');
 
+
+for(const heading of ["SO WIRD’S GEMACHT: N", "So wird es gemacht:", "So wird\'s gemacht:"]) {
+ const draft=p.parseText("Burger\nZUTATEN\n2 Burgerbrötchen\n"+heading+"\nFür die Sauce Senf und Ketchup mischen.");
+ assert.equal(draft.ingredients,"2 Burgerbrötchen");assert.equal(draft.steps,"Für die Sauce Senf und Ketchup mischen.");
+}
+
+assert.equal(p.parseText("Burger\nZutaten\n2 Brötchen\nSo wird’s gemacht:\nSauce mischen und\nabschmecken.\n\nBurger braten.").steps,"Sauce mischen und abschmecken.\nBurger braten.");
+
+const capturedLines=JSON.parse(fs.readFileSync("tools/fixtures/rekek-captured-ingredient-lines.json","utf8"));
+const capturedBoxes=p.ingredientRowBoxes(capturedLines);
+assert.equal(capturedBoxes.length,7);
+assert.ok(capturedBoxes.every(r=>r.bbox.y1<700));
+assert.ok(capturedBoxes[3].source.some(s=>s.includes("Olivenöl")));
+assert.ok(capturedBoxes[4].source.some(s=>s.includes("oder gepresst")));
+console.log("Captured original-image geometry: seven ingredient groups, joined wraps, photograph noise excluded.");
+
+assert.ok(capturedBoxes[3].bbox.y0<=321&&capturedBoxes[3].bbox.y1>=421);
+assert.ok(capturedBoxes[4].bbox.y0<=444&&capturedBoxes[4].bbox.y1>=546);
+assert.equal(capturedBoxes[3].multiline,true);
+assert.equal(capturedBoxes[0].multiline,false);
