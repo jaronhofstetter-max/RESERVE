@@ -25,6 +25,12 @@ assert.equal(p.parseCardSteps('1. Schneiden.\n2. Mischen.\n3. Garen.\nLesarten d
 const brokenHalf=p.reviewIngredientReadings(['optional: % TL Paprikapulver','optional: % TL Paprikapulver']);
 assert.equal(brokenHalf.noQuantity,false);assert.equal(brokenHalf.quantityClear,false);
 assert.match(brokenHalf.expression,/Menge ungeklärt/);
+const honey=p.reviewIngredientReadings(['12 EL Honig','12 EL Honig']);
+assert.equal(p.reviewMeasuredReadings(honey,['1½ EL','1 1/2 EL']).expression,'1 1/2 EL Honig');
+assert.equal(p.reviewMeasuredReadings(honey,['1½ EL','½ EL']).measureReread,false);
+assert.equal(p.reviewMeasuredReadings(honey,['12 EL','12 EL']).measureReread,false);
+assert.equal(p.reviewMeasuredReadings(brokenHalf,['½ TL','1/2 TL']).expression,'Optional: 1/2 TL Paprikapulver');
+assert.equal(p.reviewIngredientReadings(['2 EL Öl','2 EL Öl']).quantityClear,true);
 const header=p.cardHeaderRegions([geometry],textDivider,1000,1500,100).title;
 assert.ok(header.y0<=100&&header.y1>=210);
 const separated=p.parseCardSteps('ZUBEREITUNG\n1. Hähnchenbrust in Stücke schneiden.\n2. Zutaten in einer Schüssel verrühren.\n3. Hähnchen zur Marinade geben.\n4. Abgedeckt im Kühlschrank ziehen lassen.\n5. Alternativ roh einfrieren.\n6. Nach dem Auftauen vollständig durchgaren.\nfoodchaos.daily');
