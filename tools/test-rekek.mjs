@@ -14,6 +14,9 @@ const geometry={words:[word('ZUTATEN',100,450,230,480),word('ZUBEREITUNG',540,45
 const textDivider=p.textRecipeDivider([geometry],1000,1500);
 assert.ok(textDivider&&textDivider.centerX<540&&textDivider.top<450);
 assert.equal(p.textRecipeDivider([{words:[word('ZUTATEN',100,450,230,480)]}],1000,1500),null);
+// Observed screenshot: heading starts right of the preparation number column.
+const inset=p.textRecipeDivider([{words:[word('ZUTATEN',34,224,125,237),word('ZUBEREITUNG',322,232,466,245),word('1.',306,265,315,278),word('2.',305,313,315,326),word('3.',304,380,315,393)]}],583,905);
+assert.ok(inset.centerX+7<304,'Right crop must preserve every preparation marker');
 const header=p.cardHeaderRegions([geometry],textDivider,1000,1500,100).title;
 assert.ok(header.y0<=100&&header.y1>=210);
 const separated=p.parseCardSteps('ZUBEREITUNG\n1. Hähnchenbrust in Stücke schneiden.\n2. Zutaten in einer Schüssel verrühren.\n3. Hähnchen zur Marinade geben.\n4. Abgedeckt im Kühlschrank ziehen lassen.\n5. Alternativ roh einfrieren.\n6. Nach dem Auftauen vollständig durchgaren.\nfoodchaos.daily');
