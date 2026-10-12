@@ -30,5 +30,34 @@ try{
  const ingredients=await page.locator('#personalIngredients').inputValue(),steps=await page.locator('#personalSteps').inputValue();
  assert.equal(ingredients.split('\n').length,7);assert.ok(ingredients.includes('1½ EL Honig'));assert.ok(!ingredients.includes('12 EL'));assert.ok(!ingredients.includes('Hähnchen zur Marinade'));
  assert.equal(steps.split('\n').length,6);assert.ok(!steps.includes('foodchaos.daily'));assert.equal(await page.locator('#personalConfirmed').isChecked(),false);
- assert.deepEqual(errors,[]);console.log('REKEK browser pipeline: heading-based columns, complete title, seven ingredients, six steps, literal fraction and unresolved serving range OK (mock OCR).');
+ // The reviewed OCR draft must reach the same saved recipe view as manual entries.
+ await page.locator('#personalPortions').fill('4');
+ await page.locator('#personalConfirmed').check();
+ await page.locator('#personalReview').evaluate(form=>form.requestSubmit());
+ await page.locator('#personalRecipeDetail h2').waitFor({state:'visible'});
+ const detail=await page.locator('#personalRecipeDetail').innerText();
+ assert.ok(detail.includes('Hähnchenbrust in Honig-Senf-Marinade'));
+ assert.ok(detail.includes('1½ EL Honig'));
+ assert.ok(!detail.includes('12 EL Honig'));
+ assert.ok(detail.includes('Nach dem Auftauen vollständig durchgaren.'));
+ assert.equal(await page.locator('.personal-ingredients li').count(),7);
+ assert.equal(await page.locator('[data-personal-step]').count(),6);
+ const record=await page.evaluate(()=>JSON.parse(localStorage.getItem('reservePersonalRecipesV1'))[0]);
+ assert.equal(record.portions,4);
+ assert.equal(record.prepMinutes,null);assert.equal(record.cookMinutes,null);
+ assert.deepEqual(record.ingredientLines,ingredients.split('\n'));
+ assert.deepEqual(record.steps,steps.split('\n'));
+ await page.locator('[data-personal-step="0"]').check();
+ await page.reload();
+ await page.waitForFunction(()=>window.RESERVE_PERSONAL_RECIPES);
+ await page.locator('#personalRecipesHome').click();
+ await page.locator('[data-personal]').first().click();
+ await page.locator('#personalRecipeDetail h2').waitFor({state:'visible'});
+ assert.equal(await page.locator('#personalRecipeDetail').innerText(),detail);
+ assert.equal(await page.locator('[data-personal-step="0"]').isChecked(),true);
+ await page.locator('#personalEdit').click();
+ assert.equal(await page.locator('#personalConfirmed').isChecked(),false);
+ assert.equal(await page.locator('#personalIngredients').inputValue(),ingredients);
+ assert.equal(await page.locator('#personalSteps').inputValue(),steps);
+ assert.deepEqual(errors,[]);console.log('REKEK browser pipeline: separated columns, complete title, fractions, serving review, saved recipe view and reload persistence OK (mock OCR).');
 }finally{await browser?.close();server.close();}
