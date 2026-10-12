@@ -1,0 +1,43 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Birchermüesli",
+  "image": "http://www.chuchitisch.ch//chuchitisch/download_picture/lightroom/407_Bircherm%C3%BCesli.png",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "",
+  "prepTime": "PT0S",
+  "cookTime": "PT900S",
+  "totalTime": "PT900S",
+  "recipeYield": "2 Personen",
+  "keywords": "  Europa,  Gesund,  Snack,  Schweiz,  Hauptspeise,  Frühstück,  Einfach,  Leicht bekömmlich,  Abendessen unter der Woche,  Schnell,  Vegetarisch,  ",
+  "recipeIngredient": [
+    "1   Apfel",
+    "1   Orange",
+    "1   Banane",
+    "8  EL Joghurt",
+    "2  EL Halbrahm",
+    "2  EL Zitronensaft",
+    "4  EL Flocken",
+    "1  EL Sojaflocken",
+    "1  EL Kokosflocken",
+    "10   Himbeeren",
+    "Zucker nach Geschmack"
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+  "recipeInstructions": "Die Banane und die Orange schälen und in Stücke schneiden, den Apfel grob raffeln. Mit den restlichen Zutaten mischen und mit Zucker nach Belieben süssen.",
+  "source": "http://chuchitisch.ch/recipes/128",
+  "originalImage": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/407_Bircherm%C3%BCesli.png",
+  "reviewedAt": "2026-10-12",
+  "status": "candidate",
+  "photoSha256": "7ff0efb27368c6399f429d18739527394bf79ca252b7112123a33147ee05c0dc",
+  "textLicense": "CC BY-SA 3.0",
+  "photoLicense": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "licenseEvidence": "http://chuchitisch.ch/chuchitisch/lizenz",
+  "attributionBasis": "Veröffentlichendes Autorenkonto; kein separater Fotograf genannt.",
+  "importNotes": "Separate Rezeptfassung; vorhandenes bircher-mueesli nicht überschreiben."
+}

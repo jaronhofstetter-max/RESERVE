@@ -1,0 +1,39 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Tessiner Maronikuchen",
+  "image": "http://www.chuchitisch.ch//chuchitisch/download_picture/lightroom/542_Tessiner+Maronikuchen.png",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "",
+  "prepTime": "PT0S",
+  "cookTime": "PT900S",
+  "totalTime": "PT3300S",
+  "recipeYield": "1 Kuchen",
+  "keywords": "  Dessert,  Einfach,  Schweiz,  Kuchen,  Für Gäste,  Mittelschnell,  Vegetarisch,  Saisonal,  ",
+  "recipeIngredient": [
+    "400  g Maronipüréee (für Vermicelles), gezuckert",
+    "4   Eier",
+    "50  g Zucker",
+    "200  g Butter",
+    "50  g Haselnüsse",
+    "½  Päckchen Backpulver",
+    "1  Päckchen Vanillezucker"
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+  "recipeInstructions": "Eigelb, Zucker und Vanillezucker 5 Minuten schaumig rühren.\r\n\r\nDie geschmolzene, aber nicht heisse Butter dazugeben und 2 Minuten weiterrühren.\r\n\r\nMaronipürée und Haselnüsse auf die Masse geben und mischen. Backpulver ebenfalls dazu rühren.\r\n\r\nEiweisse zu Schnee schlagen und vorsichtig darunter heben.\r\n\r\nDen Teig in eine mit Backpapier belegte und eingebutterte Springform (Durchmesser: 22-24 cm) geben. Im vorgeheizten Backofen bei 220 °C ca. 30-40 Minuten backen.",
+  "source": "http://chuchitisch.ch/recipes/445",
+  "originalImage": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/542_Tessiner+Maronikuchen.png",
+  "reviewedAt": "2026-10-12",
+  "status": "candidate",
+  "photoSha256": "adc2eb546345022dddd26714fdf4feeb2fdd0e119a8fb59ea706b6ddb2f0a48d",
+  "textLicense": "CC BY-SA 3.0",
+  "photoLicense": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "licenseEvidence": "http://chuchitisch.ch/chuchitisch/lizenz",
+  "attributionBasis": "Veröffentlichendes Autorenkonto; kein separater Fotograf genannt.",
+  "importNotes": "Original ergibt einen Kuchen; Stückzahl vor Import festlegen."
+}
