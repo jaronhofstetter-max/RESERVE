@@ -139,7 +139,7 @@ function ingredientRowBoxes(passes){
  const height=median(candidates.flatMap(rows=>rows.map(r=>r.bbox.y1-r.bbox.y0)));if(!height)return[];
  const rows=[];for(const [mode,ls] of candidates.entries())for(const line of ls){const cy=(line.bbox.y0+line.bbox.y1)/2,match=rows.find(r=>Math.abs(r.cy-cy)<height*.5&&!r.modes.includes(mode));if(match){match.lines.push(line);match.modes.push(mode);}else rows.push({cy,lines:[line],modes:[mode]});}
  rows.sort((a,b)=>a.cy-b.cy);if(rows.length<5||rows.length>40||rows.filter(r=>r.lines.some(l=>/^\W*\d/.test(l.text))).length<5)return[];
- return rows.map((r,i)=>{const measures=[];for(const line of r.lines){const ws=line.words||[];for(let j=0;j+1<ws.length;j++)if(/^\d+(?:[.,]\d+)?$/.test(clean(ws[j].text))&&/^(?:kg|g|ml|dl|cl|l|EL|TL|Spritzer|[a-z0-9])$/i.test(clean(ws[j+1].text))&&ws[j].bbox&&ws[j+1].bbox){const a=ws[j].bbox,b=ws[j+1].bbox;measures.push({x0:Math.min(a.x0,b.x0),y0:Math.min(a.y0,b.y0),x1:Math.max(a.x1,b.x1),y1:Math.max(a.y1,b.y1)});break;}}
+ return rows.map((r,i)=>{const measures=[];for(const line of r.lines){const ws=line.words||[];for(let j=0;j+1<ws.length;j++)if(/^(?:\d+(?:[.,]\d+)?|\d*[¼½¾]|\d+\/\d+|[%‰])$/.test(clean(ws[j].text))&&/^(?:kg|g|ml|dl|cl|l|EL|TL|Spritzer|[a-z0-9])$/i.test(clean(ws[j+1].text))&&ws[j].bbox&&ws[j+1].bbox){const a=ws[j].bbox,b=ws[j+1].bbox;measures.push({x0:Math.min(a.x0,b.x0),y0:Math.min(a.y0,b.y0),x1:Math.max(a.x1,b.x1),y1:Math.max(a.y1,b.y1)});break;}}
   const measureBBox=measures.length?{x0:Math.min(...measures.map(b=>b.x0)),y0:Math.min(...measures.map(b=>b.y0)),x1:Math.max(...measures.map(b=>b.x1)),y1:Math.max(...measures.map(b=>b.y1))}:null;
   return{source:r.lines.map(l=>l.text),measureBBox,bbox:{x0:Math.min(...r.lines.map(l=>l.bbox.x0)),x1:Math.max(...r.lines.map(l=>l.bbox.x1)),y0:Math.max(Math.min(...r.lines.map(l=>l.bbox.y0))-3,i?(rows[i-1].cy+r.cy)/2:0),y1:Math.min(Math.max(...r.lines.map(l=>l.bbox.y1))+3,i+1<rows.length?(r.cy+rows[i+1].cy)/2:Infinity)}};});
 }
@@ -155,12 +155,15 @@ function reviewIngredientReadings(reads,source=[]){
  return{reads:reads.slice(),source:source.slice(),agreement:!!agreed,quantityClear,noQuantity,reviewRequired:true,quantityInferred:false,expression:quantityClear||noQuantity?text:'Menge ungeklärt: '+text};
 }
 function reviewMeasuredReadings(row,reads){
- const measures=reads.map(s=>cleanIngredientReading(s).match(/^(\d+(?:[.,]\d+)?)\s*(kg|g|ml|dl|cl|l|EL|TL|Spritzer)$/i));
- const suffix=cleanIngredientReading(row.reads.find(Boolean)||'').match(/^\d+(?:[.,]\d+)?\s+\S+\s+(.+)$/);
+ const measureText=s=>cleanIngredientReading(s).replace(/(\d)([¼½¾])/g,'$1 $2').replace(/[¼½¾]/g,c=>({'¼':'1/4','½':'1/2','¾':'3/4'}[c]));
+ const measures=reads.map(s=>measureText(s).match(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d+(?:[.,]\d+)?)\s*(kg|g|ml|dl|cl|l|EL|TL|Spritzer)$/i));
+ const source=cleanIngredientReading(row.reads.find(Boolean)||'');
+ const suffix=source.match(/^(?:optional\s*:\s*)?[^a-zäöüß]+\s*(?:kg|g|ml|dl|cl|l|EL|TL|Spritzer)\s+(.+)$/i)||source.match(/^\d+(?:[.,]\d+)?\s+\S+\s+(.+)$/);
  const seen=row.reads.map(s=>cleanIngredientReading(s).match(/^(\d+(?:[.,]\d+)?)/)?.[1]);
  const ambiguousSpoons=measures.some(m=>m&&/^(el|tl)$/i.test(m[2])&&/^\d{2}$/.test(m[1]));
- const accepted=!ambiguousSpoons&&measures.length===2&&measures.every(Boolean)&&number(measures[0][1])>0&&number(measures[0][1])===number(measures[1][1])&&measures[0][2].toLowerCase()===measures[1][2].toLowerCase()&&seen.length===2&&seen.every(s=>s&&number(s)===number(measures[0][1]))&&suffix;
- return{...row,measureReads:reads.slice(),measureReread:!!accepted,quantityClear:accepted?true:row.quantityClear,expression:accepted?measures[0][1]+' '+measures[0][2]+' '+suffix[1]:row.expression};
+ const literalFraction=measures.length===2&&measures.every(m=>m&&/\//.test(m[1])&&number(m[1].split('/').at(-1))>0)&&row.reads.every(s=>/^(?:optional\s*:\s*)?(?:\d{2}|[%‰])\s*(?:EL|TL)\b/i.test(cleanIngredientReading(s)));
+ const accepted=!ambiguousSpoons&&measures.length===2&&measures.every(Boolean)&&number(measures[0][1])>0&&number(measures[0][1])===number(measures[1][1])&&measures[0][2].toLowerCase()===measures[1][2].toLowerCase()&&(literalFraction||seen.length===2&&seen.every(s=>s&&number(s)===number(measures[0][1])))&&suffix;
+ return{...row,measureReads:reads.slice(),measureReread:!!accepted,quantityClear:accepted?true:row.quantityClear,expression:accepted?(/^optional\s*:/i.test(source)?'Optional: ':'')+measures[0][1]+' '+measures[0][2]+' '+suffix[1]:row.expression};
 }
 function cardHeaderRegions(reads,divider,width,height,front){
  const rows=ocrLines(reads[0]),titles=rows.filter(l=>l.bbox.y1<divider.top&&l.bbox.x1-l.bbox.x0>width*.25&&l.bbox.y1-l.bbox.y0>height*.015&&/[a-zäöüß]{3}/i.test(l.text)&&!/\b(?:personen|portionen|servings)\b/i.test(l.text));
