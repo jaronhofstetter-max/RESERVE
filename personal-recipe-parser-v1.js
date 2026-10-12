@@ -5,14 +5,14 @@ function recipeUIBoundary(text){return /^(?:[»▶▷>\s]*)(?:[b3]ild\s+\d+\b|le
 function ingredient(line){const raw=clean(line).replace(/^[•*–-]\s*/,''),expanded=raw.replace(/(\d)([¼½¾])/g,'$1 $2').replace(/[¼½¾]/g,c=>({'¼':'1/4','½':'1/2','¾':'3/4'}[c]));if(/^\d+(?:[.,]\d+)?\s*(?:bis|[-–—])\s*\d/i.test(expanded)||/^\d+\s+halb(?:er|en|e|es)?\b/i.test(expanded))return{raw,name:raw,amount:null,unit:'',uncertain:true};const m=expanded.match(/^(\d+(?:[.,]\d+)?(?:\s+\d+\/\d+)?|\d+\/\d+)\s*(kg|mg|g|ml|dl|cl|l|stück|stueck|stuck|stk\.?|EL|TL|Prisen?|Packung(?:en)?|Dose(?:n)?|Becher|Bund|Spritzer|Pck\.?|Blatt|Esslöffel|Teelöffel)?\s+(.+)$/i);if(!m)return{raw,name:raw,amount:null,unit:'',uncertain:true};let amount=number(m[1]),unit=(m[2]||'Stück').toLowerCase(),name=clean(m[3]);if(unit==='esslöffel')unit='el';if(unit==='teelöffel')unit='tl';if(unit==='kg'){amount*=1000;unit='g'}if(unit==='mg'){amount/=1000;unit='g'}if(['l','dl','cl'].includes(unit)){amount*=({l:1000,dl:100,cl:10}[unit]);unit='ml'}if(/^st/.test(unit))unit='Stück';const uncertain=!Number.isFinite(amount)||amount<=0||!['g','ml','Stück'].includes(unit)||/^[-–]\s*\d/.test(name);return{raw,name,amount:Number.isFinite(amount)?amount:null,unit,uncertain}}
 function parseText(text){
  const lines=String(text||'').split(/\r?\n/).map(clean).map(line=>line.replace(/^[\s_•*|–—-]+(?=(?:zutaten|ingredients|zubereitung|anleitung|instructions|preparation|method)\b)/i,''));
- let mode='',name='',portions='',prepMinutes=null,cookMinutes=null,pending='',stepIndex=-1,summary=false;
+ let mode='',name='',portions='',prepMinutes=null,cookMinutes=null,pending='',stepIndex=-1,summary=false,unnumberedStep=false;
  const ingredients=[],steps=[],ignored=[],unresolved=[];
  const quantity=/^(?:\d+(?:[.,]\d+)?(?:\s+\d+\/\d+)?|\d+\/\d+|[¼½¾])\s*(?:kg|mg|g|ml|dl|cl|l|stück|stueck|stk\.?|EL|TL|Prisen?|Bund)?$/i;
  const measured=/^(?:\d|[¼½¾])/;
  const noise=/^(?:\d{1,2}:\d{2}(?:\s|$)|https?:\/\/|www\.|kikkoman[’'®©\s]*$|zutaten kopieren|zum starten antippen|schritt.für.schritt.kochen|leicht gemacht|starten antippen)/i;
  function flush(){if(pending){ingredients.push(pending);unresolved.push({type:'unpaired-quantity',raw:pending});pending='';}}
  for(const [lineNumber,line] of lines.entries()){
-  if(!line){summary=false;continue;}
+  if(!line){summary=false;if(mode==='steps'&&unnumberedStep)stepIndex=-1;continue;}
   if(recipeUIBoundary(line)){flush();mode='other';ignored.push(line);continue;}
   if(/^(?:erfasst von\s*:|stammt von\b|hauptautor\b|edit\s*:)/i.test(line)){ignored.push(line);continue;}
   if(noise.test(line)||/^KIKKOMAN[^a-z]*$/u.test(line)||/^[x×=+<>|\s-]+$/i.test(line)||/^(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/\S*)?$/i.test(line)){ignored.push(line);continue;}
@@ -25,7 +25,7 @@ function parseText(text){
   const time=line.match(/^(?:(\d+)\s*(?:min\.?|minutes)\s*)?(vorbereitung(?:szeit)?|prep(?:aration)?(?: time)?|kochzeit|garzeit|cook(?:ing)? time)\s*:?\s*(?:(\d+)\s*(?:min\.?|minutes))?/i);
   if(time&&(time[1]||time[3])){if(/vorbereitung|prep/i.test(time[2]))prepMinutes=Number(time[1]||time[3]);else cookMinutes=Number(time[1]||time[3]);continue;}
   if(/^(zutaten|ingredients)(?:\s|:|$)/i.test(line)){flush();mode='ingredients';continue;}
-  if(/^(zubereitung|anleitung|zubereitungsschritte|instructions|preparation|method)(?:\s|:|$)/i.test(line)){flush();mode='steps';stepIndex=-1;continue;}
+  if(/^(?:zubereitung|anleitung|zubereitungsschritte|instructions|preparation|method)(?:\s|:|$)|^so\s+wird(?:[’'‘`]?s|\s+es)?\s+gemacht(?:\s|:|$)/i.test(line)){flush();mode='steps';stepIndex=-1;continue;}
   if(/^(nährwerte|nährwertangaben|nutrition|tipps?|quelle)(?:\s|:|$)/i.test(line)){flush();mode='other';continue;}
   if(/^schritt\s+\d+\s*[:.)]?$/i.test(line)){flush();mode='steps';stepIndex=steps.length;steps.push('');continue;}
   if(mode==='ingredients'){
@@ -44,9 +44,9 @@ function parseText(text){
    if(/^(?:\d+(?:[.,]\d+)?|[¼½¾])\s*(?:g|kg|ml|l|EL|TL)\b/i.test(line)&&/\s[–—]\s*(?:\d|[¼½¾])/.test(paragraph)&&!/\b(?:kochen|garen|braten|zugeben|hinzufügen|schneiden|mischen|rühren|sieben|unterheben|einrühren|vermengen|erhitzen)\b/i.test(paragraph)&&end>=0){summary=true;ignored.push(line);continue;}
    if(summary){ignored.push(line);continue;}
    const numbered=line.match(/^\d+[.)]\s*(.+)$/);
-   if(numbered){stepIndex=steps.length;steps.push(numbered[1]);}
+   if(numbered){unnumberedStep=false;stepIndex=steps.length;steps.push(numbered[1]);}
    else if(stepIndex>=0)steps[stepIndex]+=(steps[stepIndex]?' ':'')+line;
-   else steps.push(line);
+   else{unnumberedStep=true;stepIndex=steps.length;steps.push(line);}
    continue;
   }
   if(!mode&&measured.test(line)&&!ingredient(line).uncertain){ingredients.push(line);continue;}
@@ -133,15 +133,24 @@ function quantityColumnStart(reads,divider,width){
  return Math.max(0,Math.floor(Math.min(...dense.map(w=>w.bbox.x0))-median(dense.map(w=>w.bbox.y1-w.bbox.y0))*.5));
 }
 function ingredientRowBoxes(passes){
- const labels=passes.flatMap(rows=>rows.filter(r=>/^\W*Zutaten\s*:\s*$/i.test(r.text)));
+ const labels=passes.flatMap(rows=>rows.filter(r=>/^\W*(?:Zutaten|Ingredients)\s*:?\s*$/i.test(r.text)));
  if(!labels.length)return[];const after=Math.max(...labels.map(r=>r.bbox.y1));
  const candidates=passes.map(rows=>rows.filter(r=>r.bbox.y0>after&&(/[0-9¼½¾]/.test(r.text)||/[a-zäöüß]{3}/i.test(r.text))));
  const height=median(candidates.flatMap(rows=>rows.map(r=>r.bbox.y1-r.bbox.y0)));if(!height)return[];
+ // A large blank interval ends the text block; the photograph below is not another row.
+ for(const ls of candidates){ls.sort((a,b)=>a.bbox.y0-b.bbox.y0);for(let i=1;i<ls.length;i++)if(ls[i].bbox.y0-ls[i-1].bbox.y1>height*3){ls.splice(i);break;}}
  const rows=[];for(const [mode,ls] of candidates.entries())for(const line of ls){const cy=(line.bbox.y0+line.bbox.y1)/2,match=rows.find(r=>Math.abs(r.cy-cy)<height*.5&&!r.modes.includes(mode));if(match){match.lines.push(line);match.modes.push(mode);}else rows.push({cy,lines:[line],modes:[mode]});}
- rows.sort((a,b)=>a.cy-b.cy);if(rows.length<5||rows.length>40||rows.filter(r=>r.lines.some(l=>/^\W*\d/.test(l.text))).length<5)return[];
+ rows.sort((a,b)=>a.cy-b.cy);
+ // Indented line wraps belong to the preceding ingredient, but only with explicit continuation evidence.
+ for(let i=1;i<rows.length;i++){const prev=rows[i-1],next=rows[i],a=prev.lines.map(l=>clean(l.text)).join(' '),b=next.lines.map(l=>clean(l.text)).join(' ');
+  const indent=Math.min(...next.lines.map(l=>l.bbox.x0))>Math.min(...prev.lines.map(l=>l.bbox.x0))+height*.3;
+  const continuation=/\([^)]*$|\b(?:oder|und|mit)\s*$/i.test(a)||/^(?:oder|und|mit)\b/i.test(b);
+  if(indent&&continuation&&!/^[\s•*+–-]*[\d¼½¾]/.test(b)&&next.cy-prev.cy<height*2.5){prev.lines.push(...next.lines);prev.modes.push(...next.modes);rows.splice(i,1);i--;}
+ }
+ if(rows.length<5||rows.length>40||rows.filter(r=>r.lines.some(l=>/^\W*\d/.test(l.text))).length<5)return[];
  return rows.map((r,i)=>{const measures=[];for(const line of r.lines){const ws=line.words||[];for(let j=0;j+1<ws.length;j++)if(/^(?:\d+(?:[.,]\d+)?|\d*[¼½¾]|\d+\/\d+|[%‰])$/.test(clean(ws[j].text))&&/^(?:kg|g|ml|dl|cl|l|EL|TL|Spritzer|[a-z0-9])$/i.test(clean(ws[j+1].text))&&ws[j].bbox&&ws[j+1].bbox){const a=ws[j].bbox,b=ws[j+1].bbox;measures.push({x0:Math.min(a.x0,b.x0),y0:Math.min(a.y0,b.y0),x1:Math.max(a.x1,b.x1),y1:Math.max(a.y1,b.y1)});break;}}
   const measureBBox=measures.length?{x0:Math.min(...measures.map(b=>b.x0)),y0:Math.min(...measures.map(b=>b.y0)),x1:Math.max(...measures.map(b=>b.x1)),y1:Math.max(...measures.map(b=>b.y1))}:null;
-  return{source:r.lines.map(l=>l.text),measureBBox,bbox:{x0:Math.min(...r.lines.map(l=>l.bbox.x0)),x1:Math.max(...r.lines.map(l=>l.bbox.x1)),y0:Math.max(Math.min(...r.lines.map(l=>l.bbox.y0))-3,i?(rows[i-1].cy+r.cy)/2:0),y1:Math.min(Math.max(...r.lines.map(l=>l.bbox.y1))+3,i+1<rows.length?(r.cy+rows[i+1].cy)/2:Infinity)}};});
+  return{multiline:r.lines.some(l=>l.bbox.y0>Math.min(...r.lines.map(x=>x.bbox.y0))+height*.7),source:[...new Set(r.modes)].map(mode=>r.lines.filter((l,j)=>r.modes[j]===mode).map(l=>l.text).join(' ')),measureBBox,bbox:{x0:Math.min(...r.lines.map(l=>l.bbox.x0)),x1:Math.max(...r.lines.map(l=>l.bbox.x1)),y0:Math.max(Math.min(...r.lines.map(l=>l.bbox.y0))-3,i?(Math.max(...rows[i-1].lines.map(l=>l.bbox.y1))+Math.min(...r.lines.map(l=>l.bbox.y0)))/2:0),y1:Math.min(Math.max(...r.lines.map(l=>l.bbox.y1))+3,i+1<rows.length?(Math.max(...r.lines.map(l=>l.bbox.y1))+Math.min(...rows[i+1].lines.map(l=>l.bbox.y0)))/2:Infinity)}};});
 }
 function cleanIngredientReading(text){return clean(text).replace(/^(?:[•·*+–«»©‚-]\s*|[.,]\s+)/, '').replace(/\s+/g,' ');}
 function reviewIngredientReadings(reads,source=[]){
