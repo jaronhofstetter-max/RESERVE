@@ -164,3 +164,14 @@ assert.equal(p.reviewMeasuredReadings(p.reviewIngredientReadings(["12 EL Honig",
 assert.equal(p.reviewMeasuredReadings(p.reviewIngredientReadings(["12 EL Honig","12 EL Honig"]),["12 EL","12 EL"]).quantityClear,false);
 assert.equal(p.reviewMeasuredReadings(p.reviewIngredientReadings(["12 EL Honig","12 EL Honig"]),["1⁄2 EL","1½ EL"]).quantityClear,false);
 console.log("Literal vulgar fractions and fraction slashes preserved; repeated or conflicting collapsed readings remain unresolved.");
+
+const headingless=p.parseText("Kuchen\n3 Eier\n200 g Zucker\n2 EL Mehl\n\nEier und Zucker schaumig schlagen. Nach und nach Mehl\nunterrühren.\n\nNach dem Erkalten den Boden teilen.");
+assert.equal(headingless.ingredients,"3 Eier\n200 g Zucker\n2 EL Mehl");assert.match(headingless.steps,/Eier und Zucker schaumig schlagen/);
+assert.ok(headingless.unresolved.some(x=>x.type==="inferred-preparation-boundary"));
+assert.equal(p.parseText("Salat\nZutaten\n2 Tomaten\n1 Zwiebel\n2 EL Öl\nPetersilie, fein gehackt").steps,"");
+
+const preserveUnknown=p.parseText("Kuchen\n3 Eier\n200 g Zucker\n2 EL Mehl\n28. Sahne\nSalz, Pfeffer\n\nAlles verrühren und in der Form backen.");
+assert.ok(preserveUnknown.ingredients.includes("28. Sahne"));assert.ok(preserveUnknown.ingredients.includes("Salz, Pfeffer"));
+
+assert.equal(p.reviewIngredientReadings(["500 a Fleisch","500 a Fleisch"],["500 g Fleisch","500 g Fleisch"]).quantityClear,false);
+assert.equal(p.reviewIngredientReadings(["1 TL Senf", ""],["1 TL Senf","1 TL Senf"]).quantityClear,false);
