@@ -17,6 +17,14 @@ assert.equal(p.textRecipeDivider([{words:[word('ZUTATEN',100,450,230,480)]}],100
 // Observed screenshot: heading starts right of the preparation number column.
 const inset=p.textRecipeDivider([{words:[word('ZUTATEN',34,224,125,237),word('ZUBEREITUNG',322,232,466,245),word('1.',306,265,315,278),word('2.',305,313,315,326),word('3.',304,380,315,393)]}],583,905);
 assert.ok(inset.centerX+7<304,'Right crop must preserve every preparation marker');
+const screenshot=p.parseText('Hähnchen\nZutaten\n600 g Hähnchen\n2 EL Senf\nBild 1 · 1000019974.jpg\nLesarten der Texterkennung vergleichen\nRezeptname');
+assert.equal(screenshot.ingredients,'600 g Hähnchen\n2 EL Senf');
+const capped=p.textRecipeDivider([{words:geometry.words,lines:[word('Bild 1 · 1000019974.jpg',50,1300,500,1320)]}],1000,1500);
+assert.equal(capped.bottom,1296);
+assert.equal(p.parseCardSteps('1. Schneiden.\n2. Mischen.\n3. Garen.\nLesarten der Texterkennung vergleichen\nRezeptname').steps,'Schneiden.\nMischen.\nGaren.');
+const brokenHalf=p.reviewIngredientReadings(['optional: % TL Paprikapulver','optional: % TL Paprikapulver']);
+assert.equal(brokenHalf.noQuantity,false);assert.equal(brokenHalf.quantityClear,false);
+assert.match(brokenHalf.expression,/Menge ungeklärt/);
 const header=p.cardHeaderRegions([geometry],textDivider,1000,1500,100).title;
 assert.ok(header.y0<=100&&header.y1>=210);
 const separated=p.parseCardSteps('ZUBEREITUNG\n1. Hähnchenbrust in Stücke schneiden.\n2. Zutaten in einer Schüssel verrühren.\n3. Hähnchen zur Marinade geben.\n4. Abgedeckt im Kühlschrank ziehen lassen.\n5. Alternativ roh einfrieren.\n6. Nach dem Auftauen vollständig durchgaren.\nfoodchaos.daily');
