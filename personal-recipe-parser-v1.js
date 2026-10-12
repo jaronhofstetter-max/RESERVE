@@ -110,7 +110,10 @@ function textRecipeDivider(reads,width,height){
  for(const a of left)for(const b of right){
   const ah=a.bbox.y1-a.bbox.y0,bh=b.bbox.y1-b.bbox.y0;
   if(b.bbox.x0<=a.bbox.x1||Math.abs(a.bbox.y0-b.bbox.y0)>Math.max(ah,bh)*2)continue;
-  const centerX=b.bbox.x0-width*.025;
+  // Preparation headings may be indented relative to the numbered steps.
+  // Keep the crop margin before those markers so cropping cannot erase them.
+  const markers=words.filter(w=>w.bbox&&/^\d{1,2}[.,)]$/.test(clean(w.text))&&w.bbox.y0>b.bbox.y1&&w.bbox.x0>=b.bbox.x0-width*.12&&w.bbox.x0<=b.bbox.x0+width*.04);
+  const centerX=markers.length>=2?Math.min(...markers.map(w=>w.bbox.x0))-width*.025:b.bbox.x0-width*.06;
   if(centerX<width*.25||centerX>width*.75)continue;
   return{centerX,top:Math.max(0,Math.min(a.bbox.y0,b.bbox.y0)-Math.max(ah,bh)*.4),bottom:height,slope:0,referenceY:height/2,source:'literal-section-headings'};
  }
@@ -180,7 +183,7 @@ function parseCardSteps(text){
  const rows=String(text||'').split(/\r?\n/).map(clean).filter(Boolean),steps=[];let expected=1,conflict=false;
  // Missing punctuation is accepted only at the next sequential marker in the
  // already isolated preparation column. Measurement lines remain prose.
- for(const row of rows){if(/^(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/\S*)?$/i.test(row)||/^(?:zubereitung|anleitung|instructions)\s*:?(?:\s*)$/i.test(row))continue;const m=row.match(/^(\d{1,2})([.)]|\s)\s*(.+)$/),unit=m&&/^(?:g|kg|ml|dl|cl|l|EL|TL|Min\.?|Minuten|Stück)\b/i.test(m[3]);
+ for(const row of rows){if(/^(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/\S*)?$/i.test(row)||/^(?:zubereitung|anleitung|instructions)\s*:?(?:\s*)$/i.test(row))continue;const m=row.match(/^(\d{1,2})([.,)]|\s)\s*(.+)$/),unit=m&&/^(?:g|kg|ml|dl|cl|l|EL|TL|Min\.?|Minuten|Stück)\b/i.test(m[3]);
   if(m&&!unit&&Number(m[1])===expected&&/^[a-zäöüß]/i.test(m[3])){steps.push(m[3]);expected++;}
   else if(steps.length){if(m&&!unit)conflict=true;steps[steps.length-1]+=' '+row;}
  }
