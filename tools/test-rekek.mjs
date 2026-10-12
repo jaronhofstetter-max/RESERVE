@@ -1,6 +1,23 @@
 import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';
 const context={window:{}};vm.runInNewContext(fs.readFileSync('personal-recipe-parser-v1.js','utf8'),context);
 const p=context.window.RESERVE_REKEK;
+// Observed screenshot failure, represented as text/geometry fixtures (not a pixel OCR benchmark).
+const marinade=p.parseText('Hähnchenbrust in\nHonig-Senf-Marinade\nFür ca. 3–4 Personen\nZutaten\n600 g Hähnchenbrustfilet 1. Hähnchenbrust in Stücke schneiden.');
+assert.equal(marinade.name,'Hähnchenbrust in Honig-Senf-Marinade');
+assert.equal(marinade.portions,'');
+assert.ok(marinade.unresolved.some(x=>x.type==='portion-range'));
+assert.ok(marinade.unresolved.some(x=>x.type==='mixed-columns'));
+assert.equal(p.reviewIngredientReadings(['12 EL Honig','12 EL Honig']).quantityClear,false);
+assert.equal(p.reviewIngredientReadings(['1½ EL Honig','1½ EL Honig']).quantityClear,true);
+const word=(text,x0,y0,x1,y1)=>({text,bbox:{x0,y0,x1,y1}});
+const geometry={words:[word('ZUTATEN',100,450,230,480),word('ZUBEREITUNG',540,450,750,480)],lines:[word('Hähnchenbrust in',160,100,800,150),word('Honig-Senf-Marinade',120,160,850,210)]};
+const textDivider=p.textRecipeDivider([geometry],1000,1500);
+assert.ok(textDivider&&textDivider.centerX<540&&textDivider.top<450);
+assert.equal(p.textRecipeDivider([{words:[word('ZUTATEN',100,450,230,480)]}],1000,1500),null);
+const header=p.cardHeaderRegions([geometry],textDivider,1000,1500,100).title;
+assert.ok(header.y0<=100&&header.y1>=210);
+const separated=p.parseCardSteps('ZUBEREITUNG\n1. Hähnchenbrust in Stücke schneiden.\n2. Zutaten in einer Schüssel verrühren.\n3. Hähnchen zur Marinade geben.\n4. Abgedeckt im Kühlschrank ziehen lassen.\n5. Alternativ roh einfrieren.\n6. Nach dem Auftauen vollständig durchgaren.\nfoodchaos.daily');
+assert.equal(separated.count,6);assert.equal(separated.sequenceComplete,true);assert.ok(!separated.steps.includes('foodchaos.daily'));
 const r=p.parseText('23:05 4G\nGemüsetopf\n2 Portion(en)\n10 Min Vorbereitung\n15 Min Kochzeit\nZutaten\n200 g\nKarotten\n120 g Gemüse\n(alternativ: Kürbis)\nFür die Sauce:\n1 EL Öl\nSchritt-für-Schritt-Kochen leicht gemacht!\nZum Starten antippen.\nZusätzlich:\n1 EL Öl\nNährwertangaben (pro Portion)\n500 kcal\nZubereitung\nSchritt 1\nGemüse schneiden.\nIn den Topf geben.\nSchritt 2\nGaren.\nTIPP\nMit Kräutern servieren.');
 assert.equal(r.name,'Gemüsetopf');assert.equal(r.portions,'2');assert.equal(r.prepMinutes,10);assert.equal(r.cookMinutes,15);
 assert.equal(r.ingredients,'200 g Karotten\n120 g Gemüse (alternativ: Kürbis)\n1 EL Öl\n1 EL Öl');
