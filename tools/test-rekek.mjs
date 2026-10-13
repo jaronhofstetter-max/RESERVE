@@ -135,3 +135,16 @@ assert.equal(p.reviewCardMetadata(['Omas Königsberger Klopse ¢','Omas Königsb
 assert.equal(p.reviewCardMetadata(['Gericht für 99 ¢','Gericht für 99 ¢'],[]).name,'Gericht für 99 ¢');
 console.log('Card refinements: punctuation preserves digits, literal amount rereads reject conflicting numbers, serving/title disagreement rejection, Spritzer remains unconvertible, and sequential preparation markers passed.');
 
+
+// Unnumbered preparation requires an explicit heading in BOTH readings.
+const prose='Suppe\nZutaten\n200 g Gemüse\n\nZubereitung:\nGemüse schneiden und in Butter braten.\nMit Wasser auffüllen und zehn Minuten kochen.\n\nDie Suppe servieren.';
+const preparation=p.agreedPreparation([prose,prose]);assert.ok(preparation);assert.equal(preparation.steps,'Gemüse schneiden und in Butter braten. Mit Wasser auffüllen und zehn Minuten kochen.\nDie Suppe servieren.');assert.equal(preparation.reviewRequired,true);
+assert.equal(p.agreedPreparation([prose,prose.replace('zehn','zwanzig')]),null);
+assert.equal(p.agreedPreparation([prose,prose.replace('Zubereitung:','Text:')]),null);
+assert.equal(p.agreedPreparation([prose.replace('Zubereitung:',''),prose.replace('Zubereitung:','')]),null);
+assert.equal(p.agreedPreparation(['Zubereitung\n200 g Mehl\n50 g Butter','Zubereitung\n200 g Mehl\n50 g Butter']),null);
+assert.equal(p.agreedPreparation(['Zubereitung\n1. Gemüse schneiden und kochen.','Zubereitung\n1. Gemüse schneiden und kochen.']),null);
+assert.equal(p.agreedPreparation([prose+'\nZubereitung\nNeue Anleitung.',prose+'\nZubereitung\nNeue Anleitung.']),null);
+const bounded=prose+'\nBild 2\nWerbetext mischen und backen.';assert.ok(!p.agreedPreparation([bounded,bounded]).steps.includes('Werbetext'));
+assert.equal(p.agreedPreparation([prose]),null);
+console.log('Unnumbered preparation: agreeing labelled prose only; differing values, missing headings, ingredient-only lists, numbered or repeated sections rejected.');

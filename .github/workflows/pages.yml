@@ -54,6 +54,7 @@ jobs:
           node tools/test-navigation-work.mjs
           node tools/test-personal-recipe-parser.mjs
           node tools/test-rekek.mjs
+          node tools/test-rekek-preparation-import.mjs
           node tools/test-rekek-digits.mjs
           node tools/test-recipe-training.mjs
           node tools/import-retailer-catalog.mjs
