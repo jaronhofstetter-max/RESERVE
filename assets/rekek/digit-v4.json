@@ -1,0 +1,42 @@
+{
+  "version": "rekek-digit-v4-20261013",
+  "sha256": "eb2084072240674f1b9f63d041e521bd61ea5ba821529919707ca95f4efa1d26",
+  "shapes": {
+    "net.0.weight": [
+      16,
+      1,
+      3,
+      3
+    ],
+    "net.0.bias": [
+      16
+    ],
+    "net.3.weight": [
+      32,
+      16,
+      3,
+      3
+    ],
+    "net.3.bias": [
+      32
+    ],
+    "net.7.weight": [
+      64,
+      2048
+    ],
+    "net.7.bias": [
+      64
+    ],
+    "net.9.weight": [
+      10,
+      64
+    ],
+    "net.9.bias": [
+      10
+    ]
+  },
+  "bytes": 546344,
+  "scope": "experimental integer digit readings; never automatically confirmed",
+  "dataCredit": "BHMSDS wblachowski MIT; UCI Alpaydin & Kaynak CC BY4.0; private reviewed recipe examples",
+  "sourceModel": "local REKEK v4, 15 epochs, selected epoch14"
+}
