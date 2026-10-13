@@ -3,6 +3,9 @@ on:
   pull_request:
     paths:
       - 'personal-recipe*.js'
+      - 'rekek-digit-*.js'
+      - 'assets/rekek/**'
+      - 'tests/fixtures/rekek-digit*'
       - 'tools/*rekek*'
       - '.github/workflows/rekek-review.yml'
 permissions:
@@ -26,6 +29,8 @@ jobs:
         run: |
           node tools/test-personal-recipe-parser.mjs
           node tools/test-rekek.mjs
+          node tools/test-rekek-digits.mjs
+          node tools/e2e-rekek-digits.mjs
           node tools/e2e-rekek-review.mjs
           node tools/e2e-personal-recipes.mjs
           node tools/e2e-rekek-import.mjs
