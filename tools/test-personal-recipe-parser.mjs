@@ -6,3 +6,34 @@ const text='Reispfanne\nFür 2 Portionen\nZutaten\n200 g Reis\n2 Stück Eier\nSa
 const r={id:'personal-test',name:'Reispfanne',portions:2,ingredientLines:['200 g Reis','2 Eier'],steps:['Reis garen.','Eier hinzufügen.'],diet:'Alles',prepMinutes:null,cookMinutes:null,source:''};assert.ok(p.validRecord(r));const recipe=p.toRecipe(r);assert.equal(recipe.ingredients[0].amount,100);assert.equal(recipe.ingredients[1].amount,1);assert.equal(recipe.pantryReady,true);assert.equal(Object.keys(recipe.nutrition).length,0);assert.equal(p.toRecipe({...r,ingredientLines:['1 EL Öl']}).pantryReady,false);assert.equal(p.validRecord({...r,portions:0}),false);assert.equal(p.validRecord({...r,id:'x\" onclick=\"alert(1)'}),false);console.log('Personal recipes: fractions, units, original portions, uncertain quantities, preserved steps, validation and no invented nutrition OK');
 
 assert.equal(p.parseText('Suppe\nZUTATEN\n— 2 Portion(en) +\n350 g Süsskartoffeln\nZUBEREITUNG\nGemüse garen.').portions,'2');
+
+
+// Quantity and unit regressions found during independent review.
+{
+const ctx={window:{}};vm.runInNewContext(fs.readFileSync('personal-recipe-parser-v1.js','utf8'),ctx);const p=ctx.window.RESERVE_RECIPE_PARSER;
+const known=[['3/16 l Wasser',187.5,'ml'],['⅜ l Milch',375,'ml'],['1⅛ kg Mehl',1125,'g'],['2 Eier',2,'Stück'],['75 gr Butter',75,'g'],['1000 ml Wasser',1000,'ml']];
+for(const [line,q,u] of known){const x=p.ingredient(line);assert.equal(x.amount,q,line);assert.equal(x.unit,u,line);assert.equal(x.uncertain,false,line);}
+for(const line of ['3/16 Wasser','250 Mehl','2 P kg Vanillenzucker','2 leaves Bay leaves','1½–2 Bechern Sahne','⅜–½ l Milch','1/0 g Reis','0 g Reis','Salz nach Geschmack','1 EL Öl'])assert.equal(p.ingredient(line).uncertain,true,line);
+assert.equal(p.ingredient('3/16 Wasser').unit,'');assert.equal(p.ingredient('2 leaves Bay leaves').unit,'leaves');assert.equal(p.ingredient('2 leaves Bay leaves').name,'Bay leaves');
+assert.equal(p.ingredient('1/0 g Reis').amount,null);
+const r={id:'personal-quantity-review',name:'Suppe',portions:2,ingredientLines:['Salz nach Geschmack','3/16 Wasser'],steps:['Vermengen.'],diet:'Alles',prepMinutes:null,cookMinutes:null,source:''};const x=p.toRecipe(r);assert.equal(x.ingredients[0].amount,null);assert.equal(x.ingredients[1].unit,'');assert.equal(x.pantryReady,false);
+const parsed=p.parseText('Milch\nIngredients\n⅜ l Milch\nInstructions\n1. Verrühren.');assert.equal(parsed.ingredients,'⅜ l Milch');assert.equal(parsed.steps,'Verrühren.');
+console.log('Known fractions, explicit units, missing units, ranges, invalid amounts and null-preserving portion conversion passed.');
+
+const re=ctx.window.RESERVE_REKEK;
+for(const line of ['250 Mehl','⅜ Wasser','2 P kg Vanillenzucker']){const x=re.reviewIngredientReadings([line,line]);assert.equal(x.quantityClear,false,line);assert.equal(x.noQuantity,false,line);assert.equal(x.reviewRequired,true,line);}
+assert.equal(re.reviewIngredientReadings(['1 EL Öl','1 EL Öl']).quantityClear,true);
+const split=p.parseText('Milch\nIngredients\n⅜ l\nMilch\nInstructions\nVerrühren.');assert.equal(split.ingredients,'⅜ l Milch');
+console.log('Reader agreement cannot approve missing units; split-line eighth fractions preserved.');
+
+for(const line of ['100','250','3/16','1,5','⅜']){assert.equal(p.ingredient(line).amount,null,line);assert.equal(p.ingredient(line).uncertain,true,line);assert.equal(re.reviewIngredientReadings([line,line]).quantityClear,false,line);}
+for(const line of ['1 Ei','1 Eiweiß','1 Eigelb']){assert.equal(p.ingredient(line).unit,'Stück',line);assert.equal(p.ingredient(line).amount,1,line);assert.equal(p.ingredient(line).uncertain,false,line);}
+console.log('Independent-review regressions: bare quantities remain null; singular egg and egg-white counts preserved.');
+
+const triple=p.parseText('Wasser\nIngredients\n⅜\nl\nWasser\nInstructions\nVerrühren.');assert.equal(triple.ingredients,'⅜ l Wasser');assert.equal(p.ingredient(triple.ingredients).amount,375);
+
+for(const line of ['1 ⅜','1 3/16','2 1/2','100g','⅜ l','1 3']){assert.equal(p.ingredient(line).amount,null,line);assert.equal(p.ingredient(line).uncertain,true,line);}console.log('Mixed fractions and isolated amount/unit fragments do not produce partial quantities.');
+
+assert.equal(p.ingredient('100G Reis').amount,100);assert.equal(p.ingredient('100G Reis').unit,'g');assert.equal(p.ingredient('2 eggs').amount,2);assert.equal(p.ingredient('2 eggs').unit,'Stück');
+
+}
