@@ -40,3 +40,19 @@ for(const line of ['6 Schweine- oder Putenschnitzel','6 Schweine - oder Putensch
 const raw=p.parseText('Schnitzel\n6 Schweine- oder Putenschnitzel\n250 Mehl');assert.ok(raw.ingredients.includes('6 Schweine- oder Putenschnitzel'));assert.ok(raw.unresolved.some(x=>x.type==='unclassified-quantity-line'&&x.raw==='250 Mehl'));
 
 }
+
+
+// Literal source-unit and decorative-marker regressions.
+{
+const p=ctx.window.RESERVE_RECIPE_PARSER,k=ctx.window.RESERVE_REKEK;
+for(const [s,amount,unit,name,uncertain] of [['= 30 g Butter',30,'g','Butter',false],['=30g Butter',30,'g','Butter',false],['1 Stange Lauch',1,'Stange','Lauch',true],['2 Stangen Lauch',2,'Stange','Lauch',true],['2 Gläser trockener Weißwein',2,'Glas','trockener Weißwein',true],['1 Glas Wasser',1,'Glas','Wasser',true],['1 St. Porree',1,'Stück','Porree',false],['1 Stck. Sellerie',1,'Stück','Sellerie',false]]){const x=p.ingredient(s);assert.equal(x.amount,amount,s);assert.equal(x.unit,unit,s);assert.equal(x.name,name,s);assert.equal(x.uncertain,uncertain,s);assert.equal(x.raw,s,s);}
+for(const s of ['= 30 Mehl','2 Gläset Wein','1 Stange','2 Gläser','= Text','30 = 50 g Butter'])assert.equal(p.ingredient(s).uncertain,true,s);
+assert.equal(p.ingredient('2 Gläser trockener Weißwein').unit,'Glas');assert.equal(p.ingredient('2 Gläser trockener Weißwein').amount,2);
+const draft=p.parseText('Suppe\n=30g Butter\n1 Stange Lauch\n2 Gläser Wein');assert.equal(draft.ingredients,'=30g Butter\n1 Stange Lauch\n2 Gläser Wein');assert.equal(draft.unresolved.length,0);
+for(const text of ['1 Stange Lauch','2 Gläser Wein']){const r=k.reviewIngredientReadings([text,text]);assert.equal(r.quantityClear,true);assert.equal(r.reviewRequired,true);assert.equal(r.quantityInferred,false);}
+const r={id:'personal-container-check',name:'Suppe',portions:2,ingredientLines:['2 Gläser Wein'],steps:['Vermengen.'],diet:'Alles',prepMinutes:null,cookMinutes:null};assert.equal(p.toRecipe(r).pantryReady,false);assert.equal(p.toRecipe(r).ingredients[0].unit,'Glas');assert.equal(p.toRecipe(r).ingredients[0].amount,1);
+console.log('Literal equals markers, source units, explicit count abbreviations, review gating and no volume/mass assumptions passed.');
+
+assert.equal(k.reviewIngredientReadings(['= 12 EL Honig','= 12 EL Honig']).quantityClear,false);assert.equal(k.reviewIngredientReadings(['= 30 g Butter','= 30 g Butter']).quantityClear,true);
+
+}
