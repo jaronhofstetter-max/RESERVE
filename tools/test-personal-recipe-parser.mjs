@@ -8,7 +8,7 @@ const r={id:'personal-test',name:'Reispfanne',portions:2,ingredientLines:['200 g
 assert.equal(p.parseText('Suppe\nZUTATEN\n— 2 Portion(en) +\n350 g Süsskartoffeln\nZUBEREITUNG\nGemüse garen.').portions,'2');
 
 
-// Quantity and unit regressions found during independent review.
+// Quantity/unit regressions, including known real-image OCR cases.
 {
 const ctx={window:{}};vm.runInNewContext(fs.readFileSync('personal-recipe-parser-v1.js','utf8'),ctx);const p=ctx.window.RESERVE_RECIPE_PARSER;
 const known=[['3/16 l Wasser',187.5,'ml'],['⅜ l Milch',375,'ml'],['1⅛ kg Mehl',1125,'g'],['2 Eier',2,'Stück'],['75 gr Butter',75,'g'],['1000 ml Wasser',1000,'ml']];
@@ -35,5 +35,8 @@ const triple=p.parseText('Wasser\nIngredients\n⅜\nl\nWasser\nInstructions\nVer
 for(const line of ['1 ⅜','1 3/16','2 1/2','100g','⅜ l','1 3']){assert.equal(p.ingredient(line).amount,null,line);assert.equal(p.ingredient(line).uncertain,true,line);}console.log('Mixed fractions and isolated amount/unit fragments do not produce partial quantities.');
 
 assert.equal(p.ingredient('100G Reis').amount,100);assert.equal(p.ingredient('100G Reis').unit,'g');assert.equal(p.ingredient('2 eggs').amount,2);assert.equal(p.ingredient('2 eggs').unit,'Stück');
+
+for(const line of ['6 Schweine- oder Putenschnitzel','6 Schweine - oder Putenschnitzel','6 Putenschnitzel']){const x=p.ingredient(line);assert.equal(x.amount,6,line);assert.equal(x.unit,'Stück',line);assert.equal(x.uncertain,false,line);}
+const raw=p.parseText('Schnitzel\n6 Schweine- oder Putenschnitzel\n250 Mehl');assert.ok(raw.ingredients.includes('6 Schweine- oder Putenschnitzel'));assert.ok(raw.unresolved.some(x=>x.type==='unclassified-quantity-line'&&x.raw==='250 Mehl'));
 
 }
