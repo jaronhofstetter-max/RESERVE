@@ -50,3 +50,21 @@ assert.equal(unresolved.ingredients,'250 Mehl\n2-3 EL Öl');
 assert.ok(unresolved.unresolved.some(r=>r.raw==='250 Mehl'));
 assert.ok(context.window.RESERVE_RECIPE_PARSER.ingredient('2-3 EL Öl').uncertain);
 console.log('Recipe section regressions passed: labels, implicit instructions, subsections, ingredient purposes, nutrition, missing units and multiple recipes. Text-only tests; not OCR accuracy.');
+
+const decorated=K.parseText('Instagram\nFolgen\nGemüse vom Blech\n10 Min. Vorbereitung, 30 Min. Backzeit\n2 Portionen\n© Zutaten:\n300 g Gemüse\nU 2 EL Öl\nE81 100 g Käse\nZubereitung:\nGemüse auf dem Blech backen.\nGefällt 123 Mal\nkochprofil # neue Rezepte');
+assert.equal(decorated.name,'Gemüse vom Blech');
+assert.ok(decorated.ingredients.includes('U 2 EL Öl'));
+assert.ok(decorated.ingredients.includes('E81 100 g Käse'));
+assert.ok(!decorated.steps.includes('kochprofil'));
+assert.ok(context.window.RESERVE_RECIPE_PARSER.ingredient('E81 100 g Käse').uncertain);
+const interleaved=K.parseText('Gemüseauflauf\n300 g Gemüse\nIn die Form geben\n1 Becher Sahne\n1 Becher Schmand verrühren\n1 Tüte Suppenpulver darin auflösen\nÜber das Gemüse gießen\nBei 180 Grad backen.');
+assert.equal(interleaved.ingredients,'300 g Gemüse\n1 Becher Sahne\n1 Becher Schmand\n1 Tüte Suppenpulver');
+assert.ok(interleaved.steps.includes('In die Form geben'));
+assert.ok(interleaved.steps.includes('1 Becher Schmand verrühren'));
+assert.ok(interleaved.steps.includes('180 Grad'));
+const seasoning=K.parseCandidates('Zutaten für 3 Personen:\n300 g Nudeln\n200 g Gemüse\nSalz, Pfeffer\nZubereitung:\nGemüse dünsten.\nNudeln kochen.');
+assert.equal(seasoning.candidates.length,1);
+assert.ok(seasoning.candidates[0].steps.includes('Gemüse dünsten'));
+console.log('OCR layout regressions passed: decorated lists, source title evidence, uncertain prefixes, interleaved quantities and seasoning boundaries.');
+
+assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient('1 kleine Dose Mais').unit,'dose');
