@@ -61,7 +61,7 @@ function parseText(text){
  const lines=recipeTextLines(text);
  let mode='',name=recipeTitle(lines),portions='',prepMinutes=null,cookMinutes=null,pending='',stepIndex=-1,summary=false;
  const ingredients=[],steps=[],ignored=[],unresolved=[],ingredientSections=[];let section=null;
- function addIngredient(line){ingredients.push(line);if(!section){section={name:'',lines:[]};ingredientSections.push(section);}section.lines.push(line);}
+ function addIngredient(line){if(/^(?:\d|[¼½¾⅛⅜⅝⅞])/.test(line)&&ingredient(line).amount>0&&!ingredient(line).unit&&!unresolved.some(x=>x.type==='unclassified-quantity-line'&&x.raw===line))unresolved.push({type:'unclassified-quantity-line',raw:line});ingredients.push(line);if(!section){section={name:'',lines:[]};ingredientSections.push(section);}section.lines.push(line);}
  const quantity=/^(?:\d+(?:[.,]\d+)?(?:\s+\d+\/\d+)?|\d+\/\d+|[¼½¾⅛⅜⅝⅞])\s*(?:kg|mg|g|ml|dl|cl|l|stück|stueck|stk\.?|EL|TL|Prisen?|Bund)?$/i;
  const measured=/^(?:=\s*)?(?:\d|[¼½¾⅛⅜⅝⅞])/;
  const noise=/^(?:\d{1,2}:\d{2}(?:\s|$)|https?:\/\/|www\.|kikkoman[’'®©\s]*$|zutaten kopieren|zum starten antippen|schritt.für.schritt.kochen|leicht gemacht|starten antippen|(?:[xv»<>&©\s]+)?instagram\b|reddit\s*$|anmelden\s*$|app öffnen\s*$|aufrufen\s*$|teilen\s*$|speichern\s*$|gefällt\s+\d|alle\s+\d+\s+kommentare|link zum video\b)/i;
