@@ -66,6 +66,25 @@ function textureRecipeRegions(data,width,height){
  return{title:box(titleWords),ingredients:box([...headingWords,...ingredientRows.flatMap(r=>r.words)]),steps:box(stepRows.flatMap(r=>r.words)),ingredientRows:ingredientRows.length};
 }
 
+// Two ingredient columns bounded by explicit section headings. Numeric starts
+// establish both columns; noun-only rows remain in their source column.
+function ingredientColumnRegions(data,width,height){
+ const rows=ocrLines(data),label=r=>clean(r.text).replace(/[^a-zäöüß]/gi,'').toLowerCase();
+ const a=rows.findIndex(r=>label(r)==='zutaten'),b=rows.findIndex((r,i)=>i>a&&label(r)==='zubereitung');if(a<1||b<=a+3)return null;
+ const ws=rows.slice(a+1,b).flatMap(r=>r.words||[]).filter(w=>w.bbox&&/[a-zäöüß0-9]/i.test(w.text));if(!ws.length)return null;
+ const starts=ws.filter(w=>/^\d+(?:[.,]\d+)?(?:\/\d+)?(?:kg|g|ml|l)?$/i.test(w.text)).sort((u,v)=>u.bbox.x0-v.bbox.x0),groups=[];
+ for(const w of starts){let g=groups.find(g=>Math.abs(g.x-w.bbox.x0)<width*.04);if(!g){g={x:w.bbox.x0,words:[]};groups.push(g);}g.words.push(w);}
+ const anchors=groups.filter(g=>g.words.length>=2);if(anchors.length!==2||anchors[1].x-anchors[0].x<width*.25)return null;
+ const split=anchors[1].x-width*.012;if(ws.some(w=>w.bbox.x0<split&&w.bbox.x1>split))return null;
+ const columns=[ws.filter(w=>w.bbox.x1<=split),ws.filter(w=>w.bbox.x0>=split)];if(columns.some(c=>c.length<4))return null;
+ const box=words=>{const p=Math.max(6,height*.006);return{x0:Math.max(0,Math.floor(Math.min(...words.map(w=>w.bbox.x0))-p)),y0:Math.max(0,Math.floor(Math.min(...words.map(w=>w.bbox.y0))-p)),x1:Math.min(width,Math.ceil(Math.max(...words.map(w=>w.bbox.x1))+p)),y1:Math.min(height,Math.ceil(Math.max(...words.map(w=>w.bbox.y1))+p))};};
+ const header=rows.slice(0,a).flatMap(r=>r.words||[]).filter(w=>w.bbox&&/[a-zäöüß]{3}/i.test(w.text));if(!header.length)return null;
+ const largest=header.slice().sort((u,v)=>(v.bbox.y1-v.bbox.y0)-(u.bbox.y1-u.bbox.y0))[0],h=largest.bbox.y1-largest.bbox.y0;
+ const title=header.filter(w=>w.bbox.y1-w.bbox.y0>=h*.65&&w.bbox.y0<largest.bbox.y1+h*.5&&w.bbox.y1>largest.bbox.y0-h*.5),body=rows.slice(b+1).flatMap(r=>r.words||[]).filter(w=>w.bbox&&/[a-zäöüß0-9]/i.test(w.text));if(!title.length||!body.length)return null;
+ const counts=columns.map(c=>{const ys=[];for(const w of c){const y=(w.bbox.y0+w.bbox.y1)/2;if(!ys.some(v=>Math.abs(v-y)<(w.bbox.y1-w.bbox.y0)*.6))ys.push(y);}return ys.length;});
+ if(counts.some(n=>n<3))return null;return{title:box(title),columns:columns.map(box),counts,steps:box(body)};
+}
+
 // Unlabelled, single-column quantity lists. Small side lettering is not a food row.
 function quantityRecipeRegions(data,width,height){
  const rows=ocrLines(data),good=w=>w.bbox&&/[a-zäöüß0-9½¼¾%]/i.test(w.text),words=r=>(r.words||[]).filter(good),box=ws=>{const p=Math.max(7,height*.005);return{x0:Math.max(0,Math.floor(Math.min(...ws.map(w=>w.bbox.x0))-p)),y0:Math.max(0,Math.floor(Math.min(...ws.map(w=>w.bbox.y0))-p)),x1:Math.min(width,Math.ceil(Math.max(...ws.map(w=>w.bbox.x1))+p)),y1:Math.min(height,Math.ceil(Math.max(...ws.map(w=>w.bbox.y1))+p))};};
@@ -401,7 +420,7 @@ function contextSuggestions(ingredients,steps){
   if(/^\s*[=•«»" ]*\d+(?:[.,]\d+)?\s*$/.test(prefix)&&!units.some(u=>u.toLowerCase()===t.word.toLowerCase())){const choices=units.filter(u=>near(t.word,u));if(choices.length===1)add('ingredients',t,choices[0],'Ähnliche Einheit · am Original prüfen');}
   if(/[äöü]/i.test(t.word)){const choices=[...new Set(st.filter(w=>fold(w.word)===fold(t.word)&&!/[äöü]/i.test(w.word)).map(w=>w.word))];if(choices.length===1)add('ingredients',t,choices[0],'Andere Schreibweise in der Zubereitung');}
  }
- const names=[...new Set(it.filter(t=>t.word.length>=5&&!units.some(u=>u.toLowerCase()===t.word.toLowerCase())).map(t=>t.word))];
+ const names=[...new Set(it.filter(t=>t.word.length>=5&&!/^(?:weich|fest|klein|groß|fein|grob|süß|sauer|frisch|warm|kalt)(?:e|en|er|es|em)?$/i.test(t.word)&&!units.some(u=>u.toLowerCase()===t.word.toLowerCase())).map(t=>t.word))];
  for(const t of st){if(t.word.length<5||names.some(w=>w.toLowerCase()===t.word.toLowerCase()||(!/[äöü]/i.test(t.word)&&fold(w)===fold(t.word))))continue;const choices=names.filter(w=>near(t.word,w));if(choices.length===1)add('steps',t,choices[0],'Ähnlicher Name in den Zutaten');}
  const actions=['unterrühren','untermischen','unterheben','unterkneten','verrühren','vermischen','hinzufügen'];
  for(let i=0;i<st.length-1;i++){const a=st[i],b=st[i+1],gap=String(steps).slice(a.end,b.start);if(!/^[ \t]+$/.test(gap))continue;const from=String(steps).slice(a.start,b.end),joined=a.word+b.word,choices=actions.filter(w=>w===joined.toLowerCase()||near(joined,w));if(choices.length===1&&!out.some(x=>x.field==='steps'&&x.start<b.end&&x.end>a.start))add('steps',{word:from,start:a.start,end:b.end},choices[0],'Möglicherweise getrenntes Tätigkeitswort');}
@@ -411,7 +430,7 @@ function contextSuggestions(ingredients,steps){
 function validRecord(r){return r&&/^personal-[a-z0-9-]+$/.test(r.id)&&typeof r.name==='string'&&r.name.length>0&&r.name.length<=200&&Number.isFinite(r.portions)&&r.portions>0&&r.portions<=100&&Array.isArray(r.ingredientLines)&&r.ingredientLines.length>0&&r.ingredientLines.length<=100&&r.ingredientLines.every(s=>typeof s==='string'&&s.length>0&&s.length<=500)&&Array.isArray(r.steps)&&r.steps.length>0&&r.steps.length<=100&&r.steps.every(s=>typeof s==='string'&&s.length>0&&s.length<=3000)&&['Alles','Vegetarisch','Vegan'].includes(r.diet)&&[r.prepMinutes,r.cookMinutes].every(n=>n===null||Number.isFinite(n)&&n>=0&&n<=1440)&&(!r.source||typeof r.source==='string'&&r.source.length<=2000)}
 function toRecipe(r,image=''){const parsed=r.ingredientLines.map(ingredient),pantryReady=parsed.every(x=>!x.uncertain);return{id:r.id,name:r.name,personal:true,pantryReady,detailLoaded:true,description:'',type:'Hauptmahlzeit',diet:r.diet,dish:'🍽️',cuisine:'Eigenes Rezept',difficulty:'',status:'approved',mealTimes:['Mittagessen','Abendessen'],prepMinutes:r.prepMinutes||0,cookMinutes:r.cookMinutes||0,ingredients:parsed.map(x=>({name:x.name,amount:x.amount===null?null:x.amount/r.portions,unit:x.unit})),steps:r.steps.slice(),nutrition:{},allergens:[],image}}
 window.RESERVE_RECIPE_PARSER={ingredient,parseText,validRecord,toRecipe};
-window.RESERVE_REKEK={version:"0.6.12",kind:"local-ocr-and-rules",contextSuggestions,quantityRecipeRegions,fractionGlyphParts,prepareTextOnTexture,textureRecipeRegions,parseText,parseCandidates,findRecipePanel,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
+window.RESERVE_REKEK={version:"0.6.13",kind:"local-ocr-and-rules",contextSuggestions,ingredientColumnRegions,quantityRecipeRegions,fractionGlyphParts,prepareTextOnTexture,textureRecipeRegions,parseText,parseCandidates,findRecipePanel,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
 })();
 
 
