@@ -11,7 +11,7 @@ try{
   const get=id=>document.getElementById(id),out={version:RESERVE_REKEK.version,name:get('personalName').value,ingredients:get('personalIngredients').value,steps:get('personalSteps').value,warning:get('personalUncertain').textContent,rangeUncertain:RESERVE_RECIPE_PARSER.ingredient('1 bis 2 Prisen Salz').uncertain};
   RESERVE_PERSONAL_RECIPES.edit();document.getElementById('personalSameRecipe').checked=true;out.newWarning=get('personalUncertain').textContent;out.newIngredients=get('personalIngredients').value;return out;
  });
- assert.equal(result.version,'0.6.7');assert.equal(result.name,'Gemüsetopf');assert.equal(result.ingredients,'200 g Karotten\n1 bis 2 Prisen Salz');assert.equal(result.steps,'Gemüse schneiden.\nGaren.');assert.ok(result.rangeUncertain);assert.match(result.warning,/1 Zutat/);assert.ok(!result.warning.includes('Prisen'));assert.equal(result.newWarning,'');assert.equal(result.newIngredients,'');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
+ assert.equal(result.version,'0.6.8');assert.equal(result.name,'Gemüsetopf');assert.equal(result.ingredients,'200 g Karotten\n1 bis 2 Prisen Salz');assert.equal(result.steps,'Gemüse schneiden.\nGaren.');assert.ok(result.rangeUncertain);assert.match(result.warning,/1 Zutat/);assert.ok(!result.warning.includes('Prisen'));assert.equal(result.newWarning,'');assert.equal(result.newIngredients,'');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
  const separated=await page.evaluate(()=>{
   RESERVE_PERSONAL_RECIPES.applyText('Gemüsepfanne\nZutaten: 250 g Gemüse\n2 EL Öl\nGemüse schneiden.\nIn Öl braten.');
   return {ingredients:document.getElementById('personalIngredients').value,steps:document.getElementById('personalSteps').value,confirmed:document.getElementById('personalConfirmed').checked};
@@ -25,6 +25,14 @@ try{
   return{calls,languages,portions:document.getElementById('personalPortions').value,ingredients:document.getElementById('personalIngredients').value,steps:document.getElementById('personalSteps').value,status:document.getElementById('personalStatus').textContent,evidence:document.getElementById('personalOCREvidence').value,confirmed:document.getElementById('personalConfirmed').checked};
  });
  assert.equal(focused.calls,3);assert.deepEqual(focused.languages,['deu+eng','deu']);assert.equal(focused.portions,'2');assert.equal(focused.ingredients,'400 g Gemüse\n2 EL Öl\nSalz');assert.equal(focused.steps,'Gemüse schneiden.\nIn Öl braten.');assert.match(focused.status,/Abweichende Portionslesart/);assert.match(focused.evidence,/Für 12 Portionen/);assert.equal(focused.confirmed,false);
+ const printed=await page.evaluate(async()=>{
+  RESERVE_PERSONAL_RECIPES.edit();const canvas=document.createElement('canvas');canvas.width=80;canvas.height=100;canvas.getContext('2d').fillRect(0,0,80,100);const blob=await new Promise(r=>canvas.toBlob(r));
+  const text='Mandel-Rezept\nTeig: 250 g Mehl, 90 g Zucker\n1 Ei\nBelag: 3 Eßlöffel Wasser\n150 g Nüsse\nWasser aufkochen. Nüsse untermischen.';const languages=[];let calls=0;
+  window.Tesseract={createWorker:async language=>{languages.push(language);return{setParameters:async()=>{},terminate:async()=>{},recognize:async()=>({data:{text:++calls===1?'OCR noise\n'+text:'irrelevant page '+calls+' !\n'+text}})}}};
+  await RESERVE_PERSONAL_RECIPES.importScreenshots([new File([blob],'synthetic-printed.png',{type:'image/png'})]);
+  return{calls,languages,name:document.getElementById('personalName').value,ingredients:document.getElementById('personalIngredients').value,steps:document.getElementById('personalSteps').value,confirmed:document.getElementById('personalConfirmed').checked};
+ });
+ assert.equal(printed.calls,3);assert.deepEqual(printed.languages,['deu+eng','deu']);assert.equal(printed.name,'Mandel-Rezept');assert.equal(printed.ingredients,'250 g Mehl\n90 g Zucker\n1 Ei\n3 Eßlöffel Wasser\n150 g Nüsse');assert.equal(printed.steps,'Wasser aufkochen. Nüsse untermischen.');assert.equal(printed.confirmed,false);
  console.log('REKEK mobile import: split quantities, ranges, page noise, fresh editor and focused OCR serving conflict preserved for review. Mock OCR, not photo accuracy.');
 }finally{await browser.close();server.close();}
 

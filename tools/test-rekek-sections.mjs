@@ -78,3 +78,12 @@ assert.equal(K.findRecipePanel(panelImage([[25,20,215,130],[25,200,215,310]])),n
 const wrapped=K.parseText('Kartoffelpfanne\n20 Min. Vorbereitung, 35 Min. Backzeit\nZutaten\n300 g Kartoffeln\nZubereitung\nAlles mit Kräutern und\nGewürzen vermengen.\nIm Ofen garen.');
 assert.equal(wrapped.prepMinutes,20);assert.equal(wrapped.cookMinutes,35);assert.equal(wrapped.steps,'Alles mit Kräutern und Gewürzen vermengen.\nIm Ofen garen.');
 console.log('Inset panel detection rejects blank/full-width/competing panels; labelled combined times and wrapped preparation preserved.');
+
+const clipping=K.parseText('XX. & |\nOmas Lieblings\n\nMandel-Rezept\nMürbeteig für ein Blech\nTeig: 250 g. Mehl, 80 g. Zucker\n1 Ei, 90 g. Butter\nBelag: 3 Eßlöffel Wasser\n150 g Nüsse\nWasser und Butter aufkochen. Nüsse und\nMandeln untermischen. Mit Orangen-\nmarmelade bestreichen.');
+assert.equal(clipping.name,'Omas Lieblings Mandel-Rezept');
+assert.equal(clipping.ingredients,'250 g. Mehl\n80 g. Zucker\n1 Ei\n90 g. Butter\n3 Eßlöffel Wasser\n150 g Nüsse');
+assert.match(clipping.steps,/^Wasser und Butter aufkochen/);
+assert.match(clipping.steps,/Orangenmarmelade/);
+assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient('3 Eßlöffel Wasser').unit,'el');
+assert.equal(K.parseText('Salat\nZutaten\n1,5 g Salz\n200 g Tomaten, klein geschnitten\nAlles mischen.').ingredients,'1,5 g Salz\n200 g Tomaten, klein geschnitten');
+console.log('Printed clipping: explicit recipe title, comma quantities, old spelling of tablespoons, implicit aufkochen and wrapped compound words preserved.');
