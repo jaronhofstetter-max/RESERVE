@@ -82,7 +82,7 @@ async function rereadRecipeCard(canvas,original,ticket){
  }
  // A German printed recipe need not have literal Zutaten/Zubereitung labels.
  // Compare parsed fields so unrelated page fragments cannot veto agreement.
- const germanPrint=!panel&&(/\bZutaten\b/i.test(original)&&/\bZubereitung\b/i.test(original)||/\bTeig\s*:/i.test(original)&&/\bBelag\s*:/i.test(original));
+ const germanPrint=!panel&&/\bTeig\s*:/i.test(original)&&/\bBelag\s*:/i.test(original);
  if(germanPrint){
   await worker.terminate();if(ticket!==ocrTicket)throw Error('Lesen abgebrochen.');worker=await (await loadOCR()).createWorker('deu',1);
   const germanReads=[];for(const mode of [3,4])germanReads.push((await read(canvas,mode)).text||'');
