@@ -33,6 +33,39 @@ function findRecipePanel(image){
  if(whiteInside/inside<.8||!outside||whiteOutside/outside>.5)return null;
  return{x0:g.x0,y0:g.top,x1:g.x1,y1:g.last+1};
 }
+// A fallback for dark text on a midtone texture, never a replacement for photos.
+function prepareTextOnTexture(image){
+ const {width:w,height:h,data}=image||{};if(!Number.isInteger(w)||!Number.isInteger(h)||w<30||h<30||w*h>5000000||!data||data.length!==w*h*4)return null;
+ const ink=new Uint8Array(w*h);let mid=0,dark=0;
+ for(let i=0;i<ink.length;i++){const v=(data[i*4]*299+data[i*4+1]*587+data[i*4+2]*114)/1000;ink[i]=v<80?1:0;dark+=ink[i];if(v>60&&v<220)mid++;}
+ if(mid/ink.length<.25||dark/ink.length<.003||dark/ink.length>.3)return null;
+ const output=new Uint8ClampedArray(data.length);
+ for(let y=0;y<h;y++)for(let x=0;x<w;x++){let n=0;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++)n+=ink[Math.max(0,Math.min(h-1,y+dy))*w+Math.max(0,Math.min(w-1,x+dx))];const i=(y*w+x)*4,v=n>=5?0:255;output[i]=output[i+1]=output[i+2]=v;output[i+3]=255;}
+ return{width:w,height:h,data:output};
+}
+function textureRecipeRegions(data,width,height){
+ const valid=w=>w?.bbox&&Object.values(w.bbox).every(Number.isFinite)&&w.bbox.x1>w.bbox.x0&&w.bbox.y1>w.bbox.y0;
+ const useful=w=>valid(w)&&!(/^[^a-zäöüß0-9]/i.test(w.text)&&/[a-zäöüß]/i.test(w.text)&&w.bbox.x1-w.bbox.x0>(w.bbox.y1-w.bbox.y0)*(w.text.match(/[a-zäöüß]/gi)||[]).length*.85)&&(/[a-zäöüß]{2}/i.test(w.text)||/^(?:g|l|kg|mg|ml|dl|cl)$/i.test(w.text)||/^\d+(?:[.,]\d+)?(?:\/\d+)?[.,:]?$/.test(w.text));
+ const rows=ocrLines(data).map(r=>({...r,words:r.words.filter(useful)})).filter(r=>r.words.length);
+ const label=w=>clean(w.text).replace(/[^a-zäöüß]/gi,'').toLowerCase();
+ const heading=rows.findIndex(r=>r.words.some(w=>/^(?:zutaten|ingredients)$/.test(label(w))));if(heading<0)return null;
+ const ingredientRows=[];let firstStep=-1;
+ for(let i=heading+1;i<rows.length;i++){
+  const row=rows[i],quantity=row.words.findIndex(w=>/^\d+(?:[.,]\d+)?(?:\/\d+)?[.,:]?$/.test(w.text)&&w.bbox.x0>width*.08&&w.bbox.x0<width*.7);
+  if(quantity>=0&&quantity<=1&&row.words.slice(quantity+1).some(w=>/[a-zäöüß]{3}/i.test(w.text))){ingredientRows.push({...row,words:row.words.slice(quantity)});continue;}
+  if(ingredientRows.length>=3){firstStep=i;break;}return null;
+ }
+ if(ingredientRows.length<3||firstStep<0)return null;
+ const stepRows=[];for(let i=firstStep;i<rows.length;i++){const row=rows[i],text=row.words.map(w=>w.text).join(' ');if(/^(?:Fertig\b|Guten Appetit\b)/i.test(text))break;stepRows.push(row);}
+ if(stepRows.length<2)return null;
+ const headingWords=rows[heading].words.filter(w=>/^(?:zutaten|ingredients)$/.test(label(w))),headingTop=Math.min(...headingWords.map(w=>w.bbox.y0));
+ const header=rows.flatMap(r=>r.words).filter(w=>w.bbox.y1<headingTop&&/[a-zäöüß]{4}/i.test(w.text)&&w.bbox.x1-w.bbox.x0>width*.08);
+ const anchor=header.slice().sort((a,b)=>(b.bbox.y1-b.bbox.y0)-(a.bbox.y1-a.bbox.y0))[0];if(!anchor)return null;
+ const ah=anchor.bbox.y1-anchor.bbox.y0,titleWords=header.filter(w=>w.bbox.y1-w.bbox.y0>=ah*.5&&w.bbox.y0<anchor.bbox.y1+ah*.5&&w.bbox.y1>anchor.bbox.y0-ah*.5);
+ const box=words=>{const pad=Math.max(6,height*.006);return{x0:Math.max(0,Math.floor(Math.min(...words.map(w=>w.bbox.x0))-pad)),y0:Math.max(0,Math.floor(Math.min(...words.map(w=>w.bbox.y0))-pad)),x1:Math.min(width,Math.ceil(Math.max(...words.map(w=>w.bbox.x1))+pad)),y1:Math.min(height,Math.ceil(Math.max(...words.map(w=>w.bbox.y1))+pad))};};
+ return{title:box(titleWords),ingredients:box([...headingWords,...ingredientRows.flatMap(r=>r.words)]),steps:box(stepRows.flatMap(r=>r.words)),ingredientRows:ingredientRows.length};
+}
+
 function ingredient(line){
  const raw=clean(line).replace(/^[•*–-]\s*/,''),glyphs={'¼':'1/4','½':'1/2','¾':'3/4','⅛':'1/8','⅜':'3/8','⅝':'5/8','⅞':'7/8'},expanded=raw.replace(/^=\s*(?=[0-9¼½¾⅛⅜⅝⅞])/,'').replace(/(\d)([¼½¾⅛⅜⅝⅞])/g,'$1 $2').replace(/[¼½¾⅛⅜⅝⅞]/g,c=>glyphs[c]);
  const atom='(?:\\d+\\s+\\d+/\\d+|\\d+/\\d+|\\d+(?:[.,]\\d+)?)';
@@ -59,7 +92,7 @@ function preparationLine(line){
  return /\b(?:rühren|verrühren|unterrühren|einrühren|schlagen|aufschlagen|unterheben|kneten|verkneten|mischen|vermischen|vermengen|verarbeiten|schneiden|würfeln|erhitzen|aufkochen|kochen|köcheln|garen|braten|anbraten|dünsten|backen|vorheizen|zugeben|hinzufügen|bestreichen|streichen|verteilen|gießen|füllen|ausrollen|formen|schmelzen|auflösen|sieben|abkühlen|servieren|ziehen lassen|ruhen lassen|gehen lassen|trennen|ausdrücken|geben|wälzen|walzen|einfüllen|abgießen|bestreuen|auflegen)\b/i.test(line);
 }
 function recipeTextLines(text){
- return String(text||'').replace(/([a-zäöüß])-\s*\r?\n\s*([a-zäöüß])/g,'$1$2').split(/\r?\n/).map(clean).map(line=>line.replace(/^[^a-zäöüß0-9]+(?=(?:zutaten|ingredients|zubereitung|anleitung)\b)/i,'')).map(line=>line.replace(/^[\s_•*|–—-]+(?=(?:zutaten|ingredients|zubereitung|anleitung|instructions|preparation|method)\b)/i,'')).flatMap(line=>{
+ return String(text||'').replace(/([a-zäöüß])-\s*\r?\n\s*([a-zäöüß])/g,'$1$2').split(/\r?\n/).map(clean).map(line=>line.replace(/^[|¦]+\s*/,'').replace(/\s*[|¦]+\s*$/,'')).map(line=>line.replace(/^[^a-zäöüß0-9]+(?=(?:zutaten|ingredients|zubereitung|anleitung)\b)/i,'')).map(line=>line.replace(/^[\s_•*|–—-]+(?=(?:zutaten|ingredients|zubereitung|anleitung|instructions|preparation|method)\b)/i,'')).flatMap(line=>{
   const inline=line.match(/^((?:zutaten|ingredients|zubereitung|anleitung|instructions|preparation|method)(?:\s*\([^)]*\))?|(?:(?:für|fuer)\s+(?:den|die|das)\s+)?(?:teig|boden|belag|füllung|fuellung|creme|guss|glasur|streusel|sauce|soße|sosse|marinade))\s*:\s*(.+)$/i);
   return inline?[inline[1]+':',inline[2]]:[line];
  });
@@ -341,7 +374,7 @@ function contextSuggestions(ingredients,steps){
 function validRecord(r){return r&&/^personal-[a-z0-9-]+$/.test(r.id)&&typeof r.name==='string'&&r.name.length>0&&r.name.length<=200&&Number.isFinite(r.portions)&&r.portions>0&&r.portions<=100&&Array.isArray(r.ingredientLines)&&r.ingredientLines.length>0&&r.ingredientLines.length<=100&&r.ingredientLines.every(s=>typeof s==='string'&&s.length>0&&s.length<=500)&&Array.isArray(r.steps)&&r.steps.length>0&&r.steps.length<=100&&r.steps.every(s=>typeof s==='string'&&s.length>0&&s.length<=3000)&&['Alles','Vegetarisch','Vegan'].includes(r.diet)&&[r.prepMinutes,r.cookMinutes].every(n=>n===null||Number.isFinite(n)&&n>=0&&n<=1440)&&(!r.source||typeof r.source==='string'&&r.source.length<=2000)}
 function toRecipe(r,image=''){const parsed=r.ingredientLines.map(ingredient),pantryReady=parsed.every(x=>!x.uncertain);return{id:r.id,name:r.name,personal:true,pantryReady,detailLoaded:true,description:'',type:'Hauptmahlzeit',diet:r.diet,dish:'🍽️',cuisine:'Eigenes Rezept',difficulty:'',status:'approved',mealTimes:['Mittagessen','Abendessen'],prepMinutes:r.prepMinutes||0,cookMinutes:r.cookMinutes||0,ingredients:parsed.map(x=>({name:x.name,amount:x.amount===null?null:x.amount/r.portions,unit:x.unit})),steps:r.steps.slice(),nutrition:{},allergens:[],image}}
 window.RESERVE_RECIPE_PARSER={ingredient,parseText,validRecord,toRecipe};
-window.RESERVE_REKEK={version:"0.6.9",kind:"local-ocr-and-rules",contextSuggestions,parseText,parseCandidates,findRecipePanel,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
+window.RESERVE_REKEK={version:"0.6.10",kind:"local-ocr-and-rules",contextSuggestions,prepareTextOnTexture,textureRecipeRegions,parseText,parseCandidates,findRecipePanel,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
 })();
 
 
