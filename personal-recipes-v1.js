@@ -80,6 +80,16 @@ async function rereadRecipeCard(canvas,original,ticket){
   // serving reading never overwrites an existing source value.
   if(normalized(readings[0])===normalized(readings[1])&&after.name&&(!before.name||after.name===before.name)&&lines(after.ingredients).length>=Math.max(3,lines(before.ingredients).length)&&after.steps.length>=before.steps.length*.8)return{accepted:readings[0],focused:true,preservedPortions:before.portions&&before.portions!==after.portions?before.portions:'',evidence:['Original OCR:',original,...panelEvidence].join('\n')};
  }
+ // A German printed recipe need not have literal Zutaten/Zubereitung labels.
+ // Compare parsed fields so unrelated page fragments cannot veto agreement.
+ const germanPrint=!panel&&(/\bZutaten\b/i.test(original)&&/\bZubereitung\b/i.test(original)||/\bTeig\s*:/i.test(original)&&/\bBelag\s*:/i.test(original));
+ if(germanPrint){
+  await worker.terminate();if(ticket!==ocrTicket)throw Error('Lesen abgebrochen.');worker=await (await loadOCR()).createWorker('deu',1);
+  const germanReads=[];for(const mode of [3,4])germanReads.push((await read(canvas,mode)).text||'');
+  panelEvidence.push('Deutsch PSM 3:',germanReads[0],'Deutsch PSM 4:',germanReads[1]);
+  const drafts=germanReads.map(text=>P().parseText(text)),key=d=>JSON.stringify([d.name,d.portions,d.prepMinutes,d.cookMinutes,d.ingredients,d.steps]);
+  if(key(drafts[0])===key(drafts[1])&&drafts[0].name&&lines(drafts[0].ingredients).length>=3&&drafts[0].steps)return{accepted:germanReads[0],evidence:['Original OCR:',original,...panelEvidence].join('\n')};
+ }
  const full=[];for(const mode of [4,6])full.push(await read(canvas,mode));
  const evidence=['Original OCR:',original,...panelEvidence,'Nachlesung PSM 4:',full[0].text||'','Nachlesung PSM 6:',full[1].text||''];
  const headingDivider=K.textRecipeDivider(full,canvas.width,canvas.height);
