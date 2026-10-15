@@ -105,7 +105,7 @@ function parseText(text){
   if(/^\d+(?:[.,]\d+)?\s*(?:g|mg|kcal|kj)\s*(?:ballaststoffe|eiweiß|protein|fett|kohlenhydrate)?\s*(?:p\.?\s*p\.?|pro\s+portion)\s*$/i.test(line)){ignored.push(line);continue;}
   const range=servingRange(line);if(range!==null){portions=range;if(!range)unresolved.push({type:'portion-range',raw:line});if(/^(zutaten|ingredients)/i.test(line))mode='ingredients';continue;}
   const inlineTimes=[...line.matchAll(/(\d+)\s*Min\.?\s*(Vorbereitung(?:szeit)?|Backzeit|Kochzeit|Garzeit)\b/gi)];
-  if(inlineTimes.length&&/^[^a-zäöüß0-9]*\d+\s*Min\.?\s*(?:Vorbereitung|Backzeit|Kochzeit|Garzeit)/i.test(line)){for(const t of inlineTimes){if(/^Vorbereitung/i.test(t[2]))prepMinutes=Number(t[1]);else cookMinutes=Number(t[1]);}continue;}
+  if(!mode&&inlineTimes.length&&!preparationLine(line)){for(const t of inlineTimes){if(/^Vorbereitung/i.test(t[2]))prepMinutes=Number(t[1]);else cookMinutes=Number(t[1]);}continue;}
   const p=line.replace(/portion\(en\)/ig,'Portionen').match(/(?:für|for)\s*(\d+)\s*(?:personen|portionen|people|servings)|(?:portionen|servings)\s*:?\s*(\d+)|(\d+)\s*(?:personen|portionen|servings)\b/i);
   if(p){portions=p[1]||p[2]||p[3];if(/^(zutaten|ingredients)/i.test(line))mode='ingredients';continue;}
   if(/^(?:\d+\s*Min\.?\s*){2}$/i.test(line)){ignored.push(line);continue;}

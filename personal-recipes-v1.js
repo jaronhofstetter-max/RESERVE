@@ -72,8 +72,8 @@ async function rereadRecipeCard(canvas,original,ticket){
   // The whole-image reading remains the fallback and comparison evidence.
   const german=/\bZutaten\b/i.test(original)&&/\bZubereitung\b/i.test(original);
   if(german){await worker.terminate();if(ticket!==ocrTicket)throw Error('Lesen abgebrochen.');worker=await (await loadOCR()).createWorker('deu',1);}
-  const readings=[];for(const mode of [3,6])readings.push((await read(focus,mode)).text||'');
-  panelEvidence.push('Rezeptbereich PSM 3:',readings[0],'Rezeptbereich PSM 6:',readings[1]);
+  const readings=[];for(const mode of [3,4])readings.push((await read(focus,mode)).text||'');
+  panelEvidence.push('Rezeptbereich PSM 3:',readings[0],'Rezeptbereich PSM 4:',readings[1]);
   const before=P().parseText(original),after=P().parseText(readings[0]);
   // Keep the whole-image draft unless both modes agree and the crop preserves
   // the recognised title, serving count, ingredient rows and preparation.
