@@ -79,7 +79,7 @@ const wrapped=K.parseText('Kartoffelpfanne\n20 Min. Vorbereitung, 35 Min. Backze
 assert.equal(wrapped.prepMinutes,20);assert.equal(wrapped.cookMinutes,35);assert.equal(wrapped.steps,'Alles mit Kräutern und Gewürzen vermengen.\nIm Ofen garen.');
 console.log('Inset panel detection rejects blank/full-width/competing panels; labelled combined times and wrapped preparation preserved.');
 
-const clipping=K.parseText('XX. & |\nOmas Lieblings\nMandel-Rezept\nMürbeteig für ein Blech\nTeig: 250 g. Mehl, 80 g. Zucker\n1 Ei, 90 g. Butter\nBelag: 3 Eßlöffel Wasser\n150 g Nüsse\nWasser und Butter aufkochen. Nüsse und\nMandeln untermischen. Mit Orangen-\nmarmelade bestreichen.');
+const clipping=K.parseText('XX. & |\nOmas Lieblings\n\nMandel-Rezept\nMürbeteig für ein Blech\nTeig: 250 g. Mehl, 80 g. Zucker\n1 Ei, 90 g. Butter\nBelag: 3 Eßlöffel Wasser\n150 g Nüsse\nWasser und Butter aufkochen. Nüsse und\nMandeln untermischen. Mit Orangen-\nmarmelade bestreichen.');
 assert.equal(clipping.name,'Omas Lieblings Mandel-Rezept');
 assert.equal(clipping.ingredients,'250 g. Mehl\n80 g. Zucker\n1 Ei\n90 g. Butter\n3 Eßlöffel Wasser\n150 g Nüsse');
 assert.match(clipping.steps,/^Wasser und Butter aufkochen/);

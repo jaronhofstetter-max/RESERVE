@@ -66,7 +66,7 @@ function recipeTextLines(text){
 }
 function recipeTitle(lines){
  const named=lines.findIndex(l=>/^[a-zäöüß][a-zäöüß \-]{2,100}-Rezept$/i.test(l));
- if(named>=0){const previous=lines[named-1]||'';return /^[A-ZÄÖÜ][a-zäöüß]+(?: [A-ZÄÖÜ][a-zäöüß]+){1,2}$/.test(previous)?previous+' '+lines[named]:lines[named];}
+ if(named>=0){const previous=lines.slice(0,named).filter(Boolean).at(-1)||'';return /^[A-ZÄÖÜ][a-zäöüß]+(?: [A-ZÄÖÜ][a-zäöüß]+){1,2}$/.test(previous)?previous+' '+lines[named]:lines[named];}
  const start=lines.findIndex(l=>/^(?:zutaten|ingredients)(?:\s+(?:für|for|boden|teig|belag|füllung)\b[^:]*)?\s*:?$/i.test(l));
  if(start<0)return '';
  for(let i=0;i<start;i++){const l=lines[i];if(!l)continue;
