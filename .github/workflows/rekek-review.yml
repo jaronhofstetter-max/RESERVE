@@ -31,6 +31,7 @@ jobs:
           node tools/test-rekek.mjs
           node tools/test-rekek-digits.mjs
           node tools/e2e-rekek-digits.mjs
+          node tools/e2e-recipe-portions.mjs
           node tools/e2e-rekek-review.mjs
           node tools/e2e-personal-recipes.mjs
           node tools/e2e-rekek-import.mjs
