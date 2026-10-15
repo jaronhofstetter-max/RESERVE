@@ -68,3 +68,13 @@ assert.ok(seasoning.candidates[0].steps.includes('Gemüse dünsten'));
 console.log('OCR layout regressions passed: decorated lists, source title evidence, uncertain prefixes, interleaved quantities and seasoning boundaries.');
 
 assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient('1 kleine Dose Mais').unit,'dose');
+
+// Pixel-only panel detection: inset card, plain page, two competing cards.
+function panelImage(rectangles){const width=240,height=360,data=new Uint8ClampedArray(width*height*4);for(let i=0;i<data.length;i+=4){data[i]=70;data[i+1]=90;data[i+2]=80;data[i+3]=255;}for(const [x0,y0,x1,y1] of rectangles)for(let y=y0;y<y1;y++)for(let x=x0;x<x1;x++){const i=(y*width+x)*4;data[i]=data[i+1]=data[i+2]=255;}return{width,height,data};}
+const panel=K.findRecipePanel(panelImage([[25,70,215,300]]));assert.ok(panel);assert.equal(panel.x0,25);assert.equal(panel.x1,215);assert.ok(panel.y0>=69&&panel.y0<=71);assert.ok(panel.y1>=298&&panel.y1<=301);
+assert.equal(K.findRecipePanel(panelImage([[0,0,240,360]])),null);
+assert.equal(K.findRecipePanel(panelImage([])),null);
+assert.equal(K.findRecipePanel(panelImage([[25,20,215,130],[25,200,215,310]])),null);
+const wrapped=K.parseText('Kartoffelpfanne\n20 Min. Vorbereitung, 35 Min. Backzeit\nZutaten\n300 g Kartoffeln\nZubereitung\nAlles mit Kräutern und\nGewürzen vermengen.\nIm Ofen garen.');
+assert.equal(wrapped.prepMinutes,20);assert.equal(wrapped.cookMinutes,35);assert.equal(wrapped.steps,'Alles mit Kräutern und Gewürzen vermengen.\nIm Ofen garen.');
+console.log('Inset panel detection rejects blank/full-width/competing panels; labelled combined times and wrapped preparation preserved.');

@@ -4,6 +4,35 @@ const clean=s=>String(s||'').trim(),number=s=>{s=clean(s).replace(',','.');const
 // Explicit serving ranges use the smaller endpoint; ingredient ranges stay unresolved.
 function servingRange(text){const m=String(text||'').replace(/portion\(en\)/ig,'Portionen').match(/(?:\b(\d+)\s*(?:[-–—]|bis|to)\s*(\d+)\s*(?:personen|portionen|people|servings)\b|(?:portionen|servings)\s*:?\s*(\d+)\s*(?:[-–—]|bis|to)\s*(\d+)\b)/i);if(!m)return null;const a=Number(m[1]||m[3]),b=Number(m[2]||m[4]);return a>=1&&a<=100&&b>=1&&b<=100?String(Math.min(a,b)):'';}
 function recipeUIBoundary(text){return /^(?:[»▶▷>\s]*)(?:[b3]ild\s+\d+\b|lesarten\s+der\s+texter|rezeptname\s*$|portionen\s+im\s+originalrezept|mengen,\s*portionen\s+und\s+schritte|rezept\s+speichern\s*$)/i.test(clean(text));}
+// Find a single inset white text panel using pixels only. Full-width app chrome,
+// blank images and competing panels are deliberately excluded.
+function findRecipePanel(image){
+ const {width:w,height:h,data}=image;if(w<80||h<80||!data||data.length!==w*h*4)return null;
+ const white=(x,y)=>{const i=(y*w+x)*4;return data[i]>238&&data[i+1]>238&&data[i+2]>238;};
+ const groups=[],stride=Math.max(1,Math.floor(h/500)),tolerance=Math.max(2,w*.012);
+ for(let y=0;y<h;y+=stride){let start=-1;
+  for(let x=0;x<=w;x++){
+   if(x<w&&white(x,y)){if(start<0)start=x;continue;}
+   if(start>=0){const width=x-start;
+    if(width>w*.45&&width<w*.94&&start>w*.025&&x<w*.975){
+     let group=groups.find(g=>Math.abs(g.x0-start)<tolerance&&Math.abs(g.x1-x)<tolerance&&y-g.last<h*.1);
+     if(!group){group={x0:start,x1:x,top:y,last:y,hits:0};groups.push(group);}
+     group.last=y;group.hits++;
+    }start=-1;
+   }
+  }
+ }
+ const candidates=groups.filter(g=>g.last-g.top>h*.2&&g.hits*stride/(g.last-g.top)>.2).map(g=>({...g,area:(g.x1-g.x0)*(g.last-g.top)})).sort((a,b)=>b.area-a.area);
+ if(!candidates.length)return null;const g=candidates[0];
+ if(candidates.some(c=>c!==g&&c.area>g.area*.65&&(c.last<g.top||c.top>g.last)))return null;
+ // Text occupies only a small part of a white card. Require white interiors
+ // and a contrasting surround so a margin of a plain page is not a panel.
+ let inside=0,whiteInside=0,outside=0,whiteOutside=0;
+ const margin=Math.max(3,Math.round(w*.015));
+ for(let y=g.top;y<=g.last;y+=stride*2){for(let x=g.x0;x<g.x1;x+=Math.max(1,Math.floor(w/200))){inside++;if(white(x,y))whiteInside++;}for(const x of [g.x0-margin,g.x1+margin])if(x>=0&&x<w){outside++;if(white(x,y))whiteOutside++;}}
+ if(whiteInside/inside<.8||!outside||whiteOutside/outside>.5)return null;
+ return{x0:g.x0,y0:g.top,x1:g.x1,y1:g.last+1};
+}
 function ingredient(line){
  const raw=clean(line).replace(/^[•*–-]\s*/,''),glyphs={'¼':'1/4','½':'1/2','¾':'3/4','⅛':'1/8','⅜':'3/8','⅝':'5/8','⅞':'7/8'},expanded=raw.replace(/^=\s*(?=[0-9¼½¾⅛⅜⅝⅞])/,'').replace(/(\d)([¼½¾⅛⅜⅝⅞])/g,'$1 $2').replace(/[¼½¾⅛⅜⅝⅞]/g,c=>glyphs[c]);
  const atom='(?:\\d+\\s+\\d+/\\d+|\\d+/\\d+|\\d+(?:[.,]\\d+)?)';
@@ -75,6 +104,8 @@ function parseText(text){
   if(noise.test(line)||/^KIKKOMAN[^a-z]*$/u.test(line)||/^[x×=+<>|\s-]+$/i.test(line)||/^(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/\S*)?$/i.test(line)){ignored.push(line);continue;}
   if(/^\d+(?:[.,]\d+)?\s*(?:g|mg|kcal|kj)\s*(?:ballaststoffe|eiweiß|protein|fett|kohlenhydrate)?\s*(?:p\.?\s*p\.?|pro\s+portion)\s*$/i.test(line)){ignored.push(line);continue;}
   const range=servingRange(line);if(range!==null){portions=range;if(!range)unresolved.push({type:'portion-range',raw:line});if(/^(zutaten|ingredients)/i.test(line))mode='ingredients';continue;}
+  const inlineTimes=[...line.matchAll(/(\d+)\s*Min\.?\s*(Vorbereitung(?:szeit)?|Backzeit|Kochzeit|Garzeit)\b/gi)];
+  if(!mode&&inlineTimes.length&&!preparationLine(line)){for(const t of inlineTimes){if(/^Vorbereitung/i.test(t[2]))prepMinutes=Number(t[1]);else cookMinutes=Number(t[1]);}continue;}
   const p=line.replace(/portion\(en\)/ig,'Portionen').match(/(?:für|for)\s*(\d+)\s*(?:personen|portionen|people|servings)|(?:portionen|servings)\s*:?\s*(\d+)|(\d+)\s*(?:personen|portionen|servings)\b/i);
   if(p){portions=p[1]||p[2]||p[3];if(/^(zutaten|ingredients)/i.test(line))mode='ingredients';continue;}
   if(/^(?:\d+\s*Min\.?\s*){2}$/i.test(line)){ignored.push(line);continue;}
@@ -119,6 +150,7 @@ function parseText(text){
    const numbered=line.match(/^\d+[.)]\s*(.+)$/);
    if(numbered){stepIndex=steps.length;steps.push(numbered[1]);}
    else if(stepIndex>=0)steps[stepIndex]+=(steps[stepIndex]?' ':'')+line;
+   else if(steps.length&&!/[.!?:]$/.test(steps.at(-1)))steps[steps.length-1]+=' '+line;
    else steps.push(line);
    continue;
   }
@@ -289,7 +321,7 @@ function parseCardSteps(text){
 function validRecord(r){return r&&/^personal-[a-z0-9-]+$/.test(r.id)&&typeof r.name==='string'&&r.name.length>0&&r.name.length<=200&&Number.isFinite(r.portions)&&r.portions>0&&r.portions<=100&&Array.isArray(r.ingredientLines)&&r.ingredientLines.length>0&&r.ingredientLines.length<=100&&r.ingredientLines.every(s=>typeof s==='string'&&s.length>0&&s.length<=500)&&Array.isArray(r.steps)&&r.steps.length>0&&r.steps.length<=100&&r.steps.every(s=>typeof s==='string'&&s.length>0&&s.length<=3000)&&['Alles','Vegetarisch','Vegan'].includes(r.diet)&&[r.prepMinutes,r.cookMinutes].every(n=>n===null||Number.isFinite(n)&&n>=0&&n<=1440)&&(!r.source||typeof r.source==='string'&&r.source.length<=2000)}
 function toRecipe(r,image=''){const parsed=r.ingredientLines.map(ingredient),pantryReady=parsed.every(x=>!x.uncertain);return{id:r.id,name:r.name,personal:true,pantryReady,detailLoaded:true,description:'',type:'Hauptmahlzeit',diet:r.diet,dish:'🍽️',cuisine:'Eigenes Rezept',difficulty:'',status:'approved',mealTimes:['Mittagessen','Abendessen'],prepMinutes:r.prepMinutes||0,cookMinutes:r.cookMinutes||0,ingredients:parsed.map(x=>({name:x.name,amount:x.amount===null?null:x.amount/r.portions,unit:x.unit})),steps:r.steps.slice(),nutrition:{},allergens:[],image}}
 window.RESERVE_RECIPE_PARSER={ingredient,parseText,validRecord,toRecipe};
-window.RESERVE_REKEK={version:"0.6.5",kind:"local-ocr-and-rules",parseText,parseCandidates,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
+window.RESERVE_REKEK={version:"0.6.6",kind:"local-ocr-and-rules",parseText,parseCandidates,findRecipePanel,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
 })();
 
 
