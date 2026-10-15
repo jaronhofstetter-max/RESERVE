@@ -62,7 +62,8 @@ function parseText(text){
   if(/^(zubereitung|anleitung|zubereitungsschritte|instructions|preparation|method)(?:\s|:|$)/i.test(line)){flush();mode='steps';stepIndex=-1;continue;}
   if(/^(nährwerte|nährwertangaben|nutrition|tipps?|quelle)(?:\s|:|$)/i.test(line)){flush();mode='other';continue;}
   if(/^schritt\s+\d+\s*[:.)]?$/i.test(line)){flush();mode='steps';stepIndex=steps.length;steps.push('');continue;}
-  const heading=ingredientHeading(line)||(/^für (?:die|den|das) .+:$/i.test(line)?line.replace(/:$/,''):'');
+  const sectionLabel=ingredientHeading(line)||(/^für (?:die|den|das) .+:$/i.test(line)?line.replace(/:$/,''):'');
+  const heading=(name||mode||/:$/.test(line))?sectionLabel:'';
   if(heading){
    flush();const next=lines.slice(lineNumber+1).find(Boolean)||'';
    if(preparationLine(next)){mode='steps';stepIndex=-1;continue;}

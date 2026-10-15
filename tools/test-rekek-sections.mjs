@@ -10,6 +10,7 @@ const unlabeled=K.parseText('Gemüsepfanne\n250 g Gemüse\n2 EL Öl\nSalz, Pfeff
 assert.equal(unlabeled.name,'Gemüsepfanne');
 assert.equal(unlabeled.ingredients,'250 g Gemüse\n2 EL Öl\nSalz, Pfeffer');
 assert.equal(unlabeled.steps,'Gemüse klein schneiden.\nIm Öl braten und servieren.');
+assert.equal(K.parseText('Sauce\nZutaten\n100 ml Wasser\n20 g Butter\nZubereitung\nAlles verrühren.').name,'Sauce');
 
 const inline=K.parseText('Teigtaschen\nZutaten: 300 g Mehl\n2 Eier\nZubereitung: Mehl und Eier vermengen.\nTeig kneten.');
 assert.equal(inline.ingredients,'300 g Mehl\n2 Eier');
