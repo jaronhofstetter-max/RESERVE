@@ -11,7 +11,7 @@ try{
   const get=id=>document.getElementById(id),out={version:RESERVE_REKEK.version,name:get('personalName').value,ingredients:get('personalIngredients').value,steps:get('personalSteps').value,warning:get('personalUncertain').textContent,rangeUncertain:RESERVE_RECIPE_PARSER.ingredient('1 bis 2 Prisen Salz').uncertain};
   RESERVE_PERSONAL_RECIPES.edit();document.getElementById('personalSameRecipe').checked=true;out.newWarning=get('personalUncertain').textContent;out.newIngredients=get('personalIngredients').value;return out;
  });
- assert.equal(result.version,'0.6.8');assert.equal(result.name,'Gemüsetopf');assert.equal(result.ingredients,'200 g Karotten\n1 bis 2 Prisen Salz');assert.equal(result.steps,'Gemüse schneiden.\nGaren.');assert.ok(result.rangeUncertain);assert.match(result.warning,/1 Zutat/);assert.ok(!result.warning.includes('Prisen'));assert.equal(result.newWarning,'');assert.equal(result.newIngredients,'');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
+ assert.equal(result.version,'0.6.9');assert.equal(result.name,'Gemüsetopf');assert.equal(result.ingredients,'200 g Karotten\n1 bis 2 Prisen Salz');assert.equal(result.steps,'Gemüse schneiden.\nGaren.');assert.ok(result.rangeUncertain);assert.match(result.warning,/1 Zutat/);assert.ok(!result.warning.includes('Prisen'));assert.equal(result.newWarning,'');assert.equal(result.newIngredients,'');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
  const separated=await page.evaluate(()=>{
   RESERVE_PERSONAL_RECIPES.applyText('Gemüsepfanne\nZutaten: 250 g Gemüse\n2 EL Öl\nGemüse schneiden.\nIn Öl braten.');
   return {ingredients:document.getElementById('personalIngredients').value,steps:document.getElementById('personalSteps').value,confirmed:document.getElementById('personalConfirmed').checked};
@@ -33,6 +33,23 @@ try{
   return{calls,languages,name:document.getElementById('personalName').value,ingredients:document.getElementById('personalIngredients').value,steps:document.getElementById('personalSteps').value,confirmed:document.getElementById('personalConfirmed').checked};
  });
  assert.equal(printed.calls,3);assert.deepEqual(printed.languages,['deu+eng','deu']);assert.equal(printed.name,'Mandel-Rezept');assert.equal(printed.ingredients,'250 g Mehl\n90 g Zucker\n1 Ei\n3 Eßlöffel Wasser\n150 g Nüsse');assert.equal(printed.steps,'Wasser aufkochen. Nüsse untermischen.');assert.equal(printed.confirmed,false);
+ const contextReview=await page.evaluate(async()=>{
+  RESERVE_PERSONAL_RECIPES.edit();const canvas=document.createElement('canvas');canvas.width=360;canvas.height=400;const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,360,400);ctx.fillStyle='#000';ctx.font='20px sans-serif';
+  const words=['Mändeln','Eßlöffei','EBlöffel','Rutter','unte mischen'];const rows=words.map((text,i)=>{const y=50+i*50;ctx.fillText(text,20,y);return{text,bbox:{x0:20,y0:y-20,x1:180,y1:y},words:text.split(' ').map((text,j)=>({text,bbox:{x0:20+j*75,y0:y-20,x1:95+j*75,y1:y}}))};});
+  const text='Probe-Rezept\nTeig: 200 g Butter\n150 g Mändeln\nBelag: 4 Eßlöffei Wasser\n7 EBlöffel Marmelade\nWasser und Rutter aufkochen.\nMandeln unte mischen.\n20 - 30 Min. bei 180° backen.';
+  window.Tesseract={createWorker:async()=>({setParameters:async()=>{},terminate:async()=>{},recognize:async()=>({data:{text,confidence:60,lines:rows}})})};
+  const blob=await new Promise(r=>canvas.toBlob(r));await RESERVE_PERSONAL_RECIPES.importScreenshots([new File([blob],'synthetic-word-review.png',{type:'image/png'})]);
+  return{ingredients:document.getElementById('personalIngredients').value,steps:document.getElementById('personalSteps').value,raw:document.getElementById('personalRaw').value,confirmed:document.getElementById('personalConfirmed').checked};
+ });
+ assert.match(contextReview.ingredients,/Mändeln/);assert.match(contextReview.steps,/Rutter/);assert.equal(contextReview.confirmed,false);
+ const contextHost=page.locator('#personalContextReview');assert.equal(await contextHost.locator('.personal-word-review').count(),5);assert.equal(await contextHost.locator('img').count(),5);
+ await page.locator('#personalConfirmed').check();
+ await contextHost.locator('.personal-word-review').filter({hasText:'Rutter → Butter'}).getByRole('button',{name:'Vorschlag übernehmen',exact:true}).click();
+ assert.equal(await page.locator('#personalConfirmed').isChecked(),false);assert.match(await page.locator('#personalSteps').inputValue(),/Butter aufkochen/);assert.equal(await page.locator('#personalRaw').inputValue(),contextReview.raw);
+ await contextHost.locator('.personal-word-review').filter({hasText:'Mändeln → Mandeln'}).getByRole('button',{name:'Original beibehalten',exact:true}).click();assert.match(await page.locator('#personalIngredients').inputValue(),/Mändeln/);
+ while(await contextHost.getByRole('button',{name:'Vorschlag übernehmen',exact:true}).count())await contextHost.getByRole('button',{name:'Vorschlag übernehmen',exact:true}).first().click();
+ const reviewedSteps=await page.locator('#personalSteps').inputValue(),reviewedIngredients=await page.locator('#personalIngredients').inputValue();assert.match(reviewedSteps,/Mandeln untermischen/);assert.match(reviewedSteps,/20 - 30 Min\. bei 180°/);assert.deepEqual(reviewedIngredients.match(/\d+/g),contextReview.ingredients.match(/\d+/g));assert.equal(await page.locator('#personalConfirmed').isChecked(),false);
+ await page.evaluate(()=>RESERVE_PERSONAL_RECIPES.edit());assert.equal(await contextHost.isVisible(),false);assert.equal(await contextHost.locator('img').count(),0);
  console.log('REKEK mobile import: split quantities, ranges, page noise, fresh editor and focused OCR serving conflict preserved for review. Mock OCR, not photo accuracy.');
 }finally{await browser.close();server.close();}
 

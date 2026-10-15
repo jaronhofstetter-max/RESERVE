@@ -87,3 +87,14 @@ assert.match(clipping.steps,/Orangenmarmelade/);
 assert.equal(context.window.RESERVE_RECIPE_PARSER.ingredient('3 Eßlöffel Wasser').unit,'el');
 assert.equal(K.parseText('Salat\nZutaten\n1,5 g Salz\n200 g Tomaten, klein geschnitten\nAlles mischen.').ingredients,'1,5 g Salz\n200 g Tomaten, klein geschnitten');
 console.log('Printed clipping: explicit recipe title, comma quantities, old spelling of tablespoons, implicit aufkochen and wrapped compound words preserved.');
+
+const sourceIngredients='200 g Butter\n150 g Mändeln\n4 Eßlöffei Wasser\n7 EBlöffel Marmelade';
+const sourceSteps='Wasser und Rutter aufkochen. Mandeln unte mischen. 20 - 30 Min. bei 180° backen.';
+const suggestions=K.contextSuggestions(sourceIngredients,sourceSteps);
+assert.deepEqual(Array.from(suggestions,s=>s.from+' → '+s.to).sort(),['EBlöffel → Eßlöffel','Eßlöffei → Eßlöffel','Mändeln → Mandeln','Rutter → Butter','unte mischen → untermischen'].sort());
+assert.ok(suggestions.every(s=>!/[0-9]/.test(s.from+s.to)));
+assert.equal(sourceIngredients,'200 g Butter\n150 g Mändeln\n4 Eßlöffei Wasser\n7 EBlöffel Marmelade');
+assert.equal(K.contextSuggestions('200 g Butter\n150 g Mandeln\n4 Eßlöffel Wasser','Butter aufkochen. Mandeln untermischen. 20 - 30 Min. bei 180° backen.').length,0);
+assert.equal(K.contextSuggestions('200 g Butter\n200 g Futter','Rutter schneiden.').length,0); // competing ingredient evidence
+assert.equal(K.contextSuggestions('200 g Butter','Butter aufkochen. 1/2 TL Salz hinzugeben.').length,0);
+console.log('Context review: five text-only hypotheses, no mutation or numeric edits, correct words and ambiguous ingredient evidence preserved.');
