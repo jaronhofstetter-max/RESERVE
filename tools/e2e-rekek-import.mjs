@@ -11,12 +11,20 @@ try{
   const get=id=>document.getElementById(id),out={version:RESERVE_REKEK.version,name:get('personalName').value,ingredients:get('personalIngredients').value,steps:get('personalSteps').value,warning:get('personalUncertain').textContent,rangeUncertain:RESERVE_RECIPE_PARSER.ingredient('1 bis 2 Prisen Salz').uncertain};
   RESERVE_PERSONAL_RECIPES.edit();document.getElementById('personalSameRecipe').checked=true;out.newWarning=get('personalUncertain').textContent;out.newIngredients=get('personalIngredients').value;return out;
  });
- assert.equal(result.version,'0.6.6');assert.equal(result.name,'Gemüsetopf');assert.equal(result.ingredients,'200 g Karotten\n1 bis 2 Prisen Salz');assert.equal(result.steps,'Gemüse schneiden.\nGaren.');assert.ok(result.rangeUncertain);assert.match(result.warning,/1 Zutat/);assert.ok(!result.warning.includes('Prisen'));assert.equal(result.newWarning,'');assert.equal(result.newIngredients,'');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
+ assert.equal(result.version,'0.6.7');assert.equal(result.name,'Gemüsetopf');assert.equal(result.ingredients,'200 g Karotten\n1 bis 2 Prisen Salz');assert.equal(result.steps,'Gemüse schneiden.\nGaren.');assert.ok(result.rangeUncertain);assert.match(result.warning,/1 Zutat/);assert.ok(!result.warning.includes('Prisen'));assert.equal(result.newWarning,'');assert.equal(result.newIngredients,'');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
  const separated=await page.evaluate(()=>{
   RESERVE_PERSONAL_RECIPES.applyText('Gemüsepfanne\nZutaten: 250 g Gemüse\n2 EL Öl\nGemüse schneiden.\nIn Öl braten.');
   return {ingredients:document.getElementById('personalIngredients').value,steps:document.getElementById('personalSteps').value,confirmed:document.getElementById('personalConfirmed').checked};
  });
  assert.equal(separated.ingredients,'250 g Gemüse\n2 EL Öl');assert.equal(separated.steps,'Gemüse schneiden.\nIn Öl braten.');assert.equal(separated.confirmed,false);
- console.log('REKEK mobile import: split quantities, ranges, page noise, steps, concise warning and fresh editor OK. Mock OCR, not photo accuracy.');
+ const focused=await page.evaluate(async()=>{
+  RESERVE_PERSONAL_RECIPES.edit();const canvas=document.createElement('canvas');canvas.width=240;canvas.height=360;const ctx=canvas.getContext('2d');ctx.fillStyle='#465a50';ctx.fillRect(0,0,240,360);ctx.fillStyle='#fff';ctx.fillRect(25,70,190,230);const blob=await new Promise(r=>canvas.toBlob(r));
+  const text='Gemüsepfanne\nFür 2 Portionen\nZutaten\n400 g Gemüse\n2 EL Öl\nSalz\nZubereitung\nGemüse schneiden.\nIn Öl braten.';let calls=0;const languages=[];
+  window.Tesseract={createWorker:async language=>{languages.push(language);return{setParameters:async()=>{},terminate:async()=>{},recognize:async()=>({data:{text:calls++===0?text:text.replace('Für 2 Portionen','Für 12 Portionen')}})}}};
+  await RESERVE_PERSONAL_RECIPES.importScreenshots([new File([blob],'synthetic-inset-card.png',{type:'image/png'})]);
+  return{calls,languages,portions:document.getElementById('personalPortions').value,ingredients:document.getElementById('personalIngredients').value,steps:document.getElementById('personalSteps').value,status:document.getElementById('personalStatus').textContent,evidence:document.getElementById('personalOCREvidence').value,confirmed:document.getElementById('personalConfirmed').checked};
+ });
+ assert.equal(focused.calls,3);assert.deepEqual(focused.languages,['deu+eng','deu']);assert.equal(focused.portions,'2');assert.equal(focused.ingredients,'400 g Gemüse\n2 EL Öl\nSalz');assert.equal(focused.steps,'Gemüse schneiden.\nIn Öl braten.');assert.match(focused.status,/Abweichende Portionslesart/);assert.match(focused.evidence,/Für 12 Portionen/);assert.equal(focused.confirmed,false);
+ console.log('REKEK mobile import: split quantities, ranges, page noise, fresh editor and focused OCR serving conflict preserved for review. Mock OCR, not photo accuracy.');
 }finally{await browser.close();server.close();}
 
