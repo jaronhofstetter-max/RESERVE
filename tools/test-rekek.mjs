@@ -4,8 +4,8 @@ const p=context.window.RESERVE_REKEK;
 // Observed screenshot failure, represented as text/geometry fixtures (not a pixel OCR benchmark).
 const marinade=p.parseText('Hähnchenbrust in\nHonig-Senf-Marinade\nFür ca. 3–4 Personen\nZutaten\n600 g Hähnchenbrustfilet 1. Hähnchenbrust in Stücke schneiden.');
 assert.equal(marinade.name,'Hähnchenbrust in Honig-Senf-Marinade');
-assert.equal(marinade.portions,'');
-assert.ok(marinade.unresolved.some(x=>x.type==='portion-range'));
+assert.equal(marinade.portions,'3');
+assert.ok(!marinade.unresolved.some(x=>x.type==='portion-range'));
 assert.ok(marinade.unresolved.some(x=>x.type==='mixed-columns'));
 assert.equal(p.reviewIngredientReadings(['12 EL Honig','12 EL Honig']).quantityClear,false);
 assert.equal(p.reviewIngredientReadings(['1½ EL Honig','1½ EL Honig']).quantityClear,true);
