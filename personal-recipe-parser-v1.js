@@ -1,6 +1,8 @@
 /* Recipe text parsing: preserve uncertain input; never invent quantities or nutrition. */
 (function(){'use strict';
 const clean=s=>String(s||'').trim(),number=s=>{s=clean(s).replace(',','.');const f=s.match(/^(?:(\d+)\s+)?(\d+)\/(\d+)$/);if(f)return Number(f[1]||0)+Number(f[2])/Number(f[3]);return Number(s)};
+// Explicit serving ranges use the smaller endpoint; ingredient ranges stay unresolved.
+function servingRange(text){const m=String(text||'').replace(/portion\(en\)/ig,'Portionen').match(/(?:\b(\d+)\s*(?:[-–—]|bis|to)\s*(\d+)\s*(?:personen|portionen|people|servings)\b|(?:portionen|servings)\s*:?\s*(\d+)\s*(?:[-–—]|bis|to)\s*(\d+)\b)/i);if(!m)return null;const a=Number(m[1]||m[3]),b=Number(m[2]||m[4]);return a>=1&&a<=100&&b>=1&&b<=100?String(Math.min(a,b)):'';}
 function recipeUIBoundary(text){return /^(?:[»▶▷>\s]*)(?:[b3]ild\s+\d+\b|lesarten\s+der\s+texter|rezeptname\s*$|portionen\s+im\s+originalrezept|mengen,\s*portionen\s+und\s+schritte|rezept\s+speichern\s*$)/i.test(clean(text));}
 function ingredient(line){
  const raw=clean(line).replace(/^[•*–-]\s*/,''),glyphs={'¼':'1/4','½':'1/2','¾':'3/4','⅛':'1/8','⅜':'3/8','⅝':'5/8','⅞':'7/8'},expanded=raw.replace(/^=\s*(?=[0-9¼½¾⅛⅜⅝⅞])/,'').replace(/(\d)([¼½¾⅛⅜⅝⅞])/g,'$1 $2').replace(/[¼½¾⅛⅜⅝⅞]/g,c=>glyphs[c]);
@@ -30,7 +32,7 @@ function parseText(text){
   if(recipeUIBoundary(line)){flush();mode='other';ignored.push(line);continue;}
   if(/^(?:erfasst von\s*:|stammt von\b|hauptautor\b|edit\s*:)/i.test(line)){ignored.push(line);continue;}
   if(noise.test(line)||/^KIKKOMAN[^a-z]*$/u.test(line)||/^[x×=+<>|\s-]+$/i.test(line)||/^(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/\S*)?$/i.test(line)){ignored.push(line);continue;}
-  if(/\b\d+\s*[-–—]\s*\d+\s*(?:personen|portionen|people|servings)\b/i.test(line)){portions='';unresolved.push({type:'portion-range',raw:line});continue;}
+  const range=servingRange(line);if(range!==null){portions=range;if(!range)unresolved.push({type:'portion-range',raw:line});if(/^(zutaten|ingredients)/i.test(line))mode='ingredients';continue;}
   const p=line.replace(/portion\(en\)/ig,'Portionen').match(/(?:für|for)\s*(\d+)\s*(?:personen|portionen|people|servings)|(?:portionen|servings)\s*:?\s*(\d+)|(\d+)\s*(?:personen|portionen|servings)\b/i);
   if(p){portions=p[1]||p[2]||p[3];if(/^(zutaten|ingredients)/i.test(line))mode='ingredients';continue;}
   if(/^(?:\d+\s*Min\.?\s*){2}$/i.test(line)){ignored.push(line);continue;}
@@ -191,14 +193,14 @@ function cardHeaderRegions(reads,divider,width,height,front){
  if(wordTitles.length)title=wordTitles[0];
  // Include neighbouring title lines of comparable font size, not just the largest line.
  if(title){const anchor=title.bbox,h=anchor.y1-anchor.y0;const adjacent=titles.filter(l=>l.bbox.y1-l.bbox.y0>=h*.65&&l.bbox.y0<=anchor.y1+h*1.5&&l.bbox.y1>=anchor.y0-h*1.5&&!/\b(?:kühlschrank|gefrierfach|zutaten|zubereitung)\b/i.test(l.text));if(adjacent.length)title={bbox:{x0:Math.min(anchor.x0,...adjacent.map(l=>l.bbox.x0)),y0:Math.min(anchor.y0,...adjacent.map(l=>l.bbox.y0)),x1:Math.max(anchor.x1,...adjacent.map(l=>l.bbox.x1)),y1:Math.max(anchor.y1,...adjacent.map(l=>l.bbox.y1))}};}
- let servings=null,expectedPortions='';for(const l of reads.flatMap(ocrLines)){if(l.bbox.y1>divider.top)continue;const ws=l.words||[];for(let i=0;i+2<ws.length;i++){if(/^(?:für|for)$/i.test(clean(ws[i].text))&&/^\d+$/.test(clean(ws[i+1].text))&&/^(?:personen|portionen|people|servings)$/i.test(clean(ws[i+2].text))&&ws.slice(i,i+3).every(w=>w.bbox)){const a=ws.slice(i,i+3).map(w=>w.bbox);servings={x0:Math.min(...a.map(b=>b.x0)),y0:Math.min(...a.map(b=>b.y0)),x1:Math.max(...a.map(b=>b.x1)),y1:Math.max(...a.map(b=>b.y1))};expectedPortions=clean(ws[i+1].text);break;}}if(servings)break;}
+ let servings=null,expectedPortions='';for(const l of reads.flatMap(ocrLines)){if(l.bbox.y1>divider.top)continue;const ws=l.words||[];for(let i=0;i<ws.length;i++){for(let count=3;count<=7&&i+count<=ws.length;count++){const words=ws.slice(i,i+count),text=words.map(w=>clean(w.text)).join(' ');if(!/^(?:für|for)\s+(?:ca\.?\s+)?\d+(?:\s*(?:[-–—]|bis|to)\s*\d+)?\s+(?:personen|portionen|people|servings)$/i.test(text)||!words.every(w=>w.bbox))continue;const value=servingRange(text)??text.match(/\d+/)?.[0];if(!value)continue;const boxes=words.map(w=>w.bbox);servings={x0:Math.min(...boxes.map(b=>b.x0)),y0:Math.min(...boxes.map(b=>b.y0)),x1:Math.max(...boxes.map(b=>b.x1)),y1:Math.max(...boxes.map(b=>b.y1))};expectedPortions=value;break;}if(servings)break;}if(servings)break;}
  const pad=(b,wide=false)=>b?{x0:Math.max(0,wide?Math.max(front,b.x0-width*.15):b.x0-8),y0:Math.max(0,b.y0-8),x1:Math.min(width,b.x1+width*.025),y1:Math.min(divider.top,b.y1+8)}:null;
  return{title:pad(title?.bbox,true),servings:pad(servings),expectedPortions};
 }
 function reviewCardMetadata(titleReads,servingReads,expectedPortions=''){
  const titles=titleReads.map(s=>clean(s).replace(/\s*[♡♥❤©|]+\s*$/u,'').replace(/([^0-9\s])\s+¢\s*$/u,'$1').replace(/\s+/g,' '));
  const name=titles.length===2&&titles[0]===titles[1]&&titles[0].length<=200&&titles[0].split(' ').length>=2&&!/^\d/.test(titles[0])?titles[0]:'';
- const values=servingReads.map(s=>{const literal=String(s).match(/(?:für|for)\s*(\d+)\s*(?:personen|portionen|people|servings)\b/i)?.[1];if(literal)return literal;const value=String(s).match(/^(?:für|for)\s*(\d+)\s+/i)?.[1];return expectedPortions&&value===expectedPortions?value:'';});
+ const values=servingReads.map(s=>{const range=servingRange(s);if(range!==null)return range;const literal=String(s).match(/(?:für|for)\s*(\d+)\s*(?:personen|portionen|people|servings)\b/i)?.[1];if(literal)return literal;const value=String(s).match(/^(?:für|for)\s*(\d+)\s+/i)?.[1];return expectedPortions&&value===expectedPortions?value:'';});
  const portions=values.length===2&&values[0]&&values[0]===values[1]&&Number(values[0])>=1&&Number(values[0])<=100?values[0]:'';
  return{name,portions,reviewRequired:true};
 }
@@ -215,7 +217,7 @@ function parseCardSteps(text){
 function validRecord(r){return r&&/^personal-[a-z0-9-]+$/.test(r.id)&&typeof r.name==='string'&&r.name.length>0&&r.name.length<=200&&Number.isFinite(r.portions)&&r.portions>0&&r.portions<=100&&Array.isArray(r.ingredientLines)&&r.ingredientLines.length>0&&r.ingredientLines.length<=100&&r.ingredientLines.every(s=>typeof s==='string'&&s.length>0&&s.length<=500)&&Array.isArray(r.steps)&&r.steps.length>0&&r.steps.length<=100&&r.steps.every(s=>typeof s==='string'&&s.length>0&&s.length<=3000)&&['Alles','Vegetarisch','Vegan'].includes(r.diet)&&[r.prepMinutes,r.cookMinutes].every(n=>n===null||Number.isFinite(n)&&n>=0&&n<=1440)&&(!r.source||typeof r.source==='string'&&r.source.length<=2000)}
 function toRecipe(r,image=''){const parsed=r.ingredientLines.map(ingredient),pantryReady=parsed.every(x=>!x.uncertain);return{id:r.id,name:r.name,personal:true,pantryReady,detailLoaded:true,description:'',type:'Hauptmahlzeit',diet:r.diet,dish:'🍽️',cuisine:'Eigenes Rezept',difficulty:'',status:'approved',mealTimes:['Mittagessen','Abendessen'],prepMinutes:r.prepMinutes||0,cookMinutes:r.cookMinutes||0,ingredients:parsed.map(x=>({name:x.name,amount:x.amount===null?null:x.amount/r.portions,unit:x.unit})),steps:r.steps.slice(),nutrition:{},allergens:[],image}}
 window.RESERVE_RECIPE_PARSER={ingredient,parseText,validRecord,toRecipe};
-window.RESERVE_REKEK={version:"0.6.2",kind:"local-ocr-and-rules",parseText,parseCandidates,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
+window.RESERVE_REKEK={version:"0.6.3",kind:"local-ocr-and-rules",parseText,parseCandidates,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
 })();
 
 

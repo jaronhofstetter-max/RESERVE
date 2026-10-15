@@ -56,3 +56,14 @@ console.log('Literal equals markers, source units, explicit count abbreviations,
 assert.equal(k.reviewIngredientReadings(['= 12 EL Honig','= 12 EL Honig']).quantityClear,false);assert.equal(k.reviewIngredientReadings(['= 30 g Butter','= 30 g Butter']).quantityClear,true);
 
 }
+
+// User rule: take the lower serving count, never the lower ingredient amount.
+for(const label of ['Für 2-3 Personen','Für ca. 2–3 Personen','2 — 3 Portionen','Für 2 bis 3 Personen','Portionen: 2–3','Für 3–2 Personen','For 2 to 3 servings','Für 2–3 Portion(en)'])assert.equal(p.parseText('Suppe\n'+label+'\nZutaten\n200 g Reis\nZubereitung\nGaren.').portions,'2',label);
+for(const label of ['Für 0–3 Personen','Für 2–101 Personen'])assert.equal(p.parseText('Suppe\n'+label).portions,'');
+assert.equal(p.ingredient('200–300 g Reis').uncertain,true);
+const k=ctx.window.RESERVE_REKEK;
+assert.equal(k.reviewCardMetadata([],['Für 2–3 Personen','Für 2–3 Personen']).portions,'2');
+assert.equal(k.reviewCardMetadata([],['Für 2–3 Personen','Für 3–4 Personen']).portions,'');
+const scaled=p.toRecipe({...r,portions:Number(p.parseText('Suppe\nFür 2–3 Personen').portions)});
+assert.equal(scaled.ingredients[0].amount*4,400);
+console.log('Lower serving-range endpoint, OCR disagreement, ingredient range safety and scaling passed.');
