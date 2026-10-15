@@ -120,3 +120,11 @@ const fractionParts=K.fractionGlyphParts(fractionImage);assert.ok(fractionParts)
 console.log('Unlabelled lists retain source quantities and instruction boundaries; fraction geometry isolates components and rejects mixed numbers without guessing digits.');
 
 const twoWordTitle=textureRow('Omas Knödel',30),twoWordRegions=K.quantityRecipeRegions({lines:[twoWordTitle,...unlabelledRows.slice(1)]},500,600);assert.ok(twoWordRegions.title.x0<twoWordTitle.words[0].bbox.x0);assert.ok(twoWordRegions.title.x1>twoWordTitle.words[1].bbox.x1);
+
+const columnWord=(text,x,y,w=70)=>({text,bbox:{x0:x,y0:y,x1:x+w,y1:y+20}});
+const columnRow=(words)=>({text:words.map(w=>w.text).join(' '),words,bbox:{x0:Math.min(...words.map(w=>w.bbox.x0)),y0:words[0].bbox.y0,x1:Math.max(...words.map(w=>w.bbox.x1)),y1:words[0].bbox.y1}});
+const columnData={lines:[columnRow([columnWord('Gebäck',30,20,200)]),columnRow([columnWord('Zutaten:',30,90)]),...[130,170,210].map((y,i)=>columnRow([columnWord(['200g','100g','1/4'][i],30,y,40),columnWord(['Mehl','Honig','1 Milch'][i],80,y,80),columnWord(['10g','90g','Nüsse'][i],260,y,40),columnWord(['Gewürz','Zucker',''][i],310,y,70)])),columnRow([columnWord('Zubereitung:',30,270,140)]),columnRow([columnWord('Alles vermischen.',30,320,250)])]};
+const columnRegions=K.ingredientColumnRegions(columnData,500,500);assert.deepEqual(Array.from(columnRegions.counts),[3,3]);assert.ok(columnRegions.columns[0].x1<columnRegions.columns[1].x0);
+const crossed=JSON.parse(JSON.stringify(columnData));crossed.lines[3].words[1].bbox.x1=270;assert.equal(K.ingredientColumnRegions(crossed,500,500),null);
+const noHeading=JSON.parse(JSON.stringify(columnData));noHeading.lines[1].text='Hinweise';assert.equal(K.ingredientColumnRegions(noHeading,500,500),null);
+assert.equal(K.contextSuggestions('200 g weiche Butter','Die Oberfläche soll noch weich sein.').length,0);

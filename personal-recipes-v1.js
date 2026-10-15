@@ -133,11 +133,27 @@ async function rereadTexturedCard(canvas,original,read,ticket){
  return{accepted:titles[0]+'\nZutaten\n'+ingredients[0]+'\nZubereitung\n'+steps[0],focused:true,sources,evidence:['Original OCR:',original,...evidence].join('\n')};
 }
 
+async function rereadIngredientColumns(canvas,original,read,ticket){
+ const K=window.RESERVE_REKEK;await worker.terminate();if(ticket!==ocrTicket)throw Error('Lesen abgebrochen.');worker=await (await loadOCR()).createWorker('deu',1);
+ const layout=await read(canvas,3),regions=K.ingredientColumnRegions(layout,canvas.width,canvas.height),evidence=['Zutatenspalten · Layout:',layout.text||''];if(!regions)return{accepted:null,evidence:evidence.join('\n')};
+ const crop=b=>{const c=document.createElement('canvas');c.width=b.x1-b.x0;c.height=b.y1-b.y0;c.getContext('2d').drawImage(canvas,b.x0,b.y0,c.width,c.height,0,0,c.width,c.height);return c;},norm=t=>String(t||'').trim().replace(/\s+/g,' '),sources=[],quantities=[],ingredients=[];
+ const paired=async(b,modes,label)=>{const image=crop(b),reads=[];for(const mode of modes){const d=await read(image,mode);reads.push(d);evidence.push(label+' PSM '+mode+':',d.text||'');}sources.push({canvas:image,data:reads[0]});return{image,reads};};
+ const title=await paired(regions.title,[7,6],'Titel');if(!norm(title.reads[0].text)||norm(title.reads[0].text)!==norm(title.reads[1].text))return{accepted:null,evidence:evidence.join('\n')};
+ for(const [i,b] of regions.columns.entries()){
+  const part=await paired(b,[6,4],'Zutatenspalte '+(i+1)),drafts=part.reads.map(d=>P().parseText('Zutaten\n'+d.text).ingredients);
+  if(drafts[0]!==drafts[1]||lines(drafts[0]).length!==regions.counts[i])return{accepted:null,evidence:evidence.join('\n')};
+  for(const line of lines(drafts[0])){const index=ingredients.length;ingredients.push(line);if(/^\d+\/\d+\s+1\s+[^\d]/.test(line))quantities.push({line:index,from:line,to:line.replace(/^(\d+\/\d+)\s+1\s+/,'$1 l '),reason:'Mögliche Verwechslung von Literzeichen und Ziffer 1 · Einheit am Original bestätigen',quantity:true,image:part.image.toDataURL('image/png')});}
+ }
+ const body=await paired(regions.steps,[3,6],'Zubereitung'),steps=body.reads.map(d=>P().parseText('Zubereitung\n'+d.text).steps);if(!steps[0]||norm(steps[0])!==norm(steps[1]))return{accepted:null,evidence:evidence.join('\n')};
+ return{accepted:norm(title.reads[0].text)+'\nZutaten\n'+ingredients.join('\n')+'\nZubereitung\n'+steps[0],focused:true,sources,quantities,evidence:['Original OCR:',original,...evidence].join('\n')};
+}
+
 async function rereadRecipeCard(canvas,original,ticket){
  const K=window.RESERVE_REKEK;
  const read=async(image,mode)=>{if(ticket!==ocrTicket)throw Error('Lesen abgebrochen.');await worker.setParameters({tessedit_pageseg_mode:String(mode)});const result=await worker.recognize(image.toDataURL('image/png'));if(ticket!==ocrTicket)throw Error('Lesen abgebrochen.');return result.data;};
  const normalized=text=>String(text||'').trim().replace(/\s+/g,' ');
  let textureEvidence='';const initial=P().parseText(original);if(lines(initial.ingredients).length<3&&!initial.steps){const textured=await rereadTexturedCard(canvas,original,read,ticket);if(textured?.accepted)return textured;if(textured?.evidence)textureEvidence=textured.evidence;}
+ if(/\bZutaten\b/i.test(original)&&/\bZubereitung\b/i.test(original)&&original.split(/\r?\n/).some(l=>(l.match(/\b\d+\s*(?:g|kg|ml|l)\b/gi)||[]).length>=2)){const columns=await rereadIngredientColumns(canvas,original,read,ticket);if(columns.accepted)return columns;if(columns.evidence)textureEvidence+='\n'+columns.evidence;}
  const scalePanel=Math.min(1,600/Math.max(canvas.width,canvas.height)),panelMap=document.createElement('canvas');panelMap.width=Math.round(canvas.width*scalePanel);panelMap.height=Math.round(canvas.height*scalePanel);panelMap.getContext('2d').drawImage(canvas,0,0,panelMap.width,panelMap.height);
  const panel=K.findRecipePanel(panelMap.getContext('2d').getImageData(0,0,panelMap.width,panelMap.height)),panelEvidence=textureEvidence?[textureEvidence]:[];
  if(panel){
