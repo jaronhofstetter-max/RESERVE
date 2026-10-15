@@ -82,7 +82,8 @@ function quantityRecipeRegions(data,width,height){
  if(items.length<3)return null;
  const titleWords=rows.slice(0,start).flatMap(words).filter(w=>/[a-zäöüß]{4}/i.test(w.text));if(!titleWords.length)return null;const largest=titleWords.slice().sort((a,b)=>(b.bbox.y1-b.bbox.y0)-(a.bbox.y1-a.bbox.y0))[0];
  const body=rows.slice(step).filter(r=>/[a-zäöüß]{3}/i.test(r.text)).flatMap(r=>(r.words||[]).filter(w=>w.bbox&&/[a-zäöüß0-9]/i.test(w.text)));if(!body.length)return null;
- return{title:box([largest]),ingredients:items,steps:box(body)};
+ const lh=largest.bbox.y1-largest.bbox.y0,title=titleWords.filter(w=>w.bbox.y1-w.bbox.y0>=lh*.65&&w.bbox.y0<largest.bbox.y1+lh*.6&&w.bbox.y1>largest.bbox.y0-lh*.6);
+ return{title:box(title),ingredients:items,steps:box(body)};
 }
 // Geometry only: locate a diagonal separator and its two small digit components.
 // The digit model supplies review candidates later; no fraction value is inferred.
@@ -91,7 +92,7 @@ function fractionGlyphParts(image){
  const values=new Uint8Array(w*h),hist=new Uint32Array(256);for(let i=0;i<values.length;i++){const v=Math.round((data[i*4]*299+data[i*4+1]*587+data[i*4+2]*114)/1000);values[i]=v;hist[v]++;}
  const quantile=p=>{let n=0;for(let i=0;i<256;i++){n+=hist[i];if(n>=w*h*p)return i;}return 255;},low=quantile(.05),high=quantile(.95);if(high-low<30)return null;
  const threshold=(low+high)/2,seen=new Uint8Array(w*h),parts=[];
- for(let i=0;i<values.length;i++){if(seen[i]||values[i]>=threshold)continue;seen[i]=1;const todo=[i],points=[];while(todo.length){const k=todo.pop(),x=k%w,y=Math.floor(k/w);points.push([x,y]);for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const nx=x+dx,ny=y+dy,j=ny*w+nx;if(nx>=0&&nx<w&&ny>=0&&ny<h&&!seen[j]&&values[j]<threshold){seen[j]=1;todo.push(j);}}}if(points.length<5)continue;
+ for(let i=0;i<values.length;i++){if(seen[i]||values[i]>=threshold)continue;seen[i]=1;const todo=[i],points=[];while(todo.length){const k=todo.pop(),x=k%w,y=Math.floor(k/w);points.push([x,y]);for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const nx=x+dx,ny=y+dy,j=ny*w+nx;if(nx>=0&&nx<w&&ny>=0&&ny<h&&!seen[j]&&values[j]<threshold){seen[j]=1;todo.push(j);}}}if(points.length>20000)return null;if(points.length<5)continue;
   const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]),x0=Math.min(...xs),x1=Math.max(...xs)+1,y0=Math.min(...ys),y1=Math.max(...ys)+1,mx=xs.reduce((a,b)=>a+b,0)/points.length,my=ys.reduce((a,b)=>a+b,0)/points.length;let xx=0,yy=0,xy=0;for(const [x,y] of points){xx+=(x-mx)**2;yy+=(y-my)**2;xy+=(x-mx)*(y-my);}parts.push({points,x0,x1,y0,y1,width:x1-x0,height:y1-y0,cx:(x0+x1)/2,cy:(y0+y1)/2,correlation:xy/Math.sqrt(xx*yy||1)});
  }
  const separators=parts.filter(p=>p.height>=h*.3&&p.height<=h*.9&&p.width>=p.height*.35&&p.width<=p.height*1.4&&p.correlation<-.75);if(separators.length!==1)return null;const slash=separators[0];
