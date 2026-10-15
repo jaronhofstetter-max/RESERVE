@@ -1,0 +1,28 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Kaiserschmarrn",
+  "image": "http://www.chuchitisch.ch//chuchitisch/download_picture/lightroom/78_Kaiserschmarrn.png",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "",
+  "prepTime": "PT0S",
+  "cookTime": "PT900S",
+  "totalTime": "PT900S",
+  "recipeYield": "2 Personen",
+  "keywords": "  Österreich,  Dessert,  Hauptspeise,  Deftig,  Schnell,  Vegetarisch,  Saisonal,  ",
+  "recipeIngredient": [
+    "4   Eier",
+    "4  EL Mehl",
+    "4  EL Milch",
+    "1  Prise Salz",
+    "   Zucker",
+    "   Butter",
+    ""
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+  "recipeInstructions": "Alle Zutaten bis und mit Salz zu einem Teig zusammenrühren und je nach Geschmack leicht zuckern. In einer Pfanne auf mittlerer Hitze in Butter backen, bis die Unterseite fest ist. Dann mit einem Kochlöffel zerteilen und wiederholt vorsichtig wenden, bis er fertig ist. Mit Zucker servieren."
+}

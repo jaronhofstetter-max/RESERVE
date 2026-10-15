@@ -1,0 +1,93 @@
+{
+  "168933": {
+    "description": "Semolina, unenriched",
+    "per100g": {
+      "kcal": 360,
+      "protein": 12.7,
+      "carbs": 72.8,
+      "fat": 1.05,
+      "fiber": 3.9
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/168933/nutrients"
+  },
+  "168879": {
+    "fdcId": 168879,
+    "description": "Rice, white, medium-grain, raw, enriched",
+    "per100g": {
+      "kcal": 360,
+      "protein": 6.61,
+      "carbs": 79.34,
+      "fat": 0.58,
+      "fiber": 1.4
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/168879/nutrients",
+    "carbohydrateBasis": "total-including-fiber",
+    "retrievedAt": "2026-10-12"
+  },
+  "169761": {
+    "fdcId": 169761,
+    "description": "Wheat flour, white, all-purpose, unenriched",
+    "per100g": {
+      "kcal": 364,
+      "protein": 10.33,
+      "carbs": 76.31,
+      "fat": 0.98,
+      "fiber": 2.7
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/169761/nutrients",
+    "carbohydrateBasis": "total-including-fiber",
+    "retrievedAt": "2026-10-12"
+  },
+  "171265": {
+    "fdcId": 171265,
+    "description": "Milk, whole, 3.25% milkfat, with added vitamin D",
+    "per100g": {
+      "kcal": 61,
+      "protein": 3.15,
+      "carbs": 4.8,
+      "fat": 3.25,
+      "fiber": 0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/171265/nutrients",
+    "carbohydrateBasis": "total-including-fiber",
+    "retrievedAt": "2026-10-12"
+  },
+  "171287": {
+    "fdcId": 171287,
+    "description": "Egg, whole, raw, fresh",
+    "per100g": {
+      "kcal": 143,
+      "protein": 12.56,
+      "carbs": 0.72,
+      "fat": 9.51,
+      "fiber": 0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/171287/nutrients",
+    "carbohydrateBasis": "total-including-fiber",
+    "retrievedAt": "2026-10-12"
+  },
+  "169655": {
+    "fdcId": 169655,
+    "description": "Sugars, granulated",
+    "per100g": {
+      "protein": 0,
+      "fat": 0,
+      "kcal": 387,
+      "carbs": 100,
+      "fiber": 0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/169655/nutrients"
+  },
+  "173430": {
+    "fdcId": 173430,
+    "description": "Butter, without salt",
+    "per100g": {
+      "kcal": 717,
+      "fat": 81.1,
+      "carbs": 0.06,
+      "protein": 0.85,
+      "fiber": 0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/173430/nutrients"
+  }
+}

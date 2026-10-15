@@ -1,0 +1,407 @@
+[
+  {
+    "id": "chuchitisch-kaiserschmarrn",
+    "name": "Kaiserschmarrn",
+    "type": "Dessert",
+    "diet": "Vegetarisch",
+    "dish": "🥣",
+    "cuisine": "Österreichisch",
+    "mealTimes": [
+      "Zwischenmahlzeit"
+    ],
+    "prepMinutes": 5,
+    "cookMinutes": 15,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Ei",
+      "Gluten",
+      "Milch"
+    ],
+    "tags": [
+      "Originalrezept",
+      "Chuchitisch"
+    ],
+    "ingredients": [
+      {
+        "name": "Ei",
+        "amount": 2,
+        "unit": "Stück"
+      },
+      {
+        "name": "Weizenmehl",
+        "amount": 20,
+        "unit": "g"
+      },
+      {
+        "name": "Milch",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.25,
+        "unit": "g"
+      },
+      {
+        "name": "Zucker",
+        "amount": 10,
+        "unit": "g"
+      },
+      {
+        "name": "Butter",
+        "amount": 10,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Eier, Mehl, Milch und Salz in einer Schüssel zu einem glatten Teig verrühren; die Hälfte des Zuckers einrühren.",
+      "Butter in einer beschichteten Pfanne bei mittlerer Hitze schmelzen lassen und den Teig hineingiessen.",
+      "Backen, bis die Unterseite fest ist; den Teig mit einem Holzlöffel in mundgerechte Stücke zerteilen.",
+      "Die Stücke wiederholt vorsichtig wenden und fertig backen, bis sie innen vollständig gestockt und aussen goldbraun sind.",
+      "Mit dem restlichen Zucker bestreuen und warm servieren."
+    ],
+    "nutrition": {
+      "kcal": 344.5,
+      "protein": 15.656,
+      "carbs": 26.888,
+      "fat": 18.791,
+      "fiber": 0.54
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung aus USDA SR Legacy; keine Messung des fertigen Gerichts.",
+      "basis": "Pro Person; essbare Rohgewichte. Verfügbare Kohlenhydrate = USDA-Gesamtkohlenhydrate minus Ballaststoffe. Original für 2 Personen: 4 Eier, 4 EL Mehl, 4 EL Milch, 1 Prise Salz; Zucker und Butter ohne Mengenangabe. Umrechnung: 1 Ei ohne Schale = 50 g, 1 EL Mehl = 10 g, 1 EL Milch = 15 ml, 1 Prise Salz = 0.5 g. Zucker 20 g insgesamt und Butter 20 g sind ergänzte RESERVE-Richtmengen, keine Originalangaben.",
+      "sources": "docs/recipe-candidates/import-2026-10-15/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Ei",
+          "grams": 100,
+          "foodKey": "171287",
+          "excluded": false
+        },
+        {
+          "name": "Weizenmehl",
+          "grams": 20,
+          "foodKey": "169761",
+          "excluded": false
+        },
+        {
+          "name": "Milch",
+          "grams": 30,
+          "foodKey": "171265",
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 0.25,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Zucker",
+          "grams": 10,
+          "foodKey": "169655",
+          "excluded": false
+        },
+        {
+          "name": "Butter",
+          "grams": 10,
+          "foodKey": "173430",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Kaiserschmarrn nach Chuchitisch. Mengen und geschätzte Nährwerte gelten für eine Person. Mit Originalfoto der Quelle.",
+    "equipment": [
+      "Schüssel",
+      "Schneebesen",
+      "Beschichtete Bratpfanne",
+      "Holzlöffel"
+    ],
+    "prepNotes": [
+      "Original für 2 Personen: 4 Eier, 4 EL Mehl, 4 EL Milch, 1 Prise Salz; Zucker und Butter ohne Mengenangabe.",
+      "Umrechnung: 1 Ei ohne Schale = 50 g, 1 EL Mehl = 10 g, 1 EL Milch = 15 ml, 1 Prise Salz = 0.5 g. Zucker 20 g insgesamt und Butter 20 g sind ergänzte RESERVE-Richtmengen, keine Originalangaben."
+    ],
+    "doneness": "Die Stücke sind goldbraun und innen vollständig gestockt; es ist kein flüssiger Eierteig mehr sichtbar.",
+    "substitutions": [
+      "Andere Produkte und zusätzliche Beilagen verändern Allergene und Nährwerte; Produktetiketten und Mengen entsprechend prüfen."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt im Kühlschrank lagern und zeitnah verbrauchen; beim Wiedererwärmen vollständig durcherhitzen.",
+    "safety": "Milch und Eier gekühlt lagern. Eiergerichte vollständig durchgaren. Gekochten Reis rasch abkühlen und nicht längere Zeit warm stehen lassen.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "http://chuchitisch.ch/recipes/103",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "originalServings": 2,
+      "adaptation": "Auf eine Person umgerechnet; Anleitung gegliedert und Garmerkmale ergänzt. Original für 2 Personen: 4 Eier, 4 EL Mehl, 4 EL Milch, 1 Prise Salz; Zucker und Butter ohne Mengenangabe. Umrechnung: 1 Ei ohne Schale = 50 g, 1 EL Mehl = 10 g, 1 EL Milch = 15 ml, 1 Prise Salz = 0.5 g. Zucker 20 g insgesamt und Butter 20 g sind ergänzte RESERVE-Richtmengen, keine Originalangaben."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.3,
+      "waterMl": 0,
+      "noCook": false,
+      "onePot": true
+    }
+  },
+  {
+    "id": "wikibooks-griessbrei-milch",
+    "name": "Grießbrei mit Milch",
+    "type": "Dessert",
+    "diet": "Vegetarisch",
+    "dish": "🥣",
+    "cuisine": "Deutschsprachig",
+    "mealTimes": [
+      "Zwischenmahlzeit"
+    ],
+    "prepMinutes": 5,
+    "cookMinutes": 25,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Gluten",
+      "Milch"
+    ],
+    "tags": [
+      "Originalrezept",
+      "Wikibooks"
+    ],
+    "ingredients": [
+      {
+        "name": "Weichweizengriess",
+        "amount": 31.25,
+        "unit": "g"
+      },
+      {
+        "name": "Milch",
+        "amount": 250,
+        "unit": "ml"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.125,
+        "unit": "g"
+      },
+      {
+        "name": "Zucker",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Butter",
+        "amount": 7.5,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Milch und Salz in einem grossen Topf unter Rühren zum Kochen bringen.",
+      "Den Griess langsam unter ständigem Rühren einrieseln lassen, damit keine Klümpchen entstehen.",
+      "Die Hitze reduzieren und den Brei bei schwacher Hitze unter regelmässigem Rühren quellen lassen, bis er cremig angedickt ist.",
+      "Zucker und Butter einrühren, bis sich beides gleichmässig im Brei verteilt hat.",
+      "Vom Herd nehmen und warm servieren. Ist der Brei zu fest, schluckweise etwas Milch ergänzen; die Mengen ändern sich dadurch."
+    ],
+    "nutrition": {
+      "kcal": 415.525,
+      "protein": 11.908,
+      "carbs": 58.536,
+      "fat": 14.536,
+      "fiber": 1.219
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung aus USDA SR Legacy; keine Messung des fertigen Gerichts.",
+      "basis": "Pro Person; essbare Rohgewichte. Verfügbare Kohlenhydrate = USDA-Gesamtkohlenhydrate minus Ballaststoffe. Original für 4 Personen; die Buttervariante wird verwendet. Optionale Eier, Vanillezucker, Zitrone und Garnituren sind nicht Bestandteil dieser Fassung. 1 Prise Salz = 0.5 g. Milch vereinfacht mit 1 ml = 1 g berechnet. Weichweizengriess mit USDA Semolina, unenriched angenähert (andere Weizensorte). Das Foto zeigt zusätzlich Fruchtkompott: ausschliesslich Serviervorschlag, nicht im Rezept oder in den Nährwerten enthalten.",
+      "sources": "docs/recipe-candidates/import-2026-10-15/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Weichweizengriess",
+          "grams": 31.25,
+          "foodKey": "168933",
+          "excluded": false
+        },
+        {
+          "name": "Milch",
+          "grams": 250,
+          "foodKey": "171265",
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 0.125,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Zucker",
+          "grams": 25,
+          "foodKey": "169655",
+          "excluded": false
+        },
+        {
+          "name": "Butter",
+          "grams": 7.5,
+          "foodKey": "173430",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Grießbrei mit Milch nach Wikibooks. Mengen und geschätzte Nährwerte gelten für eine Person. Foto: Serviervorschlag.",
+    "equipment": [
+      "Kochtopf",
+      "Schneebesen",
+      "Kochlöffel"
+    ],
+    "prepNotes": [
+      "Original für 4 Personen; die Buttervariante wird verwendet. Optionale Eier, Vanillezucker, Zitrone und Garnituren sind nicht Bestandteil dieser Fassung.",
+      "1 Prise Salz = 0.5 g. Milch vereinfacht mit 1 ml = 1 g berechnet. Weichweizengriess mit USDA Semolina, unenriched angenähert (andere Weizensorte).",
+      "Das Foto zeigt zusätzlich Fruchtkompott: ausschliesslich Serviervorschlag, nicht im Rezept oder in den Nährwerten enthalten."
+    ],
+    "doneness": "Der Griess ist weich aufgequollen und der Brei cremig; am Topfboden ist nichts angebrannt.",
+    "substitutions": [
+      "Andere Produkte und zusätzliche Beilagen verändern Allergene und Nährwerte; Produktetiketten und Mengen entsprechend prüfen."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt im Kühlschrank lagern und zeitnah verbrauchen; beim Wiedererwärmen vollständig durcherhitzen.",
+    "safety": "Milch und Eier gekühlt lagern. Eiergerichte vollständig durchgaren. Gekochten Reis rasch abkühlen und nicht längere Zeit warm stehen lassen.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende (siehe Versionsgeschichte)",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Grießbrei&oldid=854992",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "originalServings": 4,
+      "adaptation": "Auf eine Person umgerechnet; Anleitung gegliedert und Garmerkmale ergänzt. Original für 4 Personen; die Buttervariante wird verwendet. Optionale Eier, Vanillezucker, Zitrone und Garnituren sind nicht Bestandteil dieser Fassung. 1 Prise Salz = 0.5 g. Milch vereinfacht mit 1 ml = 1 g berechnet. Weichweizengriess mit USDA Semolina, unenriched angenähert (andere Weizensorte). Das Foto zeigt zusätzlich Fruchtkompott: ausschliesslich Serviervorschlag, nicht im Rezept oder in den Nährwerten enthalten."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.3,
+      "waterMl": 0,
+      "noCook": false,
+      "onePot": true
+    }
+  },
+  {
+    "id": "wikibooks-milchreis",
+    "name": "Milchreis-Grundrezept",
+    "type": "Dessert",
+    "diet": "Vegetarisch",
+    "dish": "🥣",
+    "cuisine": "Deutschsprachig",
+    "mealTimes": [
+      "Zwischenmahlzeit"
+    ],
+    "prepMinutes": 5,
+    "cookMinutes": 40,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Milch"
+    ],
+    "tags": [
+      "Originalrezept",
+      "Wikibooks"
+    ],
+    "ingredients": [
+      {
+        "name": "Rundkornreis",
+        "amount": 112.5,
+        "unit": "g"
+      },
+      {
+        "name": "Milch",
+        "amount": 500,
+        "unit": "ml"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.25,
+        "unit": "g"
+      },
+      {
+        "name": "Zucker",
+        "amount": 12.5,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Milch mit Rundkornreis und Salz in einen ausreichend grossen Topf geben und unter Rühren aufkochen.",
+      "Zucker einrühren und die Hitze so weit reduzieren, dass die Milch nur leicht köchelt.",
+      "Den Reis im offenen Topf etwa 40 Minuten bei geringer Hitze garen; regelmässig bis zum Topfboden umrühren.",
+      "Sobald die Reiskörner weich sind und der Brei cremig ist, vom Herd nehmen. Falls nötig etwas Milch ergänzen.",
+      "Kurz ruhen lassen, nochmals umrühren und warm servieren. Zusätzliche Beilagen sind in den Nährwerten nicht enthalten."
+    ],
+    "nutrition": {
+      "kcal": 758.375,
+      "protein": 23.186,
+      "carbs": 124.183,
+      "fat": 16.902,
+      "fiber": 1.575
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung aus USDA SR Legacy; keine Messung des fertigen Gerichts.",
+      "basis": "Pro Person; essbare Rohgewichte. Verfügbare Kohlenhydrate = USDA-Gesamtkohlenhydrate minus Ballaststoffe. Original für 2–3 Personen; gemäss Nutzerregel werden 2 Personen als Basis verwendet. Original nennt 200–250 g Rundkornreis; diese RESERVE-Fassung verwendet ausdrücklich 225 g als gewählte mittlere Menge. Keine exakte Originalangabe. 2 EL Zucker = 25 g, 1 Prise Salz = 0.5 g. Milch vereinfacht mit 1 ml = 1 g; Rundkornreis mit USDA weissem Mittelkornreis angenähert. Das Foto ist ein Serviervorschlag und nicht nachweislich nach diesem konkreten Rezept zubereitet.",
+      "sources": "docs/recipe-candidates/import-2026-10-15/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Rundkornreis",
+          "grams": 112.5,
+          "foodKey": "168879",
+          "excluded": false
+        },
+        {
+          "name": "Milch",
+          "grams": 500,
+          "foodKey": "171265",
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 0.25,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Zucker",
+          "grams": 12.5,
+          "foodKey": "169655",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Milchreis-Grundrezept nach Wikibooks. Mengen und geschätzte Nährwerte gelten für eine Person. Foto: Serviervorschlag.",
+    "equipment": [
+      "Kochtopf",
+      "Kochlöffel"
+    ],
+    "prepNotes": [
+      "Original für 2–3 Personen; gemäss Nutzerregel werden 2 Personen als Basis verwendet.",
+      "Original nennt 200–250 g Rundkornreis; diese RESERVE-Fassung verwendet ausdrücklich 225 g als gewählte mittlere Menge. Keine exakte Originalangabe.",
+      "2 EL Zucker = 25 g, 1 Prise Salz = 0.5 g. Milch vereinfacht mit 1 ml = 1 g; Rundkornreis mit USDA weissem Mittelkornreis angenähert.",
+      "Das Foto ist ein Serviervorschlag und nicht nachweislich nach diesem konkreten Rezept zubereitet."
+    ],
+    "doneness": "Die Reiskörner sind weich ohne harten Kern und von cremiger Milch umgeben.",
+    "substitutions": [
+      "Andere Produkte und zusätzliche Beilagen verändern Allergene und Nährwerte; Produktetiketten und Mengen entsprechend prüfen."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt im Kühlschrank lagern und zeitnah verbrauchen; beim Wiedererwärmen vollständig durcherhitzen.",
+    "safety": "Milch und Eier gekühlt lagern. Eiergerichte vollständig durchgaren. Gekochten Reis rasch abkühlen und nicht längere Zeit warm stehen lassen.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende (siehe Versionsgeschichte)",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Milchreis&oldid=797101",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "originalServings": 2,
+      "adaptation": "Auf eine Person umgerechnet; Anleitung gegliedert und Garmerkmale ergänzt. Original für 2–3 Personen; gemäss Nutzerregel werden 2 Personen als Basis verwendet. Original nennt 200–250 g Rundkornreis; diese RESERVE-Fassung verwendet ausdrücklich 225 g als gewählte mittlere Menge. Keine exakte Originalangabe. 2 EL Zucker = 25 g, 1 Prise Salz = 0.5 g. Milch vereinfacht mit 1 ml = 1 g; Rundkornreis mit USDA weissem Mittelkornreis angenähert. Das Foto ist ein Serviervorschlag und nicht nachweislich nach diesem konkreten Rezept zubereitet."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.3,
+      "waterMl": 0,
+      "noCook": false,
+      "onePot": true
+    }
+  }
+]
