@@ -365,6 +365,54 @@
       "adaptation": "Originalfoto als WebP komprimiert; die App kann einen Ausschnitt anzeigen.",
       "review": "Originalfoto zum übernommenen Rezept. Kein separat benannter Fotograf; Zuschreibung an das veröffentlichende Autorenkonto.",
       "reviewedAt": "2026-10-12"
+    },
+    {
+      "recipeId": "chuchitisch-kaiserschmarrn",
+      "path": "assets/recipe-photos/chuchitisch-kaiserschmarrn.webp",
+      "source": "https://chuchitisch.ch/recipes/103",
+      "author": "Hannes und Martina / Chuchitisch",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "kind": "photograph",
+      "servingSuggestion": false,
+      "title": "Kaiserschmarrn",
+      "provider": "Chuchitisch",
+      "adaptation": "Verkleinert und als WebP komprimiert; die App kann einen Ausschnitt anzeigen.",
+      "review": "Originalfoto der Rezeptquelle; Zuschreibung an das veröffentlichende Autorenkonto, kein separater Fotograf genannt.",
+      "reviewedAt": "2026-10-15",
+      "originalPhotoSha256": "b741afa20c5fc832537a28d0bcf049c5914b92d48c8860701a028c14cff75252"
+    },
+    {
+      "recipeId": "wikibooks-griessbrei-milch",
+      "path": "assets/recipe-photos/wikibooks-griessbrei-milch.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Griessbrei.jpg",
+      "author": "© Alice Wiegand (via Wikimedia Commons)",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Grießbrei mit Fruchtkompott",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Verkleinert und als WebP komprimiert; die App kann einen Ausschnitt anzeigen.",
+      "review": "Serviervorschlag; keine belegte Zubereitung nach dem konkreten Rezept.",
+      "reviewedAt": "2026-10-15",
+      "originalPhotoSha256": "cc3dcf9c1a723b9c173b0753a81a4566d07caceb263e2e65694acc3d1acbde5d"
+    },
+    {
+      "recipeId": "wikibooks-milchreis",
+      "path": "assets/recipe-photos/wikibooks-milchreis.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Red_plate_rice_pudding.jpg",
+      "author": "Bananenfalter",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Red plate rice pudding",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Verkleinert und als WebP komprimiert; die App kann einen Ausschnitt anzeigen.",
+      "review": "Serviervorschlag; keine belegte Zubereitung nach dem konkreten Rezept.",
+      "reviewedAt": "2026-10-15",
+      "originalPhotoSha256": "5e0e6385dcabe0d9d8838a1b1fce236662193b090d2af03ada99441d0f9fbaf0"
     }
   ]
 }
