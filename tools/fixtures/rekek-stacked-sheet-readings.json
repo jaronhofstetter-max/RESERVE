@@ -1,0 +1,1404 @@
+{
+  "description": "Live initial OCR plus programmatic Tesseract.js 5.1.1 row readings of a user-supplied watermarked recipe photo. Replay regression, not a new accuracy measurement. No source image.",
+  "width": 1152,
+  "height": 1536,
+  "passes": [
+    {
+      "text": "Rahmkuchen\n\nMürbeteig:\n80 g Zucker\n80 g Butter\n200 g Mehl\n1Ei\n1 Teelöffel Backpulver\n1 Päckchen Vanillinzucker\n\nAlle Zutaten zu einem Mürbeteig verarbeiten. Damit in eine gefettete 26er Springform\nauskleiden.\n\nBelag:\n~\n2 Becher.Creme fraiche\n2 Becher saure Sahne )\n2 Becher Schlagsahne J\n3 Eier\n125 g Zucker\n1 Päckchen Sahnepudding 8\n\nFür den Belag die Eier schaumig schlagen und Jangsam den Zucker einrieseln > In\nkleinen Mengen nacheinander Creme fraiche, Dane und Schlagsahne vollständig\n\neinrühren. Anschließend das Puddingpulver yntermischen. Die Masse auf den Teig gießen.\n\nIm vorgeheizten Backofen bei 160 Grad ca 75 Minuten backen.\n# Tipp: Wer mag, kann noch Zimt dariiber streugn, etwa nach der Hälfte der Backzeit.\n",
+      "confidence": 60
+    },
+    {
+      "text": "Rahmkuchen\n\nMürbeteig:\n80 g Zucker\n80 g Butter\n200 g Mehl\n1Ei\n1 Teelöffel Backpulver\n1 Päckchen Vanillinzucker\n\nAlle Zutaten zu einem Mürbeteig verarbeiten. Damit in eine gefettete 26er Springform\nauskleiden.\n\nBelag:\n\n2 Becher:Creme fraiche\n\n2 Becher saure Sahne )\n2 Becher Schlagsahne y\n3 Eier i\n\n125 g Zucker\n\n1 Päckchen Sahnepudding 8\n\nFür den Belag die‘Eier schaumig schlagen und langsam den Zucker einrieseln > In\nkleinen Mengen nacheinander Creme fraiche, Dane und Schlagsahne vollständig\n\neinrühren. Anschließend das‘ Puddingpulver untermischen. Die Mass@'3uf den Teig gießen.\n\nIm vorgeheizten Backofen bei 160 Grad ca 75 Minuten backen.\n# Tipp: Wer mag, kann noch Zimt darüber streuß etwa nach der Hälfte der Backzeit.\n",
+      "lines": [
+        {
+          "text": "Rahmkuchen\n\n",
+          "bbox": {
+            "x0": 349,
+            "y0": 125,
+            "x1": 868,
+            "y1": 221
+          },
+          "words": [
+            {
+              "text": "Rahmkuchen",
+              "bbox": {
+                "x0": 349,
+                "y0": 125,
+                "x1": 868,
+                "y1": 221
+              }
+            }
+          ]
+        },
+        {
+          "text": "Mürbeteig:\n",
+          "bbox": {
+            "x0": 181,
+            "y0": 271,
+            "x1": 297,
+            "y1": 295
+          },
+          "words": [
+            {
+              "text": "Mürbeteig:",
+              "bbox": {
+                "x0": 181,
+                "y0": 271,
+                "x1": 297,
+                "y1": 295
+              }
+            }
+          ]
+        },
+        {
+          "text": "80 g Zucker\n",
+          "bbox": {
+            "x0": 191,
+            "y0": 326,
+            "x1": 310,
+            "y1": 348
+          },
+          "words": [
+            {
+              "text": "80",
+              "bbox": {
+                "x0": 191,
+                "y0": 326,
+                "x1": 215,
+                "y1": 343
+              }
+            },
+            {
+              "text": "g",
+              "bbox": {
+                "x0": 221,
+                "y0": 331,
+                "x1": 233,
+                "y1": 348
+              }
+            },
+            {
+              "text": "Zucker",
+              "bbox": {
+                "x0": 239,
+                "y0": 327,
+                "x1": 310,
+                "y1": 346
+              }
+            }
+          ]
+        },
+        {
+          "text": "80 g Butter\n",
+          "bbox": {
+            "x0": 189,
+            "y0": 382,
+            "x1": 305,
+            "y1": 403
+          },
+          "words": [
+            {
+              "text": "80",
+              "bbox": {
+                "x0": 189,
+                "y0": 382,
+                "x1": 213,
+                "y1": 399
+              }
+            },
+            {
+              "text": "g",
+              "bbox": {
+                "x0": 220,
+                "y0": 386,
+                "x1": 231,
+                "y1": 403
+              }
+            },
+            {
+              "text": "Butter",
+              "bbox": {
+                "x0": 239,
+                "y0": 383,
+                "x1": 305,
+                "y1": 401
+              }
+            }
+          ]
+        },
+        {
+          "text": "200 g Mehl\n",
+          "bbox": {
+            "x0": 175,
+            "y0": 437,
+            "x1": 291,
+            "y1": 459
+          },
+          "words": [
+            {
+              "text": "200",
+              "bbox": {
+                "x0": 175,
+                "y0": 437,
+                "x1": 213,
+                "y1": 454
+              }
+            },
+            {
+              "text": "g",
+              "bbox": {
+                "x0": 220,
+                "y0": 442,
+                "x1": 231,
+                "y1": 459
+              }
+            },
+            {
+              "text": "Mehl",
+              "bbox": {
+                "x0": 239,
+                "y0": 439,
+                "x1": 291,
+                "y1": 456
+              }
+            }
+          ]
+        },
+        {
+          "text": "1Ei\n",
+          "bbox": {
+            "x0": 175,
+            "y0": 493,
+            "x1": 210,
+            "y1": 511
+          },
+          "words": [
+            {
+              "text": "1Ei",
+              "bbox": {
+                "x0": 175,
+                "y0": 493,
+                "x1": 210,
+                "y1": 511
+              }
+            }
+          ]
+        },
+        {
+          "text": "1 Teelöffel Backpulver\n",
+          "bbox": {
+            "x0": 173,
+            "y0": 550,
+            "x1": 409,
+            "y1": 575
+          },
+          "words": [
+            {
+              "text": "1",
+              "bbox": {
+                "x0": 173,
+                "y0": 550,
+                "x1": 184,
+                "y1": 567
+              }
+            },
+            {
+              "text": "Teelöffel",
+              "bbox": {
+                "x0": 191,
+                "y0": 550,
+                "x1": 284,
+                "y1": 569
+              }
+            },
+            {
+              "text": "Backpulver",
+              "bbox": {
+                "x0": 293,
+                "y0": 553,
+                "x1": 409,
+                "y1": 575
+              }
+            }
+          ]
+        },
+        {
+          "text": "1 Päckchen Vanillinzucker\n\n",
+          "bbox": {
+            "x0": 171,
+            "y0": 606,
+            "x1": 445,
+            "y1": 630
+          },
+          "words": [
+            {
+              "text": "1",
+              "bbox": {
+                "x0": 171,
+                "y0": 606,
+                "x1": 182,
+                "y1": 623
+              }
+            },
+            {
+              "text": "Päckchen",
+              "bbox": {
+                "x0": 191,
+                "y0": 606,
+                "x1": 290,
+                "y1": 626
+              }
+            },
+            {
+              "text": "Vanillinzucker",
+              "bbox": {
+                "x0": 297,
+                "y0": 609,
+                "x1": 445,
+                "y1": 630
+              }
+            }
+          ]
+        },
+        {
+          "text": "Alle Zutaten zu einem Mürbeteig verarbeiten. Damit in eine gefettete 26er Springform\n",
+          "bbox": {
+            "x0": 168,
+            "y0": 662,
+            "x1": 1065,
+            "y1": 696
+          },
+          "words": [
+            {
+              "text": "Alle",
+              "bbox": {
+                "x0": 168,
+                "y0": 662,
+                "x1": 210,
+                "y1": 680
+              }
+            },
+            {
+              "text": "Zutaten",
+              "bbox": {
+                "x0": 216,
+                "y0": 664,
+                "x1": 299,
+                "y1": 683
+              }
+            },
+            {
+              "text": "zu",
+              "bbox": {
+                "x0": 307,
+                "y0": 670,
+                "x1": 330,
+                "y1": 683
+              }
+            },
+            {
+              "text": "einem",
+              "bbox": {
+                "x0": 337,
+                "y0": 667,
+                "x1": 401,
+                "y1": 684
+              }
+            },
+            {
+              "text": "Mürbeteig",
+              "bbox": {
+                "x0": 410,
+                "y0": 667,
+                "x1": 518,
+                "y1": 691
+              }
+            },
+            {
+              "text": "verarbeiten.",
+              "bbox": {
+                "x0": 524,
+                "y0": 671,
+                "x1": 649,
+                "y1": 689
+              }
+            },
+            {
+              "text": "Damit",
+              "bbox": {
+                "x0": 657,
+                "y0": 673,
+                "x1": 718,
+                "y1": 690
+              }
+            },
+            {
+              "text": "in",
+              "bbox": {
+                "x0": 725,
+                "y0": 673,
+                "x1": 742,
+                "y1": 690
+              }
+            },
+            {
+              "text": "eine",
+              "bbox": {
+                "x0": 750,
+                "y0": 673,
+                "x1": 794,
+                "y1": 691
+              }
+            },
+            {
+              "text": "gefettete",
+              "bbox": {
+                "x0": 799,
+                "y0": 674,
+                "x1": 894,
+                "y1": 695
+              }
+            },
+            {
+              "text": "26er",
+              "bbox": {
+                "x0": 900,
+                "y0": 675,
+                "x1": 946,
+                "y1": 692
+              }
+            },
+            {
+              "text": "Springform",
+              "bbox": {
+                "x0": 953,
+                "y0": 673,
+                "x1": 1065,
+                "y1": 696
+              }
+            }
+          ]
+        },
+        {
+          "text": "auskleiden.\n\n",
+          "bbox": {
+            "x0": 168,
+            "y0": 698,
+            "x1": 290,
+            "y1": 718
+          },
+          "words": [
+            {
+              "text": "auskleiden.",
+              "bbox": {
+                "x0": 168,
+                "y0": 698,
+                "x1": 290,
+                "y1": 718
+              }
+            }
+          ]
+        },
+        {
+          "text": "Belag:\n\n",
+          "bbox": {
+            "x0": 164,
+            "y0": 812,
+            "x1": 227,
+            "y1": 835
+          },
+          "words": [
+            {
+              "text": "Belag:",
+              "bbox": {
+                "x0": 164,
+                "y0": 812,
+                "x1": 227,
+                "y1": 835
+              }
+            }
+          ]
+        },
+        {
+          "text": "2 Becher:Creme fraiche\n\n",
+          "bbox": {
+            "x0": 163,
+            "y0": 869,
+            "x1": 413,
+            "y1": 888
+          },
+          "words": [
+            {
+              "text": "2",
+              "bbox": {
+                "x0": 163,
+                "y0": 870,
+                "x1": 174,
+                "y1": 888
+              }
+            },
+            {
+              "text": "Becher:Creme",
+              "bbox": {
+                "x0": 182,
+                "y0": 869,
+                "x1": 333,
+                "y1": 888
+              }
+            },
+            {
+              "text": "fraiche",
+              "bbox": {
+                "x0": 339,
+                "y0": 870,
+                "x1": 413,
+                "y1": 888
+              }
+            }
+          ]
+        },
+        {
+          "text": "2 Becher saure Sahne )\n",
+          "bbox": {
+            "x0": 161,
+            "y0": 927,
+            "x1": 652,
+            "y1": 947
+          },
+          "words": [
+            {
+              "text": "2",
+              "bbox": {
+                "x0": 161,
+                "y0": 928,
+                "x1": 174,
+                "y1": 945
+              }
+            },
+            {
+              "text": "Becher",
+              "bbox": {
+                "x0": 182,
+                "y0": 927,
+                "x1": 257,
+                "y1": 945
+              }
+            },
+            {
+              "text": "saure",
+              "bbox": {
+                "x0": 263,
+                "y0": 932,
+                "x1": 321,
+                "y1": 946
+              }
+            },
+            {
+              "text": "Sahne",
+              "bbox": {
+                "x0": 328,
+                "y0": 927,
+                "x1": 393,
+                "y1": 946
+              }
+            },
+            {
+              "text": ")",
+              "bbox": {
+                "x0": 648,
+                "y0": 935,
+                "x1": 652,
+                "y1": 947
+              }
+            }
+          ]
+        },
+        {
+          "text": "2 Becher Schlagsahne y\n",
+          "bbox": {
+            "x0": 161,
+            "y0": 984,
+            "x1": 657,
+            "y1": 1008
+          },
+          "words": [
+            {
+              "text": "2",
+              "bbox": {
+                "x0": 161,
+                "y0": 986,
+                "x1": 173,
+                "y1": 1003
+              }
+            },
+            {
+              "text": "Becher",
+              "bbox": {
+                "x0": 181,
+                "y0": 984,
+                "x1": 255,
+                "y1": 1003
+              }
+            },
+            {
+              "text": "Schlagsahne",
+              "bbox": {
+                "x0": 262,
+                "y0": 984,
+                "x1": 393,
+                "y1": 1008
+              }
+            },
+            {
+              "text": "y",
+              "bbox": {
+                "x0": 650,
+                "y0": 999,
+                "x1": 657,
+                "y1": 1003
+              }
+            }
+          ]
+        },
+        {
+          "text": "3 Eier i\n\n",
+          "bbox": {
+            "x0": 159,
+            "y0": 1032,
+            "x1": 372,
+            "y1": 1062
+          },
+          "words": [
+            {
+              "text": "3",
+              "bbox": {
+                "x0": 159,
+                "y0": 1044,
+                "x1": 172,
+                "y1": 1062
+              }
+            },
+            {
+              "text": "Eier",
+              "bbox": {
+                "x0": 180,
+                "y0": 1043,
+                "x1": 221,
+                "y1": 1062
+              }
+            },
+            {
+              "text": "i",
+              "bbox": {
+                "x0": 370,
+                "y0": 1032,
+                "x1": 372,
+                "y1": 1034
+              }
+            }
+          ]
+        },
+        {
+          "text": "125 g Zucker\n\n",
+          "bbox": {
+            "x0": 159,
+            "y0": 1101,
+            "x1": 295,
+            "y1": 1125
+          },
+          "words": [
+            {
+              "text": "125",
+              "bbox": {
+                "x0": 159,
+                "y0": 1102,
+                "x1": 198,
+                "y1": 1121
+              }
+            },
+            {
+              "text": "g",
+              "bbox": {
+                "x0": 205,
+                "y0": 1106,
+                "x1": 218,
+                "y1": 1124
+              }
+            },
+            {
+              "text": "Zucker",
+              "bbox": {
+                "x0": 224,
+                "y0": 1101,
+                "x1": 295,
+                "y1": 1125
+              }
+            }
+          ]
+        },
+        {
+          "text": "1 Päckchen Sahnepudding 8\n\n",
+          "bbox": {
+            "x0": 158,
+            "y0": 1158,
+            "x1": 662,
+            "y1": 1185
+          },
+          "words": [
+            {
+              "text": "1",
+              "bbox": {
+                "x0": 158,
+                "y0": 1161,
+                "x1": 170,
+                "y1": 1179
+              }
+            },
+            {
+              "text": "Päckchen",
+              "bbox": {
+                "x0": 178,
+                "y0": 1158,
+                "x1": 279,
+                "y1": 1178
+              }
+            },
+            {
+              "text": "Sahnepudding",
+              "bbox": {
+                "x0": 287,
+                "y0": 1160,
+                "x1": 439,
+                "y1": 1184
+              }
+            },
+            {
+              "text": "8",
+              "bbox": {
+                "x0": 658,
+                "y0": 1179,
+                "x1": 662,
+                "y1": 1185
+              }
+            }
+          ]
+        },
+        {
+          "text": "Für den Belag die‘Eier schaumig schlagen und langsam den Zucker einrieseln > In\n",
+          "bbox": {
+            "x0": 158,
+            "y0": 1214,
+            "x1": 1061,
+            "y1": 1254
+          },
+          "words": [
+            {
+              "text": "Für",
+              "bbox": {
+                "x0": 158,
+                "y0": 1218,
+                "x1": 193,
+                "y1": 1237
+              }
+            },
+            {
+              "text": "den",
+              "bbox": {
+                "x0": 200,
+                "y0": 1217,
+                "x1": 240,
+                "y1": 1236
+              }
+            },
+            {
+              "text": "Belag",
+              "bbox": {
+                "x0": 248,
+                "y0": 1216,
+                "x1": 305,
+                "y1": 1240
+              }
+            },
+            {
+              "text": "die‘Eier",
+              "bbox": {
+                "x0": 312,
+                "y0": 1218,
+                "x1": 391,
+                "y1": 1238
+              }
+            },
+            {
+              "text": "schaumig",
+              "bbox": {
+                "x0": 397,
+                "y0": 1218,
+                "x1": 498,
+                "y1": 1241
+              }
+            },
+            {
+              "text": "schlagen",
+              "bbox": {
+                "x0": 505,
+                "y0": 1218,
+                "x1": 596,
+                "y1": 1241
+              }
+            },
+            {
+              "text": "und",
+              "bbox": {
+                "x0": 604,
+                "y0": 1223,
+                "x1": 642,
+                "y1": 1240
+              }
+            },
+            {
+              "text": "langsam",
+              "bbox": {
+                "x0": 649,
+                "y0": 1222,
+                "x1": 733,
+                "y1": 1241
+              }
+            },
+            {
+              "text": "den",
+              "bbox": {
+                "x0": 740,
+                "y0": 1216,
+                "x1": 777,
+                "y1": 1236
+              }
+            },
+            {
+              "text": "Zucker",
+              "bbox": {
+                "x0": 784,
+                "y0": 1215,
+                "x1": 854,
+                "y1": 1234
+              }
+            },
+            {
+              "text": "einrieseln",
+              "bbox": {
+                "x0": 860,
+                "y0": 1214,
+                "x1": 958,
+                "y1": 1234
+              }
+            },
+            {
+              "text": ">",
+              "bbox": {
+                "x0": 966,
+                "y0": 1214,
+                "x1": 1035,
+                "y1": 1254
+              }
+            },
+            {
+              "text": "In",
+              "bbox": {
+                "x0": 1042,
+                "y0": 1215,
+                "x1": 1061,
+                "y1": 1233
+              }
+            }
+          ]
+        },
+        {
+          "text": "kleinen Mengen nacheinander Creme fraiche, Dane und Schlagsahne vollständig\n\n",
+          "bbox": {
+            "x0": 156,
+            "y0": 1220,
+            "x1": 1073,
+            "y1": 1286
+          },
+          "words": [
+            {
+              "text": "kleinen",
+              "bbox": {
+                "x0": 156,
+                "y0": 1255,
+                "x1": 236,
+                "y1": 1275
+              }
+            },
+            {
+              "text": "Mengen",
+              "bbox": {
+                "x0": 245,
+                "y0": 1254,
+                "x1": 331,
+                "y1": 1276
+              }
+            },
+            {
+              "text": "nacheinander",
+              "bbox": {
+                "x0": 339,
+                "y0": 1254,
+                "x1": 485,
+                "y1": 1274
+              }
+            },
+            {
+              "text": "Creme",
+              "bbox": {
+                "x0": 491,
+                "y0": 1255,
+                "x1": 560,
+                "y1": 1273
+              }
+            },
+            {
+              "text": "fraiche,",
+              "bbox": {
+                "x0": 566,
+                "y0": 1254,
+                "x1": 644,
+                "y1": 1280
+              }
+            },
+            {
+              "text": "Dane",
+              "bbox": {
+                "x0": 647,
+                "y0": 1220,
+                "x1": 775,
+                "y1": 1286
+              }
+            },
+            {
+              "text": "und",
+              "bbox": {
+                "x0": 782,
+                "y0": 1251,
+                "x1": 821,
+                "y1": 1270
+              }
+            },
+            {
+              "text": "Schlagsahne",
+              "bbox": {
+                "x0": 828,
+                "y0": 1249,
+                "x1": 953,
+                "y1": 1273
+              }
+            },
+            {
+              "text": "vollständig",
+              "bbox": {
+                "x0": 959,
+                "y0": 1250,
+                "x1": 1073,
+                "y1": 1274
+              }
+            }
+          ]
+        },
+        {
+          "text": "einrühren. Anschließend das‘ Puddingpulver untermischen. Die Mass@'3uf den Teig gießen.\n\n",
+          "bbox": {
+            "x0": 155,
+            "y0": 1284,
+            "x1": 1107,
+            "y1": 1314
+          },
+          "words": [
+            {
+              "text": "einrühren.",
+              "bbox": {
+                "x0": 155,
+                "y0": 1291,
+                "x1": 271,
+                "y1": 1313
+              }
+            },
+            {
+              "text": "Anschließend",
+              "bbox": {
+                "x0": 278,
+                "y0": 1290,
+                "x1": 421,
+                "y1": 1311
+              }
+            },
+            {
+              "text": "das‘",
+              "bbox": {
+                "x0": 428,
+                "y0": 1291,
+                "x1": 465,
+                "y1": 1310
+              }
+            },
+            {
+              "text": "Puddingpulver",
+              "bbox": {
+                "x0": 473,
+                "y0": 1290,
+                "x1": 626,
+                "y1": 1313
+              }
+            },
+            {
+              "text": "untermischen.",
+              "bbox": {
+                "x0": 633,
+                "y0": 1285,
+                "x1": 779,
+                "y1": 1314
+              }
+            },
+            {
+              "text": "Die",
+              "bbox": {
+                "x0": 787,
+                "y0": 1288,
+                "x1": 820,
+                "y1": 1306
+              }
+            },
+            {
+              "text": "Mass@'3uf",
+              "bbox": {
+                "x0": 827,
+                "y0": 1284,
+                "x1": 931,
+                "y1": 1305
+              }
+            },
+            {
+              "text": "den",
+              "bbox": {
+                "x0": 937,
+                "y0": 1285,
+                "x1": 975,
+                "y1": 1304
+              }
+            },
+            {
+              "text": "Teig",
+              "bbox": {
+                "x0": 981,
+                "y0": 1287,
+                "x1": 1024,
+                "y1": 1310
+              }
+            },
+            {
+              "text": "gießen.",
+              "bbox": {
+                "x0": 1030,
+                "y0": 1287,
+                "x1": 1107,
+                "y1": 1310
+              }
+            }
+          ]
+        },
+        {
+          "text": "Im vorgeheizten Backofen bei 160 Grad ca 75 Minuten backen.\n",
+          "bbox": {
+            "x0": 153,
+            "y0": 1401,
+            "x1": 816,
+            "y1": 1435
+          },
+          "words": [
+            {
+              "text": "Im",
+              "bbox": {
+                "x0": 153,
+                "y0": 1413,
+                "x1": 180,
+                "y1": 1432
+              }
+            },
+            {
+              "text": "vorgeheizten",
+              "bbox": {
+                "x0": 187,
+                "y0": 1409,
+                "x1": 329,
+                "y1": 1435
+              }
+            },
+            {
+              "text": "Backofen",
+              "bbox": {
+                "x0": 338,
+                "y0": 1408,
+                "x1": 434,
+                "y1": 1429
+              }
+            },
+            {
+              "text": "bei",
+              "bbox": {
+                "x0": 443,
+                "y0": 1408,
+                "x1": 474,
+                "y1": 1427
+              }
+            },
+            {
+              "text": "160",
+              "bbox": {
+                "x0": 482,
+                "y0": 1407,
+                "x1": 520,
+                "y1": 1426
+              }
+            },
+            {
+              "text": "Grad",
+              "bbox": {
+                "x0": 526,
+                "y0": 1407,
+                "x1": 577,
+                "y1": 1426
+              }
+            },
+            {
+              "text": "ca",
+              "bbox": {
+                "x0": 584,
+                "y0": 1414,
+                "x1": 606,
+                "y1": 1428
+              }
+            },
+            {
+              "text": "75",
+              "bbox": {
+                "x0": 614,
+                "y0": 1412,
+                "x1": 637,
+                "y1": 1432
+              }
+            },
+            {
+              "text": "Minuten",
+              "bbox": {
+                "x0": 646,
+                "y0": 1408,
+                "x1": 731,
+                "y1": 1433
+              }
+            },
+            {
+              "text": "backen.",
+              "bbox": {
+                "x0": 738,
+                "y0": 1401,
+                "x1": 816,
+                "y1": 1423
+              }
+            }
+          ]
+        },
+        {
+          "text": "# Tipp: Wer mag, kann noch Zimt darüber streuß etwa nach der Hälfte der Backzeit.\n",
+          "bbox": {
+            "x0": 122,
+            "y0": 1457,
+            "x1": 1035,
+            "y1": 1495
+          },
+          "words": [
+            {
+              "text": "#",
+              "bbox": {
+                "x0": 122,
+                "y0": 1458,
+                "x1": 138,
+                "y1": 1480
+              }
+            },
+            {
+              "text": "Tipp:",
+              "bbox": {
+                "x0": 150,
+                "y0": 1468,
+                "x1": 207,
+                "y1": 1495
+              }
+            },
+            {
+              "text": "Wer",
+              "bbox": {
+                "x0": 214,
+                "y0": 1470,
+                "x1": 260,
+                "y1": 1489
+              }
+            },
+            {
+              "text": "mag,",
+              "bbox": {
+                "x0": 267,
+                "y0": 1473,
+                "x1": 318,
+                "y1": 1492
+              }
+            },
+            {
+              "text": "kann",
+              "bbox": {
+                "x0": 327,
+                "y0": 1468,
+                "x1": 377,
+                "y1": 1488
+              }
+            },
+            {
+              "text": "noch",
+              "bbox": {
+                "x0": 385,
+                "y0": 1468,
+                "x1": 436,
+                "y1": 1488
+              }
+            },
+            {
+              "text": "Zimt",
+              "bbox": {
+                "x0": 443,
+                "y0": 1467,
+                "x1": 491,
+                "y1": 1487
+              }
+            },
+            {
+              "text": "darüber",
+              "bbox": {
+                "x0": 498,
+                "y0": 1466,
+                "x1": 583,
+                "y1": 1486
+              }
+            },
+            {
+              "text": "streuß",
+              "bbox": {
+                "x0": 590,
+                "y0": 1457,
+                "x1": 674,
+                "y1": 1494
+              }
+            },
+            {
+              "text": "etwa",
+              "bbox": {
+                "x0": 680,
+                "y0": 1468,
+                "x1": 731,
+                "y1": 1487
+              }
+            },
+            {
+              "text": "nach",
+              "bbox": {
+                "x0": 738,
+                "y0": 1460,
+                "x1": 786,
+                "y1": 1482
+              }
+            },
+            {
+              "text": "der",
+              "bbox": {
+                "x0": 792,
+                "y0": 1459,
+                "x1": 827,
+                "y1": 1478
+              }
+            },
+            {
+              "text": "Hälfte",
+              "bbox": {
+                "x0": 833,
+                "y0": 1459,
+                "x1": 897,
+                "y1": 1479
+              }
+            },
+            {
+              "text": "der",
+              "bbox": {
+                "x0": 903,
+                "y0": 1460,
+                "x1": 938,
+                "y1": 1480
+              }
+            },
+            {
+              "text": "Backzeit.",
+              "bbox": {
+                "x0": 945,
+                "y0": 1461,
+                "x1": 1035,
+                "y1": 1480
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "text": "Rahmkuchen\n"
+    },
+    {
+      "text": "Rahmkuchen\n"
+    },
+    {
+      "text": "80 g Zucker\n"
+    },
+    {
+      "text": "80 g Zucker\n"
+    },
+    {
+      "text": "80 g Butter\n"
+    },
+    {
+      "text": "80 g Butter\n"
+    },
+    {
+      "text": "200 g Mehl\n"
+    },
+    {
+      "text": "200 g Mehl\n"
+    },
+    {
+      "text": "1 Ei\n"
+    },
+    {
+      "text": "1 Ei\n"
+    },
+    {
+      "text": "1 Teelöffel Backpulver\n"
+    },
+    {
+      "text": "1 Teelöffel Backpulver\n"
+    },
+    {
+      "text": "1 Päckchen Vanillinzucker\n"
+    },
+    {
+      "text": "1 Päckchen Vanillinzucker\n"
+    },
+    {
+      "text": "Alle Zutaten zu einem Mürbeteig verarbeiten. Damit in eine gefettete 26er Springform\n"
+    },
+    {
+      "text": "Alle Zutaten zu einem Mürbeteig verarbeiten. Damit in eine gefettete 26er Springform\n"
+    },
+    {
+      "text": "Ale Zutaten zu einem Mürbeteig verarbeiten. Damit in eine gefettete 26er Springform\n"
+    },
+    {
+      "text": "Alle Zutaten zu einem Mürbeteig verarbeiten. Damit in eine gefettete 26er Springform\n"
+    },
+    {
+      "text": "Alle Zutaten zu einem Mürbeteig verarbeiten. Damit in eine gefettete 26er Springform\n"
+    },
+    {
+      "text": "auskleiden.\n"
+    },
+    {
+      "text": "auskleiden.\n"
+    },
+    {
+      "text": "2 Becher-Creme fraiche\n"
+    },
+    {
+      "text": "2 Becher-Creme fraiche\n"
+    },
+    {
+      "text": "2 Becher saure Sahne\n"
+    },
+    {
+      "text": "2 Becher saure Sahne\n"
+    },
+    {
+      "text": "2 Becher Schlagsahne\n"
+    },
+    {
+      "text": "2 Becher Schlagsahne\n"
+    },
+    {
+      "text": "3 Eier\n"
+    },
+    {
+      "text": "3 Eier\n"
+    },
+    {
+      "text": "125 g Zucker\n"
+    },
+    {
+      "text": "125 g Zucker\n"
+    },
+    {
+      "text": "1 Päckchen Sahnepudding\n"
+    },
+    {
+      "text": "1 Päckchen Sahnepudding\n"
+    },
+    {
+      "text": "Für den Belag die Eier schaumig schlagen und Jangsam den Zucker einrieseln lassen. In\n"
+    },
+    {
+      "text": "Für den Belag die Eier schaumig schlagen und Jangsam den Zucker einrieseln lassen. In\n"
+    },
+    {
+      "text": "kleinen Mengen nacheinander Creme fraiche, saure Sahne und Schlagsahne vollständig\n"
+    },
+    {
+      "text": "kleinen Mengen nacheinander Creme fraiche, saure Sähne und Schlagsahne vollständig\n"
+    },
+    {
+      "text": "kleinen Mengen nacheinander Creme fraiche, saure Sahne und Schlagsahne vollständig\n"
+    },
+    {
+      "text": "kleinen Mengen nacheinander Creme fraiche, saure Sahne und Schlagsahne vollständig\n"
+    },
+    {
+      "text": "kleinen Mengen nacheinander Creme fraiche, saure Sahne und Schlagsahne vollständig\n"
+    },
+    {
+      "text": "einrühren. Anschließend das Puddingpulver untermischen. Die Mass@'auf den Teig gießen.\n"
+    },
+    {
+      "text": "einrühren. Anschließend das Puddingpulver untermischen. Die Mass@'auf den Teig gießen.\n"
+    },
+    {
+      "text": "Im vorgeheizten Backofen bei 160 Grad ca 75 Minuten backen.\n"
+    },
+    {
+      "text": "Im vorgeheizten Backofen bei 160 Grad ca 75 Minuten backen.\n"
+    },
+    {
+      "text": "Im vorgeheizten Backofen bei 160 Grad ca 75 Minuten backen.\n"
+    },
+    {
+      "text": "Im vorgeheizten Backofen bei 160 Grad ca 75 Minuten backen.\n"
+    },
+    {
+      "text": "Im vorgeheizten Backofen bei 160 Grad ca 75 Minuten backen.\n"
+    },
+    {
+      "text": "Tipp: Wer mag, kann noch Zimt darüber streuen, etwa nach der Hälfte der Backzeit.\n"
+    },
+    {
+      "text": "Tipp: Wer mag, kann noch Zimt darüber streuen, etwa nach der Hälfte der Backzeit.\n"
+    }
+  ]
+}

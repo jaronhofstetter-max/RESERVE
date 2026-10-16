@@ -197,12 +197,12 @@ async function rereadIngredientColumns(canvas,original,read,ticket){
 }
 
 async function rereadSectionedPaper(canvas,original,read,ticket){
- const K=window.RESERVE_REKEK,p=K.preparePrintedPaper(canvas.getContext('2d').getImageData(0,0,canvas.width,canvas.height),15);if(!p)return null;
+ const K=window.RESERVE_REKEK,p=K.preparePrintedPaper(canvas.getContext('2d').getImageData(0,0,canvas.width,canvas.height),/Mürbe?teig\s*:/i.test(original)&&/Belag\s*:/i.test(original)?35:15);if(!p)return null;
  const prepared=document.createElement('canvas');prepared.width=p.width;prepared.height=p.height;prepared.getContext('2d').putImageData(new ImageData(p.data,p.width,p.height),0,0);
  await worker?.terminate();if(ticket!==ocrTicket)throw Error('Lesen abgebrochen.');worker=await(await loadOCR()).createWorker('deu',1);
- const layout=await read(prepared,6),regions=K.sectionedPaperRegions(layout,canvas.width,canvas.height);if(!regions)return null;
+ const stackedEvidence=/Mürbe?teig\s*:/i.test(original)&&/Belag\s*:/i.test(original),layout=await read(stackedEvidence?canvas:prepared,stackedEvidence?3:6),regions=K.sectionedPaperRegions(layout,canvas.width,canvas.height);if(!regions)return null;
  const evidence=['Abschnittsweise Nachlesung · Layout:',layout.text||''],sources=[],rows=[],ingredientLines=[],stepLines=[],quantities=[];
- const normalize=t=>String(t||'').trim().replace(/^[•‚,:;|«»“”„"–—]+\s*/,'').replace(/\s*[|«»“”„"]+$/,'').replace(/(\d)\s*(g|ml)\b/g,'$1 $2').replace(/\s+/g,' ').trim();
+ const normalize=t=>String(t||'').trim().replace(/^#\s*(?=Tipp\b)/i,'').replace(/^[•‚,:;|«»“”„"–—]+\s*/,'').replace(/\s*[|«»“”„"]+$/,'').replace(/^(\d+(?:[.,]\d+)?\s+)(Becher|Dosen?)[.:-]?(?=[A-ZÄÖÜ])/,'$1$2 ').replace(/(\d)\s*(g|ml)\b/g,'$1 $2').replace(/\s+/g,' ').trim();
  const crop=(source,b,f=2)=>{const c=document.createElement('canvas');c.width=(b.x1-b.x0)*f;c.height=(b.y1-b.y0)*f;c.getContext('2d').drawImage(source,b.x0,b.y0,b.x1-b.x0,b.y1-b.y0,0,0,c.width,c.height);return c;};
  const measure=t=>P().ingredient(t).amount>0&&P().ingredient(t).unit||/^(?:\d+(?:[.,]\d+)?|\d+\/\d+)\s+(?:Becher|Dosen?|Packungen?)\s*$/i.test(t);
  const choose=(reads,measured=false)=>{const matches=reads.filter(t=>t&&reads.filter(x=>x===t).length>=2);return(measured?matches.find(measure):matches[0])||reads.find(t=>measure(t))||matches[0]||reads.find(Boolean)||'';};
@@ -218,10 +218,10 @@ async function rereadSectionedPaper(canvas,original,read,ticket){
    checked.expression=literal?best:'Menge ungeklärt: '+best;checked.quantityClear=literal&&!parsed.uncertain;
    ingredientLines.push(checked.expression);
    if(match&&/^(?:\d+(?:[.,]\d+)?|\d+\/\d+)\s+I\s+[^0-9]+$/.test(best))quantities.push({line:ingredientLines.length-1,from:checked.expression,to:best.replace(/\sI\s/,' l '),reason:'I oder Literzeichen? Einheit am Original bestätigen',quantity:true,image:crop(canvas,region.box).toDataURL('image/png')});
-  }else stepLines.push(best);
+  }else if(regions.stacked&&stepLines.length&&region.paragraph===stepLines.at(-1).paragraph)stepLines.at(-1).text+=' '+best;else stepLines.push(regions.stacked?{text:best,paragraph:region.paragraph}:best);
   rows.push(checked);
  }
- const chunks=[];for(const line of stepLines){if(chunks.length&&/(?:Dosen?|Becher|Packungen?)\s*$/i.test(chunks.at(-1)))chunks[chunks.length-1]+=' '+line;else chunks.push(line);}const bodies=chunks.map(t=>P().parseText('Zubereitung\n'+t));const body={steps:bodies.map(b=>b.steps).filter(Boolean).join('\n')};
+ const chunks=[];for(const entry of stepLines){const line=typeof entry==='string'?entry:entry.text;if(chunks.length&&/(?:Dosen?|Becher|Packungen?)\s*$/i.test(chunks.at(-1)))chunks[chunks.length-1]+=' '+line;else chunks.push(line);}const bodies=chunks.map(t=>P().parseText('Zubereitung\n'+t));const body={steps:bodies.map(b=>b.steps).filter(Boolean).join('\n')};
  for(const line of bodies.flatMap(b=>lines(b.ingredients)))if(!ingredientLines.includes(line))ingredientLines.push((rows.filter(r=>r.kind==='step').every(r=>r.agreement)?'':'Menge ungeklärt: ')+line);
  return{accepted:null,sources,quantities,rowDraft:{name:agreed,portions:'',ingredients:ingredientLines.join('\n'),steps:body.steps,rows},evidence:['Original OCR:',original,...evidence].join('\n')};
 }
@@ -230,6 +230,7 @@ async function rereadRecipeCard(canvas,original,ticket){
  const read=async(image,mode)=>{if(ticket!==ocrTicket)throw Error('Lesen abgebrochen.');await worker.setParameters({tessedit_pageseg_mode:String(mode)});const result=await worker.recognize(image.toDataURL('image/png'));if(ticket!==ocrTicket)throw Error('Lesen abgebrochen.');return result.data;};
  const normalized=text=>String(text||'').trim().replace(/\s+/g,' ');
  let insetEvidence='';if(K.insetRecipeEvidence(contextSources.at(-1)?.data,canvas.width)){const inset=await rereadInsetPaper(canvas,original,read,ticket);if(inset?.accepted)return inset;if(inset?.evidence)insetEvidence=inset.evidence;}
+ if(/Mürbe?teig\s*:/i.test(original)&&/Belag\s*:/i.test(original)){const stacked=await rereadSectionedPaper(canvas,original,read,ticket);if(stacked?.rowDraft)return stacked;}
  let textureEvidence=insetEvidence;const initial=P().parseText(original),sectionedEligible=(!initial.name||/^(?:\d|[¼½¾⅛⅜⅝⅞])/.test(initial.name))&&/^\s*(?:\d|[¼½¾⅛⅜⅝⅞])/.test(original)||/(?:Boden|Teig)\s*:/i.test(original)&&/(?:Füllung|Belag|Streu)/i.test(original);if(!initial.steps&&sectionedEligible){const sectioned=await rereadSectionedPaper(canvas,original,read,ticket);if(sectioned?.rowDraft)return sectioned;}if(lines(initial.ingredients).length<3&&!initial.steps){const textured=await rereadTexturedCard(canvas,original,read,ticket);if(textured?.accepted)return textured;if(textured?.evidence)textureEvidence=textured.evidence;}
  if(/\bZutaten\b/i.test(original)&&/\bZubereitung\b/i.test(original)&&original.split(/\r?\n/).some(l=>(l.match(/\b\d+\s*(?:g|kg|ml|l)\b/gi)||[]).length>=2)){const columns=await rereadIngredientColumns(canvas,original,read,ticket);if(columns.accepted)return columns;if(columns.evidence)textureEvidence+='\n'+columns.evidence;}
  if(/Zutaten\s+für\s+\d+\s+Portion/i.test(original)&&/Verfasser\s*:/i.test(original)){const side=await rereadSideCard(canvas,original,read,ticket);if(side.accepted)return side;if(side.evidence)textureEvidence+='\n'+side.evidence;}
