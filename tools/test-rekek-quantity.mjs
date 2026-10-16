@@ -33,3 +33,10 @@ const ink=C.inkMap(rgba,w,h);assert.equal(ink.blueMode,true);assert.equal(ink.co
 const regions=C.lineRegions([{words:[{text:'edge',bbox:bbox(0,0,5,99)},{text:'quantity',bbox:bbox(30,30,95,60)}]}],w,h,ink);
 assert.equal(regions.length,1);assert.equal(regions[0].words.length,1);assert.equal(regions[0].words[0].text,'quantity');
 console.log('Crop regressions: seeded ink rejects page edges; descending first words receive sloped full-line refinements; g/9 collisions do not become numeric hints; review text uses an actual full-line reading.');
+
+// Bare OCR digits may only lose a g/9 conflict vote when a real prefix crop supplies g.
+const gramCrop={reader:'tesseract-dhsd-trim',text:'200g',fullLine:false};
+const noisy=[{reader:'ctc-htr',text:'zurbeprischer Lachs',fullLine:true},{reader:'ctc-htr-trim',text:'2009 frischer Lachs',fullLine:true},{reader:'trocr-int8',text:'2009',fullLine:true},{reader:'tesseract-dhsd-prefix',text:'2009 -',fullLine:false},gramCrop];
+d=C.decide(noisy);assert.equal(d.suggestion?.number,200);assert.equal(d.suggestion?.unit,'g');assert.equal(d.suggestion?.support,1);assert.equal(C.reviewText(noisy,d),'200 g frischer Lachs');
+d=C.decide(noisy.filter(r=>r!==gramCrop));assert.equal(d.suggestion,null,'No g candidate without an actual g reading');
+d=C.decide([gramCrop,{reader:'ctc-htr',text:'2009 g Mehl'},{reader:'trocr-int8',text:'2009 g Mehl'}]);assert.equal(d.suggestion?.number,2009,'Explicit conflicting units must retain their votes');assert.equal(d.conflict,true);
