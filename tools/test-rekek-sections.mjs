@@ -183,3 +183,12 @@ assert.ok(stackedRegions.stacked);assert.equal(stackedRegions.rows.filter(r=>r.k
 const shortcrust=K.parseText('Kuchen\nMürbeteig:\n80 g Butter\n200 g Mehl\nAlles zu einem Mürbeteig verarbeiten.\nBelag:\n2 Becher Sahne\nAlles verrühren.');assert.equal(shortcrust.ingredients,'80 g Butter\n200 g Mehl\n2 Becher Sahne');assert.equal(shortcrust.ingredientSections[0].name,'Mürbeteig');
 const wordRepairs=K.contextSuggestions('',"Eier schlagen und Jangsam Zucker einrieseln lassen. Die Mass@'auf den Teig gießen.");assert.ok(wordRepairs.some(s=>s.from==='Jangsam'&&s.to==='langsam'));assert.ok(wordRepairs.some(s=>s.from==="Mass@'"&&s.to==='Masse '));
 console.log('Stacked sheets: two standalone sections, quantity alignment, watermark exclusion, robust slanted-line bounds and review-only word repairs passed.');
+
+const parallelFixture=JSON.parse(fs.readFileSync('tools/fixtures/rekek-parallel-sheet-readings.json','utf8'));
+const parallelLayout=K.parallelRecipeRegions(parallelFixture.passes[1],parallelFixture.width,parallelFixture.height);
+assert.ok(parallelLayout?.parallel);assert.equal(parallelLayout.rows.filter(r=>r.kind==='ingredient').length,10);
+assert.ok(parallelLayout.rows.filter(r=>r.kind==='ingredient').every(r=>!/(?:verkne|bestreichen|belegen|streuen)/i.test(r.source)));
+assert.ok(parallelLayout.rows.some(r=>r.kind==='step'&&r.source.includes('Pudding')));
+assert.ok(parallelLayout.rows.some(r=>r.kind==='step'&&r.source.includes('Zwetschgen')));
+assert.equal(K.parallelRecipeRegions({lines:[]},1000,1000),null);
+console.log('Parallel sheet layout: ten ingredient rows separated from adjacent instructions; unmeasured toppings remain source text.');
