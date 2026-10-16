@@ -16,3 +16,11 @@ The first load is large (roughly 170 MB); test on a suitable connection. Models,
 Licenses and source notices are in `assets/rekek/quantity-test/`. The Tesseract candidate and all original crop outputs are development evidence, not independent data sets. Public model licenses are provider statements; no claim of independent legal verification is made.
 
 Browser compatibility correction: the pinned CTC `model-fp32.onnx` export (SHA-256 `68b46411b8236b44d0d98865909d217ef13b41f12db769993c67eeb8d6e8c45a`) replaces the provider's dynamic INT8 export. The latter fails in WASM on `ConvInteger` (and contains a provider-specific quantized LSTM). FP32 uses standard ONNX Conv/LSTM operators. This is a different inference variant; previous CTC readings and the CPU quantity score are not transferred to it.
+
+## Crop and quantity correction (17 October 2026)
+
+The layout pass now masks a detected page edge using blue-ink-connected pixels, rejects OCR boxes unsupported by ink, and expands narrow leading fragments to neighbouring ink components. Original photo pixels remain the source for all reader crops. Tall first words receive prefix and full-line alternatives based on a fitted word-centre baseline, with a conventional median (including even sample sizes), plus white padding. These alternatives share their reader family's vote.
+
+Unitless readings such as `200,9 frischer Lachs` no longer become numeric hints. A review draft may use `200 g` only when an actual crop reading explicitly contains that same number and unit; a combined draft is visibly labelled and all raw readings remain available. This never changes the recipe ingredients without the existing explicit addition.
+
+Local development-photo checks before browser validation: the existing Lachsnudeln image produces 23 layout regions instead of the previous live 28, the complete onion line is retained, and a geometric prefix alternative is read as `200g` by the DHSD Tesseract candidate. These are known-photo regression checks, not a blind accuracy measurement.
