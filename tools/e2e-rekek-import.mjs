@@ -11,12 +11,29 @@ try{
   const get=id=>document.getElementById(id),out={version:RESERVE_REKEK.version,name:get('personalName').value,ingredients:get('personalIngredients').value,steps:get('personalSteps').value,warning:get('personalUncertain').textContent,rangeUncertain:RESERVE_RECIPE_PARSER.ingredient('1 bis 2 Prisen Salz').uncertain};
   RESERVE_PERSONAL_RECIPES.edit();document.getElementById('personalSameRecipe').checked=true;out.newWarning=get('personalUncertain').textContent;out.newIngredients=get('personalIngredients').value;return out;
  });
- assert.equal(result.version,'0.6.18');assert.equal(result.name,'Gemüsetopf');assert.equal(result.ingredients,'200 g Karotten\n1 bis 2 Prisen Salz');assert.equal(result.steps,'Gemüse schneiden.\nGaren.');assert.ok(result.rangeUncertain);assert.match(result.warning,/1 Zutat/);assert.ok(!result.warning.includes('Prisen'));assert.equal(result.newWarning,'');assert.equal(result.newIngredients,'');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
+ assert.equal(result.version,'0.6.19');assert.equal(result.name,'Gemüsetopf');assert.equal(result.ingredients,'200 g Karotten\n1 bis 2 Prisen Salz');assert.equal(result.steps,'Gemüse schneiden.\nGaren.');assert.ok(result.rangeUncertain);assert.match(result.warning,/1 Zutat/);assert.ok(!result.warning.includes('Prisen'));assert.equal(result.newWarning,'');assert.equal(result.newIngredients,'');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
  const separated=await page.evaluate(()=>{
   RESERVE_PERSONAL_RECIPES.applyText('Gemüsepfanne\nZutaten: 250 g Gemüse\n2 EL Öl\nGemüse schneiden.\nIn Öl braten.');
   return {ingredients:document.getElementById('personalIngredients').value,steps:document.getElementById('personalSteps').value,confirmed:document.getElementById('personalConfirmed').checked};
  });
  assert.equal(separated.ingredients,'250 g Gemüse\n2 EL Öl');assert.equal(separated.steps,'Gemüse schneiden.\nIn Öl braten.');assert.equal(separated.confirmed,false);
+ // Optional package size survives save/edit; unresolved containers can also be saved.
+ await page.evaluate(()=>RESERVE_PERSONAL_RECIPES.applyText('Schmandcreme\nFür 2 Portionen\nZutaten\n2 Becher Schmand\n4 Dosen abgetropfte Mandarinen\nZubereitung\n2 Becher Schmand und 4 Dosen abgetropfte Mandarinen unterrühren.'));
+ await page.getByLabel('2 Becher Schmand · Inhalt pro Becher (optional)',{exact:true}).fill('250');
+ await page.getByRole('button',{name:'Packungsgröße ergänzen',exact:true}).first().click();
+ assert.equal(await page.locator('#personalIngredients').inputValue(),'2 Becher Schmand à 250 g\n4 Dosen abgetropfte Mandarinen');
+ assert.match(await page.locator('#personalPackageSizes').innerText(),/Abtropfgewicht pro Dose/);
+ assert.equal(await page.locator('#personalConfirmed').isChecked(),false);
+ assert.match(await page.locator('#personalSteps').inputValue(),/^2 Becher Schmand und 4 Dosen/);
+ await page.locator('#personalConfirmed').check();await page.getByRole('button',{name:'Rezept speichern',exact:true}).click();
+ assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('reservePersonalRecipesV1')).at(-1).ingredientLines[0]),'2 Becher Schmand à 250 g');
+ await page.getByRole('button',{name:'Bearbeiten',exact:true}).click();
+ assert.equal(await page.locator('#personalIngredients').inputValue(),'2 Becher Schmand à 250 g\n4 Dosen abgetropfte Mandarinen');
+ await page.getByLabel('4 Dosen abgetropfte Mandarinen · Abtropfgewicht pro Dose (optional)',{exact:true}).fill('175');
+ await page.getByRole('button',{name:'Packungsgröße ergänzen',exact:true}).click();
+ assert.equal(await page.locator('#personalPackageSizes').isVisible(),false);
+ assert.equal(await page.evaluate(()=>RESERVE_RECIPE_PARSER.ingredient(document.getElementById('personalIngredients').value.split('\n')[1]).amount),700);
+ await page.evaluate(()=>RESERVE_PERSONAL_RECIPES.edit());
  const focused=await page.evaluate(async()=>{
   RESERVE_PERSONAL_RECIPES.edit();const canvas=document.createElement('canvas');canvas.width=240;canvas.height=360;const ctx=canvas.getContext('2d');ctx.fillStyle='#465a50';ctx.fillRect(0,0,240,360);ctx.fillStyle='#fff';ctx.fillRect(25,70,190,230);const blob=await new Promise(r=>canvas.toBlob(r));
   const text='Gemüsepfanne\nFür 2 Portionen\nZutaten\n400 g Gemüse\n2 EL Öl\nSalz\nZubereitung\nGemüse schneiden.\nIn Öl braten.';let calls=0;const languages=[];
