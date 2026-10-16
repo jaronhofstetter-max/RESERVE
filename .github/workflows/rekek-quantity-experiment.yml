@@ -1,0 +1,57 @@
+name: REKEK quantity experiment
+on:
+  pull_request:
+    paths:
+      - 'rekek-quantity-*.js'
+      - 'tools/*rekek-quantity*'
+      - 'tools/rekek-german-model-lock.json'
+      - 'tools/rekek_strict_offline.py'
+      - 'assets/rekek/quantity-test/**'
+      - '.github/workflows/rekek-quantity-experiment.yml'
+permissions:
+  contents: read
+jobs:
+  wasm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/cache@v4
+        id: quantity-model-cache
+        with:
+          path: assets/rekek/quantity-test
+          key: rekek-quantity-v1-${{ runner.os }}-${{ hashFiles('tools/build-rekek-quantity-models.py', 'tools/build-rekek-quantity-vendor.mjs', 'tools/rekek-german-model-lock.json', 'tools/rekek-quantity-vendor-lock.json', 'tools/rekek_strict_offline.py', 'assets/rekek/quantity-test/**/*.traineddata') }}
+      - name: Install model export dependencies
+        if: steps.quantity-model-cache.outputs.cache-hit != 'true'
+        run: |
+          pip install torch==2.9.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install transformers==4.57.1 onnx==1.19.1 onnxruntime==1.23.2 sentencepiece==0.2.1 Pillow==11.3.0
+      - name: Build pinned browser assets
+        if: steps.quantity-model-cache.outputs.cache-hit != 'true'
+        run: |
+          python3 tools/build-rekek-quantity-models.py
+          node tools/build-rekek-quantity-vendor.mjs
+      - name: Install browser test runtime
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Prepare production integration
+        run: node tools/prepare-rekek-browser-build.mjs
+      - name: Test real WASM and review guards
+        run: |
+          node tools/test-rekek-quantity.mjs
+          node tools/e2e-rekek-quantity.mjs
+      - name: Save experiment evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rekek-quantity-experiment
+          path: |
+            build/rekek-browser-review
+            assets/rekek/quantity-test/model-manifest.json

@@ -4,6 +4,7 @@ on:
     paths:
       - 'personal-recipe*.js'
       - 'rekek-digit-*.js'
+      - 'rekek-quantity-*.js'
       - 'assets/rekek/**'
       - 'tests/fixtures/rekek-digit*'
       - 'tools/*rekek*'

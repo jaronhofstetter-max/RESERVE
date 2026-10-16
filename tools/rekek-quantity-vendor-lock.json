@@ -1,0 +1,16 @@
+[
+  {
+    "name": "tesseract.js-5.1.1.tgz",
+    "sha256": "0d08b3722256aacfc652d03b68183a9ed3c997b54778842e7db73ff08a6ae81a"
+  },
+  {
+    "name": "onnxruntime-web-1.23.2.tgz",
+    "sha256": "0b8707d7efab9a2bea63564d66cad79e897cfd0bd627e5ae000488ffc1c45c7d",
+    "license_url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/LICENSE",
+    "license_sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+  },
+  {
+    "name": "tesseract.js-core-5.1.1.tgz",
+    "sha256": "8c1c83c01ecbfcaeb62a5a2d1023ea98162cad082aa47b9c2c39c129847dba8a"
+  }
+]

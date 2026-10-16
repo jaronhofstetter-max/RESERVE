@@ -1,0 +1,18 @@
+/* Review-only quantity decisions. Crops and model variants never create extra votes. */
+(function(root){'use strict';
+const units=[['kg',/^kg\b/i],['g',/^(?:g|gramm)\b/i],['ml',/^ml\b/i],['l',/^(?:l|liter)\b/i],['TL',/^(?:tl|teelöffel)\b/i],['EL',/^(?:el|esslöffel|eßlöffel)\b/i],['Päckchen',/^(?:pck\.?|p\.|päckchen|päck\.?|päckchen)\s*/i],['Becher',/^becher\b/i],['Dose',/^dosen?\b/i],['Beutel',/^beutel\b/i],['Ei',/^ei(?:er)?\b/i],['Knoblauchzehe',/^knoblauchzehen?\b/i],['Stück',/^(?:stück|stk\.?)\b/i]];
+const value='(?:\\d+\\s+\\d+/\\d+|\\d+/\\d+|\\d+(?:[.,]\\d+)?)';
+function normalize(text){return String(text||'').replace(/(\d)½/g,'$1 1/2').replace(/(\d)¼/g,'$1 1/4').replace(/(\d)¾/g,'$1 3/4').replace(/½/g,'1/2').replace(/¼/g,'1/4').replace(/¾/g,'3/4').normalize('NFKC').replace(/⁄/g,'/').trim();}
+function number(text){if(/^\d+\.\d{3}$/.test(text))return null;const parts=text.split(/\s+/);let n=0;for(const p of parts){if(p.includes('/')){const[a,b]=p.split('/').map(Number);if(!b)return null;n+=a/b;}else n+=Number(p.replace(',','.'));}return Number.isFinite(n)&&n>0&&n<=1000000?n:null;}
+function parse(text){const t=normalize(text).replace(/^(\d+)\.\s+(?=[A-Za-zÄÖÜäöüß])/,'$1 '),m=t.match(new RegExp('^('+value+')(?![\\d.,/])\\s*(.*)$'));if(!m)return null;const n=number(m[1]);if(n===null)return null;const tail=m[2].replace(/^\.\s+/,'');for(const[unit,re]of units){const u=tail.match(re);if(u)return{number:n,unit,tail:tail.slice(u[0].length).trim(),source:t};}return null;}
+function family(reader){return reader.startsWith('tesseract')?'tesseract':reader.startsWith('ctc')?'ctc-htr':reader.startsWith('trocr')?'trocr':null;}
+function decide(readings){const votes=new Map(),numbers=new Map();for(const r of readings){const f=family(r.reader);if(!f)continue;const q=parse(r.text),lead=normalize(r.text).match(new RegExp('^('+value+')(?=\\s|[A-Za-zÄÖÜäöüß]|$)')),n=q?.number??(lead?number(lead[1]):null);if(n!==null){if(!numbers.has(n))numbers.set(n,new Set());numbers.get(n).add(f);}if(q){const key=JSON.stringify([q.number,q.unit]);if(!votes.has(key))votes.set(key,{...q,families:new Set()});votes.get(key).families.add(f);}}
+ const ranked=[...votes.values()].map(q=>({...q,families:[...q.families],support:q.families.size})).sort((a,b)=>b.support-a.support),top=ranked.filter(q=>q.support>=2&&q.support===ranked[0]?.support);let suggestion=top.length===1?top[0]:ranked.length===1?ranked[0]:null,confidence=suggestion?(suggestion.support>=2?'multiple-families':'single-family'):null;
+ if(!suggestion&&ranked.length){const best=Math.max(...ranked.map(q=>numbers.get(q.number)?.size||0)),choices=ranked.filter(q=>numbers.get(q.number)?.size===best);if(best>=2&&choices.length===1){suggestion=choices[0];confidence='unit-requires-review';}}
+ if(suggestion){const own=numbers.get(suggestion.number)?.size||0,other=Math.max(0,...[...numbers].filter(([n])=>n!==suggestion.number).map(([,f])=>f.size));if(other>=2&&other>own){suggestion=null;confidence='number-conflict';}}
+ let numberHint=null;if(!suggestion&&numbers.size){const best=Math.max(...[...numbers.values()].map(f=>f.size)),choices=[...numbers].filter(([,f])=>f.size===best);if(best>=2&&choices.length===1)numberHint={number:choices[0][0],unit:null};}
+ return{suggestion,numberHint,confidence,conflict:ranked.length>1,ranked,readings,verified:false,autoCorrections:0};
+}
+function ctc(logits,steps,classes,alphabet){let text='',previous=0;for(let t=0;t<steps;t++){let best=0;for(let i=1;i<classes;i++)if(logits[t*classes+i]>logits[t*classes+best])best=i;if(best&&best!==previous)text+=alphabet[best-1]||'';previous=best;}return text;}
+root.RESERVE_QUANTITY_CORE={normalize,parse,decide,ctc};
+})(typeof self==='object'?self:globalThis);
