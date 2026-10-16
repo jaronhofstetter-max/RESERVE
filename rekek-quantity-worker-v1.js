@@ -1,5 +1,5 @@
 /* Runs only in the explicitly enabled experiment. No image upload or native runtime. */
-importScripts('rekek-quantity-core-v1.js');
+importScripts('rekek-quantity-core-v1.js?v=20261017-crops-2');
 let sessions;
 async function load(){if(!sessions)sessions=(async()=>{
  importScripts('assets/rekek/quantity-test/vendor/ort.wasm.min.js');
