@@ -205,3 +205,6 @@ const nutritionFooter=K.parseText('Auflauf\nFür 4 Personen\nZutaten\n250 ml Mil
 assert.equal(nutritionFooter.portions,'4');assert.equal(nutritionFooter.steps,'Alles verrühren.\nBei 180 Grad 20 Minuten garen.');
 const unknownWrap=K.parseText('Gebäck\nZutaten\n1 Becher\nBelag:\n100 g Mehl\nAlles mischen.');assert.ok(!unknownWrap.ingredients.includes('1 Becher Belag'));
 console.log('Printed-page structure: literal header exclusion, wrapped adjective/container quantities, old-spelling mixed actions, preserved preparation and author/nutrition footer separation passed.');
+
+const umlautAction=K.parseText('Gemüsetopf\n1 Eßlöffel Öl\n1 Zwiebel\nZwiebel,Ol und Butter andiinsten.\n200 g Gemüse dazugeben.');assert.ok(!umlautAction.ingredients.includes('andiinsten'));assert.ok(umlautAction.steps.includes('Zwiebel,Ol und Butter andiinsten.'));assert.ok(!umlautAction.steps.includes('andünsten'));
+console.log('OCR umlaut action variants classify source text without silently correcting words.');
