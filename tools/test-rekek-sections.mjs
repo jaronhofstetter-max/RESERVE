@@ -155,3 +155,14 @@ const data=new Uint8ClampedArray(100*100*4).fill(255);for(let y=0;y<100;y++)for(
 }
 
 const packageList=K.parseText('Creme\nZutaten\n1 Becher Quark, 500 g\n1 Becher Sahne, 200g\n1 Dose Bohnen, 400 g\nZubereitung\nAlles verrühren.');assert.equal(packageList.ingredients,'1 Becher Quark, 500 g\n1 Becher Sahne, 200g\n1 Dose Bohnen, 400 g');
+
+// Container counts stay unresolved until an explicit per-container size is supplied.
+const P=context.window.RESERVE_RECIPE_PARSER;
+for(const raw of ['2 Becher Schmand','4 Dosen abgetropfte Mandarinen']){assert.equal(P.ingredient(raw).uncertain,true);assert.equal(P.packageSize(raw).size,null);}
+for(const [raw,amount,unit,name] of [['2 Becher Schmand à 250 g',500,'g','Schmand'],['4 Dosen abgetropfte Mandarinen je 175 g',700,'g','abgetropfte Mandarinen'],['2 Becher Sahne stk. 0,2 l',400,'ml','Sahne']]){const p=P.ingredient(raw);assert.equal(p.amount,amount);assert.equal(p.unit,unit);assert.equal(p.name,name);assert.equal(p.raw,raw);assert.equal(p.uncertain,false);}
+const mixedContainers=K.parseText('Kuchen\nZutaten\n200 g Mehl\nZubereitung\nPudding abkühlen lassen.\n2 Becher Schmand und 4 Dosen abgetropfte Mandarinen unterrühren.\n30 - 40 min. Bei 180 - 200° backen.');
+assert.equal(mixedContainers.ingredients,'200 g Mehl\n2 Becher Schmand\n4 Dosen abgetropfte Mandarinen');assert.match(mixedContainers.steps,/2 Becher Schmand und 4 Dosen/);assert.match(mixedContainers.steps,/30 - 40 min/);assert.equal(mixedContainers.cookMinutes,null);
+
+const duplicateContainers=K.parseText('Creme\nZutaten\n2 Becher Schmand\n4 Dosen Mandarinen\nZubereitung\n2 Becher Schmand und 4 Dosen Mandarinen unterrühren.');assert.equal(duplicateContainers.ingredients,'2 Becher Schmand\n4 Dosen Mandarinen');
+
+assert.equal(P.packageSize('½ Päckchen Backpulver').count,0.5);assert.equal(P.ingredient('½ Päckchen Backpulver à 16 g').amount,8);
