@@ -128,3 +128,14 @@ const columnRegions=K.ingredientColumnRegions(columnData,500,500);assert.deepEqu
 const crossed=JSON.parse(JSON.stringify(columnData));crossed.lines[3].words[1].bbox.x1=270;assert.equal(K.ingredientColumnRegions(crossed,500,500),null);
 const noHeading=JSON.parse(JSON.stringify(columnData));noHeading.lines[1].text='Hinweise';assert.equal(K.ingredientColumnRegions(noHeading,500,500),null);
 assert.equal(K.contextSuggestions('200 g weiche Butter','Die Oberfläche soll noch weich sein.').length,0);
+
+{
+
+const word=(text,x,y,w=Math.max(10,text.length*6))=>({text,bbox:{x0:x,y0:y,x1:x+w,y1:y+18}}),row=ws=>({text:ws.map(w=>w.text).join(' '),words:ws,bbox:{x0:Math.min(...ws.map(w=>w.bbox.x0)),y0:ws[0].bbox.y0,x1:Math.max(...ws.map(w=>w.bbox.x1)),y1:ws[0].bbox.y1}}),textrow=(text,x,y)=>{const ws=[];for(const t of text.split(' ')){const w=word(t,x,y);ws.push(w);x=w.bbox.x1+4;}return row(ws);};
+const texts=['200g Mehl','75g Zucker','1 Ei(er)','Yı Pck. Backpulver','125g Butter','1 Becher Quark, 500 g'];
+const rows=[textrow('Testkuchen',30,240),textrow('Zutaten für 1 Portionen:',550,180),textrow('Für den Teig:',550,210),...texts.map((t,i)=>textrow(t,570,250+i*45)),textrow('Die Zutaten für den Teig',30,300),textrow('werden alle sehr gut vermischt.',30,340),textrow('Nun im heißen Ofen backen.',30,380),textrow('Arbeitszeit: ca. 30 Min.',30,520),textrow('Koch-/Backzeit: ca. 1 Std.',30,550),textrow('Verfasser: Test',550,650)];
+
+const side=K.sideRecipeRegions({lines:rows},900,1000);assert.equal(side.ingredients.length,6);assert.equal(side.portions,'1');assert.ok(side.steps.y1<side.timings.y0);assert.ok(side.title.y1<side.steps.y0);
+const noFooter=rows.filter(r=>!/^Verfasser/.test(r.text));assert.equal(K.sideRecipeRegions({lines:noFooter},900,1000),null);
+const wrongSide=rows.map(r=>/^Zutaten/.test(r.text)?{...r,bbox:{...r.bbox,x0:10}}:r);assert.equal(K.sideRecipeRegions({lines:wrongSide},900,1000),null);
+}
