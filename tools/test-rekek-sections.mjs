@@ -166,3 +166,5 @@ assert.equal(mixedContainers.ingredients,'200 g Mehl\n2 Becher Schmand\n4 Dosen 
 const duplicateContainers=K.parseText('Creme\nZutaten\n2 Becher Schmand\n4 Dosen Mandarinen\nZubereitung\n2 Becher Schmand und 4 Dosen Mandarinen unterrühren.');assert.equal(duplicateContainers.ingredients,'2 Becher Schmand\n4 Dosen Mandarinen');
 
 assert.equal(P.packageSize('½ Päckchen Backpulver').count,0.5);assert.equal(P.ingredient('½ Päckchen Backpulver à 16 g').amount,8);
+
+assert.equal(P.ingredient('1½ Becher Schmand à 250 g').amount,375);assert.equal(P.ingredient('1 1/2 Becher Schmand à 250 g').amount,375);
