@@ -133,6 +133,25 @@ async function rereadTexturedCard(canvas,original,read,ticket){
  return{accepted:titles[0]+'\nZutaten\n'+ingredients[0]+'\nZubereitung\n'+steps[0],focused:true,sources,evidence:['Original OCR:',original,...evidence].join('\n')};
 }
 
+async function rereadSideCard(canvas,original,read,ticket){
+ const K=window.RESERVE_REKEK;await worker.terminate();if(ticket!==ocrTicket)throw Error('Lesen abgebrochen.');worker=await (await loadOCR()).createWorker('deu',1);
+ const layout=await read(canvas,3),regions=K.sideRecipeRegions(layout,canvas.width,canvas.height),evidence=['Seitliche Rezeptkarte · Layout:',layout.text||''];if(!regions)return{accepted:null,evidence:evidence.join('\n')};
+ const crop=(b,angle=0)=>{const w=b.x1-b.x0,h=b.y1-b.y0,c=document.createElement('canvas'),f=3;c.width=Math.ceil((w*Math.cos(angle)+h*Math.abs(Math.sin(angle)))*f);c.height=Math.ceil((h*Math.cos(angle)+w*Math.abs(Math.sin(angle)))*f);const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);ctx.translate(c.width/2,c.height/2);ctx.rotate(angle);ctx.drawImage(canvas,b.x0,b.y0,w,h,-w*f/2,-h*f/2,w*f,h*f);return c;},norm=t=>String(t||'').trim().replace(/\s+/g,' '),sources=[],ingredients=[];
+ const pair=async(b,modes,label,angle=0)=>{const image=crop(b,angle),reads=[];for(const m of modes){const d=await read(image,m);reads.push(d);evidence.push(label+' PSM '+m+':',d.text||'');}sources.push({canvas:image,data:reads[0]});return reads.map(d=>String(d.text||'').trim());};
+ const title=await pair(regions.title,[7,6],'Titel',regions.angle);if(!title[0]||norm(title[0])!==norm(title[1]))return{accepted:null,evidence:evidence.join('\n')};
+ for(const [i,row]of regions.ingredients.entries()){
+  const reads=await pair(row.box,[7,6],'Zutatenzeile '+(i+1)),number=t=>t.match(/^\d+(?:[.,]\d+)?(?:\/\d+)?/)?.[0],expected=number(row.source),unit=P().ingredient(row.source).unit;let [a,b]=reads.map(norm);
+  if(expected&&(number(a)!==expected||number(b)!==expected||(unit&&(P().ingredient(a).unit!==unit||P().ingredient(b).unit!==unit)))){
+   if(original.split(/\r?\n/).some(t=>norm(t)===row.source)){a=b=row.source;evidence.push('Mengen-Nachlesung verworfen; vollständige Ausgangszeile erhalten:',row.source);}else return{accepted:null,evidence:evidence.join('\n')};
+  }
+  if(!a||a!==b)return{accepted:null,evidence:evidence.join('\n')};ingredients.push(a);
+ }
+ const body=await pair(regions.steps,[6,4],'Zubereitung',regions.angle),steps=body.map(t=>P().parseText('Zubereitung\n'+t).steps),words=t=>t.toLowerCase().replace(/[^a-zäöüß0-9°]+/gi,' ');if(!steps[0]||words(steps[0])!==words(steps[1]))return{accepted:null,evidence:evidence.join('\n')};
+ const times=await pair(regions.timings,[6,4],'Zeiten',regions.angle),time=t=>{const p=t.match(/Arbeitszeit\s*:\s*(?:ca\.?\s*)?(\d+)\s*Min/i),c=t.match(/Koch[-/ ]*(?:Backzeit|Backzeit)?\s*:\s*(?:ca\.?\s*)?(\d+)\s*(Std\.?|Stunden?|Min)/i);return{prep:p?Number(p[1]):null,cook:c?Number(c[1])*(/^St/i.test(c[2])?60:1):null};},tm=times.map(time);if(JSON.stringify(tm[0])!==JSON.stringify(tm[1]))return{accepted:null,evidence:evidence.join('\n')};
+ const meta='\nFür '+regions.portions+' Portionen'+(tm[0].prep!==null?'\nVorbereitung: '+tm[0].prep+' Min.':'')+(tm[0].cook!==null?'\nKochzeit: '+tm[0].cook+' Min.':'');
+ return{accepted:norm(title[0])+meta+'\nZutaten\n'+ingredients.join('\n')+'\nZubereitung\n'+steps[0],focused:true,sources,evidence:['Original OCR:',original,...evidence].join('\n')};
+}
+
 async function rereadIngredientColumns(canvas,original,read,ticket){
  const K=window.RESERVE_REKEK;await worker.terminate();if(ticket!==ocrTicket)throw Error('Lesen abgebrochen.');worker=await (await loadOCR()).createWorker('deu',1);
  const layout=await read(canvas,3),regions=K.ingredientColumnRegions(layout,canvas.width,canvas.height),evidence=['Zutatenspalten · Layout:',layout.text||''];if(!regions)return{accepted:null,evidence:evidence.join('\n')};
@@ -154,6 +173,7 @@ async function rereadRecipeCard(canvas,original,ticket){
  const normalized=text=>String(text||'').trim().replace(/\s+/g,' ');
  let textureEvidence='';const initial=P().parseText(original);if(lines(initial.ingredients).length<3&&!initial.steps){const textured=await rereadTexturedCard(canvas,original,read,ticket);if(textured?.accepted)return textured;if(textured?.evidence)textureEvidence=textured.evidence;}
  if(/\bZutaten\b/i.test(original)&&/\bZubereitung\b/i.test(original)&&original.split(/\r?\n/).some(l=>(l.match(/\b\d+\s*(?:g|kg|ml|l)\b/gi)||[]).length>=2)){const columns=await rereadIngredientColumns(canvas,original,read,ticket);if(columns.accepted)return columns;if(columns.evidence)textureEvidence+='\n'+columns.evidence;}
+ if(/Zutaten\s+für\s+\d+\s+Portion/i.test(original)&&/Verfasser\s*:/i.test(original)){const side=await rereadSideCard(canvas,original,read,ticket);if(side.accepted)return side;if(side.evidence)textureEvidence+='\n'+side.evidence;}
  const scalePanel=Math.min(1,600/Math.max(canvas.width,canvas.height)),panelMap=document.createElement('canvas');panelMap.width=Math.round(canvas.width*scalePanel);panelMap.height=Math.round(canvas.height*scalePanel);panelMap.getContext('2d').drawImage(canvas,0,0,panelMap.width,panelMap.height);
  const panel=K.findRecipePanel(panelMap.getContext('2d').getImageData(0,0,panelMap.width,panelMap.height)),panelEvidence=textureEvidence?[textureEvidence]:[];
  if(panel){
