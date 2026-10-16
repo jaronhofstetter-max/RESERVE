@@ -1,0 +1,51 @@
+{
+  "source": "https://huggingface.co/EpsilonGreedy/TrOCR_small_german_handwritten",
+  "revision": "8a47330344ecaa97da08880a5223cfcb6ebdd844",
+  "files": [
+    {
+      "file": "config.json",
+      "bytes": 3161,
+      "sha256": "59ee020f0d82e163dddeb66d83d9715f19201327a0133cb2a49b4492ea7aee46"
+    },
+    {
+      "file": "generation_config.json",
+      "bytes": 928,
+      "sha256": "2da07135707765249ec16903760bdfe10f94de75d8b047bbdb23f4739978ede3"
+    },
+    {
+      "file": "model.safetensors",
+      "bytes": 246430696,
+      "sha256": "bc441a179254942670fd351c49086c69f20635e063d0053ae31052b05482f02d"
+    },
+    {
+      "file": "preprocessor_config.json",
+      "bytes": 450,
+      "sha256": "36a945a7cc645688b9ef64dabae16979cf5f7c1c448569cc306694edc0598b9b"
+    },
+    {
+      "file": "processor_config.json",
+      "bytes": 568,
+      "sha256": "dc3b8a6a73416389f82c444e8fac51401b66482a2430a5c3547a802d5cca05a5"
+    },
+    {
+      "file": "sentencepiece.bpe.model",
+      "bytes": 1356293,
+      "sha256": "6f5e2fefcf793761a76a6bfb8ad35489f9c203b25557673284b6d032f41043f4"
+    },
+    {
+      "file": "special_tokens_map.json",
+      "bytes": 279,
+      "sha256": "d5469a60db23249c7f8945013d78df30b44b6bf686c6bb4740f4223f77b1b535"
+    },
+    {
+      "file": "tokenizer.json",
+      "bytes": 4494705,
+      "sha256": "40bc714001008e5dc62303941dc5c0584d8b9fa69c6032bea37b1deb00d77711"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "bytes": 1268,
+      "sha256": "0836517b3d82dcc162f06172e0b50bc1df3024cce7cf2d71ed009acd4d8c75ea"
+    }
+  ]
+}

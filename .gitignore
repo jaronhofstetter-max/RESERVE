@@ -1,0 +1,8 @@
+build/
+node_modules/
+assets/rekek/quantity-test/vendor/
+assets/rekek/quantity-test/*.onnx
+assets/rekek/quantity-test/ctc-config.json
+assets/rekek/quantity-test/vocab.json
+assets/rekek/quantity-test/model-manifest.json
+tools/__pycache__/
