@@ -82,7 +82,7 @@ function sideRecipeRegions(data,width,height){
  slopes.sort((a,b)=>a-b);const slope=slopes.length>=3?slopes[Math.floor(slopes.length/2)]:0,angle=Math.abs(slope)<.1?-Math.atan(slope):0;
  const timeRows=left.filter(r=>r.bbox.y0>=timing.bbox.y0&&r.bbox.y1<timing.bbox.y0+height*.08);
  const steps=box(body);steps.y0=Math.max(steps.y0,Math.ceil(Math.max(...title.map(w=>w.bbox.y1)))+2);
- return{title:box(title),steps,timings:box(timeRows.flatMap(r=>r.words||[])),timeLines:timeRows.filter(r=>/^(?:Arbeitszeit|Koch[-/ ]*)/i.test(clean(r.text))).map(r=>box(r.words)),ingredients:items.map(r=>({box:box(r.words),source:clean(r.text)})),portions:clean(heading.text).match(/für\s+(\d+)/i)[1],angle};
+ return{title:box(title),steps,timings:box(timeRows.flatMap(r=>r.words||[])),ingredients:items.map(r=>({box:box(r.words),source:clean(r.text)})),portions:clean(heading.text).match(/für\s+(\d+)/i)[1],angle};
 }
 
 // Two ingredient columns bounded by explicit section headings. Numeric starts
