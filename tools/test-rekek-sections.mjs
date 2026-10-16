@@ -135,7 +135,7 @@ const word=(text,x,y,w=Math.max(10,text.length*6))=>({text,bbox:{x0:x,y0:y,x1:x+
 const texts=['200g Mehl','75g Zucker','1 Ei(er)','Yı Pck. Backpulver','125g Butter','1 Becher Quark, 500 g'];
 const rows=[textrow('Testkuchen',30,240),textrow('Zutaten für 1 Portionen:',550,180),textrow('Für den Teig:',550,210),...texts.map((t,i)=>textrow(t,570,250+i*45)),textrow('Die Zutaten für den Teig',30,300),textrow('werden alle sehr gut vermischt.',30,340),textrow('Nun im heißen Ofen backen.',30,380),textrow('Arbeitszeit: ca. 30 Min.',30,520),textrow('Koch-/Backzeit: ca. 1 Std.',30,550),textrow('Verfasser: Test',550,650)];
 
-const side=K.sideRecipeRegions({lines:rows},900,1000);assert.equal(side.ingredients.length,6);assert.equal(side.portions,'1');assert.ok(side.steps.y1<side.timings.y0);assert.ok(side.title.y1<side.steps.y0);
+const side=K.sideRecipeRegions({lines:rows},900,1000);assert.equal(side.ingredients.length,6);assert.equal(side.portions,'1');assert.equal(side.timeLines.length,2);assert.ok(side.steps.y1<side.timings.y0);assert.ok(side.title.y1<side.steps.y0);
 const closeHeader=rows.map(r=>r.text==='Testkuchen'?{...r,bbox:{...r.bbox,y0:278,y1:296},words:r.words.map(w=>({...w,bbox:{...w.bbox,y0:278,y1:296}}))}:r);assert.ok(K.sideRecipeRegions({lines:closeHeader},900,1000).steps.y0>296);
 const noFooter=rows.filter(r=>!/^Verfasser/.test(r.text));assert.equal(K.sideRecipeRegions({lines:noFooter},900,1000),null);
 const wrongSide=rows.map(r=>/^Zutaten/.test(r.text)?{...r,bbox:{...r.bbox,x0:10}}:r);assert.equal(K.sideRecipeRegions({lines:wrongSide},900,1000),null);
