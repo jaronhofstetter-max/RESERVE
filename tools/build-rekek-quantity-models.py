@@ -18,7 +18,7 @@ def download(url,path,digest):
 if '--export-only'not in sys.argv:
     for entry in LOCK['files']:
         download(LOCK['source']+'/resolve/'+LOCK['revision']+'/'+entry['file'],CACHE/entry['file'],entry['sha256'])
-    download('https://huggingface.co/naeyn/de-htr-web-v2/resolve/6241c1ff0fd42725e0dc46fcd3217469cac851bb/model.onnx',OUT/'ctc.onnx','b576a0a1281b9be46b2574028b75575e041b7d7cb650f063886e733467cc1499')
+    download('https://huggingface.co/naeyn/de-htr-web-v2/resolve/6241c1ff0fd42725e0dc46fcd3217469cac851bb/model-fp32.onnx',OUT/'ctc.onnx','68b46411b8236b44d0d98865909d217ef13b41f12db769993c67eeb8d6e8c45a')
     download('https://huggingface.co/naeyn/de-htr-web-v2/resolve/6241c1ff0fd42725e0dc46fcd3217469cac851bb/config.json',OUT/'ctc-config.json','4ebd69d9d27b398ea3997b031318accc13123f6a8950def1fedc6e364cb758fa')
 if '--download-only'in sys.argv:sys.exit(0)
 from rekek_strict_offline import lock_network
