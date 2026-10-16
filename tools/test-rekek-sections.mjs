@@ -140,3 +140,16 @@ const closeHeader=rows.map(r=>r.text==='Testkuchen'?{...r,bbox:{...r.bbox,y0:278
 const noFooter=rows.filter(r=>!/^Verfasser/.test(r.text));assert.equal(K.sideRecipeRegions({lines:noFooter},900,1000),null);
 const wrongSide=rows.map(r=>/^Zutaten/.test(r.text)?{...r,bbox:{...r.bbox,x0:10}}:r);assert.equal(K.sideRecipeRegions({lines:wrongSide},900,1000),null);
 }
+
+const commaList=K.parseText('Kuchen\nZutaten\n500 g Obst, 3 Eier,\n120 g Mehl, etwas Butter\n1,5 g Salz\nZubereitung\nAlles verrühren.\nTipp: Auch mit anderem Obst.');
+assert.equal(commaList.ingredients,'500 g Obst\n3 Eier,\n120 g Mehl\netwas Butter\n1,5 g Salz');assert.ok(commaList.steps.includes('Tipp: Auch mit anderem Obst.'));
+assert.equal(K.contextSuggestions('100 g Mandelstifte','Mit Mandelstiften bestreuen.').length,0);
+{
+
+const word=(text,x,y,w=Math.max(10,text.length*6))=>({text,bbox:{x0:x,y0:y,x1:x+w,y1:y+18}}),row=ws=>({text:ws.map(w=>w.text).join(' '),words:ws,bbox:{x0:Math.min(...ws.map(w=>w.bbox.x0)),y0:Math.min(...ws.map(w=>w.bbox.y0)),x1:Math.max(...ws.map(w=>w.bbox.x1)),y1:Math.max(...ws.map(w=>w.bbox.y1))}}),textrow=(text,x,y)=>{const ws=[];for(const t of text.split(' ')){const w=word(t,x,y);ws.push(w);x=w.bbox.x1+4;}return row(ws);};
+const rows=[textrow('Probe Kuchen',100,60),textrow('Zutaten:',100,120),textrow('200 g Mehl, 1 Ei',100,170),textrow('100 g Zucker, etwas Butter',100,215),textrow('3 EL Mandelstifte',100,260),...['Zeitung','Nachbar','Textteil'].map((t,i)=>textrow(t,0,180+i*45)),textrow('Zubereitung:',100,330),textrow('Alles gut verrühren und danach in die Form geben.',100,370),textrow('Den Kuchen im heißen Backofen auf mittlerer Schiene backen.',100,410),textrow('Tipp: Auch mit Obst.',100,470),textrow('(Autor/Archiv)',250,540)];
+
+assert.equal(K.insetRecipeEvidence({lines:rows},500),true);assert.equal(K.insetRecipeEvidence({lines:rows.filter(r=>r.bbox.x0>0)},500),false);
+const r=K.insetRecipeRegions({lines:rows},500,600);assert.ok(r);assert.ok(r.title.y1<r.ingredients.y0);assert.ok(r.ingredients.y1<r.steps.y0);assert.ok(r.steps.y1<540);assert.equal(K.insetRecipeRegions({lines:rows.filter(r=>!r.text.startsWith('Zubereitung'))},500,600),null);
+const data=new Uint8ClampedArray(100*100*4).fill(255);for(let y=0;y<100;y++)for(let x=0;x<100;x++){const i=(y*100+x)*4,v=x>=45&&x<50&&y>20&&y<80?30:150+x*.4;data[i]=data[i+1]=data[i+2]=v;}const prepared=K.preparePrintedPaper({data,width:100,height:100});assert.ok(prepared);assert.equal(prepared.data[(50*100+47)*4],0);assert.equal(prepared.data[(50*100+10)*4],255);assert.equal(data[(50*100+10)*4],154);
+}
