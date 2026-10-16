@@ -81,7 +81,8 @@ function sideRecipeRegions(data,width,height){
  const slopes=[];for(const r of left.filter(r=>r.bbox.y0>=start.bbox.y0&&r.bbox.y1<timing.bbox.y0)){const ws=(r.words||[]).filter(w=>w.bbox&&/[a-zäöüß]{3}/i.test(w.text));if(ws.length<4)continue;const xs=ws.map(w=>(w.bbox.x0+w.bbox.x1)/2),ys=ws.map(w=>w.bbox.y1),mx=xs.reduce((a,b)=>a+b)/xs.length,my=ys.reduce((a,b)=>a+b)/ys.length,den=xs.reduce((a,x)=>a+(x-mx)**2,0);if(den>width*width*.005)slopes.push(xs.reduce((a,x,i)=>a+(x-mx)*(ys[i]-my),0)/den);}
  slopes.sort((a,b)=>a-b);const slope=slopes.length>=3?slopes[Math.floor(slopes.length/2)]:0,angle=Math.abs(slope)<.1?-Math.atan(slope):0;
  const timeRows=left.filter(r=>r.bbox.y0>=timing.bbox.y0&&r.bbox.y1<timing.bbox.y0+height*.08);
- return{title:box(title),steps:box(body),timings:box(timeRows.flatMap(r=>r.words||[])),ingredients:items.map(r=>({box:box(r.words),source:clean(r.text)})),portions:clean(heading.text).match(/für\s+(\d+)/i)[1],angle};
+ const steps=box(body);steps.y0=Math.max(steps.y0,Math.ceil(Math.max(...title.map(w=>w.bbox.y1)))+2);
+ return{title:box(title),steps,timings:box(timeRows.flatMap(r=>r.words||[])),ingredients:items.map(r=>({box:box(r.words),source:clean(r.text)})),portions:clean(heading.text).match(/für\s+(\d+)/i)[1],angle};
 }
 
 // Two ingredient columns bounded by explicit section headings. Numeric starts
@@ -448,7 +449,7 @@ function contextSuggestions(ingredients,steps){
 function validRecord(r){return r&&/^personal-[a-z0-9-]+$/.test(r.id)&&typeof r.name==='string'&&r.name.length>0&&r.name.length<=200&&Number.isFinite(r.portions)&&r.portions>0&&r.portions<=100&&Array.isArray(r.ingredientLines)&&r.ingredientLines.length>0&&r.ingredientLines.length<=100&&r.ingredientLines.every(s=>typeof s==='string'&&s.length>0&&s.length<=500)&&Array.isArray(r.steps)&&r.steps.length>0&&r.steps.length<=100&&r.steps.every(s=>typeof s==='string'&&s.length>0&&s.length<=3000)&&['Alles','Vegetarisch','Vegan'].includes(r.diet)&&[r.prepMinutes,r.cookMinutes].every(n=>n===null||Number.isFinite(n)&&n>=0&&n<=1440)&&(!r.source||typeof r.source==='string'&&r.source.length<=2000)}
 function toRecipe(r,image=''){const parsed=r.ingredientLines.map(ingredient),pantryReady=parsed.every(x=>!x.uncertain);return{id:r.id,name:r.name,personal:true,pantryReady,detailLoaded:true,description:'',type:'Hauptmahlzeit',diet:r.diet,dish:'🍽️',cuisine:'Eigenes Rezept',difficulty:'',status:'approved',mealTimes:['Mittagessen','Abendessen'],prepMinutes:r.prepMinutes||0,cookMinutes:r.cookMinutes||0,ingredients:parsed.map(x=>({name:x.name,amount:x.amount===null?null:x.amount/r.portions,unit:x.unit})),steps:r.steps.slice(),nutrition:{},allergens:[],image}}
 window.RESERVE_RECIPE_PARSER={ingredient,parseText,validRecord,toRecipe};
-window.RESERVE_REKEK={version:"0.6.14",kind:"local-ocr-and-rules",contextSuggestions,sideRecipeRegions,ingredientColumnRegions,quantityRecipeRegions,fractionGlyphParts,prepareTextOnTexture,textureRecipeRegions,parseText,parseCandidates,findRecipePanel,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
+window.RESERVE_REKEK={version:"0.6.15",kind:"local-ocr-and-rules",contextSuggestions,sideRecipeRegions,ingredientColumnRegions,quantityRecipeRegions,fractionGlyphParts,prepareTextOnTexture,textureRecipeRegions,parseText,parseCandidates,findRecipePanel,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
 })();
 
 
