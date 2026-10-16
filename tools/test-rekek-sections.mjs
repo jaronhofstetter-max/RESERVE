@@ -168,3 +168,12 @@ const duplicateContainers=K.parseText('Creme\nZutaten\n2 Becher Schmand\n4 Dosen
 assert.equal(P.packageSize('½ Päckchen Backpulver').count,0.5);assert.equal(P.ingredient('½ Päckchen Backpulver à 16 g').amount,8);
 
 assert.equal(P.ingredient('1½ Becher Schmand à 250 g').amount,375);assert.equal(P.ingredient('1 1/2 Becher Schmand à 250 g').amount,375);
+
+const faintFixture=JSON.parse(fs.readFileSync('tools/fixtures/rekek-faint-sheet-readings.json','utf8'));
+const faintRegions=K.sectionedPaperRegions(faintFixture.passes[1],faintFixture.width,faintFixture.height);
+assert.ok(faintRegions);assert.equal(faintRegions.rows.filter(r=>r.kind==='ingredient').length,13);assert.equal(faintRegions.rows.filter(r=>r.kind==='step').length,4);assert.equal(faintRegions.rows.find(r=>r.parts).parts.length,2);assert.ok(faintRegions.title.y1<200);
+assert.equal(K.sectionedPaperRegions({lines:faintFixture.passes[1].lines.filter(l=>!/Füllung|Streu/.test(l.text))},864,1536),null);
+assert.equal(P.ingredient('½ Päck. Backpulver').amount,0.5);assert.equal(P.ingredient('½ Päck. Backpulver').unit,'päckchen');
+const wrappedContainers=K.parseText('Kuchen\nZutaten\n200 g Mehl\nZubereitung\n2 Becher Schmand und 4 Dosen\nabgetropfte Mandarinen unterrühren.');assert.equal(wrappedContainers.ingredients,'200 g Mehl\n2 Becher Schmand\n4 Dosen abgetropfte Mandarinen');assert.match(wrappedContainers.steps,/2 Becher Schmand und 4 Dosen abgetropfte Mandarinen unterrühren/);
+assert.ok(K.contextSuggestions('4 Dosen abgetropifte Mandarinen','').some(x=>x.from==='abgetropifte'&&x.to==='abgetropfte'));
+console.log('Faint paper: three-section layout gate, separate mixed-container crops, wrapped action ingredients, source package abbreviations and review-only spelling passed.');
