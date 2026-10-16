@@ -164,3 +164,5 @@ const mixedContainers=K.parseText('Kuchen\nZutaten\n200 g Mehl\nZubereitung\nPud
 assert.equal(mixedContainers.ingredients,'200 g Mehl\n2 Becher Schmand\n4 Dosen abgetropfte Mandarinen');assert.match(mixedContainers.steps,/2 Becher Schmand und 4 Dosen/);assert.match(mixedContainers.steps,/30 - 40 min/);assert.equal(mixedContainers.cookMinutes,null);
 
 const duplicateContainers=K.parseText('Creme\nZutaten\n2 Becher Schmand\n4 Dosen Mandarinen\nZubereitung\n2 Becher Schmand und 4 Dosen Mandarinen unterrühren.');assert.equal(duplicateContainers.ingredients,'2 Becher Schmand\n4 Dosen Mandarinen');
+
+assert.equal(P.packageSize('½ Päckchen Backpulver').count,0.5);assert.equal(P.ingredient('½ Päckchen Backpulver à 16 g').amount,8);

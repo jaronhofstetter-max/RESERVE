@@ -167,9 +167,9 @@ function fractionGlyphParts(image){
 }
 
 function packageSize(line){
- const raw=clean(line),m=raw.match(/^(\d+(?:[.,]\d+)?)\s+(Becher|Dosen?|Packungen?|Päckchen|Pck\.?)\s+(.+?)(?:\s+(?:à|je|jeweils|stk\.?)\s*(\d+(?:[.,]\d+)?)\s*(g|kg|ml|l))?\s*$/i);
+ const raw=clean(line),expanded=raw.replace(/[¼½¾⅛⅜⅝⅞]/g,c=>({'¼':'1/4','½':'1/2','¾':'3/4','⅛':'1/8','⅜':'3/8','⅝':'5/8','⅞':'7/8'}[c])),m=expanded.match(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d+(?:[.,]\d+)?)\s+(Becher|Dosen?|Packungen?|Päckchen|Pck\.?)\s+(.+?)(?:\s+(?:à|je|jeweils|stk\.?)\s*(\d+(?:[.,]\d+)?)\s*(g|kg|ml|l))?\s*$/i);
  if(!m)return null;
- const count=Number(m[1].replace(',','.')),size=m[4]?Number(m[4].replace(',','.')):null;
+ const count=number(m[1]),size=m[4]?Number(m[4].replace(',','.')):null;
  if(!Number.isFinite(count)||!(count>0)||size!==null&&(!Number.isFinite(size)||!(size>0)||!Number.isFinite(count*size*1000)))return null;
  return{count,container:m[2],name:m[3],size,unit:m[5]?.toLowerCase()||'',base:raw.replace(/\s+(?:à|je|jeweils|stk\.?)\s*\d+(?:[.,]\d+)?\s*(?:g|kg|ml|l)\s*$/i,'')};
 }
