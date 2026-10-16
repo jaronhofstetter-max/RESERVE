@@ -218,7 +218,7 @@ function packageSize(line){
 }
 function ingredient(line){
  const pack=packageSize(line);
- if(pack?.size&&!/\d|\b(?:und|unterrühren|verrühren|mischen)\b/i.test(pack.name)){const multiplier=['kg','l'].includes(pack.unit)?1000:1;return{raw:clean(line),name:pack.name,amount:pack.count*pack.size*multiplier,unit:['g','kg'].includes(pack.unit)?'g':'ml',uncertain:false};}
+ if(pack?.size&&!/\d|\b(?:und|unterr(?:ü|ii)hren|verr(?:ü|ii)hren|mischen)\b/i.test(pack.name)){const multiplier=['kg','l'].includes(pack.unit)?1000:1;return{raw:clean(line),name:pack.name,amount:pack.count*pack.size*multiplier,unit:['g','kg'].includes(pack.unit)?'g':'ml',uncertain:false};}
  const raw=clean(line).replace(/^[•*–-]\s*/,''),glyphs={'¼':'1/4','½':'1/2','¾':'3/4','⅛':'1/8','⅜':'3/8','⅝':'5/8','⅞':'7/8'},expanded=raw.replace(/^=\s*(?=[0-9¼½¾⅛⅜⅝⅞])/,'').replace(/(\d)([¼½¾⅛⅜⅝⅞])/g,'$1 $2').replace(/[¼½¾⅛⅜⅝⅞]/g,c=>glyphs[c]);
  const atom='(?:\\d+\\s+\\d+/\\d+|\\d+/\\d+|\\d+(?:[.,]\\d+)?)';
  if(new RegExp('^'+atom+'\\s*(?:bis|[-–—])\\s*'+atom,'i').test(expanded)||/^\d+\s+halb(?:er|en|e|es)?\b/i.test(expanded))return{raw,name:raw,amount:null,unit:'',uncertain:true};
@@ -241,7 +241,7 @@ function ingredientHeading(line){
 function preparationLine(line){
  // Inflected ingredient descriptions ("geriebene", "gehackte") are not actions.
  if(/\b(?:zum|zum\s+späteren|für das)\s+(?:Bestreichen|Backen|Braten|Servieren|Füllen)\s*\.?$/i.test(line))return false;
- return /\b(?:rühren|verrühren|unterrühren|einrühren|schlagen|aufschlagen|unterheben|kneten|verkneten|mischen|vermischen|vermengen|verarbeiten|schneiden|würfeln|erhitzen|quetschen|aufkochen|kochen|köcheln|garen|braten|anbraten|dünsten|andünsten|backen|vorheizen|zugeben|dazugeben|hinzufügen|bestreichen|streichen|verteilen|gießen|füllen|ausrollen|formen|schmelzen|auflösen|sieben|abkühlen|servieren|ziehen lassen|ruhen lassen|gehen lassen|trennen|ausdrücken|geben|wälzen|walzen|einfüllen|abgießen|bestreuen|auflegen)\b/i.test(line);
+ return /\b(?:rühren|verr(?:ü|ii)hren|unterr(?:ü|ii)hren|einrühren|schlagen|aufschlagen|unterheben|kneten|verkneten|mischen|vermischen|vermengen|verarbeiten|schneiden|würfeln|erhitzen|quetschen|aufkochen|kochen|köcheln|garen|braten|anbraten|dünsten|and(?:ü|ii)nsten|backen|vorheizen|zugeben|dazugeben|hinzufügen|bestreichen|streichen|verteilen|gießen|füllen|ausrollen|formen|schmelzen|auflösen|sieben|abkühlen|servieren|ziehen lassen|ruhen lassen|gehen lassen|trennen|ausdrücken|geben|wälzen|walzen|einfüllen|abgießen|bestreuen|auflegen)\b/i.test(line);
 }
 function recipeTextLines(text){
  let input=String(text||'');
@@ -273,7 +273,7 @@ function recipeTitle(lines){
 function quantityAction(line){
  const m=line.match(/^(?:\d+(?:[.,]\d+)?(?:\s+\d+\/\d+)?|\d+\/\d+|[¼½¾⅛⅜⅝⅞])\s*(?:kg|mg|g|gr|ml|dl|cl|l|EL|TL|Becher|Dosen?|Tüten?|Pakete?|Päckchen|Pck\.?|Liter|Stangen?|Teelöffel|Esslöffel|Eßlöffel)\b\s*.+/i);
  if(!m||!preparationLine(line)||/\s\d+[.)]\s+[a-zäöüß]/i.test(line))return null;
- const verb=line.search(/\b(?:dazugeben|andünsten|verrühren|unterrühren|einrühren|schlagen|unterheben|kneten|mischen|vermischen|vermengen|schneiden|würfeln|erhitzen|kochen|garen|braten|dünsten|backen|zugeben|hinzufügen|gießen|auflösen|geben)\b/i);
+ const verb=line.search(/\b(?:dazugeben|and(?:ü|ii)nsten|verr(?:ü|ii)hren|unterr(?:ü|ii)hren|einrühren|schlagen|unterheben|kneten|mischen|vermischen|vermengen|schneiden|würfeln|erhitzen|kochen|garen|braten|dünsten|backen|zugeben|hinzufügen|gießen|auflösen|geben)\b/i);
  if(verb<0)return null;
  const before=clean(line.slice(0,verb)).replace(/\s+(?:darin|damit|dazu|zusammen|miteinander)\s*$/i,'');
  const item=before.replace(/\s+zum\s+(?:Schluß|Schluss|Ende)(?=\s|$).*$/i,'').replace(/\s+in\s+(?:Streifen|Würfel|Scheiben|Stücke)\b.*$/i,'').replace(/\s+(?:auf|in|über|zu)\s+(?:das|den|die|der)\s+.+$/i,'');
@@ -540,7 +540,7 @@ function contextSuggestions(ingredients,steps){
 function validRecord(r){return r&&/^personal-[a-z0-9-]+$/.test(r.id)&&typeof r.name==='string'&&r.name.length>0&&r.name.length<=200&&Number.isFinite(r.portions)&&r.portions>0&&r.portions<=100&&Array.isArray(r.ingredientLines)&&r.ingredientLines.length>0&&r.ingredientLines.length<=100&&r.ingredientLines.every(s=>typeof s==='string'&&s.length>0&&s.length<=500)&&Array.isArray(r.steps)&&r.steps.length>0&&r.steps.length<=100&&r.steps.every(s=>typeof s==='string'&&s.length>0&&s.length<=3000)&&['Alles','Vegetarisch','Vegan'].includes(r.diet)&&[r.prepMinutes,r.cookMinutes].every(n=>n===null||Number.isFinite(n)&&n>=0&&n<=1440)&&(!r.source||typeof r.source==='string'&&r.source.length<=2000)}
 function toRecipe(r,image=''){const parsed=r.ingredientLines.map(ingredient),pantryReady=parsed.every(x=>!x.uncertain);return{id:r.id,name:r.name,personal:true,pantryReady,detailLoaded:true,description:'',type:'Hauptmahlzeit',diet:r.diet,dish:'🍽️',cuisine:'Eigenes Rezept',difficulty:'',status:'approved',mealTimes:['Mittagessen','Abendessen'],prepMinutes:r.prepMinutes||0,cookMinutes:r.cookMinutes||0,ingredients:parsed.map(x=>({name:x.name,amount:x.amount===null?null:x.amount/r.portions,unit:x.unit})),steps:r.steps.slice(),nutrition:{},allergens:[],image}}
 window.RESERVE_RECIPE_PARSER={ingredient,packageSize,parseText,validRecord,toRecipe};
-window.RESERVE_REKEK={version:"0.6.25",kind:"local-ocr-and-rules",contextSuggestions,parallelRecipeRegions,sectionedPaperRegions,preparePrintedPaper,insetRecipeEvidence,insetRecipeRegions,sideRecipeRegions,ingredientColumnRegions,quantityRecipeRegions,fractionGlyphParts,prepareTextOnTexture,textureRecipeRegions,parseText,parseCandidates,findRecipePanel,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
+window.RESERVE_REKEK={version:"0.6.26",kind:"local-ocr-and-rules",contextSuggestions,parallelRecipeRegions,sectionedPaperRegions,preparePrintedPaper,insetRecipeEvidence,insetRecipeRegions,sideRecipeRegions,ingredientColumnRegions,quantityRecipeRegions,fractionGlyphParts,prepareTextOnTexture,textureRecipeRegions,parseText,parseCandidates,findRecipePanel,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
 })();
 
 
