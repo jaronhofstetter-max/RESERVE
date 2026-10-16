@@ -1,0 +1,32 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Maisspätzli",
+  "image": "http://www.chuchitisch.ch//chuchitisch/download_picture/lightroom/837_Maissp%C3%A4tzli.png",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "Anders als in der Schweiz, gibt es in einem amerikanischen Supermarkt (so gross wie sie sind und trotz der riesigen Auswahl) kein Spätzlemehl zu kaufen. Also experimentieren wir selber und mischen mit Griess und normalem Mehl einen perfekten Ersatz. Das Experimentieren gibt uns auch die Möglichkeit, Mais- statt Weizengriess zu verwenden, und diese Maismischung inspiriert uns, Maiskörner zu den fertigen Chäschnöpfli zu mischen. Uns schmeckt diese Variante unseres +[\"beliebten Klassikers\":http://chuchitisch.ch/recipes/119]+ sehr gut, das werden wir wiederholen!",
+  "prepTime": "PT0S",
+  "cookTime": "PT1800S",
+  "totalTime": "PT3000S",
+  "recipeYield": "3 Personen",
+  "keywords": "  Beilage,  Einfach,  Hauptspeise,  Mittelschnell,  Vegetarisch,  Saisonal,  ",
+  "recipeIngredient": [
+    "150  g Mehl",
+    "150  g Maisgriess",
+    "3   Eier",
+    "&frac12;  TL Salz",
+    "   ---",
+    "400  g Mais",
+    "100  g Parmesan",
+    "1   Zwiebel",
+    "3  TL Butter",
+    "   Pfeffer",
+    ""
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+  "recipeInstructions": "Mehl und Maisgriess vermischen, Eier und Salz beigeben und vorsichtig nach und nach etwas Wasser zugeben, bis sich ein zäh reissender Teig bildet.\nDen Teig 20 Minuten ruhen lassen, dass der Griess quellen kann.\n\nZwiebel in Ringe schneiden und in der Butter bei mittlerer Hitze in einer Bratpfanne bräunen.\n\nIn einem grossen Topf Salzwasser aufkochen und den Teig portionenweise durch eine Spätzlereibe ins Wasser reiben. Aufkochen lassen, zwei drei Minuten köcheln lassen und die Spätzli dann mit einer Schaumkelle aus dem Wasser heben. In einer vorgewärmten Schüssel mit den Maiskörnern und portionenweise Reibkäse mischen. Die Schüssel zwischen den Portionen in den auf 80 °C eingestellten Backofen stellen.\n\nDie Spätzle anrichten, die Zwiebelringe drauf verteilen und mit etwas frisch gemahlenem Pfeffer bestreuen."
+}
