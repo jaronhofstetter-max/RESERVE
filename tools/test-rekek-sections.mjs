@@ -153,3 +153,5 @@ assert.equal(K.insetRecipeEvidence({lines:rows},500),true);assert.equal(K.insetR
 const r=K.insetRecipeRegions({lines:rows},500,600);assert.ok(r);assert.ok(r.title.y1<r.ingredients.y0);assert.ok(r.ingredients.y1<r.steps.y0);assert.ok(r.steps.y1<540);assert.equal(K.insetRecipeRegions({lines:rows.filter(r=>!r.text.startsWith('Zubereitung'))},500,600),null);
 const data=new Uint8ClampedArray(100*100*4).fill(255);for(let y=0;y<100;y++)for(let x=0;x<100;x++){const i=(y*100+x)*4,v=x>=45&&x<50&&y>20&&y<80?30:150+x*.4;data[i]=data[i+1]=data[i+2]=v;}const prepared=K.preparePrintedPaper({data,width:100,height:100});assert.ok(prepared);assert.equal(prepared.data[(50*100+47)*4],0);assert.equal(prepared.data[(50*100+10)*4],255);assert.equal(data[(50*100+10)*4],154);
 }
+
+const packageList=K.parseText('Creme\nZutaten\n1 Becher Quark, 500 g\n1 Becher Sahne, 200g\n1 Dose Bohnen, 400 g\nZubereitung\nAlles verrühren.');assert.equal(packageList.ingredients,'1 Becher Quark, 500 g\n1 Becher Sahne, 200g\n1 Dose Bohnen, 400 g');
