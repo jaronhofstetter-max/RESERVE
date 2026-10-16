@@ -6,7 +6,7 @@ function normalize(text){return String(text||'').replace(/(\d)½/g,'$1 1/2').rep
 function number(text){if(/^\d+\.\d{3}$/.test(text))return null;const parts=text.split(/\s+/);let n=0;for(const p of parts){if(p.includes('/')){const[a,b]=p.split('/').map(Number);if(!b)return null;n+=a/b;}else n+=Number(p.replace(',','.'));}return Number.isFinite(n)&&n>0&&n<=1000000?n:null;}
 function parse(text){const t=normalize(text).replace(/^(\d+)\.\s+(?=[A-Za-zÄÖÜäöüß])/,'$1 '),m=t.match(new RegExp('^('+value+')(?![\\d.,/])\\s*(.*)$'));if(!m)return null;const n=number(m[1]);if(n===null)return null;const tail=m[2].replace(/^\.\s+/,'');for(const[unit,re]of units){const u=tail.match(re);if(u)return{number:n,unit,tail:tail.slice(u[0].length).trim(),source:t};}return null;}
 function family(reader){return reader.startsWith('tesseract')?'tesseract':reader.startsWith('ctc')?'ctc-htr':reader.startsWith('trocr')?'trocr':null;}
-function decide(readings){const votes=new Map(),numbers=new Map();for(const r of readings){const f=family(r.reader);if(!f)continue;const q=parse(r.text),lead=normalize(r.text).match(new RegExp('^('+value+')(?=\\s|[A-Za-zÄÖÜäöüß]|$)')),n=q?.number??(lead&&!/(?:\d{2,}9|\d+[.,]9)\s+\p{L}/u.test(normalize(r.text))?number(lead[1]):null);if(n!==null){if(!numbers.has(n))numbers.set(n,new Set());numbers.get(n).add(f);}if(q){const key=JSON.stringify([q.number,q.unit]);if(!votes.has(key))votes.set(key,{...q,families:new Set()});votes.get(key).families.add(f);}}
+function decide(readings){const votes=new Map(),numbers=new Map(),gramCrops=readings.filter(r=>r.fullLine===false&&!r.truncated).map(r=>parse(r.text)).filter(q=>q?.unit==='g').map(q=>String(q.number));for(const r of readings){const f=family(r.reader);if(!f)continue;const q=parse(r.text),lead=normalize(r.text).match(new RegExp('^('+value+')(?=\\s|[A-Za-zÄÖÜäöüß]|$)')),n=q?.number??(lead&&!gramCrops.some(n=>[n+'9',n+'.9',n+',9'].includes(lead[1]))&&!/(?:\d{2,}9|\d+[.,]9)\s+\p{L}/u.test(normalize(r.text))?number(lead[1]):null);if(n!==null){if(!numbers.has(n))numbers.set(n,new Set());numbers.get(n).add(f);}if(q){const key=JSON.stringify([q.number,q.unit]);if(!votes.has(key))votes.set(key,{...q,families:new Set()});votes.get(key).families.add(f);}}
  const ranked=[...votes.values()].map(q=>({...q,families:[...q.families],support:q.families.size})).sort((a,b)=>b.support-a.support),top=ranked.filter(q=>q.support>=2&&q.support===ranked[0]?.support);let suggestion=top.length===1?top[0]:ranked.length===1?ranked[0]:null,confidence=suggestion?(suggestion.support>=2?'multiple-families':'single-family'):null;
  if(!suggestion&&ranked.length){const best=Math.max(...ranked.map(q=>numbers.get(q.number)?.size||0)),choices=ranked.filter(q=>numbers.get(q.number)?.size===best);if(best>=2&&choices.length===1){suggestion=choices[0];confidence='unit-requires-review';}}
  if(suggestion){const own=numbers.get(suggestion.number)?.size||0,other=Math.max(0,...[...numbers].filter(([n])=>n!==suggestion.number).map(([,f])=>f.size));if(other>=2&&other>own){suggestion=null;confidence='number-conflict';}}
@@ -56,8 +56,10 @@ function reviewText(readings,decision){
  // Only a real matching crop reading may supply a review draft's quantity.
  // Never infer g from a 9, and never overwrite the actual recipe field here.
  if(q?.unit==='g'&&readings.some(r=>{const p=!r.truncated&&parse(r.text);return p&&p.number===q.number&&p.unit==='g';})){
-  const m=normalize(text).match(/^(\d+(?:[.,]\d+)?)\s+(\p{L}.*)$/u),n=String(q.number);
-  if(m&&[n+'9',n+'.9',n+',9'].includes(m[1]))return n+' g '+m[2];
+  const n=String(q.number),candidates=full.map(r=>({r,m:normalize(r.text).match(/^(\d+(?:[.,]\d+)?)\s+(\p{L}.*)$/u)})).filter(c=>c.m&&[n+'9',n+'.9',n+',9'].includes(c.m[1]));
+  const support=c=>new Set(candidates.filter(other=>other.m[2].toLocaleLowerCase()===c.m[2].toLocaleLowerCase()).map(other=>family(other.r.reader))).size;
+  candidates.sort((a,b)=>support(b)-support(a)||b.m[2].length-a.m[2].length);
+  if(candidates.length)return n+' g '+candidates[0].m[2];
  }
  return text;
 }
