@@ -192,3 +192,16 @@ assert.ok(parallelLayout.rows.some(r=>r.kind==='step'&&r.source.includes('Puddin
 assert.ok(parallelLayout.rows.some(r=>r.kind==='step'&&r.source.includes('Zwetschgen')));
 assert.equal(K.parallelRecipeRegions({lines:[]},1000,1000),null);
 console.log('Parallel sheet layout: ten ingredient rows separated from adjacent instructions; unmeasured toppings remain source text.');
+
+const framed=K.parseText('Rezepte Familienküche\nHauptgerichte\nGemüse mit Bohnen\nZutaten:\n400 g Gemüse, 1 rote\n\nPaprika,\n2 EL Öl, 1 Becher\n\nSchmand,\nZubereitung:\nAlles verrühren.\nGesendet von:\nTestname\nTestort');
+assert.equal(framed.name,'Gemüse mit Bohnen');
+assert.deepEqual(Array.from(framed.ingredients.split('\n')),['400 g Gemüse','1 rote Paprika,','2 EL Öl','1 Becher Schmand,']);
+assert.equal(framed.steps,'Alles verrühren.');assert.ok(framed.ignored.includes('Testort'));
+const mixedMeasures=K.parseText('Gemüsetopf\n2 Zwiebeln\n1 Eßlöffel Öl\nZwiebeln und Öl andünsten.\n300g Gemüse dazugeben und anbraten.\n1 Stange Lauch in Streifen schneiden\n1/4 Liter Brühe\n1/4 Liter saure Sahne zum Schluß zugeben,nicht mehr kochen.\nGuten Appetit!!!');
+assert.ok(mixedMeasures.ingredients.includes('300g Gemüse\n1 Stange Lauch\n1/4 Liter Brühe\n1/4 Liter saure Sahne'));
+assert.ok(!mixedMeasures.ingredients.includes('zum Schluß'));assert.ok(!mixedMeasures.ingredients.includes('andünsten'));
+assert.ok(mixedMeasures.steps.includes('Zwiebeln und Öl andünsten.'));assert.ok(mixedMeasures.steps.includes('300g Gemüse dazugeben und anbraten.'));assert.ok(mixedMeasures.steps.includes('1 Stange Lauch in Streifen schneiden'));assert.ok(mixedMeasures.steps.includes('saure Sahne zum Schluß zugeben,nicht mehr kochen.'));assert.ok(!mixedMeasures.steps.includes('Guten Appetit'));
+const nutritionFooter=K.parseText('Auflauf\nFür 4 Personen\nZutaten\n250 ml Milch\n3 Eier\nZubereitung\nAlles verrühren.\nBei 180 Grad 20 Minuten garen.\nEine Portion hat 350 kcal, 24,2 g Eiweiß und 10,6 g Kohlenhydrate.');
+assert.equal(nutritionFooter.portions,'4');assert.equal(nutritionFooter.steps,'Alles verrühren.\nBei 180 Grad 20 Minuten garen.');
+const unknownWrap=K.parseText('Gebäck\nZutaten\n1 Becher\nBelag:\n100 g Mehl\nAlles mischen.');assert.ok(!unknownWrap.ingredients.includes('1 Becher Belag'));
+console.log('Printed-page structure: literal header exclusion, wrapped adjective/container quantities, old-spelling mixed actions, preserved preparation and author/nutrition footer separation passed.');
