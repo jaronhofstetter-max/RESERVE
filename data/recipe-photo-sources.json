@@ -413,6 +413,23 @@
       "review": "Serviervorschlag; keine belegte Zubereitung nach dem konkreten Rezept.",
       "reviewedAt": "2026-10-15",
       "originalPhotoSha256": "5e0e6385dcabe0d9d8838a1b1fce236662193b090d2af03ada99441d0f9fbaf0"
+    },
+    {
+      "recipeId": "chuchitisch-maisspaetzli",
+      "path": "assets/recipe-photos/chuchitisch-maisspaetzli.webp",
+      "source": "https://chuchitisch.ch/recipes/691",
+      "author": "Hannes und Martina / Chuchitisch",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "kind": "photograph",
+      "servingSuggestion": false,
+      "title": "Maisspätzli",
+      "provider": "Chuchitisch",
+      "adaptation": "Als WebP komprimiert; die App kann einen Ausschnitt anzeigen.",
+      "review": "Originalfoto zum übernommenen Rezept; Autorenkonto laut Quelle, kein separater Fotograf genannt. Website verlangt Eigenfotos.",
+      "reviewedAt": "2026-10-16",
+      "originalPhotoUrl": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/837_Maissp%C3%A4tzli.png",
+      "originalPhotoSha256": "87ac40652e61d08de87c00d4cd4759451c973a5fd6301643752ccec239516c38"
     }
   ]
 }

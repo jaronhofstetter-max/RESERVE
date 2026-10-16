@@ -1,0 +1,100 @@
+{
+  "169761": {
+    "fdcId": 169761,
+    "description": "Wheat flour, white, all-purpose, unenriched",
+    "per100g": {
+      "kcal": 364,
+      "protein": 10.33,
+      "carbs": 76.31,
+      "fat": 0.98,
+      "fiber": 2.7
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/169761/nutrients",
+    "carbohydrateBasis": "total-including-fiber",
+    "retrievedAt": "2026-10-12"
+  },
+  "169697": {
+    "description": "Cornmeal, whole-grain, yellow",
+    "source": "https://fdc.nal.usda.gov/food-details/169697/nutrients",
+    "per100g": {
+      "kcal": 362,
+      "protein": 8.12,
+      "carbs": 76.9,
+      "fat": 3.59,
+      "fiber": 7.3
+    }
+  },
+  "171287": {
+    "fdcId": 171287,
+    "description": "Egg, whole, raw, fresh",
+    "per100g": {
+      "kcal": 143,
+      "protein": 12.56,
+      "carbs": 0.72,
+      "fat": 9.51,
+      "fiber": 0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/171287/nutrients",
+    "carbohydrateBasis": "total-including-fiber",
+    "retrievedAt": "2026-10-12"
+  },
+  "169214": {
+    "description": "Corn, sweet, yellow, canned, whole kernel, drained solids",
+    "source": "https://fdc.nal.usda.gov/food-details/169214/nutrients",
+    "per100g": {
+      "kcal": 67.0,
+      "protein": 2.29,
+      "carbs": 14.3,
+      "fat": 1.22,
+      "fiber": 2.0
+    }
+  },
+  "170848": {
+    "fdcId": 170848,
+    "description": "Cheese, parmesan, hard",
+    "per100g": {
+      "fat": 25,
+      "fiber": 0,
+      "protein": 35.8,
+      "carbs": 3.22,
+      "kcal": 392
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/170848/nutrients"
+  },
+  "170000": {
+    "fdcId": 170000,
+    "description": "Onions, raw",
+    "per100g": {
+      "fat": 0.1,
+      "carbs": 9.34,
+      "kcal": 40,
+      "protein": 1.1,
+      "fiber": 1.7
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/170000/nutrients"
+  },
+  "173430": {
+    "fdcId": 173430,
+    "description": "Butter, without salt",
+    "per100g": {
+      "kcal": 717,
+      "fat": 81.1,
+      "carbs": 0.06,
+      "protein": 0.85,
+      "fiber": 0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/173430/nutrients"
+  },
+  "170931": {
+    "fdcId": 170931,
+    "description": "Spices, pepper, black",
+    "per100g": {
+      "fat": 3.26,
+      "carbs": 64.0,
+      "kcal": 251,
+      "protein": 10.4,
+      "fiber": 25.3
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/170931/nutrients"
+  }
+}

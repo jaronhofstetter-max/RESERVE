@@ -1,0 +1,201 @@
+[
+  {
+    "id": "chuchitisch-maisspaetzli",
+    "name": "Maisspätzli",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🍽️",
+    "cuisine": "Schweizerisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 20,
+    "difficulty": "Mittel",
+    "allergens": [
+      "Gluten",
+      "Ei",
+      "Milch"
+    ],
+    "tags": [
+      "Originalfoto",
+      "Chuchitisch",
+      "Mais"
+    ],
+    "ingredients": [
+      {
+        "name": "Weizenmehl",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Maisgriess",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Ei",
+        "amount": 1,
+        "unit": "Stück"
+      },
+      {
+        "name": "Salz",
+        "amount": 1,
+        "unit": "g"
+      },
+      {
+        "name": "Wasser",
+        "amount": 50,
+        "unit": "ml"
+      },
+      {
+        "name": "Maiskörner, abgetropft",
+        "amount": 133.3333,
+        "unit": "g"
+      },
+      {
+        "name": "Parmesan",
+        "amount": 33.3333,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 33.3333,
+        "unit": "g"
+      },
+      {
+        "name": "Butter",
+        "amount": 5,
+        "unit": "g"
+      },
+      {
+        "name": "Pfeffer",
+        "amount": 0.1667,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Mehl und Maisgriess in einer Schüssel mischen. Eier und Salz zugeben und nach und nach etwas Wasser einarbeiten, bis der Teig zäh vom Löffel reisst.",
+      "Den Teig etwa 20 Minuten ruhen lassen, damit der Griess quellen kann. Inzwischen die Zwiebel schälen und in Ringe schneiden; Mais abtropfen lassen.",
+      "Butter in einer Bratpfanne bei mittlerer Hitze schmelzen und die Zwiebelringe darin goldbraun braten. Backofen auf 80 °C zum Warmhalten einstellen.",
+      "In einem grossen Topf Salzwasser aufkochen. Den Teig portionenweise durch eine Spätzlereibe ins Wasser geben und nach erneutem Aufkochen zwei bis drei Minuten köcheln lassen.",
+      "Die gegarten Spätzli mit einer Schaumkelle herausheben und in einer vorgewärmten ofenfesten Schüssel mit Mais und portionsweise geriebenem Käse mischen. Zwischen den Durchgängen im Ofen warm halten.",
+      "Die Spätzli anrichten, mit den Zwiebelringen belegen und mit frisch gemahlenem Pfeffer abschmecken. Warm servieren, sobald alle Portionen fertig sind."
+    ],
+    "nutrition": {
+      "kcal": 704.1,
+      "protein": 30.92,
+      "carbs": 92.05,
+      "fat": 21.09,
+      "fiber": 8.28
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung aus USDA SR Legacy; keine Messung des fertigen Gerichts.",
+      "basis": "Pro Person; verfügbare Kohlenhydrate = USDA total minus Ballaststoffe. Original für 3 Personen; Zutaten auf eine Person umgerechnet. Ergänzte Richtmengen für den Originalansatz: Wasser ca. 150 ml (Original nur nach Bedarf), Zwiebel 100 g, 3 TL Butter = 15 g, ½ TL Salz = 3 g, Pfeffer = 0.5 g. Teigwasser schluckweise nach Konsistenz zugeben. 3 Eier ohne Schale = 150 g. Mais als 400 g abgetropfte Dosenkörner konkretisiert. Maisgriess mit gelbem Vollkorn-Maismehl angenähert; Parmesan und Originalmengen unverändert. Kochwasser und zusätzliches Kochwassersalz nicht eingerechnet. Die Ruhezeit von 20 Minuten ist in den 30 Minuten Vorbereitungszeit enthalten. Für die vegetarische Fassung Hartkäse mit mikrobiellem Lab statt tierischem Lab verwenden; die berechneten Nährwerte verwenden Parmesan als Näherung.",
+      "sources": "docs/recipe-candidates/import-2026-10-16/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Weizenmehl",
+          "grams": 50,
+          "foodKey": "169761",
+          "excluded": false
+        },
+        {
+          "name": "Maisgriess",
+          "grams": 50,
+          "foodKey": "169697",
+          "excluded": false
+        },
+        {
+          "name": "Ei",
+          "grams": 50,
+          "foodKey": "171287",
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 1,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Wasser",
+          "grams": 50,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Maiskörner, abgetropft",
+          "grams": 133.3333,
+          "foodKey": "169214",
+          "excluded": false
+        },
+        {
+          "name": "Parmesan",
+          "grams": 33.3333,
+          "foodKey": "170848",
+          "excluded": false
+        },
+        {
+          "name": "Zwiebel",
+          "grams": 33.3333,
+          "foodKey": "170000",
+          "excluded": false
+        },
+        {
+          "name": "Butter",
+          "grams": 5,
+          "foodKey": "173430",
+          "excluded": false
+        },
+        {
+          "name": "Pfeffer",
+          "grams": 0.1667,
+          "foodKey": "170931",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Maisspätzli mit Maiskörnern, Käse und goldbraunen Zwiebeln nach Chuchitisch. Mit Originalfoto; Mengen und geschätzte Nährwerte gelten für eine Person.",
+    "equipment": [
+      "Schüssel",
+      "Spätzlereibe",
+      "Kochtopf",
+      "Schaumkelle",
+      "Bratpfanne",
+      "Ofenfeste Schüssel",
+      "Backofen"
+    ],
+    "prepNotes": [
+      "Original für 3 Personen; Zutaten auf eine Person umgerechnet.",
+      "Ergänzte Richtmengen für den Originalansatz: Wasser ca. 150 ml (Original nur nach Bedarf), Zwiebel 100 g, 3 TL Butter = 15 g, ½ TL Salz = 3 g, Pfeffer = 0.5 g. Teigwasser schluckweise nach Konsistenz zugeben.",
+      "3 Eier ohne Schale = 150 g. Mais als 400 g abgetropfte Dosenkörner konkretisiert. Maisgriess mit gelbem Vollkorn-Maismehl angenähert; Parmesan und Originalmengen unverändert. Kochwasser und zusätzliches Kochwassersalz nicht eingerechnet.",
+      "Die Ruhezeit von 20 Minuten ist in den 30 Minuten Vorbereitungszeit enthalten. Für die vegetarische Fassung Hartkäse mit mikrobiellem Lab statt tierischem Lab verwenden; die berechneten Nährwerte verwenden Parmesan als Näherung."
+    ],
+    "doneness": "Die Spätzli sind auch im Innern gar und nicht mehr mehlig; der Käse ist geschmolzen und die Zwiebeln sind goldbraun.",
+    "substitutions": [
+      "Für eine vegetarische Fassung Hartkäse mit mikrobiellem Lab wählen. Andere Käsesorten verändern Allergene und Nährwerte."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt gekühlt lagern und zeitnah verbrauchen; beim Wiedererwärmen vollständig durcherhitzen.",
+    "safety": "Eier gekühlt lagern und den Eierteig vollständig durchgaren. Saubere Arbeitsgeräte verwenden.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "https://chuchitisch.ch/recipes/691",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "originalServings": 3,
+      "adaptation": "Auf eine Person umgerechnet, Zubereitung gegliedert und Garmerkmale ergänzt. Original für 3 Personen; Zutaten auf eine Person umgerechnet. Ergänzte Richtmengen für den Originalansatz: Wasser ca. 150 ml (Original nur nach Bedarf), Zwiebel 100 g, 3 TL Butter = 15 g, ½ TL Salz = 3 g, Pfeffer = 0.5 g. Teigwasser schluckweise nach Konsistenz zugeben. 3 Eier ohne Schale = 150 g. Mais als 400 g abgetropfte Dosenkörner konkretisiert. Maisgriess mit gelbem Vollkorn-Maismehl angenähert; Parmesan und Originalmengen unverändert. Kochwasser und zusätzliches Kochwassersalz nicht eingerechnet. Die Ruhezeit von 20 Minuten ist in den 30 Minuten Vorbereitungszeit enthalten. Für die vegetarische Fassung Hartkäse mit mikrobiellem Lab statt tierischem Lab verwenden; die berechneten Nährwerte verwenden Parmesan als Näherung."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.4,
+      "waterMl": 1000,
+      "noCook": false,
+      "onePot": false
+    }
+  }
+]
