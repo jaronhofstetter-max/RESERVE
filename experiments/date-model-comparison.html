@@ -1,0 +1,11 @@
+<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RESERVE · Datumsmodell vergleichen</title>
+<style>body{font:16px system-ui;background:#fbfaf5;color:#193e30;max-width:1000px;margin:32px auto;padding:16px}button,input{font:inherit;padding:10px;margin:6px}button{background:#245c40;color:white;border:0;border-radius:8px}table{border-collapse:collapse;width:100%;font-size:13px}td,th{padding:8px;border-bottom:1px solid #ddd;text-align:left}pre{white-space:pre-wrap}section{padding:16px;margin:16px 0;background:white;border:1px solid #ddd;border-radius:12px}</style>
+<h1>Datumsmodell vergleichen</h1><p>Getrennter Test ohne Vorratszugriff. Dieselben Fotos, dieselbe Erkennung, zwei OCR-Modelle. Modell und Fotos werden lokal im Browser verarbeitet.</p>
+<section><label>Trainiertes Modell <input id="modelFile" type="file" accept=".traineddata"></label><br>
+<label>Datumsbilder <input id="testPhotos" type="file" accept="image/*" multiple></label><br>
+<label>Bestätigte Angaben (nur Auswertung) <input id="labelsFile" type="file" accept=".json"></label><br>
+<button id="runBaseline">Nächste 5 Bilder · bisheriges Modell</button><button id="runCandidate">Nächste 5 Bilder · neues Modell</button><button id="exportResults">Ergebnisse exportieren</button>
+<p id="testStatus" role="status">Bitte Modell und Bilder auswählen.</p><pre id="summary"></pre></section>
+<section><h2>Laufende Erkennung</h2><input id="scanExpiry" type="date"><button id="scanAdd" hidden>Test</button></section>
+<section><h2>Messreihe</h2><table><thead><tr><th>Bild</th><th>Modell</th><th>App-Datum</th><th>Genauigkeit</th><th>Ergebnis</th><th>Zeit</th></tr></thead><tbody id="results"></tbody></table></section>
+<script src="expiry-camera-baseline-66b4822.js"></script><script src="date-model-comparison.js"></script></html>
