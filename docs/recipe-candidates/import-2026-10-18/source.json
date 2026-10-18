@@ -1,0 +1,29 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Kürbissuppe",
+  "image": "http://www.chuchitisch.ch//chuchitisch/download_picture/lightroom/290_K%C3%BCrbissuppe.png",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "",
+  "prepTime": "PT0S",
+  "cookTime": "PT1200S",
+  "totalTime": "PT1200S",
+  "recipeYield": "2 Personen",
+  "keywords": "  Vorspeise,  Gesund,  Hauptspeise,  Einfach,  Suppe,  Eher schnell,  Vegetarisch,  Vegan,  Saisonal,  ",
+  "recipeIngredient": [
+    "400  g Kürbis",
+    "1   Kartoffel",
+    "5  dl Gemüsebouillon",
+    "1   Zwiebel",
+    "2  EL Pflanzenöl",
+    "   Salz",
+    "   Pfeffer",
+    ""
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+  "recipeInstructions": "Den Kürbis und die Kartoffel schälen und in Stücke schneiden und die Zwiebel fein hacken. In einer Pfanne die Zwiebel in etwas heissem Öl andünsten, den Kürbis und die Kartoffel dazugeben und kurz mitdünsten. So viel Bouillon dazugeben, dass der Kürbis knapp überdeckt ist und ca. 10 Minuten kochen, bis der Kürbis weich ist.\nMit einem Pürierstab den Kürbis pürieren, die Suppe mit Salz und Pfeffer abschmecken. "
+}

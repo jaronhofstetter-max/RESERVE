@@ -430,6 +430,23 @@
       "reviewedAt": "2026-10-16",
       "originalPhotoUrl": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/837_Maissp%C3%A4tzli.png",
       "originalPhotoSha256": "87ac40652e61d08de87c00d4cd4759451c973a5fd6301643752ccec239516c38"
+    },
+    {
+      "recipeId": "chuchitisch-kuerbissuppe",
+      "path": "assets/recipe-photos/chuchitisch-kuerbissuppe.webp",
+      "source": "https://chuchitisch.ch/recipes/91",
+      "author": "Hannes und Martina / Chuchitisch",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Kürbissuppe",
+      "provider": "Chuchitisch",
+      "adaptation": "Als WebP komprimiert; die App kann einen Ausschnitt anzeigen.",
+      "review": "Originalfoto der Quelle mit zusätzlicher Nussgarnitur: Serviervorschlag; Nüsse sind nicht im Rezept oder den Nährwerten enthalten. Autorenkonto der Quelle, kein separater Fotograf genannt.",
+      "reviewedAt": "2026-10-18",
+      "originalPhotoUrl": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/290_K%C3%BCrbissuppe.png",
+      "originalPhotoSha256": "8629483b92d6dfcdb9fefd52fd6d7567f5febf76e2b67e8f79b7fe5a41316323"
     }
   ]
 }
