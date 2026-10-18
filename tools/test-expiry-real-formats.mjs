@@ -93,3 +93,5 @@ field.value='';if(sandbox.RESERVE_SCAN_CONFIDENCE.state()[3].level!=='open')thro
 field.value='2028-12';field.validity.valid=false;if(api.manualDateChanged(field)||sandbox.RESERVE_SCAN_CONFIDENCE.state()[3].level!=='open')throw Error('Ungültiges Datum wird bestätigt');
 field.validity.valid=true;hint.textContent='Unsicherer lokaler Vorschlag';if(sandbox.RESERVE_SCAN_CONFIDENCE.state()[3].level!=='check')throw Error('Neuer unsicherer Scan wird ungeprüft abgehakt');
 console.log('Manual MHD correction: checklist, month-end, empty/invalid dates and uncertain scans OK');
+
+await import('./test-expiry-nested-month-and-stale-date.mjs');
