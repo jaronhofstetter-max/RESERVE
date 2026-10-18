@@ -1,0 +1,165 @@
+[
+  {
+    "id": "chuchitisch-kuerbissuppe",
+    "name": "Kürbissuppe nach Chuchitisch",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegan",
+    "dish": "🥣",
+    "cuisine": "Schweizerisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Sellerie"
+    ],
+    "tags": [
+      "Chuchitisch",
+      "Herbst",
+      "Originalfoto",
+      "Suppe"
+    ],
+    "ingredients": [
+      {
+        "name": "Kürbis",
+        "amount": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Kartoffel",
+        "amount": 75,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Gemüsebouillon",
+        "amount": 250,
+        "unit": "ml"
+      },
+      {
+        "name": "Rapsöl",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.5,
+        "unit": "g"
+      },
+      {
+        "name": "Pfeffer",
+        "amount": 0.25,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Kürbis und Kartoffel waschen, bei Bedarf schälen und in gleichmässige kleine Stücke schneiden. Die Zwiebel schälen und fein hacken.",
+      "Rapsöl in einem Topf erhitzen und die Zwiebel bei mittlerer Hitze glasig dünsten, ohne sie dunkel werden zu lassen.",
+      "Kürbis und Kartoffel dazugeben und unter Rühren kurz mitdünsten. Mit so viel Gemüsebouillon aufgiessen, dass die Stücke knapp bedeckt sind.",
+      "Aufkochen und bei reduzierter Hitze etwa 10 bis 15 Minuten köcheln, bis Kürbis und Kartoffel weich sind und sich leicht zerdrücken lassen.",
+      "Den Topf vom Herd nehmen und die Suppe mit einem Stabmixer vorsichtig glatt pürieren. Bei Bedarf schluckweise Wasser oder Bouillon zugeben.",
+      "Mit Salz und Pfeffer abschmecken und heiss servieren. Die abgebildete Nussgarnitur ist optional und nicht eingerechnet."
+    ],
+    "nutrition": {
+      "kcal": 263.54,
+      "protein": 4.71,
+      "carbs": 29.79,
+      "fat": 14.15,
+      "fiber": 3.49
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy; keine Messung des fertigen Gerichts.",
+      "basis": "Pro Person; verfügbare Kohlenhydrate = Gesamtkohlenhydrate minus Ballaststoffe. Original für 2 Personen; alle Mengen auf eine Person umgerechnet. Dokumentierte Richtgewichte im Originalansatz: 1 Kartoffel = 150 g, 1 Zwiebel = 100 g, 2 EL Pflanzenöl = 30 ml. Pflanzenöl als Rapsöl konkretisiert; Dichte 0.91 g/ml. Salz 1 g und Pfeffer 0.5 g sind ergänzte Richtmengen nach Geschmack, keine Originalangaben. Die 500 ml Bouillon entsprechen der Zutatenliste. Je nach Topf und Kürbis etwas mehr oder weniger Flüssigkeit verwenden; Nährwerte ändern sich dadurch. Bouillon für die Berechnung vereinfacht 1 ml = 1 g. Originalfoto mit Nussgarnitur: Serviervorschlag. Nüsse und optionale Crème fraîche sind nicht Bestandteil dieser Rezeptfassung und nicht in den Nährwerten enthalten. Bei Verwendung Nuss- bzw. Milchallergene ergänzen. Gemüsebouillon ohne tierische Zutaten wählen und auf Sellerie sowie weitere Allergene im Produktetikett prüfen.",
+      "sources": "docs/recipe-candidates/import-2026-10-18/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Kürbis",
+          "grams": 200,
+          "foodKey": "168448",
+          "excluded": false
+        },
+        {
+          "name": "Kartoffel",
+          "grams": 75,
+          "foodKey": "170026",
+          "excluded": false
+        },
+        {
+          "name": "Zwiebel",
+          "grams": 50,
+          "foodKey": "170000",
+          "excluded": false
+        },
+        {
+          "name": "Gemüsebouillon",
+          "grams": 250,
+          "foodKey": "171583",
+          "excluded": false
+        },
+        {
+          "name": "Rapsöl",
+          "grams": 13.65,
+          "foodKey": "172336",
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 0.5,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Pfeffer",
+          "grams": 0.25,
+          "foodKey": "170931",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Einfache Kürbissuppe mit Kartoffel und Zwiebel nach Chuchitisch. Das Originalfoto zeigt einen Serviervorschlag mit zusätzlicher Nussgarnitur. Mengen und geschätzte Nährwerte gelten pro Person.",
+    "equipment": [
+      "Kochtopf",
+      "Küchenmesser",
+      "Schneidebrett",
+      "Stabmixer"
+    ],
+    "prepNotes": [
+      "Original für 2 Personen; alle Mengen auf eine Person umgerechnet.",
+      "Dokumentierte Richtgewichte im Originalansatz: 1 Kartoffel = 150 g, 1 Zwiebel = 100 g, 2 EL Pflanzenöl = 30 ml. Pflanzenöl als Rapsöl konkretisiert; Dichte 0.91 g/ml. Salz 1 g und Pfeffer 0.5 g sind ergänzte Richtmengen nach Geschmack, keine Originalangaben.",
+      "Die 500 ml Bouillon entsprechen der Zutatenliste. Je nach Topf und Kürbis etwas mehr oder weniger Flüssigkeit verwenden; Nährwerte ändern sich dadurch. Bouillon für die Berechnung vereinfacht 1 ml = 1 g.",
+      "Originalfoto mit Nussgarnitur: Serviervorschlag. Nüsse und optionale Crème fraîche sind nicht Bestandteil dieser Rezeptfassung und nicht in den Nährwerten enthalten. Bei Verwendung Nuss- bzw. Milchallergene ergänzen.",
+      "Gemüsebouillon ohne tierische Zutaten wählen und auf Sellerie sowie weitere Allergene im Produktetikett prüfen."
+    ],
+    "doneness": "Kürbis und Kartoffel sind vollständig weich; die pürierte Suppe ist glatt und ohne harte Stücke.",
+    "substitutions": [
+      "Für eine vegane Fassung rein pflanzliche Gemüsebouillon verwenden. Nüsse und Crème fraîche nur separat ergänzen und Allergene sowie Nährwerte anpassen."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt gekühlt lagern und zeitnah verbrauchen; vor dem Essen vollständig durcherhitzen.",
+    "safety": "Beim Pürieren heisser Suppe den Topf vom Herd nehmen und den Mixerkopf eingetaucht halten, damit nichts spritzt.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "https://chuchitisch.ch/recipes/91",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "originalServings": 2,
+      "adaptation": "Auf eine Person umgerechnet; Schritte gegliedert und Garmerkmale ergänzt. Original für 2 Personen; alle Mengen auf eine Person umgerechnet. Dokumentierte Richtgewichte im Originalansatz: 1 Kartoffel = 150 g, 1 Zwiebel = 100 g, 2 EL Pflanzenöl = 30 ml. Pflanzenöl als Rapsöl konkretisiert; Dichte 0.91 g/ml. Salz 1 g und Pfeffer 0.5 g sind ergänzte Richtmengen nach Geschmack, keine Originalangaben. Die 500 ml Bouillon entsprechen der Zutatenliste. Je nach Topf und Kürbis etwas mehr oder weniger Flüssigkeit verwenden; Nährwerte ändern sich dadurch. Bouillon für die Berechnung vereinfacht 1 ml = 1 g. Originalfoto mit Nussgarnitur: Serviervorschlag. Nüsse und optionale Crème fraîche sind nicht Bestandteil dieser Rezeptfassung und nicht in den Nährwerten enthalten. Bei Verwendung Nuss- bzw. Milchallergene ergänzen. Gemüsebouillon ohne tierische Zutaten wählen und auf Sellerie sowie weitere Allergene im Produktetikett prüfen."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.25,
+      "waterMl": 250,
+      "noCook": false,
+      "onePot": true
+    }
+  }
+]

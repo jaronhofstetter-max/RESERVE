@@ -1,0 +1,73 @@
+{
+  "168448": {
+    "description": "Pumpkin, raw",
+    "source": "https://fdc.nal.usda.gov/food-details/168448/nutrients",
+    "per100g": {
+      "kcal": 26.0,
+      "protein": 1.0,
+      "carbs": 6.5,
+      "fat": 0.1,
+      "fiber": 0.5
+    }
+  },
+  "170026": {
+    "fdcId": 170026,
+    "description": "Potatoes, flesh and skin, raw",
+    "per100g": {
+      "fat": 0.09,
+      "kcal": 77.0,
+      "protein": 2.05,
+      "fiber": 2.1,
+      "carbs": 17.5
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/170026/nutrients"
+  },
+  "170000": {
+    "fdcId": 170000,
+    "description": "Onions, raw",
+    "per100g": {
+      "fat": 0.1,
+      "carbs": 9.34,
+      "kcal": 40,
+      "protein": 1.1,
+      "fiber": 1.7
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/170000/nutrients"
+  },
+  "171583": {
+    "fdcId": 171583,
+    "description": "Soup, vegetable broth, ready to serve",
+    "per100g": {
+      "protein": 0.24,
+      "fiber": 0,
+      "fat": 0.07,
+      "carbs": 0.93,
+      "kcal": 5
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/171583/nutrients"
+  },
+  "172336": {
+    "fdcId": 172336,
+    "description": "Oil, canola",
+    "per100g": {
+      "fat": 100,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 884,
+      "fiber": 0.0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/172336/nutrients"
+  },
+  "170931": {
+    "fdcId": 170931,
+    "description": "Spices, pepper, black",
+    "per100g": {
+      "fat": 3.26,
+      "carbs": 64.0,
+      "kcal": 251,
+      "protein": 10.4,
+      "fiber": 25.3
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/170931/nutrients"
+  }
+}
