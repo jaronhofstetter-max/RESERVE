@@ -1,0 +1,2093 @@
+<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'wasm-unsafe-eval' blob:; style-src 'unsafe-inline'; connect-src blob: data:; img-src blob: data:; worker-src blob:; form-action 'none'; base-uri 'none'"><title>RESERVE · Datumsrollen prüfen</title>
+ <style>*{box-sizing:border-box}body{font:16px system-ui;background:#fbfaf5;color:#193e30;margin:0;padding:18px}main{max-width:1000px;margin:auto}section{padding:18px;border:1px solid #d5dfd5;background:white;border-radius:12px;margin:16px 0}button{font:inherit;padding:12px;border:0;border-radius:8px;background:#245c40;color:white;margin:8px 4px 8px 0}input{font:inherit;max-width:100%;margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}label{display:block}h1{font-size:27px}summary{cursor:pointer}</style>
+ <main><h1>Datumsrollen prüfen</h1><p>Getrennter Versuch. Alle Ergebnisse brauchen Bestätigung. Keine Übernahme in den Vorrat.</p><label><input type="checkbox" id="narrow"> Schmale Ansicht (390 px; kein Handytest)</label>
+ <section><h2>Rollen und Vergleich</h2><p>Prüft die neuen Regeln mit konstruierten Fällen und optional lokal geladenen OCR-Zeilen. Hier wird kein Foto neu erkannt.</p><label>Vergleichspaket (optional) <input id="replayFile" type="file" accept=".json"></label><button id="runRoles">Rollenprüfung starten</button><p id="roleStatus" role="status">Noch nicht geprüft.</p><pre id="roleReport"></pre></section>
+ <section><h2>Fotos im Browser erkennen</h2><p>Separater Machbarkeitstest mit PP-OCRv4 über Guten OCR. Dieser Ablauf entspricht noch nicht der lokalen RapidOCR-Auswertung.</p><label>Laufzeitdateien und Modelle <input id="runtimeFiles" type="file" multiple accept=".onnx,.mjs,.wasm,.txt,.js"></label><button id="loadRuntime">Laufzeit lokal laden</button><label>Testfotos <input id="photos" type="file" multiple accept="image/*"></label><button id="runPhotos">Nächste 5 Fotos prüfen</button><p id="status" role="status">Noch nicht gestartet.</p><pre id="summary"></pre><p>Externe Verbindungen sind durch die Seitenrichtlinie gesperrt. <span id="network">0 blockierte Zugriffsversuche</span></p></section><button id="export">Ergebnisse exportieren</button><details><summary>Einzelergebnisse</summary><pre id="details"></pre></details></main><script>(() => {
+  var __create = Object.create;
+  var __defProp = Object.defineProperty;
+  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+  var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __getProtoOf = Object.getPrototypeOf;
+  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __commonJS = (cb, mod) => function __require() {
+    return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+  };
+  var __copyProps = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames(from))
+        if (!__hasOwnProp.call(to, key) && key !== except)
+          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+    }
+    return to;
+  };
+  var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+    // If the importer is in node compatibility mode or this is not an ESM
+    // file that has been converted to a CommonJS file using a Babel-
+    // compatible transform (i.e. "__esModule" has not been set), then set
+    // "default" to the CommonJS "module.exports" for node compatibility.
+    isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+    mod
+  ));
+
+  // output/date-role-v2/date-roles.js
+  var require_date_roles = __commonJS({
+    "output/date-role-v2/date-roles.js"(exports, module) {
+      (function(root) {
+        "use strict";
+        const PATTERNS = [
+          ["best_before", /mindestens\s*haltbar(?:\s*bis)?|haltbar\s*bis|\bmhd\b|best\s*bef[o0]re|best\s*by|\bbb[ed]?\b|\bb\.?\s*b\.(?:\s*[ed]\.)?|[àa]\s*consommer\s*de\s*pr[ée]f[ée]rence\s*avant|da\s*consumarsi\s*preferibilmente\s*entro|consumir\s*pref\.?\s*antes/giu],
+          ["use_by", /zu\s*verbrauchen\s*bis|verbrauchen\s*bis|use\s*by|[àa]\s*consommer\s*jusqu['’]?\s*(?:au|[àa])|da\s*consumarsi\s*entro/giu],
+          ["expiry", /\bexp(?:iry|ires|iration)?\b|verwendbar\s*bis|\bscad(?:enza)?\.?/giu],
+          ["manufactured", /hergestellt(?:\s*am)?|herstell(?:ungsdatum|datum|t(?:\s*am)?)|\b(?:prod(?:uction|uktion)?|pro)\.?\s*(?:date|datum)\b|\bprod\b|\bmf[gd]\b|manufactur(?:ing|e|ed)\s*date|fabriqu[ée](?:\s*le)?|date\s*de\s*fabrication|data\s*di\s*produzione/giu],
+          ["sell_by", /(?:zu\s*)?verkaufen\s*bis|verkaufsdatum|sell\s*by|[àa]\s*vendre\s*(?:avant|jusqu['’]?au)|vendere\s*entro/giu],
+          ["packed", /verpackt\s*am|pack(?:ed|ing)\s*(?:on|date)|conditionn[ée]\s*le|confezionato\s*il/giu],
+          ["batch", /\b(?:lot|los|batch|charge)\b/giu]
+        ];
+        const expiryRole = (r) => ["best_before", "use_by", "expiry"].includes(r);
+        const excludedRole = (r) => ["manufactured", "sell_by", "packed", "batch"].includes(r);
+        const same = (a, b) => a.date === b.date && a.precision === b.precision;
+        const key = (c) => c.date + "|" + c.precision;
+        function spanBox(line, start, end) {
+          const [x, y, xx, yy] = line.bbox, w = xx - x, h = yy - y, n = Math.max(1, line.text.length);
+          return w >= h ? [x + w * start / n, y, x + w * end / n, yy] : [x, y + h * start / n, xx, y + h * end / n];
+        }
+        function cues(line, index, threshold) {
+          if (line.confidence < threshold) return [];
+          const out = [];
+          for (const [role, re] of PATTERNS) {
+            re.lastIndex = 0;
+            for (const m of line.text.matchAll(re)) out.push({ start: m.index, end: m.index + m[0].length, role, text: m[0], line_index: index, bbox: spanBox(line, m.index, m.index + m[0].length), confidence: line.confidence });
+          }
+          return out.filter((c) => !out.some((o) => o !== c && o.start <= c.start && o.end >= c.end && o.end - o.start > c.end - c.start)).sort((a, b) => a.start - b.start || b.end - a.end);
+        }
+        function direct(candidate, cs, dates2) {
+          const previous = cs.filter((c) => c.end <= candidate.start && candidate.start - c.end <= 55 && !dates2.some((d) => d.start >= c.end && d.end <= candidate.start && d.end < candidate.end));
+          if (previous.length) return previous[previous.length - 1];
+          const suffix = cs.filter((c) => c.start >= candidate.end && c.start - candidate.end <= 12 && !dates2.some((d) => d.start >= candidate.end && d.end <= c.start) && !dates2.some((d) => d.start >= c.end && d.start - c.end <= 12));
+          return suffix[0] || null;
+        }
+        function select(raw, threshold = 0.8) {
+          const candidates = [], allCues = [], anchored = /* @__PURE__ */ new Set();
+          raw.lines.forEach((line, i) => {
+            const cs = cues(line, i, threshold);
+            cs.forEach((c, j) => {
+              c.id = i + ":" + j;
+              allCues.push(c);
+            });
+            if (line.confidence < threshold) return;
+            for (const c of line.parsed_dates || []) {
+              if (!/(?:19|20)\d{2}/.test(c.printed)) continue;
+              if (c.start > 0 && /[A-Za-z0-9]/.test(line.text[c.start - 1])) continue;
+              if (/^[.\/-]\d/.test(line.text.slice(c.end))) continue;
+              const cue = direct(c, cs, line.parsed_dates || []);
+              if (cue) anchored.add(cue.id);
+              candidates.push({ ...c, text: line.text, confidence: line.confidence, bbox: spanBox(line, c.start, c.end), line_index: i, role: cue?.role || "unknown", role_evidence: cue ? [{ ...cue, placement: "inline" }] : [], requires_confirmation: true });
+            }
+          });
+          const edges = [];
+          candidates.forEach((c, ci) => {
+            if (c.role !== "unknown") return;
+            const [x, y, xx, yy] = c.bbox, w = Math.max(4, xx - x), h = Math.max(4, yy - y);
+            for (const cue of allCues) {
+              if (cue.line_index === c.line_index || anchored.has(cue.id)) continue;
+              const [ox, oy, oxx, oyy] = cue.bbox, dx = Math.max(x - oxx, ox - xx, 0), dy = Math.max(y - oyy, oy - yy, 0);
+              if (dx > Math.max(w, raw.width * 0.05) || dy > Math.max(h * 3, raw.height * 0.025)) continue;
+              edges.push({ ci, cue, distance: dx / w + dy / h });
+            }
+          });
+          for (let ci = 0; ci < candidates.length; ci++) {
+            const c = candidates[ci];
+            if (c.role !== "unknown") continue;
+            const nearby = edges.filter((e) => e.ci === ci).sort((a, b) => a.distance - b.distance);
+            if (!nearby.length) continue;
+            const best = nearby[0];
+            if (nearby.some((e) => e.cue.role !== best.cue.role && e.distance - best.distance < 0.25)) continue;
+            if (edges.some((e) => e.cue.id === best.cue.id && !same(candidates[e.ci], c) && e.distance <= best.distance + 0.25)) continue;
+            c.role = best.cue.role;
+            c.role_evidence = [{ ...best.cue, placement: "nearby_mutual", distance: best.distance }];
+          }
+          const positive = candidates.filter((c) => expiryRole(c.role));
+          const pu = new Set(positive.map(key));
+          let strict = pu.size === 1 ? positive.reduce((a, b) => a.confidence >= b.confidence ? a : b) : null;
+          if (strict && candidates.some((c) => same(c, strict) && excludedRole(c.role))) strict = null;
+          const eligible = candidates.filter((c) => !excludedRole(c.role)), unique = new Set(eligible.map(key));
+          const suggestion = strict || (unique.size === 1 ? eligible.reduce((a, b) => a.confidence >= b.confidence ? a : b) : null);
+          return { id: raw.id, suggestion, strict_expiry: strict, candidates, seconds: raw.seconds, requires_confirmation: true };
+        }
+        const api = { version: "2.0-experimental", select, cues, expiryRole, excludedRole };
+        if (typeof module !== "undefined" && module.exports) module.exports = api;
+        else root.RESERVE_DATE_ROLES = api;
+      })(typeof globalThis !== "undefined" ? globalThis : exports);
+    }
+  });
+
+  // output/date-role-v2/browser/date-parser.js
+  function normalize(text) {
+    return text.replace(/\b(MHD|EXP|EXPIRY|BBE|BBD|MFG|MFD|PROD)(?=\d)/gi, "$1 ");
+  }
+  var monthGroups = ["JAN JANUARY", "FEB FEBRUARY", "MAR MARCH", "APR APRIL", "MAY", "JUN JUNE", "JUL JULY", "AUG AUGUST", "SEP SEPT SEPTEMBER", "OCT OCTOBER", "NOV NOVEMBER", "DEC DECEMBER"];
+  var months = Object.fromEntries(monthGroups.flatMap((s, i) => s.split(" ").map((n) => [n, i + 1])));
+  var mr = Object.keys(months).sort((a, b) => b.length - a.length).join("|");
+  function value(y, m, d) {
+    y = +y;
+    m = +m;
+    if (y < 1990 || y > 2099 || m < 1 || m > 12) return null;
+    const x = new Date(Date.UTC(y, m - 1, d === void 0 ? 1 : +d));
+    if (x.getUTCMonth() !== m - 1 || x.getUTCFullYear() !== y || d !== void 0 && x.getUTCDate() !== +d) return null;
+    return `${y}-${String(m).padStart(2, "0")}` + (d === void 0 ? "" : `-${String(+d).padStart(2, "0")}`);
+  }
+  function dates(text) {
+    const out = [];
+    const put = (m, v, kind, ambiguous = false) => {
+      if (v) out.push({ date: v, precision: v.length === 7 ? "month" : "day", start: m.index, end: m.index + m[0].length, printed: m[0], kind, ambiguous });
+    };
+    const scan = (p, cb) => {
+      for (const m of text.matchAll(new RegExp(p, "gi"))) cb(m);
+    };
+    const overlaps = (m) => out.some((c) => c.start < m.index + m[0].length && c.end > m.index);
+    scan("(?<!\\d)((?:19|20)\\d{2})\\s*[-/.]\\s*(\\d{1,2})\\s*[-/.]\\s*(\\d{1,2})(?!\\d)", (m) => put(m, value(m[1], m[2], m[3]), "ymd"));
+    scan("(?<!\\d)((?:19|20)\\d{2})\\s+(\\d{1,2})\\s+(\\d{1,2})(?!\\d)", (m) => put(m, value(m[1], m[2], m[3]), "space_ymd"));
+    scan("(?<!\\d)((?:19|20)\\d{2})\\s*[-./ ]?\\s*(" + mr + ")\\s*[-./ ]?\\s*(\\d{1,2})(?!\\d)", (m) => put(m, value(m[1], months[m[2].toUpperCase()], m[3]), "year_alpha_day"));
+    scan("(?<!\\d)(\\d{1,2})\\s*[-/.]\\s*(\\d{1,2})\\s*[-/.]\\s*((?:19|20)\\d{2})(?!\\d)", (m) => {
+      if (overlaps(m)) return;
+      const a = +m[1], b = +m[2], amb = a <= 12 && b <= 12 && a !== b;
+      put(m, value(m[3], b, a), "dmy", amb);
+      if (amb) put(m, value(m[3], a, b), "mdy", true);
+    });
+    scan("(?<![A-Z0-9])(\\d{1,2})\\s*[-./ ]?\\s*(" + mr + ")\\s*[-./ ]?\\s*((?:19|20)\\d{2})(?!\\d)", (m) => put(m, value(m[3], months[m[2].toUpperCase()], m[1]), "dmy_alpha"));
+    scan("(?<![A-Z0-9])(" + mr + ")\\s+(\\d{1,2})\\s*,?\\s*((?:19|20)\\d{2})(?!\\d)", (m) => put(m, value(m[3], months[m[1].toUpperCase()], m[2]), "mdy_alpha"));
+    scan("(?<!\\d)(\\d{1,2})\\s+(\\d{1,2})\\s+((?:19|20)\\d{2})(?!\\d)", (m) => {
+      if (!overlaps(m)) put(m, value(m[3], m[2], m[1]), "space_dmy");
+    });
+    scan("(?<!\\d)(\\d{8})(?!\\d)", (m) => {
+      if (overlaps(m)) return;
+      const s = m[1];
+      put(m, value(s.slice(0, 4), s.slice(4, 6), s.slice(6)), "compact_ymd", true);
+      put(m, value(s.slice(4), s.slice(2, 4), s.slice(0, 2)), "compact_dmy", true);
+    });
+    scan("(?<![A-Z0-9])(" + mr + ")\\s*((?:19|20)\\d{2})(?!\\d)", (m) => {
+      if (!overlaps(m)) put(m, value(m[2], months[m[1].toUpperCase()]), "explicit_alpha_month_year");
+    });
+    scan("(?<!\\d)(\\d{1,2})\\s*[-/. ]\\s*((?:19|20)\\d{2})(?!\\d)", (m) => {
+      if (!overlaps(m)) put(m, value(m[2], m[1]), "month_numeric");
+    });
+    scan("(?<!\\d)((?:19|20)\\d{2})\\s*[-/. ]\\s*(\\d{1,2})(?!\\d)", (m) => {
+      if (!overlaps(m)) put(m, value(m[1], m[2]), "year_month");
+    });
+    scan("(?<!\\d)((?:19|20)\\d{2})(\\d{2})(?!\\d)", (m) => {
+      if (!overlaps(m)) put(m, value(m[1], m[2]), "compact_year_month", true);
+    });
+    return out.filter((c, i) => !out.some((o) => o.start <= c.start && o.end >= c.end && o.end - o.start > c.end - c.start) && out.findIndex((o) => o.date === c.date && o.precision === c.precision && o.start === c.start && o.end === c.end) === i);
+  }
+
+  // output/date-role-v2/browser/app.js
+  var import_date_roles = __toESM(require_date_roles());
+
+  // output/date-role-v2/role-cases.json
+  var role_cases_default = [
+    {
+      raw: {
+        id: "MHD: 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "MHD: 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 5,
+                end: 15,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09-14",
+      expected_roles: [
+        "best_before"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "Mindestens haltbar bis 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "Mindestens haltbar bis 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 23,
+                end: 33,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09-14",
+      expected_roles: [
+        "best_before"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "BEST BEFORE 14 SEP 2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "BEST BEFORE 14 SEP 2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 12,
+                end: 23,
+                printed: "14 SEP 2027",
+                kind: "dmy_alpha",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09-14",
+      expected_roles: [
+        "best_before"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "BEST BEF0RE 14 SEP 2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "BEST BEF0RE 14 SEP 2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 12,
+                end: 23,
+                printed: "14 SEP 2027",
+                kind: "dmy_alpha",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09-14",
+      expected_roles: [
+        "best_before"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "\xC0 consommer de pr\xE9f\xE9rence avant le 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "\xC0 consommer de pr\xE9f\xE9rence avant le 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 35,
+                end: 45,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09-14",
+      expected_roles: [
+        "best_before"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "Da consumarsi preferibilmente entro 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "Da consumarsi preferibilmente entro 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 36,
+                end: 46,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09-14",
+      expected_roles: [
+        "best_before"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "Zu verbrauchen bis 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "Zu verbrauchen bis 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 19,
+                end: 29,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09-14",
+      expected_roles: [
+        "use_by"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "USE BY 14 SEP 2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "USE BY 14 SEP 2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 7,
+                end: 18,
+                printed: "14 SEP 2027",
+                kind: "dmy_alpha",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09-14",
+      expected_roles: [
+        "use_by"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "\xC0 consommer jusqu\u2019au 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "\xC0 consommer jusqu\u2019au 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 21,
+                end: 31,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09-14",
+      expected_roles: [
+        "use_by"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "Da consumarsi entro 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "Da consumarsi entro 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 20,
+                end: 30,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09-14",
+      expected_roles: [
+        "use_by"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "EXP14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "EXP 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 4,
+                end: 14,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09-14",
+      expected_roles: [
+        "expiry"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "Scadenza: 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "Scadenza: 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 10,
+                end: 20,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09-14",
+      expected_roles: [
+        "expiry"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "MFG14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "MFG 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 4,
+                end: 14,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "manufactured"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "MFD: 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "MFD: 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 5,
+                end: 15,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "manufactured"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "PRO.DATE: 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "PRO.DATE: 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 10,
+                end: 20,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "manufactured"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "PROD: 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "PROD: 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 6,
+                end: 16,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "manufactured"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "Hergestellt am 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "Hergestellt am 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 15,
+                end: 25,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "manufactured"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "Fabriqu\xE9 le 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "Fabriqu\xE9 le 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 12,
+                end: 22,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "manufactured"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "Data di produzione: 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "Data di produzione: 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 20,
+                end: 30,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "manufactured"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "Verkaufen bis 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "Verkaufen bis 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 14,
+                end: 24,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "sell_by"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "SELL BY 14 SEP 2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "SELL BY 14 SEP 2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 8,
+                end: 19,
+                printed: "14 SEP 2027",
+                kind: "dmy_alpha",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "sell_by"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "\xC0 vendre avant le 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "\xC0 vendre avant le 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 18,
+                end: 28,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "sell_by"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "Vendere entro 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "Vendere entro 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 14,
+                end: 24,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "sell_by"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "Packed on 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "Packed on 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 10,
+                end: 20,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "packed"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "Verpackt am 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "Verpackt am 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 12,
+                end: 22,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "packed"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "LOT 14.09.2027",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "LOT 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 4,
+                end: 14,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "batch"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "unknown",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 0,
+                end: 10,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "unknown"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "manufacturer company is not date cue",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "Manufactured by Example Foods 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 30,
+                end: 40,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "unknown"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "do not carry prefix across second date",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "MFG: 14.09.2027 14.10.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 5,
+                end: 15,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              },
+              {
+                date: "2027-10-14",
+                precision: "day",
+                start: 16,
+                end: 26,
+                printed: "14.10.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "manufactured",
+        "unknown"
+      ],
+      expected_suggestion: "2027-10-14"
+    },
+    {
+      raw: {
+        id: "two explicit date roles",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "MFG: 14.09.2027 EXP: 14.10.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 5,
+                end: 15,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              },
+              {
+                date: "2027-10-14",
+                precision: "day",
+                start: 21,
+                end: 31,
+                printed: "14.10.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-10-14",
+      expected_roles: [
+        "manufactured",
+        "expiry"
+      ],
+      expected_suggestion: "2027-10-14"
+    },
+    {
+      raw: {
+        id: "sellby and mhd",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "Verkaufen bis 14.09.2027 MHD: 14.10.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 14,
+                end: 24,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              },
+              {
+                date: "2027-10-14",
+                precision: "day",
+                start: 30,
+                end: 40,
+                printed: "14.10.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-10-14",
+      expected_roles: [
+        "sell_by",
+        "best_before"
+      ],
+      expected_suggestion: "2027-10-14"
+    },
+    {
+      raw: {
+        id: "contradictory same value",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "MFG: 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 5,
+                end: 15,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          },
+          {
+            text: "EXP: 14.09.2027",
+            bbox: [
+              0,
+              40,
+              600,
+              65
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 5,
+                end: 15,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "manufactured",
+        "expiry"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "two different expiry values",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "EXP: 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 5,
+                end: 15,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          },
+          {
+            text: "EXP: 14.10.2027",
+            bbox: [
+              0,
+              40,
+              600,
+              65
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-10-14",
+                precision: "day",
+                start: 5,
+                end: 15,
+                printed: "14.10.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "expiry",
+        "expiry"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "suffix",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "14.09.2027 MHD",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 0,
+                end: 10,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09-14",
+      expected_roles: [
+        "best_before"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "low confidence cue",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "MHD",
+            bbox: [
+              0,
+              0,
+              80,
+              25
+            ],
+            confidence: 0.7,
+            parsed_dates: []
+          },
+          {
+            text: "14.09.2027",
+            bbox: [
+              0,
+              30,
+              200,
+              55
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 0,
+                end: 10,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "unknown"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "separate aligned cue",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "MHD",
+            bbox: [
+              0,
+              0,
+              80,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: []
+          },
+          {
+            text: "14.09.2027",
+            bbox: [
+              0,
+              30,
+              200,
+              55
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 0,
+                end: 10,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09-14",
+      expected_roles: [
+        "best_before"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "equidistant opposed cues",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "MHD",
+            bbox: [
+              0,
+              0,
+              80,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: []
+          },
+          {
+            text: "MFG",
+            bbox: [
+              0,
+              80,
+              80,
+              105
+            ],
+            confidence: 0.99,
+            parsed_dates: []
+          },
+          {
+            text: "14.09.2027",
+            bbox: [
+              0,
+              40,
+              200,
+              65
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 0,
+                end: 10,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "unknown"
+      ],
+      expected_suggestion: "2027-09-14"
+    },
+    {
+      raw: {
+        id: "same label two equidistant values",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "MHD",
+            bbox: [
+              200,
+              0,
+              280,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: []
+          },
+          {
+            text: "14.09.2027",
+            bbox: [
+              0,
+              30,
+              200,
+              55
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 0,
+                end: 10,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          },
+          {
+            text: "14.10.2027",
+            bbox: [
+              280,
+              30,
+              480,
+              55
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-10-14",
+                precision: "day",
+                start: 0,
+                end: 10,
+                printed: "14.10.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "unknown",
+        "unknown"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "date fragment of broken month",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "EXP: 10 AU6 2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-06",
+                precision: "month",
+                start: 10,
+                end: 16,
+                printed: "6 2027",
+                kind: "space_month_year",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "date fragment missing separator",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "202709.14",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09",
+                precision: "month",
+                start: 0,
+                end: 6,
+                printed: "202709",
+                kind: "compact_year_month",
+                ambiguous: true
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "do not guess century",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "MHD: 14.09.27",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 5,
+                end: 13,
+                printed: "14.09.27",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "ambiguous day month",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "MHD: 02/03/2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-03-02",
+                precision: "day",
+                start: 5,
+                end: 15,
+                printed: "02/03/2027",
+                kind: "dmy",
+                ambiguous: true
+              },
+              {
+                date: "2027-02-03",
+                precision: "day",
+                start: 5,
+                end: 15,
+                printed: "02/03/2027",
+                kind: "mdy",
+                ambiguous: true
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "best_before",
+        "best_before"
+      ],
+      expected_suggestion: null
+    },
+    {
+      raw: {
+        id: "month precision",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "BEST BEFORE SEP 2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09",
+                precision: "month",
+                start: 12,
+                end: 20,
+                printed: "SEP 2027",
+                kind: "explicit_alpha_month_year",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: "2027-09",
+      expected_roles: [
+        "best_before"
+      ],
+      expected_suggestion: "2027-09"
+    },
+    {
+      raw: {
+        id: "cue anchored on different line",
+        width: 1e3,
+        height: 1e3,
+        lines: [
+          {
+            text: "MFG: 14.09.2027",
+            bbox: [
+              0,
+              0,
+              600,
+              25
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-09-14",
+                precision: "day",
+                start: 5,
+                end: 15,
+                printed: "14.09.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          },
+          {
+            text: "14.10.2027",
+            bbox: [
+              0,
+              30,
+              600,
+              55
+            ],
+            confidence: 0.99,
+            parsed_dates: [
+              {
+                date: "2027-10-14",
+                precision: "day",
+                start: 0,
+                end: 10,
+                printed: "14.10.2027",
+                kind: "dmy",
+                ambiguous: false
+              }
+            ]
+          }
+        ],
+        seconds: 0
+      },
+      expected_strict: null,
+      expected_roles: [
+        "manufactured",
+        "unknown"
+      ],
+      expected_suggestion: "2027-10-14"
+    }
+  ];
+
+  // output/date-role-v2/browser/app.js
+  var regression = [];
+  var expected = [];
+  var $ = (id) => document.getElementById(id);
+  var rows = [];
+  var blocked = [];
+  var ocr = null;
+  var photos = [];
+  var cursor = 0;
+  var loadingMs = null;
+  $("replayFile").onchange = async () => {
+    try {
+      const data = JSON.parse(await $("replayFile").files[0].text());
+      regression = data.inputs;
+      expected = data.expected;
+      if (!Array.isArray(regression) || !Array.isArray(expected)) throw Error("Ung\xFCltiges Vergleichspaket");
+      $("roleStatus").textContent = regression.length + " Vergleichseingaben lokal geladen.";
+    } catch (e) {
+      $("roleStatus").textContent = e.message;
+    }
+  };
+  document.addEventListener("securitypolicyviolation", (e) => {
+    blocked.push({ directive: e.violatedDirective, uri: e.blockedURI });
+    $("network").textContent = blocked.length + " blockierte Zugriffsversuche";
+  });
+  var hit = (p, t) => p && p.date === t.date && p.precision === t.precision;
+  function print() {
+    const tested = rows.filter((r) => r.target), correct = tested.filter((r) => hit(r.prediction.suggestion, r.target)).length, wrong = tested.filter((r) => r.prediction.suggestion && !hit(r.prediction.suggestion, r.target)).length;
+    const strict = tested.filter((r) => r.prediction.strict_expiry), strictCorrect = strict.filter((r) => hit(r.prediction.strict_expiry, r.target)).length;
+    $("summary").textContent = JSON.stringify({ tested: rows.length, labelled: tested.length, correct, wrong, abstained: tested.length - correct - wrong, strictCorrect, strictWrong: strict.length - strictCorrect, loadingMs, device: "Cloud Chromium; kein echtes Handy", pipeline: "Guten OCR browser 1.4.9 + lokal gew\xE4hlte PP-OCRv4-Gewichte; anderer Ablauf als RapidOCR Python" }, null, 2);
+    $("details").textContent = JSON.stringify(rows, null, 2);
+  }
+  $("runRoles").onclick = () => {
+    let passed = 0;
+    for (const t of role_cases_default) {
+      const p = import_date_roles.default.select(t.raw);
+      if ((p.strict_expiry?.date || null) === t.expected_strict && (p.suggestion?.date || null) === t.expected_suggestion && JSON.stringify(p.candidates.map((c) => c.role)) === JSON.stringify(t.expected_roles)) passed++;
+    }
+    const mismatch = [];
+    for (const raw of regression) {
+      const p = import_date_roles.default.select(raw), e = expected.find((x) => x.id === raw.id).prediction;
+      if (JSON.stringify(p) !== JSON.stringify(e)) mismatch.push(raw.id);
+    }
+    $("roleStatus").textContent = passed + "/" + role_cases_default.length + " Rollenf\xE4lle bestanden; " + regression.length + " gespeicherte OCR-Eingaben gepr\xFCft; " + mismatch.length + " Abweichungen zu Node.";
+    $("roleReport").textContent = JSON.stringify({ passed, total: role_cases_default.length, replay: regression.length, mismatch, screenWidth: innerWidth, userAgent: navigator.userAgent }, null, 2);
+  };
+  $("loadRuntime").onclick = async () => {
+    const b = $("loadRuntime");
+    b.disabled = true;
+    try {
+      const start = performance.now(), files = new Map(Array.from($("runtimeFiles").files, (f) => [f.name, f])), get = (n) => {
+        const f = files.get(n);
+        if (!f) throw Error("Datei fehlt: " + n);
+        return f;
+      };
+      if (!window.RESERVE_DATE_BROWSER_OCR) await new Promise((resolve, reject) => {
+        const s = document.createElement("script");
+        s.src = URL.createObjectURL(get("ocr-engine.js"));
+        s.onload = resolve;
+        s.onerror = () => reject(Error("Lokale Engine konnte nicht geladen werden"));
+        document.head.appendChild(s);
+      });
+      const { Ocr, env, cv } = window.RESERVE_DATE_BROWSER_OCR;
+      env.wasm.numThreads = 1;
+      env.wasm.proxy = false;
+      env.logLevel = "error";
+      env.wasm.wasmBinary = await get("ort-wasm-simd-threaded.wasm").arrayBuffer();
+      env.wasm.wasmPaths = { mjs: URL.createObjectURL(new Blob([await get("ort-wasm-simd-threaded.mjs").text()], { type: "text/javascript" })) };
+      if (!cv.Mat) await new Promise((resolve) => {
+        cv.onRuntimeInitialized = resolve;
+      });
+      $("status").textContent = "Modelle werden lokal geladen\u2026";
+      ocr = await Ocr.create({ models: { detectionPath: new Uint8Array(await get("ch_PP-OCRv4_det_infer.onnx").arrayBuffer()), recognitionPath: new Uint8Array(await get("ch_PP-OCRv4_rec_infer.onnx").arrayBuffer()), dictionaryPath: URL.createObjectURL(get("ppocr_keys_v1.txt")) }, onnxOptions: { executionProviders: ["wasm"], graphOptimizationLevel: "all" }, isDebug: false });
+      loadingMs = Math.round(performance.now() - start);
+      $("status").textContent = "Lokale Browser-Erkennung bereit. Ladezeit: " + loadingMs + " ms.";
+      print();
+    } catch (e) {
+      $("status").textContent = "Ladefehler: " + e.message;
+    } finally {
+      b.disabled = false;
+    }
+  };
+  $("photos").onchange = () => {
+    photos = Array.from($("photos").files).sort((a, b) => a.name.localeCompare(b.name));
+    cursor = 0;
+    rows.length = 0;
+    $("status").textContent = photos.length + " Bilder ausgew\xE4hlt.";
+    print();
+  };
+  $("runPhotos").onclick = async () => {
+    if (!ocr || !photos.length) {
+      $("status").textContent = "Bitte Laufzeit und Bilder laden.";
+      return;
+    }
+    const b = $("runPhotos");
+    b.disabled = true;
+    try {
+      const stop = Math.min(photos.length, cursor + 5);
+      while (cursor < stop) {
+        const file = photos[cursor];
+        $("status").textContent = cursor + 1 + "/" + photos.length + " \xB7 " + file.name;
+        await new Promise((r) => setTimeout(r, 0));
+        const started = performance.now(), bmp = await createImageBitmap(file), scale = Math.min(1, 1600 / Math.max(bmp.width, bmp.height)), c = document.createElement("canvas");
+        c.width = Math.max(1, Math.round(bmp.width * scale));
+        c.height = Math.max(1, Math.round(bmp.height * scale));
+        const ctx = c.getContext("2d", { willReadFrequently: true });
+        ctx.drawImage(bmp, 0, 0, c.width, c.height);
+        bmp.close();
+        let row;
+        try {
+          const result = await ocr.detect({ data: ctx.getImageData(0, 0, c.width, c.height).data, width: c.width, height: c.height });
+          const ls = result.texts || result;
+          const raw = { id: file.name, width: result.resizedImageWidth || c.width, height: result.resizedImageHeight || c.height, seconds: (performance.now() - started) / 1e3, lines: ls.map((l) => {
+            const box = l.box || l.frame;
+            const bbox = Array.isArray(box) ? [Math.min(...box.map((p) => p[0])), Math.min(...box.map((p) => p[1])), Math.max(...box.map((p) => p[0])), Math.max(...box.map((p) => p[1]))] : [box.left, box.top, box.left + box.width, box.top + box.height];
+            const text = normalize(l.text);
+            return { text, confidence: l.mean ?? l.score, bbox, parsed_dates: dates(text) };
+          }) };
+          const prediction = import_date_roles.default.select(raw), label = expected.find((e) => e.cohort === "historical" && e.id.slice(11).startsWith(file.name.split(".")[0]));
+          row = { file: file.name, ms: Math.round(performance.now() - started), raw, prediction, target: label?.target || null };
+        } catch (e) {
+          row = { file: file.name, ms: Math.round(performance.now() - started), error: e.message, prediction: { suggestion: null, strict_expiry: null }, target: null };
+        }
+        rows.push(row);
+        cursor++;
+        print();
+      }
+      $("status").textContent = cursor + "/" + photos.length + " abgeschlossen.";
+    } finally {
+      b.disabled = false;
+    }
+  };
+  $("export").onclick = () => {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([JSON.stringify({ schema: "reserve-date-role-browser-v2", at: (/* @__PURE__ */ new Date()).toISOString(), userAgent: navigator.userAgent, loadingMs, blocked, roleReport: $("roleReport").textContent, rows }, null, 2)], { type: "application/json" }));
+    a.download = "reserve-date-role-browser-v2.json";
+    a.click();
+  };
+  $("narrow").onchange = () => {
+    document.querySelector("main").style.maxWidth = $("narrow").checked ? "390px" : "1000px";
+  };
+})();
+</script></html>
