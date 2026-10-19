@@ -1,0 +1,233 @@
+[
+  {
+    "id": "chuchitisch-linsen-tomatensuppe",
+    "name": "Orientalische Linsen-Tomatensuppe nach Chuchitisch",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥣",
+    "cuisine": "Orientalisch inspiriert",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Milch"
+    ],
+    "tags": [
+      "Chuchitisch",
+      "Linsen",
+      "Suppe",
+      "Originalfoto"
+    ],
+    "ingredients": [
+      {
+        "name": "Rote Linsen, trocken",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Passierte Tomaten (Passata)",
+        "amount": 175,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Knoblauch",
+        "amount": 1.5,
+        "unit": "g"
+      },
+      {
+        "name": "Peperoncino",
+        "amount": 3.75,
+        "unit": "g"
+      },
+      {
+        "name": "Currypulver",
+        "amount": 1,
+        "unit": "g"
+      },
+      {
+        "name": "Kurkuma, gemahlen",
+        "amount": 0.75,
+        "unit": "g"
+      },
+      {
+        "name": "Wasser",
+        "amount": 125,
+        "unit": "ml"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.5,
+        "unit": "g"
+      },
+      {
+        "name": "Pfeffer",
+        "amount": 0.125,
+        "unit": "g"
+      },
+      {
+        "name": "Rapsöl",
+        "amount": 7.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Griechischer Naturjoghurt",
+        "amount": 37.5,
+        "unit": "g"
+      },
+      {
+        "name": "Petersilie, glatt",
+        "amount": 1.25,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Linsen in einem Sieb abspülen. Zwiebel und Knoblauch schälen und fein hacken. Peperoncino waschen, entkernen und fein schneiden; danach Hände waschen.",
+      "Rapsöl in einem Topf erhitzen. Zwiebel, Knoblauch und Peperoncino bei mittlerer Hitze einige Minuten anschwitzen, ohne sie dunkel werden zu lassen.",
+      "Linsen, Currypulver und Kurkuma zugeben und kurz unter Rühren mitdünsten, bis die Gewürze duften.",
+      "Passata und Wasser einrühren, aufkochen und bei reduzierter Hitze ungefähr 15 Minuten köcheln lassen. Gelegentlich umrühren; bei Bedarf etwas Wasser ergänzen. Linsen vollständig weich garen.",
+      "Mit Salz und Pfeffer nach Geschmack abschmecken. Petersilie waschen, fein hacken und mit dem griechischen Joghurt verrühren.",
+      "Suppe auf Schüsseln verteilen und den Petersilienjoghurt dazu servieren."
+    ],
+    "nutrition": {
+      "kcal": 359.3,
+      "protein": 19.27,
+      "carbs": 43.33,
+      "fat": 9.82,
+      "fiber": 9.96
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy; Schätzung, keine Messung des fertigen Gerichts.",
+      "basis": "Pro Person; verfügbare Kohlenhydrate = Gesamtkohlenhydrate minus Ballaststoffe. Original für 4 Personen; alle Zutaten und geschätzten Nährwerte auf eine Person umgerechnet. Richtgewichte für den Originalansatz, keine exakten Originalgewichte: 1 Zwiebel = 100 g, 2 Knoblauchzehen = 6 g, 1 entkernte Peperoncino = 15 g, 2 TL Curry = 4 g, 1 TL Kurkuma = 3 g, ¼ Bund Petersilie = 5 g. Schärfe nach Geschmack anpassen. 2 EL Pflanzenöl als 30 ml Rapsöl konkretisiert; für Nährwerte Dichte 0.91 g/ml. 1½ dl griechischer Joghurt mit 150 g angenähert (Dichte 1 g/ml); Vollmilchvariante für die Berechnung. Salz 2 g und Pfeffer 0.5 g als ergänzte Richtmengen nach Geschmack, keine Originalmengen. Tomatenpüree bezeichnet auf der Originalseite ausdrücklich Passata, nicht konzentriertes Tomatenmark. USDA-Tomatenpüree dient als Nährwertnäherung; trockene rote Linsen werden mit generischen trockenen Linsen angenähert. Marken und Sorten können abweichen. Foto der Originalquelle; Serviervorschlag. Sichtbare Joghurt- und Petersiliengarnitur ist in dieser Rezeptfassung enthalten. Die abgebildete Schüsselgrösse ist keine Portionsvorgabe. Currypulver kann Senf oder Sellerie enthalten: Produktetikett prüfen. Sicher enthaltenes Hauptallergen: Milch.",
+      "sources": "docs/recipe-candidates/import-2026-10-19/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Rote Linsen, trocken",
+          "grams": 50,
+          "foodKey": "172420",
+          "excluded": false
+        },
+        {
+          "name": "Passierte Tomaten (Passata)",
+          "grams": 175,
+          "foodKey": "170460",
+          "excluded": false
+        },
+        {
+          "name": "Zwiebel",
+          "grams": 25,
+          "foodKey": "170000",
+          "excluded": false
+        },
+        {
+          "name": "Knoblauch",
+          "grams": 1.5,
+          "foodKey": "169230",
+          "excluded": false
+        },
+        {
+          "name": "Peperoncino",
+          "grams": 3.75,
+          "foodKey": "170106",
+          "excluded": false
+        },
+        {
+          "name": "Currypulver",
+          "grams": 1,
+          "foodKey": "170924",
+          "excluded": false
+        },
+        {
+          "name": "Kurkuma, gemahlen",
+          "grams": 0.75,
+          "foodKey": "172231",
+          "excluded": false
+        },
+        {
+          "name": "Wasser",
+          "grams": 125,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Salz",
+          "grams": 0.5,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Pfeffer",
+          "grams": 0.125,
+          "foodKey": "170931",
+          "excluded": false
+        },
+        {
+          "name": "Rapsöl",
+          "grams": 6.825,
+          "foodKey": "172336",
+          "excluded": false
+        },
+        {
+          "name": "Griechischer Naturjoghurt",
+          "grams": 37.5,
+          "foodKey": "171304",
+          "excluded": false
+        },
+        {
+          "name": "Petersilie, glatt",
+          "grams": 1.25,
+          "foodKey": "170416",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Tomaten-Linsensuppe mit Curry, Kurkuma und Petersilienjoghurt nach Chuchitisch. Mengen und geschätzte Nährwerte pro Person; Originalfoto als Serviervorschlag.",
+    "equipment": [
+      "Kochtopf",
+      "Küchenmesser",
+      "Schneidebrett",
+      "Sieb",
+      "kleine Schüssel"
+    ],
+    "prepNotes": [
+      "Original für 4 Personen; alle Zutaten und geschätzten Nährwerte auf eine Person umgerechnet.",
+      "Richtgewichte für den Originalansatz, keine exakten Originalgewichte: 1 Zwiebel = 100 g, 2 Knoblauchzehen = 6 g, 1 entkernte Peperoncino = 15 g, 2 TL Curry = 4 g, 1 TL Kurkuma = 3 g, ¼ Bund Petersilie = 5 g. Schärfe nach Geschmack anpassen.",
+      "2 EL Pflanzenöl als 30 ml Rapsöl konkretisiert; für Nährwerte Dichte 0.91 g/ml. 1½ dl griechischer Joghurt mit 150 g angenähert (Dichte 1 g/ml); Vollmilchvariante für die Berechnung. Salz 2 g und Pfeffer 0.5 g als ergänzte Richtmengen nach Geschmack, keine Originalmengen.",
+      "Tomatenpüree bezeichnet auf der Originalseite ausdrücklich Passata, nicht konzentriertes Tomatenmark. USDA-Tomatenpüree dient als Nährwertnäherung; trockene rote Linsen werden mit generischen trockenen Linsen angenähert. Marken und Sorten können abweichen.",
+      "Foto der Originalquelle; Serviervorschlag. Sichtbare Joghurt- und Petersiliengarnitur ist in dieser Rezeptfassung enthalten. Die abgebildete Schüsselgrösse ist keine Portionsvorgabe.",
+      "Currypulver kann Senf oder Sellerie enthalten: Produktetikett prüfen. Sicher enthaltenes Hauptallergen: Milch."
+    ],
+    "doneness": "Die roten Linsen sind vollständig weich, ohne harten Kern; die Suppe ist sämig. Bei Bedarf länger köcheln und etwas Wasser nachgiessen.",
+    "substitutions": [
+      "Für eine vegane Variante pflanzlichen Joghurt verwenden; Allergene und Nährwerte dafür neu prüfen. Die berechnete Originalfassung enthält Milch."
+    ],
+    "leftovers": "Joghurt möglichst separat halten. Reste rasch abkühlen, abgedeckt gekühlt lagern und zeitnah verbrauchen; Suppe vor dem Essen vollständig durcherhitzen.",
+    "safety": "Beim Schneiden der Peperoncino nicht in die Augen fassen und danach Hände reinigen. Heisse Suppe vorsichtig umrühren; trockene Linsen vollständig durchgaren.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "https://chuchitisch.ch/recipes/575",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "originalServings": 4,
+      "adaptation": "Auf eine Person umgerechnet; Schritte gegliedert und Garmerkmale ergänzt. Original für 4 Personen; alle Zutaten und geschätzten Nährwerte auf eine Person umgerechnet. Richtgewichte für den Originalansatz, keine exakten Originalgewichte: 1 Zwiebel = 100 g, 2 Knoblauchzehen = 6 g, 1 entkernte Peperoncino = 15 g, 2 TL Curry = 4 g, 1 TL Kurkuma = 3 g, ¼ Bund Petersilie = 5 g. Schärfe nach Geschmack anpassen. 2 EL Pflanzenöl als 30 ml Rapsöl konkretisiert; für Nährwerte Dichte 0.91 g/ml. 1½ dl griechischer Joghurt mit 150 g angenähert (Dichte 1 g/ml); Vollmilchvariante für die Berechnung. Salz 2 g und Pfeffer 0.5 g als ergänzte Richtmengen nach Geschmack, keine Originalmengen. Tomatenpüree bezeichnet auf der Originalseite ausdrücklich Passata, nicht konzentriertes Tomatenmark. USDA-Tomatenpüree dient als Nährwertnäherung; trockene rote Linsen werden mit generischen trockenen Linsen angenähert. Marken und Sorten können abweichen. Foto der Originalquelle; Serviervorschlag. Sichtbare Joghurt- und Petersiliengarnitur ist in dieser Rezeptfassung enthalten. Die abgebildete Schüsselgrösse ist keine Portionsvorgabe. Currypulver kann Senf oder Sellerie enthalten: Produktetikett prüfen. Sicher enthaltenes Hauptallergen: Milch."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.6,
+      "waterMl": 125,
+      "noCook": false,
+      "onePot": true
+    }
+  }
+]

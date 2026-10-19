@@ -447,6 +447,23 @@
       "reviewedAt": "2026-10-18",
       "originalPhotoUrl": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/290_K%C3%BCrbissuppe.png",
       "originalPhotoSha256": "8629483b92d6dfcdb9fefd52fd6d7567f5febf76e2b67e8f79b7fe5a41316323"
+    },
+    {
+      "recipeId": "chuchitisch-linsen-tomatensuppe",
+      "path": "assets/recipe-photos/chuchitisch-linsen-tomatensuppe.webp",
+      "source": "https://chuchitisch.ch/recipes/575",
+      "author": "Hannes und Martina",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Orientalische Linsen-Tomatensuppe",
+      "provider": "Chuchitisch",
+      "adaptation": "Verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Originalfoto der Rezeptseite: rote Tomaten-Linsensuppe mit Joghurt und Petersilie. Serviervorschlag; genaue Mengen nicht aus dem Foto prüfbar. Urheberangabe gemäss Rezeptkonto und globaler Erklärung zu eigenen Fotos; kein separat benannter Fotograf.",
+      "reviewedAt": "2026-10-19",
+      "originalPhotoUrl": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/700_Orientalische+Linsen-Tomatensuppe.png",
+      "originalPhotoSha256": "594e4ba72ca9f69881bba0e47069b6a214c93e321744710c44c4142384a367bc"
     }
   ]
 }

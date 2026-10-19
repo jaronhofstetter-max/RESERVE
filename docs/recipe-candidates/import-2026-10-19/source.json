@@ -1,0 +1,35 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Orientalische Linsen-Tomatensuppe",
+  "image": "http://www.chuchitisch.ch//chuchitisch/download_picture/lightroom/700_Orientalische+Linsen-Tomatensuppe.png",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "",
+  "prepTime": "PT0S",
+  "cookTime": "PT1800S",
+  "totalTime": "PT1800S",
+  "recipeYield": "4 Personen",
+  "keywords": "  Suppe,  Raffiniert,  Multikulti,  Einfach,  Eher schnell,  Vegetarisch,  ",
+  "recipeIngredient": [
+    "200  g rote Linsen",
+    "700  g Tomatenpüree",
+    "1   Zwiebel",
+    "2   Knoblauchzehen",
+    "1   Peperoncino",
+    "2  TL Currypulver",
+    "1  TL Kurkuma",
+    "5  dl Wasser",
+    "   Salz",
+    "2  EL Pflanzenöl",
+    "   ---",
+    "1&frac12;  dl griechischer Joghurt",
+    "&frac14;  Bund Petersilie",
+    ""
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+  "recipeInstructions": "Zwiebel und Knoblauch fein hacken, Chili entkernen und ebenfalls fein schneiden. In etwas Öl in einem Topf anbraten, Linsen und Gewürze dazu geben und kurz mitbraten, bis es fein riecht. Mit dem Tomatenpüree ablöschen, mit dem Wasser verdünnen und ca. 15 Minuten unter gelegentlichem Rühren so lange köcheln lassen, bis die Linsen gar sind. Mit Salz und Pfeffer abschmecken.\r\n\r\nDie Petersilie fein hacken und mit dem Joghurt mischen. Zur Suppe servieren."
+}
