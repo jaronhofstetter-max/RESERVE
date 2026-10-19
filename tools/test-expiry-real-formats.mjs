@@ -15,6 +15,7 @@ const sandbox={
 };
 sandbox.window=sandbox;
 vm.createContext(sandbox);
+vm.runInContext(fs.readFileSync('date-token-guard-v1.js','utf8'),sandbox);
 vm.runInContext(source,sandbox);
 const api=sandbox.RESERVE_EXPIRY_CAMERA;
 if(!api?.parseDate)throw Error('RESERVE_EXPIRY_CAMERA parser fehlt');
