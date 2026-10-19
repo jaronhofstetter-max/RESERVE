@@ -27,19 +27,21 @@ let now=0,worker,downloadBlob,decode;
 const timers=new Map();let tid=0;
 const elements=new Map();const element=id=>{if(!elements.has(id))elements.set(id,{disabled:false,hidden:false,value:'',validity:{valid:true},setAttribute(){},removeAttribute(){},click(){},textContent:''});return elements.get(id);};
 class Worker{constructor(){worker=this;}postMessage(data){if(data.type==='init')queueMicrotask(()=>this.onmessage({data:{type:'ready'}}));}terminate(){this.terminated=true;}}
-const ui={console,performance:{now:()=>now},document:{getElementById:element,addEventListener(){},createElement:()=>({click(){}})},manifest:{files:[],totalBytes:0},location:{href:'https://example.test/experiments/date-mobile.html'},URL:class extends URL{static createObjectURL(x){if(x instanceof Blob)downloadBlob=x;return 'blob:test';}static revokeObjectURL(){}},Worker,OffscreenCanvas:Canvas,createImageBitmap:()=>new Promise(resolve=>{decode=resolve;}),crypto:{subtle:{}},AbortController,DOMException,Blob,navigator:{userAgent:'test'},setTimeout:f=>{timers.set(++tid,f);return tid;},clearTimeout:id=>timers.delete(id)};
+const ui={console,Date:class extends Date{static now(){return 1;}},performance:{now:()=>now},document:{getElementById:element,addEventListener(){},createElement:()=>({click(){}})},manifest:{files:[],totalBytes:0},location:{href:'https://example.test/experiments/date-mobile.html'},URL:class extends URL{static createObjectURL(x){if(x instanceof Blob)downloadBlob=x;return 'blob:test';}static revokeObjectURL(){}},Worker,OffscreenCanvas:Canvas,createImageBitmap:()=>new Promise(resolve=>{decode=resolve;}),crypto:{subtle:{}},AbortController,DOMException,Blob,navigator:{userAgent:'test'},setTimeout:f=>{timers.set(++tid,f);return tid;},clearTimeout:id=>timers.delete(id)};
 vm.createContext(ui);vm.runInContext(fs.readFileSync(dir+'app.js','utf8').replace(/^import .*;\n/gm,''),ui);
 await vm.runInContext('prepare()',ui);assert.equal(element('capture').disabled,false);
 const first=vm.runInContext("picked({})",ui);const oldWorker=worker;
 now=10;decode({close(){}});await first;
 oldWorker.onmessage({data:{type:'phase',id:vm.runInContext('job.id',ui),stage:'detection_inference',metrics:{width:960,rawText:'MUST NOT EXPORT'}}});
-now=10000;for(const callback of [...timers.values()])callback();
+now=10000;for(const [id,callback] of [...timers]){timers.delete(id);callback();}
 assert.equal(oldWorker.terminated,true);assert.equal(element('capture').disabled,true);
 assert.equal(vm.runInContext('last.state',ui),'timeout');assert.equal(vm.runInContext('last.diagnostics.lastStage',ui),'detection_inference');
 assert.ok(!vm.runInContext('JSON.stringify(last)',ui).includes('MUST NOT EXPORT'));
 const prior=vm.runInContext('JSON.stringify(last)',ui);oldWorker.onmessage({data:{type:'result',id:'stale',prediction:{suggestion:{date:'2099-01-01'}}}});assert.equal(vm.runInContext('JSON.stringify(last)',ui),prior);
 element('expectedDate').value='2026-12-01';element('precision').value='day';element('expectedRole').value='expiry';vm.runInContext('saveReview(false)',ui);element('export').onclick();const exported=JSON.parse(await downloadBlob.text());
 assert.equal(exported.schema,'reserve-date-mobile-review-v2');assert.equal(exported.rows[0].diagnostics.lastStage,'detection_inference');assert.equal(exported.rows[0].preparation.lastStage,'ready');assert.equal(exported.rows[0].photoIncluded,false);
+// Fake timers must fire once, like real browser timers. Retaining fired callbacks
+// can rerun an earlier timeout against a later job when wall-clock IDs coincide.
 // Also locate a stalled main-thread image decode, before dispatch.
-await vm.runInContext('prepare()',ui);const stalled=vm.runInContext('picked({})',ui);now=20000;for(const callback of [...timers.values()])callback();assert.equal(vm.runInContext('last.diagnostics.lastStage',ui),'image_decode');decode({close(){}});await stalled;
+await vm.runInContext('prepare()',ui);const stalled=vm.runInContext('picked({})',ui);now=20000;for(const [id,callback] of [...timers]){timers.delete(id);callback();}assert.equal(vm.runInContext('last.diagnostics.lastStage',ui),'image_decode');decode({close(){}});await stalled;
 console.log('✓ Bounded image size, worker stages, phase redaction/export, decode/inference timeouts and stale-worker isolation. Mocked inference; no phone/accuracy claim.');
