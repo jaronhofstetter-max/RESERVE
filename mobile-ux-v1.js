@@ -38,7 +38,7 @@
     const step=(text,anchor)=>{if(!anchor)return;const h=document.createElement('h3');h.className='reserve-capture-step';h.textContent=text;anchor.before(h)};
     step('1 · Produkt scannen',$('barcodeInput')?.parentElement);
     step('2 · Angaben prüfen',$('scanName')?.parentElement);
-    step('3 · MHD erfassen',$('scanExpiry')?.closest('.grid2'));
+    step('3 · Datum erfassen',$('scanExpiry')?.closest('.grid2'));
     $('startScan').textContent='Barcode scannen';
     $('scanName').placeholder='Produktname';$('scanName').setAttribute('aria-label','Produktname');
     $('scanQty').placeholder='Inhalt, z. B. 500 g';$('scanQty').setAttribute('aria-label','Inhalt pro Packung');
