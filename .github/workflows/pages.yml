@@ -164,6 +164,8 @@ jobs:
           node tools/test-rekek-quantity.mjs
           node tools/e2e-rekek-quantity.mjs
           rm -rf build/rekek-model-source build/rekek-vendor
+      - name: Remove isolated MHD build-only dependencies
+        run: rm -rf experiments/date-mobile-build/node_modules build/rapidocr_onnxruntime-1.4.4-py3-none-any.whl
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
