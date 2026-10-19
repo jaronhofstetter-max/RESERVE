@@ -36,7 +36,7 @@ async function verifiedAsset(entry,signal,progress){
 }
 async function startWorker(){
  stopWorker();
- const instance=new Worker(new URL(ASSET+'date-worker.js?v=20261019-date-order-1',location.href));worker=instance;
+ const instance=new Worker(new URL(ASSET+'date-worker.js?v=20261019-date-token-1',location.href));worker=instance;
  const initialization={started:performance.now(),events:[]};phase(initialization,'worker_start');
  return new Promise((resolve,reject)=>{
   const timer=setTimeout(()=>{startupCancel=null;if(worker===instance)stopWorker();reject(Error('Vorbereitung dauert zu lange. Bitte erneut versuchen.'));},30000);
