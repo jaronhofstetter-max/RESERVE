@@ -4,10 +4,10 @@
  */
 (function(root){'use strict';
 const PATTERNS=[
- ['best_before',/mindestens\s*haltbar(?:\s*bis)?|haltbar\s*bis|\bmhd\b|best\s*bef[o0]re|best\s*by|\bbb[ed]?\b|\bb\.?\s*b\.(?:\s*[ed]\.)?|[àa]\s*consommer\s*de\s*pr[ée]f[ée]rence\s*avant|da\s*consumarsi\s*preferibilmente\s*entro|consumir\s*pref\.?\s*antes/giu],
+ ['best_before',/mindestens\s*haltbar(?:\s*bis)?|haltbar\s*bis|\bmhd\b|best\s*bef[o0]re|best\s*(?:if\s*)?used\s*by|best\s*by|\bbb[ed]?\b|\bb\.?\s*b\.(?:\s*[ed]\.)?|[àa]\s*consommer\s*de\s*pr[ée]f[ée]rence\s*avant|da\s*consumarsi\s*preferibilmente\s*entro|consumir\s*pref\.?\s*antes/giu],
  ['use_by',/zu\s*verbrauchen\s*bis|verbrauchen\s*bis|use\s*by|[àa]\s*consommer\s*jusqu['’]?\s*(?:au|[àa])|da\s*consumarsi\s*entro/giu],
- ['expiry',/\bexp(?:iry|ires|iration)?\b|verwendbar\s*bis|\bscad(?:enza)?\.?/giu],
- ['manufactured',/hergestellt(?:\s*am)?|herstell(?:ungsdatum|datum|t(?:\s*am)?)|\b(?:prod(?:uction|uktion)?|pro)\.?\s*(?:date|datum)\b|\bprod\b|\bmf[gd]\b|manufactur(?:ing|e|ed)\s*date|fabriqu[ée](?:\s*le)?|date\s*de\s*fabrication|data\s*di\s*produzione/giu],
+ ['expiry',/\bexp(?:iry|ires|iration)?(?:\s*date)?\b|verwendbar\s*bis|\bscad(?:enza)?\.?/giu],
+ ['manufactured',/hergestellt(?:\s*am)?|herstell(?:ungsdatum|datum|t(?:\s*am)?)|\b(?:prod(?:uction|uktion)?|pro)\.?\s*(?:date|datum)\b|\bprod\b|\bpro(?=\s*:)|\bmf[gd]\b|manufactur(?:ing|e|ed)\s*date|fabriqu[ée](?:\s*le)?|date\s*de\s*fabrication|data\s*di\s*produzione/giu],
  ['sell_by',/(?:zu\s*)?verkaufen\s*bis|verkaufsdatum|sell\s*by|[àa]\s*vendre\s*(?:avant|jusqu['’]?au)|vendere\s*entro/giu],
  ['packed',/verpackt\s*am|pack(?:ed|ing)\s*(?:on|date)|conditionn[ée]\s*le|confezionato\s*il/giu],
  ['batch',/\b(?:lot|los|batch|charge)\b/giu]
@@ -53,7 +53,8 @@ function select(raw,threshold=.8){
   if(c.role!=='unknown')return;
   const[x,y,xx,yy]=c.bbox,w=Math.max(4,xx-x),h=Math.max(4,yy-y);
   for(const cue of allCues){
-   if(cue.line_index===c.line_index||anchored.has(cue.id))continue;
+   // A nearby batch label belongs to its own code, not a date on another line.
+   if(cue.line_index===c.line_index||anchored.has(cue.id)||cue.role==='batch')continue;
    const[ox,oy,oxx,oyy]=cue.bbox,dx=Math.max(x-oxx,ox-xx,0),dy=Math.max(y-oyy,oy-yy,0);
    if(dx>Math.max(w,raw.width*.05)||dy>Math.max(h*3,raw.height*.025))continue;
    // A cue cannot jump over a closer printed date to a different value.
