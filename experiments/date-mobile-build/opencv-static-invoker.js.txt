@@ -1,0 +1,16 @@
+function craftInvokerFunction(humanName,argTypes,classType,cppInvokerFunc,cppTargetFunc){
+ var argCount=argTypes.length;
+ if(argCount<2)throwBindingError('argTypes array size mismatch');
+ var isMethod=argTypes[1]!==null&&classType!==null,needsStack=false;
+ for(var i=1;i<argCount;i++)if(argTypes[i]!==null&&argTypes[i].destructorFunction===undefined){needsStack=true;break;}
+ return createNamedFunction(humanName,function(){
+  if(arguments.length!==argCount-2)throwBindingError('function '+humanName+' called with '+arguments.length+' arguments, expected '+(argCount-2)+' args!');
+  var destructors=needsStack?[]:null,wired=[cppTargetFunc],values=[];
+  if(isMethod){var self=argTypes[1].toWireType(destructors,this);wired.push(self);values.push([argTypes[1],self]);}
+  for(var j=2;j<argCount;j++){var v=argTypes[j].toWireType(destructors,arguments[j-2]);wired.push(v);values.push([argTypes[j],v]);}
+  var result=cppInvokerFunc.apply(null,wired);
+  if(needsStack)runDestructors(destructors);
+  else for(var k=0;k<values.length;k++)if(values[k][0].destructorFunction!==null)values[k][0].destructorFunction(values[k][1]);
+  if(argTypes[0].name!=='void')return argTypes[0].fromWireType(result);
+ });
+}
