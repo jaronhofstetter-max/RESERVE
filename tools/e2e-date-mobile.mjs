@@ -10,6 +10,8 @@ try{
  await page.goto(base+'/experiments/date-mobile.html');
  assert.equal(await page.locator('#capture').isDisabled(),true);assert.equal(await page.locator('#cameraInput').getAttribute('capture'),'environment');assert.equal(await page.locator('#galleryInput').getAttribute('capture'),null);
  const before=await page.evaluate(()=>JSON.stringify(localStorage));await prepare(page);
+ // A stale cached engine must be replaced transparently after a deployment.
+ await page.evaluate(async()=>{const c=await caches.open('reserve-date-mobile-runtime-v1');await c.put(new URL('../assets/date-mobile-test/ocr-engine.js',location.href),new Response('old engine'));});await page.reload();await prepare(page);
  const buffer=Buffer.from(await page.evaluate(()=>{const c=document.createElement('canvas');c.width=640;c.height=180;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,640,180);x.fillStyle='#000';x.font='34px Arial';x.fillText('MFG: 14.09.2026',25,55);x.fillText('EXP: 14.09.2027',25,120);return c.toDataURL('image/png').split(',')[1];}),'base64');
  const photo={name:'synthetic-date.png',mimeType:'image/png',buffer};
  await page.locator('#galleryInput').setInputFiles(photo);await page.locator('#review').waitFor({state:'visible',timeout:15000});
@@ -20,7 +22,7 @@ try{
  assert.equal(await page.evaluate(()=>JSON.stringify(localStorage)),before);const cached=await page.evaluate(async()=>{const c=await caches.open('reserve-date-mobile-runtime-v1');return(await c.keys()).map(r=>r.url);});assert.equal(cached.length,6);assert.ok(cached.every(u=>u.includes('/assets/date-mobile-test/')));
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  // A worker that intentionally never returns lets the real10second watchdog and cancellation run.
- await context.route('**/date-worker.js',r=>r.fulfill({contentType:'text/javascript',body:"onmessage=({data})=>{if(data.type==='init')postMessage({type:'ready'});else postMessage({type:'phase',id:data.id,stage:'detection_inference',metrics:{width:960,height:288}});};"}));
+ await context.route('**/date-worker.js*',r=>r.fulfill({contentType:'text/javascript',body:"onmessage=({data})=>{if(data.type==='init')postMessage({type:'ready'});else postMessage({type:'phase',id:data.id,stage:'detection_inference',metrics:{width:960,height:288}});};"}));
  await page.reload();await prepare(page);await page.locator('#galleryInput').setInputFiles(photo);await page.locator('#cancel').click();await page.waitForFunction(()=>document.getElementById('status').textContent.startsWith('Erkennung abgebrochen.'),null,{timeout:1000});assert.equal(await page.locator('#review').isVisible(),false);
  await prepare(page);const start=Date.now();await page.locator('#galleryInput').setInputFiles(photo);await page.waitForFunction(()=>document.getElementById('status').textContent.startsWith('Nach zehn Sekunden'),null,{timeout:12000});assert.ok(Date.now()-start<11500);assert.equal(await page.locator('#capture').isDisabled(),true);assert.ok(await page.locator('#review').isVisible());
  const timedDownload=page.waitForEvent('download');await page.locator('#expectedDate').fill('2026-12-01');await page.locator('#expectedRole').selectOption('expiry');await page.locator('#confirm').click();await page.locator('#export').click();const td=await timedDownload,tr=JSON.parse(fs.readFileSync(await td.path(),'utf8'));assert.equal(tr.rows[0].state,'timeout');assert.equal(tr.rows[0].diagnostics.lastStage,'detection_inference');assert.equal(tr.rows[0].diagnostics.events.at(-1).width,960);

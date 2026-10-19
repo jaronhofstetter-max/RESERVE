@@ -57,3 +57,7 @@ to exports. Late messages from terminated workers remain ignored.
 Run `node tools/test-date-mobile-diagnostics.mjs` for deterministic lifecycle and
 worker checks. CI also runs the real-WASM browser test. Neither substitutes for
 a repeat on the physical phone; no timeout cure or new accuracy is claimed.
+
+Changed app/worker URLs carry a release suffix; stale runtime-cache entries are
+checksum-checked, removed and revalidated once transparently. A second invalid
+response still fails closed. Unchanged assets remain reusable.

@@ -20,17 +20,23 @@ function resetReview(){last=null;$('review').hidden=true;$('expectedDate').value
 async function verifiedAsset(entry,signal,progress){
  const url=new URL(ASSET+entry.name,location.href).href;
  let cache=null,response=null;try{cache=await caches.open(CACHE);response=await cache.match(url);}catch{}
- if(!response)response=await fetch(url,{signal,credentials:'omit',redirect:'error'});
- if(!response.ok)throw Error('Datei konnte nicht geladen werden: '+entry.name);
- const data=await response.arrayBuffer(),hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',data)),x=>x.toString(16).padStart(2,'0')).join('');
- if(data.byteLength!==entry.bytes||hash!==entry.sha256){try{await cache?.delete(url);}catch{}throw Error('Dateiprüfung fehlgeschlagen. Bitte nochmals vorbereiten.');}
+ let data=null;
+ for(let attempt=0;attempt<2;attempt++){
+  if(!response)response=await fetch(url,{signal,credentials:'omit',redirect:'error',cache:'no-cache'});
+  if(!response.ok)throw Error('Datei konnte nicht geladen werden: '+entry.name);
+  data=await response.arrayBuffer();const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',data)),x=>x.toString(16).padStart(2,'0')).join('');
+  if(data.byteLength===entry.bytes&&hash===entry.sha256)break;
+  try{await cache?.delete(url);}catch{}
+  response=null;data=null;
+ }
+ if(!data)throw Error('Dateiprüfung fehlgeschlagen. Bitte nochmals vorbereiten.');
  if(signal.aborted)throw new DOMException('Abgebrochen','AbortError');
  try{await cache?.put(url,new Response(data,{headers:{'content-type':entry.name.endsWith('.js')||entry.name.endsWith('.mjs')?'text/javascript':'application/octet-stream'}}));}catch{}
  progress(data.byteLength);return data;
 }
 async function startWorker(){
  stopWorker();
- const instance=new Worker(new URL(ASSET+'date-worker.js',location.href));worker=instance;
+ const instance=new Worker(new URL(ASSET+'date-worker.js?v=20261019-diagnostics-2',location.href));worker=instance;
  const initialization={started:performance.now(),events:[]};phase(initialization,'worker_start');
  return new Promise((resolve,reject)=>{
   const timer=setTimeout(()=>{startupCancel=null;if(worker===instance)stopWorker();reject(Error('Vorbereitung dauert zu lange. Bitte erneut versuchen.'));},30000);
