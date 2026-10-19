@@ -61,3 +61,24 @@ a repeat on the physical phone; no timeout cure or new accuracy is claimed.
 Changed app/worker URLs carry a release suffix; stale runtime-cache entries are
 checksum-checked, removed and revalidated once transparently. A second invalid
 response still fails closed. Unchanged assets remain reusable.
+
+## Geometric date-region candidate
+
+The default `full` control remains unchanged. `regions` selects at most 24
+text boxes only when the detector finds more than 24. Eight geometric seeds
+are scored by letter height, isolation and aspect ratio; neighbours include
+possible role cues and competing stamps. This is a heuristic proposal, not a
+trained date detector. No filenames, dates, confirmed labels or OCR text enter
+the planner. Small pages and invalid geometry use all boxes.
+
+A partial read ALWAYS clears `strict_expiry`, including explicit inline MHD
+cues, because omitted regions may contain competing dates or roles. Remaining
+suggestions require manual review. Full-page role and parser rules are unchanged.
+The 10s watchdog is unchanged. No production scanner is changed.
+
+Per-row strategy and coverage counts permit paired exports. Recognized text
+can be opened locally in the result details for diagnosis; it is NOT included
+in JSON exports, uploaded or persisted. No photo or reference label is published.
+The build manifest identifies that a region path is available; per-row strategy
+states which path actually ran. Tests include bounded geometry and a real-WASM
+dense synthetic case, but do not establish real-image accuracy or phone speed.

@@ -2,6 +2,7 @@
 import Roles from './date-roles.cjs';
 import {dates,normalize} from './date-parser.js';
 import {imageSize} from './image-size.js';
+import {planRegions,guardPrediction} from './regions.js';
 let reader=null;
 self.onmessage=async({data})=>{try{
  globalThis.RESERVE_DATE_PHASE=(stage,metrics={})=>self.postMessage({type:'phase',id:data.id,stage,metrics});
@@ -23,6 +24,7 @@ self.onmessage=async({data})=>{try{
  }
  if(data.type==='recognize'){
   if(!reader)throw Error('Erkennung ist noch nicht bereit.');
+  globalThis.RESERVE_DATE_REGIONS=data.strategy==='regions'?planRegions:null;
   globalThis.RESERVE_DATE_PHASE('image_resize');
   const bmp=data.bitmap,size=imageSize(bmp.width,bmp.height),canvas=new OffscreenCanvas(size.width,size.height),ctx=canvas.getContext('2d',{willReadFrequently:true});
   try{ctx.drawImage(bmp,0,0,canvas.width,canvas.height);}finally{bmp.close();}
@@ -31,6 +33,6 @@ self.onmessage=async({data})=>{try{
   globalThis.RESERVE_DATE_PHASE('date_selection');
   const raw={id:data.id,width:r.resizedImageWidth,height:r.resizedImageHeight,seconds:(performance.now()-start)/1000,lines:(r.texts||r).map(l=>{const b=l.box||l.frame,bbox=Array.isArray(b)?[Math.min(...b.map(p=>p[0])),Math.min(...b.map(p=>p[1])),Math.max(...b.map(p=>p[0])),Math.max(...b.map(p=>p[1]))]:[b.left,b.top,b.left+b.width,b.top+b.height],text=normalize(l.text);return{text,confidence:l.mean??l.score,bbox,parsed_dates:dates(text)};})};
   const p=Roles.select(raw),compact=c=>c?{date:c.date,precision:c.precision,role:c.role,confidence:c.confidence}:null;
-  self.postMessage({type:'result',id:data.id,prediction:{suggestion:compact(p.suggestion),strict_expiry:compact(p.strict_expiry)},candidateCount:p.candidates.length,seconds:raw.seconds});
+  self.postMessage({type:'result',id:data.id,prediction:guardPrediction({suggestion:compact(p.suggestion),strict_expiry:compact(p.strict_expiry)},r.coverage),coverage:r.coverage,inspection:raw.lines.map(l=>({text:l.text,confidence:l.confidence,dates:l.parsed_dates.map(c=>c.date)})),candidateCount:p.candidates.length,seconds:raw.seconds});
  }
 }catch(error){self.postMessage({type:'error',id:data.id,message:error.message||String(error)});}};

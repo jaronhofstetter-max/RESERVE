@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {planRegions,guardPrediction,REGION_LIMIT} from '../experiments/date-mobile-build/regions.js';
+const line=(x,y,w,h)=>({box:[[x,y],[x+w,y],[x+w,y+h],[x,y+h]],image:{}});
+const small=[line(10,10,130,12),line(10,30,140,12)];
+assert.equal(planRegions(small).lineImages,small);
+const dense=Array.from({length:64},(_,i)=>line(10+(i%2)*150,10+Math.floor(i/2)*12,120,6));
+const stamp=line(320,460,130,14),cue=line(320,430,140,8),competing=line(320,495,130,14);
+dense.push(stamp,cue,competing);
+for(const item of dense)Object.defineProperty(item,'text',{get(){throw Error('Planner accessed OCR text');}});
+const plan=planRegions(dense);assert.equal(plan.coverage.complete,false);assert.equal(plan.lineImages.length,REGION_LIMIT);
+assert.ok(plan.lineImages.includes(stamp));assert.ok(plan.lineImages.includes(cue));assert.ok(plan.lineImages.includes(competing));
+const transformed=dense.map(l=>({box:l.box.map(([x,y])=>[x*2+500,y*2+300])}));
+const indices=plan.lineImages.map(l=>dense.indexOf(l));assert.deepEqual(planRegions(transformed).lineImages.map(l=>transformed.indexOf(l)),indices);
+const malformed=[...dense,{box:null}];assert.equal(planRegions(malformed).lineImages,malformed);
+const prediction={suggestion:{date:'2027-09-14',role:'expiry'},strict_expiry:{date:'2027-09-14',role:'expiry'}};
+assert.equal(guardPrediction(prediction,{complete:false}).strict_expiry,null);assert.equal(guardPrediction(prediction,{complete:true}).strict_expiry,prediction.strict_expiry);assert.equal(guardPrediction(prediction,{complete:false}).suggestion,prediction.suggestion);assert.ok(prediction.strict_expiry);
+console.log('✓ Region budget, neighbouring cues/competing dates, scale/translation invariance, invalid geometry fallback, no OCR/label input and partial-read strict-expiry guard. Synthetic checks, not accuracy evidence.');
