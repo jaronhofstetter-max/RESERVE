@@ -6,7 +6,7 @@ let files=null,worker=null,ready=false,job=null,loading=null,startupCancel=null,
 const violations=[];
 let preparation=null;
 function phase(diagnostic,stage,metrics={}){
- const safe={};for(const key of ['width','height','lineCount','totalLines','selectedLines'])if(Number.isFinite(metrics[key]))safe[key]=metrics[key];
+ const safe={};for(const key of ['width','height','lineCount','totalLines','selectedLines','resolvedOrders','unresolvedOrders'])if(Number.isFinite(metrics[key]))safe[key]=metrics[key];
  diagnostic.events.push({stage,ms:Math.round(performance.now()-diagnostic.started),...safe});
 }
 function snapshot(diagnostic){return diagnostic?{lastStage:diagnostic.events.at(-1)?.stage||null,events:diagnostic.events,coverage:diagnostic.coverage||null}:null;}
@@ -36,7 +36,7 @@ async function verifiedAsset(entry,signal,progress){
 }
 async function startWorker(){
  stopWorker();
- const instance=new Worker(new URL(ASSET+'date-worker.js?v=20261019-regions-1',location.href));worker=instance;
+ const instance=new Worker(new URL(ASSET+'date-worker.js?v=20261019-date-order-1',location.href));worker=instance;
  const initialization={started:performance.now(),events:[]};phase(initialization,'worker_start');
  return new Promise((resolve,reject)=>{
   const timer=setTimeout(()=>{startupCancel=null;if(worker===instance)stopWorker();reject(Error('Vorbereitung dauert zu lange. Bitte erneut versuchen.'));},30000);
@@ -97,5 +97,5 @@ $('capture').onclick=()=>$('cameraInput').click();$('gallery').onclick=()=>$('ga
 for(const id of ['cameraInput','galleryInput'])$(id).onchange=()=>{const f=$(id).files?.[0];$(id).value='';void picked(f);};
 $('precision').onchange=()=>{const value=$('expectedDate').value,month=$('precision').value==='month';$('expectedDate').type=month?'month':'date';$('expectedDate').value=month?value.slice(0,7):value.length===10?value:'';};
 $('confirm').onclick=()=>saveReview(false);$('unreadable').onclick=()=>saveReview(true);
-$('export').onclick=()=>{const a=document.createElement('a'),data={schema:'reserve-date-mobile-review-v2',at:new Date().toISOString(),pipeline:manifest.pipeline,roleModuleSha:manifest.roleModuleSha,modelManifest:manifest.files.map(x=>({name:x.name,sha256:x.sha256})),limitMs:10000,device:navigator.userAgent,violations,rows};a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='reserve-mhd-handytest-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
+$('export').onclick=()=>{const a=document.createElement('a'),data={schema:'reserve-date-mobile-review-v2',at:new Date().toISOString(),pipeline:manifest.pipeline,roleModuleSha:manifest.roleModuleSha,dateOrderModuleSha:manifest.dateOrderModuleSha,dateParserModuleSha:manifest.dateParserModuleSha,modelManifest:manifest.files.map(x=>({name:x.name,sha256:x.sha256})),limitMs:10000,device:navigator.userAgent,violations,rows};a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='reserve-mhd-handytest-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
 busy(false);

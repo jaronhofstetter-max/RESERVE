@@ -104,6 +104,7 @@ jobs:
           node experiments/date-mobile-build/test.cjs
           node tools/test-date-mobile-diagnostics.mjs
           node tools/test-date-regions.mjs
+          node tools/test-date-order.mjs
           node experiments/date-mobile-build/build.cjs
       - name: Verify isolated MHD phone test
         run: node tools/e2e-date-mobile.mjs

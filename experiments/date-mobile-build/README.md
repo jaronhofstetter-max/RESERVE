@@ -82,3 +82,23 @@ in JSON exports, uploaded or persisted. No photo or reference label is published
 The build manifest identifies that a region path is available; per-row strategy
 states which path actually ran. Tests include bounded geometry and a real-WASM
 dense synthetic case, but do not establish real-image accuracy or phone speed.
+
+## Local numeric date-order evidence
+
+Separated four-digit numeric dates now parse both valid DMY and MDY orders.
+Ambiguous dates keep both candidates until a nearby, unambiguous, calendar-valid
+printed date with the same separator establishes an order. Evidence and target
+must have confidence >= .90, be on the same local text row or aligned neighbouring
+rows (at most four character heights). The source must establish order (equal
+day/month does not), be a complete token, and not be labelled as lot/batch/charge.
+Conflicting nearby orders prevent resolution. Locale and reference labels do not
+participate. No two-digit-year policy changes.
+
+Order resolution neither assigns an expiry role nor selects the latest date.
+Unknown competing dates remain unconfirmed; partial region reads still clear
+strict_expiry. Exports add the date-order module hash and resolution counts, but
+no source text. This experimental page continues to require user review.
+
+Malformed numeric date chains no longer contribute shorter month/year pieces
+(e.g. invalid 31.02.2020 cannot yield 02.2020). The numeric parser and order
+resolver each have a separate export hash for reproducible comparisons.
