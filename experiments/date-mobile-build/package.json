@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@gutenye/ocr-browser": "1.4.9",
+    "esbuild": "0.25.11"
+  },
+  "type": "module",
+  "private": true
+}

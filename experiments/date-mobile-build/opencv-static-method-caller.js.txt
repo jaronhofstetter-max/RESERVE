@@ -1,0 +1,10 @@
+function __emval_get_method_caller(argCount,argTypes){
+ var types=__emval_lookupTypes(argCount,argTypes),retType=types[0];
+ return __emval_addMethodCaller(function(handle,name,destructors,args){
+  var offset=0,values=[];
+  for(var i=1;i<argCount;i++){values.push(types[i].readValueFromPointer(args+offset));offset+=types[i].argPackAdvance;}
+  var rv=handle[name].apply(handle,values);
+  for(var j=1;j<argCount;j++)if(types[j].deleteObject)types[j].deleteObject(values[j-1]);
+  if(!retType.isVoid)return retType.toWireType(destructors,rv);
+ });
+}

@@ -1,0 +1,1763 @@
+[
+  {
+    "raw": {
+      "id": "MHD: 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "MHD: 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 5,
+              "end": 15,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09-14",
+    "expected_roles": [
+      "best_before"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "Mindestens haltbar bis 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "Mindestens haltbar bis 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 23,
+              "end": 33,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09-14",
+    "expected_roles": [
+      "best_before"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "BEST BEFORE 14 SEP 2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "BEST BEFORE 14 SEP 2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 12,
+              "end": 23,
+              "printed": "14 SEP 2027",
+              "kind": "dmy_alpha",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09-14",
+    "expected_roles": [
+      "best_before"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "BEST BEF0RE 14 SEP 2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "BEST BEF0RE 14 SEP 2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 12,
+              "end": 23,
+              "printed": "14 SEP 2027",
+              "kind": "dmy_alpha",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09-14",
+    "expected_roles": [
+      "best_before"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "À consommer de préférence avant le 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "À consommer de préférence avant le 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 35,
+              "end": 45,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09-14",
+    "expected_roles": [
+      "best_before"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "Da consumarsi preferibilmente entro 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "Da consumarsi preferibilmente entro 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 36,
+              "end": 46,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09-14",
+    "expected_roles": [
+      "best_before"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "Zu verbrauchen bis 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "Zu verbrauchen bis 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 19,
+              "end": 29,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09-14",
+    "expected_roles": [
+      "use_by"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "USE BY 14 SEP 2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "USE BY 14 SEP 2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 7,
+              "end": 18,
+              "printed": "14 SEP 2027",
+              "kind": "dmy_alpha",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09-14",
+    "expected_roles": [
+      "use_by"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "À consommer jusqu’au 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "À consommer jusqu’au 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 21,
+              "end": 31,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09-14",
+    "expected_roles": [
+      "use_by"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "Da consumarsi entro 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "Da consumarsi entro 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 20,
+              "end": 30,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09-14",
+    "expected_roles": [
+      "use_by"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "EXP14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "EXP 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 4,
+              "end": 14,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09-14",
+    "expected_roles": [
+      "expiry"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "Scadenza: 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "Scadenza: 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 10,
+              "end": 20,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09-14",
+    "expected_roles": [
+      "expiry"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "MFG14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "MFG 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 4,
+              "end": 14,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "manufactured"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "MFD: 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "MFD: 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 5,
+              "end": 15,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "manufactured"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "PRO.DATE: 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "PRO.DATE: 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 10,
+              "end": 20,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "manufactured"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "PROD: 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "PROD: 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 6,
+              "end": 16,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "manufactured"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "Hergestellt am 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "Hergestellt am 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 15,
+              "end": 25,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "manufactured"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "Fabriqué le 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "Fabriqué le 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 12,
+              "end": 22,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "manufactured"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "Data di produzione: 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "Data di produzione: 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 20,
+              "end": 30,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "manufactured"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "Verkaufen bis 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "Verkaufen bis 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 14,
+              "end": 24,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "sell_by"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "SELL BY 14 SEP 2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "SELL BY 14 SEP 2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 8,
+              "end": 19,
+              "printed": "14 SEP 2027",
+              "kind": "dmy_alpha",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "sell_by"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "À vendre avant le 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "À vendre avant le 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 18,
+              "end": 28,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "sell_by"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "Vendere entro 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "Vendere entro 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 14,
+              "end": 24,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "sell_by"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "Packed on 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "Packed on 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 10,
+              "end": 20,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "packed"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "Verpackt am 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "Verpackt am 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 12,
+              "end": 22,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "packed"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "LOT 14.09.2027",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "LOT 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 4,
+              "end": 14,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "batch"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "unknown",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 0,
+              "end": 10,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "unknown"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "manufacturer company is not date cue",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "Manufactured by Example Foods 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 30,
+              "end": 40,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "unknown"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "do not carry prefix across second date",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "MFG: 14.09.2027 14.10.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 5,
+              "end": 15,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            },
+            {
+              "date": "2027-10-14",
+              "precision": "day",
+              "start": 16,
+              "end": 26,
+              "printed": "14.10.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "manufactured",
+      "unknown"
+    ],
+    "expected_suggestion": "2027-10-14"
+  },
+  {
+    "raw": {
+      "id": "two explicit date roles",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "MFG: 14.09.2027 EXP: 14.10.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 5,
+              "end": 15,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            },
+            {
+              "date": "2027-10-14",
+              "precision": "day",
+              "start": 21,
+              "end": 31,
+              "printed": "14.10.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-10-14",
+    "expected_roles": [
+      "manufactured",
+      "expiry"
+    ],
+    "expected_suggestion": "2027-10-14"
+  },
+  {
+    "raw": {
+      "id": "sellby and mhd",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "Verkaufen bis 14.09.2027 MHD: 14.10.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 14,
+              "end": 24,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            },
+            {
+              "date": "2027-10-14",
+              "precision": "day",
+              "start": 30,
+              "end": 40,
+              "printed": "14.10.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-10-14",
+    "expected_roles": [
+      "sell_by",
+      "best_before"
+    ],
+    "expected_suggestion": "2027-10-14"
+  },
+  {
+    "raw": {
+      "id": "contradictory same value",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "MFG: 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 5,
+              "end": 15,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        },
+        {
+          "text": "EXP: 14.09.2027",
+          "bbox": [
+            0,
+            40,
+            600,
+            65
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 5,
+              "end": 15,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "manufactured",
+      "expiry"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "two different expiry values",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "EXP: 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 5,
+              "end": 15,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        },
+        {
+          "text": "EXP: 14.10.2027",
+          "bbox": [
+            0,
+            40,
+            600,
+            65
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-10-14",
+              "precision": "day",
+              "start": 5,
+              "end": 15,
+              "printed": "14.10.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "expiry",
+      "expiry"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "suffix",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "14.09.2027 MHD",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 0,
+              "end": 10,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09-14",
+    "expected_roles": [
+      "best_before"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "low confidence cue",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "MHD",
+          "bbox": [
+            0,
+            0,
+            80,
+            25
+          ],
+          "confidence": 0.7,
+          "parsed_dates": []
+        },
+        {
+          "text": "14.09.2027",
+          "bbox": [
+            0,
+            30,
+            200,
+            55
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 0,
+              "end": 10,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "unknown"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "separate aligned cue",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "MHD",
+          "bbox": [
+            0,
+            0,
+            80,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": []
+        },
+        {
+          "text": "14.09.2027",
+          "bbox": [
+            0,
+            30,
+            200,
+            55
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 0,
+              "end": 10,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09-14",
+    "expected_roles": [
+      "best_before"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "equidistant opposed cues",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "MHD",
+          "bbox": [
+            0,
+            0,
+            80,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": []
+        },
+        {
+          "text": "MFG",
+          "bbox": [
+            0,
+            80,
+            80,
+            105
+          ],
+          "confidence": 0.99,
+          "parsed_dates": []
+        },
+        {
+          "text": "14.09.2027",
+          "bbox": [
+            0,
+            40,
+            200,
+            65
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 0,
+              "end": 10,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "unknown"
+    ],
+    "expected_suggestion": "2027-09-14"
+  },
+  {
+    "raw": {
+      "id": "same label two equidistant values",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "MHD",
+          "bbox": [
+            200,
+            0,
+            280,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": []
+        },
+        {
+          "text": "14.09.2027",
+          "bbox": [
+            0,
+            30,
+            200,
+            55
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 0,
+              "end": 10,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        },
+        {
+          "text": "14.10.2027",
+          "bbox": [
+            280,
+            30,
+            480,
+            55
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-10-14",
+              "precision": "day",
+              "start": 0,
+              "end": 10,
+              "printed": "14.10.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "unknown",
+      "unknown"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "date fragment of broken month",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "EXP: 10 AU6 2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-06",
+              "precision": "month",
+              "start": 10,
+              "end": 16,
+              "printed": "6 2027",
+              "kind": "space_month_year",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "date fragment missing separator",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "202709.14",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09",
+              "precision": "month",
+              "start": 0,
+              "end": 6,
+              "printed": "202709",
+              "kind": "compact_year_month",
+              "ambiguous": true
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "do not guess century",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "MHD: 14.09.27",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 5,
+              "end": 13,
+              "printed": "14.09.27",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "ambiguous day month",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "MHD: 02/03/2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-03-02",
+              "precision": "day",
+              "start": 5,
+              "end": 15,
+              "printed": "02/03/2027",
+              "kind": "dmy",
+              "ambiguous": true
+            },
+            {
+              "date": "2027-02-03",
+              "precision": "day",
+              "start": 5,
+              "end": 15,
+              "printed": "02/03/2027",
+              "kind": "mdy",
+              "ambiguous": true
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "best_before",
+      "best_before"
+    ],
+    "expected_suggestion": null
+  },
+  {
+    "raw": {
+      "id": "month precision",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "BEST BEFORE SEP 2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09",
+              "precision": "month",
+              "start": 12,
+              "end": 20,
+              "printed": "SEP 2027",
+              "kind": "explicit_alpha_month_year",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": "2027-09",
+    "expected_roles": [
+      "best_before"
+    ],
+    "expected_suggestion": "2027-09"
+  },
+  {
+    "raw": {
+      "id": "cue anchored on different line",
+      "width": 1000,
+      "height": 1000,
+      "lines": [
+        {
+          "text": "MFG: 14.09.2027",
+          "bbox": [
+            0,
+            0,
+            600,
+            25
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-09-14",
+              "precision": "day",
+              "start": 5,
+              "end": 15,
+              "printed": "14.09.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        },
+        {
+          "text": "14.10.2027",
+          "bbox": [
+            0,
+            30,
+            600,
+            55
+          ],
+          "confidence": 0.99,
+          "parsed_dates": [
+            {
+              "date": "2027-10-14",
+              "precision": "day",
+              "start": 0,
+              "end": 10,
+              "printed": "14.10.2027",
+              "kind": "dmy",
+              "ambiguous": false
+            }
+          ]
+        }
+      ],
+      "seconds": 0
+    },
+    "expected_strict": null,
+    "expected_roles": [
+      "manufactured",
+      "unknown"
+    ],
+    "expected_suggestion": "2027-10-14"
+  }
+]

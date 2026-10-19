@@ -1,0 +1,296 @@
+[
+  {
+    "name": "@esbuild/linux-x64",
+    "version": "0.25.11",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/evanw/esbuild.git"
+    },
+    "copied_notices": []
+  },
+  {
+    "name": "@gutenye/ocr-browser",
+    "version": "1.4.9",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/gutenye/ocr.git",
+      "directory": "packages/browser"
+    },
+    "copied_notices": []
+  },
+  {
+    "name": "@gutenye/ocr-common",
+    "version": "1.4.9",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/gutenye/ocr.git",
+      "directory": "packages/common"
+    },
+    "copied_notices": []
+  },
+  {
+    "name": "@gutenye/ocr-models",
+    "version": "1.4.2",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/gutenye/ocr.git",
+      "directory": "packages/models"
+    },
+    "copied_notices": []
+  },
+  {
+    "name": "@protobufjs/aspromise",
+    "version": "1.1.2",
+    "license": "BSD-3-Clause",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/dcodeIO/protobuf.js.git"
+    },
+    "copied_notices": [
+      "@protobufjs_aspromise-LICENSE"
+    ]
+  },
+  {
+    "name": "@protobufjs/base64",
+    "version": "1.1.2",
+    "license": "BSD-3-Clause",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/dcodeIO/protobuf.js.git"
+    },
+    "copied_notices": [
+      "@protobufjs_base64-LICENSE"
+    ]
+  },
+  {
+    "name": "@protobufjs/codegen",
+    "version": "2.0.5",
+    "license": "BSD-3-Clause",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/dcodeIO/protobuf.js.git"
+    },
+    "copied_notices": [
+      "@protobufjs_codegen-LICENSE"
+    ]
+  },
+  {
+    "name": "@protobufjs/eventemitter",
+    "version": "1.1.1",
+    "license": "BSD-3-Clause",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/dcodeIO/protobuf.js.git"
+    },
+    "copied_notices": [
+      "@protobufjs_eventemitter-LICENSE"
+    ]
+  },
+  {
+    "name": "@protobufjs/fetch",
+    "version": "1.1.1",
+    "license": "BSD-3-Clause",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/dcodeIO/protobuf.js.git"
+    },
+    "copied_notices": [
+      "@protobufjs_fetch-LICENSE"
+    ]
+  },
+  {
+    "name": "@protobufjs/float",
+    "version": "1.0.2",
+    "license": "BSD-3-Clause",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/dcodeIO/protobuf.js.git"
+    },
+    "copied_notices": [
+      "@protobufjs_float-LICENSE"
+    ]
+  },
+  {
+    "name": "@protobufjs/path",
+    "version": "1.1.2",
+    "license": "BSD-3-Clause",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/dcodeIO/protobuf.js.git"
+    },
+    "copied_notices": [
+      "@protobufjs_path-LICENSE"
+    ]
+  },
+  {
+    "name": "@protobufjs/pool",
+    "version": "1.1.0",
+    "license": "BSD-3-Clause",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/dcodeIO/protobuf.js.git"
+    },
+    "copied_notices": [
+      "@protobufjs_pool-LICENSE"
+    ]
+  },
+  {
+    "name": "@protobufjs/utf8",
+    "version": "1.1.2",
+    "license": "BSD-3-Clause",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/protobufjs/protobuf.js.git"
+    },
+    "copied_notices": [
+      "@protobufjs_utf8-LICENSE"
+    ]
+  },
+  {
+    "name": "@techstark/opencv-js",
+    "version": "4.9.0-release.3",
+    "license": "Apache-2.0",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/TechStark/opencv-js.git"
+    },
+    "copied_notices": [
+      "@techstark_opencv-js-LICENSE"
+    ]
+  },
+  {
+    "name": "@types/node",
+    "version": "26.6.5",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "directory": "types/node"
+    },
+    "copied_notices": [
+      "@types_node-LICENSE"
+    ]
+  },
+  {
+    "name": "esbuild",
+    "version": "0.25.11",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/evanw/esbuild.git"
+    },
+    "copied_notices": [
+      "esbuild-LICENSE.md"
+    ]
+  },
+  {
+    "name": "flatbuffers",
+    "version": "25.9.23",
+    "license": "Apache-2.0",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/google/flatbuffers.git"
+    },
+    "copied_notices": [
+      "flatbuffers-LICENSE"
+    ]
+  },
+  {
+    "name": "guid-typescript",
+    "version": "1.0.9",
+    "license": "ISC",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/NicolasDeveloper/guid-typescript"
+    },
+    "copied_notices": []
+  },
+  {
+    "name": "js-clipper",
+    "version": "1.0.1",
+    "license": "boost",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/mathisonian/JsClipper.git"
+    },
+    "copied_notices": []
+  },
+  {
+    "name": "long",
+    "version": "5.3.2",
+    "license": "Apache-2.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/dcodeIO/long.js.git"
+    },
+    "copied_notices": [
+      "long-LICENSE"
+    ]
+  },
+  {
+    "name": "onnxruntime-common",
+    "version": "1.30.0",
+    "license": "MIT",
+    "repository": {
+      "url": "https://github.com/Microsoft/onnxruntime.git",
+      "type": "git"
+    },
+    "copied_notices": []
+  },
+  {
+    "name": "onnxruntime-web",
+    "version": "1.30.0",
+    "license": "MIT",
+    "repository": {
+      "url": "https://github.com/Microsoft/onnxruntime.git",
+      "type": "git"
+    },
+    "copied_notices": []
+  },
+  {
+    "name": "platform",
+    "version": "1.3.6",
+    "license": "MIT",
+    "repository": "bestiejs/platform.js",
+    "copied_notices": [
+      "platform-LICENSE"
+    ]
+  },
+  {
+    "name": "protobufjs",
+    "version": "7.6.6",
+    "license": "BSD-3-Clause",
+    "repository": "protobufjs/protobuf.js",
+    "copied_notices": [
+      "protobufjs-LICENSE"
+    ]
+  },
+  {
+    "name": "tiny-invariant",
+    "version": "1.3.3",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/alexreardon/tiny-invariant.git"
+    },
+    "copied_notices": [
+      "tiny-invariant-LICENSE"
+    ]
+  },
+  {
+    "name": "undici-types",
+    "version": "8.9.0",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/nodejs/undici.git"
+    },
+    "copied_notices": [
+      "undici-types-LICENSE"
+    ]
+  }
+]

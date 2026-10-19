@@ -97,6 +97,14 @@ jobs:
         run: |
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
+      - name: Build isolated MHD phone test
+        run: |
+          npm ci --prefix experiments/date-mobile-build --ignore-scripts --no-audit --no-fund
+          python3 experiments/date-mobile-build/fetch-models.py
+          node experiments/date-mobile-build/test.cjs
+          node experiments/date-mobile-build/build.cjs
+      - name: Verify isolated MHD phone test
+        run: node tools/e2e-date-mobile.mjs
       - name: Browser end-to-end test
         run: |
           node tools/e2e-startup-shell.mjs
@@ -165,4 +173,5 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           artifact_name: github-pages-${{ github.run_attempt }}
+
 
