@@ -27,7 +27,7 @@
  // Other dates between a cue and this date invalidate the association.
  function infer(text,start,length){
   const before=String(text||'').slice(Math.max(0,start-65),start);
-  const patterns=[['best_before',/mindestens\s*haltbar(?:\s*bis)?|haltbar\s*bis|\bmhd\b|best\s*before|best\s*by|\bbbe\b|\bbbd\b|consommer\s*de\s*pr[ée]f[ée]rence\s*avant/gi],['use_by',/zu\s*verbrauchen\s*bis|use\s*by|consommer\s*jusqu['’]?\s*au/gi],['manufactured',/hergestellt(?:\s*am)?|\bmf[gd]\b|\bprod(?:uction)?(?:\s*date)?\b/gi],['packed',/pack(?:ed|ing)?\s*(?:on|date)|verpackt\s*am/gi],['sell_by',/sell\s*by|verkaufen\s*bis/gi]];
+  const patterns=[['best_before',/mindestens\s*haltbar(?:\s*bis)?|haltbar\s*bis|\bmhd\b|best\s*before|best\s*(?:if\s*)?used\s*by|best\s*by|\bbbe\b|\bbbd\b|consommer\s*de\s*pr[ée]f[ée]rence\s*avant/gi],['use_by',/zu\s*verbrauchen\s*bis|use\s*by|consommer\s*jusqu['’]?\s*au/gi],['manufactured',/hergestellt(?:\s*am)?|\bmf[gd]\b|\bprod(?:uction)?(?:\s*date)?\b|\bpro(?=\s*:)/gi],['packed',/pack(?:ed|ing)?\s*(?:on|date)|verpackt\s*am/gi],['sell_by',/sell\s*by|verkaufen\s*bis/gi]];
   const matches=patterns.flatMap(([type,re])=>[...before.matchAll(re)].map(m=>({type,end:m.index+m[0].length,start:m.index})));
   matches.sort((a,b)=>b.end-a.end||a.start-b.start);const cue=matches[0];
   if(!cue||/[0-9]/.test(before.slice(cue.end)))return'unknown';
