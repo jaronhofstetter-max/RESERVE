@@ -8,7 +8,7 @@ function state(){
     {label:'Produkt',value:name||'Noch nicht erkannt',level:name&&(!window.RESERVE_SCAN_IDENTITY||window.RESERVE_SCAN_IDENTITY.assignment())?'ok':'open'},
     {label:'Menge',value:validQty?qty:'Noch nicht sicher erkannt',level:validQty?'ok':'open'},
     {label:'Verpackung',value:pack||(name?'Bitte auswählen':'Noch nicht erkannt'),level:pack?(packConfirmed||packConfidence>=.78?'ok':'check'):'open'},
-    {label:'MHD',value:expiry?(expiryUncertain?'Bitte prüfen':expiry):'Noch fotografieren oder eingeben',level:expiry?(expiryUncertain?'check':'ok'):'open'}
+    {label:window.RESERVE_DATE_POLICY?.label(window.RESERVE_DATE_POLICY.fromInput())||'Datum',value:expiry?(expiryUncertain?'Bitte prüfen':expiry):'Noch fotografieren oder eingeben',level:expiry?(expiryUncertain?'check':'ok'):'open'}
   ];
 }
 function render(){

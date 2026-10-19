@@ -56,7 +56,7 @@ function expiryGuide(container){
   if(getComputedStyle(host).position==='static')host.style.position='relative';
   const guide=document.createElement('div');guide.dataset.reserveExpiryGuide='1';guide.setAttribute('aria-hidden','true');
   Object.assign(guide.style,{position:'absolute',left:`${GUIDE.x*100}%`,top:`${GUIDE.y*100}%`,width:`${GUIDE.width*100}%`,height:`${GUIDE.height*100}%`,boxSizing:'border-box',border:'3px solid #72d59a',borderRadius:'12px',boxShadow:'0 0 0 9999px rgba(0,0,0,.2)',pointerEvents:'none',zIndex:'5'});
-  const label=document.createElement('span');label.textContent='MHD vollständig in diesen Rahmen';
+  const label=document.createElement('span');label.textContent='Datum vollständig in diesen Rahmen';
   Object.assign(label.style,{position:'absolute',left:'50%',bottom:'calc(100% + 8px)',transform:'translateX(-50%)',padding:'5px 9px',borderRadius:'8px',background:'rgba(0,0,0,.76)',color:'#fff',font:'600 12px system-ui',whiteSpace:'nowrap'});
   guide.appendChild(label);host.appendChild(guide);return guide;
 }
@@ -70,7 +70,7 @@ function captureExpiryRegion(video,options={}){
   const result={dataUrl,quality,region:{x:sx,y:sy,width:sw,height:sh},capturedAt:new Date().toISOString()};
   if(options.emit!==false)window.dispatchEvent(new CustomEvent('reserve:expiry-region',{detail:result}));return result;
 }
-function guideMessage(result){const q=result?.quality;if(!q)return'';const message=q.acceptable?`MHD-Nahaufnahme bereit (Schärfe ${q.sharpness}).`:`Bitte erneut fotografieren: ${q.issues.join(', ')}.`;show(message);return message}
+function guideMessage(result){const q=result?.quality;if(!q)return'';const message=q.acceptable?`Datumsaufnahme bereit (Schärfe ${q.sharpness}).`:`Bitte erneut fotografieren: ${q.issues.join(', ')}.`;show(message);return message}
 window.RESERVE_PRODUCT_CAPTURE_ASSIST={version:'1.6',quantityFromText,packagingFromText,packagingFromProduct,applyProduct,applyPackaging,applyOCR,readQuantityFromPhoto,readQuantityFromUrl,nativeProductText,expiryGuide,captureExpiryRegion,regionQuality,qualityFromPixels,guideMessage,expiryGuideRegion:{...GUIDE}};
 function hookProductImage(){const result=$('barcodeResult');if(!result)return setTimeout(hookProductImage,120);new MutationObserver(()=>{const image=result.querySelector('.reserve-scan-visual img');if(!image||image.dataset.quantityOcr||$('scanQty')?.value?.trim())return;image.dataset.quantityOcr='1';readQuantityFromUrl(image.currentSrc||image.src)}).observe(result,{childList:true,subtree:true})}
 function hookLearning(){const api=window.RESERVE_EXPIRY_LEARNING;if(!api?.stage||api.stage.__productAssist)return setTimeout(hookLearning,120);const original=api.stage;function wrapped(file,result){if(result?.raw)applyOCR(result.raw);return original(file,result)}wrapped.__productAssist=true;api.stage=wrapped}
