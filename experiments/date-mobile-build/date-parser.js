@@ -1,7 +1,7 @@
 /* Browser feasibility adapter: explicit four-digit years only. Review required.
  * This adapter is separately tested; it is not the frozen Python date parser.
  */
-export function normalize(text){return text.replace(/\b(MHD|EXP|EXPIRY|BBE|BBD|MFG|MFD|PROD)(?=\d)/gi,'$1 ');}
+export function normalize(text){return text.replace(/\b(MHD|EXP|EXPIRY|BBE|BBD|MFG|MFD|PROD|SELL\s*BY|USE\s*BY|BEST\s*BEF[O0]RE)(?=\d)/gi,'$1 ');}
 const monthGroups=['JAN JANUARY','FEB FEBRUARY','MAR MARCH','APR APRIL','MAY','JUN JUNE','JUL JULY','AUG AUGUST','SEP SEPT SEPTEMBER','OCT OCTOBER','NOV NOVEMBER','DEC DECEMBER'];
 const months=Object.fromEntries(monthGroups.flatMap((s,i)=>s.split(' ').map(n=>[n,i+1]))),mr=Object.keys(months).sort((a,b)=>b.length-a.length).join('|');
 function value(y,m,d){y=+y;m=+m;if(y<1990||y>2099||m<1||m>12)return null;const x=new Date(Date.UTC(y,m-1,d===undefined?1:+d));if(x.getUTCMonth()!==m-1||x.getUTCFullYear()!==y||d!==undefined&&x.getUTCDate()!==+d)return null;return `${y}-${String(m).padStart(2,'0')}`+(d===undefined?'':`-${String(+d).padStart(2,'0')}`);}

@@ -102,3 +102,7 @@ no source text. This experimental page continues to require user review.
 Malformed numeric date chains no longer contribute shorter month/year pieces
 (e.g. invalid 31.02.2020 cannot yield 02.2020). The numeric parser and order
 resolver each have a separate export hash for reproducible comparisons.
+
+Known English date cues joined to a digit by OCR (SELLBY, USEBY, BESTBEFORE)
+receive an explicit boundary before parsing, as existing MHD/EXP/MFG cues do.
+Unknown alphanumeric prefixes still cannot establish a date-order source.

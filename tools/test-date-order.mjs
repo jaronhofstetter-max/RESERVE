@@ -36,6 +36,7 @@ assert.equal(dates('12.01.2021').length,2);assert.equal(dates('01.01.2021').leng
 // A pair of unknown-role dates can resolve its format without becoming an MHD.
 p=resolveDateOrders(raw([line('23.12.2020'),line('12.01.2021',40)]));assert.equal(p.resolved,1);assert.equal(R.select(p.raw).suggestion,null);assert.equal(R.select(p.raw).strict_expiry,null);
 p=resolveDateOrders(raw([line('EXP 23.12.2020'),line('EXP 12.01.2021',40)]));assert.equal(p.resolved,1);assert.equal(R.select(p.raw).strict_expiry,null);assert.equal(R.select(p.raw).suggestion,null);
+p=resolveDateOrders(raw([line('SELLBY23.12.2026'),line('EXP12.01.2027',40)]));assert.equal(R.select(p.raw).strict_expiry.date,'2027-01-12');assert.equal(R.select(p.raw).candidates.find(c=>c.date==='2026-12-23').role,'sell_by');assert.equal(normalize('BATCHSELLBY23.12.2026'),'BATCHSELLBY23.12.2026');
 // Geometry invariance and standalone ambiguity are preserved.
 const moved=raw(before.lines.map(l=>({...l,bbox:l.bbox.map(v=>v*2+500)})));assert.deepEqual(numeric(resolveDateOrders(moved),1),['2021-01-12']);
 console.log('✓ Local DMY/MDY evidence, mixed separators/conflicts, weak/distant/batch/invalid evidence, calendar validity, immutable input and independent date-role/partial-read protection. Constructed cases, not accuracy evidence.');
