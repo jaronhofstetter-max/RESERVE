@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {guardPrediction,planRegions} from '../experiments/date-mobile-build/regions.js';
+import {resolveDateOrders} from '../experiments/date-mobile-build/date-order.js';
 import {imageSize} from '../experiments/date-mobile-build/image-size.js';
 const dir='experiments/date-mobile-build/';
 assert.deepEqual(imageSize(4000,3000),{width:960,height:720});
@@ -14,7 +15,7 @@ class Canvas{constructor(width,height){this.width=width;this.height=height;canva
 const scope={console,performance,Blob,Uint8Array,OffscreenCanvas:Canvas,setTimeout,clearTimeout,URL:{createObjectURL:()=> 'blob:test',revokeObjectURL(){}},Roles:{select:()=>({candidates:[]})},dates:()=>[],normalize:x=>x,self:{postMessage:m=>messages.push(m)}};
 scope.importScripts=()=>{scope.RESERVE_DATE_BROWSER_OCR={env:{wasm:{}},cv:{Mat:true},Ocr:{create:async()=>({detect:async()=>{scope.RESERVE_DATE_PHASE('detection_inference',{width:960,height:736});return{resizedImageWidth:960,resizedImageHeight:736,texts:[]};}})}};};
 vm.createContext(scope);vm.runInContext(fs.readFileSync(dir+'worker.js','utf8').replace(/^import .*;\n/gm,''),scope);
-scope.imageSize=imageSize;scope.planRegions=planRegions;scope.guardPrediction=guardPrediction;
+scope.resolveDateOrders=resolveDateOrders;scope.imageSize=imageSize;scope.planRegions=planRegions;scope.guardPrediction=guardPrediction;
 await scope.self.onmessage({data:{type:'init',files:{}}});
 assert.equal(messages.at(-1).type,'ready');let closed=false;
 await scope.self.onmessage({data:{type:'recognize',id:'photo',bitmap:{width:4000,height:3000,close(){closed=true;}}}});

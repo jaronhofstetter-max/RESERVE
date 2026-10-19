@@ -1,7 +1,7 @@
 /* Browser feasibility adapter: explicit four-digit years only. Review required.
  * This adapter is separately tested; it is not the frozen Python date parser.
  */
-export function normalize(text){return text.replace(/\b(MHD|EXP|EXPIRY|BBE|BBD|MFG|MFD|PROD)(?=\d)/gi,'$1 ');}
+export function normalize(text){return text.replace(/\b(MHD|EXP|EXPIRY|BBE|BBD|MFG|MFD|PROD|SELL\s*BY|USE\s*BY|BEST\s*BEF[O0]RE)(?=\d)/gi,'$1 ');}
 const monthGroups=['JAN JANUARY','FEB FEBRUARY','MAR MARCH','APR APRIL','MAY','JUN JUNE','JUL JULY','AUG AUGUST','SEP SEPT SEPTEMBER','OCT OCTOBER','NOV NOVEMBER','DEC DECEMBER'];
 const months=Object.fromEntries(monthGroups.flatMap((s,i)=>s.split(' ').map(n=>[n,i+1]))),mr=Object.keys(months).sort((a,b)=>b.length-a.length).join('|');
 function value(y,m,d){y=+y;m=+m;if(y<1990||y>2099||m<1||m>12)return null;const x=new Date(Date.UTC(y,m-1,d===undefined?1:+d));if(x.getUTCMonth()!==m-1||x.getUTCFullYear()!==y||d!==undefined&&x.getUTCDate()!==+d)return null;return `${y}-${String(m).padStart(2,'0')}`+(d===undefined?'':`-${String(+d).padStart(2,'0')}`);}
@@ -13,7 +13,7 @@ export function dates(text){
  scan('(?<!\\d)((?:19|20)\\d{2})\\s*[-/.]\\s*(\\d{1,2})\\s*[-/.]\\s*(\\d{1,2})(?!\\d)',m=>put(m,value(m[1],m[2],m[3]),'ymd'));
  scan('(?<!\\d)((?:19|20)\\d{2})\\s+(\\d{1,2})\\s+(\\d{1,2})(?!\\d)',m=>put(m,value(m[1],m[2],m[3]),'space_ymd'));
  scan('(?<!\\d)((?:19|20)\\d{2})\\s*[-./ ]?\\s*('+mr+')\\s*[-./ ]?\\s*(\\d{1,2})(?!\\d)',m=>put(m,value(m[1],months[m[2].toUpperCase()],m[3]),'year_alpha_day'));
- scan('(?<!\\d)(\\d{1,2})\\s*[-/.]\\s*(\\d{1,2})\\s*[-/.]\\s*((?:19|20)\\d{2})(?!\\d)',m=>{if(overlaps(m))return;const a=+m[1],b=+m[2],amb=a<=12&&b<=12&&a!==b;put(m,value(m[3],b,a),'dmy',amb);if(amb)put(m,value(m[3],a,b),'mdy',true);});
+ scan('(?<!\\d)(\\d{1,2})\\s*[-/.]\\s*(\\d{1,2})\\s*[-/.]\\s*((?:19|20)\\d{2})(?!\\d)',m=>{if(overlaps(m))return;const a=+m[1],b=+m[2],dmy=value(m[3],b,a),mdy=value(m[3],a,b),amb=!!dmy&&!!mdy&&dmy!==mdy;put(m,dmy,'dmy',amb);if(mdy&&mdy!==dmy)put(m,mdy,'mdy',amb);});
  scan('(?<![A-Z0-9])(\\d{1,2})\\s*[-./ ]?\\s*('+mr+')\\s*[-./ ]?\\s*((?:19|20)\\d{2})(?!\\d)',m=>put(m,value(m[3],months[m[2].toUpperCase()],m[1]),'dmy_alpha'));
  scan('(?<![A-Z0-9])('+mr+')\\s+(\\d{1,2})\\s*,?\\s*((?:19|20)\\d{2})(?!\\d)',m=>put(m,value(m[3],months[m[1].toUpperCase()],m[2]),'mdy_alpha'));
  scan('(?<!\\d)(\\d{1,2})\\s+(\\d{1,2})\\s+((?:19|20)\\d{2})(?!\\d)',m=>{if(!overlaps(m))put(m,value(m[3],m[2],m[1]),'space_dmy');});
@@ -22,5 +22,6 @@ export function dates(text){
  scan('(?<!\\d)(\\d{1,2})\\s*[-/. ]\\s*((?:19|20)\\d{2})(?!\\d)',m=>{if(!overlaps(m))put(m,value(m[2],m[1]),'month_numeric');});
  scan('(?<!\\d)((?:19|20)\\d{2})\\s*[-/. ]\\s*(\\d{1,2})(?!\\d)',m=>{if(!overlaps(m))put(m,value(m[1],m[2]),'year_month');});
  scan('(?<!\\d)((?:19|20)\\d{2})(\\d{2})(?!\\d)',m=>{if(!overlaps(m))put(m,value(m[1],m[2]),'compact_year_month',true);});
- return out.filter((c,i)=>!out.some(o=>o.start<=c.start&&o.end>=c.end&&o.end-o.start>c.end-c.start)&&out.findIndex(o=>o.date===c.date&&o.precision===c.precision&&o.start===c.start&&o.end===c.end)===i);
+ const numericTokens=[...text.matchAll(/(?<!\d)\d{1,4}(?:\s*[-/.]\s*\d{1,4}){1,3}(?!\d)/g)].map(m=>({start:m.index,end:m.index+m[0].length}));
+ return out.filter((c,i)=>!numericTokens.some(t=>c.start>=t.start&&c.end<=t.end&&(c.start>t.start||c.end<t.end))&&!out.some(o=>o.start<=c.start&&o.end>=c.end&&o.end-o.start>c.end-c.start)&&out.findIndex(o=>o.date===c.date&&o.precision===c.precision&&o.start===c.start&&o.end===c.end)===i);
 }
