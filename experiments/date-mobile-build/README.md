@@ -30,3 +30,34 @@ Initialization has a separate30second bound. Preparation and inference can be ca
 The normal browser file capture picker supplies camera and gallery controls; no
 getUserMedia is called. A physical Android camera test is still required; a desktop
 or emulated test must not be reported as a physical-device test.
+
+## Phone-timeout diagnosis (19 October)
+
+The physical-phone export contained ten 10-second timeouts and no predictions.
+It does not locate the bottleneck and cannot measure OCR accuracy. This page is
+an isolated experiment, not the production scanner.
+
+Detector input now has a 960 px longest-edge bound (previously 1600); aspect
+ratio is preserved and small inputs are not enlarged. At the old maximum this
+reduces input pixel count by 64%. That is a workload bound, not a measured
+latency or accuracy gain. Small text can lose detail; retest the same photos.
+Weights, normalization, threshold, role selection and 10-second watchdog remain
+unchanged. The first inference is still cold (no unreported warmup).
+
+JSON schema `reserve-date-mobile-review-v2` adds preparation events separately
+from each photo's diagnostic events, with elapsed milliseconds, last stage,
+input dimensions and line count only. Stages cover image decode/dispatch,
+worker resize/pixel extraction, detector preprocessing/inference/postprocessing,
+recognizer preprocessing/inference/decoding, and date selection. A timeout
+retains the last stage received; its time is message-arrival time on the main
+thread, not an exact profiler measurement. Recognition inference/decoding can
+repeat per line. No raw OCR, image bytes, filenames or exception text are added
+to exports. Late messages from terminated workers remain ignored.
+
+Run `node tools/test-date-mobile-diagnostics.mjs` for deterministic lifecycle and
+worker checks. CI also runs the real-WASM browser test. Neither substitutes for
+a repeat on the physical phone; no timeout cure or new accuracy is claimed.
+
+Changed app/worker URLs carry a release suffix; stale runtime-cache entries are
+checksum-checked, removed and revalidated once transparently. A second invalid
+response still fails closed. Unchanged assets remain reusable.

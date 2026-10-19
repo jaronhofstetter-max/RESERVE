@@ -104,6 +104,7 @@ jobs:
           npm ci --prefix experiments/date-mobile-build --ignore-scripts --no-audit --no-fund
           python3 experiments/date-mobile-build/fetch-models.py
           node experiments/date-mobile-build/test.cjs
+          node tools/test-date-mobile-diagnostics.mjs
           node experiments/date-mobile-build/build.cjs
       - name: Verify isolated MHD phone test
         run: node tools/e2e-date-mobile.mjs
