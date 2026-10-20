@@ -37,6 +37,7 @@ jobs:
           node tools/e2e-rekek-review.mjs
           node tools/e2e-personal-recipes.mjs
           node tools/e2e-personal-recipe-flow.mjs
+          node tools/e2e-personal-recipe-review.mjs
           node tools/e2e-rekek-import.mjs
           node tools/e2e-personal-recipe-ocr.mjs
           node tools/e2e-rekek-columns.mjs
