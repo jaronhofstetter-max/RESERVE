@@ -208,3 +208,17 @@ console.log('Printed-page structure: literal header exclusion, wrapped adjective
 
 const umlautAction=K.parseText('Gemüsetopf\n1 Eßlöffel Öl\n1 Zwiebel\nZwiebel,Ol und Butter andiinsten.\n200 g Gemüse dazugeben.');assert.ok(!umlautAction.ingredients.includes('andiinsten'));assert.ok(umlautAction.steps.includes('Zwiebel,Ol und Butter andiinsten.'));assert.ok(!umlautAction.steps.includes('andünsten'));
 console.log('OCR umlaut action variants classify source text without silently correcting words.');
+
+// Repeated explicit units can resolve OCR g/9 glyph alternatives; true conflicts stay open.
+assert.equal(K.reviewParallelQuantity(['125 g Zucker','1259 Zucker','125g Zucker'],'125 9 Zucker'),'125 g Zucker');
+for(const [reads,source]of [[['1509 Zucker','1509 Zucker'],'1509 Zucker'],[['125 g Zucker','125 g Zucker','225 g Zucker'],'1259 Zucker'],[['125 g Zucker','125 g Zucker'],'2259 Zucker'],[['125 g Zucker','125 g Zucker','1259 g Zucker'],'1259 Zucker'],[['125 g Zucker','125 g Zucker','125 ml Zucker'],'1259 Zucker']])assert.equal(K.reviewParallelQuantity(reads,source),null);
+assert.equal(K.reviewParallelParts(['1E','1E'],['Ei','Ei']),'1 Ei');
+assert.equal(K.reviewParallelParts(['125g','125g'],['Zucker','Zucker']),'125g Zucker');
+for(const args of [[['1E','2E'],['Ei','Ei']],[['1E','1E'],['Ei','El']],[['1509','1509'],['Zucker','Zucker']],[['1E','1E'],['Ei','Ei'],['4 EL Ei']],[['1P','1P'],['Vanillezucker','Vanillezucker']]])assert.equal(K.reviewParallelParts(...args),null);
+assert.equal(K.parallelSteps(['Auf den Kuchen streuen','Auf den Kuchen streuen ©','Auf den Kuchen streuen a','Backen.']).join('|'),'Auf den Kuchen streuen|Backen.');
+assert.equal(K.parallelSteps(['Rühren.','Garen.','Rühren.']).length,3);
+const screenshotFixture=JSON.parse(fs.readFileSync('tools/fixtures/rekek-parallel-screenshot-readings.json','utf8')),screenshotLayout=K.parallelRecipeRegions(screenshotFixture.passes[1],screenshotFixture.width,screenshotFixture.height);
+assert.equal(screenshotLayout.rows.filter(r=>r.kind==='ingredient').length,10);assert.equal(screenshotLayout.titleText,'Zwetschgenkuchen');assert.ok(screenshotLayout.rows.some(r=>r.source.includes('QELBEL')));
+console.log('Parallel handwritten rows: missing/merged count line retained, close title fragments joined, measured g/9 evidence, name/quantity rereads and adjacent-only repeated instructions.');
+
+const spelling=K.contextSuggestions('1 P Vanillezuccker','alles gut verkne- + auf Blech geben',['Vanillezucker']);assert.ok(spelling.some(x=>x.from==='Vanillezuccker'&&x.to==='Vanillezucker'));assert.ok(spelling.some(x=>x.from==='verkne-'&&x.to==='verkneten'));assert.equal(K.contextSuggestions('1 P Vanillezucker','Kneten.',['Vanillezucker']).length,0);

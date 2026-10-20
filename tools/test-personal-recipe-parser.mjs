@@ -77,3 +77,5 @@ assert.equal(p.pantryIngredient('9'.repeat(308)+' EL Öl').uncertain,true);
 
 // Rich personal details are optional, bounded, portable and never fabricated.
 {const details={description:'Unsere Reispfanne',equipment:['Topf'],prepNotes:['Reis waschen.'],doneness:'Reis ist weich.',substitutions:['Mit Zucchini.'],leftovers:'Hinweis aus der Vorlage.',safety:'Hinweis aus der Vorlage.',nutrition:{kcal:450,protein:12}};assert.ok(p.validRecord({...r,details}));const rich=p.toRecipe({...r,details});assert.equal(rich.description,details.description);assert.deepEqual([...rich.equipment],['Topf']);assert.equal(rich.nutrition.kcal,450);for(const bad of [{nutrition:{kcal:-1}},{nutrition:{kcal:Infinity}},{equipment:'Topf'},{description:'a'.repeat(3001)},{nutrition:[]},{nutrition:{unknown:1}}])assert.equal(p.validRecord({...r,details:bad}),false);}
+
+assert.equal(p.ingredient('1Ei Ei').name,'Ei');assert.equal(p.ingredient('1Ei Ei').amount,1);assert.equal(p.ingredient('1Ei Ei').raw,'1Ei Ei');
