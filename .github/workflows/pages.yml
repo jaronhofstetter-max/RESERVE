@@ -110,7 +110,8 @@ jobs:
           node tools/test-global-dates.mjs
           node experiments/date-mobile-build/build.cjs
       - name: Verify isolated MHD phone test
-        run: node tools/e2e-date-mobile.mjs
+        run: |
+          node tools/e2e-date-mobile.mjs
           node tools/e2e-global-dates.mjs
       - name: Browser end-to-end test
         run: |
