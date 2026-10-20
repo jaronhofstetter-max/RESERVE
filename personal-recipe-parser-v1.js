@@ -234,6 +234,8 @@ function ingredient(line){
  const uncertain=!Number.isFinite(amount)||amount<=0||!name||!['g','ml','Stück'].includes(unit)||/^[-–]\s*\d/.test(name);
  return{raw,name,amount:Number.isFinite(amount)&&amount>0?amount:null,unit,uncertain};
 }
+// User-defined measuring spoons: use volume for pantry math, preserve source units for review.
+function pantryIngredient(line){const x=ingredient(line),factor={el:15,tl:5}[x.unit];if(!factor)return x;if(!(x.amount>0)||!Number.isFinite(x.amount)||!x.name||/\d|[¼½¾⅛⅜⅝⅞]|\b(?:gehäuft(?:e[rmns]?)?|heaped)\b/i.test(x.name))return x;if(!Number.isFinite(x.amount*factor))return x;return{...x,amount:x.amount*factor,unit:'ml',uncertain:false,displayAmount:x.amount,displayUnit:x.unit==='el'?'EL':'TL'};}
 // Section detection preserves source amounts: it classifies text, never completes a recipe.
 function ingredientHeading(line){
  const match=clean(line).match(/^(?:(?:für|fuer)\s+(?:den|die|das)\s+)?(teig|mürbeteig|mürbteig|boden|belag|füllung|fuellung|creme|guss|glasur|streusel|streußel|sauce|soße|sosse|marinade|außerdem|ausserdem|zusätzlich|zusaetzlich)(?:\s*\([^)]*\))?\s*:?$/i);
@@ -539,8 +541,8 @@ function contextSuggestions(ingredients,steps){
 }
 
 function validRecord(r){return r&&/^personal-[a-z0-9-]+$/.test(r.id)&&typeof r.name==='string'&&r.name.length>0&&r.name.length<=200&&Number.isFinite(r.portions)&&r.portions>0&&r.portions<=100&&Array.isArray(r.ingredientLines)&&r.ingredientLines.length>0&&r.ingredientLines.length<=100&&r.ingredientLines.every(s=>typeof s==='string'&&s.length>0&&s.length<=500)&&Array.isArray(r.steps)&&r.steps.length>0&&r.steps.length<=100&&r.steps.every(s=>typeof s==='string'&&s.length>0&&s.length<=3000)&&['Alles','Vegetarisch','Vegan'].includes(r.diet)&&[r.prepMinutes,r.cookMinutes].every(n=>n===null||Number.isFinite(n)&&n>=0&&n<=1440)&&(!r.source||typeof r.source==='string'&&r.source.length<=2000)}
-function toRecipe(r,image=''){const parsed=r.ingredientLines.map(ingredient),pantryReady=parsed.every(x=>!x.uncertain);return{id:r.id,name:r.name,personal:true,pantryReady,detailLoaded:true,description:'',type:'Hauptmahlzeit',diet:r.diet,dish:'🍽️',cuisine:'Eigenes Rezept',difficulty:'',status:'approved',mealTimes:['Mittagessen','Abendessen'],prepMinutes:r.prepMinutes||0,cookMinutes:r.cookMinutes||0,ingredients:parsed.map(x=>({name:x.name,amount:x.amount===null?null:x.amount/r.portions,unit:x.unit})),steps:r.steps.slice(),nutrition:{},allergens:[],image}}
-window.RESERVE_RECIPE_PARSER={ingredient,packageSize,parseText,validRecord,toRecipe};
+function toRecipe(r,image=''){const parsed=r.ingredientLines.map(pantryIngredient),pantryReady=parsed.every(x=>!x.uncertain);return{id:r.id,name:r.name,personal:true,pantryReady,detailLoaded:true,description:'',type:'Hauptmahlzeit',diet:r.diet,dish:'🍽️',cuisine:'Eigenes Rezept',difficulty:'',status:'approved',mealTimes:['Mittagessen','Abendessen'],prepMinutes:r.prepMinutes||0,cookMinutes:r.cookMinutes||0,ingredients:parsed.map(x=>({name:x.name,amount:x.amount===null?null:x.amount/r.portions,unit:x.unit,...(x.displayUnit?{displayAmount:x.displayAmount/r.portions,displayUnit:x.displayUnit}:{})})),steps:r.steps.slice(),nutrition:{},allergens:[],image}}
+window.RESERVE_RECIPE_PARSER={ingredient,pantryIngredient,packageSize,parseText,validRecord,toRecipe};
 window.RESERVE_REKEK={version:"0.6.26",kind:"local-ocr-and-rules",contextSuggestions,parallelRecipeRegions,sectionedPaperRegions,preparePrintedPaper,insetRecipeEvidence,insetRecipeRegions,sideRecipeRegions,ingredientColumnRegions,quantityRecipeRegions,fractionGlyphParts,prepareTextOnTexture,textureRecipeRegions,parseText,parseCandidates,findRecipePanel,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
 })();
 
