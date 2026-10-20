@@ -53,7 +53,8 @@ try{
  await page.locator('#personalRecipesHome').click();
  await page.locator('[data-personal]').first().click();
  await page.locator('#personalRecipeDetail h2').waitFor({state:'visible'});
- assert.equal(await page.locator('#personalRecipeDetail').innerText(),detail);
+ assert.equal(await page.locator('#personalRecipeDetail').innerText(),detail.replace('0/6 Schritte erledigt','1/6 Schritte erledigt'));
+ assert.equal(await page.locator('#personalStepProgress').innerText(),'1/6 Schritte erledigt');
  assert.equal(await page.locator('[data-personal-step="0"]').isChecked(),true);
  await page.locator('#personalEdit').click();
  assert.equal(await page.locator('#personalConfirmed').isChecked(),false);
