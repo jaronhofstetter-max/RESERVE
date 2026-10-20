@@ -464,6 +464,23 @@
       "reviewedAt": "2026-10-19",
       "originalPhotoUrl": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/700_Orientalische+Linsen-Tomatensuppe.png",
       "originalPhotoSha256": "594e4ba72ca9f69881bba0e47069b6a214c93e321744710c44c4142384a367bc"
+    },
+    {
+      "recipeId": "chuchitisch-peperoni-apfel-suppe",
+      "path": "assets/recipe-photos/chuchitisch-peperoni-apfel-suppe.webp",
+      "source": "https://chuchitisch.ch/recipes/486",
+      "author": "Hannes und Martina",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Peperoni-Apfel-Suppe",
+      "provider": "Chuchitisch",
+      "adaptation": "Verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Originalfoto der Rezeptseite: orangefarbene pürierte Suppe mit Kürbiskernen und Basilikum. Serviervorschlag; genaue Zutaten und Portionsmengen nicht visuell nachweisbar. Autorenkonto und globale Erklärung zu eigenen Fotos bilden die Urhebergrundlage; kein separat genannter Fotograf.",
+      "reviewedAt": "2026-10-20",
+      "originalPhotoUrl": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/590_Peperoni-Apfel-Suppe.png",
+      "originalPhotoSha256": "e41d56d79f506e5773ae7c28658c334892888d20fc49b26195e08d20e7e71dbd"
     }
   ]
 }
