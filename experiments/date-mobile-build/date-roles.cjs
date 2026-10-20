@@ -66,6 +66,11 @@ function select(raw,threshold=.8){
   const nearby=edges.filter(e=>e.ci===ci).sort((a,b)=>a.distance-b.distance);
   if(!nearby.length)continue;
   const best=nearby[0];
+  // A legend listing conflicting roles above several date rows does not
+  // establish which value belongs to which label. Nearest alone is unsafe.
+  const above=nearby.filter(e=>e.cue.bbox[3]<=c.bbox[1]),legendRoles=new Set(above.map(e=>e.cue.role));
+  const rowsBelow=candidates.filter(o=>o.role==='unknown'&&o.bbox[1]>=Math.max(...above.map(e=>e.cue.bbox[3]))&&Math.abs(o.bbox[0]-c.bbox[0])<=Math.max(8,c.bbox[3]-c.bbox[1])*2&&Math.abs(o.bbox[1]-c.bbox[1])<=Math.max(8,c.bbox[3]-c.bbox[1])*4);
+  if(legendRoles.size>1&&new Set(rowsBelow.map(key)).size>1)continue;
   if(nearby.some(e=>e.cue.role!==best.cue.role&&e.distance-best.distance<.25))continue;
   if(edges.some(e=>e.cue.id===best.cue.id&&!same(candidates[e.ci],c)&&e.distance<=best.distance+.25))continue;
   c.role=best.cue.role;c.role_evidence=[{...best.cue,placement:'nearby_mutual',distance:best.distance}];
@@ -77,7 +82,9 @@ function select(raw,threshold=.8){
  if(strict&&candidates.some(c=>same(c,strict)&&excludedRole(c.role)))strict=null;
  const eligible=candidates.filter(c=>!excludedRole(c.role)),unique=new Set(eligible.map(key));
  const suggestion=strict||(unique.size===1?eligible.reduce((a,b)=>a.confidence>=b.confidence?a:b):null);
- return {id:raw.id,suggestion,strict_expiry:strict,candidates,seconds:raw.seconds,requires_confirmation:true};
+ const pool=positive.length?positive:eligible,distinct=new Set(pool.map(key));
+ const alternatives=!suggestion&&distinct.size>=2&&distinct.size<=4?[...new Map(pool.map(c=>[key(c),{date:c.date,precision:c.precision,role:c.role}])).values()]:[];
+ return {id:raw.id,suggestion,strict_expiry:strict,alternatives,candidates,seconds:raw.seconds,requires_confirmation:true};
 }
 const api={version:'2.0-experimental',select,cues,expiryRole,excludedRole};
 if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.RESERVE_DATE_ROLES=api;

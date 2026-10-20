@@ -1,3 +1,4 @@
+import Formats from '../../date-format-v1.js';
 import Tokens from '../../date-token-guard-v1.js';
 /* Browser feasibility adapter: explicit four-digit years only. Review required.
  * This adapter is separately tested; it is not the frozen Python date parser.
@@ -24,5 +25,6 @@ export function dates(original){
  scan('(?<!\\d)(\\d{1,2})\\s*[-/. ]\\s*((?:19|20)\\d{2})(?!\\d)',m=>{if(!overlaps(m))put(m,value(m[2],m[1]),'month_numeric');});
  scan('(?<!\\d)((?:19|20)\\d{2})\\s*[-/. ]\\s*(\\d{1,2})(?!\\d)',m=>{if(!overlaps(m))put(m,value(m[1],m[2]),'year_month');});
  scan('(?<!\\d)((?:19|20)\\d{2})(\\d{2})(?!\\d)',m=>{if(!overlaps(m))put(m,value(m[1],m[2]),'compact_year_month',true);});
+ for(const c of Formats.wordDates(text))if(!out.some(o=>o.start===c.index&&o.date===c.date))out.push({date:c.date,precision:'day',start:c.index,end:c.index+c.raw.length,printed:original.slice(c.index,c.index+c.raw.length),kind:'alpha_'+c.order,ambiguous:false});
  return out.filter((c,i)=>Tokens.keep(original,c.start,c.end)&&!out.some(o=>o.start<=c.start&&o.end>=c.end&&o.end-o.start>c.end-c.start)&&out.findIndex(o=>o.date===c.date&&o.precision===c.precision&&o.start===c.start&&o.end===c.end)===i);
 }

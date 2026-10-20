@@ -7,7 +7,7 @@
   const out=[];
   // A four-digit year directly followed by a complete, valid HH:MM clock.
   // The clock provides a boundary; arbitrary following digits do not.
-  const re=/(?<!\d)(\d{1,2}\s*[-/.]\s*\d{1,2}\s*[-/.]\s*(?:19|20)\d{2})((?:[01]\d|2[0-3]):[0-5]\d)(?!\d|:\d)/g;
+  const re=/(?<!\d)((?:(?:19|20)\d{2}\s*[-/.]\s*\d{2}\s*[-/.]\s*\d{2}|\d{1,2}\s*[-/.]\s*\d{1,2}\s*[-/.]\s*(?:19|20)\d{2}))((?:[01]\d|2[0-3]):[0-5]\d)(?!\d|:\d)/g;
   for(const m of text.matchAll(re))out.push({start:m.index,end:m.index+m[1].length,clockEnd:m.index+m[0].length});
   return out;
  }
