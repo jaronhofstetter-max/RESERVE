@@ -1,3 +1,4 @@
+import Formats from '../../date-format-v1.js';
 /* Numeric four-digit dates only. Use nearby, high-confidence, unambiguous
  * printed dates with the SAME separator, never device locale or reference labels.
  * This resolves order, not which date is an expiry. Roles remain separate.
@@ -33,6 +34,8 @@ export function resolveDateOrders(raw){
   for(const[key,group]of groups){
    const c=group[0],t=token(c,line);
    if(!Number.isFinite(line.confidence)||line.confidence<.9||!group.some(c=>c.kind==='dmy')||!group.some(c=>c.kind==='mdy')){unresolved++;continue;}
+   const printed=Formats.printedOrder(line.text,{...t,start:c.start,end:c.end});
+   if(printed.length){if(printed.length===1){choices.set(key,{order:printed[0],evidence:[{line_index:null,order:printed[0],source:'printed-format'}]});resolved++;}else unresolved++;continue;}
    const evidence=sources.filter(s=>s.separator===t.separator&&local(box(c,line),s.bbox)),orders=new Set(evidence.map(s=>s.order));
    if(orders.size!==1){unresolved++;continue;}
    const order=[...orders][0];choices.set(key,{order,evidence:evidence.map(s=>({line_index:s.line_index,order:s.order}))});resolved++;

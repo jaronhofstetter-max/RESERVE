@@ -1,3 +1,4 @@
+import Formats from '../../date-format-v1.js';
 /* Test-only UI. No inventory API, user-photo upload or automatic persistence. */
 import manifest from './generated-runtime-manifest.json';
 const $=id=>document.getElementById(id),ASSET='../assets/date-mobile-test/',CACHE='reserve-date-mobile-runtime-v1';
@@ -16,7 +17,7 @@ function say(t){$('status').textContent=t;}
 function busy(on){$('strategy').disabled=on;$('prepare').disabled=on;$('capture').disabled=on||!ready;$('gallery').disabled=on||!ready;$('cancel').hidden=!on;$('progress').hidden=!on;$('status').setAttribute('aria-busy',String(on));}
 function stopWorker(){const reject=startupCancel;startupCancel=null;worker?.terminate();worker=null;ready=false;reject?.();}
 function clearPhoto(){photo=null;if(previewURL)URL.revokeObjectURL(previewURL);previewURL='';$('preview').removeAttribute('src');$('preview').hidden=true;}
-function resetReview(){last=null;$('review').hidden=true;$('expectedDate').value='';$('expectedRole').value='';$('result').textContent='';$('inspectionDetails').hidden=true;$('inspectionText').textContent='';}
+function resetReview(){last=null;$('review').hidden=true;$('expectedDate').value='';$('expectedRole').value='';$('result').textContent='';$('dateAlternatives')?.replaceChildren?.();$('inspectionDetails').hidden=true;$('inspectionText').textContent='';}
 async function verifiedAsset(entry,signal,progress){
  const url=new URL(ASSET+entry.name,location.href).href;
  let cache=null,response=null;try{cache=await caches.open(CACHE);response=await cache.match(url);}catch{}
@@ -36,7 +37,7 @@ async function verifiedAsset(entry,signal,progress){
 }
 async function startWorker(){
  stopWorker();
- const instance=new Worker(new URL(ASSET+'date-worker.js?v=20261020-open-cases-1',location.href));worker=instance;
+ const instance=new Worker(new URL(ASSET+'date-worker.js?v=20261020-global-dates-1',location.href));worker=instance;
  const initialization={started:performance.now(),events:[]};phase(initialization,'worker_start');
  return new Promise((resolve,reject)=>{
   const timer=setTimeout(()=>{startupCancel=null;if(worker===instance)stopWorker();reject(Error('Vorbereitung dauert zu lange. Bitte erneut versuchen.'));},30000);
@@ -72,6 +73,7 @@ function showReview(prediction,ms,state,diagnostic){
  last={id:'test-'+(++sequence),at:new Date().toISOString(),prediction,ms:Math.round(ms),state,strategy:diagnostic?.strategy||'full',diagnostics:snapshot(diagnostic),preparation};
  const p=prediction.suggestion;$('result').textContent=p?`${p.date} · ${roleNames[p.role]||'Bedeutung unklar'}${prediction.strict_expiry?'':' · unbestätigt'}`:'Kein eindeutiger Vorschlag.';
  $('precision').value=p?.precision==='month'?'month':'day';$('expectedDate').type=$('precision').value==='month'?'month':'date';$('expectedDate').value=p?.date||'';
+ const alternatives=$('dateAlternatives');alternatives?.replaceChildren?.();for(const choice of prediction.alternatives||[]){const button=document.createElement('button');button.type='button';button.className='secondary';button.textContent=Formats.format(choice.date,{long:true});button.onclick=()=>{$('expectedDate').value=choice.date;$('precision').value=choice.precision==='month'?'month':'day';$('result').textContent=Formats.format(choice.date,{long:true})+' · bitte bestätigen';};alternatives?.append?.(button);}
  $('expectedRole').value=prediction.strict_expiry?(p.role==='best_before'?'best_before':p.role==='use_by'?'use_by':'expiry'):'';$('review').hidden=false;
 }
 async function picked(file){

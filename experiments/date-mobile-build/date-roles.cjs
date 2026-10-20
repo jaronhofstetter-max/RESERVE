@@ -77,7 +77,9 @@ function select(raw,threshold=.8){
  if(strict&&candidates.some(c=>same(c,strict)&&excludedRole(c.role)))strict=null;
  const eligible=candidates.filter(c=>!excludedRole(c.role)),unique=new Set(eligible.map(key));
  const suggestion=strict||(unique.size===1?eligible.reduce((a,b)=>a.confidence>=b.confidence?a:b):null);
- return {id:raw.id,suggestion,strict_expiry:strict,candidates,seconds:raw.seconds,requires_confirmation:true};
+ const pool=positive.length?positive:eligible,distinct=new Set(pool.map(key));
+ const alternatives=!suggestion&&distinct.size===2&&pool.some(c=>c.ambiguous&&pool.filter(o=>o.line_index===c.line_index&&o.start===c.start&&o.end===c.end).length===2)?[...new Map(pool.map(c=>[key(c),{date:c.date,precision:c.precision,role:c.role}])).values()]:[];
+ return {id:raw.id,suggestion,strict_expiry:strict,alternatives,candidates,seconds:raw.seconds,requires_confirmation:true};
 }
 const api={version:'2.0-experimental',select,cues,expiryRole,excludedRole};
 if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.RESERVE_DATE_ROLES=api;

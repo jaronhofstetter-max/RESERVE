@@ -36,6 +36,6 @@ self.onmessage=async({data})=>{try{
   const interpreted=resolveDateOrders(raw);
   globalThis.RESERVE_DATE_PHASE('date_order',{resolvedOrders:interpreted.resolved,unresolvedOrders:interpreted.unresolved});
   const p=Roles.select(interpreted.raw),compact=c=>c?{date:c.date,precision:c.precision,role:c.role,confidence:c.confidence}:null;
-  self.postMessage({type:'result',id:data.id,prediction:guardPrediction({suggestion:compact(p.suggestion),strict_expiry:compact(p.strict_expiry)},r.coverage),coverage:r.coverage,inspection:interpreted.raw.lines.map(l=>({text:l.text,confidence:l.confidence,dates:l.parsed_dates.map(c=>c.date)})),candidateCount:p.candidates.length,seconds:raw.seconds});
+  self.postMessage({type:'result',id:data.id,prediction:guardPrediction({suggestion:compact(p.suggestion),strict_expiry:compact(p.strict_expiry),alternatives:p.alternatives},r.coverage),coverage:r.coverage,inspection:interpreted.raw.lines.map(l=>({text:l.text,confidence:l.confidence,dates:l.parsed_dates.map(c=>c.date)})),candidateCount:p.candidates.length,seconds:raw.seconds});
  }
 }catch(error){self.postMessage({type:'error',id:data.id,message:error.message||String(error)});}};
