@@ -30,3 +30,25 @@ assert.equal(api.parseDate('MHD 03/12/2027'),'');const ambiguous=api.selectConse
 for(const [input,want]of [['MM/DD/YYYY 03/12/2027','2027-03-12'],['DD/MM/YYYY 03/12/2027','2027-12-03'],['12/31/2027','2027-12-31'],['MHD 2023.01.2409:06','2023-01-24'],['MHD OCT.21.2027','2027-10-21']])assert.equal(api.parseDate(input),want,input);
 assert.equal(api.selectConsensus(['DD/MM/YYYY MHD 03/12/2027']).dateType,'best_before');
 console.log('Global date formats: calendar boundaries, explicit format precedence/conflicts, scoped durable confirmations, US/CH/GB display, both live/experimental parsers, unresolved alternatives and no locale-based inference OK.');
+
+// Compact month/day tails observed in consumed photo cases 00385 and 00591.
+for(const [text,want]of [['2021.1217','2021-12-17'],['2023.0303','2023-03-03'],['EXP 2028/0229','2028-02-29'],['日期 2027-1231','2027-12-31']]){
+ assert.deepEqual(dates(text).map(c=>c.date),[want],text);
+ assert.equal(api.parseDate(text),want,text);
+}
+for(const text of ['2023.0230','2027.0229','2027.1301','2027.0001','2027.0100','72022.0913','2022.09131','2022.0913.7','2022.091','2022.09137','2022.09.131','2022.0913:45','ABC2022.0913']){
+ assert.deepEqual(F.compactTailDates(text),[],text);
+ assert.deepEqual(dates(text),[],text);
+ assert.equal(api.parseDate(text),'',text);
+}
+// A second genuine date must remain visible, rather than preserving a prior guess.
+const two='2020.1112\n2021.11.11';
+const twoLines=two.split('\n').map((text,i)=>({...line(text),bbox:[0,i*40,300,i*40+20]}));
+const twoResult=R.select({width:400,height:120,lines:twoLines});
+assert.equal(twoResult.suggestion,null);
+assert.deepEqual(twoResult.alternatives.map(c=>c.date).sort(),['2020-11-12','2021-11-11']);
+assert.equal(api.selectConsensus([two]).ambiguous,true);
+assert.equal(api.selectConsensus([two]).ambiguityKind,'multiple-dates');
+assert.equal(api.selectConsensus(['MFG 2020.1112\nEXP 2021.1217']).date,'2021-12-17');
+assert.equal(api.selectConsensus(['LOT 2021.1217']),null);
+console.log('Compact date tails: both parsers, strict boundaries/calendar, batch role and competing dates OK.');
