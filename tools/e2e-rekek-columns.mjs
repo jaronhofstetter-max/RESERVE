@@ -40,7 +40,7 @@ try{
  assert.ok(detail.includes('1½ EL Honig'));
  assert.ok(!detail.includes('12 EL Honig'));
  assert.ok(detail.includes('Nach dem Auftauen vollständig durchgaren.'));
- assert.equal(await page.locator('.personal-ingredients li').count(),7);
+ assert.equal(await page.locator('.personal-ingredients .ingredient').count(),7);
  assert.equal(await page.locator('[data-personal-step]').count(),6);
  const record=await page.evaluate(()=>JSON.parse(localStorage.getItem('reservePersonalRecipesV1'))[0]);
  assert.equal(record.portions,4);
