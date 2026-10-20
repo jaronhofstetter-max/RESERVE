@@ -3,7 +3,7 @@
  const DAY=86400000,SLOTS=[['Frühstück','Frühstück'],['Mittagessen','Mittagessen'],['Abendessen','Abendessen']];
  // Navigation reuses a plan; only planning inputs and the local calendar day invalidate it.
  function inputSignature(){
-  const today=new Date(),keys=['reserveProfile','reserveDailyKcalTarget','reserveWeeklyBudgetCHF','reserveProteinTarget','reserveCarbsTarget','reserveFatTarget','reserveFiberTarget','reserveEmergencyV2','reserveEmergencyV1','reservePurchaseHistory','reserveConsumptionHistoryV1','reserveStock'];
+  const today=new Date(),keys=['reserveExcludedRecipesV1','reserveProfile','reserveDailyKcalTarget','reserveWeeklyBudgetCHF','reserveProteinTarget','reserveCarbsTarget','reserveFatTarget','reserveFiberTarget','reserveEmergencyV2','reserveEmergencyV1','reservePurchaseHistory','reserveConsumptionHistoryV1','reserveStock'];
   const stored=keys.map(key=>{try{const value=localStorage.getItem(key);return key==='reserveStock'?JSON.parse(value||'[]'):value}catch{return null}});
   let household={};try{household=pref()}catch{}
   const catalog=recipes.map(r=>Object.fromEntries(['id','name','status','type','mealTimes','ingredients','nutrition','resilience','prepMinutes','cookMinutes','tags','allergens','diet','dietTags','personal'].map(k=>[k,r[k]])));
@@ -14,7 +14,7 @@
  const expDays=s=>{if(!s||!s.e)return 9999;return Math.ceil((new Date(s.e+'T23:59:59').getTime()-Date.now())/DAY)};
  const matches=(a,b)=>{return window.RESERVE_INGREDIENTS?.match(a,b)??(N(a)===N(b)&&!!N(a))},pref=()=>typeof profile==='function'?(profile()||{}):{};
  function emergency(){try{return window.RESERVE_EMERGENCY?.protectedReserve?.()||null}catch{return null}}
- function approved(){return recipes.filter(r=>(!r.status||r.status==='approved')&&allowed(r))}
+ function approved(){return recipes.filter(r=>(!r.status||r.status==='approved')&&(typeof recommendable==='function'?recommendable(r):allowed(r)))}
  function forSlot(r,slot){const mt=r.mealTimes||[];if(mt.length)return mt.includes(slot);return slot==='Frühstück'?r.type==='Frühstück':r.type==='Hauptmahlzeit'}
  function batchesFor(name,unit){return stock.filter(s=>matches(s.n,name)&&String(s.u||'').toLowerCase()===unit).slice().sort((a,b)=>expDays(a)-expDays(b))}
  function urgency(r){return adaptRecipe(r).ingredients.reduce((score,i)=>{const b=batchesFor(i.name,unitOf(i));if(!b.length)return score;const d=expDays(b[0]);return score+(d<=0?24:d<=1?18:d<=3?12:d<=7?6:0)},0)}

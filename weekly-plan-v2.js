@@ -4,7 +4,7 @@
  const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');
  const unit=u=>{u=String(u||'stück').toLowerCase();return u==='stuck'||u==='stk'?'stück':u};
  function rows(){try{return Array.isArray(recipes)?recipes:[]}catch{return Array.isArray(window.recipes)?window.recipes:[]}}
- function ok(r){try{return typeof allowed==='function'?allowed(r):true}catch{return true}}
+ function ok(r){try{return typeof recommendable==='function'?recommendable(r):typeof allowed==='function'?allowed(r):true}catch{return true}}
  function people(){try{return Math.max(1,persons())}catch{return 1}}
  function target(){return Math.max(800,+localStorage.getItem('reserveDailyKcalTarget')||2000)}
  function budget(){return Math.max(0,+localStorage.getItem('reserveWeeklyBudgetCHF')||100)}
