@@ -1,0 +1,33 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Peperoni-Apfel-Suppe",
+  "image": "http://www.chuchitisch.ch//chuchitisch/download_picture/lightroom/590_Peperoni-Apfel-Suppe.png",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "",
+  "prepTime": "PT0S",
+  "cookTime": "PT1800S",
+  "totalTime": "PT1800S",
+  "recipeYield": "2 Personen",
+  "keywords": "  Einfach,  Suppe,  Raffiniert,  Eher schnell,  Vegetarisch,  ",
+  "recipeIngredient": [
+    "1   Zwiebel",
+    "4   Peperonis",
+    "1   Karotte",
+    "8  dl Gemüsebouillon",
+    "1   Apfel",
+    "1&frac12;  dl Joghurt",
+    "1  EL Honig",
+    "2  EL Apfelessig",
+    "2  EL Olivenöl",
+    "3  EL Kürbiskerne",
+    "1  Zweig Basilikum",
+    ""
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+  "recipeInstructions": "Peperoni waschen, entkernen und klein schneiden. Karotte schälen und zerkleinern. Zwiebel hacken.\r\n\r\nDie Zwiebel in einer Pfanne im Olivenöl kurz andünsten, dann Peperoni und Karotte dazugeben und mitdünsten. Mit der Gemüsebouillon ablöschen und ca. 15 Minuten köcheln.\r\n\r\nDie Suppe mit dem Stabmixer pürieren. Den Apfel schälen und an der Röstiraffel grob reiben. Den geriebenen Apfel zusammen mit dem Honig, dem Joghurt und dem Essig zur nicht kochenden Suppe geben und alles gut mischen. \r\n\r\nBasilikumbätter in Streifen schneiden, die Kürbiskerne in einer beschichteten Pfanne ohne Fett rösten. Die Suppe mit dem Basilikum und den gerösteten Kernen servieren.\r\n"
+}

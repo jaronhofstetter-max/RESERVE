@@ -1,0 +1,214 @@
+[
+  {
+    "id": "chuchitisch-peperoni-apfel-suppe",
+    "name": "Peperoni-Apfel-Suppe nach Chuchitisch",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥣",
+    "cuisine": "Schweizerisch inspiriert",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Milch",
+      "Sellerie"
+    ],
+    "tags": [
+      "Chuchitisch",
+      "Suppe",
+      "Peperoni",
+      "Apfel",
+      "Originalfoto"
+    ],
+    "ingredients": [
+      {
+        "name": "Zwiebel",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Rote Peperoni",
+        "amount": 300,
+        "unit": "g"
+      },
+      {
+        "name": "Karotte",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Gemüsebouillon",
+        "amount": 400,
+        "unit": "ml"
+      },
+      {
+        "name": "Apfel, geschält",
+        "amount": 75,
+        "unit": "g"
+      },
+      {
+        "name": "Naturjoghurt",
+        "amount": 75,
+        "unit": "g"
+      },
+      {
+        "name": "Honig",
+        "amount": 10.5,
+        "unit": "g"
+      },
+      {
+        "name": "Apfelessig",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "name": "Olivenöl",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "name": "Kürbiskerne",
+        "amount": 15,
+        "unit": "g"
+      },
+      {
+        "name": "Basilikum, frisch",
+        "amount": 1,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Peperoni waschen, entkernen und klein schneiden. Karotte schälen und klein schneiden. Zwiebel schälen und hacken.",
+      "Olivenöl in einem Topf erhitzen. Zwiebel bei mittlerer Hitze kurz andünsten, dann Peperoni und Karotte zugeben und einige Minuten mitdünsten.",
+      "Mit der Gemüsebouillon aufgiessen, aufkochen und etwa 15 Minuten sanft köcheln, bis Peperoni und Karotte weich sind.",
+      "Topf vom Herd nehmen und die Suppe mit einem Stabmixer glatt pürieren. Den Mixerkopf eingetaucht halten, damit die heisse Suppe nicht spritzt.",
+      "Apfel schälen, entkernen und grob reiben. Mit Honig, Naturjoghurt und Apfelessig in die nicht mehr kochende Suppe rühren. Nicht erneut aufkochen.",
+      "Basilikum waschen und in Streifen schneiden. Kürbiskerne in einer beschichteten Pfanne ohne zusätzliches Fett unter Wenden leicht rösten, ohne sie dunkel werden zu lassen.",
+      "Suppe auf Schüsseln verteilen und mit Basilikum sowie gerösteten Kürbiskernen servieren."
+    ],
+    "nutrition": {
+      "kcal": 460.07,
+      "protein": 12.34,
+      "carbs": 44.33,
+      "fat": 24.89,
+      "fiber": 10.46
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy; Schätzung, keine Messung des fertigen Gerichts.",
+      "basis": "Pro Person; verfügbare Kohlenhydrate = Gesamtkohlenhydrate minus Ballaststoffe. Original für 2 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Kein Portionsbereich. Richtgewichte im Originalansatz, nicht exakte Originalmengen: 1 Zwiebel = 100 g, 4 entkernte Peperoni = 600 g, 1 Karotte = 100 g, 1 geschälter entkernter Apfel = 150 g, 1 Zweig Basilikum = 2 g. Rote Peperoni als konkrete Variante gewählt; schweizerisches Peperoni bedeutet Gemüsepaprika, nicht scharfe Chili. 1½ dl Naturjoghurt = näherungsweise 150 g, 1 EL Honig = 21 g, 2 EL Apfelessig = 30 ml, 2 EL Olivenöl = 30 ml, 3 EL Kürbiskerne = 30 g. Öldichte 0.91 g/ml; Bouillon, Essig und Joghurt vereinfacht 1 ml = 1 g. EL-Gewichte sind Annahmen, keine Waagenmessung der Quelle. Naturjoghurt aus Vollmilch für die Berechnung. Gemüsebouillon als USDA-Gemüsebrühe angenähert; Salzgehalt und weitere Allergene hängen vom Produkt ab. Bouillon auf Sellerie prüfen. Originalfoto als Serviervorschlag. Kürbiskerne und Basilikum sind in den Zutaten und Nährwerten enthalten; die sichtbare Schüsselgrösse legt keine Portionsgrösse fest.",
+      "sources": "docs/recipe-candidates/import-2026-10-20/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Zwiebel",
+          "grams": 50,
+          "foodKey": "170000",
+          "excluded": false
+        },
+        {
+          "name": "Rote Peperoni",
+          "grams": 300,
+          "foodKey": "170108",
+          "excluded": false
+        },
+        {
+          "name": "Karotte",
+          "grams": 50,
+          "foodKey": "170393",
+          "excluded": false
+        },
+        {
+          "name": "Gemüsebouillon",
+          "grams": 400,
+          "foodKey": "171583",
+          "excluded": false
+        },
+        {
+          "name": "Apfel, geschält",
+          "grams": 75,
+          "foodKey": "171689",
+          "excluded": false
+        },
+        {
+          "name": "Naturjoghurt",
+          "grams": 75,
+          "foodKey": "171284",
+          "excluded": false
+        },
+        {
+          "name": "Honig",
+          "grams": 10.5,
+          "foodKey": "169640",
+          "excluded": false
+        },
+        {
+          "name": "Apfelessig",
+          "grams": 15,
+          "foodKey": "173469",
+          "excluded": false
+        },
+        {
+          "name": "Olivenöl",
+          "grams": 13.65,
+          "foodKey": "171413",
+          "excluded": false
+        },
+        {
+          "name": "Kürbiskerne",
+          "grams": 15,
+          "foodKey": "170556",
+          "excluded": false
+        },
+        {
+          "name": "Basilikum, frisch",
+          "grams": 1,
+          "foodKey": "172232",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Pürierte Peperoni-Karotten-Suppe mit frisch geriebenem Apfel, Joghurt, Basilikum und gerösteten Kürbiskernen nach Chuchitisch. Mengen und geschätzte Nährwerte pro Person; Originalfoto als Serviervorschlag.",
+    "equipment": [
+      "Kochtopf",
+      "Küchenmesser",
+      "Schneidebrett",
+      "Stabmixer",
+      "grobe Reibe",
+      "beschichtete Pfanne"
+    ],
+    "prepNotes": [
+      "Original für 2 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Kein Portionsbereich.",
+      "Richtgewichte im Originalansatz, nicht exakte Originalmengen: 1 Zwiebel = 100 g, 4 entkernte Peperoni = 600 g, 1 Karotte = 100 g, 1 geschälter entkernter Apfel = 150 g, 1 Zweig Basilikum = 2 g. Rote Peperoni als konkrete Variante gewählt; schweizerisches Peperoni bedeutet Gemüsepaprika, nicht scharfe Chili.",
+      "1½ dl Naturjoghurt = näherungsweise 150 g, 1 EL Honig = 21 g, 2 EL Apfelessig = 30 ml, 2 EL Olivenöl = 30 ml, 3 EL Kürbiskerne = 30 g. Öldichte 0.91 g/ml; Bouillon, Essig und Joghurt vereinfacht 1 ml = 1 g. EL-Gewichte sind Annahmen, keine Waagenmessung der Quelle.",
+      "Naturjoghurt aus Vollmilch für die Berechnung. Gemüsebouillon als USDA-Gemüsebrühe angenähert; Salzgehalt und weitere Allergene hängen vom Produkt ab. Bouillon auf Sellerie prüfen.",
+      "Originalfoto als Serviervorschlag. Kürbiskerne und Basilikum sind in den Zutaten und Nährwerten enthalten; die sichtbare Schüsselgrösse legt keine Portionsgrösse fest."
+    ],
+    "doneness": "Peperoni und Karotte sind weich und lassen sich glatt pürieren. Joghurt und Apfel erst in die nicht mehr kochende Suppe rühren; Kerne leicht geröstet, nicht verbrannt.",
+    "substitutions": [
+      "Für eine pflanzliche Variante pflanzlichen Joghurt und ein alternatives Süssungsmittel verwenden; Nährwerte und Allergene neu prüfen. Die Originalfassung enthält Milch und Honig."
+    ],
+    "leftovers": "Suppe möglichst vor der Zugabe von Apfel und Joghurt vorbereiten und diese erst zum Servieren ergänzen. Reste rasch abkühlen, abgedeckt gekühlt lagern und zeitnah verbrauchen.",
+    "safety": "Zum Pürieren den Topf vom Herd nehmen und den Mixerkopf eingetaucht halten. Heisse Flüssigkeit vorsichtig handhaben; Kerne beim Rösten nicht unbeaufsichtigt lassen.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "https://chuchitisch.ch/recipes/486",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "originalServings": 2,
+      "adaptation": "Auf eine Person umgerechnet; Schritte gegliedert und Garmerkmale ergänzt. Original für 2 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Kein Portionsbereich. Richtgewichte im Originalansatz, nicht exakte Originalmengen: 1 Zwiebel = 100 g, 4 entkernte Peperoni = 600 g, 1 Karotte = 100 g, 1 geschälter entkernter Apfel = 150 g, 1 Zweig Basilikum = 2 g. Rote Peperoni als konkrete Variante gewählt; schweizerisches Peperoni bedeutet Gemüsepaprika, nicht scharfe Chili. 1½ dl Naturjoghurt = näherungsweise 150 g, 1 EL Honig = 21 g, 2 EL Apfelessig = 30 ml, 2 EL Olivenöl = 30 ml, 3 EL Kürbiskerne = 30 g. Öldichte 0.91 g/ml; Bouillon, Essig und Joghurt vereinfacht 1 ml = 1 g. EL-Gewichte sind Annahmen, keine Waagenmessung der Quelle. Naturjoghurt aus Vollmilch für die Berechnung. Gemüsebouillon als USDA-Gemüsebrühe angenähert; Salzgehalt und weitere Allergene hängen vom Produkt ab. Bouillon auf Sellerie prüfen. Originalfoto als Serviervorschlag. Kürbiskerne und Basilikum sind in den Zutaten und Nährwerten enthalten; die sichtbare Schüsselgrösse legt keine Portionsgrösse fest."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.2,
+      "waterMl": 400,
+      "noCook": false,
+      "onePot": false
+    }
+  }
+]
