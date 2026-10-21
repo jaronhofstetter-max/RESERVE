@@ -481,6 +481,23 @@
       "reviewedAt": "2026-10-20",
       "originalPhotoUrl": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/590_Peperoni-Apfel-Suppe.png",
       "originalPhotoSha256": "e41d56d79f506e5773ae7c28658c334892888d20fc49b26195e08d20e7e71dbd"
+    },
+    {
+      "recipeId": "chuchitisch-broccoli-birnen-suppe",
+      "path": "assets/recipe-photos/chuchitisch-broccoli-birnen-suppe.webp",
+      "source": "https://chuchitisch.ch/recipes/261",
+      "author": "Hannes und Martina",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Broccoli-Suppe mit glasierten Birnen",
+      "provider": "Chuchitisch",
+      "adaptation": "Verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Originalfoto der Rezeptseite: pürierte Broccolisuppe mit glasierten Birnenschnitzen und einem Broccoliröschen. Serviervorschlag; Mengen und Portionsgrösse nicht aus dem Foto ableitbar. Urhebergrundlage sind Autorenkonto und Eigene-Fotos-Erklärung; kein separat benannter Fotograf.",
+      "reviewedAt": "2026-10-21",
+      "originalPhotoUrl": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/278_Broccoli-Suppe+mit+glasierten+Birnen.png",
+      "originalPhotoSha256": "83d8f77b9e459ae3b694768e53b0dc2ea497f68bd6fee3f99c67d98472b5068c"
     }
   ]
 }
