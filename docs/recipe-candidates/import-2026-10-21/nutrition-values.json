@@ -1,0 +1,79 @@
+{
+  "169118": {
+    "description": "Pears, raw",
+    "per100g": {
+      "fat": 0.14,
+      "carbs": 15.2,
+      "kcal": 57.0,
+      "protein": 0.36,
+      "fiber": 3.1
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/169118/nutrients"
+  },
+  "169640": {
+    "description": "Honey",
+    "per100g": {
+      "protein": 0.3,
+      "fiber": 0.2,
+      "fat": 0.0,
+      "carbs": 82.4,
+      "kcal": 304
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/169640/nutrients"
+  },
+  "170000": {
+    "description": "Onions, raw",
+    "per100g": {
+      "fat": 0.1,
+      "carbs": 9.34,
+      "kcal": 40.0,
+      "protein": 1.1,
+      "fiber": 1.7
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/170000/nutrients"
+  },
+  "170379": {
+    "description": "Broccoli, raw",
+    "per100g": {
+      "carbs": 6.64,
+      "kcal": 34.0,
+      "fat": 0.37,
+      "protein": 2.82,
+      "fiber": 2.6
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/170379/nutrients"
+  },
+  "171583": {
+    "description": "Soup, vegetable broth, ready to serve",
+    "per100g": {
+      "protein": 0.24,
+      "fiber": 0.0,
+      "fat": 0.07,
+      "carbs": 0.93,
+      "kcal": 5.0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/171583/nutrients"
+  },
+  "172336": {
+    "description": "Oil, canola",
+    "per100g": {
+      "fat": 100,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 884,
+      "fiber": 0.0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/172336/nutrients"
+  },
+  "173430": {
+    "description": "Butter, without salt",
+    "per100g": {
+      "kcal": 717,
+      "fat": 81.1,
+      "carbs": 0.06,
+      "protein": 0.85,
+      "fiber": 0.0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/173430/nutrients"
+  }
+}

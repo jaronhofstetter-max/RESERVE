@@ -1,0 +1,180 @@
+[
+  {
+    "id": "chuchitisch-broccoli-birnen-suppe",
+    "name": "Broccoli-Suppe mit glasierten Birnen",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥣",
+    "cuisine": "Europäisch inspiriert",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Milch",
+      "Sellerie"
+    ],
+    "tags": [
+      "Chuchitisch",
+      "Broccoli",
+      "Birne",
+      "Suppe",
+      "Originalfoto"
+    ],
+    "ingredients": [
+      {
+        "name": "Broccoli",
+        "amount": 250,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Gemüsebouillon",
+        "amount": 100,
+        "unit": "ml"
+      },
+      {
+        "name": "Birne, geschält",
+        "amount": 90,
+        "unit": "g"
+      },
+      {
+        "name": "Butter",
+        "amount": 10,
+        "unit": "g"
+      },
+      {
+        "name": "Rapsöl",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "name": "Honig",
+        "amount": 3.5,
+        "unit": "g"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.5,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Broccoli waschen. Röschen abtrennen und den Strunk schälen beziehungsweise harte Stellen entfernen; den Strunk klein schneiden. Zwiebel schälen und fein hacken.",
+      "Die Hälfte des Rapsöls in einem Topf erhitzen. Zwiebel, Broccoliröschen und Strunkstücke bei mittlerer Hitze einige Minuten andünsten, ohne sie stark zu bräunen.",
+      "Mit Gemüsebouillon ablöschen, aufkochen und ungefähr 10 Minuten sanft köcheln, bis der Broccoli weich ist.",
+      "Topf vom Herd nehmen, die Suppe vorsichtig glatt pürieren und mit Salz abschmecken. Warm halten, aber nicht stark weiterkochen.",
+      "Birne schälen, entkernen und längs in Schnitze schneiden. Butter mit dem restlichen Rapsöl in einer Pfanne bei mittlerer Hitze schmelzen.",
+      "Birnenschnitze hineinlegen, mit Honig beträufeln und vorsichtig auf beiden Seiten goldbraun glasieren. Die Birnen sollen weich werden, aber ihre Form behalten.",
+      "Suppe auf Schüsseln verteilen und die glasierten Birnenschnitze darauf anrichten."
+    ],
+    "nutrition": {
+      "kcal": 364.31,
+      "protein": 8.26,
+      "carbs": 28.62,
+      "fat": 22.93,
+      "fiber": 10.15
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy; Schätzung, keine Messung des fertigen Gerichts.",
+      "basis": "Pro Person; verfügbare Kohlenhydrate = Gesamtkohlenhydrate minus Ballaststoffe. Original für 2 Personen; alle Zutaten und geschätzten Nährwerte auf eine Person umgerechnet. Kein Mengen- oder Portionsbereich. Richtgewichte im Originalansatz, keine exakten Originalgewichte: 1 Kopf Broccoli = 500 g essbarer Anteil, 1 Zwiebel = 100 g, 1 geschälte entkernte Birne = 180 g. Sorten und tatsächliche Stückgewichte können abweichen. 2 EL Pflanzenöl als 30 ml Rapsöl konkretisiert; Dichte 0.91 g/ml. 1 TL Honig = 7 g. Salz mit 1 g im Originalansatz als ergänzte Richtmenge nach Geschmack aufgenommen, da es nur in der Zubereitung genannt ist; nicht in Nährwerten eingerechnet. Gemüsebouillon für die Berechnung mit USDA-Gemüsebrühe angenähert und vereinfacht 1 ml = 1 g. Produktetikett auf Sellerie und weitere Allergene prüfen. Originalfoto als Serviervorschlag. Es zeigt die im Rezept enthaltenen Birnenschnitze und ein Broccoliröschen; keine zusätzlichen Lebensmittel erkannt.",
+      "sources": "docs/recipe-candidates/import-2026-10-21/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Broccoli",
+          "grams": 250,
+          "foodKey": "170379",
+          "excluded": false
+        },
+        {
+          "name": "Zwiebel",
+          "grams": 50,
+          "foodKey": "170000",
+          "excluded": false
+        },
+        {
+          "name": "Gemüsebouillon",
+          "grams": 100,
+          "foodKey": "171583",
+          "excluded": false
+        },
+        {
+          "name": "Birne, geschält",
+          "grams": 90,
+          "foodKey": "169118",
+          "excluded": false
+        },
+        {
+          "name": "Butter",
+          "grams": 10,
+          "foodKey": "173430",
+          "excluded": false
+        },
+        {
+          "name": "Rapsöl",
+          "grams": 13.65,
+          "foodKey": "172336",
+          "excluded": false
+        },
+        {
+          "name": "Honig",
+          "grams": 3.5,
+          "foodKey": "169640",
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 0.5,
+          "foodKey": null,
+          "excluded": true
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Pürierte Broccolisuppe mit in Butter und Honig glasierten Birnenschnitzen nach Chuchitisch. Mengen und geschätzte Nährwerte pro Person; Originalfoto als Serviervorschlag.",
+    "equipment": [
+      "Kochtopf",
+      "Küchenmesser",
+      "Schneidebrett",
+      "Stabmixer",
+      "Bratpfanne"
+    ],
+    "prepNotes": [
+      "Original für 2 Personen; alle Zutaten und geschätzten Nährwerte auf eine Person umgerechnet. Kein Mengen- oder Portionsbereich.",
+      "Richtgewichte im Originalansatz, keine exakten Originalgewichte: 1 Kopf Broccoli = 500 g essbarer Anteil, 1 Zwiebel = 100 g, 1 geschälte entkernte Birne = 180 g. Sorten und tatsächliche Stückgewichte können abweichen.",
+      "2 EL Pflanzenöl als 30 ml Rapsöl konkretisiert; Dichte 0.91 g/ml. 1 TL Honig = 7 g. Salz mit 1 g im Originalansatz als ergänzte Richtmenge nach Geschmack aufgenommen, da es nur in der Zubereitung genannt ist; nicht in Nährwerten eingerechnet.",
+      "Gemüsebouillon für die Berechnung mit USDA-Gemüsebrühe angenähert und vereinfacht 1 ml = 1 g. Produktetikett auf Sellerie und weitere Allergene prüfen.",
+      "Originalfoto als Serviervorschlag. Es zeigt die im Rezept enthaltenen Birnenschnitze und ein Broccoliröschen; keine zusätzlichen Lebensmittel erkannt."
+    ],
+    "doneness": "Der Broccoli ist vollständig weich und die Suppe glatt püriert. Die Birnenschnitze sind goldbraun und weich, behalten jedoch ihre Form.",
+    "substitutions": [
+      "Geschmacksneutrales Pflanzenöl kann Rapsöl ersetzen; für Milchfreiheit Butter durch eine geeignete pflanzliche Alternative ersetzen und Allergene sowie Nährwerte neu prüfen."
+    ],
+    "leftovers": "Suppe und Birnen möglichst getrennt rasch abkühlen, abgedeckt gekühlt lagern und zeitnah verbrauchen. Suppe vollständig durcherhitzen; Birnen separat kurz erwärmen.",
+    "safety": "Beim Pürieren heisser Suppe den Topf vom Herd nehmen und den Mixerkopf eingetaucht halten. Butter und Honig nicht zu stark erhitzen; die Birnen unter Aufsicht glasieren.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "https://chuchitisch.ch/recipes/261",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "originalServings": 2,
+      "adaptation": "Auf eine Person umgerechnet; Schritte gegliedert und Garmerkmale ergänzt. Original für 2 Personen; alle Zutaten und geschätzten Nährwerte auf eine Person umgerechnet. Kein Mengen- oder Portionsbereich. Richtgewichte im Originalansatz, keine exakten Originalgewichte: 1 Kopf Broccoli = 500 g essbarer Anteil, 1 Zwiebel = 100 g, 1 geschälte entkernte Birne = 180 g. Sorten und tatsächliche Stückgewichte können abweichen. 2 EL Pflanzenöl als 30 ml Rapsöl konkretisiert; Dichte 0.91 g/ml. 1 TL Honig = 7 g. Salz mit 1 g im Originalansatz als ergänzte Richtmenge nach Geschmack aufgenommen, da es nur in der Zubereitung genannt ist; nicht in Nährwerten eingerechnet. Gemüsebouillon für die Berechnung mit USDA-Gemüsebrühe angenähert und vereinfacht 1 ml = 1 g. Produktetikett auf Sellerie und weitere Allergene prüfen. Originalfoto als Serviervorschlag. Es zeigt die im Rezept enthaltenen Birnenschnitze und ein Broccoliröschen; keine zusätzlichen Lebensmittel erkannt."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.2,
+      "waterMl": 100,
+      "noCook": false,
+      "onePot": false
+    }
+  }
+]

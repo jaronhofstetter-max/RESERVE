@@ -1,0 +1,29 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Broccoli-Suppe mit glasierten Birnen",
+  "image": "http://www.chuchitisch.ch//chuchitisch/download_picture/lightroom/278_Broccoli-Suppe+mit+glasierten+Birnen.png",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "",
+  "prepTime": "PT0S",
+  "cookTime": "PT1200S",
+  "totalTime": "PT1200S",
+  "recipeYield": "2 Personen",
+  "keywords": "  Vorspeise,  Einfach,  Suppe,  Abendessen unter der Woche,  Eher schnell,  Vegetarisch,  Saisonal,  ",
+  "recipeIngredient": [
+    "1  Kopf Broccoli",
+    "1   Zwiebel",
+    "2  dl Gemüsebouillon",
+    "1   Birne",
+    "20  g Butter",
+    "2  EL Pflanzenöl",
+    "1  TL Honig",
+    ""
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+  "recipeInstructions": "Zwiebel fein hacken, Broccoli-Röschen abtrennen und den Strunk fein schneiden. Alles zusammen in etwas Pflanzenöl andünsten, dann mit der Bouillon ablöschen, und ca. 10 Minuten leicht köcheln lassen.\r\nMit dem Stabmixer pürieren, mit Salz abschmecken.\r\n\r\nBirne schälen und zu Schnitzen schneiden. Die Butter schmelzen (etwas geschmacksloses Pfalnzenöl dazugeben, dann wird die Butter nicht so schnell schwarz), Schnitze in die Pfanne legen. Mit Honig beträufeln und beidseitig vorsichtig bräunen."
+}
