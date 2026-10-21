@@ -222,3 +222,23 @@ assert.equal(screenshotLayout.rows.filter(r=>r.kind==='ingredient').length,10);a
 console.log('Parallel handwritten rows: missing/merged count line retained, close title fragments joined, measured g/9 evidence, name/quantity rereads and adjacent-only repeated instructions.');
 
 const spelling=K.contextSuggestions('1 P Vanillezuccker','alles gut verkne- + auf Blech geben',['Vanillezucker']);assert.ok(spelling.some(x=>x.from==='Vanillezuccker'&&x.to==='Vanillezucker'));assert.ok(spelling.some(x=>x.from==='verkne-'&&x.to==='verkneten'));assert.equal(K.contextSuggestions('1 P Vanillezucker','Kneten.',['Vanillezucker']).length,0);
+
+// Generic illustrated-card geometry: icons stay outside the ingredient region.
+{
+ const line=(text,x,y,width=330,height=20)=>({text,bbox:{x0:x,y0:y,x1:x+width,y1:y+height},words:text.split(' ').map((text,i)=>({text,confidence:95,bbox:{x0:x+i*45,y0:y,x1:x+i*45+40,y1:y+height}}))});
+ const title=line('Gemüsepfanne',100,80,500,100),items=Array.from({length:6},(_,i)=>line((i+1)*50+' g Gemüse',130,450+i*70));
+ const actions=[line('Gemüse klein schneiden.',220,1000),line('Im Topf garen.',220,1060),line('Heiss servieren.',220,1120)];
+ const data={lines:[title,...items,...actions]},region=K.illustratedRecipeRegions(data,1100,1500);
+ assert.ok(region);assert.equal(region.side,false);assert.equal(region.amountRows,6);assert.ok(region.ingredients.x0>100);assert.ok(region.ingredients.y1<region.steps.y0);
+ assert.equal(K.illustratedRecipeRegions({lines:[title,...items.slice(0,3),...actions]},1100,1500),null);
+ assert.equal(K.illustratedRecipeRegions({lines:[title,...items]},1100,1500),null);
+ const left=items.map(r=>({...r,bbox:{...r.bbox,x1:420}})),right=actions.map((r,i)=>line(r.text,600,500+i*100));
+ assert.equal(K.illustratedRecipeRegions({lines:[title,...left,...right]},1100,1500).side,true);
+ // Distinct source lines survive out-of-order reading and supplementary crop OCR.
+ const full={lines:[line('Danach servieren.',220,1080),line('Gemüse schneiden.',220,1000)]};
+ const crop={rekekCrop:{x0:200,y0:980,scaleX:2,scaleY:2},lines:[line('Im Topf garen.',40,120,450,40),line('Gemüse schneiden.',40,40,450,40)]};
+ const text=K.illustratedStepText(full,{x0:200,y0:980,x1:900,y1:1200},[crop]);
+ assert.ok(text.indexOf('Gemüse schneiden.')<text.indexOf('Im Topf garen.'));assert.ok(text.indexOf('Im Topf garen.')<text.indexOf('Danach servieren.'));assert.equal(text.match(/Gemüse schneiden\./g).length,1);
+ assert.equal(K.illustratedStepText({lines:[]},{x0:0,y0:0,x1:900,y1:1200}),'');
+ console.log('Illustrated cards: aligned quantities, side/stacked regions, missing-layout rejection and ordered/deduplicated crop evidence passed.');
+}

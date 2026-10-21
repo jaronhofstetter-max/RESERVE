@@ -262,10 +262,29 @@ async function rereadSectionedPaper(canvas,original,read,ticket){
  for(const line of bodies.flatMap(b=>lines(b.ingredients)))if(!ingredientLines.includes(line))ingredientLines.push((rows.filter(r=>r.kind==='step').every(r=>r.agreement)?'':'Menge ungeklärt: ')+line);
  return{accepted:null,sources,quantities,rowDraft:{name:agreed,portions:'',ingredients:ingredientLines.join('\n'),steps:body.steps,rows},evidence:['Original OCR:',original,...evidence].join('\n')};
 }
+async function rereadIllustratedCard(canvas,original,read,ticket){
+ const K=window.RESERVE_REKEK;await worker.terminate();if(ticket!==ocrTicket)throw Error('Lesen abgebrochen.');worker=await(await loadOCR()).createWorker('deu',1);
+ const layout=await read(canvas,11),regions=K.illustratedRecipeRegions(layout,canvas.width,canvas.height);if(!regions)return null;
+ const evidence=['Original OCR:',original,'Textbereiche nach Position:',layout.text||''],sources=[];
+ const pair=async(box,modes,label)=>{const scale=Math.min(2,2200/Math.max(box.x1-box.x0,box.y1-box.y0)),image=document.createElement('canvas');image.width=Math.round((box.x1-box.x0)*scale);image.height=Math.round((box.y1-box.y0)*scale);image.getContext('2d').drawImage(canvas,box.x0,box.y0,box.x1-box.x0,box.y1-box.y0,0,0,image.width,image.height);const data=[];for(const mode of modes){const d=await read(image,mode);d.rekekCrop={x0:box.x0,y0:box.y0,scaleX:image.width/(box.x1-box.x0),scaleY:image.height/(box.y1-box.y0)};data.push(d);evidence.push(label+' PSM '+mode+':',d.text||'');}sources.push({canvas:image,data:data[0]});return data;};
+ const norm=s=>String(s||'').trim().replace(/\s+/g,' '),titleText=d=>{const words=(d.words||[]).filter(w=>w.bbox&&w.confidence>=35&&/^[a-zäöüß-]{3,}$/i.test(w.text)),h=Math.max(0,...words.map(w=>w.bbox.y1-w.bbox.y0));return words.filter(w=>w.bbox.y1-w.bbox.y0>=h*.55).sort((a,b)=>Math.abs(a.bbox.y0-b.bbox.y0)>h*.4?a.bbox.y0-b.bbox.y0:a.bbox.x0-b.bbox.x0).map(w=>w.text).join(' ');};
+ const title=await pair(regions.title,[6,11],'Titel'),names=title.map(titleText),header=await pair(regions.header,[7,13],'Portionsangabe'),portions=header.map(d=>P().parseText(d.text||'').portions);
+ const columns=await pair(regions.ingredients,[6,11],'Zutaten ohne Bildsymbole'),drafts=columns.map(d=>lines(P().parseText('Zutaten\n'+d.text).ingredients));
+ if(drafts[0].length<regions.amountRows||drafts[0].length!==drafts[1].length||drafts[0].length>40)return null;
+ const rows=drafts[0].map((s,i)=>K.reviewIngredientReadings([s,drafts[1][i]])),body=await pair(regions.steps,[3,6],'Zubereitung'),steps=body.map(d=>P().parseText('Zubereitung\n'+d.text).steps);
+ if(!steps[0]||!steps[1])return null;
+ const spatialSteps=P().parseText('Zubereitung\n'+K.illustratedStepText(layout,regions.steps,body)).steps;if(!spatialSteps)return null;
+ sources.push({canvas:canvas,data:layout});evidence.push('Zubereitung nach Zeilenposition:',spatialSteps);
+ rows.push({kind:'step',reads:[spatialSteps,...steps],agreement:norm(steps[0])===norm(steps[1])&&norm(steps[0])===norm(spatialSteps),reviewRequired:true,quantityInferred:false});
+ return{rowDraft:{name:names[0]&&norm(names[0]).replace(/\s/g,'')===norm(names[1]).replace(/\s/g,'')?names[0]:'',portions:new Set(portions.filter(Boolean)).size===1?portions.find(Boolean):'',ingredients:rows.filter(r=>r.kind!=='step').map(r=>r.expression).join('\n'),steps:spatialSteps,rows},sources,evidence:evidence.join('\n')};
+}
+
 async function rereadRecipeCard(canvas,original,ticket){
  const K=window.RESERVE_REKEK;
  const read=async(image,mode)=>{if(ticket!==ocrTicket)throw Error('Lesen abgebrochen.');await worker.setParameters({tessedit_pageseg_mode:String(mode)});const result=await worker.recognize(image.toDataURL('image/png'));if(ticket!==ocrTicket)throw Error('Lesen abgebrochen.');return result.data;};
  const normalized=text=>String(text||'').trim().replace(/\s+/g,' ');
+ const initialData=contextSources.at(-1)?.data,largeGraphic=initialData?.words?.some(w=>w.bbox&&w.bbox.y1-w.bbox.y0>canvas.height*.08&&w.bbox.x1-w.bbox.x0>canvas.width*.2);
+ if(largeGraphic&&lines(P().parseText(original).ingredients).length>=5){const illustrated=await rereadIllustratedCard(canvas,original,read,ticket);if(illustrated?.rowDraft)return illustrated;}
  let insetEvidence='';if(K.insetRecipeEvidence(contextSources.at(-1)?.data,canvas.width)){const inset=await rereadInsetPaper(canvas,original,read,ticket);if(inset?.accepted)return inset;if(inset?.evidence)insetEvidence=inset.evidence;}
  if(/Mürbe?teig\s*:/i.test(original)&&/Belag\s*:/i.test(original)){const stacked=await rereadSectionedPaper(canvas,original,read,ticket);if(stacked?.rowDraft)return stacked;}
  let textureEvidence=insetEvidence;const initial=P().parseText(original),sectionedEligible=(!initial.name||/^(?:\d|[¼½¾⅛⅜⅝⅞])/.test(initial.name))&&/^\s*(?:\d|[¼½¾⅛⅜⅝⅞])/.test(original)||/(?:Boden|Teig)\s*:/i.test(original)&&/(?:Füllung|Belag|Streu)/i.test(original);if(sectionedEligible){const sectioned=await rereadSectionedPaper(canvas,original,read,ticket);if(sectioned?.rowDraft)return sectioned;}if(lines(initial.ingredients).length<3&&!initial.steps){const textured=await rereadTexturedCard(canvas,original,read,ticket);if(textured?.accepted)return textured;if(textured?.evidence)textureEvidence=textured.evidence;}
