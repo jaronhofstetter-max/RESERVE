@@ -72,5 +72,20 @@ try{
  assert.deepEqual(saved.converted.ingredients.map(x=>x.unit),['ml','ml','ml','g']);
  for(const [i,want] of [2.5,22.5,1000/3,500].entries())assert.ok(Math.abs(saved.converted.ingredients[i].amount-want)<1e-9);
  await page.locator('#personalEdit').click();assert.equal(await page.locator('#personalIngredients').inputValue(),fractionLines);
- assert.deepEqual(errors,[]);console.log('REKEK browser pipeline: separated columns, complete title, fraction arithmetic/source preservation, serving review, saved recipe view and reload persistence OK (mock OCR).');
+ const card=await browser.newPage({viewport:{width:390,height:844}});card.on('pageerror',e=>errors.push(e.message));await card.route('https://**',r=>r.abort());
+ await card.addInitScript(()=>{
+  const line=(text,x,y,width=330,height=20)=>({text,bbox:{x0:x,y0:y,x1:x+width,y1:y+height},words:text.split(' ').map((text,i)=>({text,confidence:95,bbox:{x0:x+i*45,y0:y,x1:x+i*45+40,y1:y+height}}))});
+  const ingredients=Array.from({length:6},(_,i)=>(i+1)*50+' g Gemüse').join('\n'),steps='Gemüse klein schneiden.\nIm Topf garen.\nHeiss servieren.';
+  const layout={text:'Gemüsepfanne\n'+ingredients+'\n'+steps,lines:[line('Gemüsepfanne',100,80,500,100),...Array.from({length:6},(_,i)=>line((i+1)*50+' g Gemüse',130,450+i*70)),line('Gemüse klein schneiden.',220,1000),line('Im Topf garen.',220,1060),line('Heiss servieren.',220,1120)]};
+  const title={text:'Gemüsepfanne',words:[{text:'Gemüsepfanne',confidence:95,bbox:{x0:0,y0:0,x1:500,y1:80}}]};
+  const results=[{text:'Werbezeile\nZutaten\n'+ingredients+'\nZubereitung\n'+steps,confidence:50,words:[{text:' ',bbox:{x0:0,y0:0,x1:1000,y1:300}}]},layout,title,title,{text:'Zutaten für 4 Portionen'},{text:'Zutaten für 5 Portionen'},{text:ingredients},{text:ingredients.replace('100 g Gemüse','150 g Gemüse')},{text:steps},{text:steps}];let n=0;
+  window.Tesseract={createWorker:async()=>({setParameters:async()=>{},recognize:async()=>{if(n>=results.length)throw Error('Unexpected illustrated-card OCR call');return{data:results[n++]};},terminate:async()=>{}})};
+ });
+ await card.goto(`http://127.0.0.1:${server.address().port}/`);await card.waitForFunction(()=>window.RESERVE_PERSONAL_RECIPES);await card.evaluate(()=>RESERVE_PERSONAL_RECIPES.edit());
+ await card.locator('#personalScreenshots').setInputFiles({name:'illustrated-generic.png',mimeType:'image/png',buffer:Buffer.from(data,'base64')});await card.waitForFunction(()=>document.getElementById('personalCancelOCR').hidden);
+ assert.equal(await card.locator('#personalName').inputValue(),'Gemüsepfanne');assert.equal(await card.locator('#personalPortions').inputValue(),'');assert.equal(await card.locator('#personalConfirmed').isChecked(),false);
+ const illustratedIngredients=await card.locator('#personalIngredients').inputValue();assert.equal(illustratedIngredients.split('\n').length,6);assert.ok(illustratedIngredients.includes('Menge ungeklärt: 100 g Gemüse'));assert.ok(illustratedIngredients.includes('300 g Gemüse'));
+ const illustratedSteps=await card.locator('#personalSteps').inputValue();assert.ok(illustratedSteps.indexOf('Gemüse klein schneiden.')<illustratedSteps.indexOf('Im Topf garen.'));assert.ok(illustratedSteps.includes('Heiss servieren.'));
+ assert.ok((await card.locator('#personalOCREvidence').inputValue()).includes('Zutaten für 5 Portionen'));await card.close();
+ assert.deepEqual(errors,[]);console.log('REKEK browser pipeline: columns, fractions, persistence, illustrated-card regions, conflicting amounts/servings and ordered step evidence OK (mock OCR).');
 }finally{await browser?.close();server.close();}
