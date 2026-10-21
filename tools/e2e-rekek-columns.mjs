@@ -60,5 +60,17 @@ try{
  assert.equal(await page.locator('#personalConfirmed').isChecked(),false);
  assert.equal(await page.locator('#personalIngredients').inputValue(),ingredients);
  assert.equal(await page.locator('#personalSteps').inputValue(),steps);
- assert.deepEqual(errors,[]);console.log('REKEK browser pipeline: separated columns, complete title, fractions, serving review, saved recipe view and reload persistence OK (mock OCR).');
+ // Explicit typography survives the review/save/reopen flow; arithmetic uses ml/g.
+ await page.evaluate(()=>{RESERVE_PERSONAL_RECIPES.edit();RESERVE_PERSONAL_RECIPES.applyText('Bruchmengen\nPortionen: 1\nZutaten\n1 / 2 TL Salz\n1 1 / 2 EL Öl\n⅓\nl\nMilch\n1⁄2 kg Mehl\nZubereitung\nVerrühren.');});
+ const fractionLines='1 / 2 TL Salz\n1 1 / 2 EL Öl\n⅓ l Milch\n1⁄2 kg Mehl';
+ assert.equal(await page.locator('#personalIngredients').inputValue(),fractionLines);
+ assert.equal(await page.locator('#personalConfirmed').isChecked(),false);
+ await page.locator('#personalConfirmed').check();await page.locator('#personalReview').evaluate(form=>form.requestSubmit());
+ await page.locator('#personalRecipeDetail h2').waitFor({state:'visible'});
+ const saved=await page.evaluate(()=>{const r=JSON.parse(localStorage.getItem('reservePersonalRecipesV1')).find(x=>x.name==='Bruchmengen');return {source:r.ingredientLines,converted:RESERVE_RECIPE_PARSER.toRecipe(r)};});
+ assert.deepEqual(saved.source,fractionLines.split('\n'));assert.equal(saved.converted.pantryReady,true);
+ assert.deepEqual(saved.converted.ingredients.map(x=>x.unit),['ml','ml','ml','g']);
+ for(const [i,want] of [2.5,22.5,1000/3,500].entries())assert.ok(Math.abs(saved.converted.ingredients[i].amount-want)<1e-9);
+ await page.locator('#personalEdit').click();assert.equal(await page.locator('#personalIngredients').inputValue(),fractionLines);
+ assert.deepEqual(errors,[]);console.log('REKEK browser pipeline: separated columns, complete title, fraction arithmetic/source preservation, serving review, saved recipe view and reload persistence OK (mock OCR).');
 }finally{await browser?.close();server.close();}

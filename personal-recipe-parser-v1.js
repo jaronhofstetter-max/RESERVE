@@ -1,6 +1,9 @@
 /* Recipe text parsing: preserve uncertain input; never invent quantities or nutrition. */
 (function(){'use strict';
-const clean=s=>String(s||'').trim(),number=s=>{s=clean(s).replace(',','.');const f=s.match(/^(?:(\d+)\s+)?(\d+)\/(\d+)$/);if(f)return Number(f[1]||0)+Number(f[2])/Number(f[3]);return Number(s)};
+const fractionGlyphs={'¼':'1/4','½':'1/2','¾':'3/4','⅐':'1/7','⅑':'1/9','⅒':'1/10','⅓':'1/3','⅔':'2/3','⅕':'1/5','⅖':'2/5','⅗':'3/5','⅘':'4/5','⅙':'1/6','⅚':'5/6','⅛':'1/8','⅜':'3/8','⅝':'5/8','⅞':'7/8'};
+// Canonicalise explicit fraction typography only; retain the original line separately.
+const expandFractions=s=>String(s||'').replace(/(\d)([¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])/g,'$1 $2').replace(/[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]/g,c=>fractionGlyphs[c]).replace(/(\d)\s*[\/⁄∕]\s*(?=\d)/g,'$1/');
+const clean=s=>String(s||'').trim(),number=s=>{s=expandFractions(clean(s)).replace(',','.');const f=s.match(/^(?:(\d+)\s+)?(\d+)\/(\d+)$/);if(f)return Number(f[1]||0)+Number(f[2])/Number(f[3]);return Number(s)};
 // Explicit serving ranges use the smaller endpoint; ingredient ranges stay unresolved.
 function servingRange(text){const m=String(text||'').replace(/portion\(en\)/ig,'Portionen').match(/(?:\b(\d+)\s*(?:[-–—]|bis|to)\s*(\d+)\s*(?:personen|portionen|people|servings)\b|(?:portionen|servings)\s*:?\s*(\d+)\s*(?:[-–—]|bis|to)\s*(\d+)\b)/i);if(!m)return null;const a=Number(m[1]||m[3]),b=Number(m[2]||m[4]);return a>=1&&a<=100&&b>=1&&b<=100?String(Math.min(a,b)):'';}
 function recipeUIBoundary(text){return /^(?:[»▶▷>\s]*)(?:[b3]ild\s+\d+\b|lesarten\s+der\s+texter|rezeptname\s*$|portionen\s+im\s+originalrezept|mengen,\s*portionen\s+und\s+schritte|rezept\s+speichern\s*$)/i.test(clean(text));}
@@ -208,7 +211,7 @@ function sectionedPaperRegions(data,width,height){
  const headings=ls.filter(l=>label(l.text)),stacked=headings.length===2&&headings.every(l=>new RegExp('^'+label(l.text)+'\\s*:\\s*$','i').test(clean(l.text)));if(headings.length<(stacked?2:3)||headings.length>6||new Set(headings.map(l=>label(l.text).toLowerCase())).size<(stacked?2:3))return null;
  const first=headings[0],last=headings.at(-1),heightMedian=median(ls.map(l=>l.bbox.y1-l.bbox.y0));
  const words=l=>l.words.filter(w=>w.bbox&&w.bbox.y1-w.bbox.y0>=heightMedian*.4&&w.bbox.x1>width*.03&&w.bbox.x0<width*.95);
- const quantity=w=>/^(?:\d+(?:[.,]\d+)?(?:g|ml|Ei|Eier)?|\d+\/\d+|[¼½¾⅛⅜⅝⅞!])$/i.test(clean(w.text));
+ const quantity=w=>/^(?:\d+(?:[.,]\d+)?(?:g|ml|Ei|Eier)?|\d+\/\d+|[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞!])$/i.test(clean(w.text));
  let anchors=headings.map(l=>{const ws=words(l);return ws.find((w,i)=>i>0&&quantity(w))?.bbox.x0;}).filter(Number.isFinite);if(stacked){const candidates=ls.filter(l=>l.bbox.y0>first.bbox.y1).flatMap(words).filter(w=>quantity(w)&&w.bbox.x0<width*.4);const dense=candidates.map(w=>candidates.filter(v=>Math.abs(v.bbox.x0-w.bbox.x0)<width*.055)).sort((a,b)=>b.length-a.length)[0]||[];if(dense.length<8)return null;anchors=dense.map(w=>w.bbox.x0);}if(anchors.length<2)return null;
  const vertical=ws=>{if(!stacked)return ws;const h=median(ws.map(w=>w.bbox.y1-w.bbox.y0)),normal=ws.filter(w=>w.bbox.y1-w.bbox.y0<=h*1.7);return normal.length?normal:ws;};
  const anchor=median(anchors),box=ws=>({x0:Math.max(0,Math.floor(Math.min(...ws.map(w=>w.bbox.x0))-8)),y0:Math.max(0,Math.floor(Math.min(...vertical(ws).map(w=>w.bbox.y0))-5)),x1:Math.min(width,Math.ceil(Math.max(...ws.map(w=>w.bbox.x1))+8)),y1:Math.min(height,Math.ceil(Math.max(...vertical(ws).map(w=>w.bbox.y1))+5))});
@@ -228,7 +231,7 @@ function sectionedPaperRegions(data,width,height){
  return{title:box(words(titles[0])),rows,stacked};
 }
 function packageSize(line){
- const raw=clean(line),expanded=raw.replace(/(\d)([¼½¾⅛⅜⅝⅞])/g,'$1 $2').replace(/[¼½¾⅛⅜⅝⅞]/g,c=>({'¼':'1/4','½':'1/2','¾':'3/4','⅛':'1/8','⅜':'3/8','⅝':'5/8','⅞':'7/8'}[c])),m=expanded.match(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d+(?:[.,]\d+)?)\s+(Becher|Dosen?|Packungen?|Päckchen|Päck\.?|Pck\.?)\s+(.+?)(?:\s+(?:à|je|jeweils|stk\.?)\s*(\d+(?:[.,]\d+)?)\s*(g|kg|ml|l))?\s*$/i);
+ const raw=clean(line),expanded=expandFractions(raw),m=expanded.match(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d+(?:[.,]\d+)?)\s+(Becher|Dosen?|Packungen?|Päckchen|Päck\.?|Pck\.?)\s+(.+?)(?:\s+(?:à|je|jeweils|stk\.?)\s*(\d+(?:[.,]\d+)?)\s*(g|kg|ml|l))?\s*$/i);
  if(!m)return null;
  const count=number(m[1]),size=m[4]?Number(m[4].replace(',','.')):null;
  if(!Number.isFinite(count)||!(count>0)||size!==null&&(!Number.isFinite(size)||!(size>0)||!Number.isFinite(count*size*1000)))return null;
@@ -237,7 +240,7 @@ function packageSize(line){
 function ingredient(line){
  const pack=packageSize(line);
  if(pack?.size&&!/\d|\b(?:und|unterr(?:ü|ii)hren|verr(?:ü|ii)hren|mischen)\b/i.test(pack.name)){const multiplier=['kg','l'].includes(pack.unit)?1000:1;return{raw:clean(line),name:pack.name,amount:pack.count*pack.size*multiplier,unit:['g','kg'].includes(pack.unit)?'g':'ml',uncertain:false};}
- const raw=clean(line).replace(/^[•*–-]\s*/,''),glyphs={'¼':'1/4','½':'1/2','¾':'3/4','⅛':'1/8','⅜':'3/8','⅝':'5/8','⅞':'7/8'},expanded=raw.replace(/^=\s*(?=[0-9¼½¾⅛⅜⅝⅞])/,'').replace(/(\d)([¼½¾⅛⅜⅝⅞])/g,'$1 $2').replace(/[¼½¾⅛⅜⅝⅞]/g,c=>glyphs[c]);
+ const raw=clean(line).replace(/^[•*–-]\s*/,''),expanded=expandFractions(raw).replace(/^=\s*(?=\d)/,'');
  const atom='(?:\\d+\\s+\\d+/\\d+|\\d+/\\d+|\\d+(?:[.,]\\d+)?)';
  if(new RegExp('^'+atom+'\\s*(?:bis|[-–—])\\s*'+atom,'i').test(expanded)||/^\d+\s+halb(?:er|en|e|es)?\b/i.test(expanded))return{raw,name:raw,amount:null,unit:'',uncertain:true};
  const m=expanded.match(new RegExp('^('+atom+')(?=\\s|[a-zäöüß]|$)','i'));if(!m)return{raw,name:raw,amount:null,unit:'',uncertain:true};
@@ -253,7 +256,7 @@ function ingredient(line){
  return{raw,name,amount:Number.isFinite(amount)&&amount>0?amount:null,unit,uncertain};
 }
 // User-defined measuring spoons: use volume for pantry math, preserve source units for review.
-function pantryIngredient(line){const x=ingredient(line),factor={el:15,tl:5}[x.unit];if(!factor)return x;if(!(x.amount>0)||!Number.isFinite(x.amount)||!x.name||/\d|[¼½¾⅛⅜⅝⅞]|\b(?:gehäuft(?:e[rmns]?)?|heaped)\b/i.test(x.name))return x;if(!Number.isFinite(x.amount*factor))return x;return{...x,amount:x.amount*factor,unit:'ml',uncertain:false,displayAmount:x.amount,displayUnit:x.unit==='el'?'EL':'TL'};}
+function pantryIngredient(line){const x=ingredient(line),factor={el:15,tl:5}[x.unit];if(!factor)return x;if(!(x.amount>0)||!Number.isFinite(x.amount)||!x.name||/\d|[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]|\b(?:gehäuft(?:e[rmns]?)?|heaped)\b/i.test(x.name))return x;if(!Number.isFinite(x.amount*factor))return x;return{...x,amount:x.amount*factor,unit:'ml',uncertain:false,displayAmount:x.amount,displayUnit:x.unit==='el'?'EL':'TL'};}
 // Section detection preserves source amounts: it classifies text, never completes a recipe.
 function ingredientHeading(line){
  const match=clean(line).match(/^(?:(?:für|fuer)\s+(?:den|die|das)\s+)?(teig|mürbeteig|mürbteig|boden|belag|füllung|fuellung|creme|guss|glasur|streusel|streußel|sauce|soße|sosse|marinade|außerdem|ausserdem|zusätzlich|zusaetzlich)(?:\s*\([^)]*\))?\s*:?$/i);
@@ -268,8 +271,8 @@ function recipeTextLines(text){
  let input=String(text||'');
  const wrapped=input.split(/\r?\n/);
  // Complete only literal dangling container/adjective fragments, never a missing amount.
- for(let i=0;i<wrapped.length;i++){const a=clean(wrapped[i]);if(!/^(?:\d|[¼½¾⅛⅜⅝⅞])/.test(a)||!/(?:^|,\s*)\d+(?:[.,]\d+)?\s+(?:Becher|Dosen?|Packungen?|rote|gelbe|grüne|große|kleine)\s*$/i.test(a))continue;let j=i+1;while(j<wrapped.length&&!clean(wrapped[j]))j++;const b=clean(wrapped[j]||'');if(/^[a-zäöüß][a-zäöüß -]*,?$/i.test(b)&&!preparationLine(b)&&!ingredientHeading(b)){wrapped[i]=a+' '+b;wrapped.splice(i+1,j-i);}}
- for(let i=0;i+1<wrapped.length;i++){const a=clean(wrapped[i]),b=clean(wrapped[i+1]);if(/^(?:\d|[¼½¾⅛⅜⅝⅞])/.test(a)&&/(?:Dosen?|Becher|Packungen?)\s*$/i.test(a)&&/^[a-zäöüß]/i.test(b)&&quantityAction(a+' '+b)){wrapped[i]=a+' '+b;wrapped.splice(i+1,1);}}input=wrapped.join('\n');
+ for(let i=0;i<wrapped.length;i++){const a=clean(wrapped[i]);if(!/^(?:\d|[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])/.test(a)||!/(?:^|,\s*)\d+(?:[.,]\d+)?\s+(?:Becher|Dosen?|Packungen?|rote|gelbe|grüne|große|kleine)\s*$/i.test(a))continue;let j=i+1;while(j<wrapped.length&&!clean(wrapped[j]))j++;const b=clean(wrapped[j]||'');if(/^[a-zäöüß][a-zäöüß -]*,?$/i.test(b)&&!preparationLine(b)&&!ingredientHeading(b)){wrapped[i]=a+' '+b;wrapped.splice(i+1,j-i);}}
+ for(let i=0;i+1<wrapped.length;i++){const a=clean(wrapped[i]),b=clean(wrapped[i+1]);if(/^(?:\d|[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])/.test(a)&&/(?:Dosen?|Becher|Packungen?)\s*$/i.test(a)&&/^[a-zäöüß]/i.test(b)&&quantityAction(a+' '+b)){wrapped[i]=a+' '+b;wrapped.splice(i+1,1);}}input=wrapped.join('\n');
  return input.replace(/([a-zäöüß])-\s*\r?\n\s*([a-zäöüß])/g,'$1$2').split(/\r?\n/).map(clean).map(line=>line.replace(/^[|¦]+\s*/,'').replace(/\s*[|¦]+\s*$/,'')).map(line=>input.includes('[')?line:line.replace(/\s+\]+\s*$/,'')).map(line=>line.replace(/^[^a-zäöüß0-9]+(?=(?:zutaten|ingredients|zubereitung|anleitung)\b)/i,'')).map(line=>line.replace(/^[\s_•*|–—-]+(?=(?:zutaten|ingredients|zubereitung|anleitung|instructions|preparation|method)\b)/i,'')).flatMap(line=>{
   const inline=line.match(/^((?:zutaten|ingredients|zubereitung|anleitung|instructions|preparation|method)(?:\s*\([^)]*\))?|(?:(?:für|fuer)\s+(?:den|die|das)\s+)?(?:teig|mürbeteig|mürbteig|boden|belag|füllung|fuellung|creme|guss|glasur|streusel|streußel|sauce|soße|sosse|marinade))\s*:\s*(.+)$/i);
   return inline?[inline[1]+':',inline[2]]:[line];
@@ -281,7 +284,7 @@ function recipeTitle(lines){
  const start=lines.findIndex(l=>/^(?:zutaten|ingredients)(?:\s+(?:für|for|boden|teig|belag|füllung)\b[^:]*)?\s*:?$/i.test(l));
  if(start<0)return '';
  for(let i=0;i<start;i++){const l=lines[i];if(!l)continue;
-  if(/(?:portion|personen|servings|vorbereitung|backzeit|kochzeit|garzeit|ballaststoffe|kcal|nährwert|folgen|instagram|anmelden)/i.test(l)||/^(?:für\b|von\b|fotos?\b|[„"“]|\d|[¼½¾⅛⅜⅝⅞])|https?:|www\.|(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/|$)/i.test(l))continue;
+  if(/(?:portion|personen|servings|vorbereitung|backzeit|kochzeit|garzeit|ballaststoffe|kcal|nährwert|folgen|instagram|anmelden)/i.test(l)||/^(?:für\b|von\b|fotos?\b|[„"“]|\d|[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])|https?:|www\.|(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/|$)/i.test(l))continue;
   const letters=(l.match(/[a-zäöüß]/gi)||[]).length;
   if(/^(?:rezepte\b|hauptgerichte\s*$|vorspeisen\s*$|desserts\s*$)/i.test(l))continue;
   if(l.length<=160&&letters>=3&&letters/l.length>=.72&&!preparationLine(l)){
@@ -292,7 +295,7 @@ function recipeTitle(lines){
  return '';
 }
 function quantityAction(line){
- const m=line.match(/^(?:\d+(?:[.,]\d+)?(?:\s+\d+\/\d+)?|\d+\/\d+|[¼½¾⅛⅜⅝⅞])\s*(?:kg|mg|g|gr|ml|dl|cl|l|EL|TL|Becher|Dosen?|Tüten?|Pakete?|Päckchen|Pck\.?|Liter|Stangen?|Teelöffel|Esslöffel|Eßlöffel)\b\s*.+/i);
+ const m=expandFractions(line).match(/^(?:\d+(?:[.,]\d+)?(?:\s+\d+\/\d+)?|\d+\/\d+|[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])\s*(?:kg|mg|g|gr|ml|dl|cl|l|EL|TL|Becher|Dosen?|Tüten?|Pakete?|Päckchen|Pck\.?|Liter|Stangen?|Teelöffel|Esslöffel|Eßlöffel)\b\s*.+/i);
  if(!m||!preparationLine(line)||/\s\d+[.)]\s+[a-zäöüß]/i.test(line))return null;
  const verb=line.search(/\b(?:dazugeben|and(?:ü|ii)nsten|verr(?:ü|ii)hren|unterr(?:ü|ii)hren|einrühren|schlagen|unterheben|kneten|mischen|vermischen|vermengen|schneiden|würfeln|erhitzen|kochen|garen|braten|dünsten|backen|zugeben|hinzufügen|gießen|auflösen|geben)\b/i);
  if(verb<0)return null;
@@ -304,9 +307,9 @@ function parseText(text){
  const lines=recipeTextLines(text);
  let mode='',name=recipeTitle(lines),portions='',prepMinutes=null,cookMinutes=null,pending='',stepIndex=-1,summary=false;
  const ingredients=[],steps=[],ignored=[],unresolved=[],ingredientSections=[];let section=null;
- function addIngredient(line,unique=false){const joined=line.split(/\s+und\s+(?=\d+(?:[.,]\d+)?\s+(?:Becher|Dosen?|Packungen?|Päckchen|g|kg|ml|l)\b)/i);if(joined.length>1&&joined.every(t=>ingredient(t).amount>0&&ingredient(t).unit)){joined.forEach(t=>addIngredient(t,unique));return;}const listed=line.split(/,\s+(?=\d|etwas\b|nach Geschmack\b)/i);if(listed.length>1&&listed.every((t,i)=>i===0?ingredient(t).amount!==null:/^(?:etwas\b|nach Geschmack\b)/i.test(t)||(ingredient(t).amount!==null&&/[a-zäöüß]/i.test(ingredient(t).name)))){listed.forEach(t=>addIngredient(t,unique));return;}const parts=line.split(/(?<=[a-zäöüß)]),\s*(?=\d+(?:[.,]\d+)?\s*(?:g\.?|kg|ml|l|Eier|EL|TL|Teelöffel|Esslöffel|Eßlöffel|Päckchen)\s)/i);if(parts.length>1){parts.forEach(t=>addIngredient(t,unique));return;}line=line.replace(/^["«»•]\s*(?=\d)/,'');if(/^(?:\d|[¼½¾⅛⅜⅝⅞])/.test(line)&&ingredient(line).amount>0&&!ingredient(line).unit&&!unresolved.some(x=>x.type==='unclassified-quantity-line'&&x.raw===line))unresolved.push({type:'unclassified-quantity-line',raw:line});if(unique&&ingredients.includes(line))return;ingredients.push(line);if(!section){section={name:'',lines:[]};ingredientSections.push(section);}section.lines.push(line);}
- const quantity=/^(?:\d+(?:[.,]\d+)?(?:\s+\d+\/\d+)?|\d+\/\d+|[¼½¾⅛⅜⅝⅞])\s*(?:kg|mg|g|ml|dl|cl|l|stück|stueck|stk\.?|EL|TL|Prisen?|Bund)?$/i;
- const measured=/^(?:=\s*)?(?:\d|[¼½¾⅛⅜⅝⅞])/;
+ function addIngredient(line,unique=false){const joined=line.split(/\s+und\s+(?=\d+(?:[.,]\d+)?\s+(?:Becher|Dosen?|Packungen?|Päckchen|g|kg|ml|l)\b)/i);if(joined.length>1&&joined.every(t=>ingredient(t).amount>0&&ingredient(t).unit)){joined.forEach(t=>addIngredient(t,unique));return;}const listed=line.split(/,\s+(?=\d|etwas\b|nach Geschmack\b)/i);if(listed.length>1&&listed.every((t,i)=>i===0?ingredient(t).amount!==null:/^(?:etwas\b|nach Geschmack\b)/i.test(t)||(ingredient(t).amount!==null&&/[a-zäöüß]/i.test(ingredient(t).name)))){listed.forEach(t=>addIngredient(t,unique));return;}const parts=line.split(/(?<=[a-zäöüß)]),\s*(?=\d+(?:[.,]\d+)?\s*(?:g\.?|kg|ml|l|Eier|EL|TL|Teelöffel|Esslöffel|Eßlöffel|Päckchen)\s)/i);if(parts.length>1){parts.forEach(t=>addIngredient(t,unique));return;}line=line.replace(/^["«»•]\s*(?=\d)/,'');if(/^(?:\d|[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])/.test(line)&&ingredient(line).amount>0&&!ingredient(line).unit&&!unresolved.some(x=>x.type==='unclassified-quantity-line'&&x.raw===line))unresolved.push({type:'unclassified-quantity-line',raw:line});if(unique&&ingredients.includes(line))return;ingredients.push(line);if(!section){section={name:'',lines:[]};ingredientSections.push(section);}section.lines.push(line);}
+ const quantity=/^(?:\d+(?:[.,]\d+)?(?:\s+\d+\/\d+)?|\d+\/\d+|[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])\s*(?:kg|mg|g|ml|dl|cl|l|stück|stueck|stk\.?|EL|TL|Prisen?|Bund)?$/i;
+ const measured=/^(?:=\s*)?(?:\d|[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])/;
  const noise=/^(?:\d{1,2}:\d{2}(?:\s|$)|https?:\/\/|www\.|kikkoman[’'®©\s]*$|zutaten kopieren|zum starten antippen|schritt.für.schritt.kochen|leicht gemacht|starten antippen|(?:[xv»<>&©\s]+)?instagram\b|reddit\s*$|anmelden\s*$|app öffnen\s*$|aufrufen\s*$|teilen\s*$|speichern\s*$|gefällt\s+\d|alle\s+\d+\s+kommentare|link zum video\b)/i;
  function flush(){if(pending){addIngredient(pending);unresolved.push({type:'unpaired-quantity',raw:pending});pending='';}}
  for(const [lineNumber,line] of lines.entries()){
@@ -352,7 +355,7 @@ function parseText(text){
   if(mode==='ingredients'){
    if(/\s\d+[.)]\s+[a-zäöüß]/i.test(line)){unresolved.push({type:'mixed-columns',raw:line});}
    if(/^(?:für (?:die|den|das) .+|zusätzlich)\s*:\s*$/i.test(line)){flush();ignored.push(line);continue;}
-   const normalizedQuantity=line.replace(/^=\s*(?=[0-9¼½¾⅛⅜⅝⅞])/,'').replace(/(\d)([¼½¾⅛⅜⅝⅞])/g,'$1 $2').replace(/[¼½¾⅛⅜⅝⅞]/g,c=>({'¼':'1/4','½':'1/2','¾':'3/4','⅛':'1/8','⅜':'3/8','⅝':'5/8','⅞':'7/8'}[c]));
+   const normalizedQuantity=expandFractions(line).replace(/^=\s*(?=\d)/,'');
    if(quantity.test(normalizedQuantity)){flush();pending=line;continue;}
    if(pending&&!/[a-zäöüß]/i.test(pending)&&/^(?:kg|mg|g|gr|ml|dl|cl|l|EL|TL)$/i.test(line)){pending+=' '+line;continue;}
    if(pending){addIngredient(pending+' '+line);pending='';continue;}
@@ -364,7 +367,7 @@ function parseText(text){
   }
   if(mode==='steps'){
    const following=lines.slice(lineNumber),end=following.findIndex(x=>!x),paragraph=following.slice(0,end<0?following.length:end).join(' ');
-   if(/^(?:\d+(?:[.,]\d+)?|[¼½¾⅛⅜⅝⅞])\s*(?:g|kg|ml|l|EL|TL)\b/i.test(line)&&/\s[–—]\s*(?:\d|[¼½¾⅛⅜⅝⅞])/.test(paragraph)&&!/\b(?:kochen|garen|braten|zugeben|hinzufügen|schneiden|mischen|rühren|sieben|unterheben|einrühren|vermengen|erhitzen)\b/i.test(paragraph)&&end>=0){summary=true;ignored.push(line);continue;}
+   if(/^(?:\d+(?:[.,]\d+)?|[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])\s*(?:g|kg|ml|l|EL|TL)\b/i.test(line)&&/\s[–—]\s*(?:\d|[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])/.test(paragraph)&&!/\b(?:kochen|garen|braten|zugeben|hinzufügen|schneiden|mischen|rühren|sieben|unterheben|einrühren|vermengen|erhitzen)\b/i.test(paragraph)&&end>=0){summary=true;ignored.push(line);continue;}
    if(summary){ignored.push(line);continue;}
    const numbered=line.match(/^\d+[.)]\s*(.+)$/);
    if(numbered){stepIndex=steps.length;steps.push(numbered[1]);}
@@ -376,6 +379,7 @@ function parseText(text){
   if(!mode&&preparationLine(line)&&ingredients.length){mode='steps';steps.push(line);continue;}
   if(!mode&&ingredients.length&&/^(?:Salz|Pfeffer|Zimt|Zitronenschale|Petersilie|Muskat)(?:\b|[,\s])/i.test(line)){addIngredient(line);continue;}
   if(!mode&&measured.test(line)){
+   if(quantity.test(expandFractions(line).replace(/^=\s*(?=\d)/,''))){pending=line;mode='ingredients';continue;}
    const parsedLine=ingredient(line);
    if(!parsedLine.uncertain||(parsedLine.amount>0&&parsedLine.unit)){addIngredient(line);mode='ingredients';continue;}
    unresolved.push({type:'unclassified-quantity-line',raw:line});
@@ -396,16 +400,16 @@ function parseCandidates(text){
   // Skip only literal serving metadata; never use a preparation sentence as a title.
   if(j>=0&&/^(?:für\s+)?\d+\s+(?:personen|portionen|servings)\s*$/i.test(rows[j].trim())){j--;while(j>=0&&!rows[j].trim())j--;}
   const title=rows[j]?.trim()||'';
-  if(!title||title.length>200||/^[\d¼½¾⅛⅜⅝⅞]|[.!?:]$/.test(title)||/^(?:für |zubereitung|anleitung|schritt|sauce|füllung|belag|teig)\b/i.test(title))continue;
+  if(!title||title.length>200||/^[\d¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]|[.!?:]$/.test(title)||/^(?:für |zubereitung|anleitung|schritt|sauce|füllung|belag|teig)\b/i.test(title))continue;
   starts.push(j);
  }
  // Printed collections often omit "Zutaten" entirely. Require a short title
  // immediately followed by at least two quantity rows, never a subsection.
  for(let i=0;i<rows.length;i++){
   const title=rows[i].trim();
-  if(!title||title.length>160||/^[\d¼½¾⅛⅜⅝⅞]|[.!?:]$/.test(title)||ingredientHeading(title)||preparationLine(title)||/[0-9¼½¾⅛⅜⅝⅞]/.test(title)||/^(?:Salz|Pfeffer|Basilikum|Zimt|Muskat|Vanille|von|Fotos?)\b/i.test(title)||/^(?:für\b|zutaten\b|zubereitung\b|nährwert|vorbereitung|kochzeit)/i.test(title))continue;
+  if(!title||title.length>160||/^[\d¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]|[.!?:]$/.test(title)||ingredientHeading(title)||preparationLine(title)||/[0-9¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]/.test(title)||/^(?:Salz|Pfeffer|Basilikum|Zimt|Muskat|Vanille|von|Fotos?)\b/i.test(title)||/^(?:für\b|zutaten\b|zubereitung\b|nährwert|vorbereitung|kochzeit)/i.test(title))continue;
   const following=rows.slice(i+1).filter(Boolean).slice(0,2);
-  if(following.length===2&&following.every(l=>/^(?:\d|[¼½¾⅛⅜⅝⅞])/.test(l)&&!preparationLine(l)))starts.push(i);
+  if(following.length===2&&following.every(l=>/^(?:\d|[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])/.test(l)&&!preparationLine(l)))starts.push(i);
  }
  starts.sort((a,b)=>a-b);for(let i=starts.length-1;i>0;i--)if(starts[i]===starts[i-1])starts.splice(i,1);
  if(starts.length<2)return{candidates:[parseText(text)],reviewRequired:true,multipleRecipes:false,unassignedText:''};
@@ -475,11 +479,11 @@ function quantityColumnStart(reads,divider,width){
 function ingredientRowBoxes(passes){
  const labels=passes.flatMap(rows=>rows.filter(r=>/^\W*Zutaten\s*:\s*$/i.test(r.text)));
  if(!labels.length)return[];const after=Math.max(...labels.map(r=>r.bbox.y1));
- const candidates=passes.map(rows=>rows.filter(r=>r.bbox.y0>after&&(/[0-9¼½¾⅛⅜⅝⅞]/.test(r.text)||/[a-zäöüß]{3}/i.test(r.text))));
+ const candidates=passes.map(rows=>rows.filter(r=>r.bbox.y0>after&&(/[0-9¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]/.test(r.text)||/[a-zäöüß]{3}/i.test(r.text))));
  const height=median(candidates.flatMap(rows=>rows.map(r=>r.bbox.y1-r.bbox.y0)));if(!height)return[];
  const rows=[];for(const [mode,ls] of candidates.entries())for(const line of ls){const cy=(line.bbox.y0+line.bbox.y1)/2,match=rows.find(r=>Math.abs(r.cy-cy)<height*.5&&!r.modes.includes(mode));if(match){match.lines.push(line);match.modes.push(mode);}else rows.push({cy,lines:[line],modes:[mode]});}
  rows.sort((a,b)=>a.cy-b.cy);if(rows.length<5||rows.length>40||rows.filter(r=>r.lines.some(l=>/^\W*\d/.test(l.text))).length<5)return[];
- return rows.map((r,i)=>{const measures=[];for(const line of r.lines){const ws=line.words||[];for(let j=0;j+1<ws.length;j++)if(/^(?:\d+(?:[.,]\d+)?|\d*[¼½¾⅛⅜⅝⅞]|\d+\/\d+|[%‰])$/.test(clean(ws[j].text))&&/^(?:kg|g|ml|dl|cl|l|EL|TL|Spritzer|[a-z0-9])$/i.test(clean(ws[j+1].text))&&ws[j].bbox&&ws[j+1].bbox){const a=ws[j].bbox,b=ws[j+1].bbox;measures.push({x0:Math.min(a.x0,b.x0),y0:Math.min(a.y0,b.y0),x1:Math.max(a.x1,b.x1),y1:Math.max(a.y1,b.y1)});break;}}
+ return rows.map((r,i)=>{const measures=[];for(const line of r.lines){const ws=line.words||[];for(let j=0;j+1<ws.length;j++)if(/^(?:\d+(?:[.,]\d+)?|\d*[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]|\d+\/\d+|[%‰])$/.test(clean(ws[j].text))&&/^(?:kg|g|ml|dl|cl|l|EL|TL|Spritzer|[a-z0-9])$/i.test(clean(ws[j+1].text))&&ws[j].bbox&&ws[j+1].bbox){const a=ws[j].bbox,b=ws[j+1].bbox;measures.push({x0:Math.min(a.x0,b.x0),y0:Math.min(a.y0,b.y0),x1:Math.max(a.x1,b.x1),y1:Math.max(a.y1,b.y1)});break;}}
   const measureBBox=measures.length?{x0:Math.min(...measures.map(b=>b.x0)),y0:Math.min(...measures.map(b=>b.y0)),x1:Math.max(...measures.map(b=>b.x1)),y1:Math.max(...measures.map(b=>b.y1))}:null;
   return{source:r.lines.map(l=>l.text),measureBBox,bbox:{x0:Math.min(...r.lines.map(l=>l.bbox.x0)),x1:Math.max(...r.lines.map(l=>l.bbox.x1)),y0:Math.max(Math.min(...r.lines.map(l=>l.bbox.y0))-3,i?(rows[i-1].cy+r.cy)/2:0),y1:Math.min(Math.max(...r.lines.map(l=>l.bbox.y1))+3,i+1<rows.length?(r.cy+rows[i+1].cy)/2:Infinity)}};});
 }
@@ -487,16 +491,16 @@ function cleanIngredientReading(text){return clean(text).replace(/^(?:[•·*+�
 function reviewIngredientReadings(reads,source=[]){
  // Punctuation bullets are removable; letters and digits are never repaired.
  const normalized=reads.map(cleanIngredientReading);
- const agreed=normalized.length===2&&normalized[0]&&normalized[0]===normalized[1];
+ const agreed=normalized.length===2&&normalized[0]&&expandFractions(normalized[0])===expandFractions(normalized[1]);
  const text=agreed?normalized[0]:(normalized.find(s=>s)||source.find(s=>s)||'Unlesbare Zutatenzeile');
- const collapsedFraction=/^(?:optional\s*:\s*)?(?:\d{2}|[%‰])\s*(?:EL|TL)\b/i.test(text.replace(/^=\s*(?=[0-9¼½¾⅛⅜⅝⅞%‰])/,''));
+ const collapsedFraction=/^(?:optional\s*:\s*)?(?:\d{2}|[%‰])\s*(?:EL|TL)\b/i.test(text.replace(/^=\s*(?=[0-9¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞%‰])/,''));
  const parsedQuantity=ingredient(text);
  const quantityClear=!!agreed&&!collapsedFraction&&parsedQuantity.amount>0&&['g','ml','Stück','el','tl','spritzer','Stange','Glas'].includes(parsedQuantity.unit)&&!/^\d+(?:[.,]\d+)?\s+(?![gl]\s)[a-z]\s+/i.test(text);
- const noQuantity=!!agreed&&!/[\d¼½¾⅛⅜⅝⅞%‰]/.test(text);
+ const noQuantity=!!agreed&&!/[\d¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞%‰]/.test(text);
  return{reads:reads.slice(),source:source.slice(),agreement:!!agreed,quantityClear,noQuantity,reviewRequired:true,quantityInferred:false,expression:quantityClear||noQuantity?text:'Menge ungeklärt: '+text};
 }
 function reviewMeasuredReadings(row,reads){
- const measureText=s=>cleanIngredientReading(s).replace(/(\d)([¼½¾⅛⅜⅝⅞])/g,'$1 $2').replace(/[¼½¾⅛⅜⅝⅞]/g,c=>({'¼':'1/4','½':'1/2','¾':'3/4','⅛':'1/8','⅜':'3/8','⅝':'5/8','⅞':'7/8'}[c]));
+ const measureText=s=>expandFractions(cleanIngredientReading(s));
  const measures=reads.map(s=>measureText(s).match(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d+(?:[.,]\d+)?)\s*(kg|g|ml|dl|cl|l|EL|TL|Spritzer)$/i));
  const source=cleanIngredientReading(row.reads.find(Boolean)||'');
  const suffix=source.match(/^(?:optional\s*:\s*)?[^a-zäöüß]+\s*(?:kg|g|ml|dl|cl|l|EL|TL|Spritzer)\s+(.+)$/i)||source.match(/^\d+(?:[.,]\d+)?\s+\S+\s+(.+)$/);
@@ -565,7 +569,7 @@ function validDetails(d){return d===undefined||!!(d&&typeof d==='object'&&!Array
 function validRecord(r){return r&&validDetails(r.details)&&/^personal-[a-z0-9-]+$/.test(r.id)&&typeof r.name==='string'&&r.name.length>0&&r.name.length<=200&&Number.isFinite(r.portions)&&r.portions>0&&r.portions<=100&&Array.isArray(r.ingredientLines)&&r.ingredientLines.length>0&&r.ingredientLines.length<=100&&r.ingredientLines.every(s=>typeof s==='string'&&s.length>0&&s.length<=500)&&Array.isArray(r.steps)&&r.steps.length>0&&r.steps.length<=100&&r.steps.every(s=>typeof s==='string'&&s.length>0&&s.length<=3000)&&['Alles','Vegetarisch','Vegan'].includes(r.diet)&&[r.prepMinutes,r.cookMinutes].every(n=>n===null||Number.isFinite(n)&&n>=0&&n<=1440)&&(!r.source||typeof r.source==='string'&&r.source.length<=2000)}
 function toRecipe(r,image=''){const parsed=r.ingredientLines.map(pantryIngredient),pantryReady=parsed.every(x=>!x.uncertain);return{id:r.id,name:r.name,personal:true,pantryReady,detailLoaded:true,description:r.details?.description||'',equipment:r.details?.equipment||[],prepNotes:r.details?.prepNotes||[],substitutions:r.details?.substitutions||[],doneness:r.details?.doneness||'',leftovers:r.details?.leftovers||'',safety:r.details?.safety||'',type:'Hauptmahlzeit',diet:r.diet,dish:'🍽️',cuisine:'Eigenes Rezept',difficulty:'',status:'approved',mealTimes:['Mittagessen','Abendessen'],prepMinutes:r.prepMinutes||0,cookMinutes:r.cookMinutes||0,ingredients:parsed.map(x=>({name:x.name,amount:x.amount===null?null:x.amount/r.portions,unit:x.unit,...(x.displayUnit?{displayAmount:x.displayAmount/r.portions,displayUnit:x.displayUnit}:{})})),steps:r.steps.slice(),nutrition:r.details?.nutrition||{},allergens:[],image}}
 window.RESERVE_RECIPE_PARSER={ingredient,pantryIngredient,packageSize,parseText,validRecord,toRecipe};
-window.RESERVE_REKEK={version:"0.6.26",kind:"local-ocr-and-rules",contextSuggestions,reviewParallelQuantity,reviewParallelParts,parallelSteps,parallelRecipeRegions,sectionedPaperRegions,preparePrintedPaper,insetRecipeEvidence,insetRecipeRegions,sideRecipeRegions,ingredientColumnRegions,quantityRecipeRegions,fractionGlyphParts,prepareTextOnTexture,textureRecipeRegions,parseText,parseCandidates,findRecipePanel,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
+window.RESERVE_REKEK={version:"0.6.26",kind:"local-ocr-and-rules",contextSuggestions,expandFractions,reviewParallelQuantity,reviewParallelParts,parallelSteps,parallelRecipeRegions,sectionedPaperRegions,preparePrintedPaper,insetRecipeEvidence,insetRecipeRegions,sideRecipeRegions,ingredientColumnRegions,quantityRecipeRegions,fractionGlyphParts,prepareTextOnTexture,textureRecipeRegions,parseText,parseCandidates,findRecipePanel,findRecipeDivider,textRecipeDivider,agreedRecipeColumns,ocrLines,quantityColumnStart,ingredientRowBoxes,reviewIngredientReadings,reviewMeasuredReadings,cardHeaderRegions,reviewCardMetadata,parseCardSteps};
 })();
 
 
