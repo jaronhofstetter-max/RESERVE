@@ -79,3 +79,16 @@ assert.equal(p.pantryIngredient('9'.repeat(308)+' EL Öl').uncertain,true);
 {const details={description:'Unsere Reispfanne',equipment:['Topf'],prepNotes:['Reis waschen.'],doneness:'Reis ist weich.',substitutions:['Mit Zucchini.'],leftovers:'Hinweis aus der Vorlage.',safety:'Hinweis aus der Vorlage.',nutrition:{kcal:450,protein:12}};assert.ok(p.validRecord({...r,details}));const rich=p.toRecipe({...r,details});assert.equal(rich.description,details.description);assert.deepEqual([...rich.equipment],['Topf']);assert.equal(rich.nutrition.kcal,450);for(const bad of [{nutrition:{kcal:-1}},{nutrition:{kcal:Infinity}},{equipment:'Topf'},{description:'a'.repeat(3001)},{nutrition:[]},{nutrition:{unknown:1}}])assert.equal(p.validRecord({...r,details:bad}),false);}
 
 assert.equal(p.ingredient('1Ei Ei').name,'Ei');assert.equal(p.ingredient('1Ei Ei').amount,1);assert.equal(p.ingredient('1Ei Ei').raw,'1Ei Ei');
+
+// Explicit fraction typography is normalised for arithmetic, never by guessing OCR digits.
+for(const [source,amount] of [['1 / 2 TL Salz',2.5],['1 1 / 2 EL Öl',22.5],['⅓ l Milch',1000/3],['2⅓ EL Öl',35],['1⁄2 kg Mehl',500],['1∕2 kg Mehl',500]]){
+ const x=p.pantryIngredient(source);assert.ok(Math.abs(x.amount-amount)<1e-9,source);assert.equal(x.uncertain,false,source);assert.equal(x.raw,source);
+}
+for(const source of ['1 / 0 TL Salz','1 / 2 / 3 TL Salz','1 / 2 bis 3 / 4 TL Salz','⅓ Milch','1509 Zucker','1E0 Ei'])assert.equal(p.pantryIngredient(source).uncertain,true,source);
+for(const heading of ['Zutaten\n','']){
+ const split=p.parseText('Suppe\n'+heading+'⅓\nl\nMilch\n1 / 2\nTL\nSalz\nZubereitung\nVerrühren.');
+ assert.equal(split.ingredients,'⅓ l Milch\n1 / 2 TL Salz');assert.equal(split.steps,'Verrühren.');
+}
+const fractionRead=k.reviewIngredientReadings(['1 / 2 TL Salz','½ TL Salz']);assert.equal(fractionRead.quantityClear,true);assert.equal(fractionRead.agreement,true);assert.equal(fractionRead.expression,'1 / 2 TL Salz');assert.deepEqual([...fractionRead.reads],['1 / 2 TL Salz','½ TL Salz']);
+assert.equal(k.reviewIngredientReadings(['1 / 2 TL Salz','⅓ TL Salz']).quantityClear,false);
+console.log('Explicit fraction typography, source preservation, split lines and ambiguous OCR guards passed.');
