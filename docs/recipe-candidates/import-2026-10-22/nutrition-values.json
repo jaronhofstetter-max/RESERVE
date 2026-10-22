@@ -1,0 +1,46 @@
+{
+  "169100": {
+    "description": "Orange juice, chilled, includes from concentrate",
+    "per100g": {
+      "fat": 0.12,
+      "fiber": 0.3,
+      "protein": 0.68,
+      "carbs": 11.5,
+      "kcal": 49.0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/169100/nutrients"
+  },
+  "170393": {
+    "description": "Carrots, raw",
+    "per100g": {
+      "protein": 0.93,
+      "fat": 0.24,
+      "carbs": 9.58,
+      "kcal": 41.0,
+      "fiber": 2.8
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/170393/nutrients"
+  },
+  "171583": {
+    "description": "Soup, vegetable broth, ready to serve",
+    "per100g": {
+      "protein": 0.24,
+      "fiber": 0.0,
+      "fat": 0.07,
+      "carbs": 0.93,
+      "kcal": 5.0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/171583/nutrients"
+  },
+  "173418": {
+    "description": "Cheese, cream",
+    "per100g": {
+      "protein": 6.15,
+      "fat": 34.4,
+      "carbs": 5.52,
+      "kcal": 350,
+      "fiber": 0.0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/173418/nutrients"
+  }
+}

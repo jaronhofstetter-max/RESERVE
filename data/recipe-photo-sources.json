@@ -498,6 +498,23 @@
       "reviewedAt": "2026-10-21",
       "originalPhotoUrl": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/278_Broccoli-Suppe+mit+glasierten+Birnen.png",
       "originalPhotoSha256": "83d8f77b9e459ae3b694768e53b0dc2ea497f68bd6fee3f99c67d98472b5068c"
+    },
+    {
+      "recipeId": "chuchitisch-rueaebli-suppe",
+      "path": "assets/recipe-photos/chuchitisch-rueaebli-suppe.webp",
+      "source": "https://chuchitisch.ch/recipes/28",
+      "author": "Annet",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Rüäbli-Suppä",
+      "provider": "Chuchitisch",
+      "adaptation": "Verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Originalfoto der Rezeptseite: orangefarbene Karottensuppe mit Petersiliengarnitur und Toaststäbchen. Serviervorschlag; Petersilie und Toast sind nicht Bestandteil der Grundfassung und nicht eingerechnet. Urhebergrundlage sind Autorenkonto und Eigene-Fotos-Erklärung; kein separat benannter Fotograf.",
+      "reviewedAt": "2026-10-22",
+      "originalPhotoUrl": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/8_R%C3%BC%C3%A4bli-Supp%C3%A4+.png",
+      "originalPhotoSha256": "58ac330e07ba062f89becb946998e5d521b47fa4f127c1cdfefb456308db07d0"
     }
   ]
 }
