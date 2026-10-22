@@ -1,0 +1,27 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Rüäbli-Suppä ",
+  "image": "http://www.chuchitisch.ch//chuchitisch/download_picture/lightroom/8_R%C3%BC%C3%A4bli-Supp%C3%A4+.png",
+  "author": {
+    "@type": "Person",
+    "name": "Annet"
+  },
+  "description": "",
+  "prepTime": "PT0S",
+  "cookTime": "PT1500S",
+  "totalTime": "PT1500S",
+  "recipeYield": "2 Personen",
+  "keywords": "  Vorspeise,  Gesund,  Einfach,  Suppe,  Raffiniert,  Eher schnell,  Vegetarisch,  Saisonal,  ",
+  "recipeIngredient": [
+    "400  g Karotten",
+    "5  dl Gemüsebouillon",
+    "100  g Frischkäse, z.B. Philadelphia",
+    "7&frac12;  cl Orangensaft",
+    "   Salz",
+    ""
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+  "recipeInstructions": "Rüäbli in grobe Stücke schneiden. In der Bouillon zugedeckt ca. 15&nbsp;Minuten weich kochen. Frischkäse und Orangensaft zur Suppe geben. Suppe mit dem Stabmixer pürieren. Mit Salz abschmecken. Dazu können Toast-Stäbchen serviert werden. "
+}

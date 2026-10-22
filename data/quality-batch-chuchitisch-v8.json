@@ -1,0 +1,144 @@
+[
+  {
+    "id": "chuchitisch-rueaebli-suppe",
+    "name": "Rüäbli-Suppä nach Chuchitisch",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥕",
+    "cuisine": "Schweizerisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 15,
+    "difficulty": "Sehr einfach",
+    "allergens": [
+      "Milch",
+      "Sellerie"
+    ],
+    "tags": [
+      "Chuchitisch",
+      "Karotten",
+      "Suppe",
+      "Schweiz",
+      "Originalfoto"
+    ],
+    "ingredients": [
+      {
+        "name": "Karotten",
+        "amount": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Gemüsebouillon",
+        "amount": 250,
+        "unit": "ml"
+      },
+      {
+        "name": "Frischkäse",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Orangensaft",
+        "amount": 37.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.5,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Karotten waschen, schälen und in ungefähr gleich grosse grobe Stücke schneiden.",
+      "Karottenstücke mit der Gemüsebouillon in einen Topf geben, zugedeckt aufkochen und etwa 15 Minuten sanft köcheln lassen, bis sie sich leicht mit einer Gabel einstechen lassen.",
+      "Topf vom Herd nehmen. Frischkäse und Orangensaft zugeben.",
+      "Die Suppe mit einem Stabmixer vorsichtig glatt pürieren. Bei Bedarf wenig Wasser oder Bouillon ergänzen, bis die gewünschte Konsistenz erreicht ist.",
+      "Mit Salz abschmecken und heiss servieren. Petersilie und Toaststäbchen auf dem Foto sind ein optionaler Serviervorschlag und nicht eingerechnet."
+    ],
+    "nutrition": {
+      "kcal": 287.88,
+      "protein": 5.79,
+      "carbs": 22.85,
+      "fat": 17.9,
+      "fiber": 5.71
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy; Schätzung, keine Messung des fertigen Gerichts.",
+      "basis": "Pro Person; verfügbare Kohlenhydrate = Gesamtkohlenhydrate minus Ballaststoffe. Original für 2 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Kein Mengen- oder Portionsbereich. 5 dl Gemüsebouillon = 500 ml und 7½ cl Orangensaft = 75 ml im Originalansatz. Flüssigkeiten für die Berechnung vereinfacht 1 ml = 1 g. Frischkäse im Original beispielsweise Philadelphia; für die Nährwerte mit USDA-Vollfett-Frischkäse angenähert. Marken und Fettstufen können deutlich abweichen. Salz nach Geschmack mit 1 g im Originalansatz als offengelegte Richtmenge angesetzt und nicht in die Makronährwerte eingerechnet. Gemüsebouillon mit USDA-Gemüsebrühe angenähert; Produktetikett auf Sellerie und weitere Allergene prüfen. Originalfoto als Serviervorschlag. Das Foto zeigt zusätzlich Petersilie und ein Toaststäbchen; beides ist optional, nicht Bestandteil der Grundfassung und nicht in Nährwerten oder Allergenen eingerechnet. Bei Toast Gluten ergänzen.",
+      "sources": "docs/recipe-candidates/import-2026-10-22/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Karotten",
+          "grams": 200,
+          "foodKey": "170393",
+          "excluded": false
+        },
+        {
+          "name": "Gemüsebouillon",
+          "grams": 250,
+          "foodKey": "171583",
+          "excluded": false
+        },
+        {
+          "name": "Frischkäse",
+          "grams": 50,
+          "foodKey": "173418",
+          "excluded": false
+        },
+        {
+          "name": "Orangensaft",
+          "grams": 37.5,
+          "foodKey": "169100",
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 0.5,
+          "foodKey": null,
+          "excluded": true
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Schweizer Karottensuppe mit Frischkäse und Orangensaft nach einem Chuchitisch-Rezept von Annet. Mengen und geschätzte Nährwerte pro Person; Originalfoto als Serviervorschlag.",
+    "equipment": [
+      "Kochtopf mit Deckel",
+      "Küchenmesser",
+      "Schneidebrett",
+      "Stabmixer"
+    ],
+    "prepNotes": [
+      "Original für 2 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Kein Mengen- oder Portionsbereich.",
+      "5 dl Gemüsebouillon = 500 ml und 7½ cl Orangensaft = 75 ml im Originalansatz. Flüssigkeiten für die Berechnung vereinfacht 1 ml = 1 g.",
+      "Frischkäse im Original beispielsweise Philadelphia; für die Nährwerte mit USDA-Vollfett-Frischkäse angenähert. Marken und Fettstufen können deutlich abweichen.",
+      "Salz nach Geschmack mit 1 g im Originalansatz als offengelegte Richtmenge angesetzt und nicht in die Makronährwerte eingerechnet. Gemüsebouillon mit USDA-Gemüsebrühe angenähert; Produktetikett auf Sellerie und weitere Allergene prüfen.",
+      "Originalfoto als Serviervorschlag. Das Foto zeigt zusätzlich Petersilie und ein Toaststäbchen; beides ist optional, nicht Bestandteil der Grundfassung und nicht in Nährwerten oder Allergenen eingerechnet. Bei Toast Gluten ergänzen."
+    ],
+    "doneness": "Die Karotten sind vollständig weich und die Suppe ist gleichmässig glatt püriert, ohne harte Stücke.",
+    "substitutions": [
+      "Eine andere Frischkäsemarke ist möglich; Fettgehalt, Salz, Allergene und Nährwerte können abweichen. Toast nur separat ergänzen und Gluten berücksichtigen."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt gekühlt lagern und zeitnah verbrauchen. Vor dem Essen unter Rühren vollständig durcherhitzen, aber nicht unnötig lange kochen.",
+    "safety": "Zum Pürieren den Topf vom Herd nehmen und den Mixerkopf eingetaucht halten, damit die heisse Suppe nicht spritzt.",
+    "recipeCredit": {
+      "author": "Annet",
+      "provider": "Chuchitisch",
+      "source": "https://chuchitisch.ch/recipes/28",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "originalServings": 2,
+      "adaptation": "Auf eine Person umgerechnet; Schritte gegliedert und Garmerkmale ergänzt. Original für 2 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Kein Mengen- oder Portionsbereich. 5 dl Gemüsebouillon = 500 ml und 7½ cl Orangensaft = 75 ml im Originalansatz. Flüssigkeiten für die Berechnung vereinfacht 1 ml = 1 g. Frischkäse im Original beispielsweise Philadelphia; für die Nährwerte mit USDA-Vollfett-Frischkäse angenähert. Marken und Fettstufen können deutlich abweichen. Salz nach Geschmack mit 1 g im Originalansatz als offengelegte Richtmenge angesetzt und nicht in die Makronährwerte eingerechnet. Gemüsebouillon mit USDA-Gemüsebrühe angenähert; Produktetikett auf Sellerie und weitere Allergene prüfen. Originalfoto als Serviervorschlag. Das Foto zeigt zusätzlich Petersilie und ein Toaststäbchen; beides ist optional, nicht Bestandteil der Grundfassung und nicht in Nährwerten oder Allergenen eingerechnet. Bei Toast Gluten ergänzen."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.1,
+      "waterMl": 250,
+      "noCook": false,
+      "onePot": true
+    }
+  }
+]
