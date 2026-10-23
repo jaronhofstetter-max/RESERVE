@@ -515,6 +515,23 @@
       "reviewedAt": "2026-10-22",
       "originalPhotoUrl": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/8_R%C3%BC%C3%A4bli-Supp%C3%A4+.png",
       "originalPhotoSha256": "58ac330e07ba062f89becb946998e5d521b47fa4f127c1cdfefb456308db07d0"
+    },
+    {
+      "recipeId": "chuchitisch-gerstensuppe",
+      "path": "assets/recipe-photos/chuchitisch-gerstensuppe.webp",
+      "source": "https://chuchitisch.ch/recipes/494",
+      "author": "Hannes und Martina",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "kind": "photograph",
+      "servingSuggestion": false,
+      "title": "Gerstensuppe",
+      "provider": "Chuchitisch",
+      "adaptation": "Als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Exakt passendes Originalfoto der Rezeptseite: cremige Gerstensuppe mit den enthaltenen Gemüsewürfeln und Schnittlauch. Keine zusätzlichen Lebensmittel erkannt. Urhebergrundlage sind Autorenkonto und Eigene-Fotos-Erklärung; kein separat benannter Fotograf.",
+      "reviewedAt": "2026-10-23",
+      "originalPhotoUrl": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/600_Gerstensuppe.png",
+      "originalPhotoSha256": "1e25966f6a6258361225ccac646afe5374a7d1f0d0aac3115ef1702324fa01b5"
     }
   ]
 }

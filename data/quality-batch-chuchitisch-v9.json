@@ -1,0 +1,212 @@
+[
+  {
+    "id": "chuchitisch-gerstensuppe",
+    "name": "Schweizer Gerstensuppe nach Chuchitisch",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥣",
+    "cuisine": "Schweizerisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 60,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Gluten",
+      "Milch",
+      "Sellerie"
+    ],
+    "tags": [
+      "Chuchitisch",
+      "Gerste",
+      "Suppe",
+      "Schweiz",
+      "Originalfoto"
+    ],
+    "ingredients": [
+      {
+        "name": "Lauch",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Knollensellerie",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Karotten",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Rollgerste",
+        "amount": 37.5,
+        "unit": "g"
+      },
+      {
+        "name": "Gemüsebouillon",
+        "amount": 500,
+        "unit": "ml"
+      },
+      {
+        "name": "Rahm",
+        "amount": 25,
+        "unit": "ml"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Butter",
+        "amount": 5,
+        "unit": "g"
+      },
+      {
+        "name": "Schnittlauch",
+        "amount": 5,
+        "unit": "g"
+      },
+      {
+        "name": "Salz",
+        "amount": 1,
+        "unit": "g"
+      },
+      {
+        "name": "Pfeffer",
+        "amount": 0.25,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Lauch, Sellerie, Karotten und Schnittlauch gründlich waschen. Lauch, Sellerie und Karotten rüsten und in kleine, möglichst gleichmässige Würfel schneiden. Zwiebel fein hacken; Schnittlauch für den Schluss fein schneiden.",
+      "Butter in einem grossen Topf bei mittlerer Hitze schmelzen. Zwiebel darin glasig dünsten, ohne sie stark zu bräunen.",
+      "Lauch, Sellerie, Karotten und Rollgerste zugeben und unter Rühren etwa 2 Minuten mitdünsten.",
+      "Mit der Gemüsebouillon ablöschen, zugedeckt aufkochen und anschliessend etwa 60 Minuten sanft köcheln lassen. Gelegentlich umrühren, bis die Gerste weich, aber noch leicht bissfest ist.",
+      "Rahm einrühren und die Suppe nochmals kurz aufkochen. Mit Salz und Pfeffer abschmecken, mit Schnittlauch bestreuen und heiss servieren."
+    ],
+    "nutrition": {
+      "kcal": 282.1,
+      "protein": 6.92,
+      "carbs": 36,
+      "fat": 9.85,
+      "fiber": 7.95
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy; Schätzung, keine Messung des fertigen Gerichts.",
+      "basis": "Pro Person; verfügbare Kohlenhydrate = Gesamtkohlenhydrate minus Ballaststoffe. Original für 4 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Kein Mengen- oder Portionsbereich. 2 l Gemüsebouillon = 2000 ml und 1 dl Rahm = 100 ml im Originalansatz. Flüssigkeiten für die Berechnung vereinfacht 1 ml = 1 g. Dokumentierte Richtgewichte im Originalansatz: 1 Zwiebel = 100 g und 1 Bund Schnittlauch = 20 g. Stück- und Bundgewicht können abweichen. Rahm mit USDA-Kaffeerahm angenähert; Fettgehalt und Nährwerte können je nach Produkt abweichen. Gemüsebouillon mit USDA-Gemüsebrühe angenähert. Salz und Pfeffer stehen nur in der Zubereitung. Für vier Personen wurden 4 g Salz und 1 g Pfeffer als offengelegte Richtmengen ergänzt; beide sind nicht in die Makronährwerte eingerechnet. Produktetikett der Bouillon auf weitere Allergene prüfen.",
+      "sources": "docs/recipe-candidates/import-2026-10-23/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Lauch",
+          "grams": 25,
+          "foodKey": "169246",
+          "excluded": false
+        },
+        {
+          "name": "Knollensellerie",
+          "grams": 25,
+          "foodKey": "169988",
+          "excluded": false
+        },
+        {
+          "name": "Karotten",
+          "grams": 25,
+          "foodKey": "170393",
+          "excluded": false
+        },
+        {
+          "name": "Rollgerste",
+          "grams": 37.5,
+          "foodKey": "170284",
+          "excluded": false
+        },
+        {
+          "name": "Gemüsebouillon",
+          "grams": 500,
+          "foodKey": "171583",
+          "excluded": false
+        },
+        {
+          "name": "Rahm",
+          "grams": 25,
+          "foodKey": "170857",
+          "excluded": false
+        },
+        {
+          "name": "Zwiebel",
+          "grams": 25,
+          "foodKey": "170000",
+          "excluded": false
+        },
+        {
+          "name": "Butter",
+          "grams": 5,
+          "foodKey": "173410",
+          "excluded": false
+        },
+        {
+          "name": "Schnittlauch",
+          "grams": 5,
+          "foodKey": "169994",
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 1,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Pfeffer",
+          "grams": 0.25,
+          "foodKey": null,
+          "excluded": true
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Cremige Schweizer Gerstensuppe mit Lauch, Sellerie, Karotten und Schnittlauch nach Chuchitisch. Mengen und geschätzte Nährwerte pro Person.",
+    "equipment": [
+      "Grosser Kochtopf mit Deckel",
+      "Küchenmesser",
+      "Schneidebrett",
+      "Kochlöffel"
+    ],
+    "prepNotes": [
+      "Original für 4 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Kein Mengen- oder Portionsbereich.",
+      "2 l Gemüsebouillon = 2000 ml und 1 dl Rahm = 100 ml im Originalansatz. Flüssigkeiten für die Berechnung vereinfacht 1 ml = 1 g.",
+      "Dokumentierte Richtgewichte im Originalansatz: 1 Zwiebel = 100 g und 1 Bund Schnittlauch = 20 g. Stück- und Bundgewicht können abweichen.",
+      "Rahm mit USDA-Kaffeerahm angenähert; Fettgehalt und Nährwerte können je nach Produkt abweichen. Gemüsebouillon mit USDA-Gemüsebrühe angenähert.",
+      "Salz und Pfeffer stehen nur in der Zubereitung. Für vier Personen wurden 4 g Salz und 1 g Pfeffer als offengelegte Richtmengen ergänzt; beide sind nicht in die Makronährwerte eingerechnet. Produktetikett der Bouillon auf weitere Allergene prüfen."
+    ],
+    "doneness": "Die Gerste ist vollständig gegart und weich, besitzt aber noch leichten Biss; das Gemüse ist zart und die Suppe cremig gebunden.",
+    "substitutions": [
+      "Rahm kann durch eine andere Kochrahmstufe ersetzt werden; Fettgehalt, Allergene und Nährwerte entsprechend prüfen.",
+      "Für eine rein vegetarische Fassung Gemüsebouillon ohne tierische Zutaten verwenden."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt gekühlt lagern und innerhalb von 24 Stunden verbrauchen. Beim Erwärmen unter Rühren vollständig durcherhitzen; bei Bedarf etwas Wasser ergänzen.",
+    "safety": "Die Suppe beim langen Köcheln regelmässig umrühren, damit Gerste und Gemüse nicht am Topfboden ansetzen.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "https://chuchitisch.ch/recipes/494",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "originalServings": 4,
+      "adaptation": "Auf eine Person umgerechnet; Schritte gegliedert und Garmerkmale ergänzt. Original für 4 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Kein Mengen- oder Portionsbereich. 2 l Gemüsebouillon = 2000 ml und 1 dl Rahm = 100 ml im Originalansatz. Flüssigkeiten für die Berechnung vereinfacht 1 ml = 1 g. Dokumentierte Richtgewichte im Originalansatz: 1 Zwiebel = 100 g und 1 Bund Schnittlauch = 20 g. Stück- und Bundgewicht können abweichen. Rahm mit USDA-Kaffeerahm angenähert; Fettgehalt und Nährwerte können je nach Produkt abweichen. Gemüsebouillon mit USDA-Gemüsebrühe angenähert. Salz und Pfeffer stehen nur in der Zubereitung. Für vier Personen wurden 4 g Salz und 1 g Pfeffer als offengelegte Richtmengen ergänzt; beide sind nicht in die Makronährwerte eingerechnet. Produktetikett der Bouillon auf weitere Allergene prüfen."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.2,
+      "waterMl": 500,
+      "noCook": false,
+      "onePot": true
+    }
+  }
+]
