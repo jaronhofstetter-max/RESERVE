@@ -1,0 +1,31 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Gerstensuppe",
+  "image": "http://www.chuchitisch.ch//chuchitisch/download_picture/lightroom/600_Gerstensuppe.png",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "",
+  "prepTime": "PT0S",
+  "cookTime": "PT1200S",
+  "totalTime": "PT4800S",
+  "recipeYield": "4 Personen",
+  "keywords": "  Einfach,  Suppe,  Schweiz,  Vorspeise,  Abendessen unter der Woche,  Winter,  Lange,  Vegetarisch,  Saisonal,  ",
+  "recipeIngredient": [
+    "100  g Lauch",
+    "100  g Sellerie",
+    "100  g Karotten",
+    "150  g Gerste",
+    "2  l Gemüsebouillon",
+    "1  dl Rahm",
+    "1   Zwiebel",
+    "20  g Butter",
+    "1  Bund Schnittlauch",
+    ""
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+  "recipeInstructions": "Gemüse waschen, rüsten und in kleine Würfel schneiden. Die gehackte Zwiebel in der Butter andünsten, Gemüse und Gerste beigeben und kurz mitdünsten. Mit der Bouillon ablöschen und zugedeckt ca. eine Stunde köcheln lassen (gelegentlich umrühren). Am Schluss den Rahm zugeben, ein letztes Mal aufkochen lassen, mit Salz und Pfeffer abschmecken.\r\nSchnittlauch schneiden und drüberstreuen."
+}
