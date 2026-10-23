@@ -5,7 +5,7 @@ const recipes=JSON.parse(fs.readFileSync(source,'utf8'));
 for(const p of manifest.photos){
  const r=recipes.find(r=>r.id===p.recipeId);if(!r)throw Error('Unknown photo recipe '+p.recipeId);
  if(!p.path.startsWith('assets/recipe-photos/')||!fs.existsSync(p.path))throw Error('Missing local photograph '+p.path);
- r.image=p.path;r.imageCredit={author:p.author,source:p.source,license:p.license,licenseUrl:p.licenseUrl,provider:p.provider,title:p.title,adaptation:p.adaptation,servingSuggestion:true};
+ r.image=p.path;r.imageCredit={author:p.author,source:p.source,license:p.license,licenseUrl:p.licenseUrl,provider:p.provider,title:p.title,adaptation:p.adaptation,servingSuggestion:Boolean(p.servingSuggestion)};
 }
 fs.writeFileSync(source,JSON.stringify(recipes)+'\n');
 const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
