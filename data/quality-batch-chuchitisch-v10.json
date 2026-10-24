@@ -1,0 +1,145 @@
+[
+  {
+    "id": "chuchitisch-chaeshoernli",
+    "name": "Chäshörnli mit Broccoli und Tomaten",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🧀",
+    "cuisine": "Schweizerisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 15,
+    "difficulty": "Sehr einfach",
+    "allergens": [
+      "Gluten",
+      "Milch"
+    ],
+    "tags": [
+      "Chuchitisch",
+      "Hörnli",
+      "Broccoli",
+      "Tomaten",
+      "Schweiz",
+      "Originalfoto"
+    ],
+    "ingredients": [
+      {
+        "name": "Hörnli-Pasta",
+        "amount": 125,
+        "unit": "g"
+      },
+      {
+        "name": "Broccoli",
+        "amount": 250,
+        "unit": "g"
+      },
+      {
+        "name": "Tomaten",
+        "amount": 120,
+        "unit": "g"
+      },
+      {
+        "name": "Reibkäse",
+        "amount": 40,
+        "unit": "g"
+      },
+      {
+        "name": "Salz",
+        "amount": 1,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Broccoli waschen und in gleichmässige kleine Röschen teilen. Tomaten waschen und in Schnitze schneiden.",
+      "Broccoliröschen in wenig leicht gesalzenem Wasser zugedeckt einige Minuten sanft köcheln, bis sie bissfest sind. Abgiessen und kurz mit kaltem Wasser abschrecken.",
+      "Hörnli in reichlich Salzwasser nach Packungsangabe al dente kochen. Vor dem Abgiessen etwas Kochwasser auffangen.",
+      "Hörnli, Broccoli, Tomatenschnitze und Reibkäse im warmen Topf vorsichtig mischen. Bei Bedarf wenig Kochwasser einrühren, bis der Käse die Zutaten leicht bindet.",
+      "Sofort anrichten und heiss servieren."
+    ],
+    "nutrition": {
+      "kcal": 727.15,
+      "protein": 38.68,
+      "carbs": 103.99,
+      "fat": 13.05,
+      "fiber": 11.94
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy; Schätzung, keine Messung des fertigen Gerichts.",
+      "basis": "Pro Person; verfügbare Kohlenhydrate = Gesamtkohlenhydrate minus Ballaststoffe. Original für 2 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Kein Mengen- oder Portionsbereich. Originale Stückangaben: 1 kleiner Broccoli und 2 Tomaten. Für die Berechnung wurden im gesamten Originalansatz 500 g Broccoli und 240 g Tomaten als offengelegte Richtgewichte angesetzt; tatsächliche Stückgewichte können abweichen. Pasta mit USDA-Trockenteigwaren angenähert. Reibkäse mit USDA-Parmesan angenähert; Käsesorte, Fettgehalt und Nährwerte können abweichen. Salz steht im Original ohne Menge. Für zwei Personen wurden 2 g als offengelegte Richtmenge ergänzt und nicht in die Makronährwerte eingerechnet.",
+      "sources": "docs/recipe-candidates/import-2026-10-24/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Hörnli-Pasta",
+          "grams": 125,
+          "foodKey": "168927",
+          "excluded": false
+        },
+        {
+          "name": "Broccoli",
+          "grams": 250,
+          "foodKey": "170379",
+          "excluded": false
+        },
+        {
+          "name": "Tomaten",
+          "grams": 120,
+          "foodKey": "170457",
+          "excluded": false
+        },
+        {
+          "name": "Reibkäse",
+          "grams": 40,
+          "foodKey": "170848",
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 1,
+          "foodKey": null,
+          "excluded": true
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Einfache Schweizer Chäshörnli mit Broccoli, Tomaten und Reibkäse nach Chuchitisch. Mengen und geschätzte Nährwerte pro Person.",
+    "equipment": [
+      "Zwei Kochtöpfe mit Deckel",
+      "Sieb",
+      "Küchenmesser",
+      "Schneidebrett"
+    ],
+    "prepNotes": [
+      "Original für 2 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Kein Mengen- oder Portionsbereich.",
+      "Originale Stückangaben: 1 kleiner Broccoli und 2 Tomaten. Für die Berechnung wurden im gesamten Originalansatz 500 g Broccoli und 240 g Tomaten als offengelegte Richtgewichte angesetzt; tatsächliche Stückgewichte können abweichen.",
+      "Pasta mit USDA-Trockenteigwaren angenähert. Reibkäse mit USDA-Parmesan angenähert; Käsesorte, Fettgehalt und Nährwerte können abweichen.",
+      "Salz steht im Original ohne Menge. Für zwei Personen wurden 2 g als offengelegte Richtmenge ergänzt und nicht in die Makronährwerte eingerechnet."
+    ],
+    "doneness": "Die Hörnli sind al dente, der Broccoli ist bissfest und der Käse haftet geschmolzen an Pasta und Gemüse.",
+    "substitutions": [
+      "Eine andere kurze Pasta ist möglich; bei glutenfreier Pasta Produktetikett und Garzeit beachten.",
+      "Ein anderer Reibkäse ist möglich; Salzgehalt, Allergene und Nährwerte entsprechend prüfen."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt gekühlt lagern und innerhalb von 24 Stunden verbrauchen. Beim Erwärmen vollständig durcherhitzen.",
+    "safety": "Broccoli nach dem Kochen vollständig abgiessen und beim Mischen vorsichtig arbeiten, damit kein heisses Wasser spritzt.",
+    "recipeCredit": {
+      "author": "Hannes und Martina",
+      "provider": "Chuchitisch",
+      "source": "https://chuchitisch.ch/recipes/752",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "originalServings": 2,
+      "adaptation": "Auf eine Person umgerechnet; Schritte gegliedert und Garmerkmale ergänzt. Original für 2 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Kein Mengen- oder Portionsbereich. Originale Stückangaben: 1 kleiner Broccoli und 2 Tomaten. Für die Berechnung wurden im gesamten Originalansatz 500 g Broccoli und 240 g Tomaten als offengelegte Richtgewichte angesetzt; tatsächliche Stückgewichte können abweichen. Pasta mit USDA-Trockenteigwaren angenähert. Reibkäse mit USDA-Parmesan angenähert; Käsesorte, Fettgehalt und Nährwerte können abweichen. Salz steht im Original ohne Menge. Für zwei Personen wurden 2 g als offengelegte Richtmenge ergänzt und nicht in die Makronährwerte eingerechnet."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.3,
+      "waterMl": 1500,
+      "noCook": false,
+      "onePot": false
+    }
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Recipe",
+  "inLanguage": "de",
+  "name": "Chäshörnli",
+  "image": "http://www.chuchitisch.ch//chuchitisch/download_picture/lightroom/907_Ch%C3%A4sh%C3%B6rnli.png",
+  "author": {
+    "@type": "Person",
+    "name": "Hannes und Martina"
+  },
+  "description": "\"Mac and Cheese\" gelten in den USA als Comfort Food, also etwas, was man sich gönnt zur Entspannung, als Trost, oder einfach so. Grundsätzlich sind das einfach Macaroni an einer ziemlich reichhaltigen Käsesauce. Das erinnert uns an die Käsehörnli aus der Kindheit, also Pasta mit Reibkäse. Wir peppen das Gericht auf mit frischem Gemüse, es können auch alle möglichen Gemüsereste verwendet werden, ganz nach Geschmack und Kühlschrankinhalt.",
+  "prepTime": "PT0S",
+  "cookTime": "PT1200S",
+  "totalTime": "PT1200S",
+  "recipeYield": "2 Personen",
+  "keywords": "  Restenverwertung,  Einfach,  Abendessen unter der Woche,  Eher schnell,  Vegetarisch,  ",
+  "recipeIngredient": [
+    "250  g Pasta",
+    "1   Broccoli",
+    "2   Tomaten",
+    "80  g Reibkäse",
+    "   Salz",
+    ""
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+  "recipeInstructions": "Broccoli in Röschen schneiden und in etwas Salzwasser zugedeckt ein paar Minuten köcheln lassen. Abgiessen und mit kaltem Wasser abschrecken.\r\nDie Tomaten waschen und in Schnitze schneiden\r\n\r\nDie Hörnli gemäss Packungsangaben al dente kochen und abgiessen. Etwas Kochwasser auffangen.\r\nDie Hörnli mit dem Broccoli, den Tomaten und dem Käse vermischen und anrichten."
+}
