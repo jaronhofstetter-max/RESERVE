@@ -1,193 +1,5 @@
-name: Deploy RESERVE to GitHub Pages
-on:
-  push:
-    branches: ["main"]
-  workflow_dispatch:
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-concurrency:
-  group: pages
-  cancel-in-progress: true
-jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Build validated live recipe library
-        run: |
-          node tools/enrich-recipes-v1.mjs data/recipes.json
-          for f in data/quality-batch-*.json; do node tools/enrich-recipes-v1.mjs "$f"; done
-          node tools/validate-recipes.mjs data/recipes.json
-          for f in data/quality-batch-*.json; do node tools/validate-recipes.mjs "$f"; done
-          node tools/merge-quality-batches.mjs data/recipes.json data/quality-batch-*.json build/recipes-live.json
-          cp build/recipes-live.json data/recipes.json
-          node tools/apply-recipe-photos.mjs data/recipes.json
-          node tools/build-recipe-index.mjs data/recipes.json data/recipe-index.json
-          node tools/build-recipe-delivery.mjs data/recipes.json data/recipe-details data/recipe-catalog.json data/recipe-details-manifest.json
-      - name: Check JavaScript syntax
-        run: |
-          for f in recipe-preferences-v1.js personal-recipe-pdf-v1.js date-image-recovery-v1.js date-format-v1.js date-format-ui-v1.js date-token-guard-v1.js date-policy-v1.js rekek-digit-core-v1.js rekek-digit-worker-v1.js rekek-digit-assist-v1.js product-identity-v1.js scan-product-identity-v1.js cabinet-grid-density-v1.js personal-recipe-parser-v1.js personal-recipes-v1.js retailer-catalog-v1.js product-knowledge-v1.js ingredient-identity-v1.js visual-flow-v1.js shopping-v2.js shopping-scan-v1.js reserve-core-v3.js cloud-sync-v1.js multipack-v1.js barcode-v1.js product-capture-assist-v1.js scan-confidence-v1.js product-community-v1.js packaging-vision-v2.js catalog-review-v1.js barcode-fast-feedback-v1.js barcode-search-v2.js barcode-mobile-focus-fix-v1.js barcode-camera-safe-v1.js expiry-camera-v1.js expiry-vision-v1.js expiry-learning-v1.js mhd-review-v1.js scanner-priority-v1.js scanner-launcher-v1.js postscan-trace-v1.js runtime-profiler-v1.js barcode-lookup-resilience-v1.js barcode-learning-v1.js purchase-history-v1.js receipt-capture-v1.js price-learning-v1.js price-trends-v1.js weekly-price-bridge-v1.js autopilot-v1.js autopilot-v2.js emergency-food-classifier-v1.js emergency-v1.js consumption-learning-v1.js expiry-consumption-v1.js expiry-ui-v1.js smart-priorities-v1.js today-dashboard-v1.js weekly-plan-v2.js reserve-stock-protection-v1.js pantry-intelligence-v1.js predictive-replenishment-v1.js recipe-index-runtime-v1.js recipe-detail-runtime-v1.js allergy-safety-v1.js feedback-v1.js usage-measurement-v1.js cabinet-inventory-v1.js product-icons-v1.js product-images-v1.js container-units-v1.js mobile-ux-v1.js performance-v1.js input-guard-v1.js; do node --check "$f"; done
-          for f in tools/*.mjs; do node --check "$f"; done
-          python3 -m py_compile tools/benchmark-synthetic-expiry-ocr.py
-          bash -n tools/train-expiry-tesseract-v0.sh
-      - name: Test expiry AI data pipelines
-        run: |
-          node tools/test-expiry-date-inputs.mjs
-          node tools/test-expiry-training-pipeline.mjs
-          node tools/test-synthetic-expiry-dataset.mjs
-          node tools/test-product-capture-assist.mjs
-          node tools/test-scan-confidence.mjs
-          node tools/test-product-community.mjs
-          node tools/test-packaging-vision-v2.mjs
-          node tools/test-catalog-review.mjs
-          node tools/test-expiry-overload-protection.mjs
-          node tools/test-expiry-recognition-timeout.mjs
-          node tools/test-container-type-migration.mjs
-          node tools/test-product-knowledge.mjs
-          node tools/test-product-identity.mjs
-          node tools/test-retailer-catalog.mjs
-          node tools/test-navigation-work.mjs
-          node tools/test-personal-recipe-parser.mjs
-          node tools/test-rekek-sections.mjs
-          node tools/test-rekek.mjs
-          node tools/test-rekek-digits.mjs
-          node tools/test-recipe-training.mjs
-          node tools/import-retailer-catalog.mjs
-      - name: Enable fast startup and compact recipe delivery
-        run: |
-          node tools/build-personal-recipe-pdf.mjs
-          sed -i "s#fetch('data/recipes.json',{cache:'no-store'})#fetch('data/recipe-catalog.json',{cache:'default'})#" index.html
-          sed -i "s#loadProfile();loadRecipes();#loadProfile();refresh();const loadRecipesLater=()=>loadRecipes();if('requestIdleCallback'in window)requestIdleCallback(loadRecipesLater,{timeout:1200});else setTimeout(loadRecipesLater,0);#" index.html
-      - name: Enable RESERVE feature modules
-        run: sed -i 's#</body>#<script>window.RESERVE_BUILD="20260920-expiry-lowcost-1";if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>Promise.all(rs.map(r=>r.unregister()))).catch(()=>{});}if("caches" in window){caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith("tenderhawk-")).map(k=>caches.delete(k)))).catch(()=>{});}</script><script src="performance-v1.js?v=20261020-recipe-quality-1"></script><script src="input-guard-v1.js?v=20260914-input-guard-2"></script><script src="shopping-v2.js"></script><script src="shopping-scan-v1.js"></script><script src="product-identity-v1.js?v=20261010-rice-source-1"></script><script src="ingredient-identity-v1.js?v=20261010-rice-source-1"></script><script src="date-token-guard-v1.js?v=20261020-global-dates-1"></script><script src="date-format-v1.js?v=20261020-compact-tail-1"></script><script src="date-format-ui-v1.js?v=20261020-global-dates-1"></script><script src="date-policy-v1.js?v=20261020-open-cases-1"></script><script src="recipe-preferences-v1.js?v=20261020-recipe-quality-1"></script><script src="reserve-core-v3.js?v=20261020-recipe-quality-1"></script><script src="cloud-sync-v1.js?v=20261020-recipe-quality-1"></script><script src="multipack-v1.js"></script><script src="product-knowledge-v1.js?v=20261010-rice-source-1"></script><script src="barcode-v1.js?v=20261019-neutral-date-1"></script><script src="barcode-fast-feedback-v1.js?v=20260914-fast-feedback-1"></script><script src="barcode-mobile-focus-fix-v1.js?v=20260914-focus-1"></script><script src="barcode-camera-safe-v1.js?v=20260915-shared-camera-1"></script><script src="expiry-learning-v1.js?v=20261019-neutral-date-1"></script><script>window.RESERVE_EXPIRY_VISION_CONFIG={endpoint:"https://reserve-expiry-vision.jaronhofstetter.workers.dev"};</script><script src="expiry-vision-v1.js?v=20261010-mhd-spinner-1"></script><script src="date-image-recovery-v1.js?v=20261020-image-recovery-1"></script><script src="expiry-camera-v1.js?v=20261020-compact-tail-1"></script><script src="scanner-priority-v1.js?v=20260914-scan-priority-3"></script><script src="purchase-history-v1.js"></script><script src="receipt-capture-v1.js"></script><script src="price-learning-v1.js"></script><script src="price-trends-v1.js"></script><script src="autopilot-v1.js?v=20261020-recipe-quality-1"></script><script src="emergency-food-classifier-v1.js"></script><script src="emergency-v1.js"></script><script src="recipe-index-runtime-v1.js"></script><script src="recipe-detail-runtime-v1.js"></script><script src="consumption-learning-v1.js"></script><script src="expiry-consumption-v1.js?v=20261019-neutral-date-1"></script><script src="expiry-ui-v1.js?v=20261019-neutral-date-1"></script><script src="reserve-stock-protection-v1.js?v=20261015-portions-1"></script><script src="pantry-intelligence-v1.js?v=20261019-neutral-date-1"></script><script src="predictive-replenishment-v1.js?v=20261007-visual-flow-1"></script><script src="smart-priorities-v1.js?v=20261020-recipe-quality-1"></script><script src="today-dashboard-v1.js?v=20261007-visual-flow-1"></script><script src="weekly-plan-v2.js?v=20261020-recipe-quality-1"></script><script src="weekly-price-bridge-v1.js?v=20261010-plan-cache-1"></script><script src="autopilot-v2.js?v=20261020-recipe-quality-1"></script><script src="allergy-safety-v1.js?v=20261007-visual-flow-1"></script><script src="feedback-v1.js"></script><script src="usage-measurement-v1.js?v=20260914-idle-1"></script><script src="cabinet-inventory-v1.js?v=20261020-global-dates-1"></script><script src="product-icons-v1.js?v=20260916-authoritative-icons-1"></script><script src="product-images-v1.js?v=20261010-ingredient-product-link-1"></script><script src="container-units-v1.js?v=20261010-purchase-count-1"></script><script src="barcode-learning-v1.js?v=20261008-knowledge-1"></script><script src="barcode-search-v2.js?v=20261019-neutral-date-1"></script><script src="mobile-ux-v1.js?v=20261019-neutral-date-1"></script><script src="visual-flow-v1.js?v=20261010-recipe-photo-layout-1"></script><script src="cabinet-grid-density-v1.js?v=20261009-clean-header-2"></script><script src="sidebar-navigation-v1.js?v=20261020-recipe-quality-1"></script><script src="navigation-back-v1.js?v=20261010-ingredient-product-link-1"></script><script src="personal-recipe-parser-v1.js?v=20261021-illustrated-card-1"></script><script src="rekek-digit-assist-v1.js?v=20261013-digit-v4-1"></script><script src="personal-recipe-pdf-v1.js?v=20261020-personal-flow-1"></script><script src="personal-recipes-v1.js?v=20261021-illustrated-card-1"></script><script src="rekek-quantity-core-v1.js?v=20261017-crops-3"></script><script src="rekek-quantity-test-v1.js?v=20261017-crops-3"></script><script>(function(){var on=false;try{var q=new URLSearchParams(location.search).get("reserveDiag");on=q==="1"||localStorage.getItem("reserveDiagV1")==="1"}catch(e){}if(on){var s=document.createElement("script");s.src="postscan-trace-v1.js?v=20260914-trace-1";document.body.appendChild(s)}})();</script></body>#' index.html
-      - name: Activate product-linked partial expiry training build
-        run: |
-          sed -i 's/20260920-expiry-lowcost-1/20261002-mhd-safety-1/g' index.html
-          sed -i 's/20260920-expiry-camera-13/20261006-local-first-overload-1/g' index.html
-          sed -i 's/20261006-local-first-overload-1/20261006-partial-date-ui-1/g' index.html
-          sed -i 's/20260920-expiry-vision-17/20261006-overload-circuit-1/g' index.html
-          sed -i 's/20260920-expiry-learning-1/20261002-mhd-safety-1/g' index.html
-          sed -i 's/20261002-mhd-safety-1/20261006-partial-date-ui-1/g' index.html
-          sed -i 's#<script src="expiry-learning-v1.js?v=20261019-neutral-date-1"></script>#<script src="expiry-learning-v1.js?v=20261019-neutral-date-1"></script><script src="product-capture-assist-v1.js?v=20261019-neutral-date-1"></script><script src="scan-product-identity-v1.js?v=20261010-rice-source-1"></script><script src="scan-confidence-v1.js?v=20261019-neutral-date-1"></script>#' index.html
-          sed -i 's/20260917-package-rows-1/20260922-snacks-category-1/g' index.html
-          sed -i 's/20260922-snacks-category-1/20260928-product-capture-1/g' index.html
-          sed -i 's/20260928-product-capture-1/20260929-expanded-categories-1/g' index.html
-          sed -i 's/20260929-expanded-categories-1/20261001-product-images-1/g' index.html
-          sed -i 's/20260917-broad-image-search-2/20261001-single-product-image-1/g' index.html
-          sed -i 's#<script src="barcode-search-v2.js?v=20261019-neutral-date-1"></script>#<script src="barcode-search-v2.js?v=20261019-neutral-date-1"></script><script src="product-community-v1.js?v=20261010-clean-next-scan-1"></script><script src="packaging-vision-v2.js?v=20261004-packaging-vision-1"></script>#' index.html
-          sed -i 's/20260929-compact-editor-1/20260929-expanded-categories-1/g' index.html
-          sed -i 's#receipt-capture-v1.js"></script>#receipt-capture-v1.js?v=20260929-expanded-categories-1"></script>#g' index.html
-          sed -i 's/20260918-container-units-11/20260928-container-units-13/g' index.html
-          sed -i 's/20260928-container-units-13/20261006-honey-glass-fix-1/g' index.html
-          sed -i 's/20261006-honey-glass-fix-1/20261006-ambiguous-packaging-1/g' index.html
-          sed -i 's/20261006-ambiguous-packaging-1/20261006-scan-confidence-1/g' index.html
-          sed -i 's/20260917-image-hydrate-1/20261006-confirmed-packaging-1/g' index.html
-          sed -i 's/20261006-scan-confidence-1/20261007-visual-flow-1/g' index.html
-      - name: Enable approved retailer data when available
-        run: node tools/enable-retailer-catalog.mjs
-      - name: Smoke test production build
-        run: |
-          node tools/smoke-test.mjs
-          node tools/test-recipe-photos.mjs
-      - name: Install browser test runtime
-        run: |
-          npm install --no-save playwright@1.55.0
-          npx playwright install --with-deps chromium
-      - name: Build isolated MHD phone test
-        run: |
-          npm ci --prefix experiments/date-mobile-build --ignore-scripts --no-audit --no-fund
-          python3 experiments/date-mobile-build/fetch-models.py
-          node experiments/date-mobile-build/test.cjs
-          node tools/test-date-mobile-diagnostics.mjs
-          node tools/test-date-regions.mjs
-          node tools/test-date-order.mjs
-          node tools/test-date-tokens.mjs
-          node tools/test-date-open-cases.mjs
-          node tools/test-global-dates.mjs
-          node tools/test-date-image-recovery.mjs
-          node experiments/date-mobile-build/build.cjs
-      - name: Verify isolated MHD phone test
-        run: |
-          node tools/e2e-date-mobile.mjs
-          node tools/e2e-global-dates.mjs
-      - name: Browser end-to-end test
-        run: |
-          node tools/e2e-startup-shell.mjs
-          node tools/e2e-reserve.mjs
-          node tools/e2e-mobile-resilience.mjs
-          node tools/e2e-input-responsiveness.mjs
-          node tools/e2e-navigation-latency.mjs
-          node tools/e2e-navigation-back.mjs
-          node tools/e2e-grid-density.mjs
-          node tools/e2e-personal-recipes.mjs
-          node tools/e2e-personal-recipe-flow.mjs
-          node tools/e2e-personal-recipe-review.mjs
-          node tools/e2e-recipe-preferences.mjs
-          node tools/e2e-rekek-import.mjs
-          node tools/e2e-personal-recipe-ocr.mjs
-          node tools/e2e-rekek-columns.mjs
-          node tools/e2e-rekek-digits.mjs
-          node tools/e2e-recipe-portions.mjs
-          node tools/e2e-consumption.mjs
-          node tools/e2e-expiry-ui.mjs
-          node tools/test-date-policy.mjs
-          node tools/test-expiry-real-formats.mjs
-          node tools/test-ingredient-identity.mjs
-          node tools/e2e-product-knowledge.mjs
-          node tools/e2e-scan-product-identity.mjs
-          node tools/e2e-autopilot-v2.mjs
-          node tools/e2e-weekly-plan-v2.mjs
-          node tools/e2e-receipt-capture.mjs
-          node tools/e2e-price-learning.mjs
-          node tools/e2e-price-trends.mjs
-          node tools/e2e-feedback.mjs
-          node tools/e2e-usage-measurement.mjs
-          node tools/e2e-shopping-scan.mjs
-          node tools/e2e-cabinet-inventory.mjs
-          node tools/e2e-inventory-photos.mjs
-          node tools/e2e-ingredient-photos.mjs
-          node tools/e2e-product-page.mjs
-          node tools/e2e-visual-flow.mjs
-          node tools/e2e-chuchitisch-recipes.mjs
-          node tools/e2e-mhd-review.mjs
-          node tools/e2e-catalog-review.mjs
-          node tools/e2e-product-icons.mjs
-          node tools/e2e-container-units.mjs
-          node tools/e2e-full-pantry-cycle.mjs
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - uses: actions/cache@v4
-        id: quantity-model-cache
-        with:
-          path: assets/rekek/quantity-test
-          key: rekek-quantity-v1-${{ runner.os }}-${{ hashFiles('tools/build-rekek-quantity-models.py', 'tools/build-rekek-quantity-vendor.mjs', 'tools/rekek-german-model-lock.json', 'tools/rekek-quantity-vendor-lock.json', 'tools/rekek_strict_offline.py', 'assets/rekek/quantity-test/**/*.traineddata') }}
-      - name: Build optional REKEK quantity experiment
-        run: |
-          if [ "${{ steps.quantity-model-cache.outputs.cache-hit }}" != "true" ]; then
-            pip install torch==2.9.0 --index-url https://download.pytorch.org/whl/cpu
-            pip install transformers==4.57.1 onnx==1.19.1 onnxruntime==1.23.2 sentencepiece==0.2.1 Pillow==11.3.0
-            python3 tools/build-rekek-quantity-models.py
-            node tools/build-rekek-quantity-vendor.mjs
-          fi
-          node tools/test-rekek-quantity.mjs
-          node tools/e2e-rekek-quantity.mjs
-          rm -rf build/rekek-model-source build/rekek-vendor
-      - name: Remove isolated MHD build-only dependencies
-        run: rm -rf experiments/date-mobile-build/node_modules build/rapidocr_onnxruntime-1.4.4-py3-none-any.whl
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-          name: github-pages-${{ github.run_attempt }}
-      - id: deployment
-        uses: actions/deploy-pages@v4
-        with:
-          artifact_name: github-pages-${{ github.run_attempt }}
-
-
+YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éíç½úN‹Z–‹­¦ëeŠw¬Õ¹…µ”è•Á±½äIMIYÑ¼¥Ñ!ÕˆA…•Ì)½¸è(€ÁÕÍ è(€€€‰É…¹¡•Ìèl‰µ…¥¸‰t(€İ½É­™±½İ}‘¥ÍÁ…Ñ è)Á•Éµ¥ÍÍ¥½¹Ìè(€½¹Ñ•¹ÑÌèÉ•…(€Á…•ÌèİÉ¥Ñ”(€¥µÑ½­•¸èİÉ¥Ñ”)½¹ÕÉÉ•¹äè(€É½ÕÀèÁ…•Ì(€…¹•°µ¥¸µÁÉ½É•ÍÌèÑÉÕ”)©½‰Ìè(€‘•Á±½äè(€€€•¹Ù¥É½¹µ•¹Ğè(€€€€€¹…µ”è¥Ñ¡ÕˆµÁ…•Ì(€€€€€ÕÉ°è€‘íìÍÑ•ÁÌ¹‘•Á±½åµ•¹Ğ¹½ÕÑÁÕÑÌ¹Á…•}ÕÉ°õô(€€€ÉÕ¹Ìµ½¸èÕ‰Õ¹ÑÔ´ÈĞ¸ÀĞ(€€€ÍÑ•ÁÌè(€€€€€€´ÕÍ•Ìè…Ñ¥½¹Ì½¡•­½ÕÑØĞ(€€€€€€´¹…µ”è	Õ¥±Ù…±¥‘…Ñ•±¥Ù”É•¥Á”±¥‰É…Éä(€€€€€€€ÉÕ¸èğ(€€€€€€€€€¹½‘”Ñ½½±Ì½•¹É¥ µÉ•¥Á•ÌµØÄ¹µ©Ì‘…Ñ„½É•¥Á•Ì¹©Í½¸(€€€€€€€€€™½È˜¥¸‘…Ñ„½ÅÕ…±¥Ñäµ‰…Ñ ´¨¹©Í½¸ì‘¼¹½‘”Ñ½½±Ì½•¹É¥ µÉ•¥Á•ÌµØÄ¹µ©Ì€ˆ‘˜ˆì‘½¹”(€€€€€€€€€¹½‘”Ñ½½±Ì½Ù…±¥‘…Ñ”µÉ•¥Á•Ì¹µ©Ì‘…Ñ„½É•¥Á•Ì¹©Í½¸(€€€€€€€€€™½È˜¥¸‘…Ñ„½ÅÕ…±¥Ñäµ‰…Ñ ´¨¹©Í½¸ì‘¼¹½‘”Ñ½½±Ì½Ù…±¥‘…Ñ”µÉ•¥Á•Ì¹µ©Ì€ˆ‘˜ˆì‘½¹”(€€€€€€€€€¹½‘”Ñ½½±Ì½µ•É”µÅÕ…±¥Ñäµ‰…Ñ¡•Ì¹µ©Ì‘…Ñ„½É•¥Á•Ì¹©Í½¸‘…Ñ„½ÅÕ…±¥Ñäµ‰…Ñ ´¨¹©Í½¸‰Õ¥±½É•¥Á•Ìµ±¥Ù”¹©Í½¸(€€€€€€€€€À‰Õ¥±½É•¥Á•Ìµ±¥Ù”¹©Í½¸‘…Ñ„½É•¥Á•Ì¹©Í½¸(€€€€€€€€€¹½‘”Ñ½½±Ì½…ÁÁ±äµÉ•¥Á”µÁ¡½Ñ½Ì¹µ©Ì‘…Ñ„½É•¥Á•Ì¹©Í½¸(€€€€€€€€€¹½‘”Ñ½½±Ì½‰Õ¥±µÉ•¥Á”µ¥¹‘•à¹µ©Ì‘…Ñ„½É•¥Á•Ì¹©Í½¸‘…Ñ„½É•¥Á”µ¥¹‘•à¹©Í½¸(€€€€€€€€€¹½‘”Ñ½½±Ì½‰Õ¥±µÉ•¥Á”µ‘•±¥Ù•Éä¹µ©Ì‘…Ñ„½É•¥Á•Ì¹©Í½¸‘…Ñ„½É•¥Á”µ‘•Ñ…¥±Ì‘…Ñ„½É•¥Á”µ…Ñ…±½œ¹©Í½¸‘…Ñ„½É•¥Á”µ‘•Ñ…¥±Ìµµ…¹¥™•ÍĞ¹©Í½¸(€€€€€€´¹…µ”è¡•¬)…Ù…MÉ¥ÁĞÍå¹Ñ…à(€€€€€€€ÉÕ¸èğ(€€€€€€€€€™½È˜¥¸É•¥Á”µÁÉ•™•É•¹•ÌµØÄ¹©ÌÁ•ÉÍ½¹…°µÉ•¥Á”µÁ‘˜µØÄ¹©Ì‘…Ñ”µ¥µ…”µÉ•½Ù•ÉäµØÄ¹©Ì‘…Ñ”µ™½Éµ…ĞµØÄ¹©Ì‘…Ñ”µ™½Éµ…ĞµÕ¤µØÄ¹©Ì‘…Ñ”µÑ½­•¸µÕ…ÉµØÄ¹©Ì‘…Ñ”µÁ½±¥äµØÄ¹©ÌÉ•­•¬µ‘¥¥Ğµ½É”µØÄ¹©ÌÉ•­•¬µ‘¥¥Ğµİ½É­•ÈµØÄ¹©ÌÉ•­•¬µ‘¥¥Ğµ…ÍÍ¥ÍĞµØÄ¹©ÌÁÉ½‘ÕĞµ¥‘•¹Ñ¥ÑäµØÄ¹©ÌÍ…¸µÁÉ½‘ÕĞµ¥‘•¹Ñ¥ÑäµØÄ¹©Ì…‰¥¹•ĞµÉ¥µ‘•¹Í¥ÑäµØÄ¹©ÌÁ•ÉÍ½¹…°µÉ•¥Á”µÁ…ÉÍ•ÈµØÄ¹©ÌÁ•ÉÍ½¹…°µÉ•¥Á•ÌµØÄ¹©ÌÉ•Ñ…¥±•Èµ…Ñ…±½œµØÄ¹©ÌÁÉ½‘ÕĞµ­¹½İ±•‘”µØÄ¹©Ì¥¹É•‘¥•¹Ğµ¥‘•¹Ñ¥ÑäµØÄ¹©ÌÙ¥ÍÕ…°µ™±½ÜµØÄ¹©ÌÍ¡½ÁÁ¥¹œµØÈ¹©ÌÍ¡½ÁÁ¥¹œµÍ…¸µØÄ¹©ÌÉ•Í•ÉÙ”µ½É”µØÌ¹©Ì±½ÕµÍå¹ŒµØÄ¹©ÌµÕ±Ñ¥Á…¬µØÄ¹©Ì‰…É½‘”µØÄ¹©ÌÁÉ½‘ÕĞµ…ÁÑÕÉ”µ…ÍÍ¥ÍĞµØÄ¹©ÌÍ…¸µ½¹™¥‘•¹”µØÄ¹©ÌÁÉ½‘ÕĞµ½µµÕ¹¥ÑäµØÄ¹©ÌÁ…­…¥¹œµÙ¥Í¥½¸µØÈ¹©Ì…Ñ…±½œµÉ•Ù¥•ÜµØÄ¹©Ì‰…É½‘”µ™…ÍĞµ™••‘‰…¬µØÄ¹©Ì‰…É½‘”µÍ•…É µØÈ¹©Ì‰…É½‘”µµ½‰¥±”µ™½ÕÌµ™¥àµØÄ¹©Ì‰…É½‘”µ…µ•É„µÍ…™”µØÄ¹©Ì•áÁ¥Éäµ…µ•É„µØÄ¹©Ì•áÁ¥ÉäµÙ¥Í¥½¸µØÄ¹©Ì•áÁ¥Éäµ±•…É¹¥¹œµØÄ¹©Ìµ¡µÉ•Ù¥•ÜµØÄ¹©ÌÍ…¹¹•ÈµÁÉ¥½É¥ÑäµØÄ¹©ÌÍ…¹¹•Èµ±…Õ¹¡•ÈµØÄ¹©ÌÁ½ÍÑÍ…¸µÑÉ…”µØÄ¹©ÌÉÕ¹Ñ¥µ”µÁÉ½™¥±•ÈµØÄ¹©Ì‰…É½‘”µ±½½­ÕÀµÉ•Í¥±¥•¹”µØÄ¹©Ì‰…É½‘”µ±•…É¹¥¹œµØÄ¹©ÌÁÕÉ¡…Í”µ¡¥ÍÑ½ÉäµØÄ¹©ÌÉ••¥ÁĞµ…ÁÑÕÉ”µØÄ¹©ÌÁÉ¥”µ±•…É¹¥¹œµØÄ¹©ÌÁÉ¥”µÑÉ•¹‘ÌµØÄ¹©Ìİ••­±äµÁÉ¥”µ‰É¥‘”µØÄ¹©Ì…ÕÑ½Á¥±½ĞµØÄ¹©Ì…ÕÑ½Á¥±½ĞµØÈ¹©Ì•µ•É•¹äµ™½½µ±…ÍÍ¥™¥•ÈµØÄ¹©Ì•µ•É•¹äµØÄ¹©Ì½¹ÍÕµÁÑ¥½¸µ±•…É¹¥¹œµØÄ¹©Ì•áÁ¥Éäµ½¹ÍÕµÁÑ¥½¸µØÄ¹©Ì•áÁ¥ÉäµÕ¤µØÄ¹©ÌÍµ…ÉĞµÁÉ¥½É¥Ñ¥•ÌµØÄ¹©ÌÑ½‘…äµ‘…Í¡‰½…ÉµØÄ¹©Ìİ••­±äµÁ±…¸µØÈ¹©ÌÉ•Í•ÉÙ”µÍÑ½¬µÁÉ½Ñ•Ñ¥½¸µØÄ¹©ÌÁ…¹ÑÉäµ¥¹Ñ•±±¥•¹”µØÄ¹©ÌÁÉ•‘¥Ñ¥Ù”µÉ•Á±•¹¥Í¡µ•¹ĞµØÄ¹©ÌÉ•¥Á”µ¥¹‘•àµÉÕ¹Ñ¥µ”µØÄ¹©ÌÉ•¥Á”µ‘•Ñ…¥°µÉÕ¹Ñ¥µ”µØÄ¹©Ì…±±•ÉäµÍ…™•ÑäµØÄ¹©Ì™••‘‰…¬µØÄ¹©ÌÕÍ…”µµ•…ÍÕÉ•µ•¹ĞµØÄ¹©Ì…‰¥¹•Ğµ¥¹Ù•¹Ñ½ÉäµØÄ¹©ÌÁÉ½‘ÕĞµ¥½¹ÌµØÄ¹©ÌÁÉ½‘ÕĞµ¥µ…•ÌµØÄ¹©Ì½¹Ñ…¥¹•ÈµÕ¹¥ÑÌµØÄ¹©Ìµ½‰¥±”µÕàµØÄ¹©ÌÁ•É™½Éµ…¹”µØÄ¹©Ì¥¹ÁÕĞµÕ…ÉµØÄ¹©Ìì‘¼¹½‘”€´µ¡•¬€ˆ‘˜ˆì‘½¹”(€€€€€€€€€™½È˜¥¸Ñ½½±Ì¼¨¹µ©Ìì‘¼¹½‘”€´µ¡•¬€ˆ‘˜ˆì‘½¹”(€€€€€€€€€ÁåÑ¡½¸Ì€µ´Áå}½µÁ¥±”Ñ½½±Ì½‰•¹¡µ…É¬µÍå¹Ñ¡•Ñ¥Œµ•áÁ¥Éäµ½È¹Áä(€€€€€€€€€‰…Í €µ¸Ñ½½±Ì½ÑÉ…¥¸µ•áÁ¥ÉäµÑ•ÍÍ•É…ĞµØÀ¹Í (€€€€€€´¹…µ”èQ•ÍĞ•áÁ¥Éä$‘…Ñ„Á¥Á•±¥¹•Ì(€€€€€€€ÉÕ¸èğ(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµ•áÁ¥Éäµ‘…Ñ”µ¥¹ÁÕÑÌ¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµ•áÁ¥ÉäµÑÉ…¥¹¥¹œµÁ¥Á•±¥¹”¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµÍå¹Ñ¡•Ñ¥Œµ•áÁ¥Éäµ‘…Ñ…Í•Ğ¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµÁÉ½‘ÕĞµ…ÁÑÕÉ”µ…ÍÍ¥ÍĞ¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµÍ…¸µ½¹™¥‘•¹”¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµÁÉ½‘ÕĞµ½µµÕ¹¥Ñä¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµÁ…­…¥¹œµÙ¥Í¥½¸µØÈ¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµ…Ñ…±½œµÉ•Ù¥•Ü¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµ•áÁ¥Éäµ½Ù•É±½…µÁÉ½Ñ•Ñ¥½¸¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµ•áÁ¥ÉäµÉ•½¹¥Ñ¥½¸µÑ¥µ•½ÕĞ¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµ½¹Ñ…¥¹•ÈµÑåÁ”µµ¥É…Ñ¥½¸¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµÁÉ½‘ÕĞµ­¹½İ±•‘”¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµÁÉ½‘ÕĞµ¥‘•¹Ñ¥Ñä¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµÉ•Ñ…¥±•Èµ…Ñ…±½œ¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµ¹…Ù¥…Ñ¥½¸µİ½É¬¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµÁ•ÉÍ½¹…°µÉ•¥Á”µÁ…ÉÍ•È¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµÉ•­•¬µÍ•Ñ¥½¹Ì¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµÉ•­•¬¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµÉ•­•¬µ‘¥¥ÑÌ¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½Ñ•ÍĞµÉ•¥Á”µÑÉ…¥¹¥¹œ¹µ©Ì(€€€€€€€€€¹½‘”Ñ½½±Ì½¥µÁ½ÉĞµÉ•Ñ…¥±•Èµ…Ñ…±½œ¹µ©Ì(€€€€€€´¹…µ”è¹…‰±”™…ÍĞÍÑ…ÉÑÕÀ…¹½µÁ…ĞÉ•¥Á”‘•±¥Ù•Éä(€€€€€€€ÉÕ¸èğ(€€€€€€€€€¹½‘”Ñ½½±Ì½‰Õ¥±µÁ•ÉÍ½¹…°µÉ•¥Á”µÁ‘˜¹µ©Ì(€€€€€€€€€Í•€µ¤€‰Ì™•Ñ  ‘…Ñ„½É•¥Á•Ì¹©Í½¸œ±í…¡”è¹¼µÍÑ½É”ô¤™•Ñ  ‘…Ñ„½É•¥Á”µ…Ñ…±½œ¹©Í½¸œ±í…¡”è‘•™…Õ±Ğô¤Œˆ¥¹‘•à¹¡Ñµ°(€€€€€€€€€Í•€µ¤€‰Ì±½…‘AÉ½™¥±” ¤í±½…‘I•¥Á•Ì ¤ì±½…‘AÉ½™¥±” ¤íÉ•™É•Í  ¤í½¹ÍĞ±½…‘I•¥Á•Í1…Ñ•Èô ¤ôù±½…‘I•¥Á•Ì ¤í¥˜ É•ÅÕ•ÍÑ%‘±•…±±‰…¬¥¸İ¥¹‘½Ü¥É•ÅÕ•ÍÑ%‘±•…±±‰…¬¡±½…‘I•¥Á•Í1…Ñ•È±íÑ¥µ•½ÕĞèÄÈÀÁô¤í•±Í”Í•ÑQ¥µ•½ÕĞ¡±½…‘I•¥Á•Í1…Ñ•È°À¤ìŒˆ¥¹‘•à¹¡Ñµ°(€€€€€€´¹…µ”è¹…‰±”IMIY™•…ÑÕÉ”µ½‘Õ±•Ì(€€€€€€€ÉÕ¸èÍ•€µ¤€ÌŒğ½‰½‘äøŒñÍÉ¥ÁĞùİ¥¹‘½Ü¹IMIY}	U%1ôˆÈÀÈØÀäÈÀµ•áÁ¥Éäµ±½İ½ÍĞ´Äˆí¥˜ ‰Í•ÉÙ¥•]½É­•Èˆ¥¸¹…Ù¥…Ñ½È¥í¹…Ù¥…Ñ½È¹Í•ÉÙ¥•]½É­•È¹•ÑI•¥ÍÑÉ…Ñ¥½¹Ì ¤¹Ñ¡•¸¡ÉÌôùAÉ½µ¥Í”¹…±°¡ÉÌ¹µ…À¡ÈôùÈ¹Õ¹É•¥ÍÑ•È ¤¤¤¤¹…Ñ   ¤ôùíô¤íõ¥˜ ‰…¡•Ìˆ¥¸İ¥¹‘½Ü¥í…¡•Ì¹­•åÌ ¤¹Ñ¡•¸¡­ÌôùAÉ½µ¥Í”¹…±°¡­Ì¹™¥±Ñ•È¡¬ôù¬¹ÍÑ…ÉÑÍ]¥Ñ  ‰Ñ•¹‘•É¡…İ¬´ˆ¤¤¹µ…À¡¬ôù…¡•Ì¹‘•±•Ñ”¡¬¤¤¤¤¹…Ñ   ¤ôùíô¤íôğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰Á•É™½Éµ…¹”µØÄ¹©ÌıØôÈÀÈØÄÀÈÀµÉ•¥Á”µÅÕ…±¥Ñä´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰¥¹ÁÕĞµÕ…ÉµØÄ¹©ÌıØôÈÀÈØÀäÄĞµ¥¹ÁÕĞµÕ…É´Èˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰Í¡½ÁÁ¥¹œµØÈ¹©Ìˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰Í¡½ÁÁ¥¹œµÍ…¸µØÄ¹©Ìˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰ÁÉ½‘ÕĞµ¥‘•¹Ñ¥ÑäµØÄ¹©ÌıØôÈÀÈØÄÀÄÀµÉ¥”µÍ½ÕÉ”´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰¥¹É•‘¥•¹Ğµ¥‘•¹Ñ¥ÑäµØÄ¹©ÌıØôÈÀÈØÄÀÄÀµÉ¥”µÍ½ÕÉ”´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰‘…Ñ”µÑ½­•¸µÕ…ÉµØÄ¹©ÌıØôÈÀÈØÄÀÈÀµ±½‰…°µ‘…Ñ•Ì´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰‘…Ñ”µ™½Éµ…ĞµØÄ¹©ÌıØôÈÀÈØÄÀÈÀµ½µÁ…ĞµÑ…¥°´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰‘…Ñ”µ™½Éµ…ĞµÕ¤µØÄ¹©ÌıØôÈÀÈØÄÀÈÀµ±½‰…°µ‘…Ñ•Ì´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰‘…Ñ”µÁ½±¥äµØÄ¹©ÌıØôÈÀÈØÄÀÈÀµ½Á•¸µ…Í•Ì´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰É•¥Á”µÁÉ•™•É•¹•ÌµØÄ¹©ÌıØôÈÀÈØÄÀÈÀµÉ•¥Á”µÅÕ…±¥Ñä´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰É•Í•ÉÙ”µ½É”µØÌ¹©ÌıØôÈÀÈØÄÀÈÀµÉ•¥Á”µÅÕ…±¥Ñä´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰±½ÕµÍå¹ŒµØÄ¹©ÌıØôÈÀÈØÄÀÈÀµÉ•¥Á”µÅÕ…±¥Ñä´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰µÕ±Ñ¥Á…¬µØÄ¹©Ìˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰ÁÉ½‘ÕĞµ­¹½İ±•‘”µØÄ¹©ÌıØôÈÀÈØÄÀÄÀµÉ¥”µÍ½ÕÉ”´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰‰…É½‘”µØÄ¹©ÌıØôÈÀÈØÄÀÄäµ¹•ÕÑÉ…°µ‘…Ñ”´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰‰…É½‘”µ™…ÍĞµ™••‘‰…¬µØÄ¹©ÌıØôÈÀÈØÀäÄĞµ™…ÍĞµ™••‘‰…¬´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰‰…É½‘”µµ½‰¥±”µ™½ÕÌµ™¥àµØÄ¹©ÌıØôÈÀÈØÀäÄĞµ™½ÕÌ´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰‰…É½‘”µ…µ•É„µÍ…™”µØÄ¹©ÌıØôÈÀÈØÀäÄÔµÍ¡…É•µ…µ•É„´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰•áÁ¥Éäµ±•…É¹¥¹œµØÄ¹©ÌıØôÈÀÈØÄÀÄäµ¹•ÕÑÉ…°µ‘…Ñ”´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞùİ¥¹‘½Ü¹IMIY}aA%Ie}Y%M%=9}=9%õí•¹‘Á½¥¹Ğè‰¡ÑÑÁÌè¼½É•Í•ÉÙ”µ•áÁ¥ÉäµÙ¥Í¥½¸¹©…É½¹¡½™ÍÑ•ÑÑ•È¹İ½É­•ÉÌ¹‘•Ø‰ôìğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰•áÁ¥ÉäµÙ¥Í¥½¸µØÄ¹©ÌıØôÈÀÈØÄÀÄÀµµ¡µÍÁ¥¹¹•È´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰‘…Ñ”µ¥µ…”µÉ•½Ù•ÉäµØÄ¹©ÌıØôÈÀÈØÄÀÈÀµ¥µ…”µÉ•½Ù•Éä´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰•áÁ¥Éäµ…µ•É„µØÄ¹©ÌıØôÈÀÈØÄÀÈÀµ½µÁ…ĞµÑ…¥°´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰Í…¹¹•ÈµÁÉ¥½É¥ÑäµØÄ¹©ÌıØôÈÀÈØÀäÄĞµÍ…¸µÁÉ¥½É¥Ñä´Ìˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰ÁÕÉ¡…Í”µ¡¥ÍÑ½ÉäµØÄ¹©Ìˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰É••¥ÁĞµ…ÁÑÕÉ”µØÄ¹©Ìˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰ÁÉ¥”µ±•…É¹¥¹œµØÄ¹©Ìˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰ÁÉ¥”µÑÉ•¹‘ÌµØÄ¹©Ìˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰…ÕÑ½Á¥±½ĞµØÄ¹©ÌıØôÈÀÈØÄÀÈÀµÉ•¥Á”µÅÕ…±¥Ñä´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰•µ•É•¹äµ™½½µ±…ÍÍ¥™¥•ÈµØÄ¹©Ìˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰•µ•É•¹äµØÄ¹©Ìˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰É•¥Á”µ¥¹‘•àµÉÕ¹Ñ¥µ”µØÄ¹©Ìˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰É•¥Á”µ‘•Ñ…¥°µÉÕ¹Ñ¥µ”µØÄ¹©Ìˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰½¹ÍÕµÁÑ¥½¸µ±•…É¹¥¹œµØÄ¹©Ìˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞÍÉŒô‰•áÁ¥Éäµ½¹ÍÕµÁÑ¥½¸µØÄ¹©ÌıØôÈÀÈØÄÀÄäµ¹•ÕÑÉ…°µ‘…Ñ”´Äˆøğ½ÍÉ¥ÁĞøñÍÉ¥ÁĞƒ½ú¶‰ËkºwµçZXYÕŒHŠOOOHŒHŸXØ]Ú
+J^ßZYŠÛŠ^İ˜\ˆÏYØİ[Y[˜Ü™X]Q[[Y[
+œØÜš\ŠNÜËœÜ˜ÏHœÜİØØ[‹]˜XÙK]ŒKšœÏİLŒŒLM]˜XÙKLHÙØİ[Y[˜›ÙK˜\[™Ú[
+Ê__JJ
+NÏÜØÜš\Ø›ÙOˆÉÈ[™^š[ˆH˜[YNˆXİ]˜]H›ÙXİ[[šÙY\X[^\H˜Z[š[™ÈZ[ˆ[ˆˆÙYZH	ÜËÌŒŒLŒY^\K[İØÛÜİLKÌŒŒL‹[Z\ØY™]KLKÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒLŒY^\KXØ[Y\˜KLLËÌŒŒL‹[ØØ[Yš\œİ[İ™\›ØYLKÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒL‹[ØØ[Yš\œİ[İ™\›ØYLKÌŒŒL‹\\X[Y]K]ZKLKÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒLŒY^\K]š\Ú[Û‹LMËÌŒŒL‹[İ™\›ØYXÚ\˜İZ]LKÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒLŒY^\K[X\›š[™ËLKÌŒŒL‹[Z\ØY™]KLKÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒL‹[Z\ØY™]KLKÌŒŒL‹\\X[Y]K]ZKLKÙÉÈ[™^š[ˆÙYZH	ÜÈÏØÜš\Ü˜ÏH™^\K[X\›š[™Ë]ŒKšœÏİLŒŒLNK[™]]˜[Y]KLHÜØÜš\ˆÏØÜš\Ü˜ÏH™^\K[X\›š[™Ë]ŒKšœÏİLŒŒLNK[™]]˜[Y]KLHÜØÜš\ØÜš\Ü˜ÏHœ›ÙXİXØ\\™KX\ÜÚ\İ]ŒKšœÏİLŒŒLNK[™]]˜[Y]KLHÜØÜš\ØÜš\Ü˜ÏHœØØ[‹\›ÙXİZY[]K]ŒKšœÏİLŒŒLL\šXÙK\Ûİ\˜ÙKLHÜØÜš\ØÜš\Ü˜ÏHœØØ[‹XÛÛ™šY[˜ÙK]ŒKšœÏİLŒŒLNK[™]]˜[Y]KLHÜØÜš\ˆÉÈ[™^š[ˆÙYZH	ÜËÌŒŒLMË\XÚØYÙK\›İÜËLKÌŒŒLŒ‹\Û˜XÚÜËXØ]YÛÜKLKÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒLŒ‹\Û˜XÚÜËXØ]YÛÜKLKÌŒŒL\›ÙXİXØ\\™KLKÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒL\›ÙXİXØ\\™KLKÌŒŒLKY^[™YXØ]YÛÜšY\ËLKÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒLKY^[™YXØ]YÛÜšY\ËLKÌŒŒLK\›ÙXİZ[XYÙ\ËLKÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒLMËXœ›ØYZ[XYÙK\ÙX\˜ÚL‹ÌŒŒLK\Ú[™ÛK\›ÙXİZ[XYÙKLKÙÉÈ[™^š[ˆÙYZH	ÜÈÏØÜš\Ü˜ÏH˜˜\˜ÛÙK\ÙX\˜Ú]Œ‹šœÏİLŒŒLNK[™]]˜[Y]KLHÜØÜš\ˆÏØÜš\Ü˜ÏH˜˜\˜ÛÙK\ÙX\˜Ú]Œ‹šœÏİLŒŒLNK[™]]˜[Y]KLHÜØÜš\ØÜš\Ü˜ÏHœ›ÙXİXÛÛ[][š]K]ŒKšœÏİLŒŒLLXÛX[‹[™^\ØØ[‹LHÜØÜš\ØÜš\Ü˜ÏHœXÚØYÚ[™Ë]š\Ú[Û‹]Œ‹šœÏİLŒŒL\XÚØYÚ[™Ë]š\Ú[Û‹LHÜØÜš\ˆÉÈ[™^š[ˆÙYZH	ÜËÌŒŒLKXÛÛ\XİYY]Ü‹LKÌŒŒLKY^[™YXØ]YÛÜšY\ËLKÙÉÈ[™^š[ˆÙYZH	ÜÈÜ™XÙZ\XØ\\™K]ŒKšœÈÜØÜš\ˆÜ™XÙZ\XØ\\™K]ŒKšœÏİLŒŒLKY^[™YXØ]YÛÜšY\ËLHÜØÜš\ˆÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒLNXÛÛZ[™\‹][š]ËLLKÌŒŒLXÛÛZ[™\‹][š]ËLLËÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒLXÛÛZ[™\‹][š]ËLLËÌŒŒL‹ZÛ™^KYÛ\ÜËYš^LKÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒL‹ZÛ™^KYÛ\ÜËYš^LKÌŒŒL‹X[XšYİ[İ\Ë\XÚØYÚ[™ËLKÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒL‹X[XšYİ[İ\Ë\XÚØYÚ[™ËLKÌŒŒL‹\ØØ[‹XÛÛ™šY[˜ÙKLKÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒLMËZ[XYÙKZY˜]KLKÌŒŒL‹XÛÛ™š\›YY\XÚØYÚ[™ËLKÙÉÈ[™^š[ˆÙYZH	ÜËÌŒŒL‹\ØØ[‹XÛÛ™šY[˜ÙKLKÌŒŒLË]š\İX[Y›İËLKÙÉÈ[™^š[ˆH˜[YNˆ[˜X›H\›İ™Y™]Z[\ˆ]HÚ[ˆ]˜Z[X›Bˆ[ˆ›ÙHÛÛËÙ[˜X›K\™]Z[\‹XØ][ÙË›ZœÂˆH˜[YNˆÛ[ÚÙH\İ›ÙXİ[ÛˆZ[ˆ[ˆˆ›ÙHÛÛËÜÛ[ÚÙK]\İ›ZœÂˆ›ÙHÛÛËİ\İ\™XÚ\K\İÜË›ZœÂˆH˜[YNˆ[œİ[œ›İÜÙ\ˆ\İ[[YBˆ[ˆˆœH[œİ[K[›Ë\Ø]™H^]ÜšYÚKMKŒˆœ^]ÜšYÚ[œİ[K]Ú]Y\ÈÚ›ÛZ][BˆH˜[YNˆZ[\ÛÛ]YRÛ™H\İˆ[ˆˆœHÚHK\™Yš^^\š[Y[ËÙ]K[[Øš[KXZ[KZYÛ›Ü™K\ØÜš\ÈK[›ËX]Y]K[›ËY[™ˆ]ÛŒÈ^\š[Y[ËÙ]K[[Øš[KXZ[Ù™]Ú[[Ù[ËœBˆ›ÙH^\š[Y[ËÙ]K[[Øš[KXZ[İ\İ˜ÚœÂˆ›ÙHÛÛËİ\İY]K[[Øš[KYXYÛ›ÜİXÜË›ZœÂˆ›ÙHÛÛËİ\İY]K\™YÚ[ÛœË›ZœÂˆ›ÙHÛÛËİ\İY]K[Ü™\‹›ZœÂˆ›ÙHÛÛËİ\İY]K]ÚÙ[œË›ZœÂˆ›ÙHÛÛËİ\İY]K[Ü[‹XØ\Ù\Ë›ZœÂˆ›ÙHÛÛËİ\İYÛØ˜[Y]\Ë›ZœÂˆ›ÙHÛÛËİ\İY]KZ[XYÙK\™XÛİ™\K›ZœÂˆ›ÙH^\š[Y[ËÙ]K[[Øš[KXZ[ØZ[˜ÚœÂˆH˜[YNˆ™\šYH\ÛÛ]YRÛ™H\İˆ[ˆˆ›ÙHÛÛËÙL™KY]K[[Øš[K›ZœÂˆ›ÙHÛÛËÙL™KYÛØ˜[Y]\Ë›ZœÂˆH˜[YNˆœ›İÜÙ\ˆ[™]ËY[™\İˆ[ˆˆ›ÙHÛÛËÙL™K\İ\\\Ú[›ZœÂˆ›ÙHÛÛËÙL™K\™\Ù\™K›ZœÂˆ›ÙHÛÛËÙL™K[[Øš[K\™\Ú[Y[˜ÙK›ZœÂˆ›ÙHÛÛËÙL™KZ[œ]\™\ÜÛœÚ]™[™\ÜË›ZœÂˆ›ÙHÛÛËÙL™K[˜]šYØ][Û‹[][˜ŞK›ZœÂˆ›ÙHÛÛËÙL™K[˜]šYØ][Û‹X˜XÚË›ZœÂˆ›ÙHÛÛËÙL™KYÜšYY[œÚ]K›ZœÂˆ›ÙHÛÛËÙL™K\\œÛÛ˜[\™XÚ\\Ë›ZœÂˆ›ÙHÛÛËÙL™K\\œÛÛ˜[\™XÚ\KY›İË›ZœÂˆ›ÙHÛÛËÙL™K\\œÛÛ˜[\™XÚ\K\™]šY]Ë›ZœÂˆ›ÙHÛÛËÙL™K\™XÚ\K\™Y™\™[˜Ù\Ë›ZœÂˆ›ÙHÛÛËÙL™K\™ZÙZËZ[\Ü›ZœÂˆ›ÙHÛÛËÙL™K\\œÛÛ˜[\™XÚ\K[ØÜ‹›ZœÂˆ›ÙHÛÛËÙL™K\™ZÙZËXÛÛ[[œË›ZœÂˆ›ÙHÛÛËÙL™K\™ZÙZËYYÚ]Ë›ZœÂˆ›ÙHÛÛËÙL™K\™XÚ\K\Ü[ÛœË›ZœÂˆ›ÙHÛÛËÙL™KXÛÛœİ[\[Û‹›ZœÂˆ›ÙHÛÛËÙL™KY^\K]ZK›ZœÂˆ›ÙHÛÛËİ\İY]K\ÛXŞK›ZœÂˆ›ÙHÛÛËİ\İY^\K\™X[Y›Ü›X]Ë›ZœÂˆ›ÙHÛÛËİ\İZ[™Ü™YY[ZY[]K›ZœÂˆ›ÙHÛÛËÙL™K\›ÙXİZÛ›İÛYÙK›ZœÂˆ›ÙHÛÛËÙL™K\ØØ[‹\›ÙXİZY[]K›ZœÂˆ›ÙHÛÛËÙL™KX]]Ü[İ]Œ‹›ZœÂˆ›ÙHÛÛËÙL™K]ÙYZÛK\[‹]Œ‹›ZœÂˆ›ÙHÛÛËÙL™K\™XÙZ\XØ\\™K›ZœÂˆ›ÙHÛÛËÙL™K\šXÙK[X\›š[™Ë›ZœÂˆ›ÙHÛÛËÙL™K\šXÙK]™[™Ë›ZœÂˆ›ÙHÛÛËÙL™KY™YY˜XÚË›ZœÂˆ›ÙHÛÛËÙL™K]\ØYÙK[YX\İ\™[Y[›ZœÂˆ›ÙHÛÛËÙL™K\ÚÜ[™Ë\ØØ[‹›ZœÂˆ›ÙHÛÛËÙL™KXØXš[™]Z[™[ÜK›ZœÂˆ›ÙHÛÛËÙL™KZ[™[ÜK\İÜË›ZœÂˆ›ÙHÛÛËÙL™KZ[™Ü™YY[\İÜË›ZœÂˆ›ÙHÛÛËÙL™K\›ÙXİ\YÙK›ZœÂˆ›ÙHÛÛËÙL™K]š\İX[Y›İË›ZœÂˆ›ÙHÛÛËÙL™KXÚXÚ]\ØÚ\™XÚ\\Ë›ZœÂˆ›ÙHÛÛËÙL™K[Z\™]šY]Ë›ZœÂˆ›ÙHÛÛËÙL™KXØ][ÙË\™]šY]Ë›ZœÂˆ›ÙHÛÛËÙL™K\›ÙXİZXÛÛœË›ZœÂˆ›ÙHÛÛËÙL™KXÛÛZ[™\‹][š]Ë›ZœÂˆ›ÙHÛÛËÙL™KY[\[KXŞXÛK›ZœÂˆH\Ù\ÎˆXİ[ÛœËÜÙ]\\]ÛBˆÚ]‚ˆ]Û‹]™\œÚ[Ûˆ	ÌËŒL‰ÂˆH\Ù\ÎˆXİ[ÛœËØØXÚPˆYˆ]X[]K[[Ù[XØXÚBˆÚ]‚ˆ]ˆ\ÜÙ]ËÜ™ZÙZËÜ]X[]K]\İˆÙ^Nˆ™ZÙZË\]X[]K]ŒKIŞÈ[›™\‹›ÜÈ_KIŞÈ\Úš[\Ê	İÛÛËØZ[\™ZÙZË\]X[]K[[Ù[ËœIË	İÛÛËØZ[\™ZÙZË\]X[]K]™[™Ü‹›ZœÉË	İÛÛËÜ™ZÙZËYÙ\›X[‹[[Ù[[ØÚËšœÛÛ‰Ë	İÛÛËÜ™ZÙZË\]X[]K]™[™Ü‹[ØÚËšœÛÛ‰Ë	İÛÛËÜ™ZÙZ×ÜİšXİÛÙ™›[™KœIË	Ø\ÜÙ]ËÜ™ZÙZËÜ]X[]K]\İÊŠ‹Ê‹˜Z[™Y]IÊH_BˆH˜[YNˆZ[Ü[Û˜[‘RÑRÈ]X[]H^\š[Y[ˆ[ˆˆYˆÈ‰ŞÈİ\Ëœ]X[]K[[Ù[XØXÚK›İ]]Ë˜ØXÚKZ]_HˆOHYHˆNÈ[‚ˆ\[œİ[Ü˜ÚOL‹KŒKZ[™^]\›Î‹ËÙİÛ›ØYœ]Ü˜Ú›Ü™ËİÚØÜBˆ\[œİ[˜[œÙ›Ü›Y\œÏOMMËŒHÛ›OLKŒNKŒHÛ›[[YOOLKŒŒËŒˆÙ[[˜Ù\YXÙOOLŒ‹ŒH[İÏOLLKŒËŒˆ]ÛŒÈÛÛËØZ[\™ZÙZË\]X[]K[[Ù[ËœBˆ›ÙHÛÛËØZ[\™ZÙZË\]X[]K]™[™Ü‹›ZœÂˆšBˆ›ÙHÛÛËİ\İ\™ZÙZË\]X[]K›ZœÂˆ›ÙHÛÛËÙL™K\™ZÙZË\]X[]K›ZœÂˆ›H\™ˆZ[Ü™ZÙZË[[Ù[\Ûİ\˜ÙHZ[Ü™ZÙZË]™[™Ü‚ˆH˜[YNˆ™[[İ™H\ÛÛ]YRZ[[Û›H\[™[˜ÚY\Âˆ[ˆ›H\™ˆ^\š[Y[ËÙ]K[[Øš[KXZ[Û›ÙWÛ[Ù[\ÈZ[Ü˜\YØÜ—ÛÛ›[[YKLK\LË[›Û™KX[KÚˆH\Ù\ÎˆXİ[ÛœËØÛÛ™šYİ\™K\YÙ\ĞBˆH\Ù\ÎˆXİ[ÛœËİ\ØY\YÙ\ËX\Y˜XİŒÂˆÚ]‚ˆ]ˆ	Ë‰Âˆ˜[YNˆÚ]X‹\YÙ\ËIŞÈÚ]X‹œ[—Ø][\_BˆHYˆ\Ş[Y[ˆ\Ù\ÎˆXİ[ÛœËÙ\ŞK\YÙ\ĞˆÚ]‚ˆ\Y˜XİÛ˜[YNˆÚ]X‹\YÙ\ËIŞÈÚ]X‹œ[—Ø][\_B‚‚
