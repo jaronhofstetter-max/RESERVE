@@ -1,0 +1,27 @@
+{
+  "seed": 20261019,
+  "feature_version": "gray96x32-cell8-hog9-projections-geometry-v1",
+  "training_photos": 981,
+  "synthetic_photos": 0,
+  "selection_photos": 40,
+  "calibration_photos": 81,
+  "test_photos": 100,
+  "group_intersections": 0,
+  "task": "Rank already detected text regions visually before recognition; not a new text detector or date recognizer",
+  "labels": "Published date boxes positive; due/prod/code and two disjoint random crops per image negative. Other unannotated fields may be imperfect background labels.",
+  "augmentation": "One fixed 6% horizontal / 15% vertical padding view for each training annotation; no validation augmentation",
+  "model": "StandardScaler + balanced L2 logistic regression; C in [.01,.1,1]",
+  "selection": "Highest average precision on 40 fixed internal photos; tie smaller C. No source or historical test tuning.",
+  "retention": "Same 24-region cap and eight seeds plus neighbours as existing geometric strategy; only seed ranking changes",
+  "metric": "Ground-truth date box has >=50% area covered by a retained cached OCR box; report full and dense >24 separately",
+  "acceptance": "On 81 cached internal photos, date-box retention must improve and target-containing photos must not decrease. Otherwise reject before protected test.",
+  "limitations": [
+    "Cached native PP-OCR boxes are after text confidence filtering and may differ from browser detector boxes.",
+    "No phone speed or end-to-end MHD accuracy claim.",
+    "Public source tests and historical images are reused regression tests, not fresh blind tests.",
+    "Partial reads cannot produce strict MHD."
+  ],
+  "manifest_sha256": "9cf7bade94dae3186e5eb63c62b43fcb928c65ebf76ef0e7e121865f24b2b76d",
+  "script_sha256": "a85698effe527582f3e16bd60d0445cd3f8346d130a13014f3f8fc41a0c030c1",
+  "deployed": false
+}
