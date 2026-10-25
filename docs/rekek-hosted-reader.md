@@ -2,9 +2,45 @@
 
 Status, 2026-10-25: **adapter and contract tests only**. There has been no real
 OpenAI recipe-image call, deployment, browser integration or new accuracy
-measurement. The Cloudflare dashboard showed a sign-in form; the secure sign-in
-request was declined. The current expiry worker's source/configuration therefore
-could not be inspected. No attempt was made to extract its secret or replace it.
+measurement. The owner supplied the complete existing expiry Worker source in
+chat. Its runtime secret/configuration remains unverified. No secret was extracted.
+
+## Combined Worker prepared from the supplied source
+
+`services/reserve-worker/worker.mjs` integrates the recipe route before the
+existing expiry handler. `expiry.mjs` preserves the supplied MHD prompt, model
+(`gpt-5.6-luna`), multipart input and successful result fields. Its temporary
+`upstreamMessage` and raw console diagnostics are removed, requests have a 60s
+deadline, and provider storage is disabled. This does not validate model access
+or date recognition; the legacy date validator still checks format only.
+The expiry route retains its existing origin-only access control. This is
+not a public customer-authentication solution.
+
+The new route is for **private owner diagnostics**, not customer rollout.
+It requires all of the following in addition to provider key/model:
+
+- `REKEK_ENABLED=1` (leave absent during initial deployment).
+- `REKEK_ACCESS_TOKEN`: a separate random 32–128 character base64url secret,
+  used only as a Bearer credential by the private test client. Never commit it,
+  paste it in chat or put it into the public app.
+- `REKEK_TEST_UNTIL`: a future ISO timestamp; use a short diagnostic window.
+- `REKEK_LIMITER`: a Cloudflare rate-limit binding; use e.g. 2 requests/60s.
+  All authenticated diagnostics use a constant key. Missing/failed binding,
+  expired access or rejected limit prevents provider calls. Configure a unique
+  namespace in the account. Cloudflare limits are approximate and local to a
+  location, **not a global spending cap**; provider budget management and
+  customer authentication remain required for any public rollout.
+
+Build the single-file editor version with
+`node tools/build-rekek-worker.mjs`; output is
+`services/reserve-worker/worker.js`. `--check` verifies source/bundle parity.
+Keep the existing Cloudflare bindings/secrets and deployment for rollback;
+this source bundle contains no environment configuration. Do not replace them
+with a fresh Wrangler project. The single-file output is tested for private
+route isolation and legacy expiry requests, but no real deployment has occurred.
+
+Primary binding reference checked 2026-10-25:
+https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/
 
 ## What is ready
 
@@ -35,8 +71,8 @@ about every provider logging/retention policy.
 
 `services/rekek-vision/route.mjs` exports `handleRecipeRoute`. It handles only
 `/api/recipe-vision`, returning null for unrelated paths so the host can retain
-its expiry handler. It is **not a complete replacement worker**. The actual
-existing worker must first be read before integrating its routing/export style.
+its expiry handler. The route module alone is **not a complete replacement
+worker**; the complete prepared integration is described above.
 
 The route stays disabled unless `REKEK_ENABLED` is exactly `1` and the host
 supplies a real `authorize(request, env)` function. The host must validate its

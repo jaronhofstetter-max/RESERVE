@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'services/rekek-vision/**'
+      - 'services/reserve-worker/**'
       - 'tools/*rekek*'
       - '.github/workflows/rekek-vision.yml'
 permissions:
@@ -21,3 +22,5 @@ jobs:
           node --check services/rekek-vision/route.mjs
           node tools/test-rekek-vision.mjs
           node tools/test-rekek-page-evaluation.mjs
+          node tools/build-rekek-worker.mjs --check
+          node tools/test-rekek-worker.mjs
