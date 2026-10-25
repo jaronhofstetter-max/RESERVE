@@ -549,6 +549,23 @@
       "reviewedAt": "2026-10-24",
       "originalPhotoUrl": "http://www.chuchitisch.ch/chuchitisch/download_picture/lightroom/907_Ch%C3%A4sh%C3%B6rnli.png",
       "originalPhotoSha256": "b5c4797829e2444c549897f44bc8ee8eca6f2e99adf521fbb5fb9b1d5f53f3ef"
+    },
+    {
+      "recipeId": "wikibooks-kartoffelpuffer",
+      "path": "assets/recipe-photos/wikibooks-kartoffelpuffer.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Kartoffelpuffer.jpg",
+      "author": "Clemens Pfeiffer; Zuschnitt: Boris23",
+      "license": "CC BY-SA 2.0 AT",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/at/deed.en",
+      "kind": "photograph",
+      "servingSuggestion": false,
+      "title": "Kartoffelpuffer",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Das bereits von Boris23 zugeschnittene Original wurde verkleinert und als WebP komprimiert.",
+      "review": "Exaktes Gericht: Das Foto zeigt gebratene Kartoffelpuffer ohne zusätzliche Beilage.",
+      "reviewedAt": "2026-10-25",
+      "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kartoffelpuffer.jpg",
+      "originalPhotoSha256": "21144b2f0067098fa5d757c5edaf927ebf3a065d2be907a451453a3d26a62c54"
     }
   ]
 }

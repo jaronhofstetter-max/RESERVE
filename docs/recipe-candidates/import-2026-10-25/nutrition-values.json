@@ -1,0 +1,64 @@
+{
+  "170026": {
+    "fdcId": 170026,
+    "description": "Potatoes, flesh and skin, raw",
+    "per100g": {
+      "fat": 0.09,
+      "kcal": 77.0,
+      "protein": 2.05,
+      "fiber": 2.1,
+      "carbs": 17.5
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/170026/nutrients"
+  },
+  "170000": {
+    "description": "Onions, raw",
+    "per100g": {
+      "fat": 0.1,
+      "carbs": 9.34,
+      "kcal": 40.0,
+      "protein": 1.1,
+      "fiber": 1.7
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/170000/nutrients"
+  },
+  "171287": {
+    "fdcId": 171287,
+    "description": "Egg, whole, raw, fresh",
+    "per100g": {
+      "kcal": 143,
+      "protein": 12.56,
+      "carbs": 0.72,
+      "fat": 9.51,
+      "fiber": 0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/171287/nutrients",
+    "carbohydrateBasis": "total-including-fiber",
+    "retrievedAt": "2026-10-12"
+  },
+  "169761": {
+    "fdcId": 169761,
+    "description": "Wheat flour, white, all-purpose, unenriched",
+    "per100g": {
+      "kcal": 364,
+      "protein": 10.33,
+      "carbs": 76.31,
+      "fat": 0.98,
+      "fiber": 2.7
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/169761/nutrients",
+    "carbohydrateBasis": "total-including-fiber",
+    "retrievedAt": "2026-10-12"
+  },
+  "172336": {
+    "description": "Oil, canola",
+    "per100g": {
+      "fat": 100,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "kcal": 884,
+      "fiber": 0.0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/172336/nutrients"
+  }
+}
