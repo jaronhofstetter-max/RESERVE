@@ -1,0 +1,176 @@
+[
+  {
+    "id": "wikibooks-kartoffelpuffer",
+    "name": "Kartoffelpuffer",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥔",
+    "cuisine": "Deutschsprachig",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 15,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Ei",
+      "Gluten"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Kartoffeln",
+      "Pfannengericht",
+      "Originalfoto"
+    ],
+    "ingredients": [
+      {
+        "name": "Kartoffeln",
+        "amount": 333.3333,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Eier",
+        "amount": 1,
+        "unit": "Stück"
+      },
+      {
+        "name": "Weizenmehl",
+        "amount": 10.4167,
+        "unit": "g"
+      },
+      {
+        "name": "Salz",
+        "amount": 2,
+        "unit": "g"
+      },
+      {
+        "name": "Pfeffer",
+        "amount": 0.1,
+        "unit": "g"
+      },
+      {
+        "name": "Muskat",
+        "amount": 0.05,
+        "unit": "g"
+      },
+      {
+        "name": "Rapsöl",
+        "amount": 15,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Kartoffeln und Zwiebel schälen und fein reiben. Die Kartoffelmasse leicht ausdrücken, falls sie sehr wässrig ist.",
+      "Eier, Mehl, Salz, Pfeffer und Muskat zur Kartoffel-Zwiebel-Mischung geben und gründlich vermengen.",
+      "Etwas Rapsöl in einer grossen Pfanne bei mittlerer bis hoher Hitze erhitzen.",
+      "Jeweils drei kleine ovale Fladen in die Pfanne setzen, flach drücken und von beiden Seiten knusprig goldbraun braten.",
+      "Fertige Kartoffelpuffer kurz abtropfen lassen und heiss servieren."
+    ],
+    "nutrition": {
+      "kcal": 508.08,
+      "protein": 14.74,
+      "carbs": 63.18,
+      "fat": 19.01,
+      "fiber": 8.13
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy; Schätzung, keine Messung des fertigen Gerichts.",
+      "basis": "Pro Person; verfügbare Kohlenhydrate = Gesamtkohlenhydrate minus Ballaststoffe. Originalrezept für 3 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Die Originalangabe «1 grosse Zwiebel» wurde für den Gesamtansatz mit 150 g angesetzt. Vier Esslöffel Mehl wurden für den Gesamtansatz mit 31,25 g angesetzt. «Öl zum Ausbacken» hat keine Originalmenge. Für die Nährwertschätzung wurden 45 ml Rapsöl im Gesamtansatz angesetzt; die tatsächliche Aufnahme kann deutlich abweichen. Eine Prise Pfeffer und Muskat wurden mit 0,3 g beziehungsweise 0,15 g im Gesamtansatz angesetzt.",
+      "sources": "docs/recipe-candidates/import-2026-10-25/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Kartoffeln",
+          "grams": 333.3333,
+          "foodKey": "170026",
+          "excluded": false
+        },
+        {
+          "name": "Zwiebel",
+          "grams": 50,
+          "foodKey": "170000",
+          "excluded": false
+        },
+        {
+          "name": "Eier",
+          "grams": 50,
+          "foodKey": "171287",
+          "excluded": false
+        },
+        {
+          "name": "Weizenmehl",
+          "grams": 10.4167,
+          "foodKey": "169761",
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 2,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Pfeffer",
+          "grams": 0.1,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Muskat",
+          "grams": 0.05,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Rapsöl",
+          "grams": 13.8,
+          "foodKey": "172336",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Knusprige Kartoffelpuffer aus rohen Kartoffeln, Zwiebel, Ei und wenig Mehl nach dem freien Wikibooks-Kochbuch.",
+    "equipment": [
+      "Reibe",
+      "Schüssel",
+      "Bratpfanne",
+      "Pfannenwender"
+    ],
+    "prepNotes": [
+      "Originalrezept für 3 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet.",
+      "Die Originalangabe «1 grosse Zwiebel» wurde für den Gesamtansatz mit 150 g angesetzt.",
+      "Vier Esslöffel Mehl wurden für den Gesamtansatz mit 31,25 g angesetzt.",
+      "«Öl zum Ausbacken» hat keine Originalmenge. Für die Nährwertschätzung wurden 45 ml Rapsöl im Gesamtansatz angesetzt; die tatsächliche Aufnahme kann deutlich abweichen.",
+      "Eine Prise Pfeffer und Muskat wurden mit 0,3 g beziehungsweise 0,15 g im Gesamtansatz angesetzt."
+    ],
+    "doneness": "Die Kartoffelpuffer sind auf beiden Seiten goldbraun und am Rand knusprig.",
+    "substitutions": [
+      "Zum glutenfreien Binden kann ein geeignetes Kartoffelmehl verwendet werden; Menge und Produkteignung prüfen."
+    ],
+    "leftovers": "Reste rasch abkühlen, abgedeckt kühlen und innerhalb von 24 Stunden vollständig durcherhitzt verbrauchen.",
+    "safety": "Rohe Kartoffelmasse nicht kosten. Heisses Bratöl kann spritzen; Puffer vorsichtig einlegen und wenden.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/wiki/Kochbuch/_Kartoffelpuffer",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 3,
+      "adaptation": "Auf eine Person umgerechnet; Arbeitsschritte gegliedert und Sicherheits- sowie Garhinweise ergänzt. Originalrezept für 3 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Die Originalangabe «1 grosse Zwiebel» wurde für den Gesamtansatz mit 150 g angesetzt. Vier Esslöffel Mehl wurden für den Gesamtansatz mit 31,25 g angesetzt. «Öl zum Ausbacken» hat keine Originalmenge. Für die Nährwertschätzung wurden 45 ml Rapsöl im Gesamtansatz angesetzt; die tatsächliche Aufnahme kann deutlich abweichen. Eine Prise Pfeffer und Muskat wurden mit 0,3 g beziehungsweise 0,15 g im Gesamtansatz angesetzt."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.5,
+      "waterMl": 0,
+      "noCook": false,
+      "onePot": true
+    }
+  }
+]
