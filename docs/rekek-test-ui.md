@@ -1,41 +1,54 @@
-# Private recipe photo diagnostic
+# Local recipe photo diagnostic — 26 October 2026
 
-Open `https://hofilight.ch/rekek-test.html`. This standalone page is not linked
-from the normal customer flow and cannot authorize calls without the owner's
-separate Bearer token. The URL is public; it is not itself an access control.
+`https://hofilight.ch/rekek-test.html` replaces the paid API test client with
+local Tesseract.js 5.1.1 recognition. There is no access-token field or inference
+endpoint. The page's Content Security Policy only permits same-origin network
+connections. Reader code, WASM and German baseline weights are served from
+`assets/rekek/quantity-test/` on the same host. Image processing and text parsing
+run in the browser, without paid inference calls or a paid fallback. Network
+access is still needed to initially load the page and reader files; this is
+not an installable offline app or a claim that internet/computing has no costs.
 
-The owner manually enters `REKEK_ACCESS_TOKEN` (never the provider key), selects
-up to 12 JPG/PNG/WebP images totalling at most 6 MiB, and explicitly submits.
-Only then does the page send the original image bytes as data URLs to the fixed
-`reserve-expiry-vision.jaronhofstetter.workers.dev/api/recipe-vision` route.
-There are no third-party scripts, analytics, automatic calls/retries, saved
-credentials, localStorage/sessionStorage or recipe/inventory writes. The token,
-photos and result are cleared when leaving the page or using the clear button.
-The browser/password manager remains outside the page's storage control.
+Photos remain in browser memory. The page does not send images, source text or
+results to an inference server. No automatic recipe save, inventory write,
+analytics or browser storage is used. Model caching is disabled. Clear and
+page exit release photos and results. JSON export is an explicit user action
+and contains unverified raw OCR text and parsed drafts, never image pixels.
 
-Do not enable public recipe uploads. For this owner test, the deployed Worker
-must have `REKEK_ENABLED=1`, the provider secret/model, a random 32–128 character
-`REKEK_ACCESS_TOKEN` secret, a future `REKEK_TEST_UNTIL` ISO timestamp and the
-`REKEK_LIMITER` binding (2 requests/60s). Leave disabled until the owner is ready;
-after testing set `REKEK_ENABLED=0`. Expired/missing configuration blocks calls.
-The UI neither reads nor changes server settings. Limit bindings are approximate
-and are not a global spending cap. This UI uses the route prepared separately
-in PR #144 and manually deployed by the owner; that draft need not be merged
-to serve the static page.
+One to twelve JPG/PNG/WebP files, at most 6 MiB combined and 25 megapixels per
+photo, are supported. Raster input is scaled to at most 2200 pixels per side
+and composited on white. The original photo remains available for review.
+There is a three-minute total deadline, explicit cancellation, no retries and
+no cross-page combination unless the user explicitly selects continuation
+pages. Multiple recipes use the existing conservative parser; uncertain page
+boundaries remain unassigned and their raw OCR text is available for review.
 
-The comparison is manual: thumbnails open the original photo,
-while output preserves quantities, fractions, nulls, page IDs and model-provided
-source lines. Source lines are not independent evidence of model accuracy.
-Every result is labelled unverified; nothing is corrected using plausibility.
-JSON download is explicit and includes only the unverified response, never the
-token or image bytes. Cancelling cannot guarantee that upstream processing or
-billing has stopped. The client has a 90s deadline; the Worker has its own 60s
-deadline. Neither timeout causes a retry.
+This is a diagnostic baseline, not the entire existing app's crop/reread
+pipeline and not a stronger handwriting model. The 25 October saved comparison
+showed poor full-page handwriting results with Tesseract, Paddle and Qwen.
+Those models are not newly trained or approved by this change. Correcting
+raised/lowered slash-fraction parsing removes a downstream compatibility bug,
+not optical reading errors such as 125 being read as 12.5 or the wrong name.
 
-Validation: `node tools/e2e-rekek-test-ui.mjs` uses Chromium at phone width and
-intercepts the route with synthetic responses. It checks original image byte
-transport and page ordering, separate/follow-on pages, null/fraction display,
-unescaped-looking text displayed safely, disabled/expired/wrong-token/rate-limit/
-provider/network failures, no retries, cancellation, size/type rejection,
-credential-free export, no browser storage and clearing on page exit. This is
-not an authenticated live provider test or recipe accuracy measurement.
+Replaying the saved, unchanged Paddle transcript for diagnostic page 12 found
+three explicit `¹/₄` rows. All three formerly returned a null numeric amount;
+all three now return 0.25, preserving their original text. No model was rerun,
+no ingredient names were repaired, and this is not three newly correct whole
+ingredient assignments or an overall accuracy score.
+
+The old cloud diagnostic Worker is not redeployed or edited here. Keep
+`REKEK_ENABLED=0` in Cloudflare. Removing the client does not prove the remote
+setting is disabled. The existing MHD service is separate and is unchanged.
+
+Validation:
+
+- `node tools/test-rekek-typographic-fractions.mjs`: explicit raised/lowered
+  slash fractions, mixed numbers, unchanged source, split rows, reader
+  agreement, exponent/footnote protection and invalid fractions.
+- `node tools/e2e-rekek-test-ui.mjs`: phone UI using controlled local-reader
+  output, cancellation during loading/reading, failures, limits, safe text,
+  raw result export, no storage and no external/POST network requests.
+- `REKEK_REAL_OCR=1 node tools/e2e-rekek-test-ui.mjs`: additionally runs the
+  actual self-hosted WASM reader on a synthetic printed recipe, checking its
+  ingredient quantities and zero external or POST requests. Synthetic success
+  is not customer-image or handwriting accuracy.

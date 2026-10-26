@@ -4,25 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src blob:; connect-src https://reserve-expiry-vision.jaronhofstetter.workers.dev; base-uri 'none'; form-action 'none'; object-src 'none'">
-  <title>REKEK · Rezeptfoto testen</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src blob: data:; connect-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <title>REKEK · Lokal und ohne API testen</title>
   <link rel="stylesheet" href="rekek-test.css">
-  <script src="rekek-test.js" defer></script>
+  <script src="personal-recipe-parser-v1.js?v=20261026-local-fractions-1" defer></script>
+  <script src="rekek-test.js?v=20261026-local-only-1" defer></script>
 </head>
 <body>
   <main>
-    <header><a href="/">← RESERVE</a><span>Privater Test</span></header>
+    <header><a href="/">← RESERVE</a><span>Lokaler Test · ohne API</span></header>
     <h1>Rezeptfoto testen</h1>
-    <p>Foto wählen, erkennen lassen und mit dem Original vergleichen.</p>
+    <p>Die Texterkennung läuft auf deinem Gerät. Deine Fotos werden nicht an einen KI-Dienst gesendet.</p>
     <form id="test-form" autocomplete="off">
-      <section aria-labelledby="access-heading">
-        <h2 id="access-heading">1. Zugang</h2>
-        <label for="token">Dein REKEK-Zugangstoken</label>
-        <input id="token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="32" maxlength="128" placeholder="REKEK_ACCESS_TOKEN" required>
-        <p class="hint">Der Token bleibt nur für diese geöffnete Seite im Speicher. Hier gehört der REKEK-Token hinein, kein OpenAI-Schlüssel.</p>
-      </section>
       <section aria-labelledby="photos-heading">
-        <h2 id="photos-heading">2. Rezeptfotos</h2>
+        <h2 id="photos-heading">1. Rezeptfotos</h2>
         <label class="file-label" for="photos">Fotos auswählen</label>
         <input id="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple>
         <p class="hint">JPG, PNG oder WebP · bis zu 12 Fotos, zusammen höchstens 6 MiB. Keine PDF-Dateien.</p>
@@ -30,19 +25,20 @@
         <label class="check"><input id="same-recipe" type="checkbox">Diese Fotos sind Folgeseiten desselben Rezepts.</label>
       </section>
       <section aria-labelledby="start-heading">
-        <h2 id="start-heading">3. Erkennen und prüfen</h2>
-        <p class="hint">Mit „Rezept erkennen“ sendest du die gewählten Fotos über den RESERVE-Dienst an OpenAI. Jeder Start kann API-Kosten verursachen.</p>
+        <h2 id="start-heading">2. Erkennen und prüfen</h2>
+        <p class="hint">Beim ersten Start werden lokale Lesedateien von hofilight.ch geladen. Keine kostenpflichtigen API-Aufrufe. Handschrift kann weiterhin falsch gelesen werden; prüfe alle Angaben am Original.</p>
         <div class="actions"><button id="submit" type="submit" disabled>Rezept erkennen</button><button id="cancel" type="button" class="secondary" hidden>Abbrechen</button></div>
-        <p id="status" role="status" aria-live="polite">Wähle Fotos und gib deinen Token ein.</p>
+        <p id="status" role="status" aria-live="polite">Wähle ein Rezeptfoto aus.</p>
       </section>
     </form>
     <section id="results" aria-labelledby="result-heading" hidden>
       <h2 id="result-heading">Ergebnis prüfen</h2>
       <p class="review">Ungeprüfte KI-Abschrift. Vergleiche besonders Mengen, Brüche und Zutaten mit deinen Fotos. Es wird kein Rezept gespeichert.</p>
       <div id="recipes"></div>
+      <details><summary>Unveränderte OCR-Texte</summary><pre id="raw-text"></pre></details>
       <button id="download" class="secondary" type="button">Ergebnis als JSON herunterladen</button>
     </section>
-    <button id="clear" type="button" class="secondary">Token, Fotos und Ergebnis leeren</button>
+    <button id="clear" type="button" class="secondary">Fotos und Ergebnis leeren</button>
   </main>
 </body>
 </html>

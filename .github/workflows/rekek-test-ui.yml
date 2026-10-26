@@ -1,8 +1,10 @@
-name: REKEK private test interface
+name: REKEK local test interface
 on:
   pull_request:
     paths:
       - 'rekek-test.*'
+      - 'personal-recipe-parser-v1.js'
+      - 'tools/test-rekek-typographic-fractions.mjs'
       - 'tools/e2e-rekek-test-ui.mjs'
       - '.github/workflows/rekek-test-ui.yml'
 permissions:
@@ -18,8 +20,11 @@ jobs:
       - run: npm install --no-save playwright@1.55.0
       - run: npx playwright install --with-deps chromium
       - run: node --check rekek-test.js
+      - run: node tools/test-rekek-typographic-fractions.mjs
+      - run: node tools/build-rekek-quantity-vendor.mjs
       - run: node tools/e2e-rekek-test-ui.mjs
         env:
+          REKEK_REAL_OCR: 1
           REKEK_UI_SCREENSHOT_DIR: /tmp/rekek-ui-preview
       - uses: actions/upload-artifact@v4
         with:
