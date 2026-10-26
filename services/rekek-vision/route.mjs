@@ -2,6 +2,11 @@ import { ExtractionError, extractRecipePages } from './extraction.mjs';
 
 // Host integration must supply real authorization and an explicit origin list.
 // The existing MHD handler remains responsible for all other paths.
+/**
+ * @param {Request} request
+ * @param {any} env
+ * @param {{authorize?: (request: Request, env: any) => Promise<boolean>, allowedOrigins?: string[], fetchImpl?: typeof fetch}} options
+ */
 export async function handleRecipeRoute(request, env, { authorize, allowedOrigins = [], fetchImpl = fetch } = {}) {
   if (new URL(request.url).pathname !== '/api/recipe-vision') return null;
   const origin = request.headers.get('Origin');

@@ -74,6 +74,7 @@ function validateExtraction(value, pageIds, { sameRecipe = false } = {}) {
 function makeExtractionRequest(input, model) {
   validateInput(input);
   if (typeof model !== 'string' || !model.trim() || model.length > 200) bad('model_not_configured', 503);
+  /** @type {Array<{type: 'input_text', text: string} | {type: 'input_image', image_url: string, detail: 'high'}>} */
   const content = [{ type: 'input_text', text: `Return the recipe extraction JSON. sameRecipe=${input.sameRecipe}. Page order: ${input.images.map(x => x.id).join(', ')}.` }];
   for (const page of input.images) content.push({ type: 'input_text', text: `Page ID: ${page.id}` },
     { type: 'input_image', image_url: page.data_url, detail: 'high' });
@@ -103,7 +104,7 @@ function parseExtractionResponse(raw, pageIds, { sameRecipe = false } = {}) {
   return { ...extracted, reviewRequired: true, verified: false };
 }
 
-async function extractRecipePages(input, { apiKey, model, fetchImpl = fetch, signal, onRaw = async () => {}, timeoutMs = 60000 }) {
+async function extractRecipePages(input, { apiKey, model, fetchImpl = fetch, signal, onRaw = async (raw) => {}, timeoutMs = 60000 }) {
   if (typeof apiKey !== 'string' || !apiKey.trim()) bad('key_not_configured', 503);
   if (!Number.isInteger(timeoutMs) || timeoutMs < 1 || timeoutMs > 120000) bad('invalid_timeout', 503);
   const body = makeExtractionRequest(input, model), controller = new AbortController();
@@ -130,6 +131,11 @@ async function extractRecipePages(input, { apiKey, model, fetchImpl = fetch, sig
 
 // Host integration must supply real authorization and an explicit origin list.
 // The existing MHD handler remains responsible for all other paths.
+/**
+ * @param {Request} request
+ * @param {any} env
+ * @param {{authorize?: (request: Request, env: any) => Promise<boolean>, allowedOrigins?: string[], fetchImpl?: typeof fetch}} options
+ */
 async function handleRecipeRoute(request, env, { authorize, allowedOrigins = [], fetchImpl = fetch } = {}) {
   if (new URL(request.url).pathname !== '/api/recipe-vision') return null;
   const origin = request.headers.get('Origin');

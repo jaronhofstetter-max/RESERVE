@@ -23,4 +23,5 @@ jobs:
           node tools/test-rekek-vision.mjs
           node tools/test-rekek-page-evaluation.mjs
           node tools/build-rekek-worker.mjs --check
+          npm exec --yes --package=typescript@5.9.3 -- tsc --allowJs --checkJs --noEmit --target es2022 --module esnext --lib es2022,dom,dom.iterable --skipLibCheck services/reserve-worker/worker.js
           node tools/test-rekek-worker.mjs

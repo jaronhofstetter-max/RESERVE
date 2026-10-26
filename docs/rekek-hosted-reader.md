@@ -34,6 +34,10 @@ It requires all of the following in addition to provider key/model:
 Build the single-file editor version with
 `node tools/build-rekek-worker.mjs`; output is
 `services/reserve-worker/worker.js`. `--check` verifies source/bundle parity.
+The generated JavaScript also passes TypeScript 5.9.3 `--allowJs --checkJs`
+with ES2022 and browser DOM libraries. Explicit content-union and route-option
+JSDoc types prevent the four incorrect inference diagnostics observed in the
+Cloudflare editor; the raw-response hook accepts its actual response argument.
 Keep the existing Cloudflare bindings/secrets and deployment for rollback;
 this source bundle contains no environment configuration. Do not replace them
 with a fresh Wrangler project. The single-file output is tested for private

@@ -72,6 +72,7 @@ export function validateExtraction(value, pageIds, { sameRecipe = false } = {}) 
 export function makeExtractionRequest(input, model) {
   validateInput(input);
   if (typeof model !== 'string' || !model.trim() || model.length > 200) bad('model_not_configured', 503);
+  /** @type {Array<{type: 'input_text', text: string} | {type: 'input_image', image_url: string, detail: 'high'}>} */
   const content = [{ type: 'input_text', text: `Return the recipe extraction JSON. sameRecipe=${input.sameRecipe}. Page order: ${input.images.map(x => x.id).join(', ')}.` }];
   for (const page of input.images) content.push({ type: 'input_text', text: `Page ID: ${page.id}` },
     { type: 'input_image', image_url: page.data_url, detail: 'high' });
@@ -101,7 +102,7 @@ export function parseExtractionResponse(raw, pageIds, { sameRecipe = false } = {
   return { ...extracted, reviewRequired: true, verified: false };
 }
 
-export async function extractRecipePages(input, { apiKey, model, fetchImpl = fetch, signal, onRaw = async () => {}, timeoutMs = 60000 }) {
+export async function extractRecipePages(input, { apiKey, model, fetchImpl = fetch, signal, onRaw = async (raw) => {}, timeoutMs = 60000 }) {
   if (typeof apiKey !== 'string' || !apiKey.trim()) bad('key_not_configured', 503);
   if (!Number.isInteger(timeoutMs) || timeoutMs < 1 || timeoutMs > 120000) bad('invalid_timeout', 503);
   const body = makeExtractionRequest(input, model), controller = new AbortController();
