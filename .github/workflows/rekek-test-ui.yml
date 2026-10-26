@@ -1,0 +1,27 @@
+name: REKEK private test interface
+on:
+  pull_request:
+    paths:
+      - 'rekek-test.*'
+      - 'tools/e2e-rekek-test-ui.mjs'
+      - '.github/workflows/rekek-test-ui.yml'
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright@1.55.0
+      - run: npx playwright install --with-deps chromium
+      - run: node --check rekek-test.js
+      - run: node tools/e2e-rekek-test-ui.mjs
+        env:
+          REKEK_UI_SCREENSHOT_DIR: /tmp/rekek-ui-preview
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rekek-ui-preview
+          path: /tmp/rekek-ui-preview
