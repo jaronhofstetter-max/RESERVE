@@ -6,9 +6,10 @@
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src blob: data:; connect-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
   <title>REKEK · Lokal und ohne API testen</title>
-  <link rel="stylesheet" href="rekek-test.css?v=20261026-local-only-1">
+  <link rel="stylesheet" href="rekek-test.css?v=20261027-source-review-1">
   <script src="personal-recipe-parser-v1.js?v=20261026-local-fractions-1" defer></script>
-  <script src="rekek-test.js?v=20261026-local-only-1" defer></script>
+  <script src="rekek-source-review.js?v=20261027-source-review-1" defer></script>
+  <script src="rekek-test.js?v=20261027-source-review-1" defer></script>
 </head>
 <body>
   <main>
@@ -33,10 +34,11 @@
     </form>
     <section id="results" aria-labelledby="result-heading" hidden>
       <h2 id="result-heading">Ergebnis prüfen</h2>
-      <p class="review">Ungeprüfte KI-Abschrift. Vergleiche besonders Mengen, Brüche und Zutaten mit deinen Fotos. Es wird kein Rezept gespeichert.</p>
+      <p class="review">Ungeprüfte KI-Abschrift. Vergleiche besonders Mengen, Brüche und Zutaten mit deinen Fotos. Ergänze fehlende Angaben. Jede Bestätigung bleibt fehlbar. Es wird kein Rezept gespeichert.</p>
       <div id="recipes"></div>
       <details><summary>Unveränderte OCR-Texte</summary><pre id="raw-text"></pre></details>
-      <button id="download" class="secondary" type="button">Ergebnis als JSON herunterladen</button>
+      <div id="review-export"></div>
+      <button id="download" class="secondary" type="button">Ungeprüftes Originalergebnis herunterladen</button>
     </section>
     <button id="clear" type="button" class="secondary">Fotos und Ergebnis leeren</button>
   </main>
