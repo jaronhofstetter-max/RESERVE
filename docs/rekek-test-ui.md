@@ -36,6 +36,13 @@ all three now return 0.25, preserving their original text. No model was rerun,
 no ingredient names were repaired, and this is not three newly correct whole
 ingredient assignments or an overall accuracy score.
 
+The actual browser baseline was also run on the two unchanged, previously used
+handwritten rasters (596 × 842) from the saved comparison: page 12 returned no
+text; page 17 returned an unusable partial transcript. Both runs had zero
+external requests and zero upload requests. Neither is a new blind case or a
+successful recipe extraction. This confirms that the local test path works
+without paid services but does not solve full-page handwriting recognition.
+
 The old cloud diagnostic Worker is not redeployed or edited here. Keep
 `REKEK_ENABLED=0` in Cloudflare. Removing the client does not prove the remote
 setting is disabled. The existing MHD service is separate and is unchanged.
