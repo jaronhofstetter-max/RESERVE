@@ -1,0 +1,21 @@
+name: REKEK line comparison diagnostics
+on:
+  pull_request:
+    paths:
+      - 'tools/*rekek-line-crop-comparison.py'
+      - 'docs/rekek-line-crop-comparison.md'
+      - '.github/workflows/rekek-line-comparison.yml'
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate geometry and provisional scoring without models or private inputs
+        run: |
+          python3 -m py_compile tools/run-rekek-line-crop-comparison.py tools/score-rekek-line-crop-comparison.py tools/test-rekek-line-crop-comparison.py
+          python3 tools/test-rekek-line-crop-comparison.py
