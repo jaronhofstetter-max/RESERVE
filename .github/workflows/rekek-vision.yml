@@ -1,0 +1,27 @@
+name: REKEK hosted-reader contract
+on:
+  pull_request:
+    paths:
+      - 'services/rekek-vision/**'
+      - 'services/reserve-worker/**'
+      - 'tools/*rekek*'
+      - '.github/workflows/rekek-vision.yml'
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check server adapter and request boundary without provider calls
+        run: |
+          node --check services/rekek-vision/extraction.mjs
+          node --check services/rekek-vision/route.mjs
+          node tools/test-rekek-vision.mjs
+          node tools/test-rekek-page-evaluation.mjs
+          node tools/build-rekek-worker.mjs --check
+          npm exec --yes --package=typescript@5.9.3 -- tsc --allowJs --checkJs --noEmit --target es2022 --module esnext --lib es2022,dom,dom.iterable --skipLibCheck services/reserve-worker/worker.js
+          node tools/test-rekek-worker.mjs
