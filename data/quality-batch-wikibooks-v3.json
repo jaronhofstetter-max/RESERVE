@@ -1,0 +1,135 @@
+[
+  {
+    "id": "wikibooks-shortbread",
+    "name": "Schottisches Shortbread",
+    "type": "Dessert",
+    "diet": "Vegetarisch",
+    "dish": "🍪",
+    "cuisine": "Schottisch",
+    "mealTimes": [
+      "Zwischenmahlzeit"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 30,
+    "waitMinutes": 30,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Gluten",
+      "Milch"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Gebäck",
+      "Schottland",
+      "Originalfoto"
+    ],
+    "ingredients": [
+      {
+        "name": "Weizenmehl",
+        "amount": 45.0,
+        "unit": "g"
+      },
+      {
+        "name": "Gesalzene Butter",
+        "amount": 30.0,
+        "unit": "g"
+      },
+      {
+        "name": "Zucker",
+        "amount": 15.0,
+        "unit": "g"
+      },
+      {
+        "name": "Kristallzucker zum Bestreuen",
+        "amount": 2.5,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Zucker und zimmerwarme gesalzene Butter auf einem Brett oder in einer Schüssel miteinander verkneten.",
+      "Mehl sieben und portionsweise unter die Butter-Zucker-Masse kneten, bis ein geschmeidiger, nicht zu fester Teig entsteht.",
+      "Teig abdecken und 30 Minuten im Kühlschrank kühlen. Den Backofen auf höchstens 150 °C Heissluft vorheizen.",
+      "Teig etwa 1 cm dick ausrollen, in rechteckige Fingers schneiden und jedes Stück mehrmals mit einer Gabel einstechen.",
+      "Auf mittlerer Schiene ungefähr 30 Minuten backen, bis das Shortbread hell goldgelb und bis zur Mitte durchgebacken ist.",
+      "Sofort mit Kristallzucker bestreuen und vollständig auskühlen lassen."
+    ],
+    "nutrition": {
+      "kcal": 446.62,
+      "protein": 4.9,
+      "carbs": 50.64,
+      "fat": 24.77,
+      "fiber": 1.22
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy; Schätzung, keine Messung des fertigen Gebäcks.",
+      "basis": "Pro Person; verfügbare Kohlenhydrate = Gesamtkohlenhydrate minus Ballaststoffe. Originalrezept für 4 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Die Originalangabe «etwas Kristallzucker zum Bestreuen» enthält keine Menge. Für den Gesamtansatz wurden 10 g als offengelegte Richtmenge angesetzt. Die Rezeptvariante mit 120 g gesalzener Butter wurde verwendet; die Alternative mit ungesalzener Butter und zusätzlichem Salz ist nicht eingerechnet.",
+      "sources": "docs/recipe-candidates/import-2026-10-26/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Weizenmehl",
+          "grams": 45.0,
+          "foodKey": "169761",
+          "excluded": false
+        },
+        {
+          "name": "Gesalzene Butter",
+          "grams": 30.0,
+          "foodKey": "173410",
+          "excluded": false
+        },
+        {
+          "name": "Zucker",
+          "grams": 15.0,
+          "foodKey": "169655",
+          "excluded": false
+        },
+        {
+          "name": "Kristallzucker zum Bestreuen",
+          "grams": 2.5,
+          "foodKey": "169655",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Klassisches schottisches Shortbread im Verhältnis 3:2:1 aus Mehl, Butter und Zucker nach dem freien Wikibooks-Kochbuch.",
+    "equipment": [
+      "Küchenwaage",
+      "Schüssel oder Backbrett",
+      "Sieb",
+      "Wallholz",
+      "Backblech",
+      "Backpapier",
+      "Gabel"
+    ],
+    "prepNotes": [
+      "Originalrezept für 4 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet.",
+      "Die Originalangabe «etwas Kristallzucker zum Bestreuen» enthält keine Menge. Für den Gesamtansatz wurden 10 g als offengelegte Richtmenge angesetzt.",
+      "Die Rezeptvariante mit 120 g gesalzener Butter wurde verwendet; die Alternative mit ungesalzener Butter und zusätzlichem Salz ist nicht eingerechnet."
+    ],
+    "doneness": "Das Shortbread ist hell goldgelb, am Rand fest und in der Mitte durchgebacken, ohne dunkel zu werden.",
+    "substitutions": [
+      "Ungesalzene Butter ist möglich; Salz dann vorsichtig nach Geschmack ergänzen. Die Nährwerte verändern sich kaum, die Salzmenge ist jedoch neu festzulegen."
+    ],
+    "leftovers": "Vollständig ausgekühlt in einer gut schliessenden Dose trocken lagern und innerhalb einer Woche verbrauchen.",
+    "safety": "Heisses Backblech nur mit Ofenhandschuhen anfassen. Das Gebäck vor dem Einlagern vollständig auskühlen lassen.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Shortbread&oldid=1009122",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 4,
+      "adaptation": "Auf eine Person umgerechnet; Arbeitsschritte gegliedert und Gar-, Lager- sowie Sicherheitshinweise ergänzt. Originalrezept für 4 Personen; Zutaten und geschätzte Nährwerte auf eine Person umgerechnet. Die Originalangabe «etwas Kristallzucker zum Bestreuen» enthält keine Menge. Für den Gesamtansatz wurden 10 g als offengelegte Richtmenge angesetzt. Die Rezeptvariante mit 120 g gesalzener Butter wurde verwendet; die Alternative mit ungesalzener Butter und zusätzlichem Salz ist nicht eingerechnet."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "none",
+      "shelfStableShare": 1,
+      "waterMl": 0,
+      "noCook": false,
+      "onePot": false
+    },
+    "image": "assets/recipe-photos/wikibooks-shortbread.webp"
+  }
+]

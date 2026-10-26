@@ -1,0 +1,39 @@
+{
+  "169761": {
+    "fdcId": 169761,
+    "description": "Wheat flour, white, all-purpose, unenriched",
+    "per100g": {
+      "kcal": 364,
+      "protein": 10.33,
+      "carbs": 76.31,
+      "fat": 0.98,
+      "fiber": 2.7
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/169761/nutrients",
+    "carbohydrateBasis": "total-including-fiber",
+    "retrievedAt": "2026-10-12"
+  },
+  "169655": {
+    "fdcId": 169655,
+    "description": "Sugars, granulated",
+    "per100g": {
+      "protein": 0,
+      "fat": 0,
+      "kcal": 387,
+      "carbs": 100,
+      "fiber": 0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/169655/nutrients"
+  },
+  "173410": {
+    "description": "Butter, salted",
+    "per100g": {
+      "fiber": 0.0,
+      "kcal": 717,
+      "fat": 81.1,
+      "carbs": 0.06,
+      "protein": 0.85
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/173410/nutrients"
+  }
+}
