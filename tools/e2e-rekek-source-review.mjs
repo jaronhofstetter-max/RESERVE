@@ -32,6 +32,9 @@ try {
   // Confirming every field is insufficient until omissions on the full page are checked.
   for(const c of await page.locator('.field-confirm').all())await c.check();assert.equal(await button.isDisabled(),true);
   await page.locator('.page-confirm').check();assert.equal(await button.isEnabled(),true);
+  await page.getByRole('button',{name:'Seite 1 ansehen',exact:true}).click();
+  assert.ok(Math.abs(await page.locator('.source-view').evaluate(e=>e.getBoundingClientRect().top))<2);
+  await page.getByRole('button',{name:'Zur gewählten Angabe',exact:true}).click();
   // Editing any text or section revokes that field and the page completeness assertion.
   await ingredient.locator('textarea').fill('200 g Butter');assert.equal(await ingredient.locator('.field-confirm').isChecked(),false);assert.equal(await page.locator('.page-confirm').isChecked(),false);assert.equal(await button.isDisabled(),true);
   await ingredient.locator('input[type=text]').fill('Teig');await ingredient.locator('.field-confirm').check();await page.locator('.page-confirm').check();
@@ -76,5 +79,6 @@ try {
       console.log(`${id}: saved whole-page OCR replayed unchanged, original visible, export blocked. No new inference or human confirmation.`);
     }
   }
+  assert.deepEqual(errors,[]);assert.deepEqual(external,[]);assert.deepEqual(mutations,[]);
   await context.close();
 }finally{await browser.close();await new Promise(r=>server.close(r));}

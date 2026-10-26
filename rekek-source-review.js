@@ -130,7 +130,7 @@
     data.pages.forEach((p,i) => {
       const label = el('label',undefined,'check'), c=el('input'); c.type='checkbox'; c.className='page-confirm';
       label.append(c,document.createTextNode(`Seite ${i+1}: alle Rezepte, Zutaten, Abschnitte und Schritte mit dem ganzen Original verglichen; Fehlendes ergänzt oder ausdrücklich als unleserlich markiert.`));
-      const show=el('button',`Seite ${i+1} ansehen`,'secondary');show.type='button';show.addEventListener('click',()=>display(p.id));
+      const show=el('button',`Seite ${i+1} ansehen`,'secondary');show.type='button';show.addEventListener('click',()=>{display(p.id);returnTarget=label;back.hidden=false;source.scrollIntoView({block:'start'});});
       complete.append(label,show);pageChecks.push(c);c.addEventListener('change',update);
     });editor.append(complete);
     download.addEventListener('click', () => {
