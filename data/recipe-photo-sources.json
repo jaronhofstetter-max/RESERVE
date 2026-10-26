@@ -566,6 +566,23 @@
       "reviewedAt": "2026-10-25",
       "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kartoffelpuffer.jpg",
       "originalPhotoSha256": "21144b2f0067098fa5d757c5edaf927ebf3a065d2be907a451453a3d26a62c54"
+    },
+    {
+      "recipeId": "wikibooks-shortbread",
+      "path": "assets/recipe-photos/wikibooks-shortbread.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Shortbread_fingers.jpg",
+      "author": "Dave souza",
+      "license": "CC BY-SA 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/",
+      "kind": "photograph",
+      "servingSuggestion": false,
+      "title": "Scottish shortbread fingers",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Exaktes Gericht: Das Foto zeigt rechteckige schottische Shortbread-Fingers ohne zusätzliche Lebensmittel.",
+      "reviewedAt": "2026-10-26",
+      "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Shortbread_fingers.jpg",
+      "originalPhotoSha256": "e0850d76ed60086d36db9e0fad50da22b435f54490b7b7365585f8c7a1f2ed0c"
     }
   ]
 }
