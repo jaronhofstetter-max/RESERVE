@@ -583,6 +583,23 @@
       "reviewedAt": "2026-10-26",
       "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Shortbread_fingers.jpg",
       "originalPhotoSha256": "e0850d76ed60086d36db9e0fad50da22b435f54490b7b7365585f8c7a1f2ed0c"
+    },
+    {
+      "recipeId": "wikibooks-bethmaennchen",
+      "path": "assets/recipe-photos/wikibooks-bethmaennchen.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Bethmaennchen1.jpg",
+      "author": "Alexander Klink",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "kind": "photograph",
+      "servingSuggestion": false,
+      "title": "Bethmännchen",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Exaktes Gericht: Das Foto zeigt Bethmännchen mit den typischen drei Mandelhälften; keine Beilagen.",
+      "reviewedAt": "2026-10-27",
+      "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bethmaennchen1.jpg",
+      "originalPhotoSha256": "6339b3b6e2b1dd9ef30822e8a31b8b1a678f6dee7d485406e7ed30b2b99fd7ee"
     }
   ]
 }
