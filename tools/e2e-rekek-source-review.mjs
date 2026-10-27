@@ -64,6 +64,17 @@ try {
   await page.locator('#photos').setInputFiles({name:'duplicate-lines.png',mimeType:'image/png',buffer:Buffer.from(payload,'base64')});await page.locator('#submit').click();await page.locator('#results').waitFor({state:'visible'});
   assert.equal(await page.locator('.ingredient select').first().inputValue(),'page-1');
   await page.locator('#clear').click();
+  // A completely missed page in a mixed upload needs an explicit finding,
+  // not just confirmation of the successfully parsed page's fields.
+  await page.evaluate(()=>{let count=0;window.Tesseract={createWorker:async()=>({setParameters:async()=>{},terminate:async()=>{},recognize:async()=>({data:{text:count++===0?'Test\nZutaten\n200 g Butter\nZubereitung\nRühren.':'',lines:[]}})})};});
+  await page.locator('#photos').setInputFiles([{name:'read.png',mimeType:'image/png',buffer:Buffer.from(payload,'base64')},{name:'missed.png',mimeType:'image/png',buffer:Buffer.from(payload,'base64')}]);await page.locator('#submit').click();await page.locator('#results').waitFor({state:'visible'});
+  assert.match(await page.locator('.empty-page-warning').innerText(),/Seite 2: Kein Text erkannt/);
+  for(const c of await page.locator('.field-confirm,.page-confirm').all())await c.check();assert.equal(await page.locator('#download-reviewed').isDisabled(),true);
+  await page.locator('.page-completeness textarea').fill('Seite 2: Inhalt am Original geprüft und ausdrücklich als unleserlich markiert.');
+  for(const c of await page.locator('.field-confirm,.page-confirm').all())await c.check();
+  const reviewedEvent=page.waitForEvent('download');await page.locator('#download-reviewed').click();const withFinding=JSON.parse(fs.readFileSync(await(await reviewedEvent).path(),'utf8'));
+  assert.equal(withFinding.review.page_findings.length,1);assert.equal(withFinding.review.page_findings[0].source.page_id,'page-2');assert.match(withFinding.review.page_findings[0].text,/unleserlich/);assert.equal(withFinding.verified,false);
+  await page.locator('#clear').click();
   assert.deepEqual(await page.evaluate(()=>[localStorage.length,sessionStorage.length]),[0,0]);assert.deepEqual(errors,[]);assert.deepEqual(external,[]);assert.deepEqual(mutations,[]);
   console.log('Review controls passed: source geometry, conservative attribution, full-page omission gate, edits/sections revoke confirmation, missing/removal audit, immutable raw OCR, fallible export, safe text, 320/390/1280px, reset and no uploads/storage. Controlled OCR, not an accuracy test.');
   // Optional replay of five previously tested handwritten pages. Keep private photos and raw files outside git.

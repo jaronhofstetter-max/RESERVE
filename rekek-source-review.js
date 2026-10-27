@@ -10,14 +10,14 @@
   const norm = s => String(s || '').normalize('NFC').replace(/\s+/g, ' ').trim().toLowerCase();
   function mount(host, exportHost, data, photos) {
     let disposed = false, displayVersion = 0, sequence = 0;
-    const original = structuredClone(data), fields = [], pageChecks = [], removed = [], excludedRecipes = [];
+    const original = structuredClone(data), fields = [], pageChecks = [], removed = [], excludedRecipes = [], pageFindings = [];
     const layout = el('div', undefined, 'review-layout'), source = el('aside', undefined, 'source-view');
     const editor = el('div', undefined, 'review-editor');
     let returnTarget = null;
     const back = el('button', 'Zur gewählten Angabe', 'secondary'); back.type = 'button'; back.hidden = true;
     back.addEventListener('click', () => returnTarget?.scrollIntoView({block:'center'}));
     const pageLabel = el('label', 'Originalseite'), pageSelect = el('select'); pageSelect.setAttribute('aria-label', 'Originalseite');
-    data.pages.forEach((p, i) => { const o = el('option', `Seite ${i + 1} · ${p.id}`); o.value = p.id; pageSelect.append(o); });
+    data.pages.forEach((p, i) => { const o = el('option', `Seite ${i + 1} · ${p.id}${p.raw.trim() ? "" : " · Kein Text erkannt"}`); o.value = p.id; pageSelect.append(o); });
     pageLabel.append(pageSelect);
     const imageLink = el('a', 'Original gross öffnen'); imageLink.target = '_blank'; imageLink.rel = 'noopener';
     const image = el('img'); image.alt = 'Gewählte Originalseite';
@@ -128,6 +128,10 @@
     editor.append(addLabel,addRecipeButton);
     const complete = el('div',undefined,'page-completeness'); complete.append(el('h3','Auf Auslassungen prüfen'));
     data.pages.forEach((p,i) => {
+      if(!p.raw.trim()) {
+        complete.append(el('p',`Seite ${i+1}: Kein Text erkannt. Vergleiche die ganze Originalseite. Ergänze das fehlende Rezept oder halte ausdrücklich fest, was unleserlich ist bzw. warum diese Seite kein Rezept enthält.`,'review empty-page-warning'));
+        pageFindings.push(field(complete,'unresolved','',[p.id]));
+      }
       const label = el('label',undefined,'check'), c=el('input'); c.type='checkbox'; c.className='page-confirm';
       label.append(c,document.createTextNode(`Seite ${i+1}: alle Rezepte, Zutaten, Abschnitte und Schritte mit dem ganzen Original verglichen; Fehlendes ergänzt oder ausdrücklich als unleserlich markiert.`));
       const show=el('button',`Seite ${i+1} ansehen`,'secondary');show.type='button';show.addEventListener('click',()=>{display(p.id);returnTarget=label;back.hidden=false;source.scrollIntoView({block:'start'});});
@@ -140,7 +144,7 @@
         parsed_reading:f.kind==='ingredient'?window.RESERVE_RECIPE_PARSER.ingredient(f.input.value):undefined});
       const payload = {...original,verified:false,review:{schema:'rekek-source-review-v1',status:'human_confirmed',fallible:true,
         note:'Menschlich geprüft; keine Garantie für Fehlerfreiheit. Parserwerte bleiben maschinelle Lesungen. Kein automatischer Import.',
-        pages:data.pages.map((p,i)=>({page_id:p.id,completeness_confirmed:pageChecks[i].checked})),removed,excluded_recipes:excludedRecipes,
+        pages:data.pages.map((p,i)=>({page_id:p.id,completeness_confirmed:pageChecks[i].checked})),page_findings:pageFindings.map(serial),removed,excluded_recipes:excludedRecipes,
         recipes:recipes.filter(r=>!r.removed).map(r=>({page_ids:r.page_ids,fields:r.fields.filter(f=>!f.removed).map(serial)}))}};
       const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));const a=el('a');a.href=url;a.download='rekek-bestaetigte-pruefabschrift.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
     });

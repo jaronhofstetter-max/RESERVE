@@ -124,3 +124,15 @@ Validation for this change:
 The five diagnostic handwriting cases are now development/replay examples,
 not a fresh holdout for future model improvements. The human-reviewed reference
 remains correctable; successful UI tests do not remove that uncertainty.
+
+### Empty OCR page regression from the 500-recipe source pilot
+
+Five historical development pages were processed through the actual browser
+reader. One returned an empty text while the others returned partial text.
+Previously that page was available as an original but had no explicit result
+warning. Every empty-text page now carries a visible warning and requires an
+individually confirmed nonempty review finding (manual transcription completed,
+unreadable content, or reason for exclusion). Findings are preserved in
+`review.page_findings`; all page completeness checks remain required. Empty
+pages are never silently treated as successful recipe extraction. This is a
+review gate improvement, not an OCR or model accuracy improvement.
