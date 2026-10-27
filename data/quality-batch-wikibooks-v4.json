@@ -1,0 +1,168 @@
+[
+  {
+    "id": "wikibooks-bethmaennchen",
+    "name": "Bethmännchen",
+    "type": "Dessert",
+    "diet": "Vegetarisch",
+    "dish": "🍪",
+    "cuisine": "Deutsch",
+    "mealTimes": [
+      "Zwischenmahlzeit"
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 15,
+    "waitMinutes": 15,
+    "difficulty": "Mittel",
+    "allergens": [
+      "Ei",
+      "Gluten",
+      "Nüsse"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Gebäck",
+      "Weihnachten",
+      "Originalfoto"
+    ],
+    "ingredients": [
+      {
+        "name": "Mandeln",
+        "amount": 4.0,
+        "unit": "g"
+      },
+      {
+        "name": "Marzipanrohmasse",
+        "amount": 8.0,
+        "unit": "g"
+      },
+      {
+        "name": "Eiweiss",
+        "amount": 0.04,
+        "unit": "Stück"
+      },
+      {
+        "name": "Weizenmehl",
+        "amount": 0.8,
+        "unit": "g"
+      },
+      {
+        "name": "Puderzucker",
+        "amount": 2.0,
+        "unit": "g"
+      },
+      {
+        "name": "Eigelb zum Bestreichen",
+        "amount": 0.04,
+        "unit": "Stück"
+      },
+      {
+        "name": "Rosenwasser",
+        "amount": 0.2,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Mandeln mit kochendem Wasser überbrühen, abkühlen lassen und häuten. Die Hälfte mahlen; die übrigen Mandeln längs halbieren.",
+      "Gemahlene Mandeln mit der Marzipanrohmasse verkneten. Das Ei trennen und das Eigelb für die Glasur beiseitestellen.",
+      "Eiweiss, Mehl, Puderzucker und Rosenwasser zur Marzipanmasse geben und zu einem klebrigen Teig verkneten.",
+      "Mit leicht bemehlten Händen 25 kleine Kugeln formen und auf ein mit Backpapier belegtes Blech setzen.",
+      "Jede Kugel mit drei Mandelhälften verzieren. Eigelb mit wenig Wasser verquirlen und die Bethmännchen dünn damit bestreichen.",
+      "Im vorgeheizten Ofen bei 130–150 °C auf mittlerer Schiene ungefähr 10–15 Minuten goldbraun backen; gegen Ende ständig beobachten.",
+      "Auf dem Blech abkühlen lassen, bis das Gebäck fest geworden ist."
+    ],
+    "nutrition": {
+      "kcal": 73.37,
+      "protein": 1.67,
+      "carbs": 7.16,
+      "fat": 4.21,
+      "fiber": 0.71
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenberechnung mit USDA SR Legacy und generischem Marzipan-Referenzwert; Schätzung, keine Messung des fertigen Gebäcks.",
+      "basis": "Pro Stück; verfügbare Kohlenhydrate = Gesamtkohlenhydrate minus Ballaststoffe. Das Original ergibt 25 Stück; Mengen und geschätzte Nährwerte sind auf ein Bethmännchen umgerechnet. Die unbezifferte Angabe «Rosenwasser» wurde mit 5 ml für den Gesamtansatz als offengelegte Richtmenge angesetzt. Für die Nährwertschätzung wurden ein Eiweiss mit 33 g und ein Eigelb mit 17 g angesetzt; das wenige Wasser zum Verquirlen ist nicht eingerechnet.",
+      "sources": "docs/recipe-candidates/import-2026-10-27/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Mandeln",
+          "grams": 4.0,
+          "foodKey": "170567",
+          "excluded": false
+        },
+        {
+          "name": "Marzipanrohmasse",
+          "grams": 8.0,
+          "foodKey": "marzipan-generic",
+          "excluded": false
+        },
+        {
+          "name": "Eiweiss",
+          "grams": 1.32,
+          "foodKey": "172183",
+          "excluded": false
+        },
+        {
+          "name": "Weizenmehl",
+          "grams": 0.8,
+          "foodKey": "169761",
+          "excluded": false
+        },
+        {
+          "name": "Puderzucker",
+          "grams": 2.0,
+          "foodKey": "169655",
+          "excluded": false
+        },
+        {
+          "name": "Eigelb zum Bestreichen",
+          "grams": 0.68,
+          "foodKey": "172184",
+          "excluded": false
+        },
+        {
+          "name": "Rosenwasser",
+          "grams": 0.0,
+          "foodKey": null,
+          "excluded": true
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Traditionelles Frankfurter Marzipangebäck mit drei Mandelhälften nach dem freien Wikibooks-Kochbuch.",
+    "equipment": [
+      "Küchenwaage",
+      "Schüsseln",
+      "Backblech",
+      "Backpapier",
+      "Backofen"
+    ],
+    "prepNotes": [
+      "Das Original ergibt 25 Stück; Mengen und geschätzte Nährwerte sind auf ein Bethmännchen umgerechnet.",
+      "Die unbezifferte Angabe «Rosenwasser» wurde mit 5 ml für den Gesamtansatz als offengelegte Richtmenge angesetzt.",
+      "Für die Nährwertschätzung wurden ein Eiweiss mit 33 g und ein Eigelb mit 17 g angesetzt; das wenige Wasser zum Verquirlen ist nicht eingerechnet."
+    ],
+    "doneness": "Die Bethmännchen sind goldbraun, bleiben beim Herausnehmen noch weich und werden beim Abkühlen fest.",
+    "substitutions": [
+      "Rosenwasser kann nach der im Original genannten Variante statt in den Teig in die Eigelbglasur gegeben werden."
+    ],
+    "leftovers": "Vollständig ausgekühlt in einer gut schliessenden Dose trocken lagern und innerhalb von zwei Wochen verbrauchen.",
+    "safety": "Mandeln vorsichtig mit kochendem Wasser überbrühen und heisses Backblech nur mit Ofenhandschuhen anfassen.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Bethm%C3%A4nnchen&oldid=904349",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 25,
+      "adaptation": "Auf ein Stück umgerechnet; Arbeitsschritte gegliedert und Mengenannahmen, Gar-, Lager- sowie Sicherheitshinweise ergänzt. Das Original ergibt 25 Stück; Mengen und geschätzte Nährwerte sind auf ein Bethmännchen umgerechnet. Die unbezifferte Angabe «Rosenwasser» wurde mit 5 ml für den Gesamtansatz als offengelegte Richtmenge angesetzt. Für die Nährwertschätzung wurden ein Eiweiss mit 33 g und ein Eigelb mit 17 g angesetzt; das wenige Wasser zum Verquirlen ist nicht eingerechnet."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "none",
+      "shelfStableShare": 1,
+      "waterMl": 0,
+      "noCook": false,
+      "onePot": false
+    },
+    "image": "assets/recipe-photos/wikibooks-bethmaennchen.webp"
+  }
+]

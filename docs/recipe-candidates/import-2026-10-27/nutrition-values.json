@@ -1,0 +1,68 @@
+{
+  "170567": {
+    "description": "Nuts, almonds",
+    "per100g": {
+      "kcal": 579,
+      "protein": 21.15,
+      "carbs": 21.55,
+      "fat": 49.93,
+      "fiber": 12.5
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/170567/nutrients"
+  },
+  "marzipan-generic": {
+    "description": "Marzipanrohmasse, generischer Referenzwert",
+    "per100g": {
+      "kcal": 458,
+      "protein": 6.1,
+      "carbs": 54.5,
+      "fat": 25.3,
+      "fiber": 2.3
+    },
+    "source": "https://fdc.nal.usda.gov/fdc-app.html#/food-search?query=marzipan"
+  },
+  "172183": {
+    "description": "Egg, white, raw, fresh",
+    "per100g": {
+      "kcal": 52,
+      "protein": 10.9,
+      "carbs": 0.73,
+      "fat": 0.17,
+      "fiber": 0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/172183/nutrients"
+  },
+  "172184": {
+    "description": "Egg, yolk, raw, fresh",
+    "per100g": {
+      "kcal": 322,
+      "protein": 15.86,
+      "carbs": 3.59,
+      "fat": 26.54,
+      "fiber": 0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/172184/nutrients"
+  },
+  "169761": {
+    "description": "Wheat flour, white, all-purpose, unenriched",
+    "per100g": {
+      "kcal": 364,
+      "protein": 10.33,
+      "carbs": 76.31,
+      "fat": 0.98,
+      "fiber": 2.7
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/169761/nutrients"
+  },
+  "169655": {
+    "description": "Sugars, powdered",
+    "per100g": {
+      "kcal": 389,
+      "protein": 0,
+      "carbs": 99.77,
+      "fat": 0,
+      "fiber": 0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/169655/nutrients"
+  }
+}
