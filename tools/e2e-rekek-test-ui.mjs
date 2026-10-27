@@ -53,10 +53,11 @@ try {
   assert.equal(await page.locator('#submit').isEnabled(), true);
   assert.equal(await page.evaluate(() => mockCalls), 0);
   await page.locator('#submit').click(); await page.locator('#results').waitFor({ state: 'visible' });
-  assert.match(await page.locator('#recipes').innerText(), /¹\/₄ TL Salz/);
+  assert.ok((await page.locator('.ingredient textarea').evaluateAll(nodes=>nodes.map(n=>n.value))).includes('¹/₄ TL Salz'));
   assert.match(await page.locator('#recipes').innerText(), /0\.25 tl/);
-  assert.match(await page.locator('#recipes').innerText(), /12\.5 g Mehl/);
-  assert.equal(await page.locator('#recipes img').count(), 0);
+  assert.ok((await page.locator('.ingredient textarea').evaluateAll(nodes=>nodes.map(n=>n.value))).includes('12.5 g Mehl'));
+  assert.equal(await page.locator('#recipes .review-editor img').count(), 0);
+  assert.equal(await page.locator('#recipes .source-view img').count(), 1);
   assert.match(await page.locator('#raw-text').textContent(), /<img src=x onerror=alert\(1\)>/);
   assert.equal(await page.evaluate(() => mockOptions.language), 'deu');
   assert.equal(await page.evaluate(() => mockOptions.cacheMethod), 'none');
@@ -78,7 +79,7 @@ try {
   await page.locator('#same-recipe').check();
   await page.locator('#submit').click(); await page.locator('#results').waitFor({ state: 'visible' });
   assert.match(await page.locator('#recipes').innerText(), /Quellseiten: page-1, page-2/);
-  for (const [mode, expected] of [['failure', /nicht gestartet oder abgeschlossen/], ['empty', /Kein Text erkannt/]]) {
+  for (const [mode, expected] of [['failure', /nicht gestartet oder abgeschlossen/]]) {
     await page.evaluate(mode => { mockMode = mode; }, mode);
     const before = await page.evaluate(() => mockCalls);
     await page.locator('#submit').click();
@@ -87,6 +88,14 @@ try {
     assert.equal(await page.locator('#results').isHidden(), true);
     await page.waitForTimeout(100); assert.equal(await page.evaluate(() => mockCalls), before + (mode === 'empty' ? 2 : 1));
   }
+  await page.evaluate(() => { mockMode = 'empty'; });
+  await page.locator('#submit').click(); await page.locator('#results').waitFor({state:'visible'});
+  assert.match(await page.locator('#status').innerText(), /Kein Text erkannt/);
+  assert.equal(await page.locator('#download-reviewed').isDisabled(), true);
+  const emptyDraftCount = await page.locator('.recipe').count();
+  await page.getByRole('button', {name:'+ Fehlendes Rezept ergänzen', exact:true}).click();
+  assert.equal(await page.locator('.recipe').count(), emptyDraftCount + 1);
+  assert.match(await page.locator('.recipe').last().innerText(), /Quellseiten: page-1, page-2/);
   await page.evaluate(() => { mockMode = 'slow'; });
   const beforeSlow = await page.evaluate(() => mockCalls);
   await page.locator('#submit').click(); await page.waitForFunction(before => mockCalls > before, beforeSlow);
@@ -128,7 +137,7 @@ try {
     await page.waitForFunction(() => !document.querySelector('#results').hidden || document.querySelector('#status').dataset.error === 'true', null, { timeout: 190000 });
     assert.equal(await page.locator('#results').isVisible(), true, await page.locator('#status').innerText());
     const raw = await page.locator('#raw-text').textContent(); assert.match(raw, /125\s*g\s+Mehl/i); assert.match(raw, /250\s*ml\s+Wasser/i);
-    assert.match(await page.locator('#recipes').innerText(), /125 g Mehl/);
+    assert.ok((await page.locator('.ingredient textarea').evaluateAll(nodes=>nodes.map(n=>n.value))).some(s=>/125 g Mehl/.test(s)));
     assert.deepEqual(errors, []); assert.deepEqual(external, []); assert.ok(requests.every(request => request.method === 'GET'));
     assert.ok(requests.some(request => request.url.endsWith('/baseline/deu.traineddata')));
     assert.ok(requests.some(request => /\/vendor\/core\/.*\.wasm(?:\.js)?$/.test(request.url)));

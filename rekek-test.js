@@ -3,7 +3,7 @@
   'use strict';
   const $ = id => document.getElementById(id);
   const photos = $('photos'), submit = $('submit'), cancel = $('cancel');
-  let selected = [], active = null, result = null, nextId = 1, library;
+  let selected = [], active = null, result = null, nextId = 1, library, review;
   const node = (tag, text, className) => {
     const element = document.createElement(tag);
     if (text !== undefined) element.textContent = text;
@@ -20,7 +20,7 @@
     document.querySelectorAll('[data-remove]').forEach(button => { button.disabled = !!active; });
   }
   function clearResult() {
-    result = null; $('recipes').replaceChildren(); $('raw-text').textContent = ''; $('results').hidden = true;
+    review?.destroy(); review = null; $('review-export').replaceChildren(); result = null; $('recipes').replaceChildren(); $('raw-text').textContent = ''; $('results').hidden = true;
   }
   function previews() {
     $('previews').replaceChildren();
@@ -74,30 +74,7 @@
     context.drawImage(image, 0, 0, canvas.width, canvas.height); return canvas;
   }
   function show(data) {
-    const fragment = document.createDocumentFragment(), parser = window.RESERVE_RECIPE_PARSER;
-    for (const recipe of data.recipes) {
-      const article = node('article', undefined, 'recipe');
-      article.append(node('h3', recipe.name || 'Titel nicht erkannt'), node('p', `Portionen: ${recipe.portions || 'nicht angegeben / nicht lesbar'}`),
-        node('p', `Quellseiten: ${recipe.page_ids.join(', ')}`, 'source'), node('h4', 'Zutaten'));
-      const lines = recipe.ingredients.split('\n').filter(Boolean);
-      if (!lines.length) article.append(node('p', 'Keine Zutaten erkannt.'));
-      for (const raw of lines) {
-        const reading = parser.ingredient(raw), ingredient = node('div', undefined, 'ingredient');
-        ingredient.append(node('strong', raw));
-        ingredient.append(node('p', reading.amount === null ? 'Menge offen · am Foto prüfen' : `Gelesene Menge: ${reading.amount} ${reading.unit || '[Einheit offen]'} · am Foto prüfen`, 'source'));
-        article.append(ingredient);
-      }
-      article.append(node('h4', 'Zubereitung'));
-      const steps = node('ol'); recipe.steps.split('\n').filter(Boolean).forEach(step => steps.append(node('li', step))); article.append(steps);
-      if (!recipe.steps) article.append(node('p', 'Keine Zubereitung erkannt.'));
-      if (recipe.unresolved.length) {
-        article.append(node('h4', 'Offene Stellen'));
-        const unclear = node('ul'); recipe.unresolved.forEach(item => unclear.append(node('li', item.raw))); article.append(unclear);
-      }
-      fragment.append(article);
-    }
-    if (!data.recipes.length) fragment.append(node('p', 'Keine eindeutige Rezeptaufteilung erkannt. Bitte den OCR-Text und die Fotos prüfen.'));
-    $('recipes').replaceChildren(fragment);
+    review = window.RESERVE_SOURCE_REVIEW.mount($('recipes'), $('review-export'), data, selected);
     $('raw-text').textContent = data.pages.map(page => `${page.id}\n${page.raw}`).join('\n\n');
     result = data; $('results').hidden = false;
   }
@@ -129,14 +106,15 @@
         const canvas = await Promise.race([canvasFor(selected[index]), session.halt]);
         try {
           const read = await Promise.race([session.worker.recognize(canvas), session.halt]);
-          pages.push({ id: selected[index].id, raw: String(read.data.text || '') });
+          pages.push({ id: selected[index].id, raw: String(read.data.text || ''), file_name: selected[index].file.name, width: canvas.width, height: canvas.height,
+            lines: (read.data.lines || []).map((line, i) => ({ id: `${selected[index].id}-line-${i + 1}`, raw: String(line.text || ''),
+              bbox: line.bbox ? { x0: line.bbox.x0, y0: line.bbox.y0, x1: line.bbox.x1, y1: line.bbox.y1 } : null })) });
         } finally { canvas.width = canvas.height = 1; }
       }
-      if (!pages.some(page => page.raw.trim())) throw Error('empty');
       const groups = $('same-recipe').checked ? [{ id: pages.map(page => page.id), text: pages.map(page => page.raw).join('\n') }] : pages.map(page => ({ id: [page.id], text: page.raw }));
-      const recipes = groups.flatMap(group => window.RESERVE_REKEK.parseCandidates(group.text).candidates.map(draft => ({ ...draft, page_ids: group.id })));
-      show({ reader: 'tesseract-local-deu', reviewRequired: true, verified: false, pages, recipes });
-      message('Lokal gelesen. Die Abschrift ist ungeprüft; vergleiche alle Angaben mit deinen Fotos.');
+      const recipes = groups.filter(group => group.text.trim()).flatMap(group => window.RESERVE_REKEK.parseCandidates(group.text).candidates.map(draft => ({ ...draft, page_ids: group.id })));
+      show({ reader: 'tesseract-local-deu', continuation_pages: $('same-recipe').checked, reviewRequired: true, verified: false, pages, recipes });
+      message(pages.some(page => page.raw.trim()) ? 'Lokal gelesen. Vergleiche und korrigiere die Angaben am Original.' : 'Kein Text erkannt. Du kannst das Rezept am Original manuell ergänzen oder ein deutlicheres Foto versuchen.');
       $('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (error) {
       clearResult();
