@@ -1,17 +1,11 @@
 name: REKEK quantity experiment
 on:
-  pull_request:
-    paths:
-      - 'rekek-quantity-*.js'
-      - 'tools/*rekek-quantity*'
-      - 'tools/rekek-german-model-lock.json'
-      - 'tools/rekek_strict_offline.py'
-      - 'assets/rekek/quantity-test/**'
-      - '.github/workflows/rekek-quantity-experiment.yml'
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
   wasm:
+    if: ${{ false }} # REKEK paused by owner on 2026-11-02
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:

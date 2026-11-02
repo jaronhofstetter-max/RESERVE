@@ -1,16 +1,11 @@
 name: REKEK local test interface
 on:
-  pull_request:
-    paths:
-      - 'rekek-test.*'
-      - 'personal-recipe-parser-v1.js'
-      - 'tools/test-rekek-typographic-fractions.mjs'
-      - 'tools/e2e-rekek-test-ui.mjs'
-      - '.github/workflows/rekek-test-ui.yml'
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
   browser:
+    if: ${{ false }} # REKEK paused by owner on 2026-11-02
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4

@@ -1,18 +1,11 @@
 name: REKEK browser review
 on:
-  pull_request:
-    paths:
-      - 'personal-recipe*.js'
-      - 'rekek-digit-*.js'
-      - 'rekek-quantity-*.js'
-      - 'assets/rekek/**'
-      - 'tests/fixtures/rekek-digit*'
-      - 'tools/*rekek*'
-      - '.github/workflows/rekek-review.yml'
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
   review:
+    if: ${{ false }} # REKEK paused by owner on 2026-11-02
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
