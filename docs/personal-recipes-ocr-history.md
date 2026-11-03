@@ -1,0 +1,37 @@
+# Archived recipe-reader design (paused 2026-11-02)
+
+This document describes the former implementation; it is not the current customer flow.
+
+# Personal recipes v1
+
+Home and Search offer “Meine Rezepte”. Customers can import up to twelve screenshots or selected PDF pages, photograph a printed recipe, paste text, or enter a recipe manually. Tesseract.js 5 loads only when image import is requested. OCR runs in a browser worker with German and English language data; recipe images are not submitted to the expiry recognition endpoint or a server-side model. This is text recognition and conservative parsing, not a new trained recipe model.
+
+The review retains original ingredient lines and steps. The original portion count is required. Explicit preparation/cooking times may be read; absent time and nutrition are not invented. Fractions and metric units convert to per-person amounts for the existing inventory matcher. Unknown quantities, ranges and unmeasured packaging remain visible. Standard tablespoons (EL) use 15 ml and teaspoons (TL) use 5 ml for pantry math; the displayed source units remain EL/TL. Such recipes can be saved but do not enter automatic inventory/planning calculations until corrected. Personal recipe ingredients are not automatically substituted for disliked ingredients.
+
+Metadata lives in reservePersonalRecipesV1. Compressed, uncropped dish photos live in IndexedDB reservePersonalRecipePhotosV1, keyed by recipe ID. Full cookbook export/restore includes metadata and photos. The general RESERVE backup includes recipe metadata; full photo backup uses the cookbook export. There is no public sharing or model training contribution.
+
+Confirmed quantitative recipes join the recipe collection after catalog loads and can appear in search/suggestions. Personal detail and cooking use an escaped, image-first page rather than fabricated nutrition or generic generated descriptions. Ingredient quantities shown for cooking match the household portion count used by existing stock consumption. Source steps remain as recorded. Cooking updates stock only after all steps are checked and current inventory/diet suitability is revalidated.
+
+Tests cover conservative parsing, fractions and normalization, original-portion scaling, unresolved data, screenshot import workflow, photo persistence, stock consumption, escaping and a complete cookbook export. Browser OCR workflow tests inject deterministic OCR output; they do not establish real-photo OCR accuracy. The separate real OCR smoke test exercises the engine on a clear generated screenshot.
+
+## Cooking quality and reversible exclusions
+
+Personal recipes now use the shared ingredient card renderer, original product photos where matched, recipe-level portions, shortage shopping, numbered steps and saved completion progress. Optional `details` metadata contains description, equipment, preparation notes, doneness, alternatives, leftovers, safety and partial nutrition explicitly supplied per person. Missing nutrition remains absent; no zero-filled values, food weights, times or safety guidance are invented. Existing records and drafts continue to load. Metadata is validated, escaped, included in cookbook/full backup, and editable under Further details.
+
+`recipe-preferences-v1.js` stores excluded IDs separately in `reserveExcludedRecipesV1`. A recipe can be excluded or restored from its detail/card; Search and Profile open the exclusion list. Exclusions filter search suggestions, Home, both automatic planners, rescue suggestions and urgent-stock recipe priorities. The ID list participates in plan cache signatures and full backup validation. Restoring an ID leaves existing diet/allergy controls active. Exclusion never deletes source records, photos or cooking progress, and manual cooking remains available.
+
+## Explicit fraction typography
+
+Fraction arithmetic accepts spaces around `/`, Unicode fraction slashes (`⁄`, `∕`), and explicit fraction glyphs including thirds and fifths. Original ingredient text remains available in review, storage and editing. Literal amount/unit/name fragments can be joined across lines, including when the ingredient heading is absent. Equivalent typography can agree across OCR readings; different quantities still require review. This does not infer an absent unit or repair ambiguous handwriting such as `1509 Zucker` or `1E0 Ei`.
+
+Regression coverage includes source preservation, spoon volumes, metric conversion, split lines, invalid denominators, quantity disagreement and browser save/reopen. These deterministic cases are development regressions, not an independent photo accuracy benchmark. Real-image probes of the known cake still misread the sugar and egg; extra OCR page modes did not resolve those cases. New unseen recipe photographs remain necessary before reporting general accuracy.
+
+## Illustrated cards: geometric text regions
+
+When a page contains large graphical regions and at least five ingredient rows, a German sparse-text pass may identify repeated amount starts. With at least three measured rows, a prominent title and a preparation region, those coordinates bound separate title, serving, ingredient and step crops. The source photograph supplies every coordinate; there are no recipe-specific boxes or text substitutions. Ingredient crops exclude the separate icon column. Fewer than five rows, competing anchors or missing preparation/title evidence reject this path.
+
+Two ingredient readings must have matching row counts and retain all measured rows. Disputed quantities stay marked. Title readings must agree; unresolved titles remain blank. A single explicit serving reading can populate an unconfirmed draft when the other is empty; conflicting nonempty values remain blank. Source lines and crop readings are aligned by page position for preparation, preserving lines missed in one pass without duplicating the same baseline. Conflicting text remains available in evidence and the review remains unchecked.
+
+Development replay on two customer-supplied illustrated cards recovered clean ingredient text and missing step content; the soup title and four portions were recovered. The decorative brownie title still needs manual entry, and unmeasured garnishes, approximate weights, unsupported count/container units and original piece yields remain review cases. These images have been used for development, not an independent post-change accuracy test.
+
+A separate local diagnostic of DE·HTR v2 on manually cropped handwriting lines produced incorrect amounts and was not integrated. Native ONNX Runtime 1.23.2 could not run its int8 ConvInteger graph; the publisher's hash-verified fp32 variant was used for the diagnostic. Neither a new handwriting model nor a training claim ships in this change.
