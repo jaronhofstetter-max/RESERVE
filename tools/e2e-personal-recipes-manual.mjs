@@ -25,6 +25,11 @@ try{
  assert.equal(await page.locator('#personalScreenshot,#personalPDF,#personalRecipeCamera,#personalDigitTest,#personalDraftImport,#personalParseText').count(),0);
  assert.equal(await page.evaluate(()=>typeof RESERVE_PERSONAL_RECIPES.importScreenshots),'undefined');
  assert.equal(await page.evaluate(()=>typeof RESERVE_PERSONAL_RECIPES.importREKEKDraft),'undefined');
+ // Removing the sole ingredient from an otherwise empty draft must clear the old draft.
+ await page.locator('#personalIngredientName').fill('Falsch eingetragen');await page.locator('#personalAddIngredient').click();
+ await page.locator('#personalIngredientList button').click();
+ await openBook();assert.equal(await page.locator('#personalResume').isVisible(),false);
+ await page.locator('#personalNew').click();assert.equal(await page.locator('#personalIngredientList button').count(),0);
  // A partially entered first ingredient survives leaving/reloading even without a title.
  await page.locator('#personalIngredientName').fill('Reis');await page.locator('#personalIngredientAmount').fill('200');await page.locator('#personalIngredientUnit').fill('g');
  await openBook();await page.locator('#personalResume').click();
