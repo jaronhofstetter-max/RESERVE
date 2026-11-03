@@ -23,3 +23,7 @@ The remote expiry Worker is not redeployed here. No change to its environment va
 ## Validation
 
 `tools/e2e-personal-recipes-manual.mjs` exercises manual entry, partial drafts, save guards, edit/reload, mixed fractions, unknown packaging, dish photos, cooking consumption, escaping, legacy drafts, cookbook export/restore, search, responsive layout and no reader network requests. Existing quantity-parser and recipe-preference regressions remain applicable. The manual-flow regression replaces historical OCR integration checks in production and PR CI. Archived reader design is in personal-recipes-ocr-history.md.
+
+## Remove an ingredient
+
+Each nonempty ingredient line has an accessible Entfernen button in the editor. Only the selected occurrence is removed, including when identical lines occur more than once. The confirmation checkbox is reset, uncertainty and package-size controls are refreshed, and the draft is saved immediately. Existing saved recipes change only when the user confirms and saves. Removing every ingredient is allowed while editing but an empty recipe cannot be saved. The complete source list remains editable under Zutatenliste direkt bearbeiten; printed placeholder examples do not create removable entries.
