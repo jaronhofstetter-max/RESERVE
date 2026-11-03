@@ -74,7 +74,7 @@ try{
  await openBook();await page.locator('#personalResume').click();assert.equal(await page.locator('#personalName').inputValue(),'Alter Entwurf');
  assert.equal(await page.locator('#personalIngredientName').inputValue(),'');assert.equal(await page.locator('#personalLegacyText').isVisible(),true);await save();
  // Full cookbook export keeps records and dish photos; restore round trip preserves IDs.
- await page.evaluate(()=>RESERVE_PERSONAL_RECIPES.open());const downloadPromise=page.waitForEvent('download');await page.locator('#personalExport').click();const download=await downloadPromise;
+ await page.evaluate(()=>RESERVE_PERSONAL_RECIPES.open());await page.getByText('Rezepte sichern',{exact:true}).click();const [download]=await Promise.all([page.waitForEvent('download'),page.locator('#personalExport').click()]);
  const bundle=JSON.parse(fs.readFileSync(await download.path(),'utf8'));assert.equal(bundle.recipes.length,4);assert.ok(bundle.photos[id].startsWith('data:image/jpeg;base64,'));
  assert.equal(await page.evaluate(()=>RESERVE_SYNC.validate(RESERVE_SYNC.snapshot())),null);
  await page.locator('#personalRestore').click();page.once('dialog',dialog=>dialog.accept());
