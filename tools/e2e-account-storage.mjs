@@ -43,7 +43,7 @@ async function pageFor(context){
 async function login(page,email='alice@example.invalid'){
  await page.goto(base);await page.waitForSelector('#reserveAccountAuth',{state:'attached'});await page.evaluate(()=>show('profile'));
  await page.locator('#reserveAccountEmail').fill(email);await page.locator('#reserveAccountPassword').fill('synthetic-password-only');await page.locator('#reserveAccountAuth button[type=submit]').click();
- await page.waitForFunction(()=>/abgeglichen|wiederhergestellt|gesichert/.test(document.getElementById('reserveAccountStatus')?.textContent||''));
+ await page.waitForFunction(()=>['ready','saved'].includes(document.getElementById('reserveAccountStatus')?.dataset.phase));
 }
 try{
  const c1=await browser.newContext({viewport:{width:390,height:844}}),p1=await pageFor(c1);

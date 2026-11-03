@@ -7,7 +7,7 @@ function message(text){$('reserveAccountStatus').textContent=text;}
 function lock(on){document.documentElement.classList.toggle('reserve-account-locked',on);if(on){modal.hidden=false;modal.append(card);}else{modal.hidden=true;profile.append(card);}}
 function configuredSDK(){return new Promise((resolve,reject)=>{if(window.supabase?.createClient)return resolve(window.supabase);const script=document.createElement('script');script.src='assets/account-sdk/supabase-2.118.0.js';script.onload=()=>window.supabase?.createClient?resolve(window.supabase):reject(Error('Anmeldung konnte nicht geladen werden.'));script.onerror=()=>reject(Error('Anmeldung ist offline. Bitte die Verbindung prüfen.'));document.head.append(script);});}
 function render(event){
- message(event.message);const badge=$('reserveAccountBadge');if(badge)badge.textContent=({ready:'Konto verbunden',saved:'Im Konto gesichert',saving:'Wird im Konto gesichert …',restored:'Aus Konto wiederhergestellt','signed-out':'Nur auf diesem Gerät'})[event.phase]||'Kontosicherung prüfen';if(currentSession&&['loading','restoring'].includes(event.phase))lock(true);const phase=event.phase,needsChoice=['adopt','conflict','empty-blocked'].includes(phase);
+ message(event.message);$('reserveAccountStatus').dataset.phase=event.phase;const badge=$('reserveAccountBadge');if(badge)badge.textContent=({ready:'Konto verbunden',saved:'Im Konto gesichert',pending:'Weitere Änderungen werden gesichert …',saving:'Wird im Konto gesichert …',restored:'Aus Konto wiederhergestellt','signed-out':'Nur auf diesem Gerät'})[event.phase]||'Kontosicherung prüfen';if(currentSession&&['loading','restoring'].includes(event.phase))lock(true);const phase=event.phase,needsChoice=['adopt','conflict','empty-blocked'].includes(phase);
  $('reserveAccountAdopt').hidden=!needsChoice;$('reserveAccountAdopt').textContent=phase==='empty-blocked'?'Leeren Kontostand ausdrücklich speichern':'Diesen Gerätestand übernehmen';
  $('reserveAccountPull').hidden=phase!=='conflict';$('reserveAccountRetry').hidden=!['error','conflict'].includes(phase);
  $('reserveAccountSave').hidden=!['ready','saved','saving'].includes(phase);
@@ -22,7 +22,7 @@ async function connect(session){
  await engine.connect(session.user.id,window.RESERVE_ACCOUNT_STORAGE.createTransport(config,session));
  if(['adopt','conflict'].includes(engine.phase)&&local.getMeta()?.ownerId===session.user.id)lock(false);
 }
-function changed(){if(restoring||!engine?.ready)return;if($('reserveAccountBadge'))$('reserveAccountBadge').textContent='Änderungen noch nicht im Konto gesichert';clearTimeout(timer);timer=setTimeout(()=>engine.save(),1500);}
+function changed(){if(restoring||!engine?.ready)return;message('Änderungen noch nicht im Konto gesichert.');$('reserveAccountStatus').dataset.phase='pending';if($('reserveAccountBadge'))$('reserveAccountBadge').textContent='Änderungen noch nicht im Konto gesichert';clearTimeout(timer);timer=setTimeout(()=>engine.save(),1500);}
 async function run(action){try{await action();}catch{message('Aktion fehlgeschlagen. Deine lokalen Daten bleiben erhalten.');}}
 async function mount(){
  profile=$('profile');if(!profile||$('reserveAccountCard'))return;
@@ -44,7 +44,7 @@ async function mount(){
   $('reserveAccountPull').onclick=()=>run(async()=>{if(!confirm('Kontostand laden und die Daten auf diesem Gerät ersetzen? Nicht gesicherte lokale Änderungen gehen verloren.'))return;const row=await engine.transport.get();if(row)await engine.restore(row);});
   $('reserveAccountRetry').onclick=()=>run(()=>connect(currentSession));
   $('reserveAccountLogout').onclick=()=>run(async()=>{
-   if(engine.phase==='saving'){message('Bitte warten, bis die Sicherung abgeschlossen ist.');return;}
+   if(engine.busy){message('Bitte warten, bis die Sicherung abgeschlossen ist.');return;}
    if(!confirm('Abmelden und die lokale Kontokopie entfernen? Nicht gesicherte Änderungen vorher als Datei sichern.'))return;
    const owned=local.getMeta()?.ownerId===activeOwner;engine.stop();clearTimeout(timer);const {error}=await client.auth.signOut({scope:'local'});if(error)throw error;if(owned)await local.clear();location.reload();
   });

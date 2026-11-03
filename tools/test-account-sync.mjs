@@ -53,4 +53,9 @@ function fixture({localState=payload([]),remote=payload([{n:'Reis',q:'200 g'}]),
 {
  const f=fixture();let release;f.flags.getPromise=new Promise(r=>release=r);const pending=f.sync.connect(uid,f.transport);while(!f.calls.get)await new Promise(r=>setTimeout(r,0));f.local=payload([{n:'Neu eingetragen',q:'1 Stück'}]);release();await pending;assert.equal(f.calls.restore,0);assert.equal(f.calls.put,0);assert.equal(f.sync.phase,'conflict');
 }
+{
+ const p=payload([{n:'Reis',q:'300 g'}]),f=fixture({localState:p,remote:p});await f.sync.connect(uid,f.transport);f.local=payload([{n:'Reis',q:'200 g'}]);
+ const put=f.transport.put;let first=true;f.transport.put=async(...args)=>{const result=await put(...args);if(first){first=false;f.local=payload([{n:'Reis',q:'100 g'}]);}return result;};
+ await f.sync.save();assert.equal(f.server.payload.state.values.reserveStock[0].q,'100 g');assert.equal(f.calls.put,2);assert.equal(f.sync.phase,'saved');assert.ok(f.events.some(e=>e.phase==='pending'));
+}
 console.log('Account sync: restore after empty browser, explicit adoption, load/upload failures, owner changes, CAS conflicts, photo digests, explicit empty save, stale session cancellation and clean-device refresh passed. No real cloud or email delivery claimed.');

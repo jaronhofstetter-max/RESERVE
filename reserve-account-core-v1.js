@@ -91,7 +91,10 @@ class AccountSync{
    if(ticket!==this.generation)return;
    const result=await transport.put(revision,current.payload,allowEmpty);if(ticket!==this.generation)return;
    if(!Number.isSafeInteger(result.revision)||result.revision!==revision+1)throw Error('Ungültige Speicherbestätigung. Bitte neu abgleichen.');
-   this.remote={revision:result.revision,payload:current.payload};this.bind(result.revision,current.hash);this.status('saved','Vorrat, Rezepte und gespeicherte Rezeptfotos im Konto gesichert.');
+   this.remote={revision:result.revision,payload:current.payload};this.bind(result.revision,current.hash);
+   const latest=await this.capture();if(ticket!==this.generation)return;
+   if(latest.hash!==current.hash){this.queued=true;this.status('pending','Weitere Änderungen werden noch gesichert …');}
+   else this.status('saved','Vorrat, Rezepte und gespeicherte Rezeptfotos im Konto gesichert.');
   }catch(error){if(ticket===this.generation){this.ready=false;this.needsRefresh=error.code==='conflict';this.status(error.code==='conflict'?'conflict':'error',error.code==='conflict'?'Ein anderes Gerät hat den Kontostand geändert. Nichts wurde überschrieben. Bitte neu abgleichen.':error.message||'Nicht gesichert. Deine lokalen Daten bleiben erhalten.');}}
   finally{this.busy=false;if(this.queued){this.queued=false;if(this.ready)await this.save();}}
  }
