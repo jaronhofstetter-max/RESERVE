@@ -33,9 +33,27 @@ try{
  assert.equal(await page.locator('#personalIngredientUnit').inputValue(),'g');
  await page.locator('#personalAddIngredient').click();
  assert.equal(await page.locator('#personalIngredients').inputValue(),'200 g Reis');
+ await page.getByText('Zutatenliste direkt bearbeiten',{exact:true}).click();
  await page.locator('#personalName').fill('Meine Reispfanne');await page.locator('#personalPortions').fill('2');
  await page.locator('#personalIngredientAmount').fill('2');await page.locator('#personalIngredientUnit').fill('Stück');await page.locator('#personalIngredientName').fill('Eier');await page.locator('#personalAddIngredient').click();
  await page.locator('#personalSteps').fill('Reis garen.\nEier hinzufügen.');
+ // Remove exactly one occurrence, preserve duplicate rows and empty lines, and persist the change.
+ await page.locator('#personalIngredients').fill('200 g Reis\n\n2 Stück Eier\n2 Stück Eier');
+ await page.locator('#personalConfirmed').check();
+ await page.locator('#personalIngredientList button').nth(1).click();
+ assert.equal(await page.locator('#personalIngredients').inputValue(),'200 g Reis\n\n2 Stück Eier');
+ assert.equal(await page.locator('#personalConfirmed').isChecked(),false);
+ await openBook();await page.locator('#personalResume').click();
+ assert.equal(await page.locator('#personalIngredientList button').count(),2);
+ assert.equal(await page.locator('#personalIngredients').inputValue(),'200 g Reis\n\n2 Stück Eier');
+ // Removing the last ingredient must not submit the form or permit an empty recipe.
+ await page.locator('#personalIngredientList button').first().click();await page.locator('#personalIngredientList button').first().click();
+ assert.equal(await page.locator('#personalIngredients').inputValue(),'');
+ assert.equal(await page.locator('#personalIngredientList button').count(),0);
+ await page.locator('#personalConfirmed').check();await page.locator('#personalReview button[type=submit]').click();
+ assert.equal(await page.evaluate(()=>RESERVE_PERSONAL_RECIPES.records().length),0);
+ if(await page.locator('#personalIngredientText').getAttribute('open')===null)await page.getByText('Zutatenliste direkt bearbeiten',{exact:true}).click();
+ await page.locator('#personalIngredients').fill('200 g Reis\n2 Stück Eier');
  // A started but not added ingredient must never disappear silently on save.
  await page.locator('#personalIngredientName').fill('Salz');await page.locator('#personalConfirmed').check();await page.locator('#personalReview button[type=submit]').click();
  assert.equal(await page.evaluate(()=>RESERVE_PERSONAL_RECIPES.records().length),0);
@@ -48,7 +66,7 @@ try{
  await page.locator('#personalPhotoGallery').click();await page.locator('#personalGallery').setInputFiles({name:'dish.png',mimeType:'image/png',buffer});await page.locator('.personal-hero').waitFor();
  await openBook();await page.evaluate(id=>RESERVE_PERSONAL_RECIPES.view(id),id);await page.locator('.personal-hero').waitFor();
  // Edit draft survives reload and updates the same stored recipe instead of duplicating it.
- await page.locator('#personalEdit').click();await page.locator('#personalName').fill('Reispfanne bearbeitet');
+ await page.locator('#personalEdit').click();assert.equal(await page.locator('#personalIngredientList button').count(),2);await page.locator('#personalName').fill('Reispfanne bearbeitet');
  await openBook();await page.locator('#personalResume').click();assert.equal(await page.locator('#personalName').inputValue(),'Reispfanne bearbeitet');
  assert.equal(await page.locator('#personalConfirmed').isChecked(),false);await save();
  assert.equal(await page.evaluate(()=>RESERVE_PERSONAL_RECIPES.records().length),1);
@@ -59,7 +77,7 @@ try{
  // Unmeasured packaging is saveable but never turned into guessed grams.
  await page.evaluate(()=>RESERVE_PERSONAL_RECIPES.open());await page.locator('#personalNew').click();
  await page.locator('#personalName').fill('Eigenes <img src=x onerror=alert(1)>');await page.locator('#personalPortions').fill('2');
- await page.locator('#personalIngredients').fill('1 Becher Schmand');await page.locator('#personalSteps').fill('Alles verrühren.');await save();
+ if(await page.locator('#personalIngredientText').getAttribute('open')===null)await page.getByText('Zutatenliste direkt bearbeiten',{exact:true}).click();await page.locator('#personalIngredients').fill('1 Becher Schmand');await page.locator('#personalSteps').fill('Alles verrühren.');await save();
  assert.equal(await page.locator('#personalFinish').isDisabled(),true);
  assert.equal(await page.locator('#personalRecipeDetail img').count(),0);
  assert.match(await page.locator('#personalRecipeDetail').textContent(),/1 Becher Schmand/);
