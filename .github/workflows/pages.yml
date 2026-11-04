@@ -65,6 +65,7 @@ jobs:
         run: |
           npm ci --prefix experiments/account-storage --ignore-scripts --no-audit --no-fund
           node tools/test-account-sync.mjs
+          node tools/test-account-transport.mjs
           node tools/test-account-sql.mjs
           node tools/build-account-sdk.mjs
       - name: Enable fast startup and compact recipe delivery

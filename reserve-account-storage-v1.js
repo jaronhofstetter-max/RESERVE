@@ -38,9 +38,9 @@ function createTransport(config,session){
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),20000);
   try{
    const response=await fetch(origin+path,{...options,signal:controller.signal,headers:{...baseHeaders,...options.headers},cache:'no-store',credentials:'omit'});
-   if(!response.ok){let code='';try{code=(await response.json()).code||'';}catch{}
+   if(!response.ok){let code='';try{const body=await response.json();code=body.code||body.error||'';}catch{}
     const e=Error(response.status===401?'Anmeldung abgelaufen. Bitte erneut anmelden.':code==='40001'?'Ein anderes Gerät hat den Stand geändert.':'Kontospeicherung fehlgeschlagen ('+response.status+'). Lokale Daten bleiben erhalten.');
-    e.code=code==='40001'?'conflict':code==='Duplicate'||response.status===409?'duplicate':'request';throw e;
+    e.code=code==='40001'?'conflict':['Duplicate','ResourceAlreadyExists','KeyAlreadyExists','already_exists'].includes(code)||response.status===409?'duplicate':'request';throw e;
    }return await consume(response);
   }catch(error){if(error.name==='AbortError')throw Error('Kontospeicherung hat nicht geantwortet. Bitte erneut versuchen.');throw error;}finally{clearTimeout(timer);}
  }
