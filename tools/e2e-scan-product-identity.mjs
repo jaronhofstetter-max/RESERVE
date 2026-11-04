@@ -6,6 +6,14 @@ const server=http.createServer((req,res)=>{const p=req.url.split('?')[0];try{res
 await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
 try{browser=await chromium.launch();const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.route('https://**',r=>r.abort());
  await page.goto(`http://127.0.0.1:${server.address().port}/`,{waitUntil:'networkidle'});await page.waitForFunction(()=>window.RESERVE_SCAN_IDENTITY&&document.getElementById('scanIngredient'));
+ await page.evaluate(()=>{RESERVE_VISUAL_FLOW.openCapture();RESERVE_BARCODE.beginUnknown('7612345678960')});
+ await page.locator('#scanName').fill('Vanillemilch');assert.equal(await page.locator('#scanIngredient').inputValue(),'Vanillemilch');assert.equal(await page.locator('#scanCat').inputValue(),'Getränke');
+ await page.locator('#scanQty').fill('500 ml');await page.locator('#scanAdd').click();await page.waitForFunction(()=>!document.getElementById('scanAdd').disabled);
+ assert.deepEqual(await page.evaluate(()=>[availableAmount('Milch','ml'),availableAmount('Vanille-Milch','ml'),availableAmount('Schokomilch','ml')]),[0,500,0],'Recipe availability must preserve the vanilla variant');
+ await page.evaluate(()=>RESERVE_BARCODE.beginUnknown('7612345678961'));await page.locator('#scanName').fill('Schoko-Milch');assert.equal(await page.locator('#scanIngredient').inputValue(),'Schokomilch');assert.equal(await page.locator('#scanCat').inputValue(),'Getränke');
+ await page.locator('#scanQty').fill('250 ml');await page.locator('#scanAdd').click();await page.waitForFunction(()=>!document.getElementById('scanAdd').disabled);
+ assert.deepEqual(await page.evaluate(()=>[availableAmount('Milch','ml'),availableAmount('Vanillemilch','ml'),availableAmount('Schokoladenmilch','ml')]),[0,500,250],'Both beverage variants remain usable as their exact recipe ingredients');
+ await page.evaluate(()=>RESERVE_BARCODE.beginUnknown('7612345678962'));for(const name of ['Zucker','Salz','Reis','Mehl','Brot']){await page.locator('#scanName').fill(name);assert.equal(await page.locator('#scanIngredient').inputValue(),name);}
  await page.evaluate(()=>{RESERVE_VISUAL_FLOW.openCapture();RESERVE_BARCODE.beginUnknown('7612345678981')});
  await page.locator('#scanName').fill('Sardellen');assert.equal(await page.locator('#scanIngredient').inputValue(),'Sardellen');assert.equal(await page.locator('#scanCat').inputValue(),'Protein');
  assert.equal(await page.locator('#scanConfidenceSummary .scan-check-row').first().locator('.scan-check-mark').innerText(),'✓');

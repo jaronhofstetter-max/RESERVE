@@ -29,3 +29,13 @@ k.confirm({barcode:'7612345678977',n:'Sardellen',q:'33 g',c:'Protein'});assert.e
 k.confirm({barcode:'7612345678977',n:'Sardellen',q:'33 g',c:'Sonstiges'},{ingredient:'Sardinen'});
 assert.equal(k.recognize({barcode:'7612345678977',n:'Sardellen'}).ingredient.value,'Sardinen','Explicit saved correction wins over the generic name rule');assert.equal(k.recognize({barcode:'7612345678977',n:'Sardellen'}).category.value,'Sonstiges');
 console.log('Fish identity: clear names/categories, variants, mixed/vegan exclusions and saved correction precedence passed.');
+
+for(const [name,ingredient]of [['Vanillemilch','Vanillemilch'],['Vanille-Milch','Vanillemilch'],['Milch Vanille','Vanillemilch'],['Schokomilch','Schokomilch'],['Schoko-Milch','Schokomilch'],['Schokoladenmilch','Schokomilch'],['Kakaomilch','Schokomilch']]){const x=api.analyze(name);assert.equal(x.ingredient,ingredient,name);assert.equal(x.category,'Getränke',name);}
+assert.equal(api.analyze('Milch').category,'Milchprodukte');
+for(const name of ['Milchschokolade','Milch Schokolade','Vanillemilch Pulver','Vanillemilch Pudding','Vegane Vanillemilch','Hafer Vanillemilch','Milch Erdbeer'])assert.equal(api.analyze(name).state,'unknown',name);
+for(const [a,b]of [['Vanillemilch','Milch'],['Schokomilch','Milch'],['Vanillemilch','Schokomilch'],['Milch','Vanille-Milch']]){assert.equal(m(a,b),false,a+'/'+b);assert.equal(m(b,a),false,b+'/'+a);}
+for(const [a,b]of [['Vanille-Milch','Vanillemilch'],['Schoko-Milch','Schokoladenmilch'],['Schokomilch','Kakaomilch']])assert.ok(m(a,b),a+'/'+b);
+k.confirm({barcode:'7612345678966',n:'Vanillemilch',q:'500 ml'},{ingredient:'Milch'});assert.equal(k.recognize({barcode:'7612345678966',n:'Vanillemilch'}).ingredient.value,'Vanillemilch','Stale plain-milk mapping must not erase the flavour');assert.equal(m('Vanillemilch','Milch'),false);
+for(const name of ['Zucker','Salz','Reis','Mehl','Brot'])assert.equal(api.analyze(name).ingredient,name);
+for(const [a,b]of [['Zucker','Vanille Zucker'],['Salz','Gewürzsalz'],['Mehl','Kichererbsen Mehl']])assert.equal(m(a,b),false,a+'/'+b);
+console.log('Ingredient variants: beverage categories, exact recipe matching, stale mapping rejection and plain staple identities passed.');
