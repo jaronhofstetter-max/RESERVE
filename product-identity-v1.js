@@ -11,17 +11,26 @@ const groups=[
  ['Reis',[['Basmatireis','basmati|basmatireis'],['Jasminreis','jasminreis|jasmine rice'],['Risottoreis','risottoreis|arborio|carnaroli']]],
  ['Gemüse & Früchte',[['Tomaten','tomate|tomaten|cherrytomate|cherrytomaten|cocktailtomate|cocktailtomaten'],['Zwiebel','zwiebel|zwiebeln'],['Knoblauch','knoblauch|knoblauchzehe|knoblauchzehen'],['Brokkoli','brokkoli|broccoli'],['Karotte','karotte|karotten|mohre|mohren|ruebli|rubli'],['Zucchini','zucchini|zucchetti'],['Kartoffeln','kartoffel|kartoffeln'],['Blumenkohl','blumenkohl|karfiol'],['Aubergine','aubergine|auberginen|melanzani'],['Apfel','apfel'],['Zitrone','zitrone|zitronen']]],
  ['Gebäck & Snacks',[['Buttergebäck','buttergeback|buttergebaeck|petit beurre'],['Kekse','keks|kekse|biscuit|biscuits|cookie|cookies|sables'],['Reiswaffeln','reiswaffel|reiswaffeln']]],
- ['Weitere',[['Tofu','tofu'],['Haferflocken','haferflocken'],['Butter','butter'],['Eier','ei|eier'],['Milch','milch|vollmilch'],['Naturjoghurt','naturjoghurt|naturjogurt']]]
+ ['Milch',[['Milch','milch|vollmilch']]],
+ ['Weitere',[['Tofu','tofu'],['Haferflocken','haferflocken'],['Butter','butter'],['Eier','ei|eier'],['Naturjoghurt','naturjoghurt|naturjogurt']]]
 ];
 const rules=groups.flatMap(([family,items])=>items.map(([ingredient,pattern])=>({family,ingredient,test:new RegExp('(?:^| )('+pattern+')(?: |$)')})));
 const excluded=/(?:^| )(?:sauce|sosse|suppe|fertiggericht|salat|pulver|mehl|riegel|schokolade|sirup|saft|tee|gewurz|gewurzmischung|chips|pizza|bowl|paste|pastete|aufstrich|creme)(?: |$)/;
-function analyze(name){const n=norm(name);if(!n||excluded.test(n)||/(?:^| )(?:mit|und|with)(?: |$)/.test(n))return{state:'unknown',ingredient:'',family:'',candidates:[]};
+const milkVariants=[['Vanillemilch','vanillemilch|vanille milch|milch vanille|vanilla milk'],['Schokomilch','schokomilch|schoko milch|milch schoko|schokoladenmilch|schokoladen milch|kakaomilch|kakao milch|chocolate milk']].map(([ingredient,pattern])=>({ingredient,test:new RegExp('(?:^| )('+pattern+')(?: |$)')}));
+const staples={'zucker':['Zucker','Sonstiges'],'salz':['Salz','Gewürze'],'reis':['Reis','Getreide & Beilagen'],'mehl':['Mehl','Getreide & Beilagen'],'brot':['Brot','Getreide & Beilagen']};
+function analyze(name){const n=norm(name);
+ const staple=Object.hasOwn(staples,n)?staples[n]:null;if(staple)return{state:'recognized',ingredient:staple[0],family:'Grundzutaten',category:staple[1],candidates:[staple[0]]};if(!n||excluded.test(n)||/(?:^| )(?:mit|und|with)(?: |$)/.test(n))return{state:'unknown',ingredient:'',family:'',candidates:[]};
+ const milk=milkVariants.filter(x=>x.test.test(n));
+ if(milk.length){
+  if(milk.length!==1||/kokos|mandel|hafer|soja|vegan|pudding|kuchen|eis|aroma/.test(n))return{state:'unknown',ingredient:'',family:'',candidates:[]};
+  return{state:'recognized',ingredient:milk[0].ingredient,family:'Milch',category:'Getränke',candidates:[milk[0].ingredient]};
+ }
  const hits=rules.filter(x=>x.test.test(n));
  if(hits.length!==1)return{state:hits.length?'ambiguous':'unknown',ingredient:'',family:'',candidates:hits.map(x=>x.ingredient)};
- const hit=hits[0];if(hit.family==='Fisch'&&/(?:^| )(?:vegan(?:e[nmrs]?)?|vegetarisch(?:e[nmrs]?)?|ersatz|alternative|geschmack|aroma)(?: |$)/.test(n))return{state:'unknown',ingredient:'',family:'',candidates:[]};if((hit.ingredient==='Milch'&&/kokos|mandel|hafer|soja|schokol/.test(n))||(hit.ingredient==='Naturjoghurt'&&/vanill|schokol|erdbeer|frucht/.test(n)))return{state:'unknown',ingredient:'',family:'',candidates:[]};
- const category=({'Pasta':'Getreide & Beilagen','Reis':'Getreide & Beilagen','Fleisch':'Protein','Fisch':'Protein','Hülsenfrüchte':'Protein','Gemüse & Früchte':'Gemüse & Früchte','Gebäck & Snacks':'Snacks & Süßwaren'})[hit.family]||({'Tofu':'Protein','Eier':'Protein','Haferflocken':'Getreide & Beilagen','Butter':'Milchprodukte','Milch':'Milchprodukte','Naturjoghurt':'Milchprodukte'})[hit.ingredient]||'';
+ const hit=hits[0];if(hit.family==='Fisch'&&/(?:^| )(?:vegan(?:e[nmrs]?)?|vegetarisch(?:e[nmrs]?)?|ersatz|alternative|geschmack|aroma)(?: |$)/.test(n))return{state:'unknown',ingredient:'',family:'',candidates:[]};if((hit.ingredient==='Milch'&&/kokos|mandel|hafer|soja|schoko|vanill|kakao|erdbeer|banan|karamell|caramel/.test(n))||(hit.ingredient==='Naturjoghurt'&&/vanill|schokol|erdbeer|frucht/.test(n)))return{state:'unknown',ingredient:'',family:'',candidates:[]};
+ const category=({'Milch':'Milchprodukte','Pasta':'Getreide & Beilagen','Reis':'Getreide & Beilagen','Fleisch':'Protein','Fisch':'Protein','Hülsenfrüchte':'Protein','Gemüse & Früchte':'Gemüse & Früchte','Gebäck & Snacks':'Snacks & Süßwaren'})[hit.family]||({'Tofu':'Protein','Eier':'Protein','Haferflocken':'Getreide & Beilagen','Butter':'Milchprodukte','Milch':'Milchprodukte','Naturjoghurt':'Milchprodukte'})[hit.ingredient]||'';
  return{state:'recognized',ingredient:hit.ingredient,family:hit.family,category,candidates:[hit.ingredient]};
 }
-function compatible(name,ingredient){const baked=/(geback|gebaeck|biscuit|keks|cookie|sables|waffel|kuchen|cake)/.test(norm(name)),plainRice=/^(reis|basmatireis|jasminreis|langkornreis|vollkornreis|risottoreis|rice)$/.test(norm(ingredient));return !(baked&&plainRice);}
-window.RESERVE_PRODUCT_IDENTITY={version:'1.2',analyze,compatible,options:()=>rules.map(x=>x.ingredient)};
+function compatible(name,ingredient){const a=analyze(name),b=analyze(ingredient);if(a.family==='Milch'&&b.family==='Milch'&&a.ingredient!==b.ingredient)return false;const baked=/(geback|gebaeck|biscuit|keks|cookie|sables|waffel|kuchen|cake)/.test(norm(name)),plainRice=/^(reis|basmatireis|jasminreis|langkornreis|vollkornreis|risottoreis|rice)$/.test(norm(ingredient));return !(baked&&plainRice);}
+window.RESERVE_PRODUCT_IDENTITY={version:'1.3',analyze,compatible,options:()=>[...rules,...milkVariants].map(x=>x.ingredient).concat(Object.values(staples).map(x=>x[0]))};
 })();

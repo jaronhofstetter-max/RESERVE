@@ -3,7 +3,7 @@ import vm from 'node:vm';
 import assert from 'node:assert/strict';
 const context={window:{},document:{readyState:'loading',addEventListener(){}},N:s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''),localStorage:{getItem(){return null}}};
 vm.createContext(context);
-for(const file of ['ingredient-identity-v1.js','barcode-v1.js'])vm.runInContext(fs.readFileSync(file,'utf8'),context);
+for(const file of ['product-identity-v1.js','ingredient-identity-v1.js','barcode-v1.js'])vm.runInContext(fs.readFileSync(file,'utf8'),context);
 const match=context.window.RESERVE_INGREDIENTS.match;
 for(const [a,b] of [['Penne Rigate No 66','Pasta'],['Fusilli N° 78','Nudeln'],['Rote Linsen','Linsen'],['Karotte','Rüebli'],['Brokkoli','Broccoli'],['Zucchini','Zucchetti'],['Basmati Reis','Langkornreis']])assert.ok(match(a,b),`${a}/${b}`);
 for(const [a,b] of [['Ei','Reis'],['Milch','Milchschokolade'],['Butter','Erdnussbutter'],['Milch','Kokosmilch'],['Kichererbsen','Kichererbsen Mehl'],['Joghurt Schokolade','Naturjoghurt'],['Pfefferminztee','Pfeffer'],['Protein Shake','Protein Riegel'],['Tomaten Reis Fertiggericht','Tomaten'],['','']])assert.equal(match(a,b),false,`${a}/${b}`);
@@ -13,3 +13,6 @@ const category=context.window.RESERVE_BARCODE.categoryFor;
 for(const [name,expected] of [['Steak','Protein'],['Kichererbsen Mehl','Getreide & Beilagen'],['Salzgebäck','Snacks & Süßwaren'],['Schwarztee mit Pfirsich','Kaffee & Tee'],['Paprikapulver','Gewürze'],['Joghurt Schokolade','Milchprodukte']])assert.equal(category(name,'food'),expected,name);
 assert.equal(category('Penne Rigate','protein enriched pasta'),'Getreide & Beilagen');
 console.log('Ingredient identity and product category regression checks passed');
+
+for(const name of ['Vanillemilch','Schokomilch','Schokoladenmilch'])assert.equal(category(name,''),'Getränke',name);
+assert.equal(category('Milch',''),'Milchprodukte');
