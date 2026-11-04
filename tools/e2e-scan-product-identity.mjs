@@ -6,6 +6,20 @@ const server=http.createServer((req,res)=>{const p=req.url.split('?')[0];try{res
 await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
 try{browser=await chromium.launch();const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.route('https://**',r=>r.abort());
  await page.goto(`http://127.0.0.1:${server.address().port}/`,{waitUntil:'networkidle'});await page.waitForFunction(()=>window.RESERVE_SCAN_IDENTITY&&document.getElementById('scanIngredient'));
+ await page.evaluate(()=>{RESERVE_VISUAL_FLOW.openCapture();RESERVE_BARCODE.beginUnknown('7612345678950')});
+ const pantryCategories=['Gewürze & Würzmittel','Zucker & Süßungsmittel','Öle & Fette','Essig & Würzsaucen'];
+ for(const id of ['cat','scanCat']){const options=await page.locator('#'+id+' option').allTextContents();for(const category of pantryCategories)assert.ok(options.includes(category),id+'/'+category);}
+ for(const [name,category]of [['Salz',pantryCategories[0]],['Honig',pantryCategories[1]],['Olivenöl',pantryCategories[2]],['Essig',pantryCategories[3]],['Sojasoße',pantryCategories[3]],['Salatsauce',pantryCategories[3]]]){await page.locator('#scanName').fill(name);assert.equal(await page.locator('#scanCat').inputValue(),category);assert.ok(await page.locator('#scanIngredient').inputValue());}
+ await page.locator('#scanName').fill('Sojasoße');await page.locator('#scanQty').fill('30 ml');await page.locator('#scanAdd').click();await page.waitForFunction(()=>!document.getElementById('scanAdd').disabled);
+ assert.deepEqual(await page.evaluate(()=>[availableAmount('Sojasauce','ml'),availableAmount('Essig','ml'),availableAmount('Salatsauce','ml')]),[30,0,0]);
+ await page.evaluate(()=>RESERVE_CABINET.detail(RESERVE_CABINET.getStock().findIndex(x=>x.barcode==='7612345678950')));
+ for(const category of pantryCategories)assert.ok((await page.locator('#cabEditCat option').allTextContents()).includes(category));assert.equal(await page.locator('#cabEditCat').inputValue(),'Essig & Würzsaucen');
+ await page.locator('#cabinetDetail .cab-close').click();
+ await page.evaluate(()=>{stock.push({n:'Altes Gewürz',q:'20 g',c:'Gewürze',barcode:'legacy-category-test'},{n:'Eigene Zutat',q:'10 g',c:'Meine Kategorie',barcode:'custom-category-test'});saveStock();RESERVE_CABINET.detail(stock.findIndex(x=>x.barcode==='legacy-category-test'));});
+ assert.equal(await page.locator('#cabEditCat').inputValue(),'Gewürze & Würzmittel');await page.locator('#cabinetDetail .cab-close').click();
+ await page.evaluate(()=>RESERVE_CABINET.detail(RESERVE_CABINET.getStock().findIndex(x=>x.barcode==='custom-category-test')));assert.equal(await page.locator('#cabEditCat').inputValue(),'Meine Kategorie');await page.locator('#cabinetDetail .cab-close').click();
+ assert.equal(await page.evaluate(()=>RESERVE_SYNC.snapshot().values.reserveStock.find(x=>x.barcode==='legacy-category-test').c),'Gewürze','Opening legacy entries must not rewrite stored data');
+ assert.equal(await page.evaluate(()=>RESERVE_RECEIPT.parseLine('Honig 250 g 3.50').category),'Zucker & Süßungsmittel');
  await page.evaluate(()=>{RESERVE_VISUAL_FLOW.openCapture();RESERVE_BARCODE.beginUnknown('7612345678960')});
  await page.locator('#scanName').fill('Vanillemilch');assert.equal(await page.locator('#scanIngredient').inputValue(),'Vanillemilch');assert.equal(await page.locator('#scanCat').inputValue(),'Getränke');
  await page.locator('#scanQty').fill('500 ml');await page.locator('#scanAdd').click();await page.waitForFunction(()=>!document.getElementById('scanAdd').disabled);
