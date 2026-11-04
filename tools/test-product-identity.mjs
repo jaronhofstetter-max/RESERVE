@@ -39,3 +39,10 @@ k.confirm({barcode:'7612345678966',n:'Vanillemilch',q:'500 ml'},{ingredient:'Mil
 for(const name of ['Zucker','Salz','Reis','Mehl','Brot'])assert.equal(api.analyze(name).ingredient,name);
 for(const [a,b]of [['Zucker','Vanille Zucker'],['Salz','Gewürzsalz'],['Mehl','Kichererbsen Mehl']])assert.equal(m(a,b),false,a+'/'+b);
 console.log('Ingredient variants: beverage categories, exact recipe matching, stale mapping rejection and plain staple identities passed.');
+
+const categoryCases=[['Salz','Gewürze & Würzmittel'],['Zucker','Zucker & Süßungsmittel'],['Honig','Zucker & Süßungsmittel'],['Öl','Öle & Fette'],['Olivenöl','Öle & Fette'],['Butter','Öle & Fette'],['Essig','Essig & Würzsaucen'],['Sojasoße','Essig & Würzsaucen'],['Salatsauce','Essig & Würzsaucen'],['Balsamico','Essig & Würzsaucen'],['Worcestersauce','Essig & Würzsaucen'],['Fischsauce','Essig & Würzsaucen']];
+for(const [name,category]of categoryCases)assert.equal(api.analyze(name).category,category,name);
+for(const [a,b]of [['Honig','Zucker'],['Sojasauce','Essig'],['Salatsauce','Sojasauce'],['Balsamico','Apfelessig'],['Olivenöl','Rapsöl']])assert.equal(m(a,b),false,a+'/'+b);
+for(const [a,b]of [['Sojasoße','Sojasauce'],['Salatsoße','Salatsauce'],['Weissweinessig','Weißweinessig']])assert.ok(m(a,b),a+'/'+b);
+assert.equal(api.categoryLabel('Gewürze'),'Gewürze & Würzmittel');assert.equal(api.categoryLabel('Eigene Kategorie'),'Eigene Kategorie');assert.equal(new Set(api.categories()).size,api.categories().length);
+console.log('Pantry categories: four groups, distinct recipe identities, spelling aliases and legacy category label passed.');

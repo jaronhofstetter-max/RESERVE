@@ -6,7 +6,7 @@
     {"name":"Schwarztee mit Pfirsich","expected":"Kaffee & Tee"},
     {"name":"Pfefferminztee","expected":"Kaffee & Tee"},
     {"name":"Salzgebäck","expected":"Snacks & Süßwaren"},
-    {"name":"Paprikapulver","expected":"Gewürze"},
+    {"name":"Paprikapulver","expected":"Gewürze & Würzmittel"},
     {"name":"Kichererbsen Mehl","expected":"Getreide & Beilagen"},
     {"name":"Penne Rigate No 66","expected":"Getreide & Beilagen"},
     {"name":"Fusilli N° 78","expected":"Getreide & Beilagen"},

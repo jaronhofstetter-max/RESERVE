@@ -10,7 +10,7 @@ for(const [a,b] of [['Ei','Reis'],['Milch','Milchschokolade'],['Butter','Erdnuss
 for(const [a,b] of [['Agnesi Fusilli','Spaghetti'],['Penne Rigate','Spaghetti'],['Farfalle','Fusilli'],['Rigatoni','Penne']])assert.equal(match(a,b),false,`${a}/${b}`);
 assert.ok(match('Barilla Spaghetti No 5','Spaghetti'));
 const category=context.window.RESERVE_BARCODE.categoryFor;
-for(const [name,expected] of [['Steak','Protein'],['Kichererbsen Mehl','Getreide & Beilagen'],['Salzgebäck','Snacks & Süßwaren'],['Schwarztee mit Pfirsich','Kaffee & Tee'],['Paprikapulver','Gewürze'],['Joghurt Schokolade','Milchprodukte']])assert.equal(category(name,'food'),expected,name);
+for(const [name,expected] of [['Steak','Protein'],['Kichererbsen Mehl','Getreide & Beilagen'],['Salzgebäck','Snacks & Süßwaren'],['Schwarztee mit Pfirsich','Kaffee & Tee'],['Paprikapulver','Gewürze & Würzmittel'],['Joghurt Schokolade','Milchprodukte']])assert.equal(category(name,'food'),expected,name);
 assert.equal(category('Penne Rigate','protein enriched pasta'),'Getreide & Beilagen');
 console.log('Ingredient identity and product category regression checks passed');
 

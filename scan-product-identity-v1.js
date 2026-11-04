@@ -4,7 +4,7 @@ if(window.RESERVE_SCAN_IDENTITY)return;
 const $=id=>document.getElementById(id);let key='',touched=false,categoryTouched=false,lastCode=null;
 function current(){const name=$('scanName')?.value?.trim()||'',code=($('barcodeInput')?.value||'').replace(/\D/g,'');return{name,code}}
 function assignment(){const input=$('scanIngredient'),row=current();if(!input||key!==row.code+'|'+row.name)return null;const ingredient=input.value.trim();return ingredient?{ingredient,source:touched?'scan-ingredient-correction':input.dataset.source||'scan-name-identity'}:null}
-function applyCategory(ingredient,saved=''){const select=$('scanCat'),category=saved||window.RESERVE_PRODUCT_IDENTITY?.analyze(ingredient)?.category;if(!categoryTouched&&select&&category&&Array.from(select.options).some(o=>o.value===category))select.value=category;}
+function applyCategory(ingredient,saved=''){const select=$('scanCat'),raw=saved||window.RESERVE_PRODUCT_IDENTITY?.analyze(ingredient)?.category,category=raw?window.RESERVE_PRODUCT_IDENTITY?.categoryLabel(raw)||raw:'';if(!categoryTouched&&select&&category&&Array.from(select.options).some(o=>o.value===category))select.value=category;}
 function update(force=false){const row=current(),next=row.code+'|'+row.name,input=$('scanIngredient');if(!input)return;
  if(!force&&next===key)return;
  if(row.code!==lastCode||!row.name)categoryTouched=false;lastCode=row.code;
