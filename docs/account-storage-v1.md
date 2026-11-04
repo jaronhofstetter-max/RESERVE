@@ -1,8 +1,18 @@
-# RESERVE account persistence - prepared, not activated
+# RESERVE account persistence - explicit trial, general release disabled
 
 Owner authorization: 2026-11-03. Goal: inventory, personal recipes, drafts and saved dish photos survive deletion of browser site data and can be retrieved after signing in. This change uses a separate RESERVE Supabase schema; the legacy TenderHawk schema and authentication are not reused.
 
-**Production activation remains blocked until a real Supabase project is connected, provisioned and verified. `reserve-account-config-v1.js` defaults to `enabled:false`. No active server backup is claimed by this code or the local tests.** Do not merge/enable this feature as a working customer cloud service on the strength of mocked tests alone.
+**General release remains disabled until real authenticated REST/Storage and browser recovery tests pass.** The explicit `https://hofilight.ch/?reserveAccountTest=1` link enables the labelled trial for that browser and retains its opt-in in `reserveAccountTestV1` so confirmation redirects and reloads work. Other browsers make no account request. The trial is not an access-control boundary: RLS and private Storage enforce ownership. Trial participants must keep independent exports and must not delete their only local copy for testing.
+
+## Hosted setup verified 2026-11-04
+
+- Existing free project `sqiuuoewznmlazamkvua` in `eu-west-1` is healthy. The legacy tables were inspected and retained.
+- Migration `20261103190153` / `reserve_account_storage_v1` was applied. Real hosted PostgreSQL role tests passed for owner-only reads, anonymous denial, direct-write denial, stale revision/empty-state guards, missing photos and private immutable object policies. Synthetic rows were rolled back. These are not authenticated HTTP or real parallel-client tests.
+- Email confirmation remains required. Site URL and exact redirect allowlist are `https://hofilight.ch/`.
+- Custom SMTP uses the owner's Infomaniak Mail Starter mailbox `reserve@hofilight.ch`, sender name RESERVE, `mail.infomaniak.com:587`. The owner entered the device-specific password directly in provider settings; no credential is in this repository.
+- A real OTP confirmation email reached the owner's inbox. The owner clicked it, returned to RESERVE, and Auth reports the account confirmed. This proves SMTP delivery and that confirmation redirect, not password sign-in, PKCE recovery, session renewal or account data restoration. The mailbox password is not the RESERVE account password.
+- Still required before general release: two-account authenticated HTTP isolation/concurrency probes, actual registration/password recovery/session checks, and an inventory + recipe + photo browser-data deletion/re-login drill. The trial exposes the actual UI for those checks without presenting the feature as generally available.
+
 
 ## Prepared components
 
@@ -39,7 +49,7 @@ Local browser caches remain local data, not encryption at rest. Browser extensio
 4. Configure an authorized production SMTP sender. Supabase's default mail service is restricted to project team addresses and is not sufficient for public customer registrations. Credentials belong in the provider's secret settings, never the repository or browser configuration. Sending account emails is a customer-initiated service action; no real customer is registered or emailed by the test fixtures.
 5. Run real two-account isolation probes against both REST and private Storage using authenticated user tokens. Confirm anonymous denial, wrong-owner reads/writes, immutable object behavior, stale-revision rejection and missing-photo rejection. Test simultaneous writes using separate clients.
 6. Perform the real browser-data deletion drill: save inventory, a personal recipe and an actual dish photo; close the session, clear site storage, sign in again, verify exact data and photo recovery. Also test interrupted photo upload, failed read, quota errors, offline edits, account switching and sign-out. Preserve a local export during the drill. Never use an existing customer's only copy as the test fixture.
-7. Only after those checks, set the real public project URL and `sb_publishable_...` key in `reserve-account-config-v1.js`, set `enabled:true`, build the exact locked SDK and publish. Administrative/service-role keys, database passwords and SMTP credentials must never appear in this file. Confirm live account status before telling customers their data is server-backed.
+7. Only after those checks, change the general-release `enabled:false` to `enabled:true` in `reserve-account-config-v1.js`, build the exact locked SDK and publish. Administrative/service-role keys, database passwords and SMTP credentials must never appear in this file. Confirm live account status before telling customers their data is server-backed.
 
 ## Verification included
 
@@ -55,7 +65,7 @@ node tools/test-account-sync.mjs
 node tools/test-account-sql.mjs
 ```
 
-Browser checks use the existing production preparation and Playwright CI runtime. Experimental account dependencies are removed before publishing the Pages artifact. While disabled, customers continue to use local data and the existing file exports; the backup label now says so explicitly.
+Browser checks use the existing production preparation and Playwright CI runtime. Experimental account dependencies are removed before publishing the Pages artifact. Outside the explicit trial, customers continue to use local data and the existing file exports; the backup label now says so explicitly.
 
 ## Primary references checked 2026-11-03
 
