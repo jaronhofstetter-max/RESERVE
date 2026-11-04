@@ -1,0 +1,28 @@
+{
+  "reviewedAt": "2026-11-04",
+  "recipeId": "bananen-hafer-pancakes",
+  "recipeSource": "data/quality-batch-04.json",
+  "textRights": {
+    "status": "Existing RESERVE recipe retained; no third-party recipe text acquired or relicensed in this photo-only import."
+  },
+  "photoRights": {
+    "source": "https://www.pexels.com/photo/pancakes-on-a-plate-8367008/",
+    "author": "Akshata Bablad",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "commercialAppUse": true,
+    "adaptationAllowed": true,
+    "attributionRequired": false,
+    "shareAlikeRequired": false,
+    "restrictions": [
+      "No standalone sale of unaltered copies",
+      "No redistribution as stock or wallpaper",
+      "No implied endorsement",
+      "No trademark use"
+    ],
+    "evidence": "Photo page credits Akshata Bablad and links Free to Pexels License. License permits free app use and editing; attribution appreciated but optional. Camera listed as iPhone 11 Pro Max, capture 2020-09-12. Download is an original JPEG, 3024 × 4030. EXIF copyright notice is retained in source metadata; permission is documented by the separate public Pexels license grant."
+  },
+  "photoSha256": "f4c9c5f00cbb283f9f106328fc5542d08be08f3f0c53281f518d0227074b1e92",
+  "servingSuggestion": true,
+  "visualReview": "Serviervorschlag: Pancakes mit Banane und Heidelbeeren. Der Haferanteil ist am Foto nicht nachweisbar; Heidelbeeren, sichtbare Saaten und zusätzliche Garnitur sind nicht Teil des RESERVE-Rezepts und nicht in dessen Nährwerten enthalten."
+}

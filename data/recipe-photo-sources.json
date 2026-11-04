@@ -600,6 +600,23 @@
       "reviewedAt": "2026-10-27",
       "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bethmaennchen1.jpg",
       "originalPhotoSha256": "6339b3b6e2b1dd9ef30822e8a31b8b1a678f6dee7d485406e7ed30b2b99fd7ee"
+    },
+    {
+      "recipeId": "bananen-hafer-pancakes",
+      "path": "assets/recipe-photos/bananen-hafer-pancakes.webp",
+      "source": "https://www.pexels.com/photo/pancakes-on-a-plate-8367008/",
+      "author": "Akshata Bablad",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Pancakes on a Plate",
+      "provider": "Pexels",
+      "adaptation": "Proportional auf 525 × 700 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: Pancakes mit Banane und Heidelbeeren. Der Haferanteil ist am Foto nicht nachweisbar; Heidelbeeren, sichtbare Saaten und zusätzliche Garnitur sind nicht Teil des RESERVE-Rezepts und nicht in dessen Nährwerten enthalten.",
+      "reviewedAt": "2026-11-04",
+      "originalPhotoUrl": "https://images.pexels.com/photos/8367008/pexels-photo-8367008.jpeg",
+      "originalPhotoSha256": "f4c9c5f00cbb283f9f106328fc5542d08be08f3f0c53281f518d0227074b1e92"
     }
   ]
 }
