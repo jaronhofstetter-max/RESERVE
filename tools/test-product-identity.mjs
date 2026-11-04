@@ -20,3 +20,12 @@ k.confirm({...row,n:'Unbekanntes Hausprodukt'});assert.equal(k.recognize({barcod
 k.confirm({...row,n:'Unbekanntes Hausprodukt'},{ingredient:'Spaghetti',source:'scan-ingredient-correction'});assert.equal(k.recognize({barcode:row.barcode}).ingredient.value,'Spaghetti');assert.ok(m('Unbekanntes Hausprodukt','Spaghetti'));
 k.confirm({...row,barcode:'7612345678902',n:'Unbekanntes Hausprodukt'},{ingredient:'Fusilli'});assert.equal(k.ingredientIdentity('Unbekanntes Hausprodukt').state,'ambiguous');assert.equal(k.resolve({barcode:row.barcode,n:'Unbekanntes Hausprodukt'}).ingredient,'Spaghetti');assert.equal(k.resolve({barcode:'7612345678902',n:'Unbekanntes Hausprodukt'}).ingredient,'Fusilli');
 console.log('Scan identity: precise variants, unknown/mixed names, barcode confirmation, corrections, stale mapping and conflicting names OK');
+
+for(const [name,expected]of [['Sardellen','Sardellen'],['Sardellenfilets','Sardellen'],['Anchovis','Sardellen'],['Sardinen','Sardinen'],['Thunfisch','Thunfisch'],['Lachsfilet','Lachs'],['Forelle','Forelle'],['Kabeljau','Kabeljau'],['Makrelen','Makrele']]){const result=api.analyze(name);assert.equal(result.ingredient,expected,name);assert.equal(result.category,'Protein',name);}
+for(const name of ['Sardellen Paste','Sardellen Creme','Sardellen mit Tomaten','Vegane Sardellen','Veganen Sardellen','Vegetarischer Lachs','Lachs Aroma','Sardellen Sauce'])assert.equal(api.analyze(name).state,'unknown',name);
+assert.equal(api.analyze('Sardellen Sardinen').state,'ambiguous');
+assert.equal(m('Sardellen','Sardinen'),false);assert.equal(m('Sardellenfilets','Sardellen'),true);
+k.confirm({barcode:'7612345678977',n:'Sardellen',q:'33 g',c:'Protein'});assert.equal(k.recognize({barcode:'7612345678977',n:'Sardellen'}).ingredient.value,'Sardellen');
+k.confirm({barcode:'7612345678977',n:'Sardellen',q:'33 g',c:'Sonstiges'},{ingredient:'Sardinen'});
+assert.equal(k.recognize({barcode:'7612345678977',n:'Sardellen'}).ingredient.value,'Sardinen','Explicit saved correction wins over the generic name rule');assert.equal(k.recognize({barcode:'7612345678977',n:'Sardellen'}).category.value,'Sonstiges');
+console.log('Fish identity: clear names/categories, variants, mixed/vegan exclusions and saved correction precedence passed.');
