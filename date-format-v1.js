@@ -3,7 +3,27 @@
 (function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./date-token-guard-v1.js'):root.RESERVE_DATE_TOKENS);if(typeof module==='object'&&module.exports)module.exports=api;else root.RESERVE_DATE_FORMAT=api;})(globalThis,function(Tokens){
  'use strict';
  const PROFILE_KEY='reserveDateFormatsV1',PREF_KEY='reserveDateDisplayV1';
- function iso(y,m,d){y=+y;m=+m;d=+d;if(y<100)y+=y<70?2000:1900;const x=new Date(Date.UTC(y,m-1,d));return y>=1900&&y<=2099&&x.getUTCFullYear()===y&&x.getUTCMonth()===m-1&&x.getUTCDate()===d?`${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`:'';}
+ function iso(y,m,d){y=+y;m=+m;d=+d;if(y<100)return'';const x=new Date(Date.UTC(y,m-1,d));return y>=1900&&y<=2099&&x.getUTCFullYear()===y&&x.getUTCMonth()===m-1&&x.getUTCDate()===d?`${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`:'';}
+ function shortYears(value){
+  const text=String(value||''),out=[],occupied=[];
+  const add=(m,kind,parts)=>{const start=m.index,end=start+m[0].length;if(Tokens&&!Tokens.keep(text,start,end))return;const role=selectionHint(text,start);if(['manufactured','batch','conflict'].includes(role))return;out.push({start,end,printed:m[0],kind,yearSuffix:m[m.length-1],parts,role,requiresYearConfirmation:true});};
+  for(const m of text.matchAll(/(?<![A-Za-z0-9])(\d{1,2})\s*([./-])\s*(\d{1,2})\s*\2\s*((?:19|20)\d{2}|\d{2})(?![A-Za-z0-9])/g)){
+   occupied.push([m.index,m.index+m[0].length]);if(m[4].length!==2)continue;const a=+m[1],b=+m[3],yy=+m[4],parts=[];
+   if(iso(2000+yy,b,a)||iso(1900+yy,b,a))parts.push({day:a,month:b,order:'dmy'});
+   if(a!==b&&(iso(2000+yy,a,b)||iso(1900+yy,a,b)))parts.push({day:b,month:a,order:'mdy'});
+   if(parts.length)add(m,'day',parts);
+  }
+  for(const m of text.matchAll(/(?<![A-Za-z0-9])(0?[1-9]|1[0-2])\s*([./-])\s*(\d{2})(?![A-Za-z0-9])/g)){
+   if(occupied.some(([a,b])=>m.index<b&&m.index+m[0].length>a))continue;
+   if(/\s*(?:CHF|EUR|USD|g|kg|ml|cl|dl|l|%)(?:\b|$)/i.test(text.slice(m.index+m[0].length,m.index+m[0].length+12)))continue;
+   add(m,'month',[{month:+m[1],order:'my'}]);
+  }
+  const unique=new Map();for(const r of out)if(!unique.has(r.printed))unique.set(r.printed,r);return [...unique.values()];
+ }
+ function confirmYear(token,year){
+  year=String(year||'').trim();if(!/^(?:19|20)\d{2}$/.test(year)||!token?.requiresYearConfirmation||!/^\d{2}$/.test(token.yearSuffix)||!year.endsWith(token.yearSuffix))return[];
+  const choices=[];for(const p of token.parts||[]){const full=iso(year,p.month,token.kind==='month'?1:p.day);if(full)choices.push({date:token.kind==='month'?full.slice(0,7):full,precision:token.kind,order:p.order});}return choices;
+ }
  function groups(text){const out=[];for(const m of text.matchAll(/(?<!\d)(\d{1,2})\s*([./-])\s*(\d{1,2})\s*\2\s*((?:19|20)\d{2}|\d{2})(?!\d)/g)){const start=m.index,end=start+m[0].length;if(Tokens&&!Tokens.keep(text,start,end))continue;const dmy=iso(m[4],m[3],m[1]),mdy=iso(m[4],m[1],m[3]),choices=[];if(dmy)choices.push({date:dmy,order:'dmy'});if(mdy&&mdy!==dmy)choices.push({date:mdy,order:'mdy'});if(choices.length)out.push({start,end,printed:m[0],separator:m[2],shape:m[2]+':'+m[4].length,choices});}return out;}
  function printedOrder(text,g){const found=[];const re=/\b(DD|TT|MM)\s*([./-])\s*(DD|TT|MM)\s*\2\s*(YYYY|JJJJ|YY|JJ)\b/gi;for(const m of text.matchAll(re)){if(m[2]!==g.separator||Math.max(g.start-(m.index+m[0].length),m.index-g.end,0)>65)continue;const a=m[1].toUpperCase(),b=m[3].toUpperCase();if(['DD','TT'].includes(a)&&b==='MM')found.push('dmy');if(a==='MM'&&['DD','TT'].includes(b))found.push('mdy');}return [...new Set(found)];}
  function evidence(text,g,all=groups(text)){const direct=printedOrder(text,g);if(direct.length)return{orders:direct,source:'printed-format'};const near=all.filter(o=>o!==g&&o.separator===g.separator&&o.choices.length===1&&!/\b(?:lot|batch|charge)\s*[:.]?\s*$/i.test(text.slice(Math.max(0,o.start-25),o.start))&&!/\n/.test(text.slice(Math.min(g.end,o.end),Math.max(g.start,o.start)))&&Math.max(g.start-o.end,o.start-g.end,0)<=45&&/^\s*\d/.test(o.printed));return{orders:[...new Set(near.map(o=>o.choices[0].order))],source:'neighbour-date'};}
@@ -26,5 +46,6 @@
  function preferences(storage){const p=read(storage,PREF_KEY,{});return p&&typeof p==='object'&&!Array.isArray(p)?p:{};}
  function locale(storage){const p=preferences(storage);try{return Intl.getCanonicalLocales(p.locale||globalThis.document?.documentElement?.lang||globalThis.navigator?.language||'de-CH')[0];}catch{return'de-CH';}}
  function format(value,options={}){if(!/^\d{4}-\d{2}(?:-\d{2})?$/.test(value||''))return'';const [y,m,d]=value.split('-').map(Number);if(!iso(y,m,d||1))return'';try{return new Intl.DateTimeFormat(options.locale||locale(options.storage),{calendar:'gregory',timeZone:'UTC',year:'numeric',month:options.long?'long':'2-digit',...(d?{day:'2-digit'}:{})}).format(new Date(Date.UTC(y,m-1,d||1)));}catch{return value;}}
- return{version:'1.0',iso,groups,printedOrder,evidence,resolve,filter,wordDates,compactTailDates,selectionHint,contextKey,profile,remember,preferences,locale,format,PROFILE_KEY,PREF_KEY};
+ return{version:'1.1',iso,groups,shortYears,confirmYear,printedOrder,evidence,resolve,filter,wordDates,compactTailDates,selectionHint,contextKey,profile,remember,preferences,locale,format,PROFILE_KEY,PREF_KEY};
 });
+
