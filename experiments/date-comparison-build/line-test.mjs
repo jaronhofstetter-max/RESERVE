@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {regionPixels,lineDates,lineAgreement} from './line-guard.js';
+assert.deepEqual(lineDates('01.11.2025'),[{date:'2025-11-01',precision:'day'},{date:'2025-01-11',precision:'day'}]);
+assert.deepEqual(lineDates(' 01 . 11 . 2025 '),lineDates('01.11.2025'));
+assert.deepEqual(lineDates('04.2028'),[{date:'2028-04',precision:'month'}]);
+assert.deepEqual(lineDates('2028-04'),lineDates('04.2028'));
+assert.deepEqual(lineDates('29.02.2028'),[{date:'2028-02-29',precision:'day'}]);
+for(const value of ['19:02','M5E0','LOT 01.11.2025','01.11.2025 19:02','01.11.2025\nM5E0','01.11.25','20251101','01112025','01 11 2025','29.02.2027','31.04.2028','13.2028','2025','01.11/2025'])assert.deepEqual(lineDates(value),[],value);
+const read=(text,confidence=.99)=>({text,confidence});
+assert.equal(lineAgreement(read('01.11.2025'),read('01.11.2025')).accepted,true);
+assert.equal(lineAgreement(read('01.11.2025'),read('11.01.2025')).reason,'disagreement');
+assert.equal(lineAgreement(read('01.11.2925'),read('01.11.2025')).accepted,false);
+assert.equal(lineAgreement(read('19:02'),read('19:02')).reason,'not_date');
+assert.equal(lineAgreement(read('01.11.2025',.799),read('01.11.2025')).accepted,false);
+assert.equal(lineAgreement(read('01.11.2025'),read('01.11.2025',.899)).accepted,false);
+assert.deepEqual(regionPixels({x:.1,y:.4,w:.8,h:.1},1000,1000),{x:100,y:400,w:800,h:100});
+for(const r of [null,{x:-.1,y:0,w:.4,h:.1},{x:0,y:0,w:Infinity,h:.1},{x:.8,y:.4,w:.4,h:.1},{x:0,y:0,w:1,h:1},{x:0,y:0,w:.1,h:.001}])assert.equal(regionPixels(r,1000,1000),null);
+console.log('Line guard: exact full-year date tokens, explicit order choices, month precision, two-reader agreement; reject clocks, batch codes, mixed text and invalid regions.');
