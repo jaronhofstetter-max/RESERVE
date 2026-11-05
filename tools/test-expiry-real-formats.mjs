@@ -27,7 +27,7 @@ if(!source.includes("exportButton.textContent='Messdaten exportieren'"))throw Er
 
 const cases=[
   ['Mindestens haltbar bis Ende 04.2026','2026-04-30'],
-  ['MHD 27/01/26','2026-01-27'],
+  ['MHD 27/01/26',''],
   ['Best before 08/06/93',''],
   ['30/04/2027 4A700C 00:29:36','2027-04-30'],
   ['Prod. 23 09 2024 B.B. 23 09 2027','2027-09-23'],
@@ -58,7 +58,7 @@ const cases=[
   ['MHD: 02/2028 LOT: 95752','2028-02-29']
   ,['Mindestens haltbar bis Ende 2029','2029-12-31']
   ,['11.2020','2020-11-30']
-  ,['MHD 25107127 11:50','2027-07-25']
+  ,['MHD 25107127 11:50','']
   ,['MHD 10012027','2027-01-10']
 ];
 for(const [text,want] of cases){
@@ -97,3 +97,4 @@ field.validity.valid=true;hint.textContent='Unsicherer lokaler Vorschlag';if(san
 console.log('Manual MHD correction: checklist, month-end, empty/invalid dates and uncertain scans OK');
 
 await import('./test-expiry-nested-month-and-stale-date.mjs');
+

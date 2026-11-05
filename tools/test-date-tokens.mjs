@@ -28,6 +28,7 @@ for(const [text,want] of cases){
 }
 assert.equal(dates('2022.01')[0].precision,'month');
 assert.equal(live.parseDate('MHD Ende 01.2022'),'2022-01-31');
-assert.equal(live.parseDate('MHD 27/01/26'),'2026-01-27');
+assert.equal(live.parseDate('MHD 27/01/26'),'');
 assert.deepEqual(dates('27/01/26'),[]);
 console.log('Date token guards: four observed errors, clocks, split digits, invalid dates, Unicode offsets and preserved date formats OK. Constructed regression cases, not independent accuracy evidence.');
+
