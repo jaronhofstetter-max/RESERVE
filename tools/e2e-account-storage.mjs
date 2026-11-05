@@ -53,6 +53,10 @@ try{
  await p1.evaluate(()=>RESERVE_PERSONAL_RECIPES.view('personal-account-test'));await p1.waitForSelector('.personal-hero');assert.ok((await p1.locator('.personal-hero').getAttribute('src')).startsWith('blob:'));
  await p1.evaluate(()=>{stock[0].q='200 g';saveStock();});
  await p1.waitForFunction(()=>document.getElementById('reserveAccountStatus')?.textContent.startsWith('Vorrat, Rezepte'));
+ // The saved label can still belong to the initial hydration. Wait for the
+ // expected backing-store value, without weakening the persistence assertion.
+ const saveDeadline=Date.now()+10000;
+ while(cloud.payload.state.values.reserveStock[0].q!=='200 g'&&Date.now()<saveDeadline)await new Promise(resolve=>setTimeout(resolve,25));
  assert.equal(cloud.payload.state.values.reserveStock[0].q,'200 g');assert.ok(writes.length>0);
  // A fresh browser represents deleted site data: sign in and retrieve existing records/photos.
  const c2=await browser.newContext({viewport:{width:390,height:844}}),p2=await pageFor(c2);await login(p2);
@@ -74,3 +78,4 @@ try{
  assert.equal(writes.length,count);assert.deepEqual(errors,[]);
  console.log('Browser contract test: fresh-browser login restores inventory, recipes and IndexedDB photos; autosave; revision conflicts; wrong-account cache lock; failed-read write barrier. Auth/network mocked; real Supabase/SMTP activation not verified.');
 }finally{await browser.close();await new Promise(r=>server.close(r));}
+
