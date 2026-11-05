@@ -1,0 +1,33 @@
+{
+  "reviewedAt": "2026-11-05",
+  "recipeId": "linsen-karotten-suppe",
+  "recipeSources": [
+    "data/recipes.json"
+  ],
+  "textRights": {
+    "status": "Bestehender RESERVE-Rezepttext bleibt erhalten; kein fremder Rezepttext übernommen und keine neue Textlizenz behauptet."
+  },
+  "photoRights": {
+    "source": "https://www.pexels.com/photo/warm-and-hearty-lentil-soup-in-terra-cotta-bowl-29850843/",
+    "author": "Snappr (veröffentlichendes Urheberkonto; kein individueller Fotograf auf der Fotoseite genannt)",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "commercialAppUse": true,
+    "adaptationAllowed": true,
+    "attributionRequired": false,
+    "shareAlikeRequired": false,
+    "restrictions": [
+      "Kein unveränderter Einzelbildverkauf",
+      "Keine Weiterverbreitung als Stockfoto oder Hintergrundbild",
+      "Keine suggerierte Empfehlung oder Markennutzung"
+    ],
+    "evidence": "Fotoseite nennt Snappr und verlinkt Free auf die Pexels License. Kamera Nikon D750; Aufnahmedatum 19.04.2022; Original 3595 × 2400 JPEG. Lizenz erlaubt kostenlose App-Nutzung und Bearbeitung."
+  },
+  "photoSha256": "df3dc0912e7de99b63336599e18b79713fe93426ebe1008badae9604c9fcf928",
+  "visualReview": "Serviervorschlag: echte Linsensuppe. Die genaue Rezeptur, der Karottenanteil und eine vegane Zubereitung des fotografierten Gerichts sind nicht belegt. Die rote Gewürzgarnitur ist nicht Teil des RESERVE-Rezepts und seiner Nährwertberechnung.",
+  "servingSuggestion": true,
+  "rejectedCandidate": {
+    "source": "https://commons.wikimedia.org/wiki/File:DAL_RICE.JPG",
+    "reason": "Klar lizenzierte echte Aufnahme, wegen Farbstich und Bildgestaltung nicht in den Fotobestand übernommen."
+  }
+}

@@ -617,6 +617,23 @@
       "reviewedAt": "2026-11-04",
       "originalPhotoUrl": "https://images.pexels.com/photos/8367008/pexels-photo-8367008.jpeg",
       "originalPhotoSha256": "f4c9c5f00cbb283f9f106328fc5542d08be08f3f0c53281f518d0227074b1e92"
+    },
+    {
+      "recipeId": "linsen-karotten-suppe",
+      "path": "assets/recipe-photos/linsen-karotten-suppe.webp",
+      "source": "https://www.pexels.com/photo/warm-and-hearty-lentil-soup-in-terra-cotta-bowl-29850843/",
+      "author": "Snappr",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Warm and Hearty Lentil Soup in Terra Cotta Bowl",
+      "provider": "Pexels",
+      "adaptation": "Proportional auf 700 × 467 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echte Linsensuppe. Die genaue Rezeptur, der Karottenanteil und eine vegane Zubereitung des fotografierten Gerichts sind nicht belegt. Die rote Gewürzgarnitur ist nicht Teil des RESERVE-Rezepts und seiner Nährwertberechnung.",
+      "reviewedAt": "2026-11-05",
+      "originalPhotoUrl": "https://images.pexels.com/photos/29850843/pexels-photo-29850843.jpeg",
+      "originalPhotoSha256": "df3dc0912e7de99b63336599e18b79713fe93426ebe1008badae9604c9fcf928"
     }
   ]
 }
