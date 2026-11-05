@@ -122,8 +122,13 @@ jobs:
           node tools/test-global-dates.mjs
           node tools/test-date-image-recovery.mjs
           node experiments/date-mobile-build/build.cjs
+          python3 experiments/date-comparison-build/fetch-models.py
+          node experiments/date-comparison-build/test.mjs
+          node experiments/date-comparison-build/build.cjs
       - name: Verify explicit short-year confirmation in browser
         run: node tools/e2e-short-year.mjs
+      - name: Verify isolated dual-reader comparison
+        run: node tools/e2e-date-comparison.mjs
       - name: Verify isolated MHD phone test
         run: |
           node tools/e2e-date-mobile.mjs
@@ -182,6 +187,7 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           artifact_name: github-pages-${{ github.run_attempt }}
+
 
 
 

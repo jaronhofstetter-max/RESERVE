@@ -12,6 +12,19 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  date-comparison:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci --prefix experiments/date-mobile-build --ignore-scripts --no-audit --no-fund
+      - run: python3 experiments/date-mobile-build/fetch-models.py
+      - run: node experiments/date-mobile-build/build.cjs
+      - run: python3 experiments/date-comparison-build/fetch-models.py
+      - run: node experiments/date-comparison-build/test.mjs
+      - run: node experiments/date-comparison-build/build.cjs
+      - run: npm install --no-save playwright@1.55.0
+      - run: npx playwright install --with-deps chromium
+      - run: node tools/e2e-date-comparison.mjs
   short-year:
     runs-on: ubuntu-24.04
     steps:
@@ -141,8 +154,13 @@ jobs:
           node tools/test-global-dates.mjs
           node tools/test-date-image-recovery.mjs
           node experiments/date-mobile-build/build.cjs
+          python3 experiments/date-comparison-build/fetch-models.py
+          node experiments/date-comparison-build/test.mjs
+          node experiments/date-comparison-build/build.cjs
       - name: Verify explicit short-year confirmation in browser
         run: node tools/e2e-short-year.mjs
+      - name: Verify isolated dual-reader comparison
+        run: node tools/e2e-date-comparison.mjs
       - name: Verify isolated MHD phone test
         run: |
           node tools/e2e-date-mobile.mjs
@@ -170,5 +188,6 @@ jobs:
           node tools/e2e-shopping-scan.mjs
           node tools/e2e-mhd-review.mjs
           node tools/e2e-chuchitisch-recipes.mjs
+
 
 
