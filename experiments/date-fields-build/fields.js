@@ -1,5 +1,5 @@
 // Private-photo-free browser adaptation of context-fields-v3. Never supplies a missing year/day.
-export const VERSION='context-fields-browser-v3.3';
+export const VERSION='context-fields-browser-v3.4';
 const expiry=/mindestens\s*haltbar|\bmhd\b|\bbbe\b|best\s*before|\bb\.\s*b\.(?=\s|$)|\bexp(?:iry)?\b|haltbar\s*bis|(?:zu\s*)?verbrauchen|use\s*by|consommer|consumarsi/i;
 export const excluded=/herstell|\bprod\.?(?=\s|:|$)|produktionsdatum|manufactur|produced|packed|abgepackt|verpackungsdatum|sell\s*by|verkaufen\s*bis|vendre\s*jusqu|vendere\s*entro/i;
 const price=/\b(?:fr|chf|eur|preis)\b|€/i;
