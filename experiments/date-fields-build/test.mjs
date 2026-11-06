@@ -21,3 +21,7 @@ console.log('Adjacent-code boundaries preserve the date and mandatory review; am
 
 const multiple=high('31.12.2029 / 01.01.2030');assert.equal(fields(multiple.text).dates.length,2);assert.deepEqual(agree(multiple,multiple,expiry).choices,[]);
 const timed=fields('31.12.2029 / 19:02');assert.equal(timed.dates.length,1);assert.equal(timed.times.length,1);assert.ok(!timed.codes.some(c=>c.kind==='adjacent_numeric_codes'));
+
+for(const text of ['31.12.2029 / 08/2030','04.2029 / 12/2030','31.12.2029 / 26/08/2030']){
+ assert.ok(!fields(text).codes.some(c=>c.kind==='adjacent_numeric_codes'),text);const r=high(text);assert.deepEqual(agree(r,r,expiry).choices,[],text);
+}
