@@ -8,7 +8,7 @@ node experiments/date-fields-build/build.cjs
 node tools/e2e-date-fields.mjs
 ```
 
-Serves `experiments/date-fields.html`. Runtime files are hash-verified before a photo can be selected; detection and both readers initialize before inference. Photos stay in memory. No inventory, training or account writes. Export is an explicit download of timings, derived choices and user reviews, with no photos, filenames or raw OCR lines. All attempts, including unreviewed, cancelled and timed-out attempts, remain in the current-session report. Reload does not persist a session.
+Serves `experiments/date-fields.html`. Runtime files are hash-verified before a photo can be selected; detection and both readers initialize before inference. Photos stay in memory. No inventory, training or account writes. Export is an explicit download of timings, derived choices and user reviews, with no photos, filenames or raw OCR lines. All attempts, including unreviewed, cancelled and timed-out attempts, remain in the current-session report. Reload does not persist a session. Exports leave the physical-device test status unknown (`null`); device context is not automatically verified.
 
 Ported date/role/confirmation rules retain month precision, missing-year checks, explicit interpretation choice, expiry-purpose, suffix and single-reader-structure confirmation. Two compact readings never establish a date. Production cues are excluded; unknown role always requires checking the pack.
 
