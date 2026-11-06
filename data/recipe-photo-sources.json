@@ -634,6 +634,23 @@
       "reviewedAt": "2026-11-05",
       "originalPhotoUrl": "https://images.pexels.com/photos/29850843/pexels-photo-29850843.jpeg",
       "originalPhotoSha256": "df3dc0912e7de99b63336599e18b79713fe93426ebe1008badae9604c9fcf928"
+    },
+    {
+      "recipeId": "wikibooks-vanillekipferl",
+      "path": "assets/recipe-photos/wikibooks-vanillekipferl.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Flos_Vanillekipferl.jpg",
+      "author": "Flominator",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Flos Vanillekipferl",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Bereits vom Autor zugeschnitten; proportional verkleinert und als WebP komprimiert.",
+      "review": "Serviervorschlag: Originalfoto auf der Wikibooks-Rezeptseite. Zeigt Vanillekipferl mit Zucker; die exakte Nusswahl und Rezeptmenge des fotografierten Ansatzes sind nicht belegt.",
+      "reviewedAt": "2026-11-06",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/8/86/Flos_Vanillekipferl.jpg",
+      "originalPhotoSha256": "1c5108c097b096742f72177d84b65f2ebf5e133d7280a510c1683ae644ef16f9"
     }
   ]
 }
