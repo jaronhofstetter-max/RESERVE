@@ -42,3 +42,16 @@ assert.equal(agree(high('19032034'),high('B.B. 19 03 2034'),{role:'unknown'}).ne
 console.log('Split-row dates, labelled structure confirmation, production exclusions and low-confidence guards passed.');
 
 }
+
+// v3.3: angle scheduling uses geometry only and retains every fallback.
+{
+ const {orientationHint,remainingAngles}=await import('./orientation.js');
+ const horizontal={box:[[0,0],[100,0],[100,20],[0,20]]};
+ const vertical={box:[[0,0],[0,100],[-20,100],[-20,0]]};
+ assert.deepEqual(remainingAngles(orientationHint([vertical,vertical,vertical])),[90,270,180]);
+ for(const pairs of [1,2,NaN,undefined])assert.deepEqual(remainingAngles(orientationHint([vertical,vertical,vertical]),pairs===undefined?1:pairs),[180,90,270]);
+ for(const lines of [[],[vertical,vertical],[horizontal,horizontal,horizontal],[vertical,vertical,vertical,horizontal,horizontal],[{box:null}],[{box:[[0,0],[NaN,100],[0,0],[0,0]]}]])assert.deepEqual(remainingAngles(orientationHint(lines)),[180,90,270]);
+ for(const lines of [[vertical,vertical,vertical],[horizontal],[]])assert.deepEqual([0,...remainingAngles(orientationHint(lines))].sort((a,b)=>a-b),[0,90,180,270]);
+ const withText=[vertical,vertical,vertical].map(l=>({...l,text:'arbitrary words, not dates'}));assert.equal(orientationHint(withText).priority,'sideways');
+ console.log('Orientation scheduling keeps all angles; ambiguous, sparse and invalid geometry uses the original order.');
+}
