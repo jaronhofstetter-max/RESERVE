@@ -5,7 +5,7 @@ const rules = [
  ['use_by', /(?:zu\s+)?verbrauchen\s+bis|use\s+by|(?:à|a)\s+consommer\s+jusqu|da\s+consumarsi\s+entro/iu],
  ['production', /herstell|hergestellt|produktionsdatum|\bprod\.?(?=\s|:|$)|\bmfg\b|manufactur|produced/iu],
  ['packed', /packed|abgepackt|verpackungsdatum/iu],
- ['sell_by', /sell\s+by|verkaufen\s+bis/iu],
+ ['sell_by', /\bsel{1,2}\s+by\b|verkaufen\s+bis/iu],
 ];
 export function dateKind(text) {
  const normalized=String(text??'').normalize('NFKC');
