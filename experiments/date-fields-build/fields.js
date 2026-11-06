@@ -1,5 +1,5 @@
 // Private-photo-free browser adaptation of context-fields-v3. Never supplies a missing year/day.
-export const VERSION='context-fields-browser-v3';
+export const VERSION='context-fields-browser-v3.1';
 const expiry=/mindestens\s*haltbar|\bmhd\b|\bbbe\b|best\s*before|\bb\.\s*b\.(?=\s|$)|\bexp(?:iry)?\b|haltbar\s*bis|(?:zu\s*)?verbrauchen|use\s*by|consommer|consumarsi/i;
 export const excluded=/herstell|\bprod\.?(?=\s|:|$)|produktionsdatum|manufactur|produced|packed|abgepackt|verpackungsdatum|sell\s*by|verkaufen\s*bis|vendre\s*jusqu|vendere\s*entro/i;
 const price=/\b(?:fr|chf|eur|preis)\b|€/i;
@@ -9,8 +9,17 @@ const clock=/(?<!\w)\d{1,2}:\d{2}(?::\d{2})?(?!\w)/g;
 const equal=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
 function valid(d,m,y=2000){return m>=1&&m<=12&&d>=1&&d<=new Date(Date.UTC(y,m,0)).getUTCDate();}
 function dayOptions(a,b,year=null,suffix=null){const out=[];for(const [d,m]of[[a,b],[b,a]])if(valid(d,m,year??2000+(suffix??0))){const v={precision:year!==null||suffix!==null?'day':'day_month',day:d,month:m};if(year!==null)Object.assign(v,{year,date:`${year}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`});if(suffix!==null)v.yearSuffix=String(suffix).padStart(2,'0');if(!out.some(x=>equal(x,v)))out.push(v);}return out;}
-export function fields(value){const text=String(value??'').normalize('NFKC').replace(/(?<=[A-Za-z]):(?=\d)/g,' ').replace(/(?<=\d)\.(?=L\d)/g,' '),out=[];
- const collect=(re,kind)=>[...text.matchAll(re)].map(m=>({kind,printed:m[0],start:m.index,end:m.index+m[0].length}));const codes=collect(batch,'batch'),times=collect(clock,'time'),scan=text.split('');for(const m of [...codes,...times])for(let j=m.start;j<m.end;j++)scan[j]='X';
+export function fields(value,splitCodes=true){const text=String(value??'').normalize('NFKC').replace(/(?<=[A-Za-z]):(?=\d)/g,' ').replace(/(?<=\d)\.(?=L\d)/g,' '),out=[];
+ const collect=(re,kind)=>[...text.matchAll(re)].map(m=>({kind,printed:m[0],start:m.index,end:m.index+m[0].length}));const codes=collect(batch,'batch'),times=collect(clock,'time'),adjacent=[];
+ // A complete, delimited four-digit-year date may precede slash-separated numeric codes.
+ // Do not salvage short years, compact digits, multiple dates, clocks or malformed dates.
+ if(splitCodes)for(const slash of text.matchAll(/\//g)){
+  const tail=text.slice(slash.index);if(!/^\/\s*\d{2,12}(?:\s*\/\s*\d{2,12}){0,3}\s*$/.test(tail))continue;
+  const prefix=text.slice(0,slash.index).trimEnd(),before=fields(prefix,false).dates;
+  if(before.length!==1||before[0].end!==prefix.length||before[0].suffix||!before[0].options.every(o=>o.year!==undefined))continue;
+  const code={kind:'adjacent_numeric_codes',printed:tail.trim(),start:slash.index,end:text.length};adjacent.push(code);codes.push(code);break;
+ }
+ const scan=text.split('');for(const m of [...codes,...times])for(let j=m.start;j<m.end;j++)scan[j]=m.kind==='adjacent_numeric_codes'&&j===m.start?' ':'X';
  for(const m of scan.join('').matchAll(run)){const start=m.index,end=start+m[1].length,printed=text.slice(start,end);if(!/[./-]/.test(printed)&&/\bL[A-Z0-9]*\s+(?:\d+\s+)*$/i.test(text.slice(0,start)))continue;
   const parts=printed.split(/(\s*[./:\-]\s*|[ \t]+)/);let nums=parts.filter((_,i)=>i%2===0),seps=parts.filter((_,i)=>i%2).map(s=>s.trim()||' '),options=[],suffix=null;
   if([...codes,...times].some(x=>start<x.end&&end>x.start)||nums.some(n=>n.length>4)||seps.includes(':'))continue;
@@ -18,6 +27,7 @@ export function fields(value){const text=String(value??'').normalize('NFKC').rep
   if(nums.length>3&&nums[2].length===4&&seps.slice(2).every(x=>x===' ')){suffix=' extra '+nums.slice(3).join(' ');nums=nums.slice(0,3);seps=seps.slice(0,2);}
   if(nums.length===3&&(new Set(seps).size===1||seps.every(x=>['.','/','-',' '].includes(x)))){const[a,b,c]=nums.map(Number);if(nums[0].length===4&&seps[0]==='-'&&a>=1000&&a<=2999&&valid(c,b,a))options=[{precision:'day',day:c,month:b,year:a,date:`${a}-${String(b).padStart(2,'0')}-${String(c).padStart(2,'0')}`}];else if(nums[0].length<=2&&nums[1].length<=2){if(nums[2].length===4&&c>=1000&&c<=2999)options=dayOptions(a,b,c);else if(nums[2].length===2)options=dayOptions(a,b,null,c);}}
   else if(nums.length===2){const[a,b]=nums.map(Number);if(nums[0].length<=2&&nums[1].length===4&&a>=1&&a<=12&&b>=1000&&b<=2999)options=[{precision:'month',month:a,year:b,date:`${b}-${String(a).padStart(2,'0')}`}];else if(nums[0].length===4&&seps[0]==='-'&&a>=1000&&a<=2999&&b>=1&&b<=12)options=[{precision:'month',month:b,year:a,date:`${a}-${String(b).padStart(2,'0')}`}];else if(seps[0]!==' '&&nums.every(n=>n.length<=2)){options=dayOptions(a,b);if(nums[1].length===2&&a>=1&&a<=12)options.push({precision:'month',month:a,yearSuffix:String(b).padStart(2,'0')});}}
+  if(options.length&&adjacent.some(c=>end<=c.start&&!text.slice(end,c.start).trim()))suffix='adjacent_numeric_codes';
   if(options.length)out.push({kind:'date',printed,start,end,options,suffix,needsYear:options.some(o=>!('year'in o)),needsFormat:options.length>1,needsSuffixReview:suffix!==null,priceContext:price.test(text)});
  }return{dates:out,codes,times};}
 export function rect(box){return[Math.min(...box.map(p=>p[0])),Math.min(...box.map(p=>p[1])),Math.max(...box.map(p=>p[0])),Math.max(...box.map(p=>p[1]))];}
@@ -28,3 +38,4 @@ export function agree(a,b,role){const fa=fields(a.text),fb=fields(b.text),common
  const x=da[0],y=db[0];if(!equal(x.options,y.options)||x.suffix!==y.suffix)return no('disagreement');if(['non_expiry','ambiguous'].includes(role.role))return no('date_role_unresolved');const choices=x.options;if(choices.every(o=>['day_month','month'].includes(o.precision)&&!('year'in o))&&role.role!=='expiry')return no('partial_role_unresolved');let status='full_date_review';if(x.needsYear)status='year_confirmation';if(x.needsFormat)status='format_confirmation';if(x.needsSuffixReview)status='suffix_confirmation';return{...common,status,choices,needsYear:x.needsYear,needsFormat:x.needsFormat,needsSuffixReview:x.needsSuffixReview,needsRole:role.role!=='expiry',structureSupport,needsStructureReview:structureSupport!=='both'};}
 export function confirmChoice(offer,index,{year,expiryConfirmed=false,suffixConfirmed=false,structureConfirmed=false}={}){if(!Number.isInteger(index)||index<0||!offer?.choices?.[index])throw Error('Bitte eine Datumsinterpretation auswählen.');if(!expiryConfirmed)throw Error('Bitte MHD oder Verbrauchsdatum auf der Packung bestätigen.');if(offer.needsSuffixReview&&!suffixConfirmed)throw Error('Bitte den Zusatz auf der Packung prüfen.');if(offer.needsStructureReview&&!structureConfirmed)throw Error('Bitte die gedruckte Datumstrennung prüfen.');const o=offer.choices[index];let y=o.year;if(y===undefined){if(!Number.isInteger(year)||year<1000||year>2999)throw Error('Bitte das vollständige Jahr eingeben.');if(o.yearSuffix!==undefined&&year%100!==Number(o.yearSuffix))throw Error('Das Jahr passt nicht zum gedruckten Jahr.');y=year;}else if(year!==undefined&&year!==y)throw Error('Das gedruckte Jahr bleibt erhalten.');if(o.precision!=='month'&&!valid(o.day,o.month,y))throw Error('Dieses Datum ist ungültig.');return{date:o.precision==='month'?`${y}-${String(o.month).padStart(2,'0')}`:`${y}-${String(o.month).padStart(2,'0')}-${String(o.day).padStart(2,'0')}`,precision:o.precision==='month'?'month':'day',yearSource:o.year===undefined?'user':'printed'};}
 export function collectOffers(candidates){const out=[];for(const c of candidates)if(c.decision.choices.length&&!out.some(o=>equal(o.choices,c.decision.choices)&&o.needsSuffixReview===c.decision.needsSuffixReview)){out.push(c.decision);}return out;}
+
