@@ -6,6 +6,6 @@ export function insetRows(image, fraction = .1) {
 }
 export function matchingRecovery(first, second, proposal) {
   if (!first?.choices?.length || !second?.choices?.length || JSON.stringify(first.choices) !== JSON.stringify(proposal)) return false;
-  const keys = ['choices', 'needsYear', 'needsFormat', 'needsSuffixReview', 'needsRole', 'needsStructureReview', 'structureSupport'];
+  const keys = ['dateKind', 'choices', 'needsYear', 'needsFormat', 'needsSuffixReview', 'needsRole', 'needsStructureReview', 'structureSupport'];
   return keys.every(key => JSON.stringify(first[key]) === JSON.stringify(second[key]));
 }
