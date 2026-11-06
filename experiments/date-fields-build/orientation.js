@@ -12,6 +12,7 @@ export function orientationHint(lines) {
   const sideways = vertical >= 3 && vertical >= 3 * horizontal;
   return {priority: sideways ? 'sideways' : 'default', verticalLines: vertical, horizontalLines: horizontal};
 }
-export function remainingAngles(hint) {
-  return hint?.priority === 'sideways' ? [90, 270, 180] : [180, 90, 270];
+export function remainingAngles(hint, readerPairs = 0) {
+  // Once a numeric region was inspected, retain the established order.
+  return readerPairs === 0 && hint?.priority === 'sideways' ? [90, 270, 180] : [180, 90, 270];
 }
