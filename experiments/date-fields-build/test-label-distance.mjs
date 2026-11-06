@@ -16,7 +16,7 @@ for(const angle of [-25,-12,0,12,25])for(const swapped of [false,true]){
  const candidates=rankLines(lines);assert.equal(candidates.some(c=>c.line===(swapped?3:2)),false);checks+=3;
 }
 const conflict=[line('MHD',box(0,0,100)),line('Sell by',box(0,0,100)),line('08.2033',box(120,0,100))];assert.equal(roleFor(2,conflict).role,'ambiguous');checks++;
-for(const label of ['Prod.','Sell by','verkaufen bis','vendre jusqu','vendere entro']){const lines=[line(label,box(0,0,100)),line('MHD',box(0,50,180)),line('08.2033',box(120,0,100))];assert.equal(roleFor(2,lines).role,'non_expiry');checks++;}
+for(const label of ['Prod.','Sel by','Sell by','verkaufen bis','vendre jusqu','vendere entro']){const lines=[line(label,box(0,0,100)),line('MHD',box(0,50,180)),line('08.2033',box(120,0,100))];assert.equal(roleFor(2,lines).role,'non_expiry');checks++;}
 assert.equal(labelDistance(box(0,0,100),box(1000,0,100)),null);checks++;
 for(const b of [null,[],[[0,0]],[[0,0],[NaN,0],[0,0],[0,0]],box(0,0,0,0)]){assert.equal(labelDistance(box(0,0,100),b),null);checks++;}
 // Nearby rows overlap in page Y after rotation, but never share a printed baseline.
@@ -27,4 +27,10 @@ for(const angle of [-25,-12,0,12,25]){
  assert.ok(joined.some(l=>l.text==='Best before end 11.2034'));
  assert.ok(!joined.some(l=>l.text.includes('Best before')&&l.text.includes('07.2034')));checks+=3;
 }
+// A composed line may label its own members, never an unrelated date nearby.
+const members=[line('Sell by',box(0,0,100)),line('07.2034',box(120,0,150)),line('Best before end',box(0,40,240)),line('11.2034',box(260,40,150))];
+const all=[...members,...rowRegions(members)];
+assert.equal(roleFor(1,all).role,'non_expiry');
+assert.equal(roleFor(3,all).role,'expiry');
+assert.ok(roleFor(1,all).evidence.every(e=>!all[e.line].joined||all[e.line].memberIndices.includes(1)));checks+=3;
 console.log(JSON.stringify({labelGeometryChecks:checks,syntheticOnly:true,privatePhotos:false}));
