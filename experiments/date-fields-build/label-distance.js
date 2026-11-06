@@ -18,3 +18,12 @@ export function labelDistance(dateBox,labelBox){
  // Horizontal separation is only a tie-breaker inside the existing neighbourhood.
  return perpendicular/height+Math.min(.1,gap/Math.max(extent(dateBox,u),height)*.02);
 }
+
+export function textFrame(box){
+ if(!Array.isArray(box)||box.length!==4||!box.every(p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite)))return null;
+ const left=[(box[0][0]+box[3][0])/2,(box[0][1]+box[3][1])/2],right=[(box[1][0]+box[2][0])/2,(box[1][1]+box[2][1])/2];
+ const length=Math.hypot(right[0]-left[0],right[1]-left[1]);if(length<1)return null;
+ const u=[(right[0]-left[0])/length,(right[1]-left[1])/length],n=[-u[1],u[0]],bounds=projectBox(box,u,n);
+ return{u,n,bounds,width:bounds[2]-bounds[0],height:bounds[3]-bounds[1]};
+}
+export function projectBox(box,u,n){const a=box.map(p=>p[0]*u[0]+p[1]*u[1]),b=box.map(p=>p[0]*n[0]+p[1]*n[1]);return[Math.min(...a),Math.min(...b),Math.max(...a),Math.max(...b)];}
