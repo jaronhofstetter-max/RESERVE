@@ -26,7 +26,10 @@ jobs:
       - run: node experiments/date-fields-build/test.mjs
       - run: node experiments/date-fields-build/build.cjs
       - run: npm install --no-save playwright@1.55.0
-      - run: npx playwright install --with-deps chromium
+      - name: Select preinstalled Chrome for isolated OCR checks
+        run: |
+          reserve_chrome_path=$(command -v google-chrome)
+          echo "RESERVE_CHROMIUM=$reserve_chrome_path" >> "$GITHUB_ENV"
       - run: node tools/e2e-date-comparison.mjs
       - run: node tools/e2e-date-line.mjs
       - run: node tools/e2e-date-fields.mjs
