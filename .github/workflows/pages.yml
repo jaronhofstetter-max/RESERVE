@@ -126,6 +126,7 @@ jobs:
           node experiments/date-comparison-build/test.mjs
           node experiments/date-comparison-build/line-test.mjs
           node experiments/date-comparison-build/build.cjs
+          node experiments/date-fields-build/test-label-distance.mjs
           node experiments/date-fields-build/test-date-kind.mjs
           node experiments/date-fields-build/test.mjs
           node experiments/date-fields-build/build.cjs

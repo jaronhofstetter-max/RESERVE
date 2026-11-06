@@ -1,5 +1,6 @@
+import {labelDistance} from './label-distance.js';
 // Private-photo-free browser adaptation of context-fields-v3. Never supplies a missing year/day.
-export const VERSION='context-fields-browser-v3.5';
+export const VERSION='context-fields-browser-v3.6';
 const expiry=/mindestens\s*haltbar|\bmhd\b|\bbbe\b|best\s*before|\bb\.\s*b\.(?=\s|$)|\bexp(?:iry)?\b|haltbar\s*bis|(?:zu\s*)?verbrauchen|use\s*by|consommer|consumarsi/i;
 export const excluded=/herstell|\bprod\.?(?=\s|:|$)|produktionsdatum|manufactur|produced|packed|abgepackt|verpackungsdatum|sell\s*by|verkaufen\s*bis|vendre\s*jusqu|vendere\s*entro/i;
 const price=/\b(?:fr|chf|eur|preis)\b|€/i;
@@ -33,7 +34,7 @@ export function fields(value,splitCodes=true){const text=String(value??'').norma
  }return{dates:out,codes,times};}
 export function rect(box){return[Math.min(...box.map(p=>p[0])),Math.min(...box.map(p=>p[1])),Math.max(...box.map(p=>p[0])),Math.max(...box.map(p=>p[1]))];}
 function round4(v){const x=v*10000,n=Math.floor(x);return(Math.abs(x-n-.5)<1e-9?(n%2?n+1:n):Math.round(x))/10000;}
-export function roleFor(index,lines){const own=lines[index],b=rect(own.box),h=Math.max(b[3]-b[1],8),hits=[];for(let j=0;j<lines.length;j++){const l=lines[j],pos=expiry.test(l.text),neg=excluded.test(l.text);if(!pos&&!neg)continue;const q=rect(l.box),dx=Math.max(b[0]-q[2],q[0]-b[2],0),dy=Math.max(b[1]-q[3],q[1]-b[3],0);if(j!==index&&(dy>h*3.5||dx>Math.max(b[2]-b[0],h*5)))continue;hits.push({role:neg?'non_expiry':'expiry',line:j,distance:round4((Math.abs((b[1]+b[3]-q[1]-q[3])/2)+dx*.25)/h),text:l.text});}if(excluded.test(own.text))return{role:'non_expiry',evidence:hits};if(expiry.test(own.text))return{role:'expiry',evidence:hits};if(!hits.length)return{role:'unknown',evidence:[]};hits.sort((a,b)=>a.distance-b.distance);const near=hits[0];return{role:hits.some(x=>x.role!==near.role&&x.distance<=near.distance+.25)?'ambiguous':near.role,evidence:hits};}
+export function roleFor(index,lines){const own=lines[index],hits=[];for(let j=0;j<lines.length;j++){const l=lines[j],pos=expiry.test(l.text),neg=excluded.test(l.text);if(!pos&&!neg)continue;const distance=labelDistance(own.box,l.box);if(distance===null)continue;hits.push({role:neg?'non_expiry':'expiry',line:j,distance:round4(distance),text:l.text});}if(excluded.test(own.text))return{role:'non_expiry',evidence:hits};if(expiry.test(own.text))return{role:'expiry',evidence:hits};if(!hits.length)return{role:'unknown',evidence:[]};hits.sort((a,b)=>a.distance-b.distance);const near=hits[0];return{role:hits.some(x=>x.role!==near.role&&x.distance<=near.distance+.25)?'ambiguous':near.role,evidence:hits};}
 // Join nearby horizontal fragments without filling, changing or inventing characters.
 // Both readers must still read the resulting image and agree before any offer exists.
 export function rowRegions(lines){const sorted=lines.map((l,i)=>({...l,index:i,bounds:rect(l.box)})).filter(l=>{const b=l.bounds;return b[2]-b[0]>b[3]-b[1]*1.5;}).sort((a,b)=>a.bounds[0]-b.bounds[0]),groups=[];
