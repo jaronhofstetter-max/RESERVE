@@ -126,12 +126,15 @@ jobs:
           node experiments/date-comparison-build/test.mjs
           node experiments/date-comparison-build/line-test.mjs
           node experiments/date-comparison-build/build.cjs
+          node experiments/date-fields-build/test.mjs
+          node experiments/date-fields-build/build.cjs
       - name: Verify explicit short-year confirmation in browser
         run: node tools/e2e-short-year.mjs
       - name: Verify isolated dual-reader comparison
         run: |
           node tools/e2e-date-comparison.mjs
           node tools/e2e-date-line.mjs
+          node tools/e2e-date-fields.mjs
       - name: Verify isolated MHD phone test
         run: |
           node tools/e2e-date-mobile.mjs
