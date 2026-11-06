@@ -23,10 +23,13 @@ jobs:
       - run: node experiments/date-comparison-build/test.mjs
       - run: node experiments/date-comparison-build/line-test.mjs
       - run: node experiments/date-comparison-build/build.cjs
+      - run: node experiments/date-fields-build/test.mjs
+      - run: node experiments/date-fields-build/build.cjs
       - run: npm install --no-save playwright@1.55.0
       - run: npx playwright install --with-deps chromium
       - run: node tools/e2e-date-comparison.mjs
       - run: node tools/e2e-date-line.mjs
+      - run: node tools/e2e-date-fields.mjs
   short-year:
     runs-on: ubuntu-24.04
     steps:
