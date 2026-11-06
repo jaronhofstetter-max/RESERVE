@@ -15,6 +15,7 @@ export function fields(value,splitCodes=true){const text=String(value??'').norma
  // Do not salvage short years, compact digits, multiple dates, clocks or malformed dates.
  if(splitCodes)for(const slash of text.matchAll(/\//g)){
   const tail=text.slice(slash.index);if(!/^\/\s*\d{2,12}(?:\s*\/\s*\d{2,12}){0,3}\s*$/.test(tail))continue;
+  const chunks=tail.split('/').slice(1).map(s=>s.trim());let competing=false;for(let a=0;a<chunks.length;a++)for(let b=a+2;b<=Math.min(chunks.length,a+3);b++)if(fields(chunks.slice(a,b).join('/'),false).dates.length)competing=true;if(competing)continue;
   const prefix=text.slice(0,slash.index).trimEnd(),before=fields(prefix,false).dates;
   if(before.length!==1||before[0].end!==prefix.length||before[0].suffix||!before[0].options.every(o=>o.year!==undefined))continue;
   const code={kind:'adjacent_numeric_codes',printed:tail.trim(),start:slash.index,end:text.length};adjacent.push(code);codes.push(code);break;
