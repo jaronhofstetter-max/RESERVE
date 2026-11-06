@@ -1,0 +1,200 @@
+[
+  {
+    "id": "wikibooks-vanillekipferl",
+    "name": "Vanillekipferl",
+    "type": "Dessert",
+    "diet": "Vegetarisch",
+    "dish": "🍪",
+    "cuisine": "Österreichisch",
+    "mealTimes": [
+      "Zwischenmahlzeit"
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 20,
+    "waitMinutes": 60,
+    "difficulty": "Mittel",
+    "allergens": [
+      "Ei",
+      "Gluten",
+      "Milch",
+      "Nüsse"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Gebäck",
+      "Weihnachten",
+      "Grosser Backansatz"
+    ],
+    "ingredients": [
+      {
+        "name": "Eigelb",
+        "amount": 1.0,
+        "unit": "Stück"
+      },
+      {
+        "name": "Weizenmehl",
+        "amount": 150.0,
+        "unit": "g"
+      },
+      {
+        "name": "Butter",
+        "amount": 100.0,
+        "unit": "g"
+      },
+      {
+        "name": "Zucker",
+        "amount": 50.0,
+        "unit": "g"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.075,
+        "unit": "g"
+      },
+      {
+        "name": "Vanilleschote",
+        "amount": 0.25,
+        "unit": "Stück"
+      },
+      {
+        "name": "Mandeln, gemahlen",
+        "amount": 75.0,
+        "unit": "g"
+      },
+      {
+        "name": "Vanillezucker",
+        "amount": 2.0,
+        "unit": "g"
+      },
+      {
+        "name": "Puderzucker",
+        "amount": 37.5,
+        "unit": "g"
+      },
+      {
+        "name": "Butter zum Einfetten",
+        "amount": 1.25,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Mehl sieben und mit der Butter vermischen. Vanillemark, Salz, Zucker, Mandeln und Eigelb zu einem gleichmässigen Teig verkneten.",
+      "Teig einwickeln und eine Stunde im Kühlschrank ruhen lassen, bis er sich gut formen lässt.",
+      "Ofen auf 160 °C vorheizen. Das Blech dünn einfetten; Teig zu etwa 3 cm dicken Rollen formen, in gleich grosse Stücke teilen und zu Kipferln biegen.",
+      "Kipferl mit Abstand aufs Blech legen und ungefähr 20 Minuten backen. Bei mehreren Blechen nacheinander backen und die Ränder beobachten.",
+      "Puderzucker und Vanillezucker mischen. Die noch warmen Kipferl bestäuben und auf dem Blech abkühlen lassen, damit sie beim Umsetzen nicht zerbrechen."
+    ],
+    "nutrition": {
+      "kcal": 2114.83,
+      "protein": 34.91,
+      "carbs": 207.29,
+      "fat": 125.54,
+      "fiber": 13.43
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenbasierte Schätzung mit den dokumentierten USDA-Referenzwerten des bestehenden Bestands; Zucker/Vanillezucker generisch angenähert. Keine Messung.",
+      "basis": "Pro Backportion (ein Viertel des Gesamtansatzes); verfügbare Kohlenhydrate = Gesamtkohlenhydrate minus Ballaststoffe. Grosser Backansatz: Die Quelle nennt «4 Personen und mehr», keine Stückzahl. Basis sind gemäss Regel vier Backportionen; eine Backportion ist ein Viertel des gesamten Gebäcks, keine übliche Dessertportion. Für den vollständigen Ansatz den Rechner auf vier stellen. Festgelegte Variante: Mandeln statt der alternativ genannten Haselnüsse. Eine Packung Vanillezucker wird mit 8 g, eine Prise Salz mit 0,3 g und zusätzliches Fett fürs Blech mit 5 g Butter angenommen; diese Gewichte sind Ergänzungen, keine exakten Originalangaben. Ein Eigelb wird für die Schätzung mit 17 g angesetzt. Salz und Vanillemark sind im Nährwertansatz ausgeschlossen (geringer Einfluss). Der gesamte Puderzucker ist eingerechnet; beim Bestäuben übrig bleibender Zucker senkt den tatsächlichen Verzehr.",
+      "sources": "docs/recipe-candidates/import-2026-11-06/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Eigelb",
+          "grams": 17.0,
+          "foodKey": "172184",
+          "excluded": false
+        },
+        {
+          "name": "Weizenmehl",
+          "grams": 150.0,
+          "foodKey": "169761",
+          "excluded": false
+        },
+        {
+          "name": "Butter",
+          "grams": 100.0,
+          "foodKey": "173410",
+          "excluded": false
+        },
+        {
+          "name": "Zucker",
+          "grams": 50.0,
+          "foodKey": "sugar-generic",
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 0.075,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Vanilleschote",
+          "grams": 0.25,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Mandeln, gemahlen",
+          "grams": 75.0,
+          "foodKey": "170567",
+          "excluded": false
+        },
+        {
+          "name": "Vanillezucker",
+          "grams": 2.0,
+          "foodKey": "sugar-generic",
+          "excluded": false
+        },
+        {
+          "name": "Puderzucker",
+          "grams": 37.5,
+          "foodKey": "169655",
+          "excluded": false
+        },
+        {
+          "name": "Butter zum Einfetten",
+          "grams": 1.25,
+          "foodKey": "173410",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Vanillekipferl mit Mandeln nach dem freien Wikibooks-Kochbuch. Grosser Backansatz, auf vier Backportionen verteilt.",
+    "equipment": [
+      "Waage",
+      "Schüssel",
+      "Sieb",
+      "Backblech",
+      "Backofen"
+    ],
+    "prepNotes": [
+      "Grosser Backansatz: Die Quelle nennt «4 Personen und mehr», keine Stückzahl. Basis sind gemäss Regel vier Backportionen; eine Backportion ist ein Viertel des gesamten Gebäcks, keine übliche Dessertportion. Für den vollständigen Ansatz den Rechner auf vier stellen.",
+      "Festgelegte Variante: Mandeln statt der alternativ genannten Haselnüsse. Eine Packung Vanillezucker wird mit 8 g, eine Prise Salz mit 0,3 g und zusätzliches Fett fürs Blech mit 5 g Butter angenommen; diese Gewichte sind Ergänzungen, keine exakten Originalangaben.",
+      "Ein Eigelb wird für die Schätzung mit 17 g angesetzt. Salz und Vanillemark sind im Nährwertansatz ausgeschlossen (geringer Einfluss). Der gesamte Puderzucker ist eingerechnet; beim Bestäuben übrig bleibender Zucker senkt den tatsächlichen Verzehr."
+    ],
+    "doneness": "Die Ränder sollen leicht Farbe annehmen; das warme Gebäck bleibt zunächst brüchig und wird beim Abkühlen fester.",
+    "substitutions": [
+      "Die Quelle erlaubt statt Mandeln Haselnüsse; Allergene und Nährwerte müssen für diese Variante angepasst werden."
+    ],
+    "leftovers": "Vollständig ausgekühlt trocken in einer geschlossenen Dose lagern; bei Feuchtigkeit, auffälligem Geruch oder Schimmel entsorgen.",
+    "safety": "Rohen Teig wegen Ei und Mehl nicht probieren. Heisse Bleche mit Ofenhandschuhen anfassen.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende; erfasst von Oliver Merkel",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Vanillekipferl&oldid=1077279",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 4,
+      "adaptation": "Neu formuliert und auf vier Backportionen gerechnet; Mandelvariante gewählt; Mengenannahmen und ergänzende Gar-, Lager- und Sicherheitshinweise dokumentiert."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.7,
+      "waterMl": 0,
+      "noCook": false,
+      "onePot": false
+    },
+    "image": "assets/recipe-photos/wikibooks-vanillekipferl.webp"
+  }
+]
