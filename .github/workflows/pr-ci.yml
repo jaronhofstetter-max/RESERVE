@@ -23,6 +23,7 @@ jobs:
       - run: node experiments/date-comparison-build/test.mjs
       - run: node experiments/date-comparison-build/line-test.mjs
       - run: node experiments/date-comparison-build/build.cjs
+      - run: node experiments/date-fields-build/test-date-kind.mjs
       - run: node experiments/date-fields-build/test.mjs
       - run: node experiments/date-fields-build/build.cjs
       - run: npm install --no-save playwright@1.55.0

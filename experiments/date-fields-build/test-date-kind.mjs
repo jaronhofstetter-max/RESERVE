@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {fields,agree,confirmChoice} from './fields.js';
-import {dateKind,typedOffer,confirmTypedChoice} from './date-kind.js';
+import {dateKind,typedOffer,confirmTypedChoice,collectTypedOffers} from './date-kind.js';
 const rows=[];
 function test(name,fn){try{fn();rows.push({name,passed:true});}catch(e){rows.push({name,passed:false,error:e.message});}}
 const high=text=>({text,confidence:.99}),role={role:'expiry'};
@@ -28,5 +28,10 @@ test('no-automatic-acceptance',()=>{const o=typedOffer(high('MHD 03.2031'),high(
 test('missing-year-not-filled',()=>{const o=typedOffer(high('MHD 21.11'),high('MHD 21.11'),role);assert.throws(()=>confirmTypedChoice(o,0,{expiryConfirmed:true,dateKind:'best_before'}));});
 test('reader-disagreement-kept',()=>assert.equal(typedOffer(high('MHD 03.2031'),high('MHD 04.2031'),role).choices.length,0));
 test('multiple-dates-kept-blocked',()=>assert.equal(typedOffer(high('MHD 31.12.2031 / 01.01.2032'),high('MHD 31.12.2031 / 01.01.2032'),role).choices.length,0));
+test('nearest-context-preserved',()=>{const o=typedOffer(high('03.2031'),high('03.2031'),{role:'expiry',evidence:[{text:'MHD',distance:0},{text:'Use by',distance:2}]});assert.equal(o.dateKind,'best_before');assert.equal(o.choices.length,1);});
+test('near-context-conflict-blocked',()=>assert.equal(typedOffer(high('03.2031'),high('03.2031'),{role:'expiry',evidence:[{text:'MHD',distance:0},{text:'Use by',distance:.1}]}).choices.length,0));
+test('reader-context-conflict-blocked',()=>assert.equal(typedOffer(high('Use by 03.2031'),high('Use by 03.2031'),{role:'expiry',evidence:[{text:'MHD',distance:0}]}).choices.length,0));
+test('dedup-preserves-role-conflict',()=>{const a=typedOffer(high('MHD 03.2031'),high('MHD 03.2031'),role),b=typedOffer(high('Use by 03.2031'),high('Use by 03.2031'),role);assert.deepEqual(collectTypedOffers([{decision:a},{decision:b}]),[]);});
+test('dedup-keeps-unknown-review',()=>{const a=typedOffer(high('MHD 03.2031'),high('MHD 03.2031'),role),b=typedOffer(high('03.2031'),high('03.2031'),{role:'unknown'});assert.equal(collectTypedOffers([{decision:a},{decision:b}])[0].dateKind,'unknown');});
 const result={syntheticOnly:true,ocrExecuted:false,trainingPerformed:false,productionChanged:false,baselineCommit:'f2639239dc986c4a315e4df481566733598f4ba9',tests:rows.length,passed:rows.filter(r=>r.passed).length,failed:rows.filter(r=>!r.passed).length,rows};
 if(process.env.RESERVE_SEMANTICS_RESULTS)fs.writeFileSync(process.env.RESERVE_SEMANTICS_RESULTS,JSON.stringify(result,null,2));console.log(JSON.stringify({...result,rows:rows.filter(r=>!r.passed)},null,2));if(result.failed)process.exitCode=1;

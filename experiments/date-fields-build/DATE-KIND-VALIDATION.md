@@ -1,30 +1,28 @@
-# Datumsart und Monatsgenauigkeit: isolierter Prüfstand
+# Datumsart und Monatsgenauigkeit im Browserpiloten v3.5
 
-Stand: 06.11.2026. Unveränderte Vergleichsbasis: f2639239dc986c4a315e4df481566733598f4ba9 (Browserpilot v3.4). Die ursprünglichen fields.js-, test.mjs-, orientation.js- und recovery.js-Dateien wurden über Git-Blob-Prüfsummen gegen diesen Commit geprüft. Kein OCR-Aufruf, Training oder Eingriff in die laufende App.
+06.11.2026. Ausgangsstand: f2639239dc986c4a315e4df481566733598f4ba9 (v3.4). Der Parser für Datumswerte und seine bisherigen Bestätigungsgrenzen bleiben erhalten; die Version ist v3.5.
 
-## Ergebnis
+## Umsetzung
 
-Die vorhandene Regelsuite besteht. Zusätzlich bestehen 78 synthetische Prüfungen: 36 Monat/Jahr-Fälle, 23 Beschriftungsfälle, acht ungültige Datums-/Codefälle, vier widersprüchliche Leserpaare und sieben Bestätigungs-/Schutzfälle. Alle 36 Monatsfälle behalten in Baseline und Kandidat dieselben Datumsoptionen und werden ohne Tag bestätigt. Der Kandidat unterscheidet best_before und use_by ausdrücklich. Produktion, Verpackung, Verkaufsfrist und reine Chargencodes werden als eigene Kategorien erkannt und als Haltbarkeitsvorschlag blockiert. EXP allein bleibt unknown. Gemischte Beschriftungen werden konservativ blockiert.
+Worker, Bestätigungsoberfläche, manuelle Prüfung und Export unterscheiden jetzt best_before (MHD/BBE) und use_by (Verbrauchsdatum). Eine Datumsart muss ausdrücklich gewählt werden; es gibt keine Vorauswahl. Erkannte eindeutige Beschriftungen begrenzen die Auswahl. EXP allein und unbeschriftete Daten bleiben unknown und verlangen die Auswahl anhand der Packung. Nahe räumlich zugeordnete Beschriftungen werden als Hinweis berücksichtigt, nicht beliebiger Volltext. Gemischte oder widersprüchliche Angaben, Produktions-/Verpackungs-/Verkaufsdaten und reine Chargencodes erhalten keinen Haltbarkeitsvorschlag.
 
-Der bisherige Parser hat eine gemeinsame expiry-Rolle; die Bestätigung liefert bisher date, precision und yearSource, jedoch keine getrennte Datumsart. Die neue Datei date-kind.js ist ein isolierter Kandidat, kein neuer automatischer Leser. Sie verwendet unverändert agree und confirmChoice, erhält deren Konfidenz-, Format-, Zusatz- und Strukturprüfungen und verlangt zusätzlich eine ausdrückliche Auswahl zwischen MHD und Verbrauchsdatum. Die Datumsart wird im Ergebnis gespeichert. Ein Wechsel entgegen einer eindeutigen Beschriftung ist blockiert.
+Der Worker exportiert nur die abgeleitete Datumsart, keine zusätzlichen OCR-Texte. recovery.js vergleicht die Datumsart mit; gleiche Datumswerte mit widersprüchlichen Arten werden beim Zusammenführen nicht stillschweigend gleichgesetzt. Bestätigte Ergebnisse enthalten dateKind zusätzlich zu date, precision und yearSource. Monat/Jahr bleibt z. B. 2031-03, ohne erfundenen Tag. Das bisherige Berichtsschema erhält dateKindSchema: 1. Vorrat und Produktionsscanner werden nicht verändert.
 
-## Wiederholung
+## Prüfungen
 
-Im Projektkontext mit ES-Modulen:
+83 synthetische Regelprüfungen bestehen lokal, einschliesslich 36 Monatsfälle ohne ergänzten Tag sowie neuer Fälle für räumlichen Kontext und Konflikte beim Zusammenführen. Die vorhandene Regelsuite besteht ebenfalls. Der Build mit den unveränderten öffentlichen WASM-Modellen ist erfolgreich. Die E2E-Suite wurde um Datumsartauswahl bei OCR und manueller Eingabe, fehlende Auswahl, Monatsbestätigung und getrennten Export von MHD/Verbrauchsdatum erweitert. Sie verwendet echte Modelle und ausschliesslich synthetische Bilder. Der lokale Browserstart scheitert an nicht erlaubten Betriebssystem-Sockets; der vollständige Browserlauf wird deshalb im bestehenden CI-Job geprüft. Ein erfolgreicher Build oder Regeltest ist kein erfolgreicher E2E-Lauf.
 
 ```sh
 node experiments/date-fields-build/test.mjs
 node experiments/date-fields-build/test-date-kind.mjs
+node experiments/date-fields-build/build.cjs
+node tools/e2e-date-fields.mjs
 ```
 
-Optional schreibt RESERVE_SEMANTICS_RESULTS die detaillierten Einzelprüfungen an einen gewählten lokalen Pfad. Die Tests erwarten keine zusätzlichen Pakete oder Modelle.
+Die Modelle und das Browserpaket werden wie in README.md vorher gebaut. Die Datumsarttests sind in PR-CI und Veröffentlichungspipeline aufgenommen. Detaillierte Einzelprüfungen können über RESERVE_SEMANTICS_RESULTS an einen lokalen Pfad geschrieben werden.
 
-## Grenzen und nächster Einbau
+## Grenzen
 
-Diese 78 Fälle sind Entwicklungsprüfungen, kein unabhängiger Testdatensatz und keine Bildgenauigkeit. Es gibt keine neue Trefferquote auf RESERVE-Fotos, keine Messung der Rückfragenquote oder Handygeschwindigkeit und keinen Beleg für bessere Punktmatrixerkennung. Regex-Regeln decken nur ausdrücklich getestete Formulierungen ab. OCR-Fehler können Beschriftungen zerstören oder verändern. Der Kandidat ordnet noch keine räumlich getrennten Beschriftungen zu und darf nicht auf beliebig zusammengefügten Volltext angewandt werden. Datumsregion und zugehöriger Kontext müssen vor dem Einbau nachvollziehbar zugeordnet werden. unknown verlangt weiterhin eine manuelle Datumsartauswahl. Die getestete französische und italienische Unterscheidung ist sprachbezogen, keine allgemeine Mehrsprachigkeitsgarantie.
+Kein Training und keine neue Foto-Genauigkeitsmessung. Die synthetischen Fälle wurden bei der Entwicklung verwendet und sind kein unabhängiger Testdatensatz. Die Regex-Regeln decken nur ausdrücklich unterstützte Formulierungen ab; OCR-Fehler und andere Sprachen bleiben offene Fälle. Räumliche Zuordnung ist eine Heuristik; Bestätigung anhand der Packung bleibt erforderlich. Unknown ist keine MHD-Vermutung.
 
-Der Kandidat ist noch nicht an worker.js, app.js oder Export angeschlossen und wird nicht durch die bestehende CI automatisch aufgerufen. Vor Veröffentlichung müssen UI-Auswahl, Übergabe des Beschriftungskontexts, Export und Browser-Ende-zu-Ende-Prüfungen ergänzt werden. Dabei müssen bestehende Export-Datensparsamkeit und Bestätigungsgrenzen erhalten bleiben. Die Aufnahme in den Standardtestlauf gehört zur Integration.
-
-Die neuen Regeln wurden gezielt an diesen synthetischen Fällen entwickelt. Zur unabhängigen Bewertung sind bislang unbenutzte, manuell bestätigte Produktfotos nötig, produktgetrennt von Entwicklung und Training. Materialien Glas/Kunststoff/Folie/Karton/Metall, Reflexionen, Krümmung, schwacher Druck und Monat/Jahr separat ausweisen. Messen: exakter Datumswert einschließlich Präzision und Datumsart, falsche automatische Übernahmen (alle Fälle und akzeptierte Fälle), Rückfragenquote, Median-/p95-Laufzeit auf identischem Gerät, Modellladen separat. Der getestete Kandidat übernimmt grundsätzlich nichts automatisch.
-
-Die bereits vorliegenden Tesseract-Ergebnisse aus dem separaten Bericht vom 06.11.2026 werden nicht erneut als neue Tests gezählt. Die dort geprüften Varianten lieferten keine zusätzlichen Zieltreffer; daraus folgt hier kein Anlass für einen Austausch des OCR-Lesers.
+Unabhängige, manuell bestätigte neue Produktfotos müssen produktgetrennt von Entwicklung und Training ausgewertet werden. Materialgruppen Glas/Kunststoff/Folie/Karton/Metall sowie Reflexion, Krümmung, schwacher Druck und Monat/Jahr einzeln ausweisen. Metriken: exakter Datumswert einschliesslich Präzision und Datumsart, falsche automatische Übernahmen (bezogen auf alle und auf akzeptierte Fälle), Rückfragenquote sowie Median/p95-Laufzeit auf identischem Gerät, Modellladen separat. Browser-E2E ist kein physischer Handytest. Keine privaten Bilder oder OCR-Fixtures werden ins Repository übernommen.
