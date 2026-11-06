@@ -55,3 +55,16 @@ console.log('Split-row dates, labelled structure confirmation, production exclus
  const withText=[vertical,vertical,vertical].map(l=>({...l,text:'arbitrary words, not dates'}));assert.equal(orientationHint(withText).priority,'sideways');
  console.log('Orientation scheduling keeps all angles; ambiguous, sparse and invalid geometry uses the original order.');
 }
+
+// Late crop recovery cannot turn one weak or conflicting variant into an offer.
+{
+ const {insetRows,matchingRecovery}=await import('./recovery.js');
+ const pixels={width:10,height:20,data:new Uint8ClampedArray(10*20*4).map((_,i)=>i%255)};
+ const trimmed=insetRows(pixels);assert.equal(trimmed.width,10);assert.equal(trimmed.height,16);assert.deepEqual(trimmed.data,pixels.data.slice(80,720));assert.equal(insetRows({width:1,height:3,data:new Uint8ClampedArray(12)}),null);
+ const a=agree(high('08.2034'),high('08.2034'),expiry),b=agree(high('08.2034'),high('08.2034'),expiry);assert.equal(matchingRecovery(a,b,a.choices),true);
+ assert.equal(matchingRecovery(a,agree(high('09.2034'),high('09.2034'),expiry),a.choices),false);
+ assert.equal(matchingRecovery(a,agree(high('08.2034'),{text:'08.2034',confidence:.89},expiry),a.choices),false);
+ assert.equal(matchingRecovery(a,{...b,needsRole:true},a.choices),false);assert.equal(matchingRecovery(a,{...b,needsStructureReview:true},a.choices),false);assert.equal(matchingRecovery(a,{...b,choices:[]},a.choices),false);
+ assert.equal(matchingRecovery(a,b,[{...a.choices[0],year:2035,date:'2035-08'}]),false);assert.throws(()=>confirmChoice(a,0));
+ console.log('Late recovery needs two matching gated variants and preserves all confirmation requirements.');
+}
