@@ -1,0 +1,159 @@
+[
+  {
+    "id": "wikibooks-zimtsterne",
+    "name": "Zimtsterne mit Mandeln",
+    "type": "Dessert",
+    "diet": "Vegetarisch",
+    "dish": "🍪",
+    "cuisine": "Deutschsprachiger Raum",
+    "mealTimes": [
+      "Zwischenmahlzeit"
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 20,
+    "waitMinutes": 20,
+    "difficulty": "Mittel",
+    "allergens": [
+      "Ei",
+      "Nüsse"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Weihnachtsgebäck",
+      "Zimt"
+    ],
+    "ingredients": [
+      {
+        "name": "Eiweiss",
+        "amount": 1.0,
+        "unit": "Stück"
+      },
+      {
+        "name": "Puderzucker",
+        "amount": 75.0,
+        "unit": "g"
+      },
+      {
+        "name": "Zimt, gemahlen",
+        "amount": 0.65,
+        "unit": "g"
+      },
+      {
+        "name": "Mandeln, gemahlen",
+        "amount": 87.5,
+        "unit": "g"
+      },
+      {
+        "name": "Zitronenschale, abgerieben",
+        "amount": 0.5,
+        "unit": "g"
+      },
+      {
+        "name": "Rum",
+        "amount": 1.25,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Eiweiss in einer fettfreien Schüssel steif schlagen. Puderzucker sieben und nach und nach unter den Eischnee rühren. Knapp ein Drittel für die Glasur beiseitestellen.",
+      "Zimt, gemahlene Mandeln und abgeriebene Zitronenschale in mehreren Portionen unter die restliche Eiweissmasse arbeiten. Den klebrigen Teig zugedeckt etwa 20 Minuten kühl stellen.",
+      "Den Ofen auf 160 °C vorheizen. Den Teig zwischen zwei Bögen Backpapier etwa 8–10 mm dick ausrollen. Sterne ausstechen und auf ein mit Backpapier belegtes Blech legen.",
+      "Die beiseitegestellte Eiweissmasse mit dem Rum glatt rühren und auf die Sterne streichen. Etwa 20 Minuten backen, bis der Guss trocken und noch hell ist.",
+      "Die Sterne kurz auf dem Blech fest werden lassen und dann auf einem Gitter vollständig auskühlen lassen."
+    ],
+    "nutrition": {
+      "kcal": 820.14,
+      "protein": 22.14,
+      "carbs": 83.19,
+      "fat": 43.75,
+      "fiber": 11.34
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenbasierte Schätzung mit USDA-Referenzwerten und dokumentierter Alkoholberechnung; keine Messung.",
+      "basis": "Je Viertel des Ansatzes; Kohlenhydrate ohne Ballaststoffe. Das Original nennt vier Personen und keine Stückzahl. Eine Backportion entspricht einem Viertel des Ansatzes; für den ganzen Ansatz im Rechner vier wählen. RESERVE verwendet die Mandelvariante. 1 TL Zimt entspricht hier 2,6 g, 1 TL Rum 5 ml; für «etwas Zitronenschale» sind 2 g je Ansatz als Richtwert angesetzt. Für die Schätzung wiegt ein Eiweiss 33 g. Rum ist mit 40 Vol.-% und ohne Verdunstungsverlust eingerechnet. Backpapier ersetzt das Einfetten.",
+      "sources": "docs/recipe-candidates/import-2026-11-07/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Eiweiss",
+          "grams": 33.0,
+          "foodKey": "172183",
+          "excluded": false
+        },
+        {
+          "name": "Puderzucker",
+          "grams": 75.0,
+          "foodKey": "SR28-19336",
+          "excluded": false
+        },
+        {
+          "name": "Zimt, gemahlen",
+          "grams": 0.65,
+          "foodKey": "171320",
+          "excluded": false
+        },
+        {
+          "name": "Mandeln, gemahlen",
+          "grams": 87.5,
+          "foodKey": "170567",
+          "excluded": false
+        },
+        {
+          "name": "Zitronenschale, abgerieben",
+          "grams": 0.5,
+          "foodKey": "SR28-09156",
+          "excluded": false
+        }
+      ],
+      "additionalEnergy": {
+        "ingredient": "Rum",
+        "mlPerPortion": 1.25,
+        "alcoholVolumeFraction": 0.4,
+        "ethanolGramsPerMl": 0.789,
+        "kcalPerGramEthanol": 7,
+        "kcalPerPortion": 2.7615000000000003
+      }
+    },
+    "status": "approved",
+    "description": "Sternförmiges Mandel-Zimt-Gebäck mit heller Eiweissglasur nach dem freien Wikibooks-Kochbuch.",
+    "equipment": [
+      "Waage",
+      "Schüssel",
+      "Handmixer",
+      "Sieb",
+      "Wallholz",
+      "Sternausstecher",
+      "Backpapier",
+      "Backblech",
+      "Backofen"
+    ],
+    "prepNotes": [
+      "Das Original nennt vier Personen und keine Stückzahl. Eine Backportion entspricht einem Viertel des Ansatzes; für den ganzen Ansatz im Rechner vier wählen.",
+      "RESERVE verwendet die Mandelvariante. 1 TL Zimt entspricht hier 2,6 g, 1 TL Rum 5 ml; für «etwas Zitronenschale» sind 2 g je Ansatz als Richtwert angesetzt.",
+      "Für die Schätzung wiegt ein Eiweiss 33 g. Rum ist mit 40 Vol.-% und ohne Verdunstungsverlust eingerechnet. Backpapier ersetzt das Einfetten."
+    ],
+    "doneness": "Der Guss ist trocken und hell, die Sterne werden beim Abkühlen fester.",
+    "substitutions": [
+      "Die Quelle nennt gemahlene Haselnüsse als Alternative zu Mandeln. Nährwerte ändern sich; das Allergen Schalenfrüchte bleibt."
+    ],
+    "leftovers": "Vollständig ausgekühlt in einer gut schliessenden Dose trocken lagern.",
+    "safety": "Rohe Eiweissglasur nicht probieren; die bestrichenen Sterne vollständig backen. Rum kann auch nach dem Backen teilweise enthalten sein.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende; erfasst von Oliver Merkel",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/wiki/Kochbuch/_Zimtsterne",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 4,
+      "adaptation": "Neu formuliert und auf vier Backportionen gerechnet; Mandelvariante und Richtmengen gewählt, Kühlzeit und Teigdicke als Richtwerte ergänzt und Backpapier statt Blechfett eingesetzt."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.8,
+      "waterMl": 0,
+      "noCook": false,
+      "onePot": false
+    },
+    "image": "assets/recipe-photos/wikibooks-zimtsterne.webp"
+  }
+]

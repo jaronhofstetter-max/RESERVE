@@ -1,0 +1,59 @@
+{
+  "recipe": {
+    "author": "Wikibooks-Mitwirkende; erfasst von Oliver Merkel",
+    "provider": "Wikibooks",
+    "source": "https://de.wikibooks.org/wiki/Kochbuch/_Zimtsterne",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "originalServings": 4,
+    "adaptation": "Neu formuliert und auf vier Backportionen gerechnet; Mandelvariante und Richtmengen gewählt, Kühlzeit und Teigdicke als Richtwerte ergänzt und Backpapier statt Blechfett eingesetzt."
+  },
+  "reviewedRevision": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Zimtsterne&oldid=613966",
+  "originalYield": "4 Personen, keine Stückzahl",
+  "portionAssumptions": [
+    "Das Original nennt vier Personen und keine Stückzahl. Eine Backportion entspricht einem Viertel des Ansatzes; für den ganzen Ansatz im Rechner vier wählen.",
+    "RESERVE verwendet die Mandelvariante. 1 TL Zimt entspricht hier 2,6 g, 1 TL Rum 5 ml; für «etwas Zitronenschale» sind 2 g je Ansatz als Richtwert angesetzt.",
+    "Für die Schätzung wiegt ein Eiweiss 33 g. Rum ist mit 40 Vol.-% und ohne Verdunstungsverlust eingerechnet. Backpapier ersetzt das Einfetten."
+  ],
+  "photos": [
+    {
+      "recipeId": "wikibooks-zimtsterne",
+      "path": "assets/recipe-photos/wikibooks-zimtsterne.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Zimtsterne.jpg",
+      "author": "4028mdk09",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Zimtsterne.jpg",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 531 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echte Zimtsterne mit hellem Guss aus einer Heidelberger Bäckerei. Ob der Teig Mandeln und der Guss Rum wie im Rezept enthalten, ist nicht belegt.",
+      "reviewedAt": "2026-11-07",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Zimtsterne.jpg",
+      "originalPhotoSha256": "2518c48a5b75bf7d658817a8629853c7db9592b8cf6290211acf12884f34d912"
+    },
+    {
+      "recipeId": "waadtlaender-papet",
+      "path": "assets/recipe-photos/waadtlaender-papet.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Papet_vaudois2.jpg",
+      "author": "Popo le Chien",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Papet vaudois2.jpg",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 700 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: Papet aus Lauch und Kartoffeln mit Waadtländer Kohlwurst (Saucisse aux choux); das RESERVE-Rezept verwendet stattdessen Saucisson vaudois.",
+      "reviewedAt": "2026-11-07",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/2/29/Papet_vaudois2.jpg",
+      "originalPhotoSha256": "39b23b7af7abb11bf2d5a022a110f125c8ad7fa7419032ed3a6b74ff1f85603a"
+    }
+  ],
+  "existingRecipe": {
+    "id": "waadtlaender-papet",
+    "path": "data/quality-batch-swiss-v1.json",
+    "treatment": "Nur Foto ergänzt. Bestehender Rezepttext bleibt unverändert; keine Übernahme eines externen Texts."
+  }
+}
