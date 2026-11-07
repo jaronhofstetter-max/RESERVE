@@ -1,0 +1,57 @@
+{
+  "170567": {
+    "description": "Nuts, almonds",
+    "per100g": {
+      "kcal": 579,
+      "protein": 21.15,
+      "carbs": 21.55,
+      "fat": 49.93,
+      "fiber": 12.5
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/170567/nutrients"
+  },
+  "172183": {
+    "description": "Egg, white, raw, fresh",
+    "per100g": {
+      "kcal": 52,
+      "protein": 10.9,
+      "carbs": 0.73,
+      "fat": 0.17,
+      "fiber": 0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/172183/nutrients"
+  },
+  "SR28-19336": {
+    "description": "Puderzucker",
+    "source": "https://www.ars.usda.gov/ARSUserFiles/80400535/Data/SR/SR28/reports/sr28fg19.pdf",
+    "per100g": {
+      "kcal": 389,
+      "protein": 0,
+      "carbs": 99.77,
+      "fat": 0,
+      "fiber": 0
+    }
+  },
+  "171320": {
+    "description": "Zimt gemahlen",
+    "source": "https://fdc.nal.usda.gov/food-details/171320/nutrients",
+    "per100g": {
+      "kcal": 247,
+      "protein": 3.99,
+      "carbs": 80.59,
+      "fat": 1.24,
+      "fiber": 53.1
+    }
+  },
+  "SR28-09156": {
+    "description": "Zitronenschale roh",
+    "source": "https://www.ars.usda.gov/ARSUserFiles/80400535/Data/SR/SR28/reports/sr28fg09.pdf",
+    "per100g": {
+      "kcal": 47,
+      "protein": 1.5,
+      "carbs": 16,
+      "fat": 0.3,
+      "fiber": 10.6
+    }
+  }
+}

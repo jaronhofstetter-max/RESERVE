@@ -651,6 +651,40 @@
       "reviewedAt": "2026-11-06",
       "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/8/86/Flos_Vanillekipferl.jpg",
       "originalPhotoSha256": "1c5108c097b096742f72177d84b65f2ebf5e133d7280a510c1683ae644ef16f9"
+    },
+    {
+      "recipeId": "wikibooks-zimtsterne",
+      "path": "assets/recipe-photos/wikibooks-zimtsterne.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Zimtsterne.jpg",
+      "author": "4028mdk09",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Zimtsterne.jpg",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 531 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echte Zimtsterne mit hellem Guss aus einer Heidelberger Bäckerei. Ob der Teig Mandeln und der Guss Rum wie im Rezept enthalten, ist nicht belegt.",
+      "reviewedAt": "2026-11-07",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Zimtsterne.jpg",
+      "originalPhotoSha256": "2518c48a5b75bf7d658817a8629853c7db9592b8cf6290211acf12884f34d912"
+    },
+    {
+      "recipeId": "waadtlaender-papet",
+      "path": "assets/recipe-photos/waadtlaender-papet.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Papet_vaudois2.jpg",
+      "author": "Popo le Chien",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Papet vaudois2.jpg",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 700 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: Papet aus Lauch und Kartoffeln mit Waadtländer Kohlwurst (Saucisse aux choux); das RESERVE-Rezept verwendet stattdessen Saucisson vaudois.",
+      "reviewedAt": "2026-11-07",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/2/29/Papet_vaudois2.jpg",
+      "originalPhotoSha256": "39b23b7af7abb11bf2d5a022a110f125c8ad7fa7419032ed3a6b74ff1f85603a"
     }
   ]
 }
