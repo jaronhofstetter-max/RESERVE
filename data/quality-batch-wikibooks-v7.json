@@ -1,0 +1,156 @@
+[
+  {
+    "id": "wikibooks-rheintaler-ribel",
+    "name": "Rheintaler Ribel",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🌽",
+    "cuisine": "Schweiz · Rheintal",
+    "mealTimes": [
+      "Frühstück",
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 30,
+    "waitMinutes": 200,
+    "difficulty": "Mittel",
+    "allergens": [
+      "Milch"
+    ],
+    "tags": [
+      "Schweiz",
+      "Rheintal",
+      "Mais",
+      "Wikibooks"
+    ],
+    "ingredients": [
+      {
+        "name": "Rheintaler Ribelmais",
+        "amount": 100.0,
+        "unit": "g"
+      },
+      {
+        "name": "Vollmilch",
+        "amount": 75.0,
+        "unit": "ml"
+      },
+      {
+        "name": "Wasser",
+        "amount": 75.0,
+        "unit": "ml"
+      },
+      {
+        "name": "Salz",
+        "amount": 1.25,
+        "unit": "g"
+      },
+      {
+        "name": "Bratbutter",
+        "amount": 5.0,
+        "unit": "g"
+      },
+      {
+        "name": "Butter",
+        "amount": 12.5,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Ribelmais in eine hitzefeste Schüssel geben. Milch, Wasser und Salz aufkochen, über den Mais giessen und kurz umrühren.",
+      "Die Masse flach in ein sauberes Gefäss geben und zügig abkühlen, zum Beispiel im kalten Wasserbad. Abgedeckt im Kühlschrank mindestens drei Stunden quellen lassen.",
+      "Bratbutter in einer breiten Pfanne bei mittlerer Hitze erwärmen. Maismasse zugeben und mit einem Holzspatel immer wieder vom Pfannenboden lösen und zerteilen. Zwischendurch kurz zudecken.",
+      "Die Butter nach und nach einarbeiten und unter häufigem Schaben weitere 15–20 Minuten rösten, bis lockere, goldbraune Krümel entstehen.",
+      "Warm servieren. Wer mag, reicht Apfelmus oder anderes Fruchtmus dazu."
+    ],
+    "nutrition": {
+      "kcal": 561.51,
+      "protein": 10.61,
+      "carbs": 77.69,
+      "fat": 22.34,
+      "fiber": 4.0
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenbasierte Schätzung anhand der dokumentierten Produktdeklarationen und Agroscope-Referenzwerte; keine Messung des fertigen Gerichts.",
+      "basis": "Pro Portion; Kohlenhydrate ohne Ballaststoffe. Wasser und Salz tragen zu den ausgewiesenen Nährwerten nichts bei. Das Original ergibt vier Portionen. Die 6 dl Milchwasser sind in 300 ml Milch und 300 ml Wasser aufgeteilt. Für den ganzen Ansatz sind 5 g Salz als Richtwert für 1 TL sowie 20 g Bratbutter als Richtmenge für das im Original nicht bezifferte Bratfett angesetzt. Für die Nährwerte wurde Vollmilch mit 1,03 g/ml gerechnet. Alle zugesetzten Fette sind eingerechnet. Fruchtmus oder Kompott sind optionale Beilagen und nicht eingerechnet.",
+      "sources": "docs/recipe-candidates/import-2026-11-08/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Rheintaler Ribelmais",
+          "grams": 100.0,
+          "foodKey": "ribelmais",
+          "excluded": false
+        },
+        {
+          "name": "Vollmilch",
+          "grams": 77.25,
+          "foodKey": "vollmilch",
+          "excluded": false
+        },
+        {
+          "name": "Wasser",
+          "grams": 75.0,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Salz",
+          "grams": 1.25,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Bratbutter",
+          "grams": 5.0,
+          "foodKey": "bratbutter",
+          "excluded": false
+        },
+        {
+          "name": "Butter",
+          "grams": 12.5,
+          "foodKey": "butter",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Traditionelle Rheintaler Maisspeise aus Ribelmais und Milchwasser, in der Pfanne zu goldbraunen Krümeln geröstet.",
+    "equipment": [
+      "Kochtopf",
+      "Hitzefeste Schüssel",
+      "Flaches Kühlgefäss",
+      "Bratpfanne mit Deckel",
+      "Holzspatel"
+    ],
+    "prepNotes": [
+      "Das Original ergibt vier Portionen. Die 6 dl Milchwasser sind in 300 ml Milch und 300 ml Wasser aufgeteilt.",
+      "Für den ganzen Ansatz sind 5 g Salz als Richtwert für 1 TL sowie 20 g Bratbutter als Richtmenge für das im Original nicht bezifferte Bratfett angesetzt.",
+      "Für die Nährwerte wurde Vollmilch mit 1,03 g/ml gerechnet. Alle zugesetzten Fette sind eingerechnet. Fruchtmus oder Kompott sind optionale Beilagen und nicht eingerechnet.",
+      "Die Maismasse wird rasch abgekühlt und im Kühlschrank quellen gelassen. Das ist eine Ergänzung für die Zubereitung zu Hause."
+    ],
+    "doneness": "Der Ribel ist bis in die Mitte heiss und bildet lockere, leicht goldbraune Krümel.",
+    "substitutions": [
+      "Zu Ribel passt nach dem Original jedes Fruchtmus, etwa Apfelmus oder Zwetschgenkompott."
+    ],
+    "leftovers": "Reste rasch abkühlen und abgedeckt im Kühlschrank lagern. Beim Aufwärmen vollständig auf mindestens 70 °C erhitzen.",
+    "safety": "Die angefeuchtete Maismasse wegen der Milch zügig abkühlen und gekühlt quellen lassen. Beim Rösten auf Spritzer der heissen Bratbutter achten.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/wiki/Kochbuch/_Rheintaler_Ribel",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 4,
+      "adaptation": "Neu formuliert und auf eine von vier Portionen umgerechnet. Bratbutter- und Salzmenge, gekühlte Quellzeit und Küchenhinweise dokumentiert."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.4,
+      "waterMl": 75,
+      "noCook": false,
+      "onePot": false
+    },
+    "image": "assets/recipe-photos/wikibooks-rheintaler-ribel.webp"
+  }
+]

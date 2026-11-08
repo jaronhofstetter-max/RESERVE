@@ -1,0 +1,94 @@
+{
+  "recipe": {
+    "author": "Wikibooks-Mitwirkende",
+    "provider": "Wikibooks",
+    "source": "https://de.wikibooks.org/wiki/Kochbuch/_Rheintaler_Ribel",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "originalServings": 4,
+    "adaptation": "Neu formuliert und auf eine von vier Portionen umgerechnet. Bratbutter- und Salzmenge, gekühlte Quellzeit und Küchenhinweise dokumentiert."
+  },
+  "reviewedRevision": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Rheintaler_Ribel&oldid=900970",
+  "originalYield": "4 Personen",
+  "portionAssumptions": [
+    "Das Original ergibt vier Portionen. Die 6 dl Milchwasser sind in 300 ml Milch und 300 ml Wasser aufgeteilt.",
+    "Für den ganzen Ansatz sind 5 g Salz als Richtwert für 1 TL sowie 20 g Bratbutter als Richtmenge für das im Original nicht bezifferte Bratfett angesetzt.",
+    "Für die Nährwerte wurde Vollmilch mit 1,03 g/ml gerechnet. Alle zugesetzten Fette sind eingerechnet. Fruchtmus oder Kompott sind optionale Beilagen und nicht eingerechnet.",
+    "Die Maismasse wird rasch abgekühlt und im Kühlschrank quellen gelassen. Das ist eine Ergänzung für die Zubereitung zu Hause."
+  ],
+  "photos": [
+    {
+      "recipeId": "wikibooks-rheintaler-ribel",
+      "path": "assets/recipe-photos/wikibooks-rheintaler-ribel.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Rheintaler_Ribelmais_traditionell_zubereitet.jpg",
+      "author": "Ribelmais",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Rheintaler Ribelmais traditionell zubereitet",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 525 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: traditioneller Rheintaler Ribel mit Zwetschgenkompott. Das Kompott ist nicht in Zutaten oder Nährwerten enthalten; das konkrete Rezept des abgebildeten Ribel ist nicht belegt.",
+      "reviewedAt": "2026-11-08",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/3/37/Rheintaler_Ribelmais_traditionell_zubereitet.jpg",
+      "originalPhotoSha256": "97a1d094b84286e753d94f43c85615c5f3288c38dedd5dd599f2064e166fc3f8"
+    },
+    {
+      "recipeId": "melanzane-alla-parmigiana",
+      "path": "assets/recipe-photos/melanzane-alla-parmigiana.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Parmigiana_di_melanzane.jpg",
+      "author": "Schellenberg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Parmigiana di melanzane",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 467 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: neapolitanische Auberginen-Parmigiana mit Basilikum. Die genaue Schichtung und Käseauswahl sind aus dem Foto nicht nachweisbar.",
+      "reviewedAt": "2026-11-08",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/Parmigiana_di_melanzane.jpg",
+      "originalPhotoSha256": "a3c3607cc3da14e50847cb48daa74f88dff57aac1220bd2c98cb98a28912d1ea"
+    },
+    {
+      "recipeId": "risotto-alla-milanese",
+      "path": "assets/recipe-photos/risotto-alla-milanese.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Risotto_alla_Milanese.JPG",
+      "author": "Number55",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Risotto alla Milanese",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 525 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: Mailänder Risotto. Ob für das fotografierte Gericht wie in RESERVE Gemüsebouillon verwendet wurde, ist nicht belegt.",
+      "reviewedAt": "2026-11-08",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/8/83/Risotto_alla_Milanese.JPG",
+      "originalPhotoSha256": "ef5c89e18f3bd641c84296250eb30ca6ab8ac5460e350bf12ceb418b276f8a94"
+    },
+    {
+      "recipeId": "spinat-omelette",
+      "path": "assets/recipe-photos/spinat-omelette.webp",
+      "source": "https://www.pexels.com/photo/meal-on-plate-4393001/",
+      "author": "Spencer Davis",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Meal on Plate",
+      "provider": "Pexels",
+      "adaptation": "Proportional auf 560 × 700 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: Spinat-Omelette mit Toast, Blattgrün und zusätzlichem Topping; diese Beilagen gehören nicht zu den Zutaten oder Nährwerten des RESERVE-Rezepts.",
+      "reviewedAt": "2026-11-08",
+      "originalPhotoUrl": "https://images.pexels.com/photos/4393001/pexels-photo-4393001.jpeg",
+      "originalPhotoSha256": "2d71515a7c0cc295dfa851be8e37f859f81ac38c43829d913342fad3f919ba75"
+    }
+  ],
+  "existingRecipes": {
+    "melanzane-alla-parmigiana": "data/quality-batch-italian-v1.json",
+    "risotto-alla-milanese": "data/quality-batch-italian-v1.json",
+    "spinat-omelette": "data/recipes.json"
+  }
+}
