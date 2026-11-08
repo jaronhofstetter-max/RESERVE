@@ -1,0 +1,5 @@
+# Rheintaler Ribel und drei neue Rezeptfotos
+
+Rezepttext des Ribel: Wikibooks-Mitwirkende, CC BY-SA 4.0. Das Ribel-Foto und das Parmigiana-Foto stehen jeweils separat unter CC BY-SA 4.0, das Risotto-Foto unter CC BY-SA 3.0 Unported. Für die CC-Fotos und den übernommenen Text sind Namensnennung, Quellen-/Lizenzlink und Änderungshinweis hinterlegt. Die jeweilige Bearbeitung wird unter gleicher Lizenz weitergegeben. Das Omelette-Foto steht unter der Pexels-Lizenz, mit freiwilliger Namensnennung. Alle vier Fotos sind als Serviervorschläge gekennzeichnet. Die drei bestehenden Rezepttexte bleiben unverändert.
+
+Nährwerte des Ribel: Für die vier Originalportionen werden die Referenzwerte pro 100 g mit der jeweiligen Grammmenge / 100 multipliziert. Die Summe wird durch vier geteilt und auf zwei Dezimalstellen gerundet. 300 ml Vollmilch entsprechen näherungsweise 309 g. Wasser, Salz und optionale Beilagen sind nicht in den ausgewiesenen Nährwerten enthalten. Quellen, Ansatzmengen und Originaldatei-Hashes sind separat hinterlegt.
