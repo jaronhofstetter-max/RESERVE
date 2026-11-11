@@ -45,11 +45,12 @@ export function monthFields(text) {
     const end = start + printed.length;
     if (!knownMonth) return;
     spans.push({ start, end });
-    if (!value || !bounded(text, start, end)) return;
+    const options = (Array.isArray(value) ? value : [value]).filter(Boolean);
+    if (!options.length || !bounded(text, start, end)) return;
     if (result.some(field => start < field.end && end > field.start)) return;
     result.push({
-      kind: 'date', printed, start, end, options: [value], suffix: null,
-      needsYear: value.year === undefined, needsFormat: false, needsSuffixReview: false,
+      kind: 'date', printed, start, end, options, suffix: null,
+      needsYear: options.some(item => item.year === undefined), needsFormat: options.length > 1, needsSuffixReview: false,
     });
   };
 
@@ -91,7 +92,13 @@ export function monthFields(text) {
       const day = Number(match[monthFirst ? 2 : 1]);
       const tail = text.slice(match.index + match[0].length);
       if (/^[\s,./-]*\d/.test(tail)) continue;
-      add(match.index, match[0], option(day, monthNumber(name)), monthNumber(name));
+      const month = monthNumber(name);
+      const dayValue = option(day, month);
+      const printedNumber = match[monthFirst ? 2 : 1];
+      // JUN 18 may mean June 18 or month/year with printed year suffix 18.
+      const values = monthFirst && dayValue && printedNumber.length === 2
+        ? [dayValue, {precision: 'month', month, yearSuffix: printedNumber}] : dayValue;
+      add(match.index, match[0], values, month);
     }
   }
   return { dates: result.sort((a, b) => a.start - b.start), spans };

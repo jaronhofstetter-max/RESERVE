@@ -75,6 +75,12 @@ assert.equal(dates('MHD SEP 14 2032 / 6789')[0].needsSuffixReview, true);
 assert.deepEqual(agree(high('SEP 14 2032 / 01.01.2033'), high('SEP 14 2032 / 01.01.2033'), expiry).choices, []);
 checks += 5;
 
+const ambiguousMonth = agree(high('JUN 18'), high('JUN18'), expiry);
+assert.equal(ambiguousMonth.needsFormat, true);
+assert.deepEqual(ambiguousMonth.choices, [{precision: 'day_month', day: 18, month: 6}, {precision: 'month', month: 6, yearSuffix: '18'}]);
+assert.equal(ambiguousMonth.needsYear, true);
+checks++;
+
 const box = (text, y) => ({text, confidence: .99, box: [[0,y],[300,y],[300,y+25],[0,y+25]]});
 const ranked = rankLines([box('BEST BEFORE', 0), box('SEP 14 2032', 30)]);
 assert.equal(ranked.length, 1);
