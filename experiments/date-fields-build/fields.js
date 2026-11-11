@@ -1,6 +1,7 @@
 import {labelDistance,textFrame,projectBox} from './label-distance.js';
+import {monthFields} from './month-fields.js';
 // Private-photo-free browser adaptation of context-fields-v3. Never supplies a missing year/day.
-export const VERSION='context-fields-browser-v3.6';
+export const VERSION='context-fields-browser-v3.7';
 const expiry=/mindestens\s*haltbar|\bmhd\b|\bbbe\b|best\s*before|\bb\.\s*b\.(?=\s|$)|\bexp(?:iry)?\b|haltbar\s*bis|(?:zu\s*)?verbrauchen|use\s*by|consommer|consumarsi/i;
 export const excluded=/herstell|\bprod\.?(?=\s|:|$)|produktionsdatum|manufactur|produced|packed|abgepackt|verpackungsdatum|\bsel{1,2}\s*by\b|verkaufen\s*bis|vendre\s*jusqu|vendere\s*entro/i;
 const price=/\b(?:fr|chf|eur|preis)\b|€/i;
@@ -21,7 +22,8 @@ export function fields(value,splitCodes=true){const text=String(value??'').norma
   if(before.length!==1||before[0].end!==prefix.length||before[0].suffix||!before[0].options.every(o=>o.year!==undefined))continue;
   const code={kind:'adjacent_numeric_codes',printed:tail.trim(),start:slash.index,end:text.length};adjacent.push(code);codes.push(code);break;
  }
- const scan=text.split('');for(const m of [...codes,...times])for(let j=m.start;j<m.end;j++)scan[j]=m.kind==='adjacent_numeric_codes'&&j===m.start?' ':'X';
+ const namedResult=monthFields(text),named=namedResult.dates.filter(field=>![...codes,...times].some(other=>field.start<other.end&&field.end>other.start));
+ const scan=text.split('');for(const m of [...codes,...times,...namedResult.spans])for(let j=m.start;j<m.end;j++)scan[j]=m.kind==='adjacent_numeric_codes'&&j===m.start?' ':'X';
  for(const m of scan.join('').matchAll(run)){const start=m.index,end=start+m[1].length,printed=text.slice(start,end);if(!/[./-]/.test(printed)&&/\bL[A-Z0-9]*\s+(?:\d+\s+)*$/i.test(text.slice(0,start)))continue;
   const parts=printed.split(/(\s*[./:\-]\s*|[ \t]+)/);let nums=parts.filter((_,i)=>i%2===0),seps=parts.filter((_,i)=>i%2).map(s=>s.trim()||' '),options=[],suffix=null;
   if([...codes,...times].some(x=>start<x.end&&end>x.start)||nums.some(n=>n.length>4)||seps.includes(':'))continue;
@@ -31,7 +33,9 @@ export function fields(value,splitCodes=true){const text=String(value??'').norma
   else if(nums.length===2){const[a,b]=nums.map(Number);if(nums[0].length<=2&&nums[1].length===4&&a>=1&&a<=12&&b>=1000&&b<=2999)options=[{precision:'month',month:a,year:b,date:`${b}-${String(a).padStart(2,'0')}`}];else if(nums[0].length===4&&seps[0]==='-'&&a>=1000&&a<=2999&&b>=1&&b<=12)options=[{precision:'month',month:b,year:a,date:`${a}-${String(b).padStart(2,'0')}`}];else if(seps[0]!==' '&&nums.every(n=>n.length<=2)){options=dayOptions(a,b);if(nums[1].length===2&&a>=1&&a<=12)options.push({precision:'month',month:a,yearSuffix:String(b).padStart(2,'0')});}}
   if(options.length&&adjacent.some(c=>end<=c.start&&!text.slice(end,c.start).trim()))suffix='adjacent_numeric_codes';
   if(options.length)out.push({kind:'date',printed,start,end,options,suffix,needsYear:options.some(o=>!('year'in o)),needsFormat:options.length>1,needsSuffixReview:suffix!==null,priceContext:price.test(text)});
- }return{dates:out,codes,times};}
+ }
+ for(const field of named){if(adjacent.some(code=>field.end<=code.start&&!text.slice(field.end,code.start).trim())){field.suffix='adjacent_numeric_codes';field.needsSuffixReview=true;}field.priceContext=price.test(text);out.push(field);}
+ return{dates:out.sort((a,b)=>a.start-b.start),codes,times};}
 export function rect(box){return[Math.min(...box.map(p=>p[0])),Math.min(...box.map(p=>p[1])),Math.max(...box.map(p=>p[0])),Math.max(...box.map(p=>p[1]))];}
 function round4(v){const x=v*10000,n=Math.floor(x);return(Math.abs(x-n-.5)<1e-9?(n%2?n+1:n):Math.round(x))/10000;}
 export function roleFor(index,lines){const own=lines[index],hits=[];for(let j=0;j<lines.length;j++){const l=lines[j];if(l.joined&&j!==index&&!l.memberIndices?.includes(index))continue;const pos=expiry.test(l.text),neg=excluded.test(l.text);if(!pos&&!neg)continue;const distance=labelDistance(own.box,l.box);if(distance===null)continue;hits.push({role:neg?'non_expiry':'expiry',line:j,distance:round4(distance),text:l.text});}if(excluded.test(own.text))return{role:'non_expiry',evidence:hits};if(expiry.test(own.text))return{role:'expiry',evidence:hits};if(!hits.length)return{role:'unknown',evidence:[]};hits.sort((a,b)=>a.distance-b.distance);const near=hits[0];return{role:hits.some(x=>x.role!==near.role&&x.distance<=near.distance+.25)?'ambiguous':near.role,evidence:hits};}
