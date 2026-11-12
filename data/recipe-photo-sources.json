@@ -753,6 +753,23 @@
       "reviewedAt": "2026-11-08",
       "originalPhotoUrl": "https://images.pexels.com/photos/4393001/pexels-photo-4393001.jpeg",
       "originalPhotoSha256": "2d71515a7c0cc295dfa851be8e37f859f81ac38c43829d913342fad3f919ba75"
+    },
+    {
+      "recipeId": "kartoffeln-kraeuterquark",
+      "path": "assets/recipe-photos/kartoffeln-kraeuterquark.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:2026_Pellkartoffeln_mit_Quark_4.jpg",
+      "author": "Burkhard Mücke",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "2026 Pellkartoffeln mit Quark 4",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 464 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: gekochte Kartoffeln mit Kräuterquark. Die genaue Quarkmischung und insbesondere die im RESERVE-Rezept enthaltene Gurke sind auf dem Foto nicht nachweisbar.",
+      "reviewedAt": "2026-11-12",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/2026_Pellkartoffeln_mit_Quark_4.jpg",
+      "originalPhotoSha256": "1c54df5704f6689ca0837738bfca1f4861c33049ffd9df998d226799d85b8618"
     }
   ]
 }
