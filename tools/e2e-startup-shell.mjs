@@ -13,7 +13,7 @@ try{
  });
  const page=await context.newPage(),cdp=await context.newCDPSession(page);await cdp.send('Emulation.setCPUThrottlingRate',{rate:4});
  await page.goto(origin,{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>document.documentElement.dataset.reserveStartup==='ready');await page.waitForTimeout(300);
- const first=await page.evaluate(()=>window.__startupFrames);assert.deepEqual(first.bad,[]);assert.ok(first.waiting>0,'exercise a delayed first load');assert.equal(await page.locator('#reserveStartupStatus').count(),0);assert.ok(await page.locator('#reserveMenuToggle').isVisible());assert.ok(await page.locator('#autopilotV2').isVisible());
+ const first=await page.evaluate(()=>window.__startupFrames);assert.deepEqual(first.bad,[]);assert.ok(first.waiting>0,'exercise a delayed first load');assert.equal(await page.locator('#reserveStartupStatus').count(),0);assert.ok(await page.locator('#reserveMenuToggle').isVisible());assert.ok(await page.locator('#reserveHomeCapture').isVisible());
  fs.mkdirSync('build/startup-review',{recursive:true});await page.screenshot({path:'build/startup-review/mobile-ready.png',fullPage:false});
  slow=false;await context.unroute('**/*');
  // Routing disables Chromium's HTTP cache. Warm it after removing interception,

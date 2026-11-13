@@ -25,9 +25,12 @@ try{
   const button=page.locator('#reserve-feedback-button');
   if(await button.count()!==1)throw Error('Feedback button fehlt');
   if(!(await button.isVisible()))throw Error('Feedback button ist nicht sichtbar');
+  await button.scrollIntoViewIfNeeded();
+  const position=await button.evaluate(b=>getComputedStyle(b).position);
+  if(position!=='static')throw Error('Feedback muss im Seitenfluss bleiben');
   const box=await button.boundingBox();
   if(!box||box.x<0||box.x+box.width>390||box.y<0||box.y+box.height>844)throw Error('Feedback button im Smartphone-Viewport abgeschnitten');
-  if(box.y+box.height>790)throw Error('Feedback button liegt zu tief und kann die mobile Navigation überdecken');
+
   await button.click();
   const url=await page.evaluate(()=>window.__reserveFeedbackUrl||'');
   if(!url.includes('github.com/jaronhofstetter-max/RESERVE/issues/new'))throw Error('Feedback-Ziel ist falsch: '+url);
