@@ -1,0 +1,178 @@
+[
+  {
+    "id": "wikibooks-apfelpfannkuchen",
+    "name": "Apfelpfannkuchen",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥞",
+    "cuisine": "Deutschsprachiger Raum",
+    "mealTimes": [
+      "Frühstück",
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 15,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Ei",
+      "Gluten",
+      "Milch"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Äpfel",
+      "Pfannkuchen"
+    ],
+    "ingredients": [
+      {
+        "name": "Weizenmehl",
+        "amount": 125.0,
+        "unit": "g"
+      },
+      {
+        "name": "Butter zum Braten",
+        "amount": 15.0,
+        "unit": "g"
+      },
+      {
+        "name": "Apfel, geschält und entkernt",
+        "amount": 225.0,
+        "unit": "g"
+      },
+      {
+        "name": "Eier",
+        "amount": 1.5,
+        "unit": "Stück"
+      },
+      {
+        "name": "Vollmilch",
+        "amount": 250.0,
+        "unit": "ml"
+      },
+      {
+        "name": "Backpulver",
+        "amount": 2.0,
+        "unit": "g"
+      },
+      {
+        "name": "Salz",
+        "amount": 2.5,
+        "unit": "g"
+      },
+      {
+        "name": "Puderzucker",
+        "amount": 10.0,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Äpfel schälen, entkernen und in dünne Scheiben schneiden. Die essbare Fruchtmenge nach dem Vorbereiten abwiegen.",
+      "Mehl, Backpulver und Salz in einer Schüssel mischen. Eier und Milch separat verquirlen und unter die Mehlmischung rühren, bis der Teig glatt ist.",
+      "Einen Teil der Butter in einer beschichteten Pfanne bei mittlerer Hitze schmelzen. Eine Kelle Teig hineingeben und Apfelscheiben darauf verteilen.",
+      "Braten, bis die Unterseite goldbraun und der Teig am Rand fest ist. Vorsichtig wenden und die zweite Seite ebenfalls goldbraun braten. Den restlichen Teig mit der übrigen Butter genauso verarbeiten.",
+      "Die Pfannkuchen noch warm auf Tellern anrichten und mit dem Puderzucker bestreuen."
+    ],
+    "nutrition": {
+      "kcal": 973.77,
+      "protein": 31.18,
+      "carbs": 140.77,
+      "fat": 29.18,
+      "fiber": 6.3
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenbasierte Schätzung mit dokumentierten USDA-Referenzwerten; keine Messung des fertigen Gerichts.",
+      "basis": "Je eine von zwei Originalportionen; Kohlenhydrate ohne Ballaststoffe. Grundlage ist Variante I der Quelle für zwei Portionen. Die drei Äpfel sind mit zusammen 450 g nach Schälen und Entkernen angesetzt; das tatsächliche Fruchtgewicht kann abweichen. Richtmengen für den ganzen Ansatz: 1 TL Backpulver = 4 g, 1 TL Salz = 5 g. Der unbezifferte Puderzucker wird mit 20 g angenommen. Diese Umrechnungen sind Ergänzungen, keine exakten Originalgewichte. Nährwertschätzung: pro Ei 50 g essbarer Anteil, Milchdichte 1,03 g/ml. Die gesamte Bratbutter und der gesamte Puderzucker sind eingerechnet; Pfannenreste werden nicht abgezogen. Salz und die kleine Backpulvermenge sind aus der Nährwertschätzung ausgeschlossen.",
+      "sources": "docs/recipe-candidates/import-2026-11-13/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Weizenmehl",
+          "grams": 125.0,
+          "foodKey": "169761",
+          "excluded": false
+        },
+        {
+          "name": "Butter zum Braten",
+          "grams": 15.0,
+          "foodKey": "173430",
+          "excluded": false
+        },
+        {
+          "name": "Apfel, geschält und entkernt",
+          "grams": 225.0,
+          "foodKey": "171689",
+          "excluded": false
+        },
+        {
+          "name": "Eier",
+          "grams": 75.0,
+          "foodKey": "171287",
+          "excluded": false
+        },
+        {
+          "name": "Vollmilch",
+          "grams": 257.5,
+          "foodKey": "171265",
+          "excluded": false
+        },
+        {
+          "name": "Backpulver",
+          "grams": 2.0,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Salz",
+          "grams": 2.5,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Puderzucker",
+          "grams": 10.0,
+          "foodKey": "powdered-sugar",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Goldbraun gebratene Pfannkuchen mit Apfelscheiben und Puderzucker nach Variante I des freien Wikibooks-Kochbuchs.",
+    "equipment": [
+      "Küchenwaage",
+      "Schüsseln",
+      "Schneebesen",
+      "Beschichtete Bratpfanne",
+      "Pfannenwender"
+    ],
+    "prepNotes": [
+      "Grundlage ist Variante I der Quelle für zwei Portionen. Die drei Äpfel sind mit zusammen 450 g nach Schälen und Entkernen angesetzt; das tatsächliche Fruchtgewicht kann abweichen.",
+      "Richtmengen für den ganzen Ansatz: 1 TL Backpulver = 4 g, 1 TL Salz = 5 g. Der unbezifferte Puderzucker wird mit 20 g angenommen. Diese Umrechnungen sind Ergänzungen, keine exakten Originalgewichte.",
+      "Nährwertschätzung: pro Ei 50 g essbarer Anteil, Milchdichte 1,03 g/ml. Die gesamte Bratbutter und der gesamte Puderzucker sind eingerechnet; Pfannenreste werden nicht abgezogen. Salz und die kleine Backpulvermenge sind aus der Nährwertschätzung ausgeschlossen.",
+      "RESERVE rechnet mit 15 Minuten Vorbereitung und etwa 15 Minuten Braten; die Quelle nennt insgesamt 15 Minuten. Die Dauer hängt von Pfannengrösse und Anzahl der Pfannkuchen ab."
+    ],
+    "doneness": "Beide Seiten sind goldbraun; der Teig ist vollständig gestockt und im Inneren nicht mehr flüssig.",
+    "substitutions": [
+      "Eine andere leicht säuerliche Apfelsorte kann verwendet werden; nach Schälen und Entkernen die gleiche Fruchtmenge abwiegen."
+    ],
+    "leftovers": "Reste rasch abkühlen und abgedeckt im Kühlschrank aufbewahren. Beim Aufwärmen vollständig durcherhitzen.",
+    "safety": "Rohen Teig wegen Ei und Mehl nicht probieren. Beim Wenden auf Spritzer der heissen Butter achten.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende; erfasst von Metoc",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/wiki/Kochbuch/_Apfelpfannkuchen",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 2,
+      "adaptation": "Variante I neu formuliert und auf eine von zwei Portionen gerechnet. Apfelgewicht, TL-Umrechnungen, Puderzucker, Garzeit und Küchenhinweise ergänzt und als Annahmen dokumentiert."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.3,
+      "waterMl": 0,
+      "noCook": false,
+      "onePot": false
+    },
+    "image": "assets/recipe-photos/wikibooks-apfelpfannkuchen.webp"
+  }
+]

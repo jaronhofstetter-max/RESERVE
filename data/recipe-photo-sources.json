@@ -770,6 +770,23 @@
       "reviewedAt": "2026-11-12",
       "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/2026_Pellkartoffeln_mit_Quark_4.jpg",
       "originalPhotoSha256": "1c54df5704f6689ca0837738bfca1f4861c33049ffd9df998d226799d85b8618"
+    },
+    {
+      "recipeId": "wikibooks-apfelpfannkuchen",
+      "path": "assets/recipe-photos/wikibooks-apfelpfannkuchen.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Apfelpfannkuchen.jpg",
+      "author": "© Alice Wiegand (via Wikimedia Commons)",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Apfelpfannkuchen",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 585 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echter Apfelpfannkuchen mit Apfelscheiben und Zucker. Auf der Rezeptseite eingebunden; die genaue Zusammensetzung und Portionsmenge des abgebildeten Gerichts sind nicht belegt.",
+      "reviewedAt": "2026-11-13",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Apfelpfannkuchen.jpg",
+      "originalPhotoSha256": "eb7c4441d1143cdfe9fb3bf0e8c1801bf627591204730544666241fc1e923bd6"
     }
   ]
 }

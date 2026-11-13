@@ -1,0 +1,47 @@
+{
+  "recipe": {
+    "author": "Wikibooks-Mitwirkende; erfasst von Metoc",
+    "provider": "Wikibooks",
+    "source": "https://de.wikibooks.org/wiki/Kochbuch/_Apfelpfannkuchen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "originalServings": 2,
+    "adaptation": "Variante I neu formuliert und auf eine von zwei Portionen gerechnet. Apfelgewicht, TL-Umrechnungen, Puderzucker, Garzeit und Küchenhinweise ergänzt und als Annahmen dokumentiert."
+  },
+  "reviewedRevision": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Apfelpfannkuchen&oldid=813865",
+  "variant": "Apfelpfannkuchen - I",
+  "originalYield": "2 Portionen",
+  "originalIngredients": [
+    "250 g Mehl",
+    "30 g Butter",
+    "3 leicht säuerliche Äpfel",
+    "3 Eier",
+    "1/2 l Milch",
+    "1 TL Backpulver",
+    "1 TL Salz",
+    "Puderzucker"
+  ],
+  "assumptions": [
+    "Grundlage ist Variante I der Quelle für zwei Portionen. Die drei Äpfel sind mit zusammen 450 g nach Schälen und Entkernen angesetzt; das tatsächliche Fruchtgewicht kann abweichen.",
+    "Richtmengen für den ganzen Ansatz: 1 TL Backpulver = 4 g, 1 TL Salz = 5 g. Der unbezifferte Puderzucker wird mit 20 g angenommen. Diese Umrechnungen sind Ergänzungen, keine exakten Originalgewichte.",
+    "Nährwertschätzung: pro Ei 50 g essbarer Anteil, Milchdichte 1,03 g/ml. Die gesamte Bratbutter und der gesamte Puderzucker sind eingerechnet; Pfannenreste werden nicht abgezogen. Salz und die kleine Backpulvermenge sind aus der Nährwertschätzung ausgeschlossen.",
+    "RESERVE rechnet mit 15 Minuten Vorbereitung und etwa 15 Minuten Braten; die Quelle nennt insgesamt 15 Minuten. Die Dauer hängt von Pfannengrösse und Anzahl der Pfannkuchen ab."
+  ],
+  "photo": {
+    "recipeId": "wikibooks-apfelpfannkuchen",
+    "path": "assets/recipe-photos/wikibooks-apfelpfannkuchen.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Apfelpfannkuchen.jpg",
+    "author": "© Alice Wiegand (via Wikimedia Commons)",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+    "kind": "photograph",
+    "servingSuggestion": true,
+    "title": "Apfelpfannkuchen",
+    "provider": "Wikimedia Commons",
+    "adaptation": "Proportional auf 700 × 585 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+    "review": "Serviervorschlag: echter Apfelpfannkuchen mit Apfelscheiben und Zucker. Auf der Rezeptseite eingebunden; die genaue Zusammensetzung und Portionsmenge des abgebildeten Gerichts sind nicht belegt.",
+    "reviewedAt": "2026-11-13",
+    "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Apfelpfannkuchen.jpg",
+    "originalPhotoSha256": "eb7c4441d1143cdfe9fb3bf0e8c1801bf627591204730544666241fc1e923bd6"
+  }
+}
