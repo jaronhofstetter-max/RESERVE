@@ -44,6 +44,7 @@ async function login(page,email='alice@example.invalid'){
  await page.goto(base);await page.waitForSelector('#reserveAccountAuth',{state:'attached'});await page.evaluate(()=>show('profile'));
  await page.locator('#reserveAccountEmail').fill(email);await page.locator('#reserveAccountPassword').fill('synthetic-password-only');await page.locator('#reserveAccountAuth button[type=submit]').click();
  await page.waitForFunction(()=>['ready','saved'].includes(document.getElementById('reserveAccountStatus')?.dataset.phase));
+ await page.waitForSelector('#home.active #reserveHomeCapture');
 }
 try{
  const c1=await browser.newContext({viewport:{width:390,height:844}}),p1=await pageFor(c1);

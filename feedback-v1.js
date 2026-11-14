@@ -21,9 +21,9 @@
     if(document.getElementById('reserve-feedback-button'))return;
     const button=document.createElement('button');
     button.id='reserve-feedback-button';button.type='button';button.textContent='Feedback';button.setAttribute('aria-label','Feedback zur Nutzung von RESERVE senden');
-    // Keep the floating control above RESERVE's mobile bottom navigation instead of on top of it.
-    button.style.cssText='position:fixed;right:10px;bottom:max(86px,calc(78px + env(safe-area-inset-bottom)));z-index:9998;width:auto;max-width:104px;padding:6px 10px;border-radius:999px;border:1px solid currentColor;background:var(--card,#fff);color:inherit;font:inherit;font-size:12px;line-height:1.2;box-shadow:0 2px 8px rgba(0,0,0,.12);cursor:pointer;opacity:.84';
-    button.addEventListener('click',openFeedback);document.body.appendChild(button);
+    // Keep feedback in the document flow so it cannot cover form fields.
+    button.style.cssText='position:static;display:inline-block;margin:12px;padding:10px 16px;min-height:44px;border-radius:12px;background:var(--card,#fff);color:var(--ink,#173f35);border:1px solid var(--line,#ded8ca);font:inherit;cursor:pointer';
+    button.addEventListener('click',openFeedback);(document.querySelector('footer')||document.body).appendChild(button);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
 })();
