@@ -1,0 +1,44 @@
+{
+  "recipe": {
+    "author": "Wikibooks-Mitwirkende",
+    "provider": "Wikibooks",
+    "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Eierpfannkuchen&oldid=895575",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "originalServings": 2,
+    "originalYield": "2–4 Personen; gemäss RESERVE-Regel niedrigere Zahl 2",
+    "variant": "Palatschinken-Grundrezept",
+    "originalIngredients": [
+      "3 Eier",
+      "1 Eigelb",
+      "175 g Mehl",
+      "250 ml Milch",
+      "125 ml Mineralwasser mit Kohlensäure",
+      "eine Prise Salz",
+      "Speiseöl, wasserfreies Backfett oder Butterschmalz zum Backen"
+    ],
+    "adaptation": "Neu formuliert und auf eine von zwei Portionen umgerechnet. Öl- und Salzrichtmenge, Garzeit sowie Küchen- und Sicherheitshinweise ergänzt; keine Füllung übernommen."
+  },
+  "portionAssumptions": [
+    "Die Rezeptseite nennt 2–4 Personen. Gemäss RESERVE-Regel wird die niedrigere Zahl 2 als Originalportionenzahl verwendet.",
+    "Das Original beziffert das Backfett nicht. RESERVE setzt für den ganzen Ansatz 12 g Rapsöl als Richtmenge an; eine Prise Salz entspricht hier 1 g.",
+    "Ein Ei wird für die Schätzung mit 50 g essbarem Anteil, ein Eigelb mit 17 g und Vollmilch mit 1,03 g/ml angesetzt."
+  ],
+  "photo": {
+    "recipeId": "wikibooks-palatschinken-grundrezept",
+    "path": "assets/recipe-photos/wikibooks-palatschinken-grundrezept.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Banana_on_pancake.jpg",
+    "author": "Brandon Martin-Anderson",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/deed.de",
+    "kind": "photograph",
+    "servingSuggestion": true,
+    "title": "Banana on pancake",
+    "provider": "Wikimedia Commons",
+    "adaptation": "Proportional auf 700 × 687 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+    "review": "Serviervorschlag: echte Pfannkuchen mit Bananenscheiben. Banane ist keine Zutat des übernommenen Palatschinken-Grundrezepts; Zusammensetzung und Portionsmenge des abgebildeten Gerichts sind nicht belegt.",
+    "reviewedAt": "2026-11-14",
+    "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Banana_on_pancake.jpg",
+    "originalPhotoSha256": "dd0f12521dfa5dc6dcc5428b21a800229e3da50bfd6b5c901dd6923ffa496009"
+  }
+}

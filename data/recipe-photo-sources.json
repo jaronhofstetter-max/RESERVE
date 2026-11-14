@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-10-10",
+  "reviewedAt": "2026-11-14",
   "photos": [
     {
       "recipeId": "poulet-reis-bowl",
@@ -787,6 +787,23 @@
       "reviewedAt": "2026-11-13",
       "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Apfelpfannkuchen.jpg",
       "originalPhotoSha256": "eb7c4441d1143cdfe9fb3bf0e8c1801bf627591204730544666241fc1e923bd6"
+    },
+    {
+      "recipeId": "wikibooks-palatschinken-grundrezept",
+      "path": "assets/recipe-photos/wikibooks-palatschinken-grundrezept.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Banana_on_pancake.jpg",
+      "author": "Brandon Martin-Anderson",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Banana on pancake",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 687 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echte Pfannkuchen mit Bananenscheiben. Banane ist keine Zutat des übernommenen Palatschinken-Grundrezepts; Zusammensetzung und Portionsmenge des abgebildeten Gerichts sind nicht belegt.",
+      "reviewedAt": "2026-11-14",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Banana_on_pancake.jpg",
+      "originalPhotoSha256": "dd0f12521dfa5dc6dcc5428b21a800229e3da50bfd6b5c901dd6923ffa496009"
     }
   ]
 }

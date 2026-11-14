@@ -1,0 +1,168 @@
+[
+  {
+    "id": "wikibooks-palatschinken-grundrezept",
+    "name": "Palatschinken-Grundrezept",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥞",
+    "cuisine": "Österreichisch",
+    "mealTimes": [
+      "Frühstück",
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 20,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Ei",
+      "Gluten",
+      "Milch"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Palatschinken",
+      "Pfannkuchen"
+    ],
+    "ingredients": [
+      {
+        "name": "Eier",
+        "amount": 1.5,
+        "unit": "Stück"
+      },
+      {
+        "name": "Eigelb",
+        "amount": 0.5,
+        "unit": "Stück"
+      },
+      {
+        "name": "Weizenmehl",
+        "amount": 87.5,
+        "unit": "g"
+      },
+      {
+        "name": "Vollmilch",
+        "amount": 125,
+        "unit": "ml"
+      },
+      {
+        "name": "Mineralwasser mit Kohlensäure",
+        "amount": 62.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.5,
+        "unit": "g"
+      },
+      {
+        "name": "Rapsöl zum Backen",
+        "amount": 6,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Eier, Eigelb, Salz und ungefähr die Hälfte der Milch in einer Schüssel gründlich verquirlen.",
+      "Das Mehl nach und nach einrühren, bis ein glatter, klumpenfreier Teig entstanden ist.",
+      "Die restliche Milch und das Mineralwasser langsam einarbeiten. Der Teig soll dünnflüssig wie Rahm sein. Zugedeckt etwa 30 Minuten quellen lassen.",
+      "Eine beschichtete Pfanne bei mittlerer bis hoher Hitze erwärmen und mit wenig Rapsöl ausstreichen. Eine kleine Kelle Teig hineingeben und durch Schwenken dünn verteilen.",
+      "Backen, bis die Oberseite gestockt und die Unterseite hellbraun ist. Wenden, die zweite Seite fertig backen und mit dem restlichen Teig ebenso verfahren. Heiss servieren."
+    ],
+    "nutrition": {
+      "kcal": 584.7,
+      "protein": 23.86,
+      "carbs": 71.43,
+      "fat": 20.43,
+      "fiber": 2.36
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenbasierte Schätzung mit dokumentierten USDA-Referenzwerten; keine Messung des fertigen Gerichts.",
+      "basis": "Je eine von zwei Portionen. Die Quelle nennt 2–4 Personen; gemäss RESERVE-Regel ist die niedrigere Zahl 2 die Rechenbasis. Kohlenhydrate ohne Ballaststoffe. Für ein Ei werden 50 g essbarer Anteil, für ein Eigelb 17 g und für Vollmilch 1,03 g/ml angesetzt. Das im Original unbezifferte Backfett ist als 12 g Rapsöl für den ganzen Ansatz ergänzt und vollständig eingerechnet. Mineralwasser und Salz sind aus der Nährwertschätzung ausgeschlossen.",
+      "sources": "docs/recipe-candidates/import-2026-11-14/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Eier",
+          "grams": 75,
+          "foodKey": "171287",
+          "excluded": false
+        },
+        {
+          "name": "Eigelb",
+          "grams": 8.5,
+          "foodKey": "172184",
+          "excluded": false
+        },
+        {
+          "name": "Weizenmehl",
+          "grams": 87.5,
+          "foodKey": "169761",
+          "excluded": false
+        },
+        {
+          "name": "Vollmilch",
+          "grams": 128.75,
+          "foodKey": "171265",
+          "excluded": false
+        },
+        {
+          "name": "Mineralwasser mit Kohlensäure",
+          "grams": 62.5,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Salz",
+          "grams": 0.5,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Rapsöl zum Backen",
+          "grams": 6,
+          "foodKey": "172336",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Dünne, hellbraun gebackene Palatschinken nach dem freien Grundrezept des deutschen Wikibooks-Kochbuchs.",
+    "equipment": [
+      "Küchenwaage",
+      "Schüssel",
+      "Schneebesen",
+      "Kelle",
+      "Beschichtete Bratpfanne",
+      "Pfannenwender"
+    ],
+    "prepNotes": [
+      "Die Rezeptseite nennt 2–4 Personen. Gemäss RESERVE-Regel wird die niedrigere Zahl 2 als Originalportionenzahl verwendet; für den vollständigen Ansatz den Personenrechner auf zwei stellen.",
+      "Die Quelle gibt für diese Variante 3 Eier, 1 Eigelb, 175 g Mehl, 250 ml Milch, 125 ml Mineralwasser und eine Prise Salz an. Diese Originalmengen werden durch zwei geteilt angezeigt.",
+      "Das Original beziffert das Öl oder Backfett nicht. RESERVE ergänzt als Richtmenge 12 g Rapsöl für den ganzen Ansatz; je nach Pfanne kann weniger oder mehr nötig sein. Eine Prise Salz wird mit 1 g je Ansatz angenommen.",
+      "Das Foto zeigt Pfannkuchen mit Banane. Banane ist kein Bestandteil dieses Grundrezepts; das Bild ist deshalb ein ausdrücklich gekennzeichneter Serviervorschlag."
+    ],
+    "doneness": "Beide Seiten sind hellbraun; der Teig ist vollständig gestockt und innen nicht mehr flüssig.",
+    "substitutions": [
+      "Zum Backen kann statt Rapsöl eine kleine Menge Butterschmalz verwendet werden; dadurch ändern sich die Nährwerte."
+    ],
+    "leftovers": "Reste rasch abkühlen und abgedeckt im Kühlschrank aufbewahren. Vor dem Essen vollständig durcherhitzen.",
+    "safety": "Rohen Teig wegen Ei und Mehl nicht probieren. Heisses Öl sparsam verwenden und beim Wenden auf Spritzer achten.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Eierpfannkuchen&oldid=895575",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 2,
+      "adaptation": "Palatschinken-Grundrezept neu formuliert und auf eine von zwei Portionen umgerechnet. Öl- und Salzrichtmenge, Garzeit sowie Küchen- und Sicherheitshinweise ergänzt; keine Füllung übernommen."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.25,
+      "waterMl": 62.5,
+      "noCook": false,
+      "onePot": false
+    },
+    "image": "assets/recipe-photos/wikibooks-palatschinken-grundrezept.webp"
+  }
+]
