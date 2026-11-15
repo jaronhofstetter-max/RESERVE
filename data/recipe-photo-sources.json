@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-11-14",
+  "reviewedAt": "2026-11-15",
   "photos": [
     {
       "recipeId": "poulet-reis-bowl",
@@ -787,6 +787,23 @@
       "reviewedAt": "2026-11-13",
       "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Apfelpfannkuchen.jpg",
       "originalPhotoSha256": "eb7c4441d1143cdfe9fb3bf0e8c1801bf627591204730544666241fc1e923bd6"
+    },
+    {
+      "recipeId": "wikibooks-riz-casimir",
+      "path": "assets/recipe-photos/wikibooks-riz-casimir.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Riz_Casimir_(4247740294).jpg",
+      "author": "kochtopf",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Riz Casimir (4247740294)",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Bei unveränderten Abmessungen als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echtes Riz Casimir mit Reis, weiteren Früchten und Nüssen. Die zusätzlichen Früchte und Nüsse gehören nicht zur übernommenen Pfirsichvariante; Fleischart, Zutatenmengen und Portionsgrösse sind aus dem Foto nicht belegbar.",
+      "reviewedAt": "2026-11-15",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Riz_Casimir_%284247740294%29.jpg",
+      "originalPhotoSha256": "84e74fccf6f9f07b31db931ea8523bf53d3cbc02eade1faba01b61861338ee17"
     },
     {
       "recipeId": "wikibooks-palatschinken-grundrezept",

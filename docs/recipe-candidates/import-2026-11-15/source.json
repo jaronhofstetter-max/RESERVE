@@ -1,0 +1,36 @@
+{
+  "recipe": {
+    "author": "Piranya und Wikibooks-Mitwirkende",
+    "provider": "Wikibooks",
+    "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Riz_Casimir&oldid=590025",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "originalServings": 4,
+    "originalIngredients": ["500 g Putenschnitzel", "1 grosse Dose Pfirsiche", "Salz", "Pfeffer", "etwa 2 EL Currypulver", "1 Becher Rahm", "Reis als nicht bezifferte Beilage"],
+    "adaptation": "Neu formuliert und auf eine von vier Portionen umgerechnet. Reis- und Bratölrichtmenge, Umrechnungen für Dose, Becher und Gewürze sowie Gargrad-, Küchen- und Sicherheitshinweise ergänzt."
+  },
+  "portionAssumptions": [
+    "Die Quelle nennt vier Personen; alle App-Mengen werden als eine von vier Portionen gespeichert.",
+    "Eine grosse Pfirsichdose wird mit 480 g Abtropfgewicht und 60 ml verwendetem Saft angesetzt.",
+    "Ein Becher Rahm entspricht 200 ml; etwa 2 EL Currypulver entsprechen 12 g.",
+    "Das unbezifferte Bratöl wird mit 15 g, Salz mit 4 g und Pfeffer mit 1 g je Ansatz angesetzt.",
+    "Reis ist als Beilage genannt, aber unbeziffert. RESERVE ergänzt 240 g trockenen Langkornreis für vier Personen."
+  ],
+  "photo": {
+    "recipeId": "wikibooks-riz-casimir",
+    "path": "assets/recipe-photos/wikibooks-riz-casimir.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Riz_Casimir_(4247740294).jpg",
+    "author": "kochtopf",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/deed.de",
+    "kind": "photograph",
+    "servingSuggestion": true,
+    "title": "Riz Casimir (4247740294)",
+    "provider": "Wikimedia Commons",
+    "adaptation": "Bei unveränderten Abmessungen als WebP komprimiert; Bildinhalt unverändert.",
+    "review": "Serviervorschlag: echtes Riz Casimir mit Reis, weiteren Früchten und Nüssen. Die zusätzlichen Früchte und Nüsse gehören nicht zur übernommenen Pfirsichvariante; Fleischart, Zutatenmengen und Portionsgrösse sind aus dem Foto nicht belegbar.",
+    "reviewedAt": "2026-11-15",
+    "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Riz_Casimir_%284247740294%29.jpg",
+    "originalPhotoSha256": "84e74fccf6f9f07b31db931ea8523bf53d3cbc02eade1faba01b61861338ee17"
+  }
+}

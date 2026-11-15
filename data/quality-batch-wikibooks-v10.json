@@ -1,0 +1,194 @@
+[
+  {
+    "id": "wikibooks-riz-casimir",
+    "name": "Riz Casimir mit Pfirsichen",
+    "type": "Hauptmahlzeit",
+    "diet": "Alles",
+    "dish": "🍛",
+    "cuisine": "Schweizerisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 25,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Milch"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Schweiz",
+      "Trute",
+      "Reis",
+      "Pfirsich",
+      "Curry"
+    ],
+    "ingredients": [
+      {
+        "name": "Trutenschnitzel",
+        "amount": 125,
+        "unit": "g"
+      },
+      {
+        "name": "Pfirsiche aus der Dose, abgetropft",
+        "amount": 120,
+        "unit": "g"
+      },
+      {
+        "name": "Aufgefangener Pfirsichsaft",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "name": "Currypulver",
+        "amount": 3,
+        "unit": "g"
+      },
+      {
+        "name": "Vollrahm",
+        "amount": 50,
+        "unit": "ml"
+      },
+      {
+        "name": "Rapsöl",
+        "amount": 3.75,
+        "unit": "g"
+      },
+      {
+        "name": "Langkornreis, trocken",
+        "amount": 60,
+        "unit": "g"
+      },
+      {
+        "name": "Salz",
+        "amount": 1,
+        "unit": "g"
+      },
+      {
+        "name": "Pfeffer",
+        "amount": 0.25,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Den Reis nach Packungsangabe garen. Die Pfirsiche abgiessen, den Saft auffangen und die Früchte in mundgerechte Würfel schneiden.",
+      "Die Trutenschnitzel trocken tupfen, in etwa 1 × 5 cm grosse Streifen schneiden und mit Salz und Pfeffer würzen.",
+      "Das Rapsöl in einer grossen Pfanne erhitzen. Die Trutenstreifen portionsweise rundum anbraten, bis keine rohe Oberfläche mehr sichtbar ist.",
+      "Pfirsichwürfel und den abgemessenen Pfirsichsaft zugeben. Bei mittlerer Hitze etwa 15 Minuten sanft garen, bis die Trutenstreifen im dicksten Stück mindestens 74 °C erreichen.",
+      "Vollrahm und Currypulver einrühren und die Sauce einige Minuten offen einkochen lassen, bis sie sämig ist. Abschmecken und zusammen mit dem Reis heiss servieren."
+    ],
+    "nutrition": {
+      "kcal": 634.1,
+      "protein": 36.47,
+      "carbs": 62.73,
+      "fat": 24.17,
+      "fiber": 3.97
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenbasierte Schätzung mit dokumentierten USDA-Referenzwerten; keine Messung des fertigen Gerichts.",
+      "basis": "Je eine von vier Portionen. Eine grosse Pfirsichdose wird mit 480 g Abtropfgewicht und 60 ml verwendetem Saft, ein Becher Rahm mit 200 ml, zwei Esslöffel Currypulver mit 12 g und das nicht bezifferte Bratöl mit 15 g je Ansatz angesetzt. Reis ist in der Quelle als Beilage genannt, aber nicht beziffert; RESERVE ergänzt 240 g trockenen Reis für vier Personen. Kohlenhydrate ohne Ballaststoffe.",
+      "sources": "docs/recipe-candidates/import-2026-11-15/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Trutenschnitzel",
+          "grams": 125,
+          "foodKey": "171077",
+          "excluded": false
+        },
+        {
+          "name": "Pfirsiche aus der Dose, abgetropft",
+          "grams": 120,
+          "foodKey": "169928",
+          "excluded": false
+        },
+        {
+          "name": "Aufgefangener Pfirsichsaft",
+          "grams": 15,
+          "foodKey": "peach-juice-generic",
+          "excluded": false
+        },
+        {
+          "name": "Currypulver",
+          "grams": 3,
+          "foodKey": "171324",
+          "excluded": false
+        },
+        {
+          "name": "Vollrahm",
+          "grams": 50,
+          "foodKey": "171255",
+          "excluded": false
+        },
+        {
+          "name": "Rapsöl",
+          "grams": 3.75,
+          "foodKey": "172336",
+          "excluded": false
+        },
+        {
+          "name": "Langkornreis, trocken",
+          "grams": 60,
+          "foodKey": "168878",
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 1,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Pfeffer",
+          "grams": 0.25,
+          "foodKey": null,
+          "excluded": true
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Schweizer Riz Casimir mit Trutenstreifen und Pfirsichen in cremiger Currysauce, serviert mit Reis.",
+    "equipment": [
+      "Küchenwaage",
+      "Sieb",
+      "Schneidebrett",
+      "Kochmesser",
+      "Kochtopf mit Deckel",
+      "Grosse Bratpfanne",
+      "Kochlöffel",
+      "Küchenthermometer"
+    ],
+    "prepNotes": [
+      "Die Quelle ist für vier Personen berechnet; die angezeigten Mengen entsprechen einer Portion.",
+      "Original genannt sind 500 g Putenschnitzel, eine grosse Dose Pfirsiche, Salz, Pfeffer, etwa 2 EL Currypulver und ein Becher Rahm. RESERVE verwendet die schweizerische Bezeichnung Trutenschnitzel.",
+      "Die Quelle nennt Reis als passende Beilage, aber keine Menge. RESERVE ergänzt transparent 240 g trockenen Langkornreis für den ganzen Ansatz.",
+      "Dose, Becher, Bratöl, Salz und Pfeffer sind in der Quelle nicht beziffert. Die verwendeten Richtmengen und Umrechnungen sind im Lizenzbeleg dokumentiert.",
+      "Das echte Foto zeigt Riz Casimir mit Reis sowie weiteren Früchten und Nüssen. Diese Zutaten gehören nicht zur übernommenen Pfirsichvariante; das Bild ist deshalb ausdrücklich ein Serviervorschlag."
+    ],
+    "doneness": "Die Trutenstreifen erreichen im dicksten Stück mindestens 74 °C; die Sauce ist sämig und der Reis vollständig gegart.",
+    "substitutions": [
+      "Pute und Trute bezeichnen dasselbe Tier; die App verwendet die schweizerische Bezeichnung Trutenschnitzel.",
+      "Für eine leichtere Sauce kann Halbrahm verwendet werden; dadurch ändern sich Geschmack und Nährwerte."
+    ],
+    "leftovers": "Reste rasch abkühlen, innerhalb von zwei Stunden kühl stellen und höchstens zwei Tage aufbewahren. Beim Aufwärmen vollständig durcherhitzen.",
+    "safety": "Rohes Trutenfleisch getrennt von verzehrfertigen Zutaten bearbeiten. Brett, Messer und Hände sofort reinigen; das Fleisch bis mindestens 74 °C Kerntemperatur garen.",
+    "recipeCredit": {
+      "author": "Piranya und Wikibooks-Mitwirkende",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Riz_Casimir&oldid=590025",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 4,
+      "adaptation": "Neu formuliert und auf eine von vier Portionen umgerechnet. Reis- und Bratölrichtmenge, Umrechnungen für Dose, Becher und Gewürze sowie Gargrad-, Küchen- und Sicherheitshinweise ergänzt."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.35,
+      "waterMl": 0,
+      "noCook": false,
+      "onePot": false
+    },
+    "image": "assets/recipe-photos/wikibooks-riz-casimir.webp"
+  }
+]
