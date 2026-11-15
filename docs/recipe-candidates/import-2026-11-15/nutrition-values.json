@@ -1,0 +1,9 @@
+{
+  "171077": {"description":"Turkey, retail parts, breast, meat only, raw","per100g":{"kcal":114,"protein":23.66,"carbs":0,"fat":1.22,"fiber":0},"source":"https://fdc.nal.usda.gov/food-details/171077/nutrients","carbohydrateBasis":"total-including-fiber"},
+  "169928": {"description":"Peaches, canned, juice pack, solids and liquids; used as drained-fruit approximation","per100g":{"kcal":44,"protein":0.63,"carbs":11.21,"fat":0.03,"fiber":1.3},"source":"https://fdc.nal.usda.gov/food-details/169928/nutrients","carbohydrateBasis":"total-including-fiber"},
+  "peach-juice-generic": {"description":"Pfirsichsaft aus der Dose, generischer Richtwert","per100g":{"kcal":46,"protein":0.1,"carbs":11.1,"fat":0,"fiber":0.2},"source":"documented generic estimate","carbohydrateBasis":"total-including-fiber"},
+  "171324": {"description":"Spices, curry powder","per100g":{"kcal":325,"protein":14.29,"carbs":55.83,"fat":14.01,"fiber":53.2},"source":"https://fdc.nal.usda.gov/food-details/171324/nutrients","carbohydrateBasis":"total-including-fiber"},
+  "171255": {"description":"Cream, fluid, heavy whipping","per100g":{"kcal":340,"protein":2.84,"carbs":2.74,"fat":36.08,"fiber":0},"source":"https://fdc.nal.usda.gov/food-details/171255/nutrients","carbohydrateBasis":"total-including-fiber"},
+  "172336": {"description":"Oil, canola","per100g":{"kcal":884,"protein":0,"carbs":0,"fat":100,"fiber":0},"source":"https://fdc.nal.usda.gov/food-details/172336/nutrients","carbohydrateBasis":"total-including-fiber"},
+  "168878": {"description":"Rice, white, long-grain, regular, raw, unenriched","per100g":{"kcal":365,"protein":7.13,"carbs":80.89,"fat":0.66,"fiber":1.3},"source":"https://fdc.nal.usda.gov/food-details/168878/nutrients","carbohydrateBasis":"total-including-fiber"}
+}
