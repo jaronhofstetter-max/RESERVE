@@ -1,0 +1,36 @@
+{
+  "recipe": {
+    "author":"Wikibooks-Mitwirkende",
+    "provider":"Wikibooks",
+    "source":"https://de.wikibooks.org/w/index.php?title=Kochbuch/_Hefezopf&oldid=591055",
+    "license":"CC BY-SA 4.0",
+    "licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "originalServings":12,
+    "originalYield":"1 Zopf, ungefähr 1000 g; RESERVE teilt ihn in zwölf Portionen von etwa 83 g",
+    "originalIngredients":["1 Ei","1 Eigelb","2 EL Wasser oder Kondensmilch","300 ml Milch","80 g Butter oder Margarine","20 ml Öl","1 Päckchen Vanillezucker","100 g Zucker","600 g Mehl","1/2 Päckchen Frischhefe","Hagelzucker"],
+    "adaptation":"Neu formuliert und auf eine von zwölf dokumentierten Portionen umgerechnet. Die Wasser- und Buttervarianten gewählt; Packungs- und Hagelzuckermengen, aktive Arbeitszeit, Garmerkmale sowie Küchen- und Sicherheitshinweise ergänzt."
+  },
+  "portionAssumptions":[
+    "Die Quelle nennt keine Personenzahl, sondern einen ungefähr 1000 g schweren Zopf. RESERVE setzt zwölf Portionen von rund 83 g an.",
+    "Ein Päckchen Vanillezucker entspricht 8 g; ein halbes Päckchen Frischhefe entspricht 21 g.",
+    "Der unbezifferte Hagelzucker wird mit 20 g für den ganzen Zopf angesetzt.",
+    "20 ml Rapsöl entsprechen für die Nährwertrechnung 18,4 g; 300 ml Vollmilch entsprechen 309 g."
+  ],
+  "photo": {
+    "recipeId":"wikibooks-hefezopf",
+    "path":"assets/recipe-photos/wikibooks-hefezopf.webp",
+    "source":"https://commons.wikimedia.org/wiki/File:Tresse_au_Beurre.jpg",
+    "author":"Monika Baechler",
+    "license":"CC0 1.0",
+    "licenseUrl":"https://creativecommons.org/publicdomain/zero/1.0/deed.de",
+    "kind":"photograph",
+    "servingSuggestion":true,
+    "title":"Tresse au Beurre",
+    "provider":"Wikimedia Commons",
+    "adaptation":"Proportional auf 700 × 467 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+    "review":"Serviervorschlag: echte fertig gebackene Schweizer Butterzöpfe. Die genaue Rezeptur, Stückgrösse und Garnitur des abgebildeten Gebäcks sind nicht belegt.",
+    "reviewedAt":"2026-11-16",
+    "originalPhotoUrl":"https://upload.wikimedia.org/wikipedia/commons/6/6d/Tresse_au_Beurre.jpg",
+    "originalPhotoSha256":"5cedfb171ba2e3ef5b5b6a6e893c299d4a342aca1dfc0f23a292bb76c181eab6"
+  }
+}

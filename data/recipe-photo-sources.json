@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-11-15",
+  "reviewedAt": "2026-11-16",
   "photos": [
     {
       "recipeId": "poulet-reis-bowl",
@@ -787,6 +787,23 @@
       "reviewedAt": "2026-11-13",
       "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Apfelpfannkuchen.jpg",
       "originalPhotoSha256": "eb7c4441d1143cdfe9fb3bf0e8c1801bf627591204730544666241fc1e923bd6"
+    },
+    {
+      "recipeId": "wikibooks-hefezopf",
+      "path": "assets/recipe-photos/wikibooks-hefezopf.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Tresse_au_Beurre.jpg",
+      "author": "Monika Baechler",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Tresse au Beurre",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 467 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echte fertig gebackene Schweizer Butterzöpfe. Die genaue Rezeptur, Stückgrösse und Garnitur des abgebildeten Gebäcks sind nicht belegt.",
+      "reviewedAt": "2026-11-16",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Tresse_au_Beurre.jpg",
+      "originalPhotoSha256": "5cedfb171ba2e3ef5b5b6a6e893c299d4a342aca1dfc0f23a292bb76c181eab6"
     },
     {
       "recipeId": "wikibooks-riz-casimir",
