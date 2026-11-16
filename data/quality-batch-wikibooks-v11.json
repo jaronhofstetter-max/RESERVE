@@ -1,0 +1,218 @@
+[
+  {
+    "id": "wikibooks-hefezopf",
+    "name": "Klassischer Hefezopf",
+    "type": "Frühstück",
+    "diet": "Vegetarisch",
+    "dish": "🍞",
+    "cuisine": "Deutschsprachig",
+    "mealTimes": [
+      "Frühstück",
+      "Zwischenmahlzeit"
+    ],
+    "prepMinutes": 70,
+    "cookMinutes": 25,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Ei",
+      "Gluten",
+      "Milch"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Hefezopf",
+      "Hefegebäck",
+      "Festtage"
+    ],
+    "ingredients": [
+      {
+        "name": "Ei",
+        "amount": 0.0833,
+        "unit": "Stück"
+      },
+      {
+        "name": "Eigelb",
+        "amount": 0.0833,
+        "unit": "Stück"
+      },
+      {
+        "name": "Wasser zum Bestreichen",
+        "amount": 2.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Vollmilch",
+        "amount": 25,
+        "unit": "ml"
+      },
+      {
+        "name": "Butter",
+        "amount": 6.67,
+        "unit": "g"
+      },
+      {
+        "name": "Rapsöl",
+        "amount": 1.67,
+        "unit": "ml"
+      },
+      {
+        "name": "Vanillezucker",
+        "amount": 0.67,
+        "unit": "g"
+      },
+      {
+        "name": "Zucker",
+        "amount": 8.33,
+        "unit": "g"
+      },
+      {
+        "name": "Weizenmehl",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Frischhefe",
+        "amount": 1.75,
+        "unit": "g"
+      },
+      {
+        "name": "Hagelzucker",
+        "amount": 1.67,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Ei und Eigelb trennen beziehungsweise bereitstellen. Milch und Butter auf Zimmertemperatur bringen; die Butter nur sanft schmelzen und wieder lauwarm werden lassen.",
+      "Milch, Zucker, Vanillezucker, Rapsöl und Butter verrühren. Die Frischhefe hineinbröseln und die Mischung zugedeckt an einem warmen Ort etwa 15 Minuten stehen lassen.",
+      "Etwa zwei Drittel des Mehls in eine Schüssel geben und eine Mulde formen. Ei und Hefemischung hineingeben und verkneten. Das restliche Mehl nach und nach einarbeiten, bis ein glatter, formbarer Teig entsteht.",
+      "Den Teig in drei gleich schwere Stücke teilen, zu langen Strängen rollen und von der Mitte zu beiden Enden zu einem Zopf flechten.",
+      "Den Zopf auf ein mit Backpapier belegtes Blech legen, abdecken und etwa 30 Minuten warm gehen lassen. Er soll sichtbar an Volumen gewinnen. Den Backofen rechtzeitig auf 180 °C Ober-/Unterhitze vorheizen.",
+      "Eigelb und Wasser verrühren, den aufgegangenen Zopf damit bestreichen und mit Hagelzucker bestreuen.",
+      "Den Hefezopf 20–25 Minuten goldbraun backen. Ein Holzstäbchen soll ohne feuchten Teig herauskommen; bei zu starker Bräunung locker mit Backpapier abdecken.",
+      "Den Zopf auf einem Gitter vollständig auskühlen lassen und erst danach anschneiden."
+    ],
+    "nutrition": {
+      "kcal": 312.7,
+      "protein": 6.93,
+      "carbs": 49.11,
+      "fat": 9.07,
+      "fiber": 1.35
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenbasierte Schätzung mit dokumentierten USDA-Referenzwerten; keine Messung des fertigen Gebäcks.",
+      "basis": "Je eine von zwölf Portionen eines laut Quelle ungefähr 1000 g schweren Zopfs. Die Quelle nennt keine Personenzahl; RESERVE setzt zwölf gleich grosse Portionen von rund 83 g an. Gewählt wurden Wasser statt Kondensmilch und Butter statt Margarine. Ein Päckchen Vanillezucker entspricht 8 g, ein halbes Päckchen Frischhefe 21 g, der unbezifferte Hagelzucker 20 g. 20 ml Rapsöl werden mit 18,4 g berechnet. Kohlenhydrate ohne Ballaststoffe.",
+      "sources": "docs/recipe-candidates/import-2026-11-16/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Ei",
+          "grams": 4.1667,
+          "foodKey": "171287",
+          "excluded": false
+        },
+        {
+          "name": "Eigelb",
+          "grams": 1.4167,
+          "foodKey": "172184",
+          "excluded": false
+        },
+        {
+          "name": "Wasser zum Bestreichen",
+          "grams": 2.5,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Vollmilch",
+          "grams": 25.75,
+          "foodKey": "171265",
+          "excluded": false
+        },
+        {
+          "name": "Butter",
+          "grams": 6.6667,
+          "foodKey": "173430",
+          "excluded": false
+        },
+        {
+          "name": "Rapsöl",
+          "grams": 1.5333,
+          "foodKey": "172336",
+          "excluded": false
+        },
+        {
+          "name": "Vanillezucker",
+          "grams": 0.6667,
+          "foodKey": "169655",
+          "excluded": false
+        },
+        {
+          "name": "Zucker",
+          "grams": 8.3333,
+          "foodKey": "169655",
+          "excluded": false
+        },
+        {
+          "name": "Weizenmehl",
+          "grams": 50,
+          "foodKey": "169761",
+          "excluded": false
+        },
+        {
+          "name": "Frischhefe",
+          "grams": 1.75,
+          "foodKey": "fresh-yeast-generic",
+          "excluded": false
+        },
+        {
+          "name": "Hagelzucker",
+          "grams": 1.6667,
+          "foodKey": "169655",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Goldbraun gebackener, leicht süsser Hefezopf mit Vanille und Hagelzucker nach dem freien Wikibooks-Kochbuch.",
+    "equipment": [
+      "Küchenwaage",
+      "Messbecher",
+      "Rührschüssel",
+      "Küchentuch",
+      "Backblech",
+      "Backpapier",
+      "Backpinsel",
+      "Holzstäbchen",
+      "Kuchengitter"
+    ],
+    "prepNotes": [
+      "Die Quelle ergibt einen Zopf von ungefähr 1000 g, nennt aber keine Personenzahl. Für den Personenrechner wird der ganze Zopf transparent in zwölf Portionen von etwa 83 g geteilt.",
+      "Bei den Alternativen der Quelle verwendet RESERVE Wasser statt Kondensmilch sowie Butter statt Margarine.",
+      "Ein Päckchen Vanillezucker wird mit 8 g und ein halbes Päckchen Frischhefe mit 21 g angesetzt. Der nicht bezifferte Hagelzucker wird mit 20 g für den ganzen Zopf ergänzt.",
+      "Das echte Foto zeigt Schweizer Butterzöpfe. Die genaue Rezeptur des abgebildeten Gebäcks ist nicht belegt; das Bild ist deshalb ausdrücklich ein Serviervorschlag."
+    ],
+    "doneness": "Der Zopf ist gleichmässig goldbraun, klingt beim Klopfen auf die Unterseite leicht hohl und ein Holzstäbchen kommt ohne feuchten Teig heraus.",
+    "substitutions": [
+      "Die Quelle erlaubt Kondensmilch statt Wasser für die Eistreiche sowie Margarine statt Butter; dadurch ändern sich Geschmack, Allergene und Nährwerte."
+    ],
+    "leftovers": "Vollständig ausgekühlt luftdicht verpacken und innerhalb von zwei Tagen verbrauchen oder portionsweise einfrieren.",
+    "safety": "Die Butter nur sanft erwärmen und vor dem Kontakt mit Hefe und Ei auf lauwarm abkühlen lassen. Rohen Teig wegen Ei und Mehl nicht probieren; beim Backen Ofenhandschuhe verwenden.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Hefezopf&oldid=591055",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 12,
+      "adaptation": "Neu formuliert und auf eine von zwölf dokumentierten Portionen umgerechnet. Die Wasser- und Buttervarianten gewählt; Packungs- und Hagelzuckermengen, aktive Arbeitszeit, Garmerkmale sowie Küchen- und Sicherheitshinweise ergänzt."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "afterOpening",
+      "shelfStableShare": 0.72,
+      "waterMl": 2.5,
+      "noCook": false,
+      "onePot": false
+    },
+    "image": "assets/recipe-photos/wikibooks-hefezopf.webp"
+  }
+]
