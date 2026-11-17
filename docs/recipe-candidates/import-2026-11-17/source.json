@@ -1,0 +1,11 @@
+{
+  "recipe": {
+    "author":"Wikibooks-Mitwirkende","provider":"Wikibooks","source":"https://de.wikibooks.org/w/index.php?title=Kochbuch/_Blaue_Zipfel&oldid=863596","license":"CC BY-SA 4.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0/deed.de","originalServings":4,
+    "originalIngredients":["4–8 Zwiebeln","1 Karotte","Lauch optional","Sellerie optional","500 ml Wasser","500 ml trockener Weisswein","125 ml Weissweinessig","3 TL Salz","1–2 TL Zucker","10 schwarze Pfefferkörner","5 Pimentkörner","5 Wacholderbeeren","3 Gewürznelken","2 Lorbeerblätter","8 normal grosse Bratwürste oder 20–24 Nürnberger Rostbratwürstchen","kräftiges Roggen- oder Mischbrot ohne Mengenangabe"],
+    "adaptation":"Neu formuliert und auf eine von vier Portionen umgerechnet. Bei Mengenbereichen die niedrigere Zahl gewählt, optionale Zutaten weggelassen sowie Gewichtsannahmen, Brotmenge, Kerntemperatur und Sicherheitshinweise ergänzt."
+  },
+  "portionAssumptions":["4–8 Zwiebeln wird zu 4; 1–2 TL Zucker wird zu 1 TL.","Gewählt werden 8 normal grosse Bratwürste; die alternative Spanne 20–24 Nürnberger Würstchen wird nicht verwendet.","Eine Zwiebel und die Karotte entsprechen je 100 g; eine Bratwurst entspricht 100 g.","Drei Teelöffel Salz entsprechen 18 g, ein Teelöffel Zucker 4 g je Gesamtansatz.","Die unbezifferte Brotbeilage wird mit 80 g Roggenbrot pro Person ergänzt."],
+  "photo": {
+    "recipeId":"wikibooks-blaue-zipfel","path":"assets/recipe-photos/wikibooks-blaue-zipfel.webp","source":"https://commons.wikimedia.org/wiki/File:Blaue_Zipfel.jpg","author":"Gruenes Wuersterl","license":"CC BY-SA 3.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/3.0/deed.de","kind":"photograph","servingSuggestion":true,"title":"Blaue Zipfel","provider":"Wikimedia Commons","adaptation":"Proportional auf 700 × 646 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.","review":"Serviervorschlag: echte Blaue Zipfel mit Zwiebeln und Brezel. Die Brezel gehört nicht zur übernommenen Fassung mit Roggenbrot; genaue Zutatenmengen und Wurstzusammensetzung sind aus dem Foto nicht belegbar.","reviewedAt":"2026-11-17","originalPhotoUrl":"https://upload.wikimedia.org/wikipedia/commons/c/c8/Blaue_Zipfel.jpg","originalPhotoSha256":"a463377612bc6b6706e29460adfef07f9e46292133e4fc6c41119e72a935d51e"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "169655":{"description":"Sugars, granulated","per100g":{"kcal":387,"protein":0,"carbs":100,"fat":0,"fiber":0},"source":"https://fdc.nal.usda.gov/food-details/169655/nutrients","carbohydrateBasis":"total-including-fiber"},
+  "170000":{"description":"Onions, raw","per100g":{"kcal":40,"protein":1.1,"carbs":9.34,"fat":0.1,"fiber":1.7},"source":"https://fdc.nal.usda.gov/food-details/170000/nutrients","carbohydrateBasis":"total-including-fiber"},
+  "170393":{"description":"Carrots, raw","per100g":{"kcal":41,"protein":0.93,"carbs":9.58,"fat":0.24,"fiber":2.8},"source":"https://fdc.nal.usda.gov/food-details/170393/nutrients","carbohydrateBasis":"total-including-fiber"},
+  "172237":{"description":"Vinegar, distilled","per100g":{"kcal":18,"protein":0.04,"carbs":0.04,"fat":0,"fiber":0},"source":"https://fdc.nal.usda.gov/food-details/172237/nutrients","carbohydrateBasis":"total-including-fiber"},
+  "173190":{"description":"Alcoholic beverage, wine, table, white","per100g":{"kcal":82,"protein":0.07,"carbs":2.6,"fat":0,"fiber":0},"source":"https://fdc.nal.usda.gov/food-details/173190/nutrients","carbohydrateBasis":"total-including-fiber"},
+  "172684":{"description":"Bread, rye","per100g":{"kcal":259,"protein":8.5,"carbs":48.3,"fat":3.3,"fiber":5.8},"source":"https://fdc.nal.usda.gov/food-details/172684/nutrients","carbohydrateBasis":"total-including-fiber"},
+  "bratwurst-generic":{"description":"Bratwurst, gegart, generischer Richtwert","per100g":{"kcal":333,"protein":13.72,"carbs":2.85,"fat":29.18,"fiber":0},"source":"documented generic estimate","carbohydrateBasis":"total-including-fiber"}
+}

@@ -1,0 +1,226 @@
+[
+  {
+    "id": "wikibooks-blaue-zipfel",
+    "name": "Blaue Zipfel",
+    "type": "Hauptmahlzeit",
+    "diet": "Alles",
+    "dish": "🌭",
+    "cuisine": "Fränkisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 35,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Gluten",
+      "Schwefeldioxid/Sulfite"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Franken",
+      "Bratwurst",
+      "Essigsud",
+      "Zwiebeln"
+    ],
+    "ingredients": [
+      {
+        "name": "Zwiebeln",
+        "amount": 100,
+        "unit": "g"
+      },
+      {
+        "name": "Karotte",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Wasser",
+        "amount": 125,
+        "unit": "ml"
+      },
+      {
+        "name": "Trockener Weisswein",
+        "amount": 125,
+        "unit": "ml"
+      },
+      {
+        "name": "Weissweinessig",
+        "amount": 31.25,
+        "unit": "ml"
+      },
+      {
+        "name": "Salz",
+        "amount": 4.5,
+        "unit": "g"
+      },
+      {
+        "name": "Zucker",
+        "amount": 1,
+        "unit": "g"
+      },
+      {
+        "name": "Schwarze Pfefferkörner",
+        "amount": 2.5,
+        "unit": "Stück"
+      },
+      {
+        "name": "Pimentkörner",
+        "amount": 1.25,
+        "unit": "Stück"
+      },
+      {
+        "name": "Wacholderbeeren",
+        "amount": 1.25,
+        "unit": "Stück"
+      },
+      {
+        "name": "Gewürznelken",
+        "amount": 0.75,
+        "unit": "Stück"
+      },
+      {
+        "name": "Lorbeerblätter",
+        "amount": 0.5,
+        "unit": "Stück"
+      },
+      {
+        "name": "Bratwürste normaler Grösse",
+        "amount": 2,
+        "unit": "Stück"
+      },
+      {
+        "name": "Kräftiges Roggenbrot",
+        "amount": 80,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Zwiebeln schälen und in dünne Ringe schneiden. Die Karotte waschen oder schälen und in feine Scheiben schneiden.",
+      "Wasser, Weisswein und Weissweinessig mit Zwiebeln, Karotte, Salz, Zucker, Pfeffer, Piment, Wacholder, Nelken und Lorbeer in einen grossen Topf geben.",
+      "Den Sud aufkochen und danach knapp unter dem Siedepunkt 20 Minuten ziehen lassen. Er soll kräftig salzig-sauer und leicht süsslich schmecken.",
+      "Die Bratwürste mehrmals vorsichtig mit einem Zahnstocher einstechen und in den heissen Sud legen.",
+      "Die Würste knapp unter dem Siedepunkt etwa 10 Minuten gar ziehen lassen, bis sie im Inneren mindestens 72 °C erreichen. Der Sud darf nicht sprudelnd kochen, damit die Würste nicht aufplatzen.",
+      "Je zwei Würste mit Zwiebelringen, Karottenscheiben und einigen Löffeln Sud in tiefen Tellern anrichten. Mit dem Roggenbrot servieren."
+    ],
+    "nutrition": {
+      "kcal": 1034.42,
+      "protein": 35.67,
+      "carbs": 53.27,
+      "fat": 61.16,
+      "fiber": 7.04
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenbasierte Schätzung mit dokumentierten USDA-Referenzwerten; keine Messung des fertigen Gerichts.",
+      "basis": "Je eine von vier Portionen. Bei allen Mengenbereichen gilt gemäss RESERVE-Regel die niedrigere Zahl: vier Zwiebeln, ein Teelöffel Zucker und acht normal grosse Bratwürste. Lauch und Sellerie sind optional und werden nicht übernommen. Eine Zwiebel entspricht 100 g, die Karotte 100 g und eine Bratwurst 100 g. Als nicht bezifferte Brotbeilage werden 80 g Roggenbrot pro Person ergänzt. Die Schätzung teilt den gesamten Sud durch vier und verwendet Rohweinwerte; tatsächlich aufgenommene Sudmenge und Alkoholrest können abweichen. Kohlenhydrate ohne Ballaststoffe.",
+      "sources": "docs/recipe-candidates/import-2026-11-17/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Zwiebeln",
+          "grams": 100,
+          "foodKey": "170000",
+          "excluded": false
+        },
+        {
+          "name": "Karotte",
+          "grams": 25,
+          "foodKey": "170393",
+          "excluded": false
+        },
+        {
+          "name": "Wasser",
+          "grams": 125,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Trockener Weisswein",
+          "grams": 123.75,
+          "foodKey": "173190",
+          "excluded": false
+        },
+        {
+          "name": "Weissweinessig",
+          "grams": 31.25,
+          "foodKey": "172237",
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 4.5,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Zucker",
+          "grams": 1,
+          "foodKey": "169655",
+          "excluded": false
+        },
+        {
+          "name": "Gewürze",
+          "grams": 0.8,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Bratwürste normaler Grösse",
+          "grams": 200,
+          "foodKey": "bratwurst-generic",
+          "excluded": false
+        },
+        {
+          "name": "Kräftiges Roggenbrot",
+          "grams": 80,
+          "foodKey": "172684",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Fränkische Bratwürste, sanft in einem kräftigen Essig-Wein-Sud mit Zwiebeln, Karotte und Gewürzen gegart.",
+    "equipment": [
+      "Küchenwaage",
+      "Messbecher",
+      "Schneidebrett",
+      "Kochmesser",
+      "Grosser Topf",
+      "Kochlöffel",
+      "Zahnstocher",
+      "Küchenthermometer",
+      "Tiefe Teller"
+    ],
+    "prepNotes": [
+      "Die Quelle nennt vier Personen; die angezeigten Mengen entsprechen einer Portion.",
+      "Bei 4–8 Zwiebeln und 1–2 TL Zucker verwendet RESERVE regelgemäss die niedrigere Zahl. Gewählt werden acht normal grosse Bratwürste statt der Alternative mit 20–24 Nürnberger Würstchen.",
+      "Lauch und Sellerie sind in der Quelle optional und werden in dieser Fassung nicht übernommen.",
+      "Eine Zwiebel und eine Karotte werden für die Umrechnung jeweils mit 100 g, eine normal grosse Bratwurst mit 100 g angesetzt. Die unbezifferte Brotbeilage wird transparent mit 80 g pro Person ergänzt.",
+      "Das echte Foto zeigt Blaue Zipfel mit Zwiebeln und einer Brezel. Da RESERVE entsprechend der Textquelle Roggenbrot verwendet, ist das Foto ausdrücklich als Serviervorschlag gekennzeichnet."
+    ],
+    "doneness": "Die Würste sind vollständig heiss und erreichen im Inneren mindestens 72 °C; der Sud schmeckt kräftig salzig-sauer mit leichter Süsse.",
+    "substitutions": [
+      "Die Quelle erlaubt statt acht normal grossen Bratwürsten 20–24 Nürnberger Rostbratwürstchen. Diese Alternative ist nicht in den Mengen oder Nährwerten eingerechnet."
+    ],
+    "leftovers": "Würste und Sud rasch abkühlen, innerhalb von zwei Stunden kühl stellen und höchstens zwei Tage aufbewahren. Vor dem Essen vollständig durcherhitzen.",
+    "safety": "Bratwürste bis mindestens 72 °C Kerntemperatur garen. Beim Einstechen und Einlegen in den heissen Sud vorsichtig arbeiten. Wegen Wein und möglicher Sulfite Produktetiketten prüfen; der Alkohol verkocht nicht zwingend vollständig.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Blaue_Zipfel&oldid=863596",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 4,
+      "adaptation": "Neu formuliert und auf eine von vier Portionen umgerechnet. Bei Mengenbereichen die niedrigere Zahl gewählt, optionale Zutaten weggelassen sowie Gewichtsannahmen, Brotmenge, Kerntemperatur und Sicherheitshinweise ergänzt."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.25,
+      "waterMl": 125,
+      "noCook": false,
+      "onePot": true
+    },
+    "image": "assets/recipe-photos/wikibooks-blaue-zipfel.webp"
+  }
+]
