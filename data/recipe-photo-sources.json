@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-11-16",
+  "reviewedAt": "2026-11-17",
   "photos": [
     {
       "recipeId": "poulet-reis-bowl",
@@ -787,6 +787,23 @@
       "reviewedAt": "2026-11-13",
       "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Apfelpfannkuchen.jpg",
       "originalPhotoSha256": "eb7c4441d1143cdfe9fb3bf0e8c1801bf627591204730544666241fc1e923bd6"
+    },
+    {
+      "recipeId": "wikibooks-blaue-zipfel",
+      "path": "assets/recipe-photos/wikibooks-blaue-zipfel.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Blaue_Zipfel.jpg",
+      "author": "Gruenes Wuersterl",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Blaue Zipfel",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 646 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echte Blaue Zipfel mit Zwiebeln und Brezel. Die Brezel gehört nicht zur übernommenen Fassung mit Roggenbrot; genaue Zutatenmengen und Wurstzusammensetzung sind aus dem Foto nicht belegbar.",
+      "reviewedAt": "2026-11-17",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Blaue_Zipfel.jpg",
+      "originalPhotoSha256": "a463377612bc6b6706e29460adfef07f9e46292133e4fc6c41119e72a935d51e"
     },
     {
       "recipeId": "wikibooks-hefezopf",
