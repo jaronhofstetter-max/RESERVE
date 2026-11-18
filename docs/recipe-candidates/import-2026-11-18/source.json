@@ -1,0 +1,47 @@
+{
+  "recipe": {
+    "author": "Wikibooks-Mitwirkende",
+    "provider": "Wikibooks",
+    "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Dampfnudeln&oldid=682532",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "originalServings": 4,
+    "originalIngredients": [
+      "1 L Vanillesauce",
+      "500 g Weissmehl",
+      "20 g Hefe",
+      "10 g Salz",
+      "2,5–3 dl Milch, handwarm",
+      "60 g Butter, weich",
+      "1–2 EL Zucker oder mehr",
+      "3 dl warme Milch",
+      "4–6 Löffel Zucker",
+      "30 g Butter",
+      "Zitronenaroma optional"
+    ],
+    "adaptation": "Neu formuliert und auf eine von vier Portionen umgerechnet. Bei allen Mengen- und Zeitbereichen die untere Grenze gewählt, die unklare Löffelangabe transparent als Esslöffel interpretiert, optionales Zitronenaroma weggelassen sowie Gehzeit, Garmerkmale, Geräte- und Sicherheitshinweise ergänzt."
+  },
+  "portionAssumptions": [
+    "Die offizielle Quellenangabe lautet vier Personen; der Erfahrungsbericht vermutet wegen der grossen Menge acht. RESERVE verwendet vier als verbindliche Basis.",
+    "2,5–3 dl Milch wird zu 2,5 dl; 1–2 EL Zucker wird zu 1 EL; 4–6 Löffel Zucker wird zu 4 Löffeln; 40–50 Minuten Backzeit wird zu 40 Minuten.",
+    "Ein Esslöffel Zucker entspricht 12 g. Die nicht näher bezeichneten Löffel im Guss werden transparent als Esslöffel zu je 12 g interpretiert.",
+    "Zitronenaroma ist optional und wird weggelassen. Für servierfertige Vanillesauce wird eine Dichte von 1 g/ml angesetzt."
+  ],
+  "photo": {
+    "recipeId": "wikibooks-dampfnudeln",
+    "path": "assets/recipe-photos/wikibooks-dampfnudeln.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:2026-08-28_Pf%C3%A4lzer_Dampfnudeln_Salzkruste_mit_Vanillesauce_1.jpg",
+    "author": "Burkhard Mücke",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "kind": "photograph",
+    "servingSuggestion": true,
+    "title": "2026-08-28 Pfälzer Dampfnudeln Salzkruste mit Vanillesauce 1",
+    "provider": "Wikimedia Commons",
+    "adaptation": "Proportional auf 700 × 450 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+    "review": "Serviervorschlag: echte Pfälzer Dampfnudeln mit Salzkruste und Vanillesauce. Die übernommene Berner Rezeptfassung wird im Ofen mit Milch-Butter-Guss gebacken; Herstellungsart und genaue Zutaten des Fotos sind daher nicht identisch.",
+    "reviewedAt": "2026-11-18",
+    "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/2026-08-28_Pf%C3%A4lzer_Dampfnudeln_Salzkruste_mit_Vanillesauce_1.jpg",
+    "originalPhotoSha256": "06ec0f1937482d2aded159319b1ea0a441788b202b4209b040476df00c49401a"
+  }
+}
