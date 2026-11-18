@@ -1,0 +1,5 @@
+# Dampfnudeln nach Berner Art
+
+Verwendet wird das freie Wikibooks-Rezept für vier Personen. Bei sämtlichen Mengen- und Zeitbereichen gilt die untere Grenze. Der Erfahrungsbericht auf derselben Seite hält die ausgewiesene Menge für deutlich überportioniert und vermutet acht Portionen; RESERVE lässt die offizielle Basis von vier Personen unverändert und dokumentiert den Hinweis. Die ungenaue Angabe «Löffel» wird offen als Esslöffel interpretiert. Der angepasste Rezepttext steht unter CC BY-SA 4.0.
+
+Das getrennt geprüfte Originalfoto von Burkhard Mücke ist eine echte Aufnahme Pfälzer Dampfnudeln mit Salzkruste und Vanillesauce und steht unter CC BY-SA 4.0. Text und Foto erlauben kommerzielle Nutzung und Bearbeitung. Erforderlich sind Namensnennung, Quellen- und Lizenzlink, Änderungshinweis sowie Weitergabe der jeweiligen Bearbeitung unter derselben Lizenz. Weil das Bild die Pfälzer Variante statt der ofengebackenen Berner Fassung zeigt, ist es ausdrücklich als Serviervorschlag gekennzeichnet.

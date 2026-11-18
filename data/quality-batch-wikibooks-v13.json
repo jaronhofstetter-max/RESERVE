@@ -1,0 +1,187 @@
+[
+  {
+    "id": "wikibooks-dampfnudeln",
+    "name": "Dampfnudeln nach Berner Art",
+    "type": "Dessert",
+    "diet": "Vegetarisch",
+    "dish": "🥟",
+    "cuisine": "Schweizerisch",
+    "mealTimes": [
+      "Zwischenmahlzeit",
+      "Abendessen"
+    ],
+    "prepMinutes": 80,
+    "cookMinutes": 40,
+    "difficulty": "Mittel",
+    "allergens": [
+      "Gluten",
+      "Milch"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Bern",
+      "Dampfnudeln",
+      "Hefegebäck",
+      "Vanillesauce"
+    ],
+    "ingredients": [
+      {
+        "name": "Servierfertige Vanillesauce",
+        "amount": 250,
+        "unit": "ml"
+      },
+      {
+        "name": "Weissmehl",
+        "amount": 125,
+        "unit": "g"
+      },
+      {
+        "name": "Frischhefe",
+        "amount": 5,
+        "unit": "g"
+      },
+      {
+        "name": "Salz",
+        "amount": 2.5,
+        "unit": "g"
+      },
+      {
+        "name": "Vollmilch für den Teig",
+        "amount": 62.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Butter für den Teig",
+        "amount": 15,
+        "unit": "g"
+      },
+      {
+        "name": "Zucker für den Teig",
+        "amount": 3,
+        "unit": "g"
+      },
+      {
+        "name": "Warme Vollmilch für den Guss",
+        "amount": 75,
+        "unit": "ml"
+      },
+      {
+        "name": "Zucker für den Guss",
+        "amount": 12,
+        "unit": "g"
+      },
+      {
+        "name": "Butter für den Guss",
+        "amount": 7.5,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Weissmehl, Frischhefe, Salz, handwarme Milch, weiche Butter und Zucker zu einem weichen, geschmeidigen Teig kneten.",
+      "Den Teig zugedeckt an einem warmen Ort gehen lassen, bis er sein Volumen ungefähr verdoppelt hat. Danach zu faustgrossen Kugeln formen.",
+      "Eine feuerfeste Form ausbuttern und die Teigkugeln mit etwa einem Zentimeter Abstand hineinsetzen.",
+      "Für den Guss warme Milch, Zucker und Butter verrühren. Knapp die Hälfte über die Teigkugeln giessen und diese 15 Minuten ruhen lassen. Den Backofen auf 180 °C Ober-/Unterhitze vorheizen.",
+      "Die Dampfnudeln 40 Minuten backen. Nach 15 Minuten die Kugeln vorsichtig mit zwei Gabeln voneinander lösen und den restlichen Guss darübergiessen.",
+      "Die Dampfnudeln fertig backen, bis sie goldbraun sind und ein Holzstäbchen ohne feuchten Teig herauskommt. Die servierfertige Vanillesauce erhitzen und reichlich dazu servieren."
+    ],
+    "nutrition": {
+      "kcal": 1076.02,
+      "protein": 26.73,
+      "carbs": 157.23,
+      "fat": 35.92,
+      "fiber": 3.38
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenbasierte Schätzung mit dokumentierten USDA- und Hersteller-Referenzwerten; keine Messung des fertigen Gerichts.",
+      "basis": "Je eine von vier offiziell ausgewiesenen Portionen. Der Erfahrungsbericht der Quelle bezeichnet die Menge als stark überportioniert und schätzt acht Portionen; RESERVE behält die Rezeptangabe von vier Personen bei. Bei Mengenbereichen gilt die niedrigere Zahl: 2,5 dl Milch, 1 EL Zucker, 4 Löffel Zucker und 40 Minuten Backzeit. Ein Esslöffel Zucker entspricht 12 g; die nicht näher bezeichneten Löffel im Guss werden transparent als Esslöffel zu je 12 g angesetzt. Zitronenaroma ist optional und wird weggelassen. Für die servierfertige Vanillesauce wird 1 g/ml angenommen. Kohlenhydrate ohne Ballaststoffe.",
+      "sources": "docs/recipe-candidates/import-2026-11-18/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Servierfertige Vanillesauce",
+          "grams": 250,
+          "foodKey": "vanilla-sauce-ready",
+          "excluded": false
+        },
+        {
+          "name": "Weissmehl",
+          "grams": 125,
+          "foodKey": "169761",
+          "excluded": false
+        },
+        {
+          "name": "Frischhefe",
+          "grams": 5,
+          "foodKey": "fresh-yeast-generic",
+          "excluded": false
+        },
+        {
+          "name": "Salz",
+          "grams": 2.5,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Vollmilch für Teig und Guss",
+          "grams": 141.625,
+          "foodKey": "171265",
+          "excluded": false
+        },
+        {
+          "name": "Butter für Teig und Guss",
+          "grams": 22.5,
+          "foodKey": "173430",
+          "excluded": false
+        },
+        {
+          "name": "Zucker für Teig und Guss",
+          "grams": 15,
+          "foodKey": "169655",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Ofengebackene Dampfnudeln nach Berner Art mit milchigem Butterguss und heisser Vanillesauce.",
+    "equipment": [
+      "Küchenwaage",
+      "Messbecher",
+      "Rührschüssel",
+      "Küchentuch",
+      "Feuerfeste Form",
+      "Zwei Gabeln",
+      "Holzstäbchen",
+      "Kleiner Topf",
+      "Ofenhandschuhe"
+    ],
+    "prepNotes": [
+      "Die Quelle weist vier Personen aus. Ein Erfahrungsbericht auf derselben Seite hält die Menge für überportioniert und vermutet acht Portionen; der Personenrechner bleibt bei der offiziellen Angabe von vier.",
+      "Bei 2,5–3 dl Milch, 1–2 EL Zucker, 4–6 Löffeln Zucker und 40–50 Minuten Backzeit verwendet RESERVE regelgemäss die untere Grenze.",
+      "Ein Esslöffel Zucker wird mit 12 g angesetzt. Weil die Quelle beim Guss nur «Löffel» nennt, werden diese offen als Esslöffel zu je 12 g interpretiert. Optionales Zitronenaroma wird nicht übernommen.",
+      "Die Quellenfassung ist eine im Ofen gebackene Berner Variante. Das echte Foto zeigt Pfälzer Dampfnudeln mit Salzkruste und Vanillesauce und ist deshalb ausdrücklich ein Serviervorschlag."
+    ],
+    "doneness": "Die Oberfläche ist goldbraun, die Dampfnudeln sind deutlich aufgegangen und ein Holzstäbchen kommt ohne feuchten Teig heraus.",
+    "substitutions": [
+      "Zitronenaroma ist laut Quelle optional; es wurde nicht in Zutaten oder Nährwerte eingerechnet."
+    ],
+    "leftovers": "Reste innerhalb von zwei Stunden abkühlen, abgedeckt kühlen und innerhalb von zwei Tagen verbrauchen. Dampfnudeln und Vanillesauce getrennt vollständig durcherhitzen.",
+    "safety": "Milch und Butter nur handwarm verwenden, damit die Hefe aktiv bleibt. Rohen Mehlteig nicht probieren. Beim Nachgiessen des Gusses und Herausnehmen der heissen Form Ofenhandschuhe tragen. Bei fertiger Vanillesauce Zutaten- und Spurenhinweise prüfen; je nach Produkt können Ei oder Soja enthalten sein.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Dampfnudeln&oldid=682532",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 4,
+      "adaptation": "Neu formuliert und auf eine von vier Portionen umgerechnet. Bei allen Mengen- und Zeitbereichen die untere Grenze gewählt, die unklare Löffelangabe transparent als Esslöffel interpretiert, optionales Zitronenaroma weggelassen sowie Gehzeit, Garmerkmale, Geräte- und Sicherheitshinweise ergänzt."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.27,
+      "waterMl": 0,
+      "noCook": false,
+      "onePot": false
+    },
+    "image": "assets/recipe-photos/wikibooks-dampfnudeln.webp"
+  }
+]

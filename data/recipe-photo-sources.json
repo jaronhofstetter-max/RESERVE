@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-11-17",
+  "reviewedAt": "2026-11-18",
   "photos": [
     {
       "recipeId": "poulet-reis-bowl",
@@ -855,6 +855,23 @@
       "reviewedAt": "2026-11-14",
       "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Banana_on_pancake.jpg",
       "originalPhotoSha256": "dd0f12521dfa5dc6dcc5428b21a800229e3da50bfd6b5c901dd6923ffa496009"
+    },
+    {
+      "recipeId": "wikibooks-dampfnudeln",
+      "path": "assets/recipe-photos/wikibooks-dampfnudeln.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:2026-08-28_Pf%C3%A4lzer_Dampfnudeln_Salzkruste_mit_Vanillesauce_1.jpg",
+      "author": "Burkhard Mücke",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "2026-08-28 Pfälzer Dampfnudeln Salzkruste mit Vanillesauce 1",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 450 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echte Pfälzer Dampfnudeln mit Salzkruste und Vanillesauce. Die übernommene Berner Rezeptfassung wird im Ofen mit Milch-Butter-Guss gebacken; Herstellungsart und genaue Zutaten des Fotos sind daher nicht identisch.",
+      "reviewedAt": "2026-11-18",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/2026-08-28_Pf%C3%A4lzer_Dampfnudeln_Salzkruste_mit_Vanillesauce_1.jpg",
+      "originalPhotoSha256": "06ec0f1937482d2aded159319b1ea0a441788b202b4209b040476df00c49401a"
     }
   ]
 }
