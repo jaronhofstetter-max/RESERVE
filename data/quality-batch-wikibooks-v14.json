@@ -1,0 +1,171 @@
+[
+  {
+    "id": "wikibooks-knoblauchsuppe",
+    "name": "Knoblauchsuppe mit Rahm",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥣",
+    "cuisine": "Deutschsprachig",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 5,
+    "cookMinutes": 15,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Gluten",
+      "Milch"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Knoblauch",
+      "Suppe",
+      "Rahm",
+      "Schnell"
+    ],
+    "ingredients": [
+      {
+        "name": "Knoblauchzehen",
+        "amount": 2,
+        "unit": "Stück"
+      },
+      {
+        "name": "Butter",
+        "amount": 3.5,
+        "unit": "g"
+      },
+      {
+        "name": "Weissmehl",
+        "amount": 2.5,
+        "unit": "g"
+      },
+      {
+        "name": "Gemüsebouillon, zubereitet",
+        "amount": 175,
+        "unit": "ml"
+      },
+      {
+        "name": "Schnittlauch, fein geschnitten",
+        "amount": 1.5,
+        "unit": "g"
+      },
+      {
+        "name": "Schwarzer Pfeffer aus der Mühle",
+        "amount": 0.25,
+        "unit": "g"
+      },
+      {
+        "name": "Crème fraîche",
+        "amount": 25,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Knoblauch schälen und fein hacken. Schnittlauch waschen, trocken tupfen und fein schneiden.",
+      "Butter in einem Topf bei mittlerer Hitze schmelzen. Den Knoblauch darin 1–2 Minuten glasig dünsten, ohne ihn braun werden zu lassen.",
+      "Mehl gleichmässig über den Knoblauch streuen, gründlich verrühren und etwa 30 Sekunden mitdünsten.",
+      "Gemüsebouillon unter ständigem Rühren langsam angiessen, damit keine Mehlklümpchen entstehen. Aufkochen und danach bei kleiner Hitze 15 Minuten sanft köcheln lassen.",
+      "Crème fraîche einrühren und die Suppe kurz erhitzen, aber nicht mehr kochen lassen. Mit schwarzem Pfeffer abschmecken.",
+      "Die Suppe sehr heiss in Schalen anrichten und mit dem fein geschnittenen Schnittlauch bestreuen."
+    ],
+    "nutrition": {
+      "kcal": 136.34,
+      "protein": 1.84,
+      "carbs": 5.48,
+      "fat": 11.83,
+      "fiber": 0.23
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenbasierte Schätzung mit dokumentierten USDA-, Schweizer Nährwerttabellen- und generischen Bouillonwerten; keine Messung der fertigen Suppe.",
+      "basis": "Je eine von vier Portionen. Beim Bereich 8–10 Knoblauchzehen gilt gemäss RESERVE-Regel die niedrigere Zahl von acht. Eine geschälte Knoblauchzehe wird mit 3 g, 1 EL Butter mit 14 g, 1 EL Weissmehl mit 10 g und 2 EL fein geschnittener Schnittlauch mit 6 g für den Gesamtansatz angesetzt. Die unbestimmte Bouillon wird transparent als zubereitete Gemüsebouillon umgesetzt; schwarzer Pfeffer wird mit 1 g insgesamt geschätzt und wegen des sehr kleinen Nährwertbeitrags aus der Berechnung ausgeschlossen. Kohlenhydrate ohne Ballaststoffe.",
+      "sources": "docs/recipe-candidates/import-2026-11-19/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Knoblauchzehen",
+          "grams": 6,
+          "foodKey": "169230",
+          "excluded": false
+        },
+        {
+          "name": "Butter",
+          "grams": 3.5,
+          "foodKey": "173430",
+          "excluded": false
+        },
+        {
+          "name": "Weissmehl",
+          "grams": 2.5,
+          "foodKey": "169761",
+          "excluded": false
+        },
+        {
+          "name": "Gemüsebouillon, zubereitet",
+          "grams": 175,
+          "foodKey": "vegetable-bouillon-prepared",
+          "excluded": false
+        },
+        {
+          "name": "Schnittlauch",
+          "grams": 1.5,
+          "foodKey": "169994",
+          "excluded": false
+        },
+        {
+          "name": "Schwarzer Pfeffer",
+          "grams": 0.25,
+          "foodKey": null,
+          "excluded": true
+        },
+        {
+          "name": "Crème fraîche",
+          "grams": 25,
+          "foodKey": "creme-fraiche-ch",
+          "excluded": false
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Sämige Knoblauchsuppe mit Gemüsebouillon, Crème fraîche und frischem Schnittlauch.",
+    "equipment": [
+      "Küchenwaage",
+      "Messbecher",
+      "Schneidebrett",
+      "Kochmesser",
+      "Topf",
+      "Kochlöffel",
+      "Suppenschalen"
+    ],
+    "prepNotes": [
+      "Die Quelle nennt vier Personen; die angezeigten Mengen entsprechen einer Portion.",
+      "Bei 8–10 Knoblauchzehen verwendet RESERVE regelgemäss die untere Zahl von acht, also zwei Zehen pro Person.",
+      "Für die Umrechnung werden eine Knoblauchzehe mit 3 g, ein Esslöffel Butter mit 14 g, ein Esslöffel Mehl mit 10 g und zwei Esslöffel Schnittlauch mit insgesamt 6 g angesetzt.",
+      "Die nicht näher bestimmte Bouillon wird als vegetarische Gemüsebouillon umgesetzt. Produktetikett wegen Salzgehalt, Gluten und möglichen Spuren prüfen.",
+      "Das echte Foto zeigt Knoblauchsuppe mit Kräutern und zusätzlichen Croutons. Croutons gehören nicht zur Textquelle und sind nicht in Zutaten oder Nährwerten enthalten; das Foto ist deshalb ausdrücklich ein Serviervorschlag."
+    ],
+    "doneness": "Die Suppe ist glatt und leicht sämig; der Knoblauch ist weich und mild, ohne braune oder bittere Stellen.",
+    "substitutions": [
+      "Die Quelle nennt nur Bouillon. RESERVE verwendet Gemüsebouillon; eine andere Bouillon verändert Geschmack, Salzgehalt, Allergene und die vegetarische Einordnung."
+    ],
+    "leftovers": "Reste innerhalb von zwei Stunden abkühlen, abgedeckt kühlen und innerhalb von zwei Tagen verbrauchen. Beim Aufwärmen vollständig erhitzen, nach Zugabe der Crème fraîche aber nicht stark sprudelnd kochen.",
+    "safety": "Knoblauch nur glasig dünsten; gebräunter Knoblauch kann bitter werden. Heisse Flüssigkeit langsam angiessen, um Spritzer zu vermeiden. Bouillon- und Crème-fraîche-Etiketten auf Allergene und Spuren prüfen.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Knoblauchsuppe&oldid=900280",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 4,
+      "adaptation": "Neu formuliert und auf eine von vier Portionen umgerechnet. Beim Knoblauchbereich die untere Zahl gewählt, Bouillon als Gemüsebouillon konkretisiert sowie Gewichtsannahmen, Arbeitsschritte, Garmerkmale, Geräte-, Aufbewahrungs- und Sicherheitshinweise ergänzt."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.36,
+      "waterMl": 175,
+      "noCook": false,
+      "onePot": true
+    },
+    "image": "assets/recipe-photos/wikibooks-knoblauchsuppe.webp"
+  }
+]

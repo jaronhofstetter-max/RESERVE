@@ -1,0 +1,74 @@
+{
+  "169230": {
+    "description": "Garlic, raw",
+    "per100g": {
+      "kcal": 149,
+      "protein": 6.36,
+      "carbs": 33.06,
+      "fat": 0.5,
+      "fiber": 2.1
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/169230/nutrients",
+    "carbohydrateBasis": "total-including-fiber"
+  },
+  "169761": {
+    "description": "Wheat flour, white, all-purpose, unenriched",
+    "per100g": {
+      "kcal": 364,
+      "protein": 10.33,
+      "carbs": 76.31,
+      "fat": 0.98,
+      "fiber": 2.7
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/169761/nutrients",
+    "carbohydrateBasis": "total-including-fiber"
+  },
+  "169994": {
+    "description": "Chives, raw",
+    "per100g": {
+      "kcal": 30,
+      "protein": 3.27,
+      "carbs": 4.35,
+      "fat": 0.73,
+      "fiber": 2.5
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/169994/nutrients",
+    "carbohydrateBasis": "total-including-fiber"
+  },
+  "173430": {
+    "description": "Butter, salted",
+    "per100g": {
+      "kcal": 717,
+      "protein": 0.85,
+      "carbs": 0.06,
+      "fat": 81.11,
+      "fiber": 0
+    },
+    "source": "https://fdc.nal.usda.gov/food-details/173430/nutrients",
+    "carbohydrateBasis": "total-including-fiber"
+  },
+  "creme-fraiche-ch": {
+    "description": "Sauerrahm (Crème fraîche), Schweizer Nährwerttabelle",
+    "per100g": {
+      "kcal": 336,
+      "protein": 2.4,
+      "carbs": 2.8,
+      "fat": 35,
+      "fiber": 0
+    },
+    "source": "https://hssr.ch/fileupload/Schweizer_Naehrwerttabelle_2021.pdf",
+    "carbohydrateBasis": "available-excluding-fiber"
+  },
+  "vegetable-bouillon-prepared": {
+    "description": "Gemüsebouillon, zubereitet, generischer Richtwert",
+    "per100g": {
+      "kcal": 5,
+      "protein": 0.3,
+      "carbs": 0.6,
+      "fat": 0.1,
+      "fiber": 0
+    },
+    "source": "documented generic estimate",
+    "carbohydrateBasis": "available-excluding-fiber"
+  }
+}
