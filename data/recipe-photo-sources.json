@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-11-18",
+  "reviewedAt": "2026-11-19",
   "photos": [
     {
       "recipeId": "poulet-reis-bowl",
@@ -872,6 +872,23 @@
       "reviewedAt": "2026-11-18",
       "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/2026-08-28_Pf%C3%A4lzer_Dampfnudeln_Salzkruste_mit_Vanillesauce_1.jpg",
       "originalPhotoSha256": "06ec0f1937482d2aded159319b1ea0a441788b202b4209b040476df00c49401a"
+    },
+    {
+      "recipeId": "wikibooks-knoblauchsuppe",
+      "path": "assets/recipe-photos/wikibooks-knoblauchsuppe.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Knoblauchsuppe.jpg",
+      "author": "Christian Michelides",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Knoblauchsuppe",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 617 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echte Knoblauchsuppe mit Kräutern und Croutons. Croutons sind nicht Bestandteil der übernommenen Rezeptfassung; genaue Zutaten und Portionsgrösse des Fotos sind nicht belegt.",
+      "reviewedAt": "2026-11-19",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Knoblauchsuppe.jpg",
+      "originalPhotoSha256": "2633c05df108a8cd951c1748a58457c46b483957fdcdc61ccceba93c1e60a741"
     }
   ]
 }

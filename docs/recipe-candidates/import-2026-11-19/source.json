@@ -1,0 +1,42 @@
+{
+  "recipe": {
+    "author": "Wikibooks-Mitwirkende",
+    "provider": "Wikibooks",
+    "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Knoblauchsuppe&oldid=900280",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "originalServings": 4,
+    "originalIngredients": [
+      "8–10 Knoblauchzehen",
+      "1 EL Butter",
+      "1 EL Mehl",
+      "7 dl Bouillon",
+      "2 EL Schnittlauch",
+      "Pfeffer aus der Mühle",
+      "1 dl Crème fraîche"
+    ],
+    "adaptation": "Neu formuliert und auf eine von vier Portionen umgerechnet. Beim Knoblauchbereich die untere Zahl gewählt, Bouillon als Gemüsebouillon konkretisiert sowie Gewichtsannahmen, Arbeitsschritte, Garmerkmale, Geräte-, Aufbewahrungs- und Sicherheitshinweise ergänzt."
+  },
+  "portionAssumptions": [
+    "8–10 Knoblauchzehen wird regelgemäss zu acht; das ergibt zwei Zehen pro Portion.",
+    "Eine Knoblauchzehe entspricht 3 g, 1 EL Butter 14 g, 1 EL Weissmehl 10 g und 2 EL fein geschnittener Schnittlauch 6 g je Gesamtansatz.",
+    "Die unbestimmte Bouillon wird als zubereitete Gemüsebouillon umgesetzt. Schwarzer Pfeffer wird mit 1 g insgesamt angesetzt und wegen des kleinen Nährwertbeitrags nicht berechnet."
+  ],
+  "photo": {
+    "recipeId": "wikibooks-knoblauchsuppe",
+    "path": "assets/recipe-photos/wikibooks-knoblauchsuppe.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Knoblauchsuppe.jpg",
+    "author": "Christian Michelides",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "kind": "photograph",
+    "servingSuggestion": true,
+    "title": "Knoblauchsuppe",
+    "provider": "Wikimedia Commons",
+    "adaptation": "Proportional auf 700 × 617 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+    "review": "Serviervorschlag: echte Knoblauchsuppe mit Kräutern und Croutons. Croutons sind nicht Bestandteil der übernommenen Rezeptfassung; genaue Zutaten und Portionsgrösse des Fotos sind nicht belegt.",
+    "reviewedAt": "2026-11-19",
+    "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Knoblauchsuppe.jpg",
+    "originalPhotoSha256": "2633c05df108a8cd951c1748a58457c46b483957fdcdc61ccceba93c1e60a741"
+  }
+}
