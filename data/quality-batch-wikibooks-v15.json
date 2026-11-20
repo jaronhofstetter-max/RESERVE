@@ -1,0 +1,245 @@
+[
+  {
+    "id": "wikibooks-kuerbiscremesuppe",
+    "name": "Steirische Kürbiscremesuppe",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥣",
+    "cuisine": "Österreichisch",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 35,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Gluten",
+      "Milch"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Kürbis",
+      "Suppe",
+      "Steiermark",
+      "Saisonal"
+    ],
+    "ingredients": [
+      {
+        "name": "Hokkaido-Kürbis, essbarer Anteil",
+        "amount": 125,
+        "unit": "g"
+      },
+      {
+        "name": "Karotten",
+        "amount": 37.5,
+        "unit": "g"
+      },
+      {
+        "name": "Passierte Tomaten",
+        "amount": 62.5,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebeln",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Kartoffeln, gekocht",
+        "amount": 112.5,
+        "unit": "g"
+      },
+      {
+        "name": "Gemüsebouillon, zubereitet",
+        "amount": 87.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Schmand",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Weissmehl",
+        "amount": 1.25,
+        "unit": "g"
+      },
+      {
+        "name": "Kürbiskerne",
+        "amount": 2.5,
+        "unit": "g"
+      },
+      {
+        "name": "Kürbiskernöl",
+        "amount": 0.625,
+        "unit": "ml"
+      },
+      {
+        "name": "Rapsöl",
+        "amount": 1.875,
+        "unit": "ml"
+      },
+      {
+        "name": "Apfelessig",
+        "amount": 1.875,
+        "unit": "ml"
+      },
+      {
+        "name": "Paprikapulver, edelsüss",
+        "amount": 0.25,
+        "unit": "g"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.5,
+        "unit": "g"
+      },
+      {
+        "name": "Weisser Pfeffer",
+        "amount": 0.125,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Hokkaido-Kürbis gründlich waschen, Stiel und Kerne entfernen und das Fruchtfleisch würfeln. Karotten schälen und in nussgrosse Stücke schneiden. Zwiebeln schälen und würfeln; die gekochten Kartoffeln ebenfalls würfeln.",
+      "Rapsöl in einem grossen Topf bei mittlerer Hitze erwärmen. Zwiebeln glasig dünsten, Paprikapulver einrühren und nur kurz mitrösten, damit es nicht verbrennt.",
+      "Mit Apfelessig ablöschen. Kürbis und Karotten zugeben und etwa 5 Minuten unter gelegentlichem Rühren mitdünsten.",
+      "Passierte Tomaten, gekochte Kartoffeln und Gemüsebouillon zugeben. Aufkochen und danach bei mittlerer Hitze etwa 20–25 Minuten kochen, bis Kürbis und Karotten weich sind.",
+      "Die Suppe mit dem Stabmixer vollständig glatt pürieren. Für eine besonders feine Konsistenz anschliessend durch ein hitzebeständiges Sieb streichen.",
+      "Schmand mit dem Weissmehl glatt rühren, in die kochende Suppe einrühren und unter Rühren kurz binden lassen. Mit Salz und weissem Pfeffer abschmecken.",
+      "Kürbiskerne in einer trockenen Pfanne unter Wenden leicht rösten. Die Suppe anrichten, mit Kürbiskernen und Kürbiskernöl garnieren und sofort servieren."
+    ],
+    "nutrition": {
+      "kcal": 278.06,
+      "protein": 6.62,
+      "carbs": 42.3,
+      "fat": 10.12,
+      "fiber": 5.25
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenbasierte Schätzung mit dokumentierten USDA- und generischen Richtwerten; keine Messung der fertigen Suppe.",
+      "basis": "Pro Portion bei acht angenommenen Portionen. Die Quelle nennt keine Portionenzahl. Der Gesamtansatz wiegt vor dem Garen rund 3.9 kg; acht Portionen ergeben etwa 450–500 g Suppe pro Person. Stückgewichte sind Richtwerte: ein Hokkaido mit 1000 g essbarem Anteil, drei grosse Karotten 300 g, zwei Zwiebeln 200 g und sechs gekochte Kartoffeln 900 g. 2 EL Kürbiskerne = 20 g und 1 TL Kürbiskernöl = 5 ml. In der Zubereitung, aber nicht in der Zutatenliste genannte Mengen werden offengelegt ergänzt: 15 ml Rapsöl, 15 ml Apfelessig, 2 g Paprikapulver, 4 g Salz und 1 g Pfeffer je Gesamtansatz. Kohlenhydrate ohne Ballaststoffe.",
+      "sources": "docs/recipe-candidates/import-2026-11-20/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Hokkaido-Kürbis",
+          "grams": 125,
+          "foodKey": "pumpkin-raw",
+          "excluded": false
+        },
+        {
+          "name": "Karotten",
+          "grams": 37.5,
+          "foodKey": "carrot-raw",
+          "excluded": false
+        },
+        {
+          "name": "Passierte Tomaten",
+          "grams": 62.5,
+          "foodKey": "passata",
+          "excluded": false
+        },
+        {
+          "name": "Zwiebeln",
+          "grams": 25,
+          "foodKey": "onion-raw",
+          "excluded": false
+        },
+        {
+          "name": "Kartoffeln, gekocht",
+          "grams": 112.5,
+          "foodKey": "potato-boiled",
+          "excluded": false
+        },
+        {
+          "name": "Gemüsebouillon",
+          "grams": 87.5,
+          "foodKey": "vegetable-bouillon-prepared",
+          "excluded": false
+        },
+        {
+          "name": "Schmand",
+          "grams": 25,
+          "foodKey": "schmand-24",
+          "excluded": false
+        },
+        {
+          "name": "Weissmehl",
+          "grams": 1.25,
+          "foodKey": "169761",
+          "excluded": false
+        },
+        {
+          "name": "Kürbiskerne",
+          "grams": 2.5,
+          "foodKey": "pumpkin-seeds",
+          "excluded": false
+        },
+        {
+          "name": "Kürbiskernöl",
+          "grams": 0.625,
+          "foodKey": "oil",
+          "excluded": false
+        },
+        {
+          "name": "Rapsöl",
+          "grams": 1.71,
+          "foodKey": "oil",
+          "excluded": false
+        },
+        {
+          "name": "Apfelessig und Gewürze",
+          "grams": 2.75,
+          "foodKey": null,
+          "excluded": true
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Cremige steirische Kürbissuppe mit Hokkaido, Kartoffeln, Schmand, gerösteten Kürbiskernen und Kürbiskernöl.",
+    "equipment": [
+      "Küchenwaage",
+      "Messbecher",
+      "Schneidebrett",
+      "Kochmesser",
+      "Grosser Topf",
+      "Kochlöffel",
+      "Stabmixer",
+      "Hitzebeständiges Sieb",
+      "Bratpfanne",
+      "Suppenschalen"
+    ],
+    "prepNotes": [
+      "Die Quelle nennt keine Portionenzahl. RESERVE setzt aufgrund des rund 3.9 kg schweren Gesamtansatzes acht Hauptmahlzeit-Portionen an; das ist eine dokumentierte Annahme, keine Originalangabe.",
+      "Richtgewichte im Gesamtansatz: Hokkaido 1000 g essbarer Anteil, drei grosse Karotten 300 g, zwei Zwiebeln 200 g und sechs gekochte Kartoffeln 900 g. Tatsächliche Stückgewichte können abweichen.",
+      "Das in der Zubereitung genannte Fett und der Essig sind in der Original-Zutatenliste unbeziffert. RESERVE konkretisiert sie transparent als 15 ml Rapsöl und 15 ml Apfelessig für den Gesamtansatz.",
+      "Das echte Foto zeigt Kürbiscremesuppe mit Rahm, Kürbiskernen und dunklem Öl. Genaue Rezeptur und Portionsgrösse des Fotos sind nicht belegt; es ist daher ausdrücklich ein Serviervorschlag."
+    ],
+    "doneness": "Kürbis und Karotten lassen sich ohne Widerstand zerdrücken; die pürierte Suppe ist glatt, cremig und nach dem Einrühren der Schmand-Mehl-Mischung leicht gebunden.",
+    "substitutions": [
+      "Die Quelle erlaubt Butternusskürbis statt Hokkaido; Butternuss muss geschält werden und verändert Ertrag sowie Nährwerte.",
+      "Schmand kann laut Quelle durch süssen Rahm oder Crème fraîche ersetzt werden; Fettgehalt, Allergene und Nährwerte ändern sich."
+    ],
+    "leftovers": "Reste innerhalb von zwei Stunden abkühlen, abgedeckt kühlen und innerhalb von zwei Tagen verbrauchen. Beim Aufwärmen vollständig erhitzen und regelmässig umrühren.",
+    "safety": "Paprikapulver nur kurz mitrösten, damit es nicht bitter wird. Beim Pürieren heisser Suppe den Stabmixer vollständig eintauchen und Spritzer vermeiden. Produktetiketten von Bouillon und Schmand auf Allergene und Spuren prüfen.",
+    "recipeCredit": {
+      "author": "Wikibooks-Mitwirkende",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_K%C3%BCrbiscremesuppe&oldid=900840",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 8,
+      "adaptation": "Neu formuliert und auf eine von acht angenommenen Portionen umgerechnet. Stück- und Löffelgewichte, unbezifferte Zutaten aus der Zubereitung, Arbeitsschritte, Garmerkmale, Geräte-, Aufbewahrungs- und Sicherheitshinweise transparent ergänzt. Die Quelle selbst nennt keine Portionenzahl."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.29,
+      "waterMl": 87.5,
+      "noCook": false,
+      "onePot": false
+    },
+    "image": "assets/recipe-photos/wikibooks-kuerbiscremesuppe.webp"
+  }
+]

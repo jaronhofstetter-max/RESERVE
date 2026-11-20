@@ -1,0 +1,36 @@
+{
+  "recipe": {
+    "author": "Wikibooks-Mitwirkende",
+    "provider": "Wikibooks",
+    "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_K%C3%BCrbiscremesuppe&oldid=900840",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "originalServings": null,
+    "assumedServings": 8,
+    "originalIngredients": ["1 Hokkaido-Kürbis", "3 grosse Möhren", "500 ml passierte Tomaten", "2 Zwiebeln", "6 gekochte Kartoffeln", "mindestens 700 ml Gemüsebrühe", "200 ml Schmand", "1 EL Weizenmehl", "2 EL Kürbiskerne", "1 TL Kürbiskernöl", "Paprikapulver"],
+    "adaptation": "Neu formuliert und auf eine von acht angenommenen Portionen umgerechnet. Stück- und Löffelgewichte, unbezifferte Zutaten aus der Zubereitung, Arbeitsschritte, Garmerkmale, Geräte-, Aufbewahrungs- und Sicherheitshinweise transparent ergänzt."
+  },
+  "portionAssumptions": [
+    "Die Quelle nennt keine Portionenzahl. Der Gesamtansatz wiegt vor dem Garen rund 3,9 kg; acht Hauptmahlzeit-Portionen ergeben etwa 450–500 g Suppe pro Person.",
+    "Ein Hokkaido entspricht 1000 g essbarem Anteil, drei grosse Karotten 300 g, zwei Zwiebeln 200 g und sechs gekochte Kartoffeln 900 g je Gesamtansatz.",
+    "2 EL Kürbiskerne entsprechen 20 g, 1 TL Kürbiskernöl 5 ml. Ergänzt werden 15 ml Rapsöl, 15 ml Apfelessig, 2 g Paprikapulver, 4 g Salz und 1 g Pfeffer je Gesamtansatz."
+  ],
+  "photo": {
+    "recipeId": "wikibooks-kuerbiscremesuppe",
+    "path": "assets/recipe-photos/wikibooks-kuerbiscremesuppe.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:K%C3%BCrbiscremesuppe_2751.JPG",
+    "author": "Karl Gruber",
+    "attribution": "WikiCommons/Karl Gruber",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "kind": "photograph",
+    "servingSuggestion": true,
+    "title": "Kürbiscremesuppe 2751",
+    "provider": "Wikimedia Commons",
+    "adaptation": "Proportional auf 700 × 467 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+    "review": "Serviervorschlag: echte Kürbiscremesuppe mit Rahm, Kürbiskernen und dunklem Öl. Genaue Rezeptur und Portionsgrösse des Fotos sind nicht belegt.",
+    "reviewedAt": "2026-11-20",
+    "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/K%C3%BCrbiscremesuppe_2751.JPG",
+    "originalPhotoSha256": "7303b326822ec4a784ddcf18133ab38bc40d07fb24e857d513b0cce654358338"
+  }
+}
