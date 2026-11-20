@@ -1,0 +1,12 @@
+{
+  "pumpkin-raw":{"description":"Pumpkin, raw","per100g":{"kcal":26,"protein":1,"carbs":6.5,"fat":0.1,"fiber":0.5},"source":"USDA FoodData Central generic reference","carbohydrateBasis":"total-including-fiber"},
+  "carrot-raw":{"description":"Carrots, raw","per100g":{"kcal":41,"protein":0.9,"carbs":9.6,"fat":0.2,"fiber":2.8},"source":"USDA FoodData Central generic reference","carbohydrateBasis":"total-including-fiber"},
+  "passata":{"description":"Tomatoes, strained","per100g":{"kcal":30,"protein":1.5,"carbs":5,"fat":0.2,"fiber":1.5},"source":"generic product estimate","carbohydrateBasis":"total-including-fiber"},
+  "onion-raw":{"description":"Onions, raw","per100g":{"kcal":40,"protein":1.1,"carbs":9.3,"fat":0.1,"fiber":1.7},"source":"USDA FoodData Central generic reference","carbohydrateBasis":"total-including-fiber"},
+  "potato-boiled":{"description":"Potatoes, boiled","per100g":{"kcal":87,"protein":1.9,"carbs":20.1,"fat":0.1,"fiber":1.8},"source":"USDA FoodData Central generic reference","carbohydrateBasis":"total-including-fiber"},
+  "vegetable-bouillon-prepared":{"description":"Gemüsebouillon, zubereitet","per100g":{"kcal":5,"protein":0.2,"carbs":0.5,"fat":0.1,"fiber":0},"source":"documented generic estimate","carbohydrateBasis":"available-excluding-fiber"},
+  "schmand-24":{"description":"Schmand, 24 % Fett","per100g":{"kcal":240,"protein":2.5,"carbs":3.4,"fat":24,"fiber":0},"source":"generic product estimate","carbohydrateBasis":"available-excluding-fiber"},
+  "169761":{"description":"Wheat flour, white, all-purpose","per100g":{"kcal":364,"protein":10.3,"carbs":76.3,"fat":1,"fiber":2.7},"source":"https://fdc.nal.usda.gov/food-details/169761/nutrients","carbohydrateBasis":"total-including-fiber"},
+  "pumpkin-seeds":{"description":"Pumpkin and squash seed kernels","per100g":{"kcal":559,"protein":30.2,"carbs":10.7,"fat":49.1,"fiber":6},"source":"USDA FoodData Central generic reference","carbohydrateBasis":"total-including-fiber"},
+  "oil":{"description":"Plant oil","per100g":{"kcal":884,"protein":0,"carbs":0,"fat":100,"fiber":0},"source":"USDA FoodData Central generic reference","carbohydrateBasis":"available-excluding-fiber"}
+}
