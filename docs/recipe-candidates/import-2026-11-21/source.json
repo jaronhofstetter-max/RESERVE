@@ -1,0 +1,35 @@
+{
+  "recipe": {
+    "author": "Ingeborg / Wikibooks-Mitwirkende",
+    "provider": "Wikibooks",
+    "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_B%C3%A4rlauchsuppe&oldid=967706",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "originalServings": 4,
+    "originalIngredients": ["750 g mehlig kochende Kartoffeln", "2 Schalotten oder 1 Zwiebel", "2 EL Rapsöl", "800 ml Gemüsebrühe", "100 g Bärlauch", "100 g saure Sahne oder Sahne zum Kochen", "2 TL Zitronensaft", "Salz, Pfeffer"],
+    "selectedAlternatives": ["1 Zwiebel", "Saure Sahne"],
+    "adaptation": "Neu formuliert und auf eine von vier Portionen umgerechnet. Stück- und Löffelgewichte, unbezifferte Würzmengen, Arbeitsschritte, Garmerkmale, Geräte-, Aufbewahrungs- und Sicherheitshinweise transparent ergänzt."
+  },
+  "portionAssumptions": [
+    "Die Quelle nennt vier Personen; alle Mengen werden durch vier geteilt.",
+    "Eine Zwiebel entspricht 100 g im Gesamtansatz. 2 EL Rapsöl werden als 30 ml und 2 TL Zitronensaft als 10 ml umgesetzt.",
+    "Salz und Pfeffer werden als Richtmengen mit 2 g beziehungsweise 0,5 g im Gesamtansatz ergänzt und nicht in den Makronährwerten berechnet."
+  ],
+  "photo": {
+    "recipeId": "wikibooks-baerlauchsuppe",
+    "path": "assets/recipe-photos/wikibooks-baerlauchsuppe.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:B%C3%A4rlauchsuppe.jpg",
+    "author": "Schnobby",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "kind": "photograph",
+    "servingSuggestion": true,
+    "title": "Bärlauchsuppe",
+    "provider": "Wikimedia Commons",
+    "adaptation": "Proportional auf 700 × 466 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+    "review": "Serviervorschlag: echte Kartoffel-Bärlauch-Suppe aus derselben Wikibooks-Rezeptquelle, zusätzlich mit gebratenen Garnelen garniert. Garnelen gehören nicht zur vegetarischen Hauptfassung und sind nicht in Zutaten, Allergenen oder Nährwerten enthalten.",
+    "reviewedAt": "2026-11-21",
+    "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/B%C3%A4rlauchsuppe.jpg",
+    "originalPhotoSha256": "1ac62e620a054a7c30530e70e7f4a274852647cd362e733b59e4336c31964529"
+  }
+}

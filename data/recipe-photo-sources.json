@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-11-20",
+  "reviewedAt": "2026-11-21",
   "photos": [
     {
       "recipeId": "poulet-reis-bowl",
@@ -907,6 +907,23 @@
       "reviewedAt": "2026-11-20",
       "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/K%C3%BCrbiscremesuppe_2751.JPG",
       "originalPhotoSha256": "7303b326822ec4a784ddcf18133ab38bc40d07fb24e857d513b0cce654358338"
+    },
+    {
+      "recipeId": "wikibooks-baerlauchsuppe",
+      "path": "assets/recipe-photos/wikibooks-baerlauchsuppe.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:B%C3%A4rlauchsuppe.jpg",
+      "author": "Schnobby",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Bärlauchsuppe",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 466 Pixel verkleinert und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echte Kartoffel-Bärlauch-Suppe aus derselben Wikibooks-Rezeptquelle, zusätzlich mit gebratenen Garnelen garniert. Garnelen gehören nicht zur vegetarischen Hauptfassung und sind nicht in Zutaten, Allergenen oder Nährwerten enthalten.",
+      "reviewedAt": "2026-11-21",
+      "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/B%C3%A4rlauchsuppe.jpg",
+      "originalPhotoSha256": "1ac62e620a054a7c30530e70e7f4a274852647cd362e733b59e4336c31964529"
     }
   ]
 }
