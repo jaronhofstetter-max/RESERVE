@@ -1,0 +1,188 @@
+[
+  {
+    "id": "wikibooks-baerlauchsuppe",
+    "name": "Bärlauchsuppe mit Kartoffeln",
+    "type": "Hauptmahlzeit",
+    "diet": "Vegetarisch",
+    "dish": "🥣",
+    "cuisine": "Deutschsprachig",
+    "mealTimes": [
+      "Mittagessen",
+      "Abendessen"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 25,
+    "difficulty": "Einfach",
+    "allergens": [
+      "Milch"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Bärlauch",
+      "Kartoffeln",
+      "Suppe",
+      "Frühling"
+    ],
+    "ingredients": [
+      {
+        "name": "Mehlig kochende Kartoffeln",
+        "amount": 187.5,
+        "unit": "g"
+      },
+      {
+        "name": "Zwiebel",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Rapsöl",
+        "amount": 7.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Gemüsebouillon, zubereitet",
+        "amount": 200,
+        "unit": "ml"
+      },
+      {
+        "name": "Bärlauch",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Saure Sahne",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Zitronensaft",
+        "amount": 2.5,
+        "unit": "ml"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.5,
+        "unit": "g"
+      },
+      {
+        "name": "Schwarzer Pfeffer",
+        "amount": 0.125,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Kartoffeln und Zwiebel schälen und in etwa gleichmässige kleine Würfel schneiden.",
+      "Rapsöl in einem Topf bei mittlerer Hitze erwärmen. Kartoffeln und Zwiebel einige Minuten unter Rühren anbraten, bis die Zwiebel glasig ist, ohne sie stark zu bräunen.",
+      "Mit der Gemüsebouillon ablöschen, aufkochen und zugedeckt bei kleiner bis mittlerer Hitze etwa 20 Minuten köcheln lassen, bis die Kartoffelwürfel weich sind.",
+      "Währenddessen den Bärlauch gründlich waschen, trocken schütteln, harte Stiele entfernen und die Blätter fein hacken.",
+      "Saure Sahne und Bärlauch in die Suppe rühren. Mit dem Stabmixer glatt pürieren, bis keine Kartoffelstücke mehr sichtbar sind.",
+      "Mit Zitronensaft, Salz und schwarzem Pfeffer abschmecken. Die Suppe nochmals vollständig erhitzen, aber nicht stark sprudelnd kochen, und sofort servieren."
+    ],
+    "nutrition": {
+      "kcal": 284.26,
+      "protein": 5.74,
+      "carbs": 38.26,
+      "fat": 12.42,
+      "fiber": 5.11
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenbasierte Schätzung mit dokumentierten USDA- und generischen Richtwerten; keine Messung der fertigen Suppe.",
+      "basis": "Je eine von vier Portionen. Die Quelle nennt alternativ zwei Schalotten oder eine Zwiebel; RESERVE verwendet eine Zwiebel und setzt dafür 100 g im Gesamtansatz an. 2 EL Rapsöl = 30 ml, Dichte 0.91 g/ml; 2 TL Zitronensaft = 10 ml. Salz und Pfeffer sind in der Quelle unbeziffert und werden mit 2 g beziehungsweise 0.5 g im Gesamtansatz als offengelegte Richtmengen ergänzt; beide sind nicht in den Makronährwerten enthalten. Saure Sahne wird aus der Quellenalternative gewählt. Kohlenhydrate ohne Ballaststoffe.",
+      "sources": "docs/recipe-candidates/import-2026-11-21/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Kartoffeln",
+          "grams": 187.5,
+          "foodKey": "potato-raw",
+          "excluded": false
+        },
+        {
+          "name": "Zwiebel",
+          "grams": 25,
+          "foodKey": "onion-raw",
+          "excluded": false
+        },
+        {
+          "name": "Rapsöl",
+          "grams": 6.825,
+          "foodKey": "oil",
+          "excluded": false
+        },
+        {
+          "name": "Gemüsebouillon",
+          "grams": 200,
+          "foodKey": "vegetable-bouillon-prepared",
+          "excluded": false
+        },
+        {
+          "name": "Bärlauch",
+          "grams": 25,
+          "foodKey": "wild-garlic-leaves",
+          "excluded": false
+        },
+        {
+          "name": "Saure Sahne",
+          "grams": 25,
+          "foodKey": "sour-cream-20",
+          "excluded": false
+        },
+        {
+          "name": "Zitronensaft",
+          "grams": 2.5,
+          "foodKey": "lemon-juice",
+          "excluded": false
+        },
+        {
+          "name": "Salz und Pfeffer",
+          "grams": 0.625,
+          "foodKey": null,
+          "excluded": true
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Cremige Frühlingssuppe aus Kartoffeln, frischem Bärlauch und saurer Sahne mit einem Spritzer Zitrone.",
+    "equipment": [
+      "Küchenwaage",
+      "Messbecher",
+      "Schneidebrett",
+      "Kochmesser",
+      "Topf mit Deckel",
+      "Kochlöffel",
+      "Stabmixer",
+      "Suppenschalen"
+    ],
+    "prepNotes": [
+      "Die Quellenmenge gilt für vier Personen; die angezeigten Mengen entsprechen einer Portion.",
+      "Von der Quellenalternative zwei Schalotten oder eine Zwiebel wird eine Zwiebel gewählt und im Gesamtansatz mit 100 g angesetzt. Saure Sahne wird statt Kochsahne verwendet.",
+      "Selbst gesammelten Bärlauch nur verwenden, wenn er sicher bestimmt wurde. Blätter einzeln prüfen und gründlich waschen.",
+      "Gemüsebouillon kann je nach Produkt Sellerie, Gluten oder weitere Allergene enthalten; Produktetikett prüfen.",
+      "Das Originalfoto zeigt dieselbe Kartoffel-Bärlauch-Suppe zusätzlich mit gebratenen Garnelen. Garnelen sind nur ein Tipp der Quelle und nicht Teil dieser vegetarischen Fassung; das Foto ist ausdrücklich ein Serviervorschlag."
+    ],
+    "doneness": "Die Kartoffeln lassen sich leicht zerdrücken; nach dem Pürieren ist die Suppe gleichmässig glatt, cremig und leuchtend grün.",
+    "substitutions": [
+      "Die Quelle erlaubt zwei Schalotten statt einer Zwiebel; Geschmack und Stückgewicht ändern sich.",
+      "Kochsahne kann laut Quelle die saure Sahne ersetzen; Fettgehalt, Säure und Nährwerte ändern sich."
+    ],
+    "leftovers": "Reste innerhalb von zwei Stunden abkühlen, abgedeckt kühlen und innerhalb von zwei Tagen verbrauchen. Beim Aufwärmen vollständig erhitzen und nicht lange kochen, damit Farbe und Aroma erhalten bleiben.",
+    "safety": "Bärlauch kann mit giftigen Pflanzen wie Maiglöckchen oder Herbstzeitlose verwechselt werden. Nur sicher bestimmten Bärlauch verwenden, jedes Blatt einzeln prüfen und gründlich waschen. Beim Pürieren heisser Suppe Spritzer vermeiden.",
+    "recipeCredit": {
+      "author": "Ingeborg / Wikibooks-Mitwirkende",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_B%C3%A4rlauchsuppe&oldid=967706",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 4,
+      "adaptation": "Neu formuliert und auf eine von vier Portionen umgerechnet. Aus den Quellenalternativen wurden Zwiebel und saure Sahne gewählt; Stück- und Löffelgewichte, unbezifferte Würzmengen, Arbeitsschritte, Garmerkmale, Geräte-, Aufbewahrungs- und Sicherheitshinweise transparent ergänzt."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.45,
+      "waterMl": 200,
+      "noCook": false,
+      "onePot": true
+    },
+    "image": "assets/recipe-photos/wikibooks-baerlauchsuppe.webp"
+  }
+]

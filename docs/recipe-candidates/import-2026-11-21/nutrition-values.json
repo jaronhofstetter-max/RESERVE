@@ -1,0 +1,9 @@
+{
+  "potato-raw":{"description":"Potatoes, flesh and skin, raw","per100g":{"kcal":77,"protein":2,"carbs":17.5,"fat":0.1,"fiber":2.2},"source":"USDA FoodData Central generic reference","carbohydrateBasis":"total-including-fiber"},
+  "onion-raw":{"description":"Onions, raw","per100g":{"kcal":40,"protein":1.1,"carbs":9.3,"fat":0.1,"fiber":1.7},"source":"USDA FoodData Central generic reference","carbohydrateBasis":"total-including-fiber"},
+  "oil":{"description":"Plant oil","per100g":{"kcal":884,"protein":0,"carbs":0,"fat":100,"fiber":0},"source":"USDA FoodData Central generic reference","carbohydrateBasis":"available-excluding-fiber"},
+  "vegetable-bouillon-prepared":{"description":"Gemüsebouillon, zubereitet","per100g":{"kcal":5,"protein":0.2,"carbs":0.5,"fat":0.1,"fiber":0},"source":"documented generic estimate","carbohydrateBasis":"available-excluding-fiber"},
+  "wild-garlic-leaves":{"description":"Bärlauchblätter, generischer Richtwert","per100g":{"kcal":30,"protein":2.4,"carbs":4.4,"fat":0.7,"fiber":2.2},"source":"documented generic estimate for leafy Allium greens","carbohydrateBasis":"total-including-fiber"},
+  "sour-cream-20":{"description":"Saure Sahne, 20 % Fett","per100g":{"kcal":206,"protein":2.8,"carbs":3.4,"fat":20,"fiber":0},"source":"generic product estimate","carbohydrateBasis":"available-excluding-fiber"},
+  "lemon-juice":{"description":"Lemon juice, raw","per100g":{"kcal":22,"protein":0.4,"carbs":6.9,"fat":0.2,"fiber":0.3},"source":"USDA FoodData Central generic reference","carbohydrateBasis":"total-including-fiber"}
+}
