@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-11-21",
+  "reviewedAt": "2026-11-22",
   "photos": [
     {
       "recipeId": "poulet-reis-bowl",
@@ -924,6 +924,23 @@
       "reviewedAt": "2026-11-21",
       "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/B%C3%A4rlauchsuppe.jpg",
       "originalPhotoSha256": "1ac62e620a054a7c30530e70e7f4a274852647cd362e733b59e4336c31964529"
+    },
+    {
+      "recipeId": "bircher-mueesli",
+      "path": "assets/recipe-photos/bircher-mueesli.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Birchermuesli_TLodico.jpg",
+      "author": "Bricetofly",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Birchermuesli TLodico",
+      "provider": "Wikimedia Commons",
+      "adaptation": "EXIF-Ausrichtung angewendet, proportional auf 466 × 700 Pixel verkleinert, Metadaten entfernt und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echtes Birchermüesli mit eingeweichten Getreideflocken, Milch und Früchten im Glas. Die genaue Fruchtmischung, Rezeptur und Portionsgrösse sind nicht belegt; mögliche weitere Früchte sind nicht Bestandteil des vorhandenen Apfelrezepts und nicht in dessen Nährwerten enthalten.",
+      "reviewedAt": "2026-11-22",
+      "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Birchermuesli_TLodico.jpg",
+      "originalPhotoSha256": "ed67c85ea31d60461c21b06cba17b93aeced66bd04cfb5fe9314197854a2d104"
     }
   ]
 }

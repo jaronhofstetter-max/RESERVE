@@ -1,0 +1,51 @@
+{
+  "reviewedAt": "2026-11-22",
+  "scope": "Photo-only addition to an existing RESERVE recipe; no external recipe text imported.",
+  "recipe": {
+    "id": "bircher-mueesli",
+    "source": "https://github.com/jaronhofstetter-max/RESERVE/blob/0e63c01c31426741d5e0e22b57eb30272765e2cb/data/quality-batch-01.json",
+    "textChange": false,
+    "externalTextLicense": null,
+    "note": "Vorhandener RESERVE-Text. Keine neue Textübernahme, keine neue Lizenzbehauptung; die CC0-Freigabe des Fotos gilt nicht automatisch für den Rezepttext. Zutaten, Schritte, Portionen, Allergene und bestehende Nährwerte werden nicht geändert."
+  },
+  "photo": {
+    "recipeId": "bircher-mueesli",
+    "path": "assets/recipe-photos/bircher-mueesli.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Birchermuesli_TLodico.jpg",
+    "author": "Bricetofly",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.de",
+    "kind": "photograph",
+    "servingSuggestion": true,
+    "title": "Birchermuesli TLodico",
+    "provider": "Wikimedia Commons",
+    "adaptation": "EXIF-Ausrichtung angewendet, proportional auf 466 × 700 Pixel verkleinert, Metadaten entfernt und als WebP komprimiert; Bildinhalt unverändert.",
+    "review": "Serviervorschlag: echtes Birchermüesli mit eingeweichten Getreideflocken, Milch und Früchten im Glas. Die genaue Fruchtmischung, Rezeptur und Portionsgrösse sind nicht belegt; mögliche weitere Früchte sind nicht Bestandteil des vorhandenen Apfelrezepts und nicht in dessen Nährwerten enthalten.",
+    "reviewedAt": "2026-11-22",
+    "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Birchermuesli_TLodico.jpg",
+    "originalPhotoSha256": "ed67c85ea31d60461c21b06cba17b93aeced66bd04cfb5fe9314197854a2d104"
+  },
+  "licenseEvidence": {
+    "url": "https://commons.wikimedia.org/w/index.php?title=File:Birchermuesli_TLodico.jpg&oldid=1187958987",
+    "author": "Bricetofly",
+    "ownWork": true,
+    "date": "2025-11-17",
+    "camera": "Canon EOS RP",
+    "originalDimensions": [
+      2768,
+      4160
+    ],
+    "license": "CC0 1.0 Universal",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.de",
+    "commercialUse": true,
+    "adaptationAllowed": true,
+    "attributionRequired": false,
+    "shareAlikeRequired": false,
+    "creditProvided": "Bricetofly · Wikimedia Commons · CC0 1.0",
+    "sourceReview": "Originalseite sowie CC0-Kurzfassung direkt gelesen; Foto visuell geprüft. Fotoquelle nennt eingeweichte Getreideflocken in Milch mit Früchten, nicht die exakte RESERVE-Rezeptur."
+  },
+  "otherSources": {
+    "chuchitisch": "Originalseite beim Abruf Timeout; kein neuer Treffer daraus übernommen.",
+    "pexels": "Aktuelle Original-Lizenzseite geprüft; für diesen Schweizer Rezeptabgleich wurde das eindeutig CC0-freigegebene Commons-Foto gewählt."
+  }
+}
