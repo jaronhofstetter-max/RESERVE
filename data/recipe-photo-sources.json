@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-11-22",
+  "reviewedAt": "2026-11-23",
   "photos": [
     {
       "recipeId": "poulet-reis-bowl",
@@ -941,6 +941,23 @@
       "reviewedAt": "2026-11-22",
       "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Birchermuesli_TLodico.jpg",
       "originalPhotoSha256": "ed67c85ea31d60461c21b06cba17b93aeced66bd04cfb5fe9314197854a2d104"
+    },
+    {
+      "recipeId": "minestrone-classica",
+      "path": "assets/recipe-photos/minestrone-classica.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Minestrone_soup.jpg",
+      "author": "Katrin Morenz (Flickr: Katrin Gilger)",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Minestrone soup / Winter-Minestrone",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 700 × 467 Pixel verkleinert, Metadaten entfernt und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echte Minestrone mit Gemüse, Bohnen und Nudeln. Genaue Rezeptur und Portionsgrösse des Fotos sind nicht belegt. Nudeln gehören nicht zur vorhandenen RESERVE-Fassung und sind nicht in deren Zutaten, Allergenen oder Nährwerten enthalten.",
+      "reviewedAt": "2026-11-23",
+      "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Minestrone_soup.jpg",
+      "originalPhotoSha256": "298adcaf91e9f56023f68e69fa6055e1ef24d84bb782472140762395c7ff57b0"
     }
   ]
 }
