@@ -1,0 +1,57 @@
+{
+  "reviewedAt": "2026-11-23",
+  "scope": "Fotoergänzung zu bestehendem RESERVE-Rezept; kein fremder Rezepttext importiert.",
+  "recipe": {
+    "id": "minestrone-classica",
+    "source": "https://github.com/jaronhofstetter-max/RESERVE/blob/8251cc65b83c1c3b9f53f9ca7c2e1b88908e375e/data/quality-batch-italian-v1-part2.json",
+    "externalTextLicense": null,
+    "note": "Bestehender RESERVE-Rezepttext; Fotolizenz ist keine Lizenzbehauptung über den Rezepttext. Zutaten, Schritte, Portionen und bestehende Nährwertschätzungen bleiben unverändert. Allergen Sellerie ergänzt, da 80 g Stangensellerie bereits enthalten waren."
+  },
+  "photo": {
+    "recipeId": "minestrone-classica",
+    "path": "assets/recipe-photos/minestrone-classica.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Minestrone_soup.jpg",
+    "author": "Katrin Morenz (Flickr: Katrin Gilger)",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/deed.de",
+    "kind": "photograph",
+    "servingSuggestion": true,
+    "title": "Minestrone soup / Winter-Minestrone",
+    "provider": "Wikimedia Commons",
+    "adaptation": "Proportional auf 700 × 467 Pixel verkleinert, Metadaten entfernt und als WebP komprimiert; Bildinhalt unverändert.",
+    "review": "Serviervorschlag: echte Minestrone mit Gemüse, Bohnen und Nudeln. Genaue Rezeptur und Portionsgrösse des Fotos sind nicht belegt. Nudeln gehören nicht zur vorhandenen RESERVE-Fassung und sind nicht in deren Zutaten, Allergenen oder Nährwerten enthalten.",
+    "reviewedAt": "2026-11-23",
+    "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Minestrone_soup.jpg",
+    "originalPhotoSha256": "298adcaf91e9f56023f68e69fa6055e1ef24d84bb782472140762395c7ff57b0"
+  },
+  "licenseEvidence": {
+    "url": "https://commons.wikimedia.org/w/index.php?title=File:Minestrone_soup.jpg&oldid=1196940846",
+    "originalAuthorPage": "https://www.flickr.com/photos/diekatrin/4309005328/",
+    "authorOnCommons": "Katrin Morenz",
+    "authorOnFlickr": "Katrin Gilger",
+    "date": "2010-01-27",
+    "camera": "Canon EOS 400D DIGITAL",
+    "originalDimensions": [
+      2816,
+      1880
+    ],
+    "license": "Creative Commons Attribution-ShareAlike 2.0 Generic",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/deed.de",
+    "commercialUse": true,
+    "adaptationAllowed": true,
+    "attributionRequired": true,
+    "shareAlikeRequired": true,
+    "flickrLicenseReview": {
+      "reviewer": "FlickreviewR",
+      "date": "2014-08-27",
+      "confirmedLicense": "cc-by-sa-2.0"
+    },
+    "creditProvided": "Minestrone soup / Winter-Minestrone · Katrin Morenz (Flickr: Katrin Gilger) · Wikimedia Commons · CC BY-SA 2.0; Quelle, Lizenzlink und Anpassungen auf Bildnachweisseite.",
+    "derivativeLicense": "CC BY-SA 2.0; gilt für die lokale WebP-Fassung. Keine zusätzlichen Einschränkungen des Fotos.",
+    "sourceReview": "Commons-Originaldateiseite, permanenter Stand, verlinkte Flickr-Originalseite und CC-Lizenztext direkt geprüft. Historische Aufnahme von 2010 mit Kamera-EXIF und bestätigter Flickr-Lizenz; Foto visuell geprüft, keine KI-generierte Abbildung."
+  },
+  "otherSources": {
+    "chuchitisch": "Originalseite beim Abruf Timeout; kein neuer Treffer daraus übernommen.",
+    "pexels": "Aktuelle Original-Lizenzseite geprüft; ausgewählt wurde das eindeutig lizenzierte Commons-Foto."
+  }
+}
