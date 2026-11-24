@@ -22,6 +22,18 @@
    card.append(printed,label,note,choices);box.append(card);
   }return true;
  }
+ function showDay(value,onChoose){
+  clear();if(!install()||!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;
+  const box=$('dateFormatChoices'),captured=identity(),generation=selection;pending=true;box.hidden=false;
+  const title=document.createElement('p');title.textContent='Datumsvorschlag prüfen';
+  const note=document.createElement('p');note.textContent='Erkennung im Testbetrieb. Vergleiche den vollständigen Aufdruck mit der Packung. Die Datumsart bitte ebenfalls prüfen.';
+  const label=document.createElement('label'),date=document.createElement('input');label.textContent='Gelesenes Datum';date.type='date';date.value=value;date.setAttribute('aria-label','Gelesenes Datum prüfen');label.append(date);
+  const confirm=document.createElement('label'),check=document.createElement('input');check.type='checkbox';check.style.cssText='width:auto;min-height:0;margin-right:8px';confirm.append(check,document.createTextNode('Ich habe das Datum mit der Packung verglichen.'));
+  const button=document.createElement('button');button.type='button';button.textContent='Geprüftes Datum übernehmen';button.disabled=true;
+  const update=()=>{button.disabled=!check.checked||!date.value||!date.validity.valid};date.addEventListener('input',update);check.addEventListener('change',update);
+  button.onclick=()=>{if(generation!==selection||captured!==identity()){clear();return;}if(button.disabled)return;const value=date.value;clear();onChoose(value);caption()};
+  box.append(title,note,label,confirm,button);return true;
+ }
  function showMonth(months,onChoose){
   clear();if(!install()||!months?.length)return false;
   const box=$('dateFormatChoices'),captured=identity(),generation=selection;
@@ -48,7 +60,7 @@
   const host=$('profile');if(host&&!$('dateDisplayLocale')){const label=document.createElement('label');label.textContent='Datumsanzeige';const select=document.createElement('select');select.id='dateDisplayLocale';for(const [value,text]of [['de-CH','Schweiz (03.12.2021)'],['de-DE','Deutschland (03.12.2021)'],['fr-CH','Suisse romande'],['it-CH','Svizzera italiana'],['en-US','United States (12/03/2021)'],['en-GB','United Kingdom (03/12/2021)'],['fr-FR','France'],['es-ES','España'],['pt-BR','Brasil'],['nl-NL','Nederland'],['ja-JP','日本'],['zh-CN','中国'],['ko-KR','한국'],['ar-SA','العربية - Gregorian']]){const option=document.createElement('option');option.value=value;option.textContent=text;select.append(option);}select.value=F.locale(storage());if(!select.value)select.value='de-CH';select.onchange=()=>{try{storage()?.setItem(F.PREF_KEY,JSON.stringify({...F.preferences(storage()),locale:select.value}));}catch{}caption();window.RESERVE_CABINET?.render?.();window.dispatchEvent(new CustomEvent('reserve:date-display-change'));};label.append(select);(host.querySelector('.card')||host).append(label);}
   caption();return true;
  }
- window.RESERVE_DATE_FORMAT_UI={context,show,showYear,showMonth,clear,caption,install,pending:()=>pending};
+ window.RESERVE_DATE_FORMAT_UI={context,show,showYear,showDay,showMonth,clear,caption,install,pending:()=>pending};
  function mount(){if(!install())setTimeout(mount,150);}mount();document.addEventListener('DOMContentLoaded',install);
 })();
 

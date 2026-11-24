@@ -33,11 +33,12 @@ try{
  await scan(['MHD 12.2027','MHD 12.2027']);assert.equal(await field.inputValue(),'');assert.equal(await check.isChecked(),false);
  await check.check();await page.locator('#scanName').fill('Anderes Produkt');await confirm.click();assert.equal(await field.inputValue(),'');
  await scan(['MHD 12.2027','MHD 12.2027']);await page.evaluate(()=>RESERVE_EXPIRY_CAMERA.resetCapture());assert.equal(await page.evaluate(()=>RESERVE_DATE_FORMAT_UI.pending()),false);
- // Cloud-provided month precision must use the same confirmation path.
- await scan([], {date:'2027-12-31',precision:'month',confidence:.99});assert.equal(await field.inputValue(),'');assert.equal(await month.inputValue(),'2027-12');assert.equal(await page.evaluate(()=>window.cloudCalls),1);
+ // The bounded public reader must not trigger an automatic cloud request.
+ await scan([], {date:'2027-12-31',precision:'month',confidence:.99});assert.equal(await field.inputValue(),'');assert.equal(await page.evaluate(()=>window.cloudCalls),0);assert.equal(await page.evaluate(()=>RESERVE_DATE_FORMAT_UI.pending()),false);
  // Conflicting printed precision cannot manufacture an automatic daily result.
  await scan(['MHD 31.03.2027','MHD 03.2027','MHD 31.03.2027']);assert.equal(await field.inputValue(),'');assert.match(await page.locator('#expiryCameraStatus').innerText(),/Tag, Monat und Jahr/);assert.equal(await page.evaluate(()=>window.cloudCalls),0);
  // Unambiguous complete dates keep their existing behavior.
- await scan(['MHD 14.09.2027','MHD 14.09.2027']);assert.equal(await field.inputValue(),'2027-09-14');
- console.log('Month review: recorded failures, explicit precision/year correction, add guard, stale/reset, cloud and full-date regression: OK');
+ await scan(['MHD 14.09.2027','MHD 14.09.2027']);assert.equal(await field.inputValue(),'');assert.equal(await page.getByLabel('Gelesenes Datum prüfen').inputValue(),'2027-09-14');
+ await page.getByLabel('Ich habe das Datum mit der Packung verglichen.').check();await page.getByRole('button',{name:'Geprüftes Datum übernehmen'}).click();assert.equal(await field.inputValue(),'2027-09-14');
+ console.log('Month review: recorded failures, explicit precision/year correction, add guard, stale/reset, no cloud fallback and reviewed full-date regression: OK');
 }finally{await browser.close();}
