@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 concurrency:
@@ -193,6 +194,29 @@ jobs:
         with:
           path: '.'
           name: github-pages-${{ github.run_attempt }}
+      - name: Wait for uploaded Pages artifact to become visible
+        uses: actions/github-script@v7
+        env:
+          PAGES_ARTIFACT_NAME: github-pages-${{ github.run_attempt }}
+        with:
+          script: |
+            const name = process.env.PAGES_ARTIFACT_NAME;
+            for (let attempt = 0; attempt < 24; attempt++) {
+              const { data } = await github.rest.actions.listWorkflowRunArtifacts({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: context.runId,
+                name,
+                per_page: 100
+              });
+              if (data.artifacts.some(artifact => artifact.name === name && !artifact.expired)) {
+                core.info(`Pages artifact ${name} is visible.`);
+                return;
+              }
+              core.info(`Waiting for Pages artifact ${name} (${attempt + 1}/24).`);
+              await new Promise(resolve => setTimeout(resolve, 5000));
+            }
+            core.setFailed(`Pages artifact ${name} was not visible within 120 seconds.`);
       - id: deployment
         uses: actions/deploy-pages@v4
         with:
