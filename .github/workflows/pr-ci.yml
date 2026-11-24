@@ -138,6 +138,8 @@ jobs:
           node tools/test-date-policy.mjs
           node tools/test-expiry-training-pipeline.mjs
           node tools/test-synthetic-expiry-dataset.mjs
+          node tools/test-expiry-overload-protection.mjs
+          node tools/test-expiry-recognition-timeout.mjs
       - name: Test account persistence and database isolation
         run: |
           npm ci --prefix experiments/account-storage --ignore-scripts --no-audit --no-fund
