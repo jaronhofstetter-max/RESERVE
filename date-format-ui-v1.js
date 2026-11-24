@@ -22,6 +22,24 @@
    card.append(printed,label,note,choices);box.append(card);
   }return true;
  }
+ function showMonth(months,onChoose){
+  clear();if(!install()||!months?.length)return false;
+  const box=$('dateFormatChoices'),captured=identity(),generation=selection;
+  const values=[...new Set(months)].filter(value=>/^\d{4}-(0[1-9]|1[0-2])$/.test(value));
+  if(!values.length)return false;
+  pending=true;box.hidden=false;
+  const title=document.createElement('p');title.textContent='Monat, Jahr und Datumsgenauigkeit prüfen';
+  const read=document.createElement('p');read.textContent='Gelesen: '+values.map(value=>value.slice(5)+' '+value.slice(0,4)).join(' / ');
+  const label=document.createElement('label'),month=document.createElement('input');
+  label.textContent='Monat und Jahr auf der Packung';month.type='month';month.min='1000-01';month.max='2999-12';month.value=values.length===1?values[0]:'';label.append(month);
+  const confirmation=document.createElement('label'),check=document.createElement('input');check.type='checkbox';check.style.cssText='width:auto;min-height:0;margin-right:8px';confirmation.append(check,document.createTextNode('Auf der Packung steht kein Tag. Monat und Jahr habe ich geprüft.'));
+  const note=document.createElement('p');note.className='small muted';note.textContent='Wenn auch ein Tag gedruckt ist, trage das vollständige Datum oben im Datumsfeld ein.';
+  const button=document.createElement('button');button.type='button';button.className='secondary';button.textContent='Monat und Jahr übernehmen';
+  const valid=()=>/^(1\d{3}|2\d{3})-(0[1-9]|1[0-2])$/.test(month.value)&&month.validity.valid;
+  const update=()=>{button.disabled=!check.checked||!valid();};month.addEventListener('input',update);check.addEventListener('change',update);update();
+  button.onclick=()=>{if(generation!==selection||captured!==identity()){clear();return;}if(!check.checked||!valid())return;const value=month.value;clear();onChoose(value);caption();};
+  box.append(title,read,label,confirmation,note,button);return true;
+ }
  function install(){const field=$('scanExpiry');if(!field)return false;let area=$('dateFormatArea');if(!area){area=document.createElement('div');area.id='dateFormatArea';const grid=field.closest('.grid2')||field.parentElement;grid.insertAdjacentElement('afterend',area);}
   if(!$('dateFormatDisplay')){const span=document.createElement('div');span.id='dateFormatDisplay';span.className='small muted';span.setAttribute('aria-live','polite');area.append(span);field.addEventListener('input',caption);field.addEventListener('change',caption);}
   if(!$('dateFormatContext')){const details=document.createElement('details');details.id='dateFormatContext';details.style.marginTop='8px';details.innerHTML='<summary>Land und Verpackung</summary><label>Verkaufsland (z. B. CH)<input id="dateFormatMarket" maxlength="2" autocomplete="off" placeholder="CH"></label><label>Verpackungsvariante<input id="dateFormatVariant" maxlength="120" autocomplete="off" placeholder="z. B. Glas 250 g, Etikett 2026"></label><p class="small muted">Ein bestätigtes Format gilt nur für diesen Barcode, dieses Verkaufsland und diese Variante.</p>';area.append(details);$('dateFormatMarket').value=F.preferences(storage()).market||'';$('dateFormatMarket').onchange=()=>{const market=$('dateFormatMarket').value.trim().toUpperCase();$('dateFormatMarket').value=market;try{storage()?.setItem(F.PREF_KEY,JSON.stringify({...F.preferences(storage()),market:/^[A-Z]{2}$/.test(market)?market:''}));}catch{}};}
@@ -30,7 +48,7 @@
   const host=$('profile');if(host&&!$('dateDisplayLocale')){const label=document.createElement('label');label.textContent='Datumsanzeige';const select=document.createElement('select');select.id='dateDisplayLocale';for(const [value,text]of [['de-CH','Schweiz (03.12.2021)'],['de-DE','Deutschland (03.12.2021)'],['fr-CH','Suisse romande'],['it-CH','Svizzera italiana'],['en-US','United States (12/03/2021)'],['en-GB','United Kingdom (03/12/2021)'],['fr-FR','France'],['es-ES','España'],['pt-BR','Brasil'],['nl-NL','Nederland'],['ja-JP','日本'],['zh-CN','中国'],['ko-KR','한국'],['ar-SA','العربية - Gregorian']]){const option=document.createElement('option');option.value=value;option.textContent=text;select.append(option);}select.value=F.locale(storage());if(!select.value)select.value='de-CH';select.onchange=()=>{try{storage()?.setItem(F.PREF_KEY,JSON.stringify({...F.preferences(storage()),locale:select.value}));}catch{}caption();window.RESERVE_CABINET?.render?.();window.dispatchEvent(new CustomEvent('reserve:date-display-change'));};label.append(select);(host.querySelector('.card')||host).append(label);}
   caption();return true;
  }
- window.RESERVE_DATE_FORMAT_UI={context,show,showYear,clear,caption,install,pending:()=>pending};
+ window.RESERVE_DATE_FORMAT_UI={context,show,showYear,showMonth,clear,caption,install,pending:()=>pending};
  function mount(){if(!install())setTimeout(mount,150);}mount();document.addEventListener('DOMContentLoaded',install);
 })();
 
