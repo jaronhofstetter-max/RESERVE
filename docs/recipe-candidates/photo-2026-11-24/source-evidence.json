@@ -1,0 +1,57 @@
+{
+  "reviewedAt": "2026-11-24",
+  "scope": "Photo-only addition to an existing RESERVE recipe; no external recipe text imported.",
+  "recipe": {
+    "id": "gnocchi-burro-salvia",
+    "source": "https://github.com/jaronhofstetter-max/RESERVE/blob/35764df6b9b4057af9e306ffa84a214d7ea0925f/data/quality-batch-italian-v1-part2.json",
+    "textChange": false,
+    "externalTextLicense": null,
+    "note": "Vorhandener RESERVE-Text. Keine neue Textübernahme, keine neue Lizenzbehauptung über den Rezepttext. Zutaten, Schritte, Portionen, Allergene und bestehende Nährwertschätzungen bleiben unverändert."
+  },
+  "photo": {
+    "recipeId": "gnocchi-burro-salvia",
+    "path": "assets/recipe-photos/gnocchi-burro-salvia.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Gnocchi_di_ricotta_burro_e_salvia.jpg",
+    "author": "Paoletta S.",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/deed.de",
+    "kind": "photograph",
+    "servingSuggestion": true,
+    "title": "Gnocchi di ricotta burro e salvia",
+    "provider": "Wikimedia Commons",
+    "adaptation": "Proportional auf 465 × 700 Pixel verkleinert, Metadaten entfernt und als WebP komprimiert; Bildinhalt unverändert.",
+    "review": "Serviervorschlag: echte Ricotta-Gnocchi mit Butter und Salbei, mit geriebenem Käse angerichtet. Das RESERVE-Rezept verwendet Kartoffelgnocchi; Ricotta gehört nicht zur Rezeptfassung. Genaue Rezeptur und Portionsgrösse des Fotos sind nicht belegt und nicht Grundlage der Zutaten- oder Nährwertangaben.",
+    "reviewedAt": "2026-11-24",
+    "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/8/86/Gnocchi_di_ricotta_burro_e_salvia.jpg",
+    "originalPhotoSha256": "5ad94b01de6e0d33fc56408d7e81d701b01234fe9e1843e2bb974d66c76b858c"
+  },
+  "licenseEvidence": {
+    "url": "https://commons.wikimedia.org/w/index.php?title=File:Gnocchi_di_ricotta_burro_e_salvia.jpg&oldid=1274874552",
+    "author": "Paoletta S.",
+    "originalAuthorPage": "https://www.flickr.com/photos/paolettas/2592152973/",
+    "date": "2008-06-19",
+    "originalDimensions": [
+      600,
+      904
+    ],
+    "originalSha1": "c30dcb5301a24854c9e07b847d5d2b4c385f44b3",
+    "license": "Creative Commons Attribution 2.0 Generic",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/deed.de",
+    "commercialUse": true,
+    "adaptationAllowed": true,
+    "attributionRequired": true,
+    "shareAlikeRequired": false,
+    "creditProvided": "Gnocchi di ricotta burro e salvia · Paoletta S. · Wikimedia Commons · CC BY 2.0; Quellenlink, Lizenzlink und Anpassungen auf Bildnachweisseite.",
+    "derivativeLicense": "Lokale WebP-Fassung ebenfalls CC BY 2.0; keine zusätzlichen Einschränkungen.",
+    "flickrLicenseReview": {
+      "reviewer": "Flickr upload bot",
+      "date": "2008-06-19",
+      "confirmedLicense": "CC BY 2.0"
+    },
+    "sourceReview": "Commons-Originaldateiseite und permanenter Stand direkt gelesen; Originalfoto heruntergeladen und visuell geprüft. SHA-1 stimmt mit Commons überein. Aufnahme von 2008, vor generativen Bildmodellen, historischer Flickr-Upload und bestätigte Lizenz. Verlinkte Flickr-Seite bei zwei Abrufen nicht erreichbar; Lizenzbeleg ist die explizite dateispezifische Commons-Freigabe samt historischer Lizenzprüfung, nicht eine Suchvorschau."
+  },
+  "otherSources": {
+    "chuchitisch": "Originalseite am 24.11.2026: 502 Bad Gateway; kein Import aus Suchvorschau.",
+    "pexels": "Aktuelle Original-Lizenzseite direkt geprüft. Bereits untersuchte Pexels-Gnocchi-Quelle wurde nicht erneut als neuer Treffer gemeldet; Commons-Foto zeigt ausdrücklich Butter und Salbei."
+  }
+}
