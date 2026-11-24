@@ -14,14 +14,16 @@ try{
   window.Tesseract={createWorker:async()=>({setParameters:async()=>{},recognize:async()=>{window.ocrCalls++;return {data:{text:'BBD 19.12.2027'}}},terminate:async()=>{}})};
   window.RESERVE_EXPIRY_VISION={available:()=>false};
  });
- for(const file of ['date-token-guard-v1.js','date-format-v1.js','date-policy-v1.js','expiry-camera-v1.js','barcode-camera-safe-v1.js'])await page.addScriptTag({path:file});
+ for(const file of ['date-token-guard-v1.js','date-format-v1.js','date-format-ui-v1.js','date-policy-v1.js','expiry-camera-v1.js','barcode-camera-safe-v1.js'])await page.addScriptTag({path:file});
  const png=await page.evaluate(()=>{const c=document.createElement('canvas');c.width=c.height=100;return c.toDataURL().split(',')[1]});
  const fixture={name:'test.png',mimeType:'image/png',buffer:Buffer.from(png,'base64')};
  async function upload(button){const chooser=page.waitForEvent('filechooser');await button.click();await (await chooser).setFiles(fixture)}
  assert.equal(await page.locator('#expiryCameraInput').getAttribute('capture'),null);
  assert.equal(await page.locator('#barcodeGalleryInput').getAttribute('capture'),null);
  await upload(page.getByRole('button',{name:'Datumsfoto aus Galerie auswählen'}));
- await page.waitForFunction(()=>document.querySelector('#scanExpiry').value==='2027-12-19');
+ await page.getByLabel('Gelesenes Datum prüfen').waitFor();
+ assert.equal(await page.locator('#scanExpiry').inputValue(),'');
+ assert.equal(await page.getByLabel('Gelesenes Datum prüfen').inputValue(),'2027-12-19');
  const first=await page.evaluate(()=>window.ocrCalls);
  await upload(page.getByRole('button',{name:'Datumsfoto aus Galerie auswählen'}));
  await page.waitForFunction(n=>window.ocrCalls>n,first);
