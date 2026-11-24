@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-11-23",
+  "reviewedAt": "2026-11-24",
   "photos": [
     {
       "recipeId": "poulet-reis-bowl",
@@ -958,6 +958,23 @@
       "reviewedAt": "2026-11-23",
       "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Minestrone_soup.jpg",
       "originalPhotoSha256": "298adcaf91e9f56023f68e69fa6055e1ef24d84bb782472140762395c7ff57b0"
+    },
+    {
+      "recipeId": "gnocchi-burro-salvia",
+      "path": "assets/recipe-photos/gnocchi-burro-salvia.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Gnocchi_di_ricotta_burro_e_salvia.jpg",
+      "author": "Paoletta S.",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Gnocchi di ricotta burro e salvia",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 465 × 700 Pixel verkleinert, Metadaten entfernt und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echte Ricotta-Gnocchi mit Butter und Salbei, mit geriebenem Käse angerichtet. Das RESERVE-Rezept verwendet Kartoffelgnocchi; Ricotta gehört nicht zur Rezeptfassung. Genaue Rezeptur und Portionsgrösse des Fotos sind nicht belegt und nicht Grundlage der Zutaten- oder Nährwertangaben.",
+      "reviewedAt": "2026-11-24",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/8/86/Gnocchi_di_ricotta_burro_e_salvia.jpg",
+      "originalPhotoSha256": "5ad94b01de6e0d33fc56408d7e81d701b01234fe9e1843e2bb974d66c76b858c"
     }
   ]
 }
