@@ -1,0 +1,52 @@
+{
+  "reviewedAt": "2026-11-26",
+  "scope": "Photo-only addition to an existing RESERVE recipe; no external recipe text imported.",
+  "recipe": {
+    "id": "kaese-omelette",
+    "source": "https://github.com/jaronhofstetter-max/RESERVE/blob/e5bcf5f3cbacf3f36d4137ac27a54f56627ebfda/data/quality-batch-01.json",
+    "textChange": false,
+    "externalTextLicense": null,
+    "note": "Vorhandener RESERVE-Text bleibt unverändert. Keine neue Textübernahme oder Lizenzbehauptung. Zutaten, Schritte, Portionsbasis, Allergene und bestehende Nährwertschätzungen werden nicht geändert."
+  },
+  "photo": {
+    "recipeId": "kaese-omelette",
+    "path": "assets/recipe-photos/kaese-omelette.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Cheese_Omelette.jpg",
+    "author": "1Bongfoodie",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "kind": "photograph",
+    "servingSuggestion": true,
+    "title": "Cheese Omelette",
+    "provider": "Wikimedia Commons",
+    "adaptation": "Proportional auf 525 × 700 Pixel verkleinert, Metadaten entfernt und als WebP komprimiert; Bildinhalt unverändert.",
+    "review": "Serviervorschlag: echte zusammengeklappte Käse-Omelette. Käsesorte, genaue Rezeptur und Portionsgrösse des Fotos sind nicht belegt; die Abbildung ist nicht Grundlage der Zutatenmengen, Allergene oder Nährwertschätzungen des vorhandenen RESERVE-Rezepts.",
+    "reviewedAt": "2026-11-26",
+    "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Cheese_Omelette.jpg",
+    "originalPhotoSha256": "5582e680ac192aefec5f4d10a6ca585d774d8f1186da9c9b1d2b62dad2fe3e40"
+  },
+  "licenseEvidence": {
+    "url": "https://commons.wikimedia.org/w/index.php?title=File:Cheese_Omelette.jpg&oldid=855267039",
+    "author": "1Bongfoodie",
+    "ownWork": true,
+    "date": "2021-03-22",
+    "originalDimensions": [
+      960,
+      1280
+    ],
+    "license": "Creative Commons Attribution-ShareAlike 4.0 International",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "commercialUse": true,
+    "adaptationAllowed": true,
+    "attributionRequired": true,
+    "shareAlikeRequired": true,
+    "creditProvided": "Cheese Omelette · 1Bongfoodie · Wikimedia Commons · CC BY-SA 4.0; Quellenlink, Lizenzlink und Anpassungen in den Bildnachweisen.",
+    "derivativeLicense": "CC BY-SA 4.0 gilt auch für die lokale WebP-Fassung; keine zusätzlichen Einschränkungen.",
+    "sourceReview": "Originaldateiseite und permanenter Stand direkt gelesen, Originaldatei heruntergeladen und visuell geprüft. Autor nennt eigenes Werk; historischer Upload vom 22. März 2021. Kein Hinweis auf KI-generierte Abbildung, Aufnahme eines realen Gerichts."
+  },
+  "otherSources": {
+    "chuchitisch": "Originalseite am 26.11.2026: 502 Bad Gateway; kein neuer Import.",
+    "pexels": "Aktuelle Original-Lizenzseite direkt geprüft. Für diese Käse-Omelette wurde ein eindeutig beschriebenes Commons-Foto ausgewählt.",
+    "alternativeCommons": "Omelette on a plate.jpg von Infrogmation of New Orleans: Commons, Flickr-Originalseite und CC BY 2.0 geprüft; nach visuellem Vergleich wegen dunklerer Aufnahme nicht ausgewählt."
+  }
+}
