@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-11-24",
+  "reviewedAt": "2026-11-26",
   "photos": [
     {
       "recipeId": "poulet-reis-bowl",
@@ -975,6 +975,23 @@
       "reviewedAt": "2026-11-24",
       "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/8/86/Gnocchi_di_ricotta_burro_e_salvia.jpg",
       "originalPhotoSha256": "5ad94b01de6e0d33fc56408d7e81d701b01234fe9e1843e2bb974d66c76b858c"
+    },
+    {
+      "recipeId": "kaese-omelette",
+      "path": "assets/recipe-photos/kaese-omelette.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Cheese_Omelette.jpg",
+      "author": "1Bongfoodie",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Cheese Omelette",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Proportional auf 525 × 700 Pixel verkleinert, Metadaten entfernt und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echte zusammengeklappte Käse-Omelette. Käsesorte, genaue Rezeptur und Portionsgrösse des Fotos sind nicht belegt; die Abbildung ist nicht Grundlage der Zutatenmengen, Allergene oder Nährwertschätzungen des vorhandenen RESERVE-Rezepts.",
+      "reviewedAt": "2026-11-26",
+      "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Cheese_Omelette.jpg",
+      "originalPhotoSha256": "5582e680ac192aefec5f4d10a6ca585d774d8f1186da9c9b1d2b62dad2fe3e40"
     }
   ]
 }
