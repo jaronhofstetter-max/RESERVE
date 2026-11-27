@@ -1,0 +1,152 @@
+[
+  {
+    "id": "wikibooks-haferbrei",
+    "name": "Klassischer Haferbrei mit Zimtzucker",
+    "type": "Frühstück",
+    "diet": "Vegetarisch",
+    "dish": "🥣",
+    "cuisine": "Deutschsprachig",
+    "mealTimes": [
+      "Frühstück"
+    ],
+    "prepMinutes": 5,
+    "cookMinutes": 5,
+    "difficulty": "Sehr einfach",
+    "allergens": [
+      "Gluten",
+      "Milch"
+    ],
+    "tags": [
+      "Wikibooks",
+      "Haferflocken",
+      "Porridge",
+      "Zimt",
+      "Frühstück"
+    ],
+    "ingredients": [
+      {
+        "name": "Haferflocken",
+        "amount": 50,
+        "unit": "g"
+      },
+      {
+        "name": "Vollmilch",
+        "amount": 125,
+        "unit": "ml"
+      },
+      {
+        "name": "Wasser",
+        "amount": 125,
+        "unit": "ml"
+      },
+      {
+        "name": "Salz",
+        "amount": 0.0625,
+        "unit": "g"
+      },
+      {
+        "name": "Zucker",
+        "amount": 25,
+        "unit": "g"
+      },
+      {
+        "name": "Zimt gemahlen",
+        "amount": 0.5,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Haferflocken, Milch, Wasser und Salz in einen ausreichend grossen Topf geben. Unter Rühren bei mittlerer Hitze bis zum ersten Aufkochen erwärmen.",
+      "Die Hitze reduzieren. Bei feinen Flocken mindestens 5 Minuten sanft köcheln lassen und regelmässig über den Topfboden rühren. Grobe Flocken können bis zu 30 Minuten benötigen.",
+      "Prüfen, ob die Flocken weich sind und der Brei cremig vom Löffel fällt. Bei Bedarf noch etwas heisses Wasser einrühren; die zusätzliche Menge verändert die Konsistenz.",
+      "Zucker und Zimt in einer kleinen Schale gleichmässig mischen. Den warmen Brei auf Schalen verteilen, die Mischung darüberstreuen und servieren."
+    ],
+    "nutrition": {
+      "kcal": 366.02,
+      "protein": 10.65,
+      "carbs": 60.12,
+      "fat": 7.45,
+      "fiber": 5.32
+    },
+    "nutritionEstimate": {
+      "method": "Zutatenbasierte Schätzung mit USDA SR Legacy; keine Messung der fertigen Speise.",
+      "basis": "Eine von vier Originalportionen. Milch konkretisiert als Vollmilch 3.25 %, Dichte 1.03 g/ml. Zimt 2 g und Salz 0.25 g je Gesamtansatz sind ergänzte Richtmengen. Wasser und Salz liefern keine Makronährwerte. Optionale Früchte und Honig sind nicht eingerechnet. Kohlenhydrate ohne Ballaststoffe.",
+      "sources": "docs/recipe-candidates/import-2026-11-27/nutrition-values.json",
+      "ingredients": [
+        {
+          "name": "Haferflocken",
+          "grams": 50,
+          "foodKey": "173904",
+          "excluded": false
+        },
+        {
+          "name": "Vollmilch",
+          "grams": 128.75,
+          "foodKey": "171265",
+          "excluded": false
+        },
+        {
+          "name": "Zucker",
+          "grams": 25,
+          "foodKey": "169655",
+          "excluded": false
+        },
+        {
+          "name": "Zimt",
+          "grams": 0.5,
+          "foodKey": "171320",
+          "excluded": false
+        },
+        {
+          "name": "Wasser und Salz",
+          "grams": 125.0625,
+          "foodKey": null,
+          "excluded": true
+        }
+      ]
+    },
+    "status": "approved",
+    "description": "Einfacher warmer Haferbrei aus Milch, Wasser und Haferflocken mit einer Mischung aus Zucker und Zimt.",
+    "equipment": [
+      "Küchenwaage",
+      "Messbecher",
+      "Kochtopf",
+      "Kochlöffel",
+      "Kleine Schale",
+      "Frühstücksschalen"
+    ],
+    "prepNotes": [
+      "Die Originalmenge gilt für vier Personen; angezeigt wird eine Portion. Die 100 g Zucker der Quelle entsprechen 25 g je Portion und wurden nicht stillschweigend reduziert.",
+      "Die Quelle beziffert den Zimt nicht. Für die App werden 2 g pro Gesamtansatz als Richtmenge ergänzt. Eine Prise Salz wird als 0.25 g pro Gesamtansatz angesetzt.",
+      "Die Flüssigkeitsbasis ist je zur Hälfte Milch und Wasser. Für die Nährwertschätzung wird Vollmilch mit 3.25 % Fett und 1.03 g/ml Dichte angenommen.",
+      "Honig und Früchte, etwa Kirschen oder Erdbeeren, sind optionale Quellenvorschläge und nicht Bestandteil der berechneten Grundfassung.",
+      "Die angezeigten 5 Minuten Kochzeit gelten für feine Flocken; gröbere können bis zu 30 Minuten benötigen.",
+      "Das Foto zeigt einen Serviervorschlag mit zusätzlicher Milch rund um den Brei. Menge und genaue Rezeptur sind nicht belegt; zusätzliche Milch ist nicht in der Nährwertschätzung enthalten."
+    ],
+    "doneness": "Die Haferflocken sind weich, der Brei ist cremig und haftet am Löffel; am Topfboden klebt keine angebrannte Schicht.",
+    "substitutions": [
+      "Die Quelle erlaubt, Wasser durch zusätzliche Milch zu ersetzen; Allergene und Nährwerte je nach Produkt neu berücksichtigen.",
+      "Honig kann laut Quelle beim Köcheln ergänzt werden; Früchte sind als Garnitur möglich. Beide sind nicht in den angegebenen Nährwerten enthalten."
+    ],
+    "leftovers": "Reste zügig abkühlen, abgedeckt im Kühlschrank lagern und innerhalb von zwei Tagen verbrauchen. Beim Erwärmen etwas Wasser zugeben und vollständig erhitzen.",
+    "safety": "Heisser Brei kann spritzen. Milch und fertigen Brei gekühlt aufbewahren; bei Allergien die Kennzeichnung der verwendeten Haferflocken und Milch prüfen.",
+    "recipeCredit": {
+      "author": "Prui~dewikibooks, Yamavu und weitere Wikibooks-Mitwirkende",
+      "provider": "Wikibooks",
+      "source": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Haferbrei&oldid=633853",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "originalServings": 4,
+      "adaptation": "Neu formuliert und auf eine von vier Portionen umgerechnet. Milch konkretisiert, unbezifferten Zimt und Salz als Richtmengen dokumentiert; Kochzeitbereich, optionale Zutaten, Garmerkmale, Geräte-, Aufbewahrungs- und Sicherheitshinweise erläutert. Bearbeiteter Text unter CC BY-SA 4.0."
+    },
+    "resilience": {
+      "power": "normal",
+      "refrigeration": "required",
+      "shelfStableShare": 0.55,
+      "waterMl": 125,
+      "noCook": false,
+      "onePot": true
+    },
+    "image": "assets/recipe-photos/wikibooks-haferbrei.webp"
+  }
+]

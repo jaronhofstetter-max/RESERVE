@@ -1,0 +1,56 @@
+{
+  "reviewedAt": "2026-11-27",
+  "recipe": {
+    "url": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Haferbrei&oldid=633853",
+    "history": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Haferbrei&action=history",
+    "author": "Prui~dewikibooks, Yamavu und weitere Wikibooks-Mitwirkende",
+    "originalServings": 4,
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+    "commercialUse": true,
+    "adaptationAllowed": true,
+    "attributionRequired": true,
+    "shareAlikeRequired": true,
+    "evidence": "Originalseite, Portionsangabe, Zutaten, Zubereitung, Versionsgeschichte und Lizenzlink im Fussbereich direkt geprüft. Erstfassung von Prui~dewikibooks, spätere Beiträge u.a. Yamavu. Quelle und Versionsgeschichte sichern die vollständige Zuschreibung."
+  },
+  "photo": {
+    "recipeId": "wikibooks-haferbrei",
+    "path": "assets/recipe-photos/wikibooks-haferbrei.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Porridge.jpg",
+    "author": "VirtualSteve; Farbanpassung: Kreuzschnabel",
+    "license": "CC BY-SA 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/",
+    "kind": "photograph",
+    "servingSuggestion": true,
+    "title": "Porridge",
+    "provider": "Wikimedia Commons",
+    "adaptation": "Vorlage: Farben und Helligkeit von Kreuzschnabel 2013 angepasst. RESERVE: proportional auf 700 × 667 Pixel verkleinert, Metadaten entfernt und als WebP komprimiert; Bildinhalt unverändert.",
+    "review": "Serviervorschlag: echter Porridge mit zusätzlicher Milch rund um den Brei. Genaue Rezeptur und Portionsgrösse des Fotos sind nicht belegt. Zusätzliche Milch ist nicht Bestandteil der berechneten Grundfassung.",
+    "reviewedAt": "2026-11-27",
+    "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Porridge.jpg",
+    "originalPhotoSha256": "75fcad8e1190d9909ef59df9c6a778e6daf0383bbc88be1503739e236cadfd12"
+  },
+  "photoEvidence": {
+    "url": "https://commons.wikimedia.org/w/index.php?title=File:Porridge.jpg&oldid=1286389023",
+    "captureDate": "2006-02-17",
+    "camera": "PENTAX Optio S6",
+    "originalDimensions": [
+      2031,
+      1936
+    ],
+    "source": "Own picture by VirtualSteve; 2013 color/brightness optimization by Kreuzschnabel.",
+    "commercialUse": true,
+    "adaptationAllowed": true,
+    "attributionRequired": true,
+    "shareAlikeRequired": true,
+    "license": "CC BY-SA 2.5 Generic",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/",
+    "localDerivativeLicense": "CC BY-SA 2.5",
+    "evidence": "Original-Dateiseite und permanenter Stand direkt gelesen; aktuelle Datei heruntergeladen und visuell geprüft. Historische Fotografie von 2006 mit Kamera-EXIF; keine KI-Abbildung. Explizite CC BY-SA 2.5-Freigabe gewählt, nicht die historische und später geänderte PD-Angabe."
+  },
+  "otherSources": {
+    "chuchitisch": "Timeout am 27.11.2026; kein neuer Import.",
+    "pexels": "Aktuelle Original-Lizenzseite direkt geprüft; für den schlichten Haferbrei wurde ein geeignetes Commons-Foto ausgewählt.",
+    "notSelected": "Porrrrrrage.jpg ist als Dalia kategorisiert und daher keine belegte Haferbrei-Abbildung; nicht übernommen."
+  }
+}
