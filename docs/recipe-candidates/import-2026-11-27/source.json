@@ -1,0 +1,30 @@
+{
+  "recipe": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Haferbrei&oldid=633853",
+  "history": "https://de.wikibooks.org/w/index.php?title=Kochbuch/_Haferbrei&action=history",
+  "authors": "Prui~dewikibooks, Yamavu und weitere Wikibooks-Mitwirkende",
+  "reviewedAt": "2026-11-27",
+  "originalServings": 4,
+  "originalIngredients": {
+    "Haferflocken": "200 g",
+    "Milch": "500 ml",
+    "Wasser": "500 ml",
+    "Salz": "1 Prise",
+    "Zucker": "100 g",
+    "Zimt": "etwas",
+    "Honig": "optional, nach Geschmack",
+    "Früchte": "optional, z. B. Kirschen oder Erdbeeren"
+  },
+  "sourceCookMinutes": [
+    5,
+    30
+  ],
+  "assumptions": [
+    "Alle Rezeptmengen werden durch vier geteilt; Originalzuckermenge bleibt erhalten.",
+    "Milch wird als Vollmilch mit 3.25 % Fett konkretisiert; Dichte für die Berechnung 1.03 g/ml.",
+    "Eine Prise Salz wird als 0.25 g im Gesamtansatz angenommen; keine exakte Originalmenge.",
+    "Unbezifferter Zimt wird als 2 g im Gesamtansatz angenommen; keine exakte Originalmenge.",
+    "Optionale Früchte und Honig bleiben Variantenhinweise, gehören nicht zur berechneten Grundfassung.",
+    "Kochzeit für feine Flocken mindestens fünf Minuten, gröbere Flocken können bis zu dreissig Minuten brauchen; Konsistenz entscheidet.",
+    "Die widersprüchliche Quellenkopfzeile Nährwerte je 100 Gramm / pro Portion wird nicht übernommen."
+  ]
+}

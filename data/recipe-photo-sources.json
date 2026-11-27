@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-11-26",
+  "reviewedAt": "2026-11-27",
   "photos": [
     {
       "recipeId": "poulet-reis-bowl",
@@ -992,6 +992,23 @@
       "reviewedAt": "2026-11-26",
       "originalPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Cheese_Omelette.jpg",
       "originalPhotoSha256": "5582e680ac192aefec5f4d10a6ca585d774d8f1186da9c9b1d2b62dad2fe3e40"
+    },
+    {
+      "recipeId": "wikibooks-haferbrei",
+      "path": "assets/recipe-photos/wikibooks-haferbrei.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Porridge.jpg",
+      "author": "VirtualSteve; Farbanpassung: Kreuzschnabel",
+      "license": "CC BY-SA 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Porridge",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Vorlage: Farben und Helligkeit von Kreuzschnabel 2013 angepasst. RESERVE: proportional auf 700 × 667 Pixel verkleinert, Metadaten entfernt und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: echter Porridge mit zusätzlicher Milch rund um den Brei. Genaue Rezeptur und Portionsgrösse des Fotos sind nicht belegt. Zusätzliche Milch ist nicht Bestandteil der berechneten Grundfassung.",
+      "reviewedAt": "2026-11-27",
+      "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Porridge.jpg",
+      "originalPhotoSha256": "75fcad8e1190d9909ef59df9c6a778e6daf0383bbc88be1503739e236cadfd12"
     }
   ]
 }

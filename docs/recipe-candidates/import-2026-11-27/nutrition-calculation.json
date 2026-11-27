@@ -1,0 +1,56 @@
+{
+  "basis": "Eine von vier Portionen; verfügbare Kohlenhydrate = USDA-Gesamtkohlenhydrate minus Ballaststoffe.",
+  "ingredients": [
+    {
+      "ingredient": "Haferflocken",
+      "grams": 50,
+      "nutrition": {
+        "kcal": 189.5,
+        "protein": 6.575,
+        "carbs": 28.8,
+        "fat": 3.26,
+        "fiber": 5.05
+      }
+    },
+    {
+      "ingredient": "Vollmilch",
+      "grams": 128.75,
+      "nutrition": {
+        "kcal": 78.5375,
+        "protein": 4.055625,
+        "carbs": 6.18,
+        "fat": 4.184375,
+        "fiber": 0.0
+      }
+    },
+    {
+      "ingredient": "Zucker",
+      "grams": 25,
+      "nutrition": {
+        "kcal": 96.75,
+        "protein": 0.0,
+        "carbs": 25.0,
+        "fat": 0.0,
+        "fiber": 0.0
+      }
+    },
+    {
+      "ingredient": "Zimt",
+      "grams": 0.5,
+      "nutrition": {
+        "kcal": 1.235,
+        "protein": 0.019950000000000002,
+        "carbs": 0.13745000000000002,
+        "fat": 0.0062,
+        "fiber": 0.2655
+      }
+    }
+  ],
+  "perPortionEstimate": {
+    "kcal": 366.02,
+    "protein": 10.65,
+    "carbs": 60.12,
+    "fat": 7.45,
+    "fiber": 5.32
+  }
+}
