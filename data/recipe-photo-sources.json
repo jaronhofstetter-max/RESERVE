@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-11-27",
+  "reviewedAt": "2026-11-28",
   "photos": [
     {
       "recipeId": "poulet-reis-bowl",
@@ -1009,6 +1009,23 @@
       "reviewedAt": "2026-11-27",
       "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Porridge.jpg",
       "originalPhotoSha256": "75fcad8e1190d9909ef59df9c6a778e6daf0383bbc88be1503739e236cadfd12"
+    },
+    {
+      "recipeId": "couscous-feta-gemuese-bowl",
+      "path": "assets/recipe-photos/couscous-feta-gemuese-bowl.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Couscous_with_Roasted_Vegetables_%26_Feta.jpg",
+      "author": "Lori L. Stalteri",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/deed.de",
+      "kind": "photograph",
+      "servingSuggestion": true,
+      "title": "Couscous with Roasted Vegetables & Feta",
+      "provider": "Wikimedia Commons",
+      "adaptation": "Originalgrösse 673 × 673 Pixel beibehalten, Metadaten entfernt und als WebP komprimiert; Bildinhalt unverändert.",
+      "review": "Serviervorschlag: Couscous mit geröstetem Gemüse, Feta und Kräutergarnitur statt der rohen Gurke und Tomaten im RESERVE-Rezept. Weitere helle Garniturblättchen sind sichtbar, deren Zutat nicht belegt ist. Genaue Rezeptur und Portionsgrösse des Fotos sind nicht bekannt; abweichendes Gemüse und Garnituren sind nicht Bestandteil der Zutaten-, Allergen- oder Nährwertangaben der vorhandenen Fassung.",
+      "reviewedAt": "2026-11-28",
+      "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Couscous_with_Roasted_Vegetables_%26_Feta.jpg",
+      "originalPhotoSha256": "98e29c494d0a13f218829918526476af6263c7435598eecbb7b5ebab72f379c6"
     }
   ]
 }
