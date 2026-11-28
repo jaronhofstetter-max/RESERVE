@@ -1,0 +1,58 @@
+{
+  "reviewedAt": "2026-11-28",
+  "scope": "Photo-only addition to an existing RESERVE recipe; no external recipe text imported.",
+  "recipe": {
+    "id": "couscous-feta-gemuese-bowl",
+    "source": "https://github.com/jaronhofstetter-max/RESERVE/blob/592aa25d4568eaefe34c4bf19c1abe2e562929b9/data/quality-batch-06.json",
+    "textChange": false,
+    "externalTextLicense": null,
+    "note": "Vorhandener RESERVE-Text. Keine neue Textübernahme, keine neue Lizenzbehauptung. Zutaten, Schritte, Portionen, Allergene und bestehende Nährwertschätzungen bleiben unverändert."
+  },
+  "photo": {
+    "recipeId": "couscous-feta-gemuese-bowl",
+    "path": "assets/recipe-photos/couscous-feta-gemuese-bowl.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Couscous_with_Roasted_Vegetables_%26_Feta.jpg",
+    "author": "Lori L. Stalteri",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/deed.de",
+    "kind": "photograph",
+    "servingSuggestion": true,
+    "title": "Couscous with Roasted Vegetables & Feta",
+    "provider": "Wikimedia Commons",
+    "adaptation": "Originalgrösse 673 × 673 Pixel beibehalten, Metadaten entfernt und als WebP komprimiert; Bildinhalt unverändert.",
+    "review": "Serviervorschlag: Couscous mit geröstetem Gemüse, Feta und Kräutergarnitur statt der rohen Gurke und Tomaten im RESERVE-Rezept. Weitere helle Garniturblättchen sind sichtbar, deren Zutat nicht belegt ist. Genaue Rezeptur und Portionsgrösse des Fotos sind nicht bekannt; abweichendes Gemüse und Garnituren sind nicht Bestandteil der Zutaten-, Allergen- oder Nährwertangaben der vorhandenen Fassung.",
+    "reviewedAt": "2026-11-28",
+    "originalPhotoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Couscous_with_Roasted_Vegetables_%26_Feta.jpg",
+    "originalPhotoSha256": "98e29c494d0a13f218829918526476af6263c7435598eecbb7b5ebab72f379c6"
+  },
+  "licenseEvidence": {
+    "url": "https://commons.wikimedia.org/w/index.php?title=File:Couscous_with_Roasted_Vegetables_%26_Feta.jpg&oldid=1153463495",
+    "originalAuthorPage": "https://www.flickr.com/photos/llstalteri/7046439403/",
+    "author": "Lori L. Stalteri",
+    "captureDate": "2012-04-04",
+    "camera": "Panasonic DMC-LX5",
+    "originalDimensions": [
+      673,
+      673
+    ],
+    "originalSha1": "fa21b642d42c86536321583e9da907fb89373416",
+    "license": "Creative Commons Attribution 2.0 Generic",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/deed.de",
+    "commercialUse": true,
+    "adaptationAllowed": true,
+    "attributionRequired": true,
+    "shareAlikeRequired": false,
+    "creditProvided": "Couscous with Roasted Vegetables & Feta · Lori L. Stalteri · Wikimedia Commons · CC BY 2.0; Quellen- und Lizenzlink sowie Anpassungen auf Bildnachweisseite.",
+    "localDerivativeLicense": "CC BY 2.0, ohne zusätzliche Einschränkungen.",
+    "flickrLicenseReview": {
+      "reviewer": "FlickreviewR 2",
+      "date": "2025-04-30",
+      "confirmedLicense": "cc-by-2.0"
+    },
+    "sourceReview": "Commons-Originaldateiseite direkt gelesen; Originaldownload visuell geprüft und SHA-1 mit Commons abgeglichen. Historische Aufnahme von 2012 mit Kamera-EXIF, keine KI-Abbildung. Verlinkte Flickr-Seite bei numerischem Abruf 404 und bei Alias nicht erreichbar; keine neue Flickr-Lizenzprüfung behauptet. Explizite dateispezifische CC-BY-2.0-Freigabe und historische Lizenzprüfung auf Commons sind der Nachweis."
+  },
+  "otherSources": {
+    "chuchitisch": "Originalseite am 28.11.2026 nicht erreichbar (Timeout); kein neuer Import.",
+    "pexels": "Aktuelle Original-Lizenzseite direkt geprüft; für diesen Treffer wurde das passend bezeichnete Commons-Foto gewählt."
+  }
+}
